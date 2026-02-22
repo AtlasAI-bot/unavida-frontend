@@ -1,0 +1,2263 @@
+{
+  "chapter": {
+    "metadata": {
+      "id": "ch1_intro_to_pharmacology",
+      "title": "Chapter 1: Introduction to Pharmacology",
+      "subtitle": "Foundations of Nursing Pharmacology & Patient Safety",
+      "courseCode": "NUR1100",
+      "courseName": "Pharmacology I",
+      "week": 1,
+      "estimatedReadingTime": 180,
+      "estimatedStudyTime": 240,
+      "wordCount": 33147,
+      "author": "Atlas Delgado",
+      "textbookReference": "Karch, A.M. (2020). Focus on Nursing Pharmacology (8th ed.). Wolters Kluwer.",
+      "targetAudience": [
+        "RN Students",
+        "Hospital Settings",
+        "Clinic Settings"
+      ],
+      "contentLevel": "foundational",
+      "version": "1.0.0",
+      "releaseDate": "2026-02-18",
+      "lastUpdated": "2026-02-18",
+      "status": "production_ready",
+      "difficulty": "intermediate",
+      "tags": [
+        "pharmacology",
+        "nursing_practice",
+        "medication_safety",
+        "drug_interactions",
+        "dosage_calculations",
+        "clinical_judgment",
+        "foundational",
+        "week_1",
+        "core_content"
+      ],
+      "searchKeywords": [
+        "pharmacology definition",
+        "nursing medication safety",
+        "drug classification",
+        "pharmacokinetics",
+        "pharmacodynamics",
+        "FDA approval process",
+        "drug interactions",
+        "dosage calculation",
+        "adverse drug reactions",
+        "therapeutic index",
+        "drug metabolism",
+        "drug absorption",
+        "nursing role pharmacology"
+      ],
+      "contentQuality": {
+        "accuracy": "verified_against_evidence_based_sources",
+        "currentness": "2026_updated",
+        "completeness": "comprehensive_coverage",
+        "clinicalRelevance": "high_practice_focus"
+      },
+      "platformRequirements": {
+        "htmlSupport": true,
+        "interactiveElements": true,
+        "multimediaSupport": true,
+        "mobileOptimized": true,
+        "accessibilityCompliant": true
+      },
+      "estimatedCompletionTime": {
+        "reading": "180 minutes",
+        "studying": "240 minutes",
+        "practiceProblems": "60 minutes",
+        "total": "480 minutes (8 hours)"
+      }
+    },
+    "learningOutcomes": {
+      "chapterLevel": [
+        {
+          "id": "lo1",
+          "outcome": "Define pharmacology and explain its relationship to nursing practice",
+          "bloomLevel": "understand",
+          "assessmentMethod": "quiz, case_study"
+        },
+        {
+          "id": "lo2",
+          "outcome": "Explain the role of nurses in medication safety and therapeutic outcomes",
+          "bloomLevel": "understand",
+          "assessmentMethod": "case_study, reflection"
+        },
+        {
+          "id": "lo3",
+          "outcome": "Trace the evolution of pharmacology from ancient to modern times",
+          "bloomLevel": "remember",
+          "assessmentMethod": "quiz, timeline_exercise"
+        },
+        {
+          "id": "lo4",
+          "outcome": "Classify drugs using multiple systems (therapeutic, chemical, regulatory)",
+          "bloomLevel": "understand",
+          "assessmentMethod": "classification_exercise, quiz"
+        },
+        {
+          "id": "lo5",
+          "outcome": "Identify regulatory bodies (FDA, DEA, nursing boards) and their roles in drug safety",
+          "bloomLevel": "remember",
+          "assessmentMethod": "quiz, matching_exercise"
+        },
+        {
+          "id": "lo6",
+          "outcome": "Distinguish between pharmacokinetics, pharmacodynamics, and pharmacology",
+          "bloomLevel": "understand",
+          "assessmentMethod": "concept_mapping, quiz"
+        },
+        {
+          "id": "lo7",
+          "outcome": "Recognize drug interactions and apply management strategies",
+          "bloomLevel": "apply",
+          "assessmentMethod": "case_study, interaction_check_exercise"
+        },
+        {
+          "id": "lo8",
+          "outcome": "Master three dosage calculation methods (formula, ratio-proportion, dimensional analysis)",
+          "bloomLevel": "apply",
+          "assessmentMethod": "calculation_problems, competency_check"
+        },
+        {
+          "id": "lo9",
+          "outcome": "Apply clinical judgment to medication safety decisions",
+          "bloomLevel": "apply",
+          "assessmentMethod": "case_study, scenario_based_questions"
+        },
+        {
+          "id": "lo10",
+          "outcome": "Communicate effectively with prescribers about medication concerns",
+          "bloomLevel": "apply",
+          "assessmentMethod": "communication_simulation, reflection"
+        }
+      ]
+    },
+    "sections": [
+      {
+        "sectionNumber": 1,
+        "id": "sec1_overview_introduction",
+        "title": "Section 1: Overview & Introduction",
+        "duration": 25,
+        "wordCount": 2800,
+        "learningObjectives": [
+          "Understand why pharmacology is critical for nursing practice",
+          "Define pharmacology in the context of nursing",
+          "Recognize the nurse's role as the final line of defense in medication safety",
+          "Appreciate the historical evolution leading to modern pharmaceutical science"
+        ],
+        "keyTakeaways": [
+          "Pharmacology is clinical power \u2014 the difference between healing and harm",
+          "Nurses are the last line of defense between a medication order and a patient's body",
+          "Understanding pharmacology enables nurses to catch drug interactions, contraindications, and dosing errors",
+          "Pharmacology knowledge has evolved dramatically over the past 150+ years, from trial-and-error herbalism to precision medicine",
+          "Today's challenge: 10,000+ FDA-approved drugs, countless combinations, and maximum potential for harm if used carelessly"
+        ],
+        "contentBlocks": [
+          {
+            "blockId": "block1_1",
+            "type": "narrative",
+            "title": "The Critical Moment",
+            "htmlReady": "<div class='narrative-block'><p><strong>Picture this:</strong> You're on a busy medical-surgical floor. A patient is admitted with pneumonia. The hospitalist orders an antibiotic. The patient's chart flags an allergy. Your phone buzzes with a medication alert.</p><p><strong>In the next 30 seconds, you will make a decision that affects whether this patient recovers safely or experiences a serious adverse event.</strong></p></div>",
+            "contentType": "scenario"
+          },
+          {
+            "blockId": "block1_2",
+            "type": "definition",
+            "title": "Pharmacology Defined",
+            "content": "Pharmacology is the science that studies the effects of chemical substances (drugs) on living organisms and biological systems. It combines chemistry, physiology, pathophysiology, and clinical practice.",
+            "htmlReady": "<div class='definition-block'><h4>Pharmacology</h4><p>The science that studies the effects of chemical substances (drugs) on living organisms and biological systems.</p></div>"
+          },
+          {
+            "blockId": "block1_3",
+            "type": "clinical_example",
+            "title": "Mrs. Garcia: Drug Interaction Case",
+            "description": "Real-world example of how pharmacology knowledge prevents medical disasters",
+            "htmlReady": "<div class='clinical-example'><h4>Mrs. Garcia: A Real-World Drug Interaction</h4><p>68-year-old admitted for heart failure on multiple medications: beta-blocker, ACE inhibitor, diuretic, digoxin, warfarin. New order: NSAID for arthritis.</p><p><strong>Without pharmacology knowledge:</strong> You might just give it.</p><p><strong>With pharmacology knowledge:</strong> You recognize NSAIDs interact with her medications \u2192 potential acute kidney injury, digoxin toxicity, bleeding risk. You suggest alternatives and prevent a medical disaster.</p></div>"
+          }
+        ],
+        "flashcardLinks": [
+          "Define pharmacology",
+          "What is the difference between pharmacokinetics and pharmacodynamics?",
+          "What is a therapeutic drug action?"
+        ],
+        "interactiveElements": [
+          {
+            "type": "scenario_discussion",
+            "prompt": "You notice a medication order that seems unusual for your patient. What do you do?"
+          }
+        ]
+      },
+      {
+        "sectionNumber": 2,
+        "id": "sec1_1_definitions_scope",
+        "title": "Section 1.1: Definition & Scope of Pharmacology",
+        "duration": 20,
+        "wordCount": 2200,
+        "learningObjectives": [
+          "Define core pharmacology terms",
+          "Understand five major branches of pharmacology",
+          "Apply nursing pharmacology principles to clinical decision-making"
+        ],
+        "keyTakeaways": [
+          "Pharmacokinetics = What the body does to the drug (ADME)",
+          "Pharmacodynamics = What the drug does to the body (mechanism of action)",
+          "Pharmacogenomics explains why drugs work differently in different people",
+          "Nursing pharmacology is APPLIED pharmacology \u2014 taking science and making it safe, effective, and patient-centered",
+          "Six key nursing responsibilities: Assessment, Clinical Judgment, Administration, Monitoring, Patient Education, Communication & Advocacy"
+        ],
+        "contentBlocks": [
+          {
+            "blockId": "block1_4",
+            "type": "definition_set",
+            "title": "Core Terms",
+            "definitions": {
+              "Pharmacology": "the science of drug-organism interactions",
+              "Drug": "any chemical substance that affects biological function",
+              "Medicine": "a drug used therapeutically to treat, prevent, or diagnose disease",
+              "Medication": "the actual preparation given to a patient"
+            },
+            "htmlReady": "<div class='definition-set'><dl><dt>Pharmacology</dt><dd>The science of drug-organism interactions</dd><dt>Drug</dt><dd>Any chemical substance that affects biological function</dd><dt>Medicine</dt><dd>A drug used therapeutically to treat, prevent, or diagnose disease</dd><dt>Medication</dt><dd>The actual preparation given to a patient</dd></dl></div>"
+          },
+          {
+            "blockId": "block1_5",
+            "type": "taxonomy",
+            "title": "Five Branches of Pharmacology",
+            "items": [
+              {
+                "name": "Pharmacokinetics (PK)",
+                "description": "What the body does to the drug - Absorption, Distribution, Metabolism, Elimination (ADME)"
+              },
+              {
+                "name": "Pharmacodynamics (PD)",
+                "description": "What the drug does to the body - Mechanism of action, receptor binding, effects"
+              },
+              {
+                "name": "Pharmacogenomics",
+                "description": "Genetic variation in drug response - Why different patients need different doses"
+              },
+              {
+                "name": "Toxicology",
+                "description": "Study of harmful effects of drugs - Overdose, chronic toxicity, teratogenicity"
+              },
+              {
+                "name": "Pharmacotherapy",
+                "description": "Clinical application of pharmacology to treat disease - What nurses do daily"
+              }
+            ]
+          }
+        ],
+        "flashcardLinks": [
+          "Define pharmacology",
+          "What are the three phases of drug metabolism?",
+          "What is the cytochrome P450 system?"
+        ]
+      },
+      {
+        "sectionNumber": 3,
+        "id": "sec1_2_historical_context",
+        "title": "Section 1.2: Historical Context of Pharmacology",
+        "duration": 20,
+        "wordCount": 2400,
+        "learningObjectives": [
+          "Trace the evolution of pharmacology from ancient times to the modern era",
+          "Understand how historical events shaped current drug development and safety practices",
+          "Recognize the significance of major pharmaceutical breakthroughs"
+        ],
+        "keyTakeaways": [
+          "Ancient era: Trial-and-error herbalism; no understanding of mechanism",
+          "1897: Aspirin synthesized \u2014 first truly successful synthetic drug",
+          "1928: Penicillin discovered (Fleming, accidentally); changed medicine forever",
+          "1950s-60s: Antibiotic golden age; infectious diseases stopped being death sentences",
+          "1960s-present: Molecular biology reveals HOW drugs work; precision medicine emerging",
+          "Modern challenge: 10,000+ FDA-approved drugs; resistance and interactions as major concerns"
+        ],
+        "contentBlocks": [
+          {
+            "blockId": "block1_6",
+            "type": "timeline",
+            "title": "Drug Development Timeline",
+            "events": [
+              {
+                "period": "2000 BCE - 1600 CE",
+                "era": "Ancient & Medieval: Trial and Error",
+                "keyMilestone": "Willow bark, opium poppies, foxglove discovered empirically"
+              },
+              {
+                "period": "1870s-1890s",
+                "era": "Industrial Revolution: Isolation of Active Compounds",
+                "keyMilestone": "Chemists begin extracting pure molecules from plants"
+              },
+              {
+                "period": "1897",
+                "era": "First Synthetic Drug",
+                "keyMilestone": "Aspirin synthesized from willow bark"
+              },
+              {
+                "period": "1906",
+                "era": "First Drug Regulation",
+                "keyMilestone": "Food and Drug Act passed; FDA established"
+              },
+              {
+                "period": "1928",
+                "era": "Antibiotic Discovery",
+                "keyMilestone": "Penicillin discovered by Alexander Fleming"
+              },
+              {
+                "period": "1950s-1960s",
+                "era": "Antibiotic Golden Age",
+                "keyMilestone": "Tetracyclines, cephalosporins, aminoglycosides developed"
+              },
+              {
+                "period": "1960s-present",
+                "era": "Molecular Biology Era",
+                "keyMilestone": "Drug design based on understanding of receptors and mechanisms"
+              }
+            ]
+          },
+          {
+            "blockId": "block1_7",
+            "type": "comparison_table",
+            "title": "Era Comparison: What Changed",
+            "htmlReady": "<table><thead><tr><th>Era</th><th>Key Insight</th><th>Nursing Implication</th></tr></thead><tbody><tr><td>Ancient</td><td>Plants have effects</td><td>Respect that drugs are powerful</td></tr><tr><td>1800s</td><td>Chemistry reveals active ingredients</td><td>Drugs have specific mechanisms</td></tr><tr><td>1920s-40s</td><td>Antibiotics save lives</td><td>Drugs can cure diseases, not just palliate</td></tr><tr><td>1960s-70s</td><td>Molecular targets identified</td><td>Understand HOW drugs work</td></tr><tr><td>1980s-90s</td><td>Genetics matter</td><td>Different patients need different doses</td></tr><tr><td>2000s-present</td><td>Precision medicine</td><td>Combine genetics + pharmacology for individualized treatment</td></tr></tbody></table>"
+          }
+        ],
+        "flashcardLinks": [
+          "Define pharmacology",
+          "Trace the historical evolution of pharmacology"
+        ]
+      },
+      {
+        "sectionNumber": 4,
+        "id": "sec1_3_drug_classification",
+        "title": "Section 1.3: Drug Classification Systems",
+        "duration": 30,
+        "wordCount": 3500,
+        "learningObjectives": [
+          "Classify drugs using three major systems: therapeutic, chemical, and regulatory",
+          "Predict drug effects and side effects based on drug class",
+          "Understand DEA scheduling and its clinical implications"
+        ],
+        "keyTakeaways": [
+          "Therapeutic classification: Groups drugs by what disease they treat; helps predict side effects",
+          "Chemical classification: Explains drug properties (absorption route, interactions)",
+          "Regulatory (DEA) classification: Determines legal control and abuse potential (Schedule I-V)",
+          "Schedule II drugs (opioids, stimulants): High abuse potential; strict documentation required",
+          "Schedule IV drugs (benzodiazepines): Moderate abuse potential; habit-forming even at therapeutic doses",
+          "Recognizing drug name patterns (-olol, -pril, -sartan, -statin, -prazole) helps you immediately predict drug class and effects"
+        ],
+        "contentBlocks": [
+          {
+            "blockId": "block1_8",
+            "type": "taxonomy",
+            "title": "Classification System #1: By Therapeutic Use",
+            "description": "Grouping drugs by what disease/symptom they treat",
+            "categories": [
+              {
+                "name": "Cardiovascular",
+                "examples": "Antihypertensives, anticoagulants, antiplatelets, antiarrhythmics"
+              },
+              {
+                "name": "Respiratory",
+                "examples": "Bronchodilators, corticosteroids, antihistamines"
+              },
+              {
+                "name": "CNS",
+                "examples": "Analgesics, sedatives, antidepressants, anticonvulsants"
+              },
+              {
+                "name": "Immune/Infection",
+                "examples": "Antibiotics, antivirals, antifungals, immunosuppressants"
+              },
+              {
+                "name": "Endocrine",
+                "examples": "Insulin, oral hypoglycemics, thyroid replacement"
+              }
+            ]
+          },
+          {
+            "blockId": "block1_9",
+            "type": "reference_guide",
+            "title": "Drug Name Pattern Reference",
+            "patterns": [
+              {
+                "ending": "-olol",
+                "class": "Beta-blockers",
+                "examples": "Metoprolol, propranolol, atenolol",
+                "predictableEffect": "Lower heart rate and blood pressure"
+              },
+              {
+                "ending": "-pril",
+                "class": "ACE Inhibitors",
+                "examples": "Lisinopril, enalapril, ramipril",
+                "predictableEffect": "Cause dry cough; increase potassium"
+              },
+              {
+                "ending": "-sartan",
+                "class": "Angiotensin Receptor Blockers",
+                "examples": "Losartan, valsartan, candesartan",
+                "predictableEffect": "Similar to ACE inhibitors but no cough"
+              },
+              {
+                "ending": "-statin",
+                "class": "Cholesterol Drugs",
+                "examples": "Atorvastatin, simvastatin, pravastatin",
+                "predictableEffect": "Muscle pain possible; interact with grapefruit"
+              },
+              {
+                "ending": "-prazole",
+                "class": "Proton Pump Inhibitors",
+                "examples": "Omeprazole, lansoprazole, pantoprazole",
+                "predictableEffect": "Reduce stomach acid; long-term use risks"
+              },
+              {
+                "ending": "-floxacin",
+                "class": "Fluoroquinolone Antibiotics",
+                "examples": "Ciprofloxacin, levofloxacin, moxifloxacin",
+                "predictableEffect": "Risk of C. difficile; tendon rupture risk"
+              }
+            ]
+          },
+          {
+            "blockId": "block1_10",
+            "type": "regulatory_schedule",
+            "title": "DEA Classification System",
+            "schedules": [
+              {
+                "schedule": "I",
+                "description": "No accepted medical use, high abuse potential",
+                "examples": "Heroin, LSD, marijuana (federally)",
+                "nursingRole": "Illegal; understand signs of abuse"
+              },
+              {
+                "schedule": "II",
+                "description": "High abuse potential, some medical use",
+                "examples": "Morphine, oxycodone, amphetamine",
+                "nursingRole": "Strict documentation; monitor for drug-seeking behavior"
+              },
+              {
+                "schedule": "III",
+                "description": "Moderate abuse potential",
+                "examples": "Codeine + acetaminophen",
+                "nursingRole": "Monitor use; watch for abuse patterns"
+              },
+              {
+                "schedule": "IV",
+                "description": "Lower abuse potential",
+                "examples": "Benzodiazepines, tramadol",
+                "nursingRole": "Monitor for dependence; never abruptly stop"
+              },
+              {
+                "schedule": "V",
+                "description": "Minimal abuse potential",
+                "examples": "Cough syrups with codeine",
+                "nursingRole": "Less common in clinical practice"
+              }
+            ]
+          }
+        ],
+        "flashcardLinks": [
+          "Classify drugs by therapeutic action: What does an analgesic drug do?",
+          "Classify drugs by therapeutic action: What does an antipyretic drug do?",
+          "Classify drugs by therapeutic action: What does an antihistamine do?",
+          "Classify drugs by therapeutic action: What is an antimicrobial agent?",
+          "Explain the difference between a drug's trade name and generic name"
+        ]
+      },
+      {
+        "sectionNumber": 5,
+        "id": "sec1_4_regulatory_bodies_fda",
+        "title": "Section 1.4: Regulatory Bodies & The FDA Drug Approval Process",
+        "duration": 25,
+        "wordCount": 2600,
+        "learningObjectives": [
+          "Understand the FDA drug approval timeline and phases",
+          "Identify key regulatory bodies and their roles",
+          "Appreciate the rigorous testing process before drugs reach patients"
+        ],
+        "keyTakeaways": [
+          "FDA drug approval takes 10-15 years and costs $2-3 billion",
+          "Phase 1: Safety testing in healthy volunteers (20-100 people)",
+          "Phase 2: Efficacy testing in patients with target disease (100-500 people)",
+          "Phase 3: Large confirmation trials (1,000-5,000 people); if drug passes, moves to NDA",
+          "Phase 4: Post-marketing surveillance (ongoing) \u2014 MedWatch system catches rare side effects",
+          "Black box warnings appear when serious/fatal risks emerge post-approval",
+          "Key regulatory bodies: FDA (drug approval), DEA (controlled substances), State Nursing Boards (scope of practice)"
+        ],
+        "contentBlocks": [
+          {
+            "blockId": "block1_11",
+            "type": "process_diagram",
+            "title": "FDA Drug Approval Timeline",
+            "phases": [
+              {
+                "phase": "Preclinical (3-6 years)",
+                "description": "Laboratory and animal testing",
+                "volunteers": "Cell cultures, animals",
+                "successRate": "5,000 compounds \u2192 5 advance"
+              },
+              {
+                "phase": "Phase 1 (1-2 years)",
+                "description": "Initial safety in humans",
+                "volunteers": "20-100 healthy volunteers",
+                "successRate": "~70% advance"
+              },
+              {
+                "phase": "Phase 2 (2-3 years)",
+                "description": "Efficacy testing",
+                "volunteers": "100-500 patients with target disease",
+                "successRate": "~33% advance"
+              },
+              {
+                "phase": "Phase 3 (2-4 years)",
+                "description": "Confirmation trials",
+                "volunteers": "1,000-5,000 diverse patients",
+                "successRate": "~25-30% approved"
+              },
+              {
+                "phase": "NDA Review (6-10 months)",
+                "description": "FDA comprehensive review",
+                "volunteers": "Not applicable",
+                "successRate": "FDA approval decision"
+              },
+              {
+                "phase": "Phase 4 (Ongoing)",
+                "description": "Post-marketing surveillance",
+                "volunteers": "Millions using drug",
+                "successRate": "Ongoing monitoring; rare effects detected"
+              }
+            ]
+          },
+          {
+            "blockId": "block1_12",
+            "type": "regulatory_agencies",
+            "title": "Key Regulatory Bodies",
+            "agencies": [
+              {
+                "name": "FDA (Food & Drug Administration)",
+                "role": "Drug approval, safety monitoring, labeling",
+                "authority": "Federal (nationwide)",
+                "nursingAction": "Report serious adverse effects via MedWatch"
+              },
+              {
+                "name": "DEA (Drug Enforcement Administration)",
+                "role": "Controlled substance classification, enforcement",
+                "authority": "Federal",
+                "nursingAction": "Follow controlled substance regulations; report diversion"
+              },
+              {
+                "name": "State Pharmacy Boards",
+                "role": "Pharmacist licensing, pharmacy practice regulations",
+                "authority": "State",
+                "nursingAction": "Understand pharmacist scope; collaborate on medication issues"
+              },
+              {
+                "name": "State Nursing Boards",
+                "role": "RN licensing, scope of practice definitions",
+                "authority": "State",
+                "nursingAction": "Know your state's scope; medication administration rights defined here"
+              },
+              {
+                "name": "CDC (Centers for Disease Control)",
+                "role": "Disease surveillance, infection control, antibiotic stewardship",
+                "authority": "Federal",
+                "nursingAction": "Follow infection control recommendations; use antibiotics judiciously"
+              }
+            ]
+          }
+        ],
+        "flashcardLinks": [
+          "What is the FDA?",
+          "Explain the FDA drug approval process",
+          "What does the DEA do?"
+        ]
+      },
+      {
+        "sectionNumber": 6,
+        "id": "sec1_5_drug_names_codes",
+        "title": "Section 1.5: Drug Names & Classification Codes",
+        "duration": 15,
+        "wordCount": 1800,
+        "learningObjectives": [
+          "Understand the three names every drug has",
+          "Prevent medication errors due to drug name confusion",
+          "Recognize drug name patterns to predict drug class"
+        ],
+        "keyTakeaways": [
+          "Generic name = Official chemical designation (same worldwide, lowercase)",
+          "Brand name = Manufacturer's proprietary name (capitalized, unique per manufacturer)",
+          "Chemical name = Complete chemical description (rarely used clinically, too complex)",
+          "Multiple names for same drug = High medication error risk; ALWAYS check generic name",
+          "Drug name patterns (-olol, -pril, -statin, etc.) immediately reveal drug class and predictable effects"
+        ],
+        "contentBlocks": [
+          {
+            "blockId": "block1_13",
+            "type": "comparison_table",
+            "title": "The Three Names Every Drug Has",
+            "htmlReady": "<table><thead><tr><th>Type</th><th>Definition</th><th>Example (Acetaminophen)</th><th>Capitalization</th></tr></thead><tbody><tr><td><strong>Generic</strong></td><td>Official chemical designation</td><td>Acetaminophen</td><td>Lowercase</td></tr><tr><td><strong>Brand</strong></td><td>Manufacturer's proprietary name</td><td>Tylenol, Excedrin, Actamin</td><td>Capitalized</td></tr><tr><td><strong>Chemical</strong></td><td>Complete chemical description</td><td>N-(4-Hydroxyphenyl)acetamide</td><td>Varies</td></tr></tbody></table>"
+          },
+          {
+            "blockId": "block1_14",
+            "type": "clinical_scenario",
+            "title": "Medication Error Risk: The Acetaminophen Overdose",
+            "htmlReady": "<div class='scenario'><p><strong>Real Scenario:</strong> Mrs. Singh takes Tylenol for fever, acetaminophen for pain, and Excedrin Tension for headache \u2014 not realizing all three contain acetaminophen. Total: 1,500 mg in one dose (safe) but if repeated 3x daily = 4,500 mg/day (TOXIC; exceeds 4,000 mg/day max).</p><p><strong>Result:</strong> Acetaminophen toxicity \u2192 liver damage \u2192 potential liver failure</p><p><strong>Prevention:</strong> Always check the GENERIC name, not just brand names</p></div>"
+          }
+        ],
+        "flashcardLinks": [
+          "Explain the difference between a drug's trade name and generic name",
+          "What is a chemical drug name?"
+        ]
+      },
+      {
+        "sectionNumber": 7,
+        "id": "sec1_6_pk_vs_pd",
+        "title": "Section 1.6: Pharmacokinetics vs. Pharmacodynamics",
+        "duration": 45,
+        "wordCount": 4200,
+        "learningObjectives": [
+          "Distinguish between pharmacokinetics and pharmacodynamics",
+          "Understand ADME processes and how they affect drug action",
+          "Predict drug effects based on receptor binding mechanisms",
+          "Apply PK/PD concepts to clinical decision-making"
+        ],
+        "keyTakeaways": [
+          "PHARMACOKINETICS = What the body does to the drug (ADME: Absorption, Distribution, Metabolism, Elimination)",
+          "PHARMACODYNAMICS = What the drug does to the body (receptor binding, dose-response, mechanism)",
+          "Absorption: Movement from site of administration into bloodstream; affected by route, food, pH, GI motility",
+          "Distribution: Movement from bloodstream into tissues; affected by blood flow, lipophilicity, protein binding",
+          "Metabolism: Chemical transformation, primarily in liver via cytochrome P450 system",
+          "Elimination: Removal of drug from body, primarily via kidneys; affected by renal function",
+          "Half-life: Time for drug level to drop 50%; determines dosing frequency",
+          "Agonist: Binds receptor and activates it; Antagonist: Binds receptor but doesn't activate it (blocks agonist)",
+          "Therapeutic index (TD50/ED50): Ratio of toxic to effective dose; narrow TI = dangerous, wide TI = safe"
+        ],
+        "contentBlocks": [
+          {
+            "blockId": "block1_15",
+            "type": "interactive_diagram",
+            "title": "ADME Process Flow",
+            "description": "Step-by-step drug journey through the body"
+          },
+          {
+            "blockId": "block1_16",
+            "type": "detailed_section",
+            "title": "Absorption (A)",
+            "subsections": [
+              {
+                "name": "Routes of Administration",
+                "routes": [
+                  {
+                    "route": "IV (Intravenous)",
+                    "speed": "Immediate",
+                    "bioavailability": "100%",
+                    "pros": "Fastest, predictable",
+                    "cons": "Invasive, expensive"
+                  },
+                  {
+                    "route": "IM (Intramuscular)",
+                    "speed": "10-30 minutes",
+                    "bioavailability": "80-95%",
+                    "pros": "Faster than oral",
+                    "cons": "Painful"
+                  },
+                  {
+                    "route": "PO (Oral)",
+                    "speed": "30 min - 2 hours",
+                    "bioavailability": "50-90%",
+                    "pros": "Convenient",
+                    "cons": "Slowest, affected by food/GI factors"
+                  },
+                  {
+                    "route": "SQ (Subcutaneous)",
+                    "speed": "15-30 minutes",
+                    "bioavailability": "80-95%",
+                    "pros": "Patient self-administration",
+                    "cons": "Limited drugs, painful"
+                  },
+                  {
+                    "route": "Sublingual",
+                    "speed": "5-10 minutes",
+                    "bioavailability": "Bypasses first-pass",
+                    "pros": "Fast, avoids stomach",
+                    "cons": "Limited drugs"
+                  },
+                  {
+                    "route": "Transdermal",
+                    "speed": "Hours to days",
+                    "bioavailability": "Steady, long-lasting",
+                    "pros": "Avoids GI upset",
+                    "cons": "Slow to start"
+                  }
+                ]
+              },
+              {
+                "name": "Bioavailability",
+                "definition": "Fraction of administered dose reaching systemic circulation"
+              }
+            ]
+          },
+          {
+            "blockId": "block1_17",
+            "type": "detailed_section",
+            "title": "Distribution (D)",
+            "factors": [
+              "Blood flow to tissues (high flow tissues absorb drug faster)",
+              "Drug lipophilicity (fat-soluble drugs cross BBB and placenta)",
+              "Plasma protein binding (only free drug is active; high binding can cause interactions)",
+              "Volume of distribution (Vd) \u2014 theoretical measure of drug spread"
+            ]
+          },
+          {
+            "blockId": "block1_18",
+            "type": "detailed_section",
+            "title": "Metabolism (M)",
+            "description": "Drug transformation into metabolites, primarily in liver via cytochrome P450",
+            "phases": [
+              {
+                "phase": "Phase I",
+                "process": "Oxidation via CYP450 enzymes",
+                "modifies": "Drug structure"
+              },
+              {
+                "phase": "Phase II",
+                "process": "Conjugation (adding water-soluble molecules)",
+                "modifies": "Makes drug water-soluble for elimination"
+              },
+              {
+                "phase": "Phase III",
+                "process": "Active transport out of hepatocytes",
+                "modifies": "Moves metabolites toward elimination"
+              }
+            ],
+            "clinicalConcepts": [
+              {
+                "concept": "Enzyme Induction",
+                "definition": "One drug speeds up metabolism of another",
+                "example": "Rifampin + oral contraceptive \u2192 reduced OCP effectiveness \u2192 pregnancy risk",
+                "nursingAction": "Counsel patient on backup contraception"
+              },
+              {
+                "concept": "Enzyme Inhibition",
+                "definition": "One drug slows down metabolism of another",
+                "example": "Grapefruit juice + simvastatin \u2192 statin level increases 10x \u2192 toxicity risk",
+                "nursingAction": "Advise patients to avoid grapefruit juice"
+              }
+            ]
+          },
+          {
+            "blockId": "block1_19",
+            "type": "detailed_section",
+            "title": "Elimination (E)",
+            "description": "Removal of drug from body",
+            "routes": [
+              {
+                "route": "Renal (Kidneys)",
+                "percentage": "80-90% of drugs",
+                "mechanism": "Glomerular filtration, active secretion, reabsorption"
+              },
+              {
+                "route": "Biliary (Liver \u2192 Bile)",
+                "percentage": "10-20%",
+                "mechanism": "Excreted in bile \u2192 stored in gallbladder \u2192 eliminated in stool"
+              },
+              {
+                "route": "Lungs",
+                "percentage": "Volatile drugs",
+                "mechanism": "Exhaled (anesthesia gases)"
+              }
+            ],
+            "criticalConcept": {
+              "concept": "Half-Life (t1/2)",
+              "definition": "Time for drug level to drop to 50% of original value",
+              "shortHalfLife": "Clears quickly; needs frequent dosing; missing one dose usually OK",
+              "longHalfLife": "Clears slowly; dosed once daily or weekly; missing dose matters more",
+              "example": "Acetaminophen (t1/2 = 2-3 hours) vs. Warfarin (t1/2 = 40 hours)"
+            }
+          },
+          {
+            "blockId": "block1_20",
+            "type": "detailed_section",
+            "title": "Pharmacodynamics (PD)",
+            "description": "What the drug does to the body",
+            "receptorTheory": {
+              "concept": "Lock-and-Key Model",
+              "explanation": "Drug (key) binds to receptor (lock) \u2192 produces effect",
+              "types": [
+                {
+                  "type": "Full Agonist",
+                  "definition": "Binds receptor and produces MAXIMUM effect",
+                  "example": "Morphine (pain relief), Epinephrine (bronchodilation)"
+                },
+                {
+                  "type": "Partial Agonist",
+                  "definition": "Binds receptor and produces SUBMAXIMAL effect (ceiling effect)",
+                  "example": "Buprenorphine (weaker opioid, safer overdose profile)"
+                },
+                {
+                  "type": "Antagonist",
+                  "definition": "Binds receptor but produces NO effect; blocks agonist",
+                  "example": "Naloxone (reverses opioid overdose), Metoprolol (blocks beta receptors)"
+                }
+              ]
+            },
+            "doseResponse": {
+              "concept": "Dose-Response Relationship",
+              "definition": "Correlation between amount of drug given and magnitude of effect",
+              "ed50": "Effective dose producing 50% of max effect",
+              "td50": "Toxic dose producing toxicity in 50% of people",
+              "therapeuticIndex": "TD50/ED50 ratio; higher = safer, lower = more dangerous"
+            }
+          }
+        ],
+        "flashcardLinks": [
+          "What is the difference between pharmacokinetics and pharmacodynamics?",
+          "What is drug absorption?",
+          "What is bioavailability?",
+          "Define drug distribution",
+          "Define drug metabolism (biotransformation)",
+          "What is first-pass metabolism?",
+          "Define drug excretion",
+          "Fill in the blank: The half-life of a drug is the time required for the plasma concentration to decrease to _____ of its original value",
+          "What is pharmacodynamics?",
+          "Define drug receptor and explain the receptor theory of drug action",
+          "What is the difference between agonists and antagonists?",
+          "Define partial agonist",
+          "What is the dose-response relationship?",
+          "What is the therapeutic index (TI), and why does it matter?"
+        ]
+      },
+      {
+        "sectionNumber": 8,
+        "id": "sec1_7_drug_interactions",
+        "title": "Section 1.7: Drug Interactions & Patient Safety",
+        "duration": 30,
+        "wordCount": 3200,
+        "learningObjectives": [
+          "Identify pharmacokinetic and pharmacodynamic drug interactions",
+          "Apply drug interaction knowledge to recognize dangerous combinations",
+          "Use resources to check for drug interactions",
+          "Communicate with prescribers about interaction concerns"
+        ],
+        "keyTakeaways": [
+          "PHARMACOKINETIC interactions: Changes in absorption, distribution, metabolism, or elimination",
+          "PHARMACODYNAMIC interactions: Changes in mechanism of action or combined effects",
+          "Additive effects: Drug A + Drug B = combined effect equal to sum of individual effects",
+          "Synergistic effects: Combined effect GREATER than additive (e.g., aspirin + ibuprofen GI bleeding)",
+          "Antagonistic effects: One drug REDUCES effect of another",
+          "Most common dangerous combinations: Warfarin + NSAIDs (bleeding), ACE inhibitor + potassium supplements (hyperkalemia), metformin + IV contrast (lactic acidosis)",
+          "Use Medscape Drug Interaction Checker in clinical practice",
+          "Manage interactions by: Avoiding combination, changing dose, increasing monitoring, separating timing, or using alternative medication"
+        ],
+        "contentBlocks": [
+          {
+            "blockId": "block1_21",
+            "type": "interaction_taxonomy",
+            "title": "Types of Drug Interactions",
+            "categories": [
+              {
+                "category": "PHARMACOKINETIC (PK-Level)",
+                "description": "Changes in ADME processes",
+                "subtypes": [
+                  {
+                    "name": "Absorption Interactions",
+                    "example": "Tetracycline + dairy \u2192 reduced absorption (calcium binds drug)"
+                  },
+                  {
+                    "name": "Distribution Interactions",
+                    "example": "Warfarin + NSAIDs \u2192 displacement from protein binding \u2192 more free warfarin"
+                  },
+                  {
+                    "name": "Metabolism Interactions",
+                    "example": "Rifampin (inducer) + oral contraceptive \u2192 increased metabolism \u2192 reduced contraceptive effect"
+                  },
+                  {
+                    "name": "Elimination Interactions",
+                    "example": "Probenecid + Penicillin \u2192 reduced renal secretion \u2192 higher penicillin levels"
+                  }
+                ]
+              },
+              {
+                "category": "PHARMACODYNAMIC (PD-Level)",
+                "description": "Changes in mechanism of action or combined effects",
+                "subtypes": [
+                  {
+                    "name": "Additive Effects",
+                    "example": "Alcohol + Benzodiazepine \u2192 severe CNS depression (sum of effects)"
+                  },
+                  {
+                    "name": "Synergistic Effects",
+                    "example": "Ceftriaxone + Vancomycin \u2192 kill bacteria MORE effectively than either alone"
+                  },
+                  {
+                    "name": "Antagonistic Effects",
+                    "example": "Beta-blocker vs. Epinephrine \u2192 epinephrine effectiveness reduced"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "blockId": "block1_22",
+            "type": "dangerous_combinations_reference",
+            "title": "Most Common Dangerous Combinations",
+            "combinations": [
+              {
+                "drugs": "Warfarin + NSAIDs",
+                "interaction": "Additive bleeding risk",
+                "risk": "GI bleed, intracranial hemorrhage",
+                "nursingAction": "Use acetaminophen instead; check INR"
+              },
+              {
+                "drugs": "ACE inhibitors + Potassium supplements",
+                "interaction": "Both increase potassium",
+                "risk": "Hyperkalemia, arrhythmias",
+                "nursingAction": "Check K+ levels; avoid combination if possible"
+              },
+              {
+                "drugs": "Metformin + IV Contrast",
+                "interaction": "Contrast causes AKI; metformin accumulates",
+                "risk": "Lactic acidosis",
+                "nursingAction": "Hold metformin 24h before/after contrast"
+              },
+              {
+                "drugs": "SSRIs + NSAIDs",
+                "interaction": "Both increase bleeding risk",
+                "risk": "GI bleed",
+                "nursingAction": "Monitor for signs; use alternative"
+              },
+              {
+                "drugs": "Digoxin + Verapamil",
+                "interaction": "Verapamil increases digoxin level",
+                "risk": "Digoxin toxicity (arrhythmias)",
+                "nursingAction": "Monitor digoxin level; reduce dose if needed"
+              }
+            ]
+          },
+          {
+            "blockId": "block1_23",
+            "type": "clinical_process",
+            "title": "How to Check for & Manage Interactions",
+            "steps": [
+              {
+                "step": 1,
+                "action": "Check for interactions",
+                "tools": [
+                  "Medscape Drug Interaction Checker",
+                  "EHR alert system",
+                  "Pharmacist consult",
+                  "Drug package insert"
+                ]
+              },
+              {
+                "step": 2,
+                "action": "Assess severity",
+                "levels": [
+                  "Minor (monitor)",
+                  "Moderate (consider alternatives)",
+                  "Major (avoid if possible)"
+                ]
+              },
+              {
+                "step": 3,
+                "action": "Choose management strategy",
+                "options": [
+                  "Avoid combination (safest)",
+                  "Change dose (if predictable)",
+                  "Increase monitoring (if no alternative)",
+                  "Separate timing (some drugs need 2-hour spacing)",
+                  "Use alternative medication (best option)"
+                ]
+              },
+              {
+                "step": 4,
+                "action": "Communicate",
+                "approach": "Contact prescriber professionally with suggestion"
+              },
+              {
+                "step": 5,
+                "action": "Document",
+                "include": "What you found, who you contacted, what decision was made"
+              }
+            ]
+          }
+        ],
+        "flashcardLinks": [
+          "What is a drug interaction?",
+          "Explain a pharmacokinetic drug interaction using an example",
+          "Explain a pharmacodynamic drug interaction using an example",
+          "What is a synergistic drug interaction?",
+          "What is an additive drug interaction?"
+        ]
+      },
+      {
+        "sectionNumber": 9,
+        "id": "sec1_8_dosage_calculations",
+        "title": "Section 1.8: Dosage Calculations",
+        "duration": 40,
+        "wordCount": 3800,
+        "learningObjectives": [
+          "Master three dosage calculation methods: Formula, Ratio-Proportion, Dimensional Analysis",
+          "Apply calculations to simple and complex clinical scenarios",
+          "Verify calculations and identify dangerous doses",
+          "Demonstrate competency in medication dosage calculations"
+        ],
+        "keyTakeaways": [
+          "Formula Method: Dose = (Desired Dose / Dose on Hand) \u00d7 Quantity Available",
+          "Ratio-Proportion Method: Cross multiply to solve for unknown",
+          "Dimensional Analysis Method: Set up fractions so units cancel; if units don't cancel, you made an error",
+          "Weight-based dosing common in pediatrics: Dose = mg/kg \u00d7 patient weight in kg",
+          "IV infusion rate: mL/hr = Total Volume / Time in Hours",
+          "Always perform clinical check: Does this dose make sense for this patient?",
+          "Red flags for dangerous doses: Very large doses, very small decimals, unusual units, inconsistent with patient characteristics",
+          "Verification checklist: Right patient, drug, dose, route, time, documentation, reason, response"
+        ],
+        "contentBlocks": [
+          {
+            "blockId": "block1_24",
+            "type": "calculation_method",
+            "title": "Method 1: Formula Method",
+            "formula": "Dose = (Desired Dose / Dose on Hand) \u00d7 Quantity Available",
+            "components": {
+              "desired_dose": "What the prescriber ordered",
+              "dose_on_hand": "Concentration of medication available",
+              "quantity_available": "Number of units (tablets, mL) containing dose on hand"
+            },
+            "examples": [
+              {
+                "scenario": "Amoxicillin 500 mg ordered; on hand 250 mg/tablet",
+                "calculation": "(500 mg / 250 mg) \u00d7 1 tablet = 2 tablets",
+                "answer": "Give 2 tablets"
+              },
+              {
+                "scenario": "Acetaminophen 160 mg ordered; on hand 80 mg/5 mL",
+                "calculation": "(160 mg / 80 mg) \u00d7 5 mL = 10 mL",
+                "answer": "Give 10 mL"
+              },
+              {
+                "scenario": "Morphine 10 mg IV ordered; on hand 5 mg/mL",
+                "calculation": "(10 mg / 5 mg) \u00d7 1 mL = 2 mL",
+                "answer": "Draw 2 mL into syringe"
+              }
+            ]
+          },
+          {
+            "blockId": "block1_25",
+            "type": "calculation_method",
+            "title": "Method 2: Ratio-Proportion Method",
+            "formula": "Dose on Hand : Quantity Available :: Desired Dose : X",
+            "steps": [
+              "Set up proportion",
+              "Cross multiply",
+              "Solve for X"
+            ],
+            "examples": [
+              {
+                "scenario": "Amoxicillin 500 mg; on hand 250 mg/tablet",
+                "setup": "250 mg : 1 tablet :: 500 mg : X tablets",
+                "crossMultiply": "250X = 500 \u00d7 1",
+                "solve": "X = 500/250 = 2 tablets"
+              }
+            ]
+          },
+          {
+            "blockId": "block1_26",
+            "type": "calculation_method",
+            "title": "Method 3: Dimensional Analysis (Preferred)",
+            "description": "Set up fractions so units cancel; if units don't cancel, you made an error",
+            "advantage": "Automatically catches unit errors",
+            "examples": [
+              {
+                "scenario": "Amoxicillin 500 mg; on hand 250 mg/tablet",
+                "calculation": "X tablets = 500 mg \u00d7 (1 tablet / 250 mg) = 2 tablets",
+                "unitCancellation": "mg cancels, leaves tablets \u2713"
+              },
+              {
+                "scenario": "Heparin 1,350 units/hr; on hand 25,000 units/500 mL",
+                "calculation": "X mL/hr = 1,350 units/hr \u00d7 (500 mL / 25,000 units) = 27 mL/hr",
+                "unitCancellation": "units cancels, leaves mL/hr \u2713"
+              }
+            ]
+          },
+          {
+            "blockId": "block1_27",
+            "type": "practice_problems",
+            "title": "Complex Calculation Examples",
+            "problems": [
+              {
+                "type": "Weight-Based Dosing",
+                "scenario": "Cefixime 8 mg/kg; patient 35 lbs (16 kg); on hand 100 mg/5 mL",
+                "stepByStep": [
+                  "Convert weight: 35 lbs \u00f7 2.2 = 16 kg",
+                  "Calculate dose: 8 mg/kg \u00d7 16 kg = 128 mg",
+                  "Calculate volume: (128 mg / 100 mg) \u00d7 5 mL = 6.4 mL \u2248 6.5 mL"
+                ],
+                "answer": "Give 6.5 mL"
+              },
+              {
+                "type": "IV Infusion Rate",
+                "scenario": "Vancomycin 1000 mg in 250 mL NS over 60 minutes",
+                "calculation": "mL/hr = 250 mL / 1 hour = 250 mL/hr",
+                "answer": "Set pump to 250 mL/hr"
+              }
+            ]
+          },
+          {
+            "blockId": "block1_28",
+            "type": "safety_guide",
+            "title": "Red Flags for Dangerous Doses",
+            "flags": [
+              "Very large doses (10x typical dose)",
+              "Very small decimals (0.05 mL when typical is 1-2 mL)",
+              "Unusual units (mg when typically mcg)",
+              "Dose doesn't match patient characteristics (high dose for elderly with renal failure)",
+              "Inconsistent with clinical picture (potassium supplement for hyperkalemia patient)"
+            ],
+            "action": "ALWAYS question these; double-check with another nurse; verify with prescriber if uncertain"
+          },
+          {
+            "blockId": "block1_29",
+            "type": "verification_checklist",
+            "title": "Before Administering ANY Medication",
+            "checkpoints": [
+              "Right Patient: Check ID against order (2 identifiers)",
+              "Right Drug: Check generic name (not just brand name)",
+              "Right Dose: Calculate and verify with another nurse if complex",
+              "Right Route: Matches order and patient condition",
+              "Right Time: Matches order",
+              "Right Documentation: Signed chart/order",
+              "Right Reason: Clinically appropriate for patient's diagnosis",
+              "Right Response: Monitor for therapeutic/adverse effects"
+            ]
+          }
+        ],
+        "flashcardLinks": [
+          "What is the basic formula for calculating drug dose based on body weight?",
+          "How do you calculate body surface area (BSA)-based dosing?",
+          "What is the formula for calculating IV infusion rates (mL/hr)?",
+          "How do you calculate mcg/kg/min dosing?"
+        ],
+        "interactiveElements": [
+          {
+            "type": "calculation_problem",
+            "difficulty": "beginner",
+            "prompt": "Calculate: Amoxicillin 250 mg ordered; on hand 125 mg/tablet"
+          },
+          {
+            "type": "calculation_problem",
+            "difficulty": "intermediate",
+            "prompt": "Calculate: Child weighs 25 lbs; order is 10 mg/kg; on hand 50 mg/5 mL"
+          },
+          {
+            "type": "calculation_problem",
+            "difficulty": "advanced",
+            "prompt": "Calculate: Heparin 12 units/kg/hr for 70 kg patient; on hand 25,000 units/500 mL"
+          }
+        ]
+      },
+      {
+        "sectionNumber": 10,
+        "id": "sec1_9_key_terms_glossary",
+        "title": "Section 1.9: Key Terms Glossary",
+        "duration": 20,
+        "wordCount": 1600,
+        "learningObjectives": [
+          "Master essential pharmacology terminology",
+          "Use terminology correctly in clinical communication",
+          "Understand precise definitions for accurate professional communication"
+        ],
+        "keyTakeaways": [
+          "Comprehensive glossary with 100+ terms organized alphabetically (A-W)",
+          "Each term includes precise definition relevant to nursing practice",
+          "Terms cover pharmacology, pharmacokinetics, pharmacodynamics, drug interactions, and adverse effects"
+        ],
+        "contentBlocks": [
+          {
+            "blockId": "block1_30",
+            "type": "glossary",
+            "title": "Pharmacology Terms A-Z",
+            "terms": [
+              {
+                "term": "Absorption",
+                "definition": "Movement of drug from site of administration into bloodstream"
+              },
+              {
+                "term": "ADME",
+                "definition": "Absorption, Distribution, Metabolism, Elimination \u2014 pharmacokinetic processes"
+              },
+              {
+                "term": "Agonist",
+                "definition": "Drug that binds to receptor and activates it, producing an effect"
+              },
+              {
+                "term": "Antagonist",
+                "definition": "Drug that binds to receptor but doesn't activate it; blocks agonist"
+              },
+              {
+                "term": "Adverse Effect",
+                "definition": "Harmful, unexpected drug effect requiring action"
+              },
+              {
+                "term": "Bioavailability",
+                "definition": "Fraction of administered dose reaching systemic circulation in active form"
+              },
+              {
+                "term": "Cytochrome P450",
+                "definition": "Enzyme system in liver responsible for Phase I drug metabolism; metabolizes ~75% of all drugs"
+              },
+              {
+                "term": "DEA",
+                "definition": "Drug Enforcement Administration; controls regulated substances"
+              },
+              {
+                "term": "Distribution",
+                "definition": "Movement of absorbed drug from bloodstream into tissues"
+              },
+              {
+                "term": "Dosage",
+                "definition": "Amount of drug given at specific time"
+              },
+              {
+                "term": "Drug Interaction",
+                "definition": "Effect of one drug on another's efficacy or safety"
+              },
+              {
+                "term": "Efficacy",
+                "definition": "Maximum effect achievable by a drug, regardless of dose"
+              },
+              {
+                "term": "Elimination",
+                "definition": "Removal of drug from body via kidneys, bile, lungs, etc."
+              },
+              {
+                "term": "Enzyme Induction",
+                "definition": "Increase in drug-metabolizing enzyme activity; speeds up metabolism of other drugs"
+              },
+              {
+                "term": "Enzyme Inhibition",
+                "definition": "Decrease in drug-metabolizing enzyme activity; slows metabolism of other drugs"
+              },
+              {
+                "term": "FDA",
+                "definition": "Food & Drug Administration; approves and monitors drugs"
+              },
+              {
+                "term": "First-Pass Metabolism",
+                "definition": "Drug metabolism in liver before reaching systemic circulation (for oral drugs)"
+              },
+              {
+                "term": "Generic Name",
+                "definition": "Official chemical designation of drug; same worldwide, usually lowercase"
+              },
+              {
+                "term": "Half-Life",
+                "definition": "Time for drug concentration to drop to 50% of original value"
+              },
+              {
+                "term": "Hepatic Metabolism",
+                "definition": "Primary drug metabolism occurring in the liver"
+              },
+              {
+                "term": "Indication",
+                "definition": "Reason to USE a drug; the disease/condition it treats"
+              },
+              {
+                "term": "Intravenous (IV)",
+                "definition": "Injection directly into vein; fastest route, 100% bioavailability"
+              },
+              {
+                "term": "Metabolism",
+                "definition": "Chemical breakdown of drug, primarily in liver, to make it water-soluble for excretion"
+              },
+              {
+                "term": "Narrow Therapeutic Index",
+                "definition": "Small difference between therapeutic and toxic dose; requires careful monitoring"
+              },
+              {
+                "term": "Oral (PO)",
+                "definition": "Drug administration by mouth; slowest route"
+              },
+              {
+                "term": "Partial Agonist",
+                "definition": "Drug binding to receptor with submaximal effect; ceiling effect"
+              },
+              {
+                "term": "Pharmacodynamics (PD)",
+                "definition": "What the drug does to the body \u2014 mechanism of action, effects"
+              },
+              {
+                "term": "Pharmacokinetics (PK)",
+                "definition": "What the body does to the drug \u2014 ADME processes"
+              },
+              {
+                "term": "Pharmacology",
+                "definition": "Science of drug effects on living organisms"
+              },
+              {
+                "term": "Plasma Protein Binding",
+                "definition": "Reversible attachment of drug molecules to blood proteins; only unbound drug is active"
+              },
+              {
+                "term": "Potency",
+                "definition": "Amount of drug needed to produce given effect; more potent = lower dose needed"
+              },
+              {
+                "term": "Receptors",
+                "definition": "Proteins on cell surface or intracellular that drugs bind to"
+              },
+              {
+                "term": "Renal Clearance",
+                "definition": "Volume of plasma from which drug is completely removed per unit time"
+              },
+              {
+                "term": "Side Effect",
+                "definition": "Expected, unintended drug effect; usually manageable"
+              },
+              {
+                "term": "Therapeutic Index",
+                "definition": "Ratio of toxic dose to effective dose (TD50/ED50); higher = safer"
+              },
+              {
+                "term": "Tolerance",
+                "definition": "Decreased response to drug after repeated use; requires higher doses"
+              },
+              {
+                "term": "Trade Name",
+                "definition": "Manufacturer's proprietary brand name for drug; capitalized"
+              },
+              {
+                "term": "Toxicity",
+                "definition": "Harmful effect from overdose or cumulative effect of drug"
+              },
+              {
+                "term": "Volume of Distribution (Vd)",
+                "definition": "Theoretical volume drug distributes into; affects dosing and overdose reversal"
+              }
+            ]
+          }
+        ],
+        "flashcardLinks": [
+          "All terms in glossary have corresponding flashcards for reinforcement"
+        ]
+      },
+      {
+        "sectionNumber": 11,
+        "id": "sec1_10_clinical_story_allergy_decision",
+        "title": "Section 1.10: Clinical Story \u2014 \"The Allergy Decision\"",
+        "duration": 35,
+        "wordCount": 3200,
+        "learningObjectives": [
+          "Apply clinical judgment to medication allergy assessment",
+          "Make evidence-based drug selection decisions",
+          "Communicate effectively with prescribers",
+          "Implement safe medication administration protocols"
+        ],
+        "keyTakeaways": [
+          "ALWAYS clarify allergy details before assuming incompatibility",
+          "Rash-type penicillin allergy (non-anaphylaxis) has <1% cross-reactivity with other beta-lactams",
+          "Risk vs. benefit analysis: Sometimes the safest alternative is the best choice",
+          "Communication with prescriber is essential for collaborative decision-making",
+          "Documentation prevents future providers from repeating work",
+          "First-dose monitoring and patient education are critical safety precautions",
+          "Nurses are the patient's advocates and last line of defense"
+        ],
+        "contentBlocks": [
+          {
+            "blockId": "block1_31",
+            "type": "case_study",
+            "title": "Case: Jacob Chen, Pneumonia with Penicillin Allergy",
+            "scenario": {
+              "patient": "Jacob Chen, 62-year-old male",
+              "presentation": "Cough, fever, SOB \u00d7 4 days; vitals show tachycardia/tachypnea; CXR with left lower lobe infiltrate",
+              "diagnosis": "Community-acquired pneumonia (CAP)",
+              "medication_concern": "Penicillin allergy in chart from 1999",
+              "prescriber_order": "Amoxicillin-clavulanate 875 mg PO BID \u00d7 10 days"
+            },
+            "decisionPoint1": {
+              "title": "Question 1: Allergy Assessment",
+              "prompt": "What should you do BEFORE administering amoxicillin?",
+              "options": [
+                {
+                  "option": "A",
+                  "text": "Give the amoxicillin. The allergy was 25 years ago; it's outdated.",
+                  "feedback": "INCORRECT - Dangerous assumption. Penicillin allergy doesn't just go away. Need to assess allergy type first."
+                },
+                {
+                  "option": "B",
+                  "text": "Clarify allergy details with Jacob and communicate with prescriber.",
+                  "feedback": "CORRECT - Essential step. Need specifics (was it rash? Anaphylaxis?) before deciding on medication."
+                },
+                {
+                  "option": "C",
+                  "text": "Give Benadryl first to prevent allergic reaction.",
+                  "feedback": "INCORRECT - Doesn't address core concern. Benadryl doesn't prevent true anaphylaxis."
+                }
+              ],
+              "correctAnswer": "B",
+              "clinicalReasoning": "Allergy clarification is essential for safe decision-making. Rash \u2260 anaphylaxis; cross-reactivity risk differs."
+            },
+            "allergy_clarification": {
+              "whatJacobReports": "\"I took penicillin 25 years ago for strep throat. I developed a rash on arms and back \u2014 really itchy. Lips felt tingly, like they were swelling a bit. It went away in 2 hours.\"",
+              "assessment": "Localized rash + angioedema = Non-anaphylaxis reaction (mild-to-moderate)",
+              "riskLevel": "Low risk for anaphylaxis (<1% cross-reactivity); but rash/angioedema risk higher"
+            },
+            "decisionPoint2": {
+              "title": "Question 2: Clinical Decision-Making",
+              "prompt": "Given the allergy clarification, what's the best approach?",
+              "options": [
+                {
+                  "option": "A",
+                  "text": "Administer amoxicillin with precautions (epinephrine available, observe 30 min).",
+                  "feedback": "ACCEPTABLE but not ideal. Acceptable if prescriber decides to proceed, but doesn't eliminate allergy risk."
+                },
+                {
+                  "option": "B",
+                  "text": "Recommend levofloxacin (fluoroquinolone) instead \u2014 no cross-reactivity.",
+                  "feedback": "CORRECT - Better choice. Eliminates allergy risk; actually preferred for CAP in elderly."
+                },
+                {
+                  "option": "C",
+                  "text": "Refuse to administer. Penicillin allergy is absolute contraindication.",
+                  "feedback": "INCORRECT - Overly rigid. Rash-type allergy can be used with precautions; harm if refusing all beta-lactams."
+                }
+              ],
+              "correctAnswer": "B",
+              "clinicalReasoning": "Fluoroquinolone is evidence-based alternative for CAP. No allergy risk. Actually preferred for elderly patients."
+            },
+            "prescriber_communication": {
+              "yourMessage": "Hi Dr. Smith. I've clarified Jacob's penicillin allergy \u2014 it was localized rash with lip swelling 25 years ago, non-anaphylaxis. However, I wanted to suggest levofloxacin 750 mg as an alternative. It's actually ideal for CAP in his age group and avoids cross-reactivity risk. Would that work?",
+              "result": "Dr. Smith agrees; changes to levofloxacin 750 mg \u00d7 5 days"
+            },
+            "decisionPoint3": {
+              "title": "Question 3: Safe Administration & Monitoring",
+              "prompt": "How do you safely administer the new medication?",
+              "options": [
+                {
+                  "option": "A",
+                  "text": "Just administer; prescriber approved it.",
+                  "feedback": "INCOMPLETE - While true, first dose of ANY antibiotic deserves monitoring for rare adverse events."
+                },
+                {
+                  "option": "B",
+                  "text": "Observe 30 min post-dose, educate patient, have epinephrine available.",
+                  "feedback": "CORRECT - Comprehensive safety protocol: monitoring, education, preparedness."
+                },
+                {
+                  "option": "C",
+                  "text": "Skip monitoring; fluoroquinolones are well-studied, low allergy risk.",
+                  "feedback": "INCOMPLETE - While true, standard of care includes first-dose monitoring."
+                }
+              ],
+              "correctAnswer": "B",
+              "clinicalReasoning": "Standard first-dose monitoring captures rare adverse events. Patient education ensures he knows what to report."
+            },
+            "implementation": {
+              "steps": [
+                "Administer levofloxacin 750 mg PO with water",
+                "Observe \u00d7 30 minutes; check vitals at 15 and 30 min",
+                "Watch for: rash, tingling, breathing difficulty, dizziness",
+                "Educate: Complete full course; avoid sun; no food interactions",
+                "Document: Drug given, observation completed, patient educated, no adverse reaction"
+              ]
+            },
+            "outcome": "Jacob tolerates levofloxacin well. Fever resolves by day 3; pneumonia resolved by discharge. Follow-up confirms full recovery."
+          }
+        ],
+        "lessons": [
+          "Always clarify allergies; don't assume old records are complete or accurate",
+          "Risk vs. benefit analysis is essential for clinical judgment",
+          "Communication with prescriber enables collaborative, evidence-based decisions",
+          "Documentation prevents future errors and saves time",
+          "Pharmacology knowledge is patient safety in action"
+        ],
+        "interactiveElements": [
+          {
+            "type": "decision_scenario",
+            "prompt": "What would you do differently if Jacob reported anaphylaxis instead of rash?"
+          },
+          {
+            "type": "communication_simulation",
+            "prompt": "Role-play contacting the prescriber about the allergy concern"
+          }
+        ]
+      },
+      {
+        "sectionNumber": 12,
+        "id": "sec1_11_review_questions",
+        "title": "Section 1.11: Review Questions & Assessment",
+        "duration": 30,
+        "wordCount": 2200,
+        "learningObjectives": [
+          "Assess understanding of chapter content",
+          "Apply knowledge to clinical decision-making",
+          "Identify areas needing further study"
+        ],
+        "keyTakeaways": [
+          "8 comprehensive review questions covering major chapter topics",
+          "Multiple choice questions test foundational knowledge",
+          "Short answer questions assess deeper understanding",
+          "Case-based question integrates multiple concepts into realistic scenario"
+        ],
+        "contentBlocks": [
+          {
+            "blockId": "block1_32",
+            "type": "assessment_section",
+            "title": "Review Questions",
+            "questions": [
+              {
+                "questionNumber": 1,
+                "type": "multiple_choice",
+                "question": "A nursing student asks you to explain the difference between pharmacokinetics and pharmacodynamics. Which statement best describes their relationship?",
+                "options": {
+                  "A": "Pharmacokinetics is what the drug does to the body, and pharmacodynamics is what the body does to the drug",
+                  "B": "Pharmacokinetics is what the body does to the drug, and pharmacodynamics is what the drug does to the body",
+                  "C": "Pharmacokinetics and pharmacodynamics are the same concept, just different names",
+                  "D": "Pharmacodynamics involves drug metabolism only; pharmacokinetics involves all other processes"
+                },
+                "correctAnswer": "B",
+                "rationale": "PK = what body does to drug (ADME); PD = what drug does to body (mechanism of action, receptor binding)"
+              },
+              {
+                "questionNumber": 2,
+                "type": "multiple_choice",
+                "question": "A patient has a documented 'penicillin allergy \u2014 rash, 15 years ago.' The prescriber orders amoxicillin for UTI. What is your best initial action?",
+                "options": {
+                  "A": "Administer immediately; allergy was long ago and unlikely to recur",
+                  "B": "Refuse to administer; penicillin allergy is absolute contraindication",
+                  "C": "Clarify allergy details with patient and communicate with prescriber before administering",
+                  "D": "Give Benadryl prophylactically to prevent reaction"
+                },
+                "correctAnswer": "C",
+                "rationale": "Allergy clarification is essential. Rash \u2260 anaphylaxis. Inform prescriber; make collaborative decision."
+              },
+              {
+                "questionNumber": 3,
+                "type": "multiple_choice",
+                "question": "A patient on digoxin (narrow TI) is prescribed verapamil for atrial fib. What is your primary concern?",
+                "options": {
+                  "A": "No interaction; both lower heart rate, which is desired",
+                  "B": "Verapamil inhibits digoxin metabolism \u2192 digoxin level increases \u2192 toxicity risk",
+                  "C": "Digoxin is metabolized too quickly with verapamil",
+                  "D": "No interaction; digoxin is older drug without modern interactions"
+                },
+                "correctAnswer": "B",
+                "rationale": "Verapamil is CYP3A4 inhibitor; decreases digoxin elimination \u2192 toxicity (arrhythmias, nausea)"
+              },
+              {
+                "questionNumber": 4,
+                "type": "calculation",
+                "question": "Patient weighs 60 lbs. Order is amoxicillin 25 mg/kg. Calculate total dose.",
+                "options": {
+                  "A": "600 mg",
+                  "B": "650 mg",
+                  "C": "682 mg",
+                  "D": "750 mg"
+                },
+                "correctAnswer": "C",
+                "rationale": "60 lbs \u00f7 2.2 = 27.3 kg; 25 mg/kg \u00d7 27.3 kg = 682.5 mg \u2248 682 mg"
+              },
+              {
+                "questionNumber": 5,
+                "type": "multiple_choice",
+                "question": "Based on drug name 'clopidogrel,' what can you infer?",
+                "options": {
+                  "A": "It's a beta-blocker used to lower heart rate/BP",
+                  "B": "It's an antiplatelet agent (-grel suffix) likely used to prevent blood clots",
+                  "C": "It's an antibiotic due to the -dol suffix",
+                  "D": "It's an SSRI antidepressant"
+                },
+                "correctAnswer": "B",
+                "rationale": "Thienopyridine antiplatelet agents end in -grel; immediately reveals drug class and expected effects"
+              },
+              {
+                "questionNumber": 6,
+                "type": "short_answer",
+                "question": "Explain the clinical significance of 'narrow therapeutic index' and give one specific drug example. How would you adjust your nursing care?",
+                "expectedAnswerElements": [
+                  "Definition: Small difference between effective and toxic dose",
+                  "Example: Digoxin (therapeutic 0.5-2.0 ng/mL; toxic >2.0 ng/mL)",
+                  "Nursing adjustments: Monitor drug levels, watch for toxicity signs, assess for interactions, monitor renal function, check electrolytes, educate patient"
+                ]
+              },
+              {
+                "questionNumber": 7,
+                "type": "short_answer",
+                "question": "A 78-year-old with mild kidney disease (GFR 45) is prescribed metformin for diabetes. An IV contrast procedure is ordered. Identify concerns and outline nursing actions.",
+                "expectedAnswerElements": [
+                  "Concern 1: Metformin + IV contrast = contrast-induced AKI \u2192 metformin accumulation \u2192 lactic acidosis",
+                  "Concern 2: Baseline renal impairment increases risk",
+                  "Nursing actions: Alert prescriber; implement metformin-contrast protocol; hold metformin 24-48h before/after contrast; recheck renal function; monitor for lactic acidosis signs"
+                ]
+              },
+              {
+                "questionNumber": 8,
+                "type": "case_based",
+                "question": "Mr. Park, 82-year-old with CHF exacerbation on: furosemide, lisinopril, metoprolol, digoxin, spironolactone. New order: ibuprofen 600 mg TID for arthritis. Identify ALL interactions, prioritize by severity, describe nursing response.",
+                "expectedAnswerElements": [
+                  "MAJOR: Triple whammy (NSAID + ACE inhibitor + diuretic) \u2192 AKI risk",
+                  "MAJOR: NSAID + spironolactone + lisinopril \u2192 hyperkalemia risk",
+                  "MAJOR: NSAID reduces digoxin elimination \u2192 toxicity risk",
+                  "Nursing response: DO NOT ADMINISTER; contact prescriber; propose acetaminophen or topical NSAID alternative; if prescriber insists, implement strict monitoring protocol with baseline labs, daily clinical checks, repeat labs at day 3-7"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "navigationStructure": {
+      "readingPaths": [
+        {
+          "pathId": "path_linear",
+          "name": "Sequential Reading",
+          "description": "Read chapters in order from beginning to end",
+          "sections": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "pathId": "path_clinical_focus",
+          "name": "Clinical Practice Focus",
+          "description": "Jump to clinically relevant sections (skip theory if familiar)",
+          "sections": [
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "pathId": "path_calculation_mastery",
+          "name": "Dosage Calculation Intensive",
+          "description": "Deep dive into calculation methods with practice problems",
+          "sections": [
+            9
+          ]
+        },
+        {
+          "pathId": "path_interaction_focus",
+          "name": "Drug Interactions & Safety",
+          "description": "Focus on interactions and clinical decision-making",
+          "sections": [
+            7,
+            8,
+            10,
+            11
+          ]
+        }
+      ],
+      "prerequisites": [],
+      "nextChapter": {
+        "id": "ch2_drug_classes",
+        "title": "Chapter 2: Major Drug Classes & Therapeutic Uses"
+      }
+    },
+    "assessmentStrategy": {
+      "formativeAssessments": [
+        {
+          "type": "knowledge_checks",
+          "frequency": "after each section",
+          "format": "multiple_choice, matching"
+        },
+        {
+          "type": "calculation_problems",
+          "frequency": "throughout section 9",
+          "format": "step_by_step_with_immediate_feedback"
+        },
+        {
+          "type": "case_discussions",
+          "frequency": "sections 10-11",
+          "format": "scenario_based_prompts"
+        }
+      ],
+      "summativeAssessment": {
+        "type": "chapter_exam",
+        "format": "Multiple choice (5) + Short answer (2) + Case-based (1)",
+        "totalQuestions": 8,
+        "passingScore": 75,
+        "timeLimit": 60
+      }
+    },
+    "resources": {
+      "textbooks": [
+        {
+          "title": "Focus on Nursing Pharmacology",
+          "edition": "8th",
+          "author": "Karch, A.M.",
+          "year": 2020,
+          "publisher": "Wolters Kluwer"
+        }
+      ],
+      "onlineTools": [
+        {
+          "name": "Medscape Drug Interaction Checker",
+          "url": "https://reference.medscape.com/drug-interaction-checker",
+          "purpose": "Check drug interactions in clinical practice"
+        },
+        {
+          "name": "FDA Orange Book",
+          "url": "https://www.fda.gov/drugs",
+          "purpose": "FDA drug approval information"
+        },
+        {
+          "name": "MedWatch",
+          "url": "https://www.fda.gov/medwatch",
+          "purpose": "Report adverse drug effects"
+        }
+      ],
+      "supplementaryMaterials": [
+        {
+          "type": "flashcard_deck",
+          "title": "Chapter 1 Pharmacology Flashcards",
+          "cardCount": 50,
+          "linkedFile": "unavida_pharmacology_ch1_flashcards.json"
+        },
+        {
+          "type": "video_series",
+          "count": 3,
+          "titles": [
+            "Why Pharmacology Matters (3 min)",
+            "Drug Names Explained (2 min)",
+            "Historical Timeline of Drugs (4 min)"
+          ]
+        },
+        {
+          "type": "illustrations",
+          "count": 6,
+          "titles": [
+            "Role of Nurses in Medication Safety",
+            "Historical Drug Development Timeline",
+            "Drug Classification Systems",
+            "ADME Process (Pharmacokinetics)",
+            "FDA Drug Approval Process",
+            "Regulatory Bodies & Roles"
+          ]
+        }
+      ]
+    },
+    "interactiveElements": {
+      "flashcards": [
+        {
+          "id": "card_01",
+          "question": "Define pharmacology.",
+          "answer": "Pharmacology is the science that deals with the composition, properties, reactions, and effects of drugs, including their origin, preparation, uses, and effects on living organisms.",
+          "category": "Definitions"
+        },
+        {
+          "id": "card_02",
+          "question": "What is the difference between pharmacokinetics and pharmacodynamics?",
+          "answer": "Pharmacokinetics is what the body does to the drug (absorption, distribution, metabolism, excretion). Pharmacodynamics is what the drug does to the body (mechanism of action and effects).",
+          "category": "Pharmacokinetics"
+        },
+        {
+          "id": "card_03",
+          "question": "Define efficacy in the context of drug effects.",
+          "answer": "Efficacy is the maximum therapeutic effect a drug can produce, regardless of dose. It reflects the drug's ability to produce the desired response.",
+          "category": "Pharmacodynamics"
+        },
+        {
+          "id": "card_04",
+          "question": "What is potency?",
+          "answer": "Potency refers to the amount of drug needed to produce a given effect. A more potent drug requires a lower dose to achieve the same effect as a less potent drug.",
+          "category": "Drug Classification"
+        },
+        {
+          "id": "card_05",
+          "question": "Define drug selectivity (or selective toxicity).",
+          "answer": "Drug selectivity is the ability of a drug to affect target cells/tissues while minimizing effects on non-target cells. Greater selectivity means fewer side effects.",
+          "category": "Drug Interactions"
+        },
+        {
+          "id": "card_06",
+          "question": "What is a therapeutic drug action?",
+          "answer": "A therapeutic drug action is the desired, beneficial effect of a drug that produces the intended clinical outcome (e.g., lowering blood pressure with an antihypertensive).",
+          "category": "Dosage"
+        },
+        {
+          "id": "card_07",
+          "question": "Fill in the blank: A _____ is an undesired, potentially harmful drug effect that occurs at therapeutic doses.",
+          "answer": "adverse effect (or adverse drug reaction, side effect)",
+          "category": "Nursing Practice"
+        },
+        {
+          "id": "card_08",
+          "question": "Explain the difference between a drug's trade name and generic name.",
+          "answer": "A generic name (nonproprietary name) is the official chemical or pharmacological name assigned by regulatory bodies (e.g., ibuprofen). A trade name (brand name) is the proprietary name given by the pharmaceutical manufacturer (e.g., Advil\u00ae).",
+          "category": "Definitions"
+        },
+        {
+          "id": "card_09",
+          "question": "What is a chemical drug name?",
+          "answer": "A chemical drug name is the precise description of the drug's chemical composition and molecular structure (e.g., acetyl salicylic acid for aspirin). It is used primarily in research and development.",
+          "category": "Pharmacokinetics"
+        },
+        {
+          "id": "card_10",
+          "question": "Classify drugs by therapeutic action: What does an analgesic drug do?",
+          "answer": "An analgesic relieves pain without causing unconsciousness. Examples include aspirin, ibuprofen, and morphine.",
+          "category": "Pharmacodynamics"
+        },
+        {
+          "id": "card_11",
+          "question": "Classify drugs by therapeutic action: What does an antipyretic drug do?",
+          "answer": "An antipyretic reduces fever. Common examples include acetaminophen and ibuprofen.",
+          "category": "Drug Classification"
+        },
+        {
+          "id": "card_12",
+          "question": "Classify drugs by therapeutic action: What does an antihistamine do?",
+          "answer": "An antihistamine blocks histamine receptors, preventing or reducing histamine effects such as allergic reactions, itching, and swelling. Examples include diphenhydramine and loratadine.",
+          "category": "Drug Interactions"
+        },
+        {
+          "id": "card_13",
+          "question": "Classify drugs by therapeutic action: What is an antimicrobial agent?",
+          "answer": "An antimicrobial agent inhibits or kills microorganisms (bacteria, viruses, fungi, parasites). Examples include antibiotics, antivirals, antifungals, and antiparasitics.",
+          "category": "Dosage"
+        },
+        {
+          "id": "card_14",
+          "question": "What is drug absorption?",
+          "answer": "Drug absorption is the movement of a drug from its site of administration into the bloodstream. It depends on the route of administration, drug properties, and physiological factors.",
+          "category": "Nursing Practice"
+        },
+        {
+          "id": "card_15",
+          "question": "What is bioavailability?",
+          "answer": "Bioavailability is the percentage of administered drug that reaches systemic circulation in its active form. Intravenous administration has 100% bioavailability; other routes have lower bioavailability.",
+          "category": "Definitions"
+        },
+        {
+          "id": "card_16",
+          "question": "Which route of administration has the fastest onset of action?",
+          "answer": "Intravenous (IV) administration has the fastest onset because the drug is injected directly into the bloodstream, bypassing the absorption phase.",
+          "category": "Pharmacokinetics"
+        },
+        {
+          "id": "card_17",
+          "question": "Rank these routes by speed of absorption: oral, sublingual, intramuscular, intravenous.",
+          "answer": "Fastest to slowest: intravenous > intramuscular > sublingual > oral. IV has immediate effect; oral is slowest due to GI absorption variability.",
+          "category": "Pharmacodynamics"
+        },
+        {
+          "id": "card_18",
+          "question": "What factors affect oral drug absorption?",
+          "answer": "Factors include: pH of GI tract, gastric motility, food presence, drug solubility, first-pass metabolism, and the condition of GI mucosa (e.g., inflammation, ulcers).",
+          "category": "Drug Classification"
+        },
+        {
+          "id": "card_19",
+          "question": "What is first-pass metabolism (first-pass effect)?",
+          "answer": "First-pass metabolism occurs when an orally administered drug is absorbed from the GI tract and transported directly to the liver via the hepatic portal vein, where it may be significantly metabolized before reaching systemic circulation. This reduces drug bioavailability.",
+          "category": "Drug Interactions"
+        },
+        {
+          "id": "card_20",
+          "question": "How does food affect oral drug absorption?",
+          "answer": "Food can increase, decrease, or have no effect on absorption depending on the drug. Food increases absorption of fat-soluble drugs, decreases absorption of some antibiotics, and delays absorption by slowing gastric emptying.",
+          "category": "Dosage"
+        },
+        {
+          "id": "card_21",
+          "question": "Define drug distribution.",
+          "answer": "Drug distribution is the movement of a drug from the blood to various body tissues and organs. It depends on blood flow to tissues, drug lipid solubility, plasma protein binding, and blood-brain barrier permeability.",
+          "category": "Nursing Practice"
+        },
+        {
+          "id": "card_22",
+          "question": "What is plasma protein binding, and why is it clinically important?",
+          "answer": "Plasma protein binding is the reversible attachment of drug molecules to blood proteins (mainly albumin). Only unbound drug is pharmacologically active. High protein binding can lead to drug interactions when two drugs compete for binding sites.",
+          "category": "Definitions"
+        },
+        {
+          "id": "card_23",
+          "question": "What is the blood-brain barrier (BBB), and which drugs can cross it?",
+          "answer": "The blood-brain barrier is a selective barrier formed by tight junctions in cerebral capillaries that restricts passage of polar/hydrophilic substances. Only lipophilic (fat-soluble) drugs and small polar molecules can cross it. This is why many drugs don't treat CNS conditions.",
+          "category": "Pharmacokinetics"
+        },
+        {
+          "id": "card_24",
+          "question": "Define drug metabolism (biotransformation).",
+          "answer": "Drug metabolism is the chemical modification of a drug by the body, primarily in the liver, to make it more water-soluble for excretion. Metabolism can produce active metabolites (that have effects) or inactive metabolites.",
+          "category": "Pharmacodynamics"
+        },
+        {
+          "id": "card_25",
+          "question": "What are the three phases of drug metabolism?",
+          "answer": "Phase I (oxidation, reduction, hydrolysis) - primarily via cytochrome P450 enzymes; Phase II (conjugation) - attachment of water-soluble molecules; Phase III (transport) - active movement of drug/metabolites out of cells for elimination.",
+          "category": "Drug Classification"
+        },
+        {
+          "id": "card_26",
+          "question": "What is the cytochrome P450 system?",
+          "answer": "The cytochrome P450 (CYP450) system is a group of enzymes in the liver and other tissues that catalyze Phase I metabolism. It's responsible for metabolizing approximately 75% of all drugs. Genetic variations affect metabolism rates (poor vs. rapid metabolizers).",
+          "category": "Drug Interactions"
+        },
+        {
+          "id": "card_27",
+          "question": "What is a drug inducer, and give an example.",
+          "answer": "A drug inducer is a substance that increases the activity of metabolic enzymes (especially CYP450), leading to faster drug metabolism and potentially lower drug levels. Example: rifampin increases metabolism of oral contraceptives, reducing their effectiveness.",
+          "category": "Dosage"
+        },
+        {
+          "id": "card_28",
+          "question": "What is a drug inhibitor, and give an example.",
+          "answer": "A drug inhibitor is a substance that decreases the activity of metabolic enzymes, leading to slower drug metabolism and potentially higher drug levels. Example: ketoconazole inhibits CYP450, increasing levels of drugs metabolized by these enzymes.",
+          "category": "Nursing Practice"
+        },
+        {
+          "id": "card_29",
+          "question": "What is hepatic metabolism, and which organs can metabolize drugs?",
+          "answer": "Hepatic metabolism is the primary metabolism of drugs in the liver. However, drugs can also be metabolized in the kidneys, lungs, GI tract, and other tissues. The liver is responsible for ~90% of drug metabolism.",
+          "category": "Definitions"
+        },
+        {
+          "id": "card_30",
+          "question": "Define drug excretion.",
+          "answer": "Drug excretion is the elimination of a drug or its metabolites from the body. The kidneys are the primary route (via filtration, secretion, reabsorption), but excretion also occurs via bile, lungs, skin, and feces.",
+          "category": "Pharmacokinetics"
+        },
+        {
+          "id": "card_31",
+          "question": "What is renal clearance, and why is it important?",
+          "answer": "Renal clearance is the volume of plasma from which a drug is completely removed per unit time. It's important because impaired kidney function reduces drug clearance, leading to drug accumulation and toxicity risk. Dosing adjustments are needed for patients with renal impairment.",
+          "category": "Pharmacodynamics"
+        },
+        {
+          "id": "card_32",
+          "question": "How does renal disease affect drug excretion?",
+          "answer": "Renal disease decreases glomerular filtration rate (GFR), reducing the filtration of drugs and metabolites. This causes drug accumulation in the body, increasing the risk of toxicity. Dose adjustments based on GFR are necessary.",
+          "category": "Drug Classification"
+        },
+        {
+          "id": "card_33",
+          "question": "Fill in the blank: The half-life of a drug is the time required for the plasma concentration to decrease to _____ of its original value.",
+          "answer": "50% (or one-half)",
+          "category": "Drug Interactions"
+        },
+        {
+          "id": "card_34",
+          "question": "Why is drug half-life clinically important for nursing practice?",
+          "answer": "Half-life determines dosing intervals. Drugs with short half-lives require more frequent dosing; those with long half-lives require less frequent dosing. It also helps predict time to reach steady state and time for drug elimination from the body.",
+          "category": "Dosage"
+        },
+        {
+          "id": "card_35",
+          "question": "Define steady state in pharmacokinetics.",
+          "answer": "Steady state is when the amount of drug administered equals the amount eliminated per unit time, resulting in constant plasma drug concentrations. It's typically reached after 4-5 half-lives and is important for maintaining therapeutic effects.",
+          "category": "Nursing Practice"
+        },
+        {
+          "id": "card_36",
+          "question": "What is pharmacodynamics?",
+          "answer": "Pharmacodynamics is the study of what the drug does to the body\u2014its mechanisms of action, effects on body systems, and the relationship between drug concentration and therapeutic/adverse effects.",
+          "category": "Definitions"
+        },
+        {
+          "id": "card_37",
+          "question": "Define drug receptor and explain the receptor theory of drug action.",
+          "answer": "A drug receptor is a specific cellular protein (on cell membrane or intracellular) with which a drug binds. The receptor theory states that drugs produce effects by binding to specific receptors, causing conformational changes that initiate a cellular response.",
+          "category": "Pharmacokinetics"
+        },
+        {
+          "id": "card_38",
+          "question": "What is the difference between agonists and antagonists?",
+          "answer": "An agonist binds to a receptor and produces a pharmacological effect (activates the receptor). An antagonist binds to a receptor but does not activate it; instead, it blocks agonists from binding and prevents receptor activation.",
+          "category": "Pharmacodynamics"
+        },
+        {
+          "id": "card_39",
+          "question": "Define partial agonist.",
+          "answer": "A partial agonist binds to a receptor and produces a submaximal response\u2014it produces effects but with lower efficacy than a full agonist. It can act as an agonist or antagonist depending on the clinical context.",
+          "category": "Drug Classification"
+        },
+        {
+          "id": "card_40",
+          "question": "What is the dose-response relationship?",
+          "answer": "The dose-response relationship is the correlation between the amount of drug administered (dose) and the magnitude of the resulting effect (response). As dose increases, response typically increases until maximum efficacy is reached.",
+          "category": "Drug Interactions"
+        },
+        {
+          "id": "card_41",
+          "question": "What is the therapeutic index (TI), and why does it matter?",
+          "answer": "The therapeutic index is the ratio of the toxic dose to the effective dose (TD50/ED50). A higher TI indicates a wider margin of safety between therapeutic and toxic doses. A lower TI means the drug has a narrower safety margin and requires careful dose monitoring.",
+          "category": "Dosage"
+        },
+        {
+          "id": "card_42",
+          "question": "Give three examples of drugs with a narrow therapeutic index.",
+          "answer": "Examples include: digoxin (cardiac glycoside), warfarin (anticoagulant), and lithium (mood stabilizer). These drugs require close monitoring and dose adjustment.",
+          "category": "Nursing Practice"
+        },
+        {
+          "id": "card_43",
+          "question": "What is the basic formula for calculating drug dose based on body weight?",
+          "answer": "Dose = Prescribed dose per kg (or lb) \u00d7 Patient's weight. Example: If 5 mg/kg is prescribed and patient weighs 70 kg, dose = 5 mg/kg \u00d7 70 kg = 350 mg.",
+          "category": "Definitions"
+        },
+        {
+          "id": "card_44",
+          "question": "How do you calculate body surface area (BSA)-based dosing?",
+          "answer": "BSA is typically calculated using height and weight (in specialized nomograms or formulas). Dose = Prescribed dose per m\u00b2 \u00d7 Patient's BSA in m\u00b2. BSA-based dosing is common for chemotherapy agents.",
+          "category": "Pharmacokinetics"
+        },
+        {
+          "id": "card_45",
+          "question": "What is the formula for calculating IV infusion rates (mL/hr)?",
+          "answer": "Infusion rate (mL/hr) = Total volume (mL) \u00f7 Infusion time (hours). For drops/min: Drops/min = (Total volume \u00d7 Drop factor) \u00f7 Time in minutes. Drop factor varies by tubing (typically 10, 15, or 20 drops/mL).",
+          "category": "Pharmacodynamics"
+        },
+        {
+          "id": "card_46",
+          "question": "How do you calculate mcg/kg/min dosing?",
+          "answer": "Dose (mcg/kg/min) \u00d7 Weight (kg) \u00d7 60 min/hr \u00f7 Concentration (mcg/mL) = Infusion rate (mL/hr). This is commonly used for critical care medications like vasopressors and inotropes.",
+          "category": "Drug Classification"
+        },
+        {
+          "id": "card_47",
+          "question": "What is a drug interaction?",
+          "answer": "A drug interaction occurs when one drug affects the action of another drug, leading to increased, decreased, or altered effects. Interactions can be pharmacokinetic (affecting absorption, distribution, metabolism, or excretion) or pharmacodynamic (affecting mechanisms of action).",
+          "category": "Drug Interactions"
+        },
+        {
+          "id": "card_48",
+          "question": "Explain a pharmacokinetic drug interaction using an example.",
+          "answer": "A pharmacokinetic interaction affects ADME processes. Example: St. John's Wort induces CYP450 enzymes, increasing metabolism of oral contraceptives, reducing contraceptive effectiveness.",
+          "category": "Dosage"
+        },
+        {
+          "id": "card_49",
+          "question": "Explain a pharmacodynamic drug interaction using an example.",
+          "answer": "A pharmacodynamic interaction occurs at the receptor level or through mechanisms of action. Example: Combining two CNS depressants (alcohol + benzodiazepine) causes additive effects, resulting in excessive sedation and respiratory depression.",
+          "category": "Nursing Practice"
+        },
+        {
+          "id": "card_50",
+          "question": "What is a synergistic drug interaction?",
+          "answer": "A synergistic interaction is when two drugs together produce an effect greater than the sum of their individual effects. Example: Aspirin + ibuprofen together cause greater gastrointestinal irritation than either alone.",
+          "category": "Definitions"
+        },
+        {
+          "id": "card_51",
+          "question": "What is an additive drug interaction?",
+          "answer": "An additive interaction is when two drugs with similar effects combine to produce a total effect equal to the sum of their individual effects. Example: Two antihypertensive agents together lower blood pressure more than either alone, by an additive amount.",
+          "category": "Pharmacokinetics"
+        },
+        {
+          "id": "card_52",
+          "question": "Define an adverse drug reaction (ADR).",
+          "answer": "An adverse drug reaction is any unwanted or harmful effect produced by a drug at therapeutic doses. ADRs range from mild (nausea) to severe (anaphylaxis, organ failure) and are a major cause of morbidity and mortality.",
+          "category": "Pharmacodynamics"
+        },
+        {
+          "id": "card_53",
+          "question": "Classify adverse drug reactions: What is a Type A reaction?",
+          "answer": "A Type A (Augmented) reaction is an exaggeration of a drug's known pharmacological effect due to overdose or increased sensitivity. It is dose-dependent, predictable, and reversible upon dose reduction. Example: Excessive bleeding with warfarin.",
+          "category": "Drug Classification"
+        },
+        {
+          "id": "card_54",
+          "question": "Classify adverse drug reactions: What is a Type B reaction?",
+          "answer": "A Type B (Bizarre) reaction is unexpected, idiosyncratic, and unrelated to the drug's known pharmacological action. It is not dose-dependent, unpredictable, and potentially serious. Example: Penicillin allergy causing anaphylaxis.",
+          "category": "Drug Interactions"
+        },
+        {
+          "id": "card_55",
+          "question": "What is a drug allergy, and how does it differ from a side effect?",
+          "answer": "A drug allergy is an immunologic reaction (involving antibodies/T-cells) to a drug, ranging from mild rash to anaphylaxis. It is an ADR but not typical pharmacology. A side effect is an expected, predictable adverse effect from a drug's known action (e.g., drowsiness from antihistamine).",
+          "category": "Dosage"
+        },
+        {
+          "id": "card_56",
+          "question": "What is anaphylaxis, and list three signs/symptoms.",
+          "answer": "Anaphylaxis is a severe, life-threatening allergic reaction that occurs within minutes of exposure. Signs/symptoms include: rapid onset urticaria/pruritus, angioedema, bronchospasm/dyspnea, hypotension, tachycardia, and loss of consciousness.",
+          "category": "Nursing Practice"
+        },
+        {
+          "id": "card_57",
+          "question": "What is the nursing management for anaphylaxis due to a drug?",
+          "answer": "Immediate management: Stop the drug, position patient supine, elevate legs, establish IV access, administer epinephrine IM immediately, give oxygen, monitor vitals, have emergency equipment ready, and notify physician. Document reaction details and update allergy list.",
+          "category": "Definitions"
+        },
+        {
+          "id": "card_58",
+          "question": "Define tolerance in the context of pharmacology.",
+          "answer": "Drug tolerance is a decreased response to a drug after repeated use, requiring higher doses to achieve the same effect. It occurs through multiple mechanisms: receptor downregulation, enzyme induction, and physiological adaptation.",
+          "category": "Pharmacokinetics"
+        },
+        {
+          "id": "card_59",
+          "question": "What is cross-tolerance?",
+          "answer": "Cross-tolerance is the development of tolerance to a drug that extends to other drugs of the same class or with similar mechanisms. Example: A patient tolerant to morphine will also show tolerance to codeine.",
+          "category": "Pharmacodynamics"
+        },
+        {
+          "id": "card_60",
+          "question": "Define drug dependence and distinguish physical from psychological dependence.",
+          "answer": "Drug dependence is the need to continue taking a drug to avoid withdrawal symptoms or maintain function. Physical dependence: withdrawal produces physiological symptoms (tremors, sweating). Psychological dependence: withdrawal produces psychological symptoms (anxiety, depression) without physical withdrawal.",
+          "category": "Drug Classification"
+        }
+      ],
+      "quiz": [
+        {
+          "id": "q_001",
+          "question": "Define pharmacology and its relationship to nursing practice.",
+          "options": [
+            "The study of drugs and their effects on living organisms",
+            "The study of disease progression",
+            "The study of patient psychology",
+            "The study of hospital management"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Pharmacology is the science dealing with drug composition, properties, and effects on living organisms. It's essential to nursing for safe medication administration.",
+          "bloomLevel": "remember"
+        },
+        {
+          "id": "q_002",
+          "question": "What is the primary difference between pharmacokinetics and pharmacodynamics?",
+          "options": [
+            "Pharmacokinetics = what the body does to the drug; Pharmacodynamics = what the drug does to the body",
+            "Pharmacokinetics = drug safety; Pharmacodynamics = drug effectiveness",
+            "Pharmacokinetics = IV only; Pharmacodynamics = oral only",
+            "There is no difference between them"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Pharmacokinetics describes absorption, distribution, metabolism, and excretion. Pharmacodynamics describes the drug's mechanism of action and effects.",
+          "bloomLevel": "understand"
+        },
+        {
+          "id": "q_003",
+          "question": "A nurse notes a medication order that seems high for the patient's age and weight. What should she do?",
+          "options": [
+            "Administer the dose as ordered",
+            "Wait to see if there's a correction",
+            "Contact the prescriber to verify the order",
+            "Reduce the dose based on her judgment"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Patient safety is paramount. Any questionable orders should be verified with the prescriber before administration.",
+          "bloomLevel": "apply"
+        },
+        {
+          "id": "q_004",
+          "question": "Which route of administration has the fastest onset of action?",
+          "options": [
+            "Oral",
+            "Intramuscular",
+            "Intravenous",
+            "Sublingual"
+          ],
+          "correctAnswer": 2,
+          "explanation": "IV administration delivers the drug directly into systemic circulation, resulting in immediate onset compared to other routes.",
+          "bloomLevel": "remember"
+        },
+        {
+          "id": "q_005",
+          "question": "What is first-pass metabolism?",
+          "options": [
+            "The initial absorption of a drug in the stomach",
+            "When oral drugs are metabolized by the liver before reaching systemic circulation",
+            "The distribution of drugs to peripheral tissues",
+            "The elimination of drugs through the kidneys"
+          ],
+          "correctAnswer": 1,
+          "explanation": "First-pass metabolism reduces bioavailability of orally administered drugs because they pass through the liver first.",
+          "bloomLevel": "understand"
+        },
+        {
+          "id": "q_006",
+          "question": "A patient is taking warfarin and NSAIDs together. What is the primary concern?",
+          "options": [
+            "Increased heart rate",
+            "Additive bleeding risk",
+            "Elevated kidney function",
+            "Decreased effectiveness of both drugs"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Both warfarin and NSAIDs increase bleeding risk. Combined use is a dangerous drug interaction that should be avoided.",
+          "bloomLevel": "apply"
+        },
+        {
+          "id": "q_007",
+          "question": "What is therapeutic index?",
+          "options": [
+            "The range of drug prices",
+            "The ratio of toxic dose to therapeutic dose",
+            "The number of side effects a drug causes",
+            "The speed at which a drug works"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Therapeutic index (TI) indicates drug safety. A high TI means a wider margin between effective and toxic doses.",
+          "bloomLevel": "understand"
+        },
+        {
+          "id": "q_008",
+          "question": "Calculate: A patient needs 500 mg of amoxicillin. You have 250 mg tablets on hand. How many tablets do you give?",
+          "options": [
+            "0.5 tablets",
+            "1 tablet",
+            "2 tablets",
+            "4 tablets"
+          ],
+          "correctAnswer": 2,
+          "explanation": "(500 mg \u00f7 250 mg) \u00d7 1 tablet = 2 tablets. Using the formula method: Dose = (Desired \u00f7 On Hand) \u00d7 Quantity.",
+          "bloomLevel": "apply"
+        }
+      ]
+    },
+    "keyTermsAndDefinitions": [
+      {
+        "term": "Pharmacology",
+        "definition": "The science that deals with the composition, properties, reactions, and effects of drugs."
+      },
+      {
+        "term": "Pharmacokinetics",
+        "definition": "The study of drug absorption, distribution, metabolism, and excretion (ADME)."
+      },
+      {
+        "term": "Pharmacodynamics",
+        "definition": "The study of drug mechanisms of action and effects on the body."
+      },
+      {
+        "term": "Bioavailability",
+        "definition": "The percentage of administered drug that reaches systemic circulation in its active form."
+      },
+      {
+        "term": "First-Pass Metabolism",
+        "definition": "The hepatic metabolism of oral drugs before they reach systemic circulation."
+      },
+      {
+        "term": "Drug Interaction",
+        "definition": "The modification of one drug's effect by another drug, food, or substance."
+      },
+      {
+        "term": "Therapeutic Index",
+        "definition": "The ratio of toxic dose to therapeutic dose; indicates drug safety margin."
+      },
+      {
+        "term": "Efficacy",
+        "definition": "The maximum therapeutic effect a drug can produce, regardless of dose."
+      },
+      {
+        "term": "Potency",
+        "definition": "The amount of drug needed to produce a given effect; a measure of drug strength."
+      },
+      {
+        "term": "Adverse Drug Reaction",
+        "definition": "An undesired and potentially harmful effect that occurs at therapeutic doses."
+      }
+    ]
+  }
+}

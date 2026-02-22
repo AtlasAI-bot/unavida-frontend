@@ -1,0 +1,121 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { StudentProgressProvider } from './context/StudentProgressContext';
+import { AuthProvider } from './context/AuthContext';
+import { NotesProvider } from './context/NotesContext';
+import { ProgressProvider } from './context/ProgressContext';
+import { ProtectedRoute } from './components/ProtectedRoute';
+import { RootRedirect } from './components/RootRedirect';
+import { Home } from './components/Home';
+import { Bookshelf } from './components/Bookshelf';
+import { TextbookDashboard } from './components/TextbookDashboard';
+import { ChapterReader } from './components/ChapterReader';
+import { Login } from './components/Login';
+import { StudentDashboard } from './components/StudentDashboard';
+import { InstructorDashboard } from './components/InstructorDashboard';
+import { AdminDashboard } from './components/AdminDashboard';
+import ChapterHub from './components/ChapterHub';
+
+export function App() {
+  return (
+    <AuthProvider>
+      <StudentProgressProvider>
+        <NotesProvider>
+          <ProgressProvider>
+            <Router>
+              <Routes>
+                {/* Root redirect - handles auth-based routing */}
+                <Route path="/" element={<RootRedirect />} />
+                
+                {/* Public Routes */}
+                <Route path="/login" element={<Login />} />
+                
+                {/* New Flow - Student Landing Pages */}
+                {/* Bookshelf - Landing page after login showing textbooks only */}
+                <Route 
+                  path="/bookshelf" 
+                  element={
+                    <ProtectedRoute requiredRole="student">
+                      <Bookshelf />
+                    </ProtectedRoute>
+                  } 
+                />
+
+                {/* TextbookDashboard - Units and chapters for a specific textbook */}
+                <Route 
+                  path="/textbook/:textbookId" 
+                  element={
+                    <ProtectedRoute requiredRole="student">
+                      <TextbookDashboard />
+                    </ProtectedRoute>
+                  } 
+                />
+                
+                {/* Home Route - Protected - Main textbooks/bookshelves page (legacy) */}
+                <Route 
+                  path="/home" 
+                  element={
+                    <ProtectedRoute>
+                      <Home />
+                    </ProtectedRoute>
+                  } 
+                />
+                
+                {/* Protected Routes */}
+                <Route 
+                  path="/student-dashboard" 
+                  element={
+                    <ProtectedRoute requiredRole="student">
+                      <StudentDashboard />
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route 
+                  path="/instructor-dashboard" 
+                  element={
+                    <ProtectedRoute requiredRole="instructor">
+                      <InstructorDashboard />
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route 
+                  path="/admin-dashboard" 
+                  element={
+                    <ProtectedRoute requiredRole="admin">
+                      <AdminDashboard />
+                    </ProtectedRoute>
+                  } 
+                />
+                
+                {/* Chapter Reader - Protected */}
+                <Route 
+                  path="/reader/:chapterId" 
+                  element={
+                    <ProtectedRoute requiredRole="student">
+                      <ChapterReader />
+                    </ProtectedRoute>
+                  } 
+                />
+
+                {/* Chapter Hub - Learning Materials Hub - Protected */}
+                <Route 
+                  path="/chapter/:chapterId/hub" 
+                  element={
+                    <ProtectedRoute requiredRole="student">
+                      <ChapterHub />
+                    </ProtectedRoute>
+                  } 
+                />
+                
+                {/* Catch all - redirect to home page (which will handle auth-based routing) */}
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
+            </Router>
+          </ProgressProvider>
+        </NotesProvider>
+      </StudentProgressProvider>
+    </AuthProvider>
+  );
+}
+
+export default App;

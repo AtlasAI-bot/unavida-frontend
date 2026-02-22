@@ -1,0 +1,10 @@
+export { Home } from './Home';
+export { ChapterReader } from './ChapterReader';
+export { Flashcards } from './Flashcards';
+export { Quiz } from './Quiz';
+export { Glossary } from './Glossary';
+export { Login } from './Login';
+export { ProtectedRoute } from './ProtectedRoute';
+export { StudentDashboard } from './StudentDashboard';
+export { InstructorDashboard } from './InstructorDashboard';
+export { AdminDashboard } from './AdminDashboard';
