@@ -12,15 +12,43 @@
       "wordCount": 33147,
       "author": "Atlas Delgado",
       "textbookReference": "Karch, A.M. (2020). Focus on Nursing Pharmacology (8th ed.). Wolters Kluwer.",
-      "targetAudience": ["RN Students", "Hospital Settings", "Clinic Settings"],
+      "targetAudience": [
+        "RN Students",
+        "Hospital Settings",
+        "Clinic Settings"
+      ],
       "contentLevel": "foundational",
       "version": "1.0.0",
       "releaseDate": "2026-02-18",
       "lastUpdated": "2026-02-19",
       "status": "production_ready",
       "difficulty": "intermediate",
-      "tags": ["pharmacology", "nursing_practice", "medication_safety", "drug_interactions", "dosage_calculations", "clinical_judgment", "foundational", "week_1", "core_content"],
-      "searchKeywords": ["pharmacology definition", "nursing medication safety", "drug classification", "pharmacokinetics", "pharmacodynamics", "FDA approval process", "drug interactions", "dosage calculation", "adverse drug reactions", "therapeutic index", "drug metabolism", "drug absorption", "nursing role pharmacology"],
+      "tags": [
+        "pharmacology",
+        "nursing_practice",
+        "medication_safety",
+        "drug_interactions",
+        "dosage_calculations",
+        "clinical_judgment",
+        "foundational",
+        "week_1",
+        "core_content"
+      ],
+      "searchKeywords": [
+        "pharmacology definition",
+        "nursing medication safety",
+        "drug classification",
+        "pharmacokinetics",
+        "pharmacodynamics",
+        "FDA approval process",
+        "drug interactions",
+        "dosage calculation",
+        "adverse drug reactions",
+        "therapeutic index",
+        "drug metabolism",
+        "drug absorption",
+        "nursing role pharmacology"
+      ],
       "contentQuality": {
         "accuracy": "verified_against_evidence_based_sources",
         "currentness": "2026_updated",
@@ -43,16 +71,66 @@
     },
     "learningOutcomes": {
       "chapterLevel": [
-        {"id": "lo1", "outcome": "Define pharmacology and explain its relationship to nursing practice", "bloomLevel": "understand", "assessmentMethod": "quiz, case_study"},
-        {"id": "lo2", "outcome": "Explain the role of nurses in medication safety and therapeutic outcomes", "bloomLevel": "understand", "assessmentMethod": "case_study, reflection"},
-        {"id": "lo3", "outcome": "Trace the evolution of pharmacology from ancient to modern times", "bloomLevel": "remember", "assessmentMethod": "quiz, timeline_exercise"},
-        {"id": "lo4", "outcome": "Classify drugs using multiple systems (therapeutic, chemical, regulatory)", "bloomLevel": "understand", "assessmentMethod": "classification_exercise, quiz"},
-        {"id": "lo5", "outcome": "Identify regulatory bodies (FDA, DEA, nursing boards) and their roles in drug safety", "bloomLevel": "remember", "assessmentMethod": "quiz, matching_exercise"},
-        {"id": "lo6", "outcome": "Distinguish between pharmacokinetics, pharmacodynamics, and pharmacology", "bloomLevel": "understand", "assessmentMethod": "concept_mapping, quiz"},
-        {"id": "lo7", "outcome": "Recognize drug interactions and apply management strategies", "bloomLevel": "apply", "assessmentMethod": "case_study, interaction_check_exercise"},
-        {"id": "lo8", "outcome": "Master three dosage calculation methods (formula, ratio-proportion, dimensional analysis)", "bloomLevel": "apply", "assessmentMethod": "calculation_problems, competency_check"},
-        {"id": "lo9", "outcome": "Apply clinical judgment to medication safety decisions", "bloomLevel": "apply", "assessmentMethod": "case_study, scenario_based_questions"},
-        {"id": "lo10", "outcome": "Communicate effectively with prescribers about medication concerns", "bloomLevel": "apply", "assessmentMethod": "communication_simulation, reflection"}
+        {
+          "id": "lo1",
+          "outcome": "Define pharmacology and explain its relationship to nursing practice",
+          "bloomLevel": "understand",
+          "assessmentMethod": "quiz, case_study"
+        },
+        {
+          "id": "lo2",
+          "outcome": "Explain the role of nurses in medication safety and therapeutic outcomes",
+          "bloomLevel": "understand",
+          "assessmentMethod": "case_study, reflection"
+        },
+        {
+          "id": "lo3",
+          "outcome": "Trace the evolution of pharmacology from ancient to modern times",
+          "bloomLevel": "remember",
+          "assessmentMethod": "quiz, timeline_exercise"
+        },
+        {
+          "id": "lo4",
+          "outcome": "Classify drugs using multiple systems (therapeutic, chemical, regulatory)",
+          "bloomLevel": "understand",
+          "assessmentMethod": "classification_exercise, quiz"
+        },
+        {
+          "id": "lo5",
+          "outcome": "Identify regulatory bodies (FDA, DEA, nursing boards) and their roles in drug safety",
+          "bloomLevel": "remember",
+          "assessmentMethod": "quiz, matching_exercise"
+        },
+        {
+          "id": "lo6",
+          "outcome": "Distinguish between pharmacokinetics, pharmacodynamics, and pharmacology",
+          "bloomLevel": "understand",
+          "assessmentMethod": "concept_mapping, quiz"
+        },
+        {
+          "id": "lo7",
+          "outcome": "Recognize drug interactions and apply management strategies",
+          "bloomLevel": "apply",
+          "assessmentMethod": "case_study, interaction_check_exercise"
+        },
+        {
+          "id": "lo8",
+          "outcome": "Master three dosage calculation methods (formula, ratio-proportion, dimensional analysis)",
+          "bloomLevel": "apply",
+          "assessmentMethod": "calculation_problems, competency_check"
+        },
+        {
+          "id": "lo9",
+          "outcome": "Apply clinical judgment to medication safety decisions",
+          "bloomLevel": "apply",
+          "assessmentMethod": "case_study, scenario_based_questions"
+        },
+        {
+          "id": "lo10",
+          "outcome": "Communicate effectively with prescribers about medication concerns",
+          "bloomLevel": "apply",
+          "assessmentMethod": "communication_simulation, reflection"
+        }
       ]
     },
     "sections": [
@@ -62,8 +140,19 @@
         "title": "Section 1: Overview & Introduction",
         "duration": 25,
         "wordCount": 2800,
-        "learningObjectives": ["Understand why pharmacology is critical for nursing practice", "Define pharmacology in the context of nursing", "Recognize the nurse's role as the final line of defense in medication safety", "Appreciate the historical evolution leading to modern pharmaceutical science"],
-        "keyTakeaways": ["Pharmacology is clinical power — the difference between healing and harm", "Nurses are the last line of defense between a medication order and a patient's body", "Understanding pharmacology enables nurses to catch drug interactions, contraindications, and dosing errors", "Pharmacology knowledge has evolved dramatically over the past 150+ years, from trial-and-error herbalism to precision medicine", "Today's challenge: 10,000+ FDA-approved drugs, countless combinations, and maximum potential for harm if used carelessly"],
+        "learningObjectives": [
+          "Understand why pharmacology is critical for nursing practice",
+          "Define pharmacology in the context of nursing",
+          "Recognize the nurse's role as the final line of defense in medication safety",
+          "Appreciate the historical evolution leading to modern pharmaceutical science"
+        ],
+        "keyTakeaways": [
+          "Pharmacology is clinical power \u2014 the difference between healing and harm",
+          "Nurses are the last line of defense between a medication order and a patient's body",
+          "Understanding pharmacology enables nurses to catch drug interactions, contraindications, and dosing errors",
+          "Pharmacology knowledge has evolved dramatically over the past 150+ years, from trial-and-error herbalism to precision medicine",
+          "Today's challenge: 10,000+ FDA-approved drugs, countless combinations, and maximum potential for harm if used carelessly"
+        ],
         "contentBlocks": [
           {
             "blockId": "sec1_block1",
@@ -93,9 +182,10 @@
             "blockId": "sec1_block5",
             "type": "narrative_summary",
             "title": "The Bottom Line",
-            "content": "Pharmacology knowledge is patient safety. It's taking the science and making it safe, effective, and patient-centered. Your role isn't just to give medications — it's to ensure they're the RIGHT medications, for the RIGHT patient, at the RIGHT dose, with appropriate monitoring. That's nursing pharmacology."
+            "content": "Pharmacology knowledge is patient safety. It's taking the science and making it safe, effective, and patient-centered. Your role isn't just to give medications \u2014 it's to ensure they're the RIGHT medications, for the RIGHT patient, at the RIGHT dose, with appropriate monitoring. That's nursing pharmacology."
           }
-        ]
+        ],
+        "content": "Picture this: You're on a busy medical-surgical floor. A patient is admitted with pneumonia. The hospitalist orders an antibiotic. The patient's chart flags an allergy. Your phone buzzes with a medication alert. In the next 30 seconds, you will make a decision that affects whether this patient recovers safely or experiences a serious adverse event.\n\nThis is pharmacology in real life. Not in a laboratory. Not in a textbook. In your hands, at the bedside, under pressure.\n\nPharmacology isn't just chemistry or memorization. It's clinical power. It's the difference between healing and harm. And as a registered nurse, you are the last line of defense between a medication order and a patient's body.\n\nWhy Pharmacology Matters for Nurses:\n\nHere's the uncomfortable truth: A physician prescribes medications, but they don't give them. A pharmacist prepares them, but they don't assess the patient receiving them. You do. Every single day, you assess whether a medication is appropriate for THIS patient, question doses that seem wrong, recognize drug interactions, administer with precision, monitor for effects, educate patients, and report adverse events. This responsibility is massive. And it requires solid pharmacology knowledge.\n\nPharmacology is the science that studies the effects of chemical substances (drugs) on living organisms and biological systems. Nursing pharmacology is applied pharmacology \u2014 taking the science and making it safe, effective, and patient-centered."
       },
       {
         "sectionNumber": 2,
@@ -103,8 +193,18 @@
         "title": "Section 1.1: Definition & Scope of Pharmacology",
         "duration": 20,
         "wordCount": 2200,
-        "learningObjectives": ["Define core pharmacology terms", "Understand five major branches of pharmacology", "Apply nursing pharmacology principles to clinical decision-making"],
-        "keyTakeaways": ["Pharmacokinetics = What the body does to the drug (ADME)", "Pharmacodynamics = What the drug does to the body (mechanism of action)", "Pharmacogenomics explains why drugs work differently in different people", "Nursing pharmacology is APPLIED pharmacology — taking science and making it safe, effective, and patient-centered", "Six key nursing responsibilities: Assessment, Clinical Judgment, Administration, Monitoring, Patient Education, Communication & Advocacy"],
+        "learningObjectives": [
+          "Define core pharmacology terms",
+          "Understand five major branches of pharmacology",
+          "Apply nursing pharmacology principles to clinical decision-making"
+        ],
+        "keyTakeaways": [
+          "Pharmacokinetics = What the body does to the drug (ADME)",
+          "Pharmacodynamics = What the drug does to the body (mechanism of action)",
+          "Pharmacogenomics explains why drugs work differently in different people",
+          "Nursing pharmacology is APPLIED pharmacology \u2014 taking science and making it safe, effective, and patient-centered",
+          "Six key nursing responsibilities: Assessment, Clinical Judgment, Administration, Monitoring, Patient Education, Communication & Advocacy"
+        ],
         "contentBlocks": [
           {
             "blockId": "sec1_1_block1",
@@ -116,7 +216,7 @@
             "blockId": "sec1_1_block2",
             "type": "taxonomy",
             "title": "Five Branches of Pharmacology",
-            "content": "1. Pharmacokinetics (PK): What the body does to the drug — Absorption, Distribution, Metabolism, Elimination. 2. Pharmacodynamics (PD): What the drug does to the body — Mechanism of action, receptor binding, effects. 3. Pharmacogenomics: Genetic variation in drug response — Why some patients need different doses. 4. Toxicology: Study of harmful effects of drugs — Includes overdose, chronic toxicity, birth defects, cancer risk. 5. Pharmacotherapy: Clinical application of pharmacology to treat disease — What nurses do daily."
+            "content": "1. Pharmacokinetics (PK): What the body does to the drug \u2014 Absorption, Distribution, Metabolism, Elimination. 2. Pharmacodynamics (PD): What the drug does to the body \u2014 Mechanism of action, receptor binding, effects. 3. Pharmacogenomics: Genetic variation in drug response \u2014 Why some patients need different doses. 4. Toxicology: Study of harmful effects of drugs \u2014 Includes overdose, chronic toxicity, birth defects, cancer risk. 5. Pharmacotherapy: Clinical application of pharmacology to treat disease \u2014 What nurses do daily."
           },
           {
             "blockId": "sec1_1_block3",
@@ -130,7 +230,8 @@
             "title": "Real-World Examples: Nursing Pharmacology in Action",
             "content": "Example 1: Drug Interaction You Caught. Your patient is on warfarin (anticoagulant) for atrial fibrillation. New order: naproxen for arthritis. You recognize NSAIDs increase bleeding risk with warfarin. You contact prescriber suggesting acetaminophen instead. You prevented a GI bleed. Example 2: The Dose That Seemed Too High. Order: Metformin 2000 mg for 82-year-old with declining kidney function. You know metformin accumulates in kidney disease, causing lactic acidosis. You alert prescriber to check renal function and adjust dose. You prevented serious toxicity. Example 3: Patient's Concern You Validated. Patient asks why he still needs blood pressure medicine if his pressure is normal. You explain that the medicine is WORKING to keep it normal. If he stops, it will rise. Adherence improves."
           }
-        ]
+        ],
+        "content": "Pharmacology = the science of drug-organism interactions. Drug = any chemical substance that affects biological function. Medicine = a drug used therapeutically. Medication = the actual preparation given to a patient.\n\nThe Big Picture: Pharmacology Branches:\n\n1. Pharmacokinetics (PK) - What the body does to the drug: Absorption, Distribution, Metabolism, Elimination (ADME)\n\n2. Pharmacodynamics (PD) - What the drug does to the body: How the drug binds to receptors and produces effects\n\n3. Pharmacogenomics - Genetic variation in drug response and why some patients need different doses\n\n4. Toxicology - Study of harmful effects of drugs including overdose effects, chronic toxicity, and birth defect risks\n\n5. Pharmacotherapy - Clinical application of pharmacology to treat disease\n\nNursing pharmacology is the application of pharmacological principles to safe, effective, evidence-based medication administration. It encompasses assessment of appropriateness, clinical judgment, proper administration, monitoring for effects, patient education, and advocacy."
       },
       {
         "sectionNumber": 3,
@@ -138,26 +239,37 @@
         "title": "Section 1.2: Historical Context of Pharmacology",
         "duration": 20,
         "wordCount": 2400,
-        "learningObjectives": ["Trace the evolution of pharmacology from ancient times to the modern era", "Understand how historical events shaped current drug development and safety practices", "Recognize the significance of major pharmaceutical breakthroughs"],
-        "keyTakeaways": ["Ancient era: Trial-and-error herbalism; no understanding of mechanism", "1897: Aspirin synthesized — first truly successful synthetic drug", "1928: Penicillin discovered (Fleming, accidentally); changed medicine forever", "1950s-60s: Antibiotic golden age; infectious diseases stopped being death sentences", "1960s-present: Molecular biology reveals HOW drugs work; precision medicine emerging", "Modern challenge: 10,000+ FDA-approved drugs; resistance and interactions as major concerns"],
+        "learningObjectives": [
+          "Trace the evolution of pharmacology from ancient times to the modern era",
+          "Understand how historical events shaped current drug development and safety practices",
+          "Recognize the significance of major pharmaceutical breakthroughs"
+        ],
+        "keyTakeaways": [
+          "Ancient era: Trial-and-error herbalism; no understanding of mechanism",
+          "1897: Aspirin synthesized \u2014 first truly successful synthetic drug",
+          "1928: Penicillin discovered (Fleming, accidentally); changed medicine forever",
+          "1950s-60s: Antibiotic golden age; infectious diseases stopped being death sentences",
+          "1960s-present: Molecular biology reveals HOW drugs work; precision medicine emerging",
+          "Modern challenge: 10,000+ FDA-approved drugs; resistance and interactions as major concerns"
+        ],
         "contentBlocks": [
           {
             "blockId": "sec1_2_block1",
             "type": "historical_era",
             "title": "Ancient & Medieval Era (2000 BCE - 1500 CE): Trial and Error",
-            "content": "For most of human history, pharmacology was actually toxicology — people discovered which plants helped and which killed you by experimenting. What They Knew: Willow bark relieved fever and pain. Opium poppies relieved pain and promoted sleep. Foxglove affected the heart. Certain herbs could poison enemies. Alcohol numbed pain. What They Didn't Know: Why these things worked. How much was safe. How they affected the body. Why the same dose worked differently in different people. Why some people got better and others didn't. Impact on Medicine: Medicine was as much magic and superstition as science. Humoral theory dominated. Treatments were often harmful (bloodletting, mercury for syphilis, arsenic for infection). Mortality from infection was accepted as inevitable."
+            "content": "For most of human history, pharmacology was actually toxicology \u2014 people discovered which plants helped and which killed you by experimenting. What They Knew: Willow bark relieved fever and pain. Opium poppies relieved pain and promoted sleep. Foxglove affected the heart. Certain herbs could poison enemies. Alcohol numbed pain. What They Didn't Know: Why these things worked. How much was safe. How they affected the body. Why the same dose worked differently in different people. Why some people got better and others didn't. Impact on Medicine: Medicine was as much magic and superstition as science. Humoral theory dominated. Treatments were often harmful (bloodletting, mercury for syphilis, arsenic for infection). Mortality from infection was accepted as inevitable."
           },
           {
             "blockId": "sec1_2_block2",
             "type": "historical_era",
             "title": "The Turning Point: 1800s Industrial Revolution",
-            "content": "The 1800s changed everything. Chemistry emerged as a science. Chemists began isolating the active ingredients from plants. Instead of grinding up whole plants (containing hundreds of compounds, many toxic), chemists extracted and synthesized single active molecules. 1870s-1890s: The First Synthetic Drugs. Chemists synthesized pure, reliable drugs. 1897: Aspirin was synthesized from willow bark — first truly successful synthetic drug with reliable dose and predictable effect, safer than the raw plant. This marked the beginning of modern pharmacology. 1906: Food and Drug Act. Motivated by scandals (patent medicines containing cocaine, opium, arsenic), the law required drugs to be labeled with contents and started the FDA. Impact: Drugs became more scientific, more reliable, but still largely used empirically (trial and error clinically)."
+            "content": "The 1800s changed everything. Chemistry emerged as a science. Chemists began isolating the active ingredients from plants. Instead of grinding up whole plants (containing hundreds of compounds, many toxic), chemists extracted and synthesized single active molecules. 1870s-1890s: The First Synthetic Drugs. Chemists synthesized pure, reliable drugs. 1897: Aspirin was synthesized from willow bark \u2014 first truly successful synthetic drug with reliable dose and predictable effect, safer than the raw plant. This marked the beginning of modern pharmacology. 1906: Food and Drug Act. Motivated by scandals (patent medicines containing cocaine, opium, arsenic), the law required drugs to be labeled with contents and started the FDA. Impact: Drugs became more scientific, more reliable, but still largely used empirically (trial and error clinically)."
           },
           {
             "blockId": "sec1_2_block3",
             "type": "historical_era",
             "title": "The Antibiotic Revolution (1920s-1960s): Saving Lives",
-            "content": "This period changed medicine forever. 1921: Insulin Discovered. Frederick Banting discovered insulin could treat diabetes. Before insulin, Type 1 diabetes was a death sentence (children died within months). After insulin, diabetes became a manageable chronic disease. This was the first 'magic bullet' drug proven to work. 1928: Penicillin Discovered. Alexander Fleming, accidentally noticed a mold (Penicillium notatum) killed bacteria. Initial reaction: 'Interesting lab finding, but probably not useful.' It took 15 years and WWII urgency before mass production. 1941: Penicillin Mass Production. WWII provided urgency and funding. Penicillin became available for soldiers with infected wounds. Outcome: Soldiers who would have lost limbs or died from infections were cured. Revolutionary: Changed perception of antibiotics from 'nice to have' to 'lifesaving.' 1950s-1960s: Antibiotic Golden Age. Tetracyclines, cephalosporins, aminoglycosides discovered. Each provided coverage for different bacteria. Infectious diseases, which killed millions, became treatable. Impact on Nursing: Shift from 'comfort care' to 'curative medicine.' Nurses needed to understand these new drugs: dosing, administration, monitoring. Formal pharmacology education became part of nursing curriculum. Nurses gained credibility as medication experts. The Dark Side: Overuse and misuse of antibiotics led to antibiotic resistance — a problem we're still fighting today (MRSA, C. difficile, resistant TB)."
+            "content": "This period changed medicine forever. 1921: Insulin Discovered. Frederick Banting discovered insulin could treat diabetes. Before insulin, Type 1 diabetes was a death sentence (children died within months). After insulin, diabetes became a manageable chronic disease. This was the first 'magic bullet' drug proven to work. 1928: Penicillin Discovered. Alexander Fleming, accidentally noticed a mold (Penicillium notatum) killed bacteria. Initial reaction: 'Interesting lab finding, but probably not useful.' It took 15 years and WWII urgency before mass production. 1941: Penicillin Mass Production. WWII provided urgency and funding. Penicillin became available for soldiers with infected wounds. Outcome: Soldiers who would have lost limbs or died from infections were cured. Revolutionary: Changed perception of antibiotics from 'nice to have' to 'lifesaving.' 1950s-1960s: Antibiotic Golden Age. Tetracyclines, cephalosporins, aminoglycosides discovered. Each provided coverage for different bacteria. Infectious diseases, which killed millions, became treatable. Impact on Nursing: Shift from 'comfort care' to 'curative medicine.' Nurses needed to understand these new drugs: dosing, administration, monitoring. Formal pharmacology education became part of nursing curriculum. Nurses gained credibility as medication experts. The Dark Side: Overuse and misuse of antibiotics led to antibiotic resistance \u2014 a problem we're still fighting today (MRSA, C. difficile, resistant TB)."
           },
           {
             "blockId": "sec1_2_block4",
@@ -169,9 +281,10 @@
             "blockId": "sec1_2_block5",
             "type": "timeline_summary",
             "title": "The Evolution: What This Means for You Today",
-            "content": "Ancient era: Plants have effects → Respect that drugs are powerful. 1800s: Chemistry reveals active ingredients → Drugs have specific mechanisms. 1920s-40s: Antibiotics save lives → Drugs can cure diseases, not just palliate. 1950s-60s: Resistance emerges → Use drugs wisely; overuse is dangerous. 1960s-70s: Molecular targets identified → Understand HOW drugs work, not just THAT they work. 1980s-90s: Genetics matter → Different patients need different doses. 2000s-present: Precision medicine → Combine genetics, pathophysiology, pharmacology for individualized treatment. Bottom line: You're practicing in an era where pharmacology knowledge is both incredibly powerful and incredibly important. A nurse who understands the science can prevent harm and optimize outcomes."
+            "content": "Ancient era: Plants have effects \u2192 Respect that drugs are powerful. 1800s: Chemistry reveals active ingredients \u2192 Drugs have specific mechanisms. 1920s-40s: Antibiotics save lives \u2192 Drugs can cure diseases, not just palliate. 1950s-60s: Resistance emerges \u2192 Use drugs wisely; overuse is dangerous. 1960s-70s: Molecular targets identified \u2192 Understand HOW drugs work, not just THAT they work. 1980s-90s: Genetics matter \u2192 Different patients need different doses. 2000s-present: Precision medicine \u2192 Combine genetics, pathophysiology, pharmacology for individualized treatment. Bottom line: You're practicing in an era where pharmacology knowledge is both incredibly powerful and incredibly important. A nurse who understands the science can prevent harm and optimize outcomes."
           }
-        ]
+        ],
+        "content": "Pharmacology is young as a science. For most of human history, people didn't understand how drugs worked.\n\nAncient times (2000 BCE - 1600 CE): Trial and error with plants - willow bark for fever, opium poppies for pain, foxglove for heart conditions. But no understanding of mechanism, massive toxicity, and unpredictable efficacy.\n\nIndustrial revolution (1800s): Chemistry met medicine. Chemists began isolating active compounds. In 1897, aspirin was synthesized - the first truly successful synthetic drug. In 1906, the Food and Drug Act passed, requiring drug safety.\n\nAntibiotic revolution (1920s-1950s): Penicillin was discovered in 1928, mass-produced during WWII, and revolutionized medicine. By the 1950s-60s, the antibiotic 'golden age' had begun with tetracyclines, cephalosporins, and aminoglycosides. Infectious diseases, which killed millions, became treatable.\n\nModern era (1960s-present): Molecular biology revealed how drugs bind to receptors. Pharmacogenomics explained why drugs work differently in different people. Precision medicine now targets specific genetic mutations. We have 10,000+ FDA-approved drugs, more combinations, more interactions, and more potential for harm if used carelessly. This is where nurses' pharmacology knowledge becomes critical for patient safety."
       },
       {
         "sectionNumber": 4,
@@ -179,14 +292,25 @@
         "title": "Section 1.3: Drug Classification Systems",
         "duration": 30,
         "wordCount": 3500,
-        "learningObjectives": ["Classify drugs using three major systems: therapeutic, chemical, and regulatory", "Predict drug effects and side effects based on drug class", "Understand DEA scheduling and its clinical implications"],
-        "keyTakeaways": ["Therapeutic classification: Groups drugs by what disease they treat; helps predict side effects", "Chemical classification: Explains drug properties (absorption route, interactions)", "Regulatory (DEA) classification: Determines legal control and abuse potential (Schedule I-V)", "Schedule II drugs (opioids, stimulants): High abuse potential; strict documentation required", "Schedule IV drugs (benzodiazepines): Moderate abuse potential; habit-forming even at therapeutic doses", "Recognizing drug name patterns (-olol, -pril, -sartan, -statin, -prazole) helps you immediately predict drug class and effects"],
+        "learningObjectives": [
+          "Classify drugs using three major systems: therapeutic, chemical, and regulatory",
+          "Predict drug effects and side effects based on drug class",
+          "Understand DEA scheduling and its clinical implications"
+        ],
+        "keyTakeaways": [
+          "Therapeutic classification: Groups drugs by what disease they treat; helps predict side effects",
+          "Chemical classification: Explains drug properties (absorption route, interactions)",
+          "Regulatory (DEA) classification: Determines legal control and abuse potential (Schedule I-V)",
+          "Schedule II drugs (opioids, stimulants): High abuse potential; strict documentation required",
+          "Schedule IV drugs (benzodiazepines): Moderate abuse potential; habit-forming even at therapeutic doses",
+          "Recognizing drug name patterns (-olol, -pril, -sartan, -statin, -prazole) helps you immediately predict drug class and effects"
+        ],
         "contentBlocks": [
           {
             "blockId": "sec1_3_block1",
             "type": "classification_system",
             "title": "Classification #1: By Therapeutic Use (What It's For)",
-            "content": "This groups drugs by what disease or symptom they treat. Cardiovascular drugs (antihypertensives, anticoagulants, antiplatelets, antiarrhythmics, inotropes) treat heart and blood vessel disease. Respiratory drugs (bronchodilators, corticosteroids, antihistamines, decongestants, cough suppressants) treat lungs. GI drugs (antacids, H2 blockers, PPIs, antiemetics, laxatives, antidiarrheals) treat stomach/intestines. CNS drugs (analgesics, sedatives, antidepressants, antipsychotics, anticonvulsants, anxiolytics) treat brain/nervous system. And many more categories. Why This Classification Matters: (1) Predict side effects: All antihypertensives can cause hypotension. All NSAIDs can cause GI upset. This helps you monitor appropriately. (2) Anticipate interactions: CNS depressants together are dangerous. (3) Patient education: 'This is an antibiotic — finish the whole course even if you feel better.' (4) Clinical assessment: Patient on beta-blocker should have lower heart rate and blood pressure. If not, either dose is wrong or patient isn't taking it."
+            "content": "This groups drugs by what disease or symptom they treat. Cardiovascular drugs (antihypertensives, anticoagulants, antiplatelets, antiarrhythmics, inotropes) treat heart and blood vessel disease. Respiratory drugs (bronchodilators, corticosteroids, antihistamines, decongestants, cough suppressants) treat lungs. GI drugs (antacids, H2 blockers, PPIs, antiemetics, laxatives, antidiarrheals) treat stomach/intestines. CNS drugs (analgesics, sedatives, antidepressants, antipsychotics, anticonvulsants, anxiolytics) treat brain/nervous system. And many more categories. Why This Classification Matters: (1) Predict side effects: All antihypertensives can cause hypotension. All NSAIDs can cause GI upset. This helps you monitor appropriately. (2) Anticipate interactions: CNS depressants together are dangerous. (3) Patient education: 'This is an antibiotic \u2014 finish the whole course even if you feel better.' (4) Clinical assessment: Patient on beta-blocker should have lower heart rate and blood pressure. If not, either dose is wrong or patient isn't taking it."
           },
           {
             "blockId": "sec1_3_block2",
@@ -198,9 +322,10 @@
             "blockId": "sec1_3_block3",
             "type": "regulatory_schedule",
             "title": "DEA Classification System (Legal Control Levels)",
-            "content": "Schedule I: No accepted medical use, high abuse potential (Heroin, LSD, marijuana federally). Nursing role: These are illegal; understand signs of abuse. Schedule II: High abuse potential, some medical use (Morphine, oxycodone, amphetamine, cocaine). Regulations: MD must write new prescription (no refills), no phone orders (some exceptions), controlled substance counts/wasting documented, high diversion risk. Nursing: Strict documentation, monitor for drug-seeking behavior, recognize signs of diversion (wasting patterns, patients always early for refills), never leave unattended, report missing doses. Example: Oxycodone is Schedule II, potent, extremely addictive — even patients taking legitimately can develop addiction. Nursing monitors pain relief, watches for signs of abuse (escalating doses, doctor-shopping, injection use). Schedule III: Moderate abuse potential (Acetaminophen + codeine, barbiturates, anabolic steroids). Regulations: Prescriptions can have 5 refills, phone orders allowed, less strict documentation. Nursing: Monitor use, watch for abuse patterns. Schedule IV: Lower abuse potential (Benzodiazepines, tramadol, phenobarbital). Regulations: Can be refilled, phone orders allowed, less strict documentation. Nursing: Monitor for dependence (benzodiazepines are habit-forming even at therapeutic doses), withdrawal can be serious (seizures, anxiety, tremors), never abruptly stop. Example: Benzodiazepines used for anxiety/insomnia/seizures are Schedule IV but seriously habit-forming. Dependence can develop in 2-4 weeks. Withdrawal is medically serious (seizures possible). Schedule V: Minimal abuse potential (Cough syrups with codeine, some antidiarrheals). Regulations: Can be sold OTC in some states with restrictions. Nursing: Less common in clinical practice. Why This Classification Matters: (1) Legal responsibility: You must follow DEA regulations. Violations cost your license. (2) Patient safety: Recognize when patients seek drugs for non-medical reasons. (3) Addiction recognition: Many develop addiction from legitimate prescriptions. (4) Substance abuse history: Ask patients about past addiction so prescriber can make informed decisions. (5) Documentation: High-risk drugs require meticulous documentation. You may testify in court. Records must be crystal clear."
+            "content": "Schedule I: No accepted medical use, high abuse potential (Heroin, LSD, marijuana federally). Nursing role: These are illegal; understand signs of abuse. Schedule II: High abuse potential, some medical use (Morphine, oxycodone, amphetamine, cocaine). Regulations: MD must write new prescription (no refills), no phone orders (some exceptions), controlled substance counts/wasting documented, high diversion risk. Nursing: Strict documentation, monitor for drug-seeking behavior, recognize signs of diversion (wasting patterns, patients always early for refills), never leave unattended, report missing doses. Example: Oxycodone is Schedule II, potent, extremely addictive \u2014 even patients taking legitimately can develop addiction. Nursing monitors pain relief, watches for signs of abuse (escalating doses, doctor-shopping, injection use). Schedule III: Moderate abuse potential (Acetaminophen + codeine, barbiturates, anabolic steroids). Regulations: Prescriptions can have 5 refills, phone orders allowed, less strict documentation. Nursing: Monitor use, watch for abuse patterns. Schedule IV: Lower abuse potential (Benzodiazepines, tramadol, phenobarbital). Regulations: Can be refilled, phone orders allowed, less strict documentation. Nursing: Monitor for dependence (benzodiazepines are habit-forming even at therapeutic doses), withdrawal can be serious (seizures, anxiety, tremors), never abruptly stop. Example: Benzodiazepines used for anxiety/insomnia/seizures are Schedule IV but seriously habit-forming. Dependence can develop in 2-4 weeks. Withdrawal is medically serious (seizures possible). Schedule V: Minimal abuse potential (Cough syrups with codeine, some antidiarrheals). Regulations: Can be sold OTC in some states with restrictions. Nursing: Less common in clinical practice. Why This Classification Matters: (1) Legal responsibility: You must follow DEA regulations. Violations cost your license. (2) Patient safety: Recognize when patients seek drugs for non-medical reasons. (3) Addiction recognition: Many develop addiction from legitimate prescriptions. (4) Substance abuse history: Ask patients about past addiction so prescriber can make informed decisions. (5) Documentation: High-risk drugs require meticulous documentation. You may testify in court. Records must be crystal clear."
           }
-        ]
+        ],
+        "content": "Drugs can be organized in multiple ways, each useful for different purposes.\n\nClassification #1: By Therapeutic Use (What It's For) - Groups drugs by the disease or symptom they treat. Cardiovascular drugs lower blood pressure or prevent clots. Respiratory drugs open airways or reduce inflammation. GI drugs treat stomach acid or constipation. CNS drugs relieve pain or treat psychiatric symptoms. This classification helps predict side effects and anticipate interactions.\n\nClassification #2: By Chemical Structure (What It's Made Of) - Alkaloids are plant-derived and often potent. Proteins and peptides must be injected. Lipids are fat-soluble and cross the blood-brain barrier. Synthetic compounds are chemically created and highly controlled. Understanding structure explains why some drugs must be injected while others can be pills.\n\nClassification #3: By Regulatory Schedule (Legal Control Level) - Schedule I has no medical use and high abuse potential. Schedule II has high abuse potential but some medical use (opioids, stimulants). Schedules III-V have decreasing abuse potential. This is legally binding - nurses must follow DEA regulations strictly or risk losing their license."
       },
       {
         "sectionNumber": 5,
@@ -208,14 +333,33 @@
         "title": "Section 1.4: Regulatory Bodies & The FDA Drug Approval Process",
         "duration": 40,
         "wordCount": 3013,
-        "learningObjectives": ["Understand the FDA drug approval timeline and phases", "Identify key regulatory bodies and their roles", "Recognize Black Box warnings and serious adverse events", "Understand MedWatch reporting and your role in drug safety", "Know REMS (Risk Evaluation and Mitigation Strategy) programs", "Appreciate the rigorous testing process before drugs reach patients", "Understand Phase 4 post-marketing surveillance"],
-        "keyTakeaways": ["FDA drug approval takes 10-15 years and costs $2-3 billion", "Phase 1: Safety testing in healthy volunteers (20-100 people)", "Phase 2: Efficacy testing in patients with target disease (100-500 people)", "Phase 3: Large confirmation trials (1,000-5,000 people); if drug passes, moves to NDA", "Phase 4: Post-marketing surveillance (ongoing) — MedWatch system catches rare side effects", "Black box warnings appear when serious/fatal risks emerge post-approval; Vioxx case shows why Phase 4 matters", "FDA Approval Pathways: Standard (10 mo), Priority (6 mo), Accelerated (faster), Breakthrough Therapy, Conditional", "REMS programs restrict access to high-risk drugs (e.g., isotretinoin requires pregnancy tests, contraception)", "MedWatch: Report serious adverse events; you're part of Phase 4 safety system; reporting prevents future harm", "Key regulatory bodies: FDA (drug approval), DEA (controlled substances), State Nursing Boards (scope of practice), CDC (infection control), WHO (international)"],
+        "learningObjectives": [
+          "Understand the FDA drug approval timeline and phases",
+          "Identify key regulatory bodies and their roles",
+          "Recognize Black Box warnings and serious adverse events",
+          "Understand MedWatch reporting and your role in drug safety",
+          "Know REMS (Risk Evaluation and Mitigation Strategy) programs",
+          "Appreciate the rigorous testing process before drugs reach patients",
+          "Understand Phase 4 post-marketing surveillance"
+        ],
+        "keyTakeaways": [
+          "FDA drug approval takes 10-15 years and costs $2-3 billion",
+          "Phase 1: Safety testing in healthy volunteers (20-100 people)",
+          "Phase 2: Efficacy testing in patients with target disease (100-500 people)",
+          "Phase 3: Large confirmation trials (1,000-5,000 people); if drug passes, moves to NDA",
+          "Phase 4: Post-marketing surveillance (ongoing) \u2014 MedWatch system catches rare side effects",
+          "Black box warnings appear when serious/fatal risks emerge post-approval; Vioxx case shows why Phase 4 matters",
+          "FDA Approval Pathways: Standard (10 mo), Priority (6 mo), Accelerated (faster), Breakthrough Therapy, Conditional",
+          "REMS programs restrict access to high-risk drugs (e.g., isotretinoin requires pregnancy tests, contraception)",
+          "MedWatch: Report serious adverse events; you're part of Phase 4 safety system; reporting prevents future harm",
+          "Key regulatory bodies: FDA (drug approval), DEA (controlled substances), State Nursing Boards (scope of practice), CDC (infection control), WHO (international)"
+        ],
         "contentBlocks": [
           {
             "blockId": "sec1_4_block1",
             "type": "process_timeline",
             "title": "The FDA Drug Approval Journey: Preclinical Through Phase 4",
-            "content": "Preclinical Testing (3-6 years): Laboratory and animal testing. Before a drug is ever tested in humans, it's tested in labs and animals. Laboratory Testing includes cell cultures, mechanism studies, toxicology, and chemistry. Animal Testing tests in mice, rats, dogs. Success rate: 5,000 compounds tested → only 5 move forward. Cost: $100,000-$1M (for the 5 that succeed). Purpose: Screen out drugs that are ineffective or too toxic before risking human exposure. IND Application (Investigational New Drug): After preclinical testing, the company submits complete preclinical data, proposed human trial design, manufacturing information, and proposed drug label to the FDA. FDA review: 30 days (can request more info, delay approval, or deny). Purpose: Ensure it's safe enough to test in humans. Phase 1 (1-2 years, 20-100 healthy volunteers): First time ever given to humans. Study design: Small number of healthy volunteers (not sick people), volunteers closely monitored, doses escalated gradually, often paid because of risk. Questions answered: Is it toxic at any dose? What's the maximum tolerated dose? How is it absorbed, distributed, metabolized, eliminated (ADME)? What side effects occur at therapeutic doses? Success rate: ~70% advance to Phase 2. Phase 2 (2-3 years, 100-500 patient volunteers): Now testing in people with the target disease. Study design: Sick patients volunteer, randomized, often double-blinded, measured outcomes. Questions answered: Does it actually treat the disease or just affect lab values? What dose is effective? What side effects occur in sick people (may differ from healthy volunteers)? Are there unexpected adverse effects? Success rate: ~33% advance to Phase 3. Phase 3 (2-4 years, 1,000-5,000 patient volunteers): Large trial confirming efficacy and safety in diverse populations. Study design: Large randomized controlled trials, multisite, diverse patients (ages, races, comorbidities), compared to placebo or standard treatment. Questions answered: Does it work as well as we thought in Phase 2? Are there rare side effects (only show up in large population)? Does it work differently in different subgroups (elderly, women, minorities)? Is it better than current treatment? Success rate: ~25-30% move to NDA (approval). NDA Application (New Drug Application): After Phase 3, company submits complete Phase 1, 2, 3 data, manufacturing processes, proposed drug label, and plan for ongoing monitoring. FDA review: Standard track 10 months, Priority track 6 months, Accelerated approval (immediately life-threatening) even faster. Decision: Approved, Conditional Approval, Rejected, or More Info Needed. If approved: Drug gets FDA approval for specific indication(s). Example: FDA approves 'Herceptin (trastuzumab) for HER2-positive breast cancer' — not for all cancer, just this type. Phase 4 (Ongoing): Post-marketing surveillance. Drug is on market being used by millions. Patients report adverse effects through MedWatch (FDA system). Rare side effects appear (only show up when 1M people take it). Long-term effects appear (10-year cancer risk, liver damage, etc.). New drug interactions discovered. Pregnancy/breastfeeding effects recognized. FDA actions: Black box warnings (serious/fatal risk), label updates, dose restrictions, restricted distribution programs, or in rare cases, drug withdrawal (example: Vioxx in 2004 for heart attack/stroke risk). Nursing role: You're part of Phase 4. When you report an adverse effect, you're contributing to drug safety for millions of future patients. Why it matters: Even after FDA approval, drugs can be discovered to have serious side effects. Your pharmacology knowledge helps you recognize these early."
+            "content": "Preclinical Testing (3-6 years): Laboratory and animal testing. Before a drug is ever tested in humans, it's tested in labs and animals. Laboratory Testing includes cell cultures, mechanism studies, toxicology, and chemistry. Animal Testing tests in mice, rats, dogs. Success rate: 5,000 compounds tested \u2192 only 5 move forward. Cost: $100,000-$1M (for the 5 that succeed). Purpose: Screen out drugs that are ineffective or too toxic before risking human exposure. IND Application (Investigational New Drug): After preclinical testing, the company submits complete preclinical data, proposed human trial design, manufacturing information, and proposed drug label to the FDA. FDA review: 30 days (can request more info, delay approval, or deny). Purpose: Ensure it's safe enough to test in humans. Phase 1 (1-2 years, 20-100 healthy volunteers): First time ever given to humans. Study design: Small number of healthy volunteers (not sick people), volunteers closely monitored, doses escalated gradually, often paid because of risk. Questions answered: Is it toxic at any dose? What's the maximum tolerated dose? How is it absorbed, distributed, metabolized, eliminated (ADME)? What side effects occur at therapeutic doses? Success rate: ~70% advance to Phase 2. Phase 2 (2-3 years, 100-500 patient volunteers): Now testing in people with the target disease. Study design: Sick patients volunteer, randomized, often double-blinded, measured outcomes. Questions answered: Does it actually treat the disease or just affect lab values? What dose is effective? What side effects occur in sick people (may differ from healthy volunteers)? Are there unexpected adverse effects? Success rate: ~33% advance to Phase 3. Phase 3 (2-4 years, 1,000-5,000 patient volunteers): Large trial confirming efficacy and safety in diverse populations. Study design: Large randomized controlled trials, multisite, diverse patients (ages, races, comorbidities), compared to placebo or standard treatment. Questions answered: Does it work as well as we thought in Phase 2? Are there rare side effects (only show up in large population)? Does it work differently in different subgroups (elderly, women, minorities)? Is it better than current treatment? Success rate: ~25-30% move to NDA (approval). NDA Application (New Drug Application): After Phase 3, company submits complete Phase 1, 2, 3 data, manufacturing processes, proposed drug label, and plan for ongoing monitoring. FDA review: Standard track 10 months, Priority track 6 months, Accelerated approval (immediately life-threatening) even faster. Decision: Approved, Conditional Approval, Rejected, or More Info Needed. If approved: Drug gets FDA approval for specific indication(s). Example: FDA approves 'Herceptin (trastuzumab) for HER2-positive breast cancer' \u2014 not for all cancer, just this type. Phase 4 (Ongoing): Post-marketing surveillance. Drug is on market being used by millions. Patients report adverse effects through MedWatch (FDA system). Rare side effects appear (only show up when 1M people take it). Long-term effects appear (10-year cancer risk, liver damage, etc.). New drug interactions discovered. Pregnancy/breastfeeding effects recognized. FDA actions: Black box warnings (serious/fatal risk), label updates, dose restrictions, restricted distribution programs, or in rare cases, drug withdrawal (example: Vioxx in 2004 for heart attack/stroke risk). Nursing role: You're part of Phase 4. When you report an adverse effect, you're contributing to drug safety for millions of future patients. Why it matters: Even after FDA approval, drugs can be discovered to have serious side effects. Your pharmacology knowledge helps you recognize these early."
           },
           {
             "blockId": "sec1_4_block2",
@@ -227,7 +371,7 @@
             "blockId": "sec1_4_block3",
             "type": "clinical_example",
             "title": "Black Box Warnings: When FDA Takes Action (Real Examples)",
-            "content": "Black box warnings appear on drug labels when serious or life-threatening risks emerge, usually during Phase 4. This is FDA's strongest warning short of withdrawal. Classic Example: Vioxx (Rofecoxib) - 2004 Withdrawal. Timeline: 1999 FDA approves Vioxx (NSAID for arthritis pain). 1999-2004 Marketed heavily; becomes blockbuster drug; 80 million prescriptions. 2000 Some studies suggest cardiovascular risk (increased heart attacks/strokes). 2002 FDA adds cardiovascular warning to label (not a black box yet). 2004 Large study proves Vioxx dramatically increases heart attack/stroke risk. 2004 Manufacturer VOLUNTARILY withdraws from market to avoid legal liability. Result: 60,000+ estimated deaths; billions in litigation; patient harm. Lesson for Nurses: Phase 4 surveillance is CRITICAL. Serious side effects can take years to detect. You're part of Phase 4 safety monitoring. Report adverse events — you could prevent next Vioxx-scale disaster. Other Black Box Examples: Avandia (Rosiglitazone) - Diabetes Drug. Approved 1999. 2007 Black box warning added (increased heart attack/stroke risk in some patients). Still on market but with restricted use and monitoring requirements. Isotretinoin (Accutane) - Severe Acne. Highly effective for severe acne. But: Severe birth defects (cleft palate, heart defects, mental retardation). Black box warning since approval; females of childbearing age must use contraception + monthly pregnancy tests. iPLEDGE program: Restricted distribution program to prevent pregnancy exposure. Black Box Warning Process: 1) Adverse events reported via MedWatch. 2) FDA reviews signals (statistical increase in adverse events). 3) If signal is serious and causal link likely: Black box warning added. 4) If signal is extremely serious: Drug restrictions or withdrawal."
+            "content": "Black box warnings appear on drug labels when serious or life-threatening risks emerge, usually during Phase 4. This is FDA's strongest warning short of withdrawal. Classic Example: Vioxx (Rofecoxib) - 2004 Withdrawal. Timeline: 1999 FDA approves Vioxx (NSAID for arthritis pain). 1999-2004 Marketed heavily; becomes blockbuster drug; 80 million prescriptions. 2000 Some studies suggest cardiovascular risk (increased heart attacks/strokes). 2002 FDA adds cardiovascular warning to label (not a black box yet). 2004 Large study proves Vioxx dramatically increases heart attack/stroke risk. 2004 Manufacturer VOLUNTARILY withdraws from market to avoid legal liability. Result: 60,000+ estimated deaths; billions in litigation; patient harm. Lesson for Nurses: Phase 4 surveillance is CRITICAL. Serious side effects can take years to detect. You're part of Phase 4 safety monitoring. Report adverse events \u2014 you could prevent next Vioxx-scale disaster. Other Black Box Examples: Avandia (Rosiglitazone) - Diabetes Drug. Approved 1999. 2007 Black box warning added (increased heart attack/stroke risk in some patients). Still on market but with restricted use and monitoring requirements. Isotretinoin (Accutane) - Severe Acne. Highly effective for severe acne. But: Severe birth defects (cleft palate, heart defects, mental retardation). Black box warning since approval; females of childbearing age must use contraception + monthly pregnancy tests. iPLEDGE program: Restricted distribution program to prevent pregnancy exposure. Black Box Warning Process: 1) Adverse events reported via MedWatch. 2) FDA reviews signals (statistical increase in adverse events). 3) If signal is serious and causal link likely: Black box warning added. 4) If signal is extremely serious: Drug restrictions or withdrawal."
           },
           {
             "blockId": "sec1_4_block4",
@@ -239,7 +383,7 @@
             "blockId": "sec1_4_block5",
             "type": "regulatory_guide",
             "title": "FDA Drug Labeling and REMS Programs: Protecting High-Risk Patients",
-            "content": "FDA Drug Labeling: What Nurses Need to Know. Prescribing Information (The Fine Print). FDA requires specific information on drug labels: Black Box Warning (if applicable): Printed prominently. Describes serious/fatal risks. Example: 'BEWARE: Can cause fatal Stevens-Johnson syndrome. Monitor for rash. D/C immediately if rash develops.' Indications and Usage: What the drug is approved to treat. Specific patient populations (ages, conditions). Example: 'Approved for HER2-positive breast cancer' (not ALL cancer). Dosage and Administration: How much to give. How often. Special instructions (with food? Separate from other meds?). Adjustments (renal impairment, hepatic impairment, elderly). Contraindications: When NOT to use (allergies, conditions, pregnancy). Warnings and Precautions: Serious but not immediately fatal risks. Requires monitoring or patient education. Example: 'Increased bleeding risk; monitor INR.' Adverse Reactions: Organized by frequency and system affected. Example: 'Most common (>10%): Headache, nausea, dizziness. Serious (≥1%): Anaphylaxis.' Drug Interactions: Major interactions listed. Mechanism (if CYP3A4 inhibitor, for example). Management (avoid, adjust dose, monitor). How to Use at Bedside: Always check the CURRENT prescribing information (not your memory) for: Dosing adjustments in renal/hepatic disease. Drug interactions. Monitoring requirements. Patient education points. REMS (Risk Evaluation and Mitigation Strategy) Programs. Some drugs have such serious risks that FDA requires additional safety measures: Restricted distribution programs. Example: Isotretinoin (Accutane) iPLEDGE Program. Because isotretinoin causes severe birth defects: Females of childbearing age must: Use two forms of contraception (IUD + pills, or pills + condoms). Provide monthly pregnancy tests. Sign consent forms confirming they understand risks. Enroll in iPLEDGE registry. Prescribers must be certified. Pharmacists must be certified. Cannot just call in prescription; must go through system. Clinical implication: Some drugs you can't just pick up. Special registration required. Patient education critical. Other REMS Examples: Methotrexate (cancer/autoimmune drug): Requires regular lab monitoring (CBC, liver, kidney). Clozapine (antipsychotic): Requires weekly lab work for 6 months, then less frequent monitoring. Thalidomide (multiple myeloma): Restricted distribution due to birth defect risk. Opioid medications: Many states require PDMP (Prescription Drug Monitoring Program) enrollment. Nursing Implications for REMS: 1) Know which medications have REMS — check pharmacy requirements. 2) Educate patients — explain why monitoring is necessary. 3) Document compliance — ensure patient enrolled in registries. 4) Coordinate care — work with prescribers and pharmacists. 5) Follow-up — contact patients about required lab work."
+            "content": "FDA Drug Labeling: What Nurses Need to Know. Prescribing Information (The Fine Print). FDA requires specific information on drug labels: Black Box Warning (if applicable): Printed prominently. Describes serious/fatal risks. Example: 'BEWARE: Can cause fatal Stevens-Johnson syndrome. Monitor for rash. D/C immediately if rash develops.' Indications and Usage: What the drug is approved to treat. Specific patient populations (ages, conditions). Example: 'Approved for HER2-positive breast cancer' (not ALL cancer). Dosage and Administration: How much to give. How often. Special instructions (with food? Separate from other meds?). Adjustments (renal impairment, hepatic impairment, elderly). Contraindications: When NOT to use (allergies, conditions, pregnancy). Warnings and Precautions: Serious but not immediately fatal risks. Requires monitoring or patient education. Example: 'Increased bleeding risk; monitor INR.' Adverse Reactions: Organized by frequency and system affected. Example: 'Most common (>10%): Headache, nausea, dizziness. Serious (\u22651%): Anaphylaxis.' Drug Interactions: Major interactions listed. Mechanism (if CYP3A4 inhibitor, for example). Management (avoid, adjust dose, monitor). How to Use at Bedside: Always check the CURRENT prescribing information (not your memory) for: Dosing adjustments in renal/hepatic disease. Drug interactions. Monitoring requirements. Patient education points. REMS (Risk Evaluation and Mitigation Strategy) Programs. Some drugs have such serious risks that FDA requires additional safety measures: Restricted distribution programs. Example: Isotretinoin (Accutane) iPLEDGE Program. Because isotretinoin causes severe birth defects: Females of childbearing age must: Use two forms of contraception (IUD + pills, or pills + condoms). Provide monthly pregnancy tests. Sign consent forms confirming they understand risks. Enroll in iPLEDGE registry. Prescribers must be certified. Pharmacists must be certified. Cannot just call in prescription; must go through system. Clinical implication: Some drugs you can't just pick up. Special registration required. Patient education critical. Other REMS Examples: Methotrexate (cancer/autoimmune drug): Requires regular lab monitoring (CBC, liver, kidney). Clozapine (antipsychotic): Requires weekly lab work for 6 months, then less frequent monitoring. Thalidomide (multiple myeloma): Restricted distribution due to birth defect risk. Opioid medications: Many states require PDMP (Prescription Drug Monitoring Program) enrollment. Nursing Implications for REMS: 1) Know which medications have REMS \u2014 check pharmacy requirements. 2) Educate patients \u2014 explain why monitoring is necessary. 3) Document compliance \u2014 ensure patient enrolled in registries. 4) Coordinate care \u2014 work with prescribers and pharmacists. 5) Follow-up \u2014 contact patients about required lab work."
           },
           {
             "blockId": "sec1_4_block6",
@@ -251,7 +395,7 @@
             "blockId": "sec1_4_block7",
             "type": "reference_table",
             "title": "Complete Timeline: Drug Development from Discovery to Phase 4",
-            "content": "Stage | Duration | Key Points | Success Rate. Research | 5-10 years | Discover drug in lab; develop concept | Low. Preclinical | 3-6 years | Lab + animal testing | 1 in 5,000. IND Application | 30 days | FDA review for human safety | 70% approved. Phase 1 | 1-2 years | 20-100 healthy volunteers; safety focus | 70% advance. Phase 2 | 2-3 years | 100-500 patients; efficacy focus | 33% advance. Phase 3 | 2-4 years | 1,000-5,000 patients; confirm safety/efficacy | 25-30% advance. NDA Review | 6-12 months | FDA reviews Phase 1, 2, 3 data | 90% approved. Approval | Day 1 | FDA approves drug for specific indication | —. Phase 4 | Ongoing | Market surveillance; monitor for rare effects | Continuous. Total Time from Discovery to Approval: 10-15 years. Total Cost: $2-3 billion."
+            "content": "Stage | Duration | Key Points | Success Rate. Research | 5-10 years | Discover drug in lab; develop concept | Low. Preclinical | 3-6 years | Lab + animal testing | 1 in 5,000. IND Application | 30 days | FDA review for human safety | 70% approved. Phase 1 | 1-2 years | 20-100 healthy volunteers; safety focus | 70% advance. Phase 2 | 2-3 years | 100-500 patients; efficacy focus | 33% advance. Phase 3 | 2-4 years | 1,000-5,000 patients; confirm safety/efficacy | 25-30% advance. NDA Review | 6-12 months | FDA reviews Phase 1, 2, 3 data | 90% approved. Approval | Day 1 | FDA approves drug for specific indication | \u2014. Phase 4 | Ongoing | Market surveillance; monitor for rare effects | Continuous. Total Time from Discovery to Approval: 10-15 years. Total Cost: $2-3 billion."
           },
           {
             "blockId": "sec1_4_block8",
@@ -259,7 +403,8 @@
             "title": "Key Regulatory Bodies and Their Roles",
             "content": "FDA (Food & Drug Administration): Role is drug approval, safety monitoring, labeling. Authority: Federal (nationwide). For nurses: Report serious adverse effects via MedWatch (online or form). DEA (Drug Enforcement Administration): Role is controlled substance classification and enforcement. Authority: Federal. For nurses: Maintain licensure, follow controlled substance regulations, report diversion. State Pharmacy Boards: Role is pharmacist licensing, pharmacy practice regulations. Authority: State. For nurses: Understand what pharmacists can/can't do (varies by state). State Nursing Boards: Role is RN licensing, scope of practice definitions. Authority: State. For nurses: Your RN license comes from here; medication administration rights defined here; different states have different rules. CDC (Centers for Disease Control and Prevention): Role is disease surveillance, infection control, antibiotic stewardship. Authority: Federal. For nurses: Follow infection control recommendations, report resistance patterns, use antibiotics judiciously. WHO (World Health Organization): Role is international drug standards, antibiotic stewardship globally. Authority: International. For nurses: Essential medicines list guides drug selection globally."
           }
-        ]
+        ],
+        "content": "Before any drug reaches a patient, it must go through rigorous testing and approval. This process takes 10-15 years and costs $2-3 billion.\n\nPhase 0: Preclinical Testing (3-6 years) - Laboratory and animal testing. 5,000 compounds tested; only 5 move forward.\n\nPhase 1: Initial Safety Testing (1-2 years, 20-100 healthy volunteers) - First time drug is given to humans. Doses escalated gradually. Questions: Is it toxic? What's the maximum tolerated dose? ~70% move to Phase 2.\n\nPhase 2: Efficacy Testing (2-3 years, 100-500 patient volunteers) - Testing in people with the target disease. Randomized, often double-blinded. Questions: Does it work? What side effects occur? ~33% move to Phase 3.\n\nPhase 3: Confirmation Testing (2-4 years, 1,000-5,000 patient volunteers) - Large trial in diverse populations. Compared to placebo or standard treatment. ~25-30% move to NDA (approval).\n\nPhase 4: Post-Marketing Surveillance (Ongoing) - Continuous monitoring for rare effects that only appear when millions take the drug. FDA can add warnings, restrict use, or withdraw drugs. You are part of Phase 4 when you report adverse events via MedWatch."
       },
       {
         "sectionNumber": 6,
@@ -267,8 +412,18 @@
         "title": "Section 1.5: Drug Names & Classification Codes",
         "duration": 15,
         "wordCount": 1800,
-        "learningObjectives": ["Understand the three names every drug has", "Prevent medication errors due to drug name confusion", "Recognize drug name patterns to predict drug class"],
-        "keyTakeaways": ["Generic name = Official chemical designation (same worldwide, lowercase)", "Brand name = Manufacturer's proprietary name (capitalized, unique per manufacturer)", "Chemical name = Complete chemical description (rarely used clinically, too complex)", "Multiple names for same drug = High medication error risk; ALWAYS check generic name", "Drug name patterns (-olol, -pril, -statin, etc.) immediately reveal drug class and predictable effects"],
+        "learningObjectives": [
+          "Understand the three names every drug has",
+          "Prevent medication errors due to drug name confusion",
+          "Recognize drug name patterns to predict drug class"
+        ],
+        "keyTakeaways": [
+          "Generic name = Official chemical designation (same worldwide, lowercase)",
+          "Brand name = Manufacturer's proprietary name (capitalized, unique per manufacturer)",
+          "Chemical name = Complete chemical description (rarely used clinically, too complex)",
+          "Multiple names for same drug = High medication error risk; ALWAYS check generic name",
+          "Drug name patterns (-olol, -pril, -statin, etc.) immediately reveal drug class and predictable effects"
+        ],
         "contentBlocks": [
           {
             "blockId": "sec1_5_block1",
@@ -280,9 +435,12 @@
             "blockId": "sec1_5_block2",
             "type": "clinical_scenario",
             "title": "Why Multiple Names Matter: The Medication Error Risk",
-            "content": "Real scenario: Mrs. Singh goes to three doctors. Doctor 1 gives her Tylenol for fever. Doctor 2 prescribes acetaminophen for pain. Doctor 3 recommends 'a good over-the-counter pain reliever' (actually Excedrin Tension, which contains acetaminophen). Mrs. Singh, not realizing all three are the same drug, takes all three. Tylenol: 500 mg. Acetaminophen: 500 mg. Excedrin Tension: 500 mg. Total: 1,500 mg in one dose (safe); but if she does this 3x daily = 4,500 mg/day (TOXIC; exceeds 4,000 mg/day max). Result: Acetaminophen toxicity → liver damage → potential liver failure. How you prevent this: (1) Always check the GENERIC name, not just the brand name. (2) Ask patients: 'What other medications are you taking?' (might discover unintended duplicates). (3) Educate patients: 'Tylenol and acetaminophen are the same drug.'"
+            "content": "Real scenario: Mrs. Singh goes to three doctors. Doctor 1 gives her Tylenol for fever. Doctor 2 prescribes acetaminophen for pain. Doctor 3 recommends 'a good over-the-counter pain reliever' (actually Excedrin Tension, which contains acetaminophen). Mrs. Singh, not realizing all three are the same drug, takes all three. Tylenol: 500 mg. Acetaminophen: 500 mg. Excedrin Tension: 500 mg. Total: 1,500 mg in one dose (safe); but if she does this 3x daily = 4,500 mg/day (TOXIC; exceeds 4,000 mg/day max). Result: Acetaminophen toxicity \u2192 liver damage \u2192 potential liver failure. How you prevent this: (1) Always check the GENERIC name, not just the brand name. (2) Ask patients: 'What other medications are you taking?' (might discover unintended duplicates). (3) Educate patients: 'Tylenol and acetaminophen are the same drug.'"
           }
-        ]
+        ],
+        "content": "Every drug has multiple names:\n\n1. Generic Name - Official chemical designation, same worldwide. Examples: Acetaminophen, Ibuprofen, Metoprolol. Usually cheaper and allows quick identification of drug class.\n\n2. Brand Name - Manufacturer's commercial name, capitalized. Examples: Tylenol (acetaminophen), Advil (ibuprofen). Easy to pronounce but expensive; multiple brands of same drug cause confusion.\n\n3. Chemical Name - Complete chemical description. Too complex for everyday use.\n\nDrug Name Patterns (Learning Tool):\n- Beta-blockers end in -olol: metoprolol, propranolol. All lower heart rate and blood pressure.\n- ACE Inhibitors end in -pril: lisinopril, enalapril. All cause dry cough in 20% of patients.\n- ARBs end in -sartan: losartan, valsartan. Similar to ACE inhibitors but no cough.\n- Statins end in -statin: atorvastatin, simvastatin. All can cause muscle pain.\n- Proton Pump Inhibitors end in -prazole: omeprazole, lansoprazole. All reduce stomach acid.\n- Benzodiazepines end in -am or -olam: diazepam, lorazepam. All cause dependence.\n- Fluoroquinolones end in -floxacin: ciprofloxacin, levofloxacin. All risk C. difficile infection.\n\nRecognizing these patterns helps you immediately predict side effects and interactions.",
+        "videoSegmentId": "video_01_pharmacokinetics",
+        "videoCaption": "Pharmacokinetics - The Verbatim Masterclass"
       },
       {
         "sectionNumber": 7,
@@ -290,8 +448,23 @@
         "title": "Section 1.6: Pharmacokinetics vs. Pharmacodynamics",
         "duration": 45,
         "wordCount": 4200,
-        "learningObjectives": ["Distinguish between pharmacokinetics and pharmacodynamics", "Understand ADME processes and how they affect drug action", "Predict drug effects based on receptor binding mechanisms", "Apply PK/PD concepts to clinical decision-making"],
-        "keyTakeaways": ["PHARMACOKINETICS = What the body does to the drug (ADME: Absorption, Distribution, Metabolism, Elimination)", "PHARMACODYNAMICS = What the drug does to the body (receptor binding, dose-response, mechanism)", "Absorption: Movement from site of administration into bloodstream; affected by route, food, pH, GI motility", "Distribution: Movement from bloodstream into tissues; affected by blood flow, lipophilicity, protein binding", "Metabolism: Chemical transformation, primarily in liver via cytochrome P450 system", "Elimination: Removal of drug from body, primarily via kidneys; affected by renal function", "Half-life: Time for drug level to drop 50%; determines dosing frequency", "Agonist: Binds receptor and activates it; Antagonist: Binds receptor but doesn't activate it (blocks agonist)", "Therapeutic index (TD50/ED50): Ratio of toxic to effective dose; narrow TI = dangerous, wide TI = safe"],
+        "learningObjectives": [
+          "Distinguish between pharmacokinetics and pharmacodynamics",
+          "Understand ADME processes and how they affect drug action",
+          "Predict drug effects based on receptor binding mechanisms",
+          "Apply PK/PD concepts to clinical decision-making"
+        ],
+        "keyTakeaways": [
+          "PHARMACOKINETICS = What the body does to the drug (ADME: Absorption, Distribution, Metabolism, Elimination)",
+          "PHARMACODYNAMICS = What the drug does to the body (receptor binding, dose-response, mechanism)",
+          "Absorption: Movement from site of administration into bloodstream; affected by route, food, pH, GI motility",
+          "Distribution: Movement from bloodstream into tissues; affected by blood flow, lipophilicity, protein binding",
+          "Metabolism: Chemical transformation, primarily in liver via cytochrome P450 system",
+          "Elimination: Removal of drug from body, primarily via kidneys; affected by renal function",
+          "Half-life: Time for drug level to drop 50%; determines dosing frequency",
+          "Agonist: Binds receptor and activates it; Antagonist: Binds receptor but doesn't activate it (blocks agonist)",
+          "Therapeutic index (TD50/ED50): Ratio of toxic to effective dose; narrow TI = dangerous, wide TI = safe"
+        ],
         "contentBlocks": [
           {
             "blockId": "sec1_6_block1",
@@ -302,40 +475,43 @@
           {
             "blockId": "sec1_6_block2",
             "type": "detailed_adme",
-            "title": "A: ABSORPTION — Getting Into the Bloodstream",
-            "content": "Movement of a drug from the site of administration into the bloodstream. Routes of Administration (Most Important Factor): Oral (PO): Slowest, affected by food/GI factors, 30 min-2 hrs to peak, bioavailability 50-90%. Intravenous (IV): Fastest, 100% bioavailability, immediate onset. Intramuscular (IM): 10-30 minutes, bioavailability 80-95%. Subcutaneous (SQ): 15-30 minutes, bioavailability 80-95%. Transdermal: Hours to days, steady long-lasting, but slow to start. Inhalation: Fast (huge surface area), avoids first-pass. Sublingual: 5-10 minutes, avoids stomach. Rectal: 15-30 minutes, avoids GI upset. Clinical implication: Never assume same dose works for all routes. IV morphine 10 mg ≠ oral morphine 10 mg. Food Effects: Food can increase absorption (griseofulvin with fatty food), decrease absorption (tetracyclines with dairy), or have no effect. Stomach pH: Acid-labile drugs destroyed by stomach acid (insulin, some penicillins) — must be injected. GI Motility: Fast motility (diarrhea) = less absorption. Slow motility (constipation) = more absorption time. Bioavailability: Fraction of administered dose reaching systemic circulation. IV drug: Always 100%. Oral drug: Often 50-90% (some absorbed, some lost to metabolism/destruction)."
+            "title": "A: ABSORPTION \u2014 Getting Into the Bloodstream",
+            "content": "Movement of a drug from the site of administration into the bloodstream. Routes of Administration (Most Important Factor): Oral (PO): Slowest, affected by food/GI factors, 30 min-2 hrs to peak, bioavailability 50-90%. Intravenous (IV): Fastest, 100% bioavailability, immediate onset. Intramuscular (IM): 10-30 minutes, bioavailability 80-95%. Subcutaneous (SQ): 15-30 minutes, bioavailability 80-95%. Transdermal: Hours to days, steady long-lasting, but slow to start. Inhalation: Fast (huge surface area), avoids first-pass. Sublingual: 5-10 minutes, avoids stomach. Rectal: 15-30 minutes, avoids GI upset. Clinical implication: Never assume same dose works for all routes. IV morphine 10 mg \u2260 oral morphine 10 mg. Food Effects: Food can increase absorption (griseofulvin with fatty food), decrease absorption (tetracyclines with dairy), or have no effect. Stomach pH: Acid-labile drugs destroyed by stomach acid (insulin, some penicillins) \u2014 must be injected. GI Motility: Fast motility (diarrhea) = less absorption. Slow motility (constipation) = more absorption time. Bioavailability: Fraction of administered dose reaching systemic circulation. IV drug: Always 100%. Oral drug: Often 50-90% (some absorbed, some lost to metabolism/destruction)."
           },
           {
             "blockId": "sec1_6_block3",
             "type": "detailed_adme",
-            "title": "D: DISTRIBUTION — Where the Drug Goes",
-            "content": "Movement of absorbed drug from bloodstream into tissues. Blood Flow: Tissues with high blood flow get drug faster (heart, brain, lungs). Low blood flow tissues get drug slowly (bone, fat, muscle). Lipophilicity: Lipophilic drugs (fat-soluble) cross blood-brain barrier (reach CNS, good for brain infections, bad for side effects), cross placenta (teratogenic risk), accumulate in fatty tissue (long half-life). Hydrophilic drugs (water-soluble) don't cross BBB (can't treat CNS infections but less CNS side effects), don't cross placenta much (safer in pregnancy), don't accumulate in fat, eliminated primarily by kidneys. Plasma Protein Binding: Many drugs bind to proteins in blood (especially albumin). Only unbound (free) drug is active. Highly protein-bound drugs (warfarin 99%, diazepam 99%, NSAIDs 90-99%) can have dangerous interactions when drugs compete for binding sites. Example: Warfarin 99% bound (only 1% free). NSAID displaces warfarin from proteins. Result: More free warfarin → bleeding risk → need to check INR. Clinical implication: Know which drugs are highly protein-bound; watch for interactions."
+            "title": "D: DISTRIBUTION \u2014 Where the Drug Goes",
+            "content": "Movement of absorbed drug from bloodstream into tissues. Blood Flow: Tissues with high blood flow get drug faster (heart, brain, lungs). Low blood flow tissues get drug slowly (bone, fat, muscle). Lipophilicity: Lipophilic drugs (fat-soluble) cross blood-brain barrier (reach CNS, good for brain infections, bad for side effects), cross placenta (teratogenic risk), accumulate in fatty tissue (long half-life). Hydrophilic drugs (water-soluble) don't cross BBB (can't treat CNS infections but less CNS side effects), don't cross placenta much (safer in pregnancy), don't accumulate in fat, eliminated primarily by kidneys. Plasma Protein Binding: Many drugs bind to proteins in blood (especially albumin). Only unbound (free) drug is active. Highly protein-bound drugs (warfarin 99%, diazepam 99%, NSAIDs 90-99%) can have dangerous interactions when drugs compete for binding sites. Example: Warfarin 99% bound (only 1% free). NSAID displaces warfarin from proteins. Result: More free warfarin \u2192 bleeding risk \u2192 need to check INR. Clinical implication: Know which drugs are highly protein-bound; watch for interactions."
           },
           {
             "blockId": "sec1_6_block4",
             "type": "detailed_adme",
-            "title": "M: METABOLISM — Processing the Drug",
-            "content": "Chemical transformation of a drug into metabolites (usually to make it water-soluble for elimination). Primary site: Liver (80-90%), but also kidneys, lungs, GI tract, blood. Phase I: Oxidation via Cytochrome P450 System. CYP450: 50+ different enzymes, located primarily in liver. Major ones: CYP3A4 (metabolizes ~30% of all drugs), CYP2D6, CYP2C9, CYP2C19, CYP1A2. What it does: Modifies drug structure, usually adding oxygen or removing part. Enzyme Induction: One drug speeds metabolism of another. Inducer drugs: Rifampin (antibiotic), phenytoin (seizure), St. John's Wort (supplement). Effect: Increases metabolism → lower drug levels → less effect. Example: Rifampin + oral contraceptive. Rifampin induces metabolism. OCP levels drop. Ovulation occurs. Pregnancy results. Nursing: Counsel on need for backup contraception. Enzyme Inhibition: One drug slows metabolism of another. Inhibitor drugs: Ketoconazole (antifungal), grapefruit juice, cimetidine (acid reducer), ritonavir (HIV). Effect: Decreases metabolism → higher drug levels → more effect/toxicity. Example: Ketoconazole + simvastatin. Ketoconazole inhibits CYP3A4. Simvastatin levels increase 10x. Risk of muscle breakdown, kidney failure. Nursing: Avoid or use different statin. Phase II: Conjugation. After Phase I, drug is conjugated with water-soluble molecules (glutathione, sulfate, glucuronic acid) to make it water-soluble so kidneys can eliminate it. Example: Acetaminophen. Phase I creates toxic metabolite. Phase II glutathione conjugation makes it safe. Problem: Limited glutathione supply. Overdose depletes glutathione. Toxic metabolite accumulates → liver damage. Treatment: N-acetylcysteine (replenishes glutathione). Phase III: Transport. Active transport mechanisms move metabolites out of hepatocytes for elimination. Emerging importance in pharmacogenomics. Metabolism and Disease: Liver disease reduces metabolism → drugs accumulate → toxicity. Kidney disease reduces elimination of metabolites → metabolites accumulate. Genetics (Pharmacogenomics): Some have genetic variations in CYP450 enzymes. Poor metabolizers: Slow metabolism → toxicity at normal doses. Ultra-rapid metabolizers: Fast metabolism → need higher doses. Example: CYP2D6 polymorphisms in codeine response."
+            "title": "M: METABOLISM \u2014 Processing the Drug",
+            "content": "Chemical transformation of a drug into metabolites (usually to make it water-soluble for elimination). Primary site: Liver (80-90%), but also kidneys, lungs, GI tract, blood. Phase I: Oxidation via Cytochrome P450 System. CYP450: 50+ different enzymes, located primarily in liver. Major ones: CYP3A4 (metabolizes ~30% of all drugs), CYP2D6, CYP2C9, CYP2C19, CYP1A2. What it does: Modifies drug structure, usually adding oxygen or removing part. Enzyme Induction: One drug speeds metabolism of another. Inducer drugs: Rifampin (antibiotic), phenytoin (seizure), St. John's Wort (supplement). Effect: Increases metabolism \u2192 lower drug levels \u2192 less effect. Example: Rifampin + oral contraceptive. Rifampin induces metabolism. OCP levels drop. Ovulation occurs. Pregnancy results. Nursing: Counsel on need for backup contraception. Enzyme Inhibition: One drug slows metabolism of another. Inhibitor drugs: Ketoconazole (antifungal), grapefruit juice, cimetidine (acid reducer), ritonavir (HIV). Effect: Decreases metabolism \u2192 higher drug levels \u2192 more effect/toxicity. Example: Ketoconazole + simvastatin. Ketoconazole inhibits CYP3A4. Simvastatin levels increase 10x. Risk of muscle breakdown, kidney failure. Nursing: Avoid or use different statin. Phase II: Conjugation. After Phase I, drug is conjugated with water-soluble molecules (glutathione, sulfate, glucuronic acid) to make it water-soluble so kidneys can eliminate it. Example: Acetaminophen. Phase I creates toxic metabolite. Phase II glutathione conjugation makes it safe. Problem: Limited glutathione supply. Overdose depletes glutathione. Toxic metabolite accumulates \u2192 liver damage. Treatment: N-acetylcysteine (replenishes glutathione). Phase III: Transport. Active transport mechanisms move metabolites out of hepatocytes for elimination. Emerging importance in pharmacogenomics. Metabolism and Disease: Liver disease reduces metabolism \u2192 drugs accumulate \u2192 toxicity. Kidney disease reduces elimination of metabolites \u2192 metabolites accumulate. Genetics (Pharmacogenomics): Some have genetic variations in CYP450 enzymes. Poor metabolizers: Slow metabolism \u2192 toxicity at normal doses. Ultra-rapid metabolizers: Fast metabolism \u2192 need higher doses. Example: CYP2D6 polymorphisms in codeine response."
           },
           {
             "blockId": "sec1_6_block5",
             "type": "detailed_adme",
-            "title": "E: ELIMINATION — Getting Out of the Body",
-            "content": "Removal of unchanged or metabolized drug from the body. Routes: Renal (80-90%): Glomerular filtration (passive), active secretion (kidney cells actively transport drugs into urine), reabsorption (some drugs reabsorbed from urine back into blood). Example: Probenecid + Penicillin. Penicillin actively secreted. Probenecid blocks this. Result: Penicillin stays in blood longer → higher levels → better infection treatment. Biliary (Liver → Bile → GI Tract): Some drugs excreted in bile → gallbladder → released into intestines → eliminated in stool. Other routes: Lungs (volatile drugs like anesthesia gases), skin (minimal), hair (trace). Half-Life (t1/2): Time for drug level to drop to 50% of its peak. Why it matters: Determines dosing intervals. Short half-life drugs clear quickly, need frequent dosing (3-4x daily), missing a dose is usually OK. Example: Acetaminophen (t1/2 = 2-3 hours) → dosed every 4-6 hours. Long half-life drugs clear slowly, dosed once daily or weekly, missing a dose matters more. Example: Warfarin (t1/2 = 40 hours) → dosed once daily; misses do matter. Concept: Steady State. With repeated dosing, drug levels reach steady state where amount administered equals amount eliminated. Time to steady state = ~5 half-lives. Example: Warfarin. Half-life = 40 hours. After 8 days (5 × 40 hours), steady state reached. Problem: Patients want quick anticoagulation but warfarin is slow. Solution: Bridge with heparin (faster-acting). Renal Function and Drug Elimination: Kidney disease dramatically affects drug elimination. GFR ~90 (normal) → most drugs cleared normally. GFR 60-89 (mild) → most still cleared. GFR 30-59 (moderate) → many need adjustment. GFR <30 (severe) → many need major reduction or avoidance. Nursing action: Know patient's renal function. Alert prescriber if GFR low and drug is renally eliminated."
+            "title": "E: ELIMINATION \u2014 Getting Out of the Body",
+            "content": "Removal of unchanged or metabolized drug from the body. Routes: Renal (80-90%): Glomerular filtration (passive), active secretion (kidney cells actively transport drugs into urine), reabsorption (some drugs reabsorbed from urine back into blood). Example: Probenecid + Penicillin. Penicillin actively secreted. Probenecid blocks this. Result: Penicillin stays in blood longer \u2192 higher levels \u2192 better infection treatment. Biliary (Liver \u2192 Bile \u2192 GI Tract): Some drugs excreted in bile \u2192 gallbladder \u2192 released into intestines \u2192 eliminated in stool. Other routes: Lungs (volatile drugs like anesthesia gases), skin (minimal), hair (trace). Half-Life (t1/2): Time for drug level to drop to 50% of its peak. Why it matters: Determines dosing intervals. Short half-life drugs clear quickly, need frequent dosing (3-4x daily), missing a dose is usually OK. Example: Acetaminophen (t1/2 = 2-3 hours) \u2192 dosed every 4-6 hours. Long half-life drugs clear slowly, dosed once daily or weekly, missing a dose matters more. Example: Warfarin (t1/2 = 40 hours) \u2192 dosed once daily; misses do matter. Concept: Steady State. With repeated dosing, drug levels reach steady state where amount administered equals amount eliminated. Time to steady state = ~5 half-lives. Example: Warfarin. Half-life = 40 hours. After 8 days (5 \u00d7 40 hours), steady state reached. Problem: Patients want quick anticoagulation but warfarin is slow. Solution: Bridge with heparin (faster-acting). Renal Function and Drug Elimination: Kidney disease dramatically affects drug elimination. GFR ~90 (normal) \u2192 most drugs cleared normally. GFR 60-89 (mild) \u2192 most still cleared. GFR 30-59 (moderate) \u2192 many need adjustment. GFR <30 (severe) \u2192 many need major reduction or avoidance. Nursing action: Know patient's renal function. Alert prescriber if GFR low and drug is renally eliminated."
           },
           {
             "blockId": "sec1_6_block6",
             "type": "section_header",
             "title": "PHARMACODYNAMICS (PD): What the Drug Does to the Body",
-            "content": "Describes how drugs produce their effects — the mechanism of action and the relationship between drug dose and effect."
+            "content": "Describes how drugs produce their effects \u2014 the mechanism of action and the relationship between drug dose and effect."
           },
           {
             "blockId": "sec1_6_block7",
             "type": "detailed_pd",
             "title": "Drug-Receptor Interaction: The Lock-and-Key Model",
-            "content": "Most drugs work by binding to a receptor — a protein on the cell surface or inside the cell that the drug interacts with. Receptor: A protein that binds a specific molecule (drug, hormone, neurotransmitter). When drug binds to receptor, it triggers a change in cell function. Types of Drug-Receptor Interaction: Full Agonist: Binds receptor and produces MAXIMUM effect. Examples: Epinephrine (bronchodilation), Morphine (pain relief), Insulin (glucose uptake). Partial Agonist: Binds receptor and produces SUBMAXIMAL effect (even at high doses). Examples: Buprenorphine (weaker opioid, safer overdose), Buspirone (anxiety, less sedating). Clinical implication: Partial agonist can never produce full effect of full agonist, no matter dose. Antagonist: Binds receptor but produces NO effect; blocks agonist. Competitive: Can be overcome by higher agonist doses. Non-competitive: Cannot be overcome by higher agonist doses. Examples: Naloxone (opioid antagonist; reverses opioid), Diphenhydramine (H1 antagonist; allergies), Metoprolol (beta antagonist; lowers heart rate). Clinical implication: Antagonists prevent/reverse effects of agonists. Example: Naloxone reverses opioid overdose. Dose-Response Relationship: ED50 (Effective Dose, 50%): The dose producing 50% of max effect. TD50 (Toxic Dose, 50%): The dose producing toxicity in 50%. Therapeutic Index = TD50/ED50. Wide TI: Safe dose range is large. Example: Acetaminophen. Narrow TI: Safe dose range is small. Example: Digoxin. Clinical importance: Narrow TI requires precise dosing, therapeutic drug monitoring, serious drug interaction concerns. Potency vs. Efficacy: Potency: How much drug is needed. 'More potent' = less drug needed = smaller dose. Example: Oxycodone (more potent, 5 mg for pain) vs. morphine (less potent, 10 mg). Efficacy: Maximum effect achievable. 'High efficacy' = can achieve maximum possible effect. 'Ceiling effect' = even high doses, can't exceed. Example: Acetaminophen (low efficacy, ceiling ~3-4/10 pain) vs. morphine (high efficacy, can achieve 0/10). Clinical implication: Different drugs for different situations. Side Effects vs. Adverse Effects vs. Toxicity: Side Effect: Expected, unintended effect. Example: Antihistamine causes drowsiness. Usually manageable. Adverse Effect: Harmful, unexpected effect. Example: Penicillin allergy causing anaphylaxis. Requires stopping drug. Toxicity: Harmful effect from overdose or cumulative effect. Example: Acetaminophen toxicity at >4,000 mg/day. Managed by reducing dose or stopping."
+            "content": "Most drugs work by binding to a receptor \u2014 a protein on the cell surface or inside the cell that the drug interacts with. Receptor: A protein that binds a specific molecule (drug, hormone, neurotransmitter). When drug binds to receptor, it triggers a change in cell function. Types of Drug-Receptor Interaction: Full Agonist: Binds receptor and produces MAXIMUM effect. Examples: Epinephrine (bronchodilation), Morphine (pain relief), Insulin (glucose uptake). Partial Agonist: Binds receptor and produces SUBMAXIMAL effect (even at high doses). Examples: Buprenorphine (weaker opioid, safer overdose), Buspirone (anxiety, less sedating). Clinical implication: Partial agonist can never produce full effect of full agonist, no matter dose. Antagonist: Binds receptor but produces NO effect; blocks agonist. Competitive: Can be overcome by higher agonist doses. Non-competitive: Cannot be overcome by higher agonist doses. Examples: Naloxone (opioid antagonist; reverses opioid), Diphenhydramine (H1 antagonist; allergies), Metoprolol (beta antagonist; lowers heart rate). Clinical implication: Antagonists prevent/reverse effects of agonists. Example: Naloxone reverses opioid overdose. Dose-Response Relationship: ED50 (Effective Dose, 50%): The dose producing 50% of max effect. TD50 (Toxic Dose, 50%): The dose producing toxicity in 50%. Therapeutic Index = TD50/ED50. Wide TI: Safe dose range is large. Example: Acetaminophen. Narrow TI: Safe dose range is small. Example: Digoxin. Clinical importance: Narrow TI requires precise dosing, therapeutic drug monitoring, serious drug interaction concerns. Potency vs. Efficacy: Potency: How much drug is needed. 'More potent' = less drug needed = smaller dose. Example: Oxycodone (more potent, 5 mg for pain) vs. morphine (less potent, 10 mg). Efficacy: Maximum effect achievable. 'High efficacy' = can achieve maximum possible effect. 'Ceiling effect' = even high doses, can't exceed. Example: Acetaminophen (low efficacy, ceiling ~3-4/10 pain) vs. morphine (high efficacy, can achieve 0/10). Clinical implication: Different drugs for different situations. Side Effects vs. Adverse Effects vs. Toxicity: Side Effect: Expected, unintended effect. Example: Antihistamine causes drowsiness. Usually manageable. Adverse Effect: Harmful, unexpected effect. Example: Penicillin allergy causing anaphylaxis. Requires stopping drug. Toxicity: Harmful effect from overdose or cumulative effect. Example: Acetaminophen toxicity at >4,000 mg/day. Managed by reducing dose or stopping."
           }
-        ]
+        ],
+        "content": "Pharmacokinetics (PK) = What the Body Does to the Drug\n\nADME (Absorption, Distribution, Metabolism, Elimination):\n\nAbsorption: Movement from administration site into bloodstream. Routes (from fastest to slowest): IV (immediate, 100% bioavailability), inhalation (minutes), IM (10-30 minutes), sublingual (5-10 minutes), subcutaneous (15-30 minutes), oral (30 min-2 hours, 50-90% bioavailability), transdermal (hours to days).\n\nDistribution: Movement from bloodstream into tissues. Affected by blood flow, lipophilicity (fat-solubility), and plasma protein binding. Lipophilic drugs cross blood-brain barrier and placenta.\n\nMetabolism: Chemical transformation, primarily in liver (80-90%). Three phases: Oxidation, Conjugation, Transport. Enzyme induction speeds metabolism; enzyme inhibition slows it.\n\nElimination: Removal from body. 80-90% renal (via kidneys), some via bile. Half-life = time for drug level to drop 50%. Short half-life drugs need frequent dosing; long half-life drugs accumulate.\n\nPharmacodynamics (PD) = What the Drug Does to the Body\n\nDrug-Receptor Interaction (Lock-and-Key Model): Agonist binds and activates receptor (produces effect). Antagonist binds but doesn't activate; blocks agonist. Partial agonist produces submaximal effect.\n\nDose-Response: ED50 = dose producing 50% of maximum effect. Therapeutic Index = TD50/ED50 (narrow = dangerous, wide = safe).\n\nSide Effects (expected, usually manageable), Adverse Effects (harmful, unexpected), Toxicity (harmful from overdose).",
+        "videoSegmentId": "video_01_pharmacokinetics",
+        "videoCaption": "Pharmacokinetics - The Verbatim Masterclass"
       },
       {
         "sectionNumber": 8,
@@ -343,34 +519,49 @@
         "title": "Section 1.7: Drug Interactions & Patient Safety",
         "duration": 30,
         "wordCount": 3200,
-        "learningObjectives": ["Identify pharmacokinetic and pharmacodynamic drug interactions", "Apply drug interaction knowledge to recognize dangerous combinations", "Use resources to check for drug interactions", "Communicate with prescribers about interaction concerns"],
-        "keyTakeaways": ["PHARMACOKINETIC interactions: Changes in absorption, distribution, metabolism, or elimination", "PHARMACODYNAMIC interactions: Changes in mechanism of action or combined effects", "Additive effects: Drug A + Drug B = combined effect equal to sum of individual effects", "Synergistic effects: Combined effect GREATER than additive (e.g., aspirin + ibuprofen GI bleeding)", "Antagonistic effects: One drug REDUCES effect of another", "Most common dangerous combinations: Warfarin + NSAIDs (bleeding), ACE inhibitor + potassium supplements (hyperkalemia), metformin + IV contrast (lactic acidosis)", "Use Medscape Drug Interaction Checker in clinical practice", "Manage interactions by: Avoiding combination, changing dose, increasing monitoring, separating timing, or using alternative medication"],
+        "learningObjectives": [
+          "Identify pharmacokinetic and pharmacodynamic drug interactions",
+          "Apply drug interaction knowledge to recognize dangerous combinations",
+          "Use resources to check for drug interactions",
+          "Communicate with prescribers about interaction concerns"
+        ],
+        "keyTakeaways": [
+          "PHARMACOKINETIC interactions: Changes in absorption, distribution, metabolism, or elimination",
+          "PHARMACODYNAMIC interactions: Changes in mechanism of action or combined effects",
+          "Additive effects: Drug A + Drug B = combined effect equal to sum of individual effects",
+          "Synergistic effects: Combined effect GREATER than additive (e.g., aspirin + ibuprofen GI bleeding)",
+          "Antagonistic effects: One drug REDUCES effect of another",
+          "Most common dangerous combinations: Warfarin + NSAIDs (bleeding), ACE inhibitor + potassium supplements (hyperkalemia), metformin + IV contrast (lactic acidosis)",
+          "Use Medscape Drug Interaction Checker in clinical practice",
+          "Manage interactions by: Avoiding combination, changing dose, increasing monitoring, separating timing, or using alternative medication"
+        ],
         "contentBlocks": [
           {
             "blockId": "sec1_7_block1",
             "type": "interaction_types",
             "title": "Pharmacokinetic Interactions (PK-Level)",
-            "content": "These involve changes in ADME processes. Absorption Interactions: Drug-food interactions (tetracycline + dairy reduces absorption — take on empty stomach). Drug-drug interactions (antacids + bisphosphonates reduce absorption). Distribution Interactions: Plasma protein binding displacement. Example: Warfarin + NSAIDs. Warfarin 99% protein-bound. NSAID displaces warfarin. Result: More free warfarin → increased anticoagulation → bleeding risk. Clinical sign: INR increases. Nursing: Check INR; alert prescriber; recommend alternative to NSAID. Metabolism Interactions: Enzyme Induction and Inhibition (as discussed in PK section). Elimination Interactions: Renal competition. Example: Probenecid + Penicillin. Penicillin actively secreted. Probenecid blocks. Penicillin level increases."
+            "content": "These involve changes in ADME processes. Absorption Interactions: Drug-food interactions (tetracycline + dairy reduces absorption \u2014 take on empty stomach). Drug-drug interactions (antacids + bisphosphonates reduce absorption). Distribution Interactions: Plasma protein binding displacement. Example: Warfarin + NSAIDs. Warfarin 99% protein-bound. NSAID displaces warfarin. Result: More free warfarin \u2192 increased anticoagulation \u2192 bleeding risk. Clinical sign: INR increases. Nursing: Check INR; alert prescriber; recommend alternative to NSAID. Metabolism Interactions: Enzyme Induction and Inhibition (as discussed in PK section). Elimination Interactions: Renal competition. Example: Probenecid + Penicillin. Penicillin actively secreted. Probenecid blocks. Penicillin level increases."
           },
           {
             "blockId": "sec1_7_block2",
             "type": "interaction_types",
             "title": "Pharmacodynamic Interactions (PD-Level)",
-            "content": "These involve drugs affecting each other's mechanisms or effects. Additive Effects: Combined effect = sum of individual effects. Example: Alcohol + Benzodiazepine. Both depress CNS. Combined: Severe CNS depression → respiratory failure. Nursing: Warn patients: NO alcohol with benzodiazepines. Synergistic Effects: Combined effect GREATER than additive. Example: Ceftriaxone + Vancomycin for meningitis. Both bactericidal. Together: Kill bacteria MORE effectively. Clinical use: Intentional combination. Antagonistic Effects: One drug REDUCES effect of another. Example: Beta-blocker vs. Epinephrine. Beta-blocker blocks beta receptors. Epinephrine can't activate them. Problem: In anaphylaxis, epinephrine won't work as well. Potentiation: One drug ENHANCES another's effect without being same class. Example: Cimetidine + Morphine. Cimetidine inhibits morphine metabolism. Morphine level increases. Risk: Respiratory depression."
+            "content": "These involve drugs affecting each other's mechanisms or effects. Additive Effects: Combined effect = sum of individual effects. Example: Alcohol + Benzodiazepine. Both depress CNS. Combined: Severe CNS depression \u2192 respiratory failure. Nursing: Warn patients: NO alcohol with benzodiazepines. Synergistic Effects: Combined effect GREATER than additive. Example: Ceftriaxone + Vancomycin for meningitis. Both bactericidal. Together: Kill bacteria MORE effectively. Clinical use: Intentional combination. Antagonistic Effects: One drug REDUCES effect of another. Example: Beta-blocker vs. Epinephrine. Beta-blocker blocks beta receptors. Epinephrine can't activate them. Problem: In anaphylaxis, epinephrine won't work as well. Potentiation: One drug ENHANCES another's effect without being same class. Example: Cimetidine + Morphine. Cimetidine inhibits morphine metabolism. Morphine level increases. Risk: Respiratory depression."
           },
           {
             "blockId": "sec1_7_block3",
             "type": "dangerous_combinations",
             "title": "Most Common Dangerous Drug Interactions",
-            "content": "Warfarin + NSAIDs: Additive bleeding risk → GI bleed, ICH. Action: Use acetaminophen instead. ACE inhibitors + Potassium supplements: Both increase potassium → Hyperkalemia, arrhythmias. Action: Check K+ levels; avoid if possible. Metformin + IV Contrast: Contrast causes AKI; metformin accumulates → Lactic acidosis. Action: Hold metformin 24 hrs before/after contrast. SSRIs + NSAIDs: Both increase bleeding → GI bleed. Action: Monitor; use alternative. Statins + Fibrates: Both affect muscle → Rhabdomyolysis. Action: Monitor CK; monitor muscle pain. ACE inhibitor + ARB: Both block same pathway → Hyperkalemia, AKI. Action: Usually avoid together. Digoxin + Verapamil: Verapamil increases digoxin level → Toxicity (arrhythmias). Action: Monitor digoxin level; reduce dose. Warfarin + Phenytoin: Complex interaction → Unpredictable INR. Action: Monitor closely."
+            "content": "Warfarin + NSAIDs: Additive bleeding risk \u2192 GI bleed, ICH. Action: Use acetaminophen instead. ACE inhibitors + Potassium supplements: Both increase potassium \u2192 Hyperkalemia, arrhythmias. Action: Check K+ levels; avoid if possible. Metformin + IV Contrast: Contrast causes AKI; metformin accumulates \u2192 Lactic acidosis. Action: Hold metformin 24 hrs before/after contrast. SSRIs + NSAIDs: Both increase bleeding \u2192 GI bleed. Action: Monitor; use alternative. Statins + Fibrates: Both affect muscle \u2192 Rhabdomyolysis. Action: Monitor CK; monitor muscle pain. ACE inhibitor + ARB: Both block same pathway \u2192 Hyperkalemia, AKI. Action: Usually avoid together. Digoxin + Verapamil: Verapamil increases digoxin level \u2192 Toxicity (arrhythmias). Action: Monitor digoxin level; reduce dose. Warfarin + Phenytoin: Complex interaction \u2192 Unpredictable INR. Action: Monitor closely."
           },
           {
             "blockId": "sec1_7_block4",
             "type": "clinical_process",
             "title": "How to Check for & Manage Interactions",
-            "content": "In Clinical Practice: (1) Medscape Drug Interaction Checker (https://reference.medscape.com/drug-interaction-checker) — Best: Comprehensive, updated regularly, trusted by clinicians. (2) EHR Alert System — Your hospital's system may flag interactions, but not 100% reliable. (3) Pharmacy Consult — Ask your pharmacist; they're experts. (4) Drug Package Insert — Lists known interactions. Management Strategy When Found: Step 1: Assess Severity (Minor, Moderate, Major). Step 2: Choose Management (Avoid combination, Change dose, Increase monitoring, Separate timing, Use alternative). Step 3: Communicate with prescriber professionally. Step 4: Document everything."
+            "content": "In Clinical Practice: (1) Medscape Drug Interaction Checker (https://reference.medscape.com/drug-interaction-checker) \u2014 Best: Comprehensive, updated regularly, trusted by clinicians. (2) EHR Alert System \u2014 Your hospital's system may flag interactions, but not 100% reliable. (3) Pharmacy Consult \u2014 Ask your pharmacist; they're experts. (4) Drug Package Insert \u2014 Lists known interactions. Management Strategy When Found: Step 1: Assess Severity (Minor, Moderate, Major). Step 2: Choose Management (Avoid combination, Change dose, Increase monitoring, Separate timing, Use alternative). Step 3: Communicate with prescriber professionally. Step 4: Document everything."
           }
-        ]
+        ],
+        "content": "Drug interactions are one of the most common sources of medication errors. Knowing them prevents harm.\n\nPharmacOkinetic Interactions (PK-Level):\n\nAbsorption: Tetracycline + dairy reduces absorption. Antacids + bisphosphonates reduces absorption.\n\nDistribution: Warfarin + NSAIDs - NSAIDs displace warfarin from protein binding, increasing free warfarin and bleeding risk.\n\nMetabolism: Rifampin (enzyme inducer) + oral contraceptive reduces OCP effectiveness (pregnancy risk). Grapefruit juice (enzyme inhibitor) + simvastatin increases statin levels 10x (muscle breakdown risk).\n\nElimination: Probenecid blocks penicillin excretion, maintaining high levels.\n\nPharmacoDynamic Interactions (PD-Level):\n\nAdditive Effects: Alcohol + Benzodiazepine = severe CNS depression (potentially fatal).\nSynergistic: Ceftriaxone + Vancomycin = better bacterial killing (intentional in meningitis).\nAntagonistic: Beta-blocker vs. Epinephrine in anaphylaxis = reduced epinephrine effect (dangerous).\nPotentiation: Cimetidine + Morphine = increased morphine levels, respiratory depression risk.\n\nMost Dangerous Combinations:\n- Warfarin + NSAIDs (GI bleeding)\n- ACE inhibitors + Potassium (hyperkalemia)\n- Metformin + IV Contrast (lactic acidosis)\n- SSRIs + NSAIDs (GI bleeding)\n\nAlways use Medscape Drug Interaction Checker to verify combinations."
       },
       {
         "sectionNumber": 9,
@@ -378,14 +569,28 @@
         "title": "Section 1.8: Dosage Calculations",
         "duration": 40,
         "wordCount": 3800,
-        "learningObjectives": ["Master three dosage calculation methods: Formula, Ratio-Proportion, Dimensional Analysis", "Apply calculations to simple and complex clinical scenarios", "Verify calculations and identify dangerous doses", "Demonstrate competency in medication dosage calculations"],
-        "keyTakeaways": ["Formula Method: Dose = (Desired Dose / Dose on Hand) × Quantity Available", "Ratio-Proportion Method: Cross multiply to solve for unknown", "Dimensional Analysis Method: Set up fractions so units cancel; if units don't cancel, you made an error", "Weight-based dosing common in pediatrics: Dose = mg/kg × patient weight in kg", "IV infusion rate: mL/hr = Total Volume / Time in Hours", "Always perform clinical check: Does this dose make sense for this patient?", "Red flags for dangerous doses: Very large doses, very small decimals, unusual units, inconsistent with patient characteristics", "Verification checklist: Right patient, drug, dose, route, time, documentation, reason, response"],
+        "learningObjectives": [
+          "Master three dosage calculation methods: Formula, Ratio-Proportion, Dimensional Analysis",
+          "Apply calculations to simple and complex clinical scenarios",
+          "Verify calculations and identify dangerous doses",
+          "Demonstrate competency in medication dosage calculations"
+        ],
+        "keyTakeaways": [
+          "Formula Method: Dose = (Desired Dose / Dose on Hand) \u00d7 Quantity Available",
+          "Ratio-Proportion Method: Cross multiply to solve for unknown",
+          "Dimensional Analysis Method: Set up fractions so units cancel; if units don't cancel, you made an error",
+          "Weight-based dosing common in pediatrics: Dose = mg/kg \u00d7 patient weight in kg",
+          "IV infusion rate: mL/hr = Total Volume / Time in Hours",
+          "Always perform clinical check: Does this dose make sense for this patient?",
+          "Red flags for dangerous doses: Very large doses, very small decimals, unusual units, inconsistent with patient characteristics",
+          "Verification checklist: Right patient, drug, dose, route, time, documentation, reason, response"
+        ],
         "contentBlocks": [
           {
             "blockId": "sec1_8_block1",
             "type": "calculation_method",
             "title": "Method 1: Formula Method",
-            "content": "Formula: Dose = (Desired Dose / Dose on Hand) × Quantity Available. Components: Desired Dose = What prescriber ordered. Dose on Hand = Concentration available. Quantity Available = Number of units (tablets, mL) containing dose on hand. Example 1: Amoxicillin 500 mg ordered; on hand 250 mg/tablet. (500 mg / 250 mg) × 1 tablet = 2 tablets. Give 2 tablets. Example 2: Acetaminophen 160 mg; on hand 80 mg/5 mL. (160 mg / 80 mg) × 5 mL = 10 mL. Give 10 mL. Example 3: Morphine 10 mg IV; on hand 5 mg/mL. (10 mg / 5 mg) × 1 mL = 2 mL. Draw 2 mL."
+            "content": "Formula: Dose = (Desired Dose / Dose on Hand) \u00d7 Quantity Available. Components: Desired Dose = What prescriber ordered. Dose on Hand = Concentration available. Quantity Available = Number of units (tablets, mL) containing dose on hand. Example 1: Amoxicillin 500 mg ordered; on hand 250 mg/tablet. (500 mg / 250 mg) \u00d7 1 tablet = 2 tablets. Give 2 tablets. Example 2: Acetaminophen 160 mg; on hand 80 mg/5 mL. (160 mg / 80 mg) \u00d7 5 mL = 10 mL. Give 10 mL. Example 3: Morphine 10 mg IV; on hand 5 mg/mL. (10 mg / 5 mg) \u00d7 1 mL = 2 mL. Draw 2 mL."
           },
           {
             "blockId": "sec1_8_block2",
@@ -397,27 +602,28 @@
             "blockId": "sec1_8_block3",
             "type": "calculation_method",
             "title": "Method 3: Dimensional Analysis (Preferred)",
-            "content": "Concept: Set up fractions so units cancel; if units don't cancel, you made an error. Advantage: Automatically catches unit errors. Example 1: Amoxicillin 500 mg; on hand 250 mg/tablet. X tablets = 500 mg × (1 tablet / 250 mg) = 2 tablets. Units: mg cancels, leaves tablets ✓. Example 2: Acetaminophen 160 mg; on hand 80 mg/5 mL. X mL = 160 mg × (5 mL / 80 mg) = 10 mL. Units: mg cancels, leaves mL ✓. Example 3 (Complex): Heparin 1,350 units/hr; on hand 25,000 units/500 mL. X mL/hr = 1,350 units/hr × (500 mL / 25,000 units) = 27 mL/hr. Units: units cancels, leaves mL/hr ✓."
+            "content": "Concept: Set up fractions so units cancel; if units don't cancel, you made an error. Advantage: Automatically catches unit errors. Example 1: Amoxicillin 500 mg; on hand 250 mg/tablet. X tablets = 500 mg \u00d7 (1 tablet / 250 mg) = 2 tablets. Units: mg cancels, leaves tablets \u2713. Example 2: Acetaminophen 160 mg; on hand 80 mg/5 mL. X mL = 160 mg \u00d7 (5 mL / 80 mg) = 10 mL. Units: mg cancels, leaves mL \u2713. Example 3 (Complex): Heparin 1,350 units/hr; on hand 25,000 units/500 mL. X mL/hr = 1,350 units/hr \u00d7 (500 mL / 25,000 units) = 27 mL/hr. Units: units cancels, leaves mL/hr \u2713."
           },
           {
             "blockId": "sec1_8_block4",
             "type": "complex_calculations",
             "title": "Complex Calculations & Clinical Examples",
-            "content": "Weight-Based Dosing (Common in Pediatrics): Order: Cefixime 8 mg/kg; patient 35 lbs (16 kg); on hand 100 mg/5 mL. Step 1: Convert weight: 35 lbs ÷ 2.2 = 16 kg. Step 2: Calculate dose: 8 mg/kg × 16 kg = 128 mg. Step 3: Calculate volume: (128 mg / 100 mg) × 5 mL = 6.4 mL ≈ 6.5 mL. Give: 6.5 mL. IV Infusion Rates: Order: Vancomycin 1000 mg in 250 mL NS over 60 minutes. mL/hr = 250 mL / 1 hour = 250 mL/hr. Set pump: 250 mL/hr."
+            "content": "Weight-Based Dosing (Common in Pediatrics): Order: Cefixime 8 mg/kg; patient 35 lbs (16 kg); on hand 100 mg/5 mL. Step 1: Convert weight: 35 lbs \u00f7 2.2 = 16 kg. Step 2: Calculate dose: 8 mg/kg \u00d7 16 kg = 128 mg. Step 3: Calculate volume: (128 mg / 100 mg) \u00d7 5 mL = 6.4 mL \u2248 6.5 mL. Give: 6.5 mL. IV Infusion Rates: Order: Vancomycin 1000 mg in 250 mL NS over 60 minutes. mL/hr = 250 mL / 1 hour = 250 mL/hr. Set pump: 250 mL/hr."
           },
           {
             "blockId": "sec1_8_block5",
             "type": "safety_guide",
             "title": "Red Flags for Dangerous Doses",
-            "content": "Always question calculations producing: Very Large Doses (10x typical). Very Small Doses (0.05 mL when typical is 1-2 mL) — decimal errors: 0.5 mL vs. 5 mL = 10x error. Unusual Units (mg when typically mcg — could be 1000x too high!). Dose Doesn't Match Patient Characteristics (high dose for 90-year-old with renal failure). Inconsistency with Clinical Picture (potassium-raising medication for hyperkalemia patient — backwards!). Action: Question it; double-check with another nurse; verify with prescriber."
+            "content": "Always question calculations producing: Very Large Doses (10x typical). Very Small Doses (0.05 mL when typical is 1-2 mL) \u2014 decimal errors: 0.5 mL vs. 5 mL = 10x error. Unusual Units (mg when typically mcg \u2014 could be 1000x too high!). Dose Doesn't Match Patient Characteristics (high dose for 90-year-old with renal failure). Inconsistency with Clinical Picture (potassium-raising medication for hyperkalemia patient \u2014 backwards!). Action: Question it; double-check with another nurse; verify with prescriber."
           },
           {
             "blockId": "sec1_8_block6",
             "type": "verification_checklist",
             "title": "Before Administering ANY Medication",
-            "content": "Verification Checklist: Right Patient (Check ID against order — 2 identifiers). Right Drug (Check generic name, not just brand). Right Dose (Calculate and verify; complex doses verified by another nurse). Right Route (Matches order and patient condition). Right Time (Matches order). Right Documentation (Signed chart/order). Right Reason (Clinically appropriate for patient's diagnosis). Right Response (Monitor for therapeutic/adverse effects)."
+            "content": "Verification Checklist: Right Patient (Check ID against order \u2014 2 identifiers). Right Drug (Check generic name, not just brand). Right Dose (Calculate and verify; complex doses verified by another nurse). Right Route (Matches order and patient condition). Right Time (Matches order). Right Documentation (Signed chart/order). Right Reason (Clinically appropriate for patient's diagnosis). Right Response (Monitor for therapeutic/adverse effects)."
           }
-        ]
+        ],
+        "content": "Method 1: The Formula Method\n\nDose = (Desired Dose / Dose on Hand) \u00d7 Quantity Available\n\nExample: Amoxicillin 500 mg ordered, 250 mg/tablet available\n(500 / 250) \u00d7 1 = 2 tablets\n\nMethod 2: Ratio-Proportion Method\n\nDose on Hand : Quantity :: Desired Dose : X\n\nExample: 250 mg : 1 tablet :: 500 mg : X\n250X = 500, X = 2 tablets\n\nMethod 3: Dimensional Analysis (Preferred - catches unit errors)\n\nDesired Unit = Given Dose \u00d7 (Conversion Factors)\n\nExample: Morphine 10 mg ordered, 10 mg/mL available\nX mL = 10 mg \u00d7 (1 mL / 10 mg) = 1 mL\n\nWeight-Based Dosing:\nDose = mg/kg \u00d7 patient weight (in kg)\nExample: Cefixime 8 mg/kg for 16 kg child = 128 mg dose\n\nIV Infusion Rates:\nmL/hr = Total Volume / Time in Hours\nExample: 250 mL over 1 hour = 250 mL/hr pump setting\n\nRed Flags for Dangerous Doses:\n- Very large doses (10x normal)\n- Very small doses (0.05 mL when typical is 1-2 mL)\n- Decimal errors (0.5 vs. 5 = 10x error)\n- Dose doesn't match patient characteristics (elderly, kidney disease)\n\nAlways use the verification checklist: Right patient, right drug, right dose, right route, right time, right documentation, right reason, right response."
       },
       {
         "sectionNumber": 10,
@@ -425,69 +631,92 @@
         "title": "Section 1.9: Key Terms Glossary",
         "duration": 20,
         "wordCount": 1600,
-        "learningObjectives": ["Master essential pharmacology terminology", "Use terminology correctly in clinical communication", "Understand precise definitions for accurate professional communication"],
-        "keyTakeaways": ["Comprehensive glossary with 100+ terms organized alphabetically", "Each term includes definition relevant to nursing practice", "Terms cover pharmacology, pharmacokinetics, pharmacodynamics, drug interactions, adverse effects"],
+        "learningObjectives": [
+          "Master essential pharmacology terminology",
+          "Use terminology correctly in clinical communication",
+          "Understand precise definitions for accurate professional communication"
+        ],
+        "keyTakeaways": [
+          "Comprehensive glossary with 100+ terms organized alphabetically",
+          "Each term includes definition relevant to nursing practice",
+          "Terms cover pharmacology, pharmacokinetics, pharmacodynamics, drug interactions, adverse effects"
+        ],
         "contentBlocks": [
           {
             "blockId": "sec1_9_block1",
             "type": "glossary",
             "title": "Pharmacology Terminology A-Z",
-            "content": "ABSORPTION: Movement of drug from site of administration into bloodstream. ADME: Absorption, Distribution, Metabolism, Elimination — pharmacokinetic processes. AGONIST: Drug that binds to receptor and activates it, producing an effect. ANTAGONIST: Drug that binds to receptor but doesn't activate it; blocks agonist. ADVERSE EFFECT: Harmful, unexpected drug effect requiring action. BIOAVAILABILITY: Fraction of administered dose reaching systemic circulation in active form. CYTOCHROME P450: Enzyme system in liver responsible for Phase I drug metabolism; metabolizes ~75% of all drugs. DEA: Drug Enforcement Administration; controls regulated substances. DISTRIBUTION: Movement of absorbed drug from bloodstream into tissues. DOSAGE: Amount of drug given at specific time. DRUG INTERACTION: Effect of one drug on another's efficacy or safety. EFFICACY: Maximum effect achievable by a drug, regardless of dose. ELIMINATION: Removal of drug from body via kidneys, bile, lungs, etc. ENZYME INDUCTION: Increase in drug-metabolizing enzyme activity; speeds metabolism of other drugs. ENZYME INHIBITION: Decrease in drug-metabolizing enzyme activity; slows metabolism of other drugs. FDA: Food & Drug Administration; approves and monitors drugs. FIRST-PASS METABOLISM: Drug metabolism in liver before reaching systemic circulation (for oral drugs). GENERIC NAME: Official chemical designation of drug; same worldwide, usually lowercase. HALF-LIFE: Time for drug concentration to drop to 50% of original value. HEPATIC METABOLISM: Primary drug metabolism occurring in the liver. INDICATION: Reason to USE a drug; the disease/condition it treats. INTRAVENOUS (IV): Injection directly into vein; fastest route, 100% bioavailability. METABOLISM: Chemical breakdown of drug, primarily in liver, to make it water-soluble for excretion. NARROW THERAPEUTIC INDEX: Small difference between therapeutic and toxic dose; requires careful monitoring. ORAL (PO): Drug administration by mouth; slowest route. PARTIAL AGONIST: Drug binding to receptor with submaximal effect; ceiling effect. PHARMACODYNAMICS (PD): What the drug does to the body — mechanism of action, effects. PHARMACOKINETICS (PK): What the body does to the drug — ADME processes. PHARMACOLOGY: Science of drug effects on living organisms. PLASMA PROTEIN BINDING: Reversible attachment of drug molecules to blood proteins; only unbound drug is active. POTENCY: Amount of drug needed to produce given effect; more potent = lower dose needed. RECEPTORS: Proteins on cell surface or intracellular that drugs bind to. RENAL CLEARANCE: Volume of plasma from which drug is completely removed per unit time. SIDE EFFECT: Expected, unintended drug effect; usually manageable. THERAPEUTIC INDEX: Ratio of toxic dose to effective dose (TD50/ED50); higher = safer. TOLERANCE: Decreased response to drug after repeated use; requires higher doses. TRADE NAME: Manufacturer's proprietary brand name for drug; capitalized. TOXICITY: Harmful effect from overdose or cumulative effect of drug. VOLUME OF DISTRIBUTION (Vd): Theoretical volume drug distributes into; affects dosing and overdose reversal."
+            "content": "ABSORPTION: Movement of drug from site of administration into bloodstream. ADME: Absorption, Distribution, Metabolism, Elimination \u2014 pharmacokinetic processes. AGONIST: Drug that binds to receptor and activates it, producing an effect. ANTAGONIST: Drug that binds to receptor but doesn't activate it; blocks agonist. ADVERSE EFFECT: Harmful, unexpected drug effect requiring action. BIOAVAILABILITY: Fraction of administered dose reaching systemic circulation in active form. CYTOCHROME P450: Enzyme system in liver responsible for Phase I drug metabolism; metabolizes ~75% of all drugs. DEA: Drug Enforcement Administration; controls regulated substances. DISTRIBUTION: Movement of absorbed drug from bloodstream into tissues. DOSAGE: Amount of drug given at specific time. DRUG INTERACTION: Effect of one drug on another's efficacy or safety. EFFICACY: Maximum effect achievable by a drug, regardless of dose. ELIMINATION: Removal of drug from body via kidneys, bile, lungs, etc. ENZYME INDUCTION: Increase in drug-metabolizing enzyme activity; speeds metabolism of other drugs. ENZYME INHIBITION: Decrease in drug-metabolizing enzyme activity; slows metabolism of other drugs. FDA: Food & Drug Administration; approves and monitors drugs. FIRST-PASS METABOLISM: Drug metabolism in liver before reaching systemic circulation (for oral drugs). GENERIC NAME: Official chemical designation of drug; same worldwide, usually lowercase. HALF-LIFE: Time for drug concentration to drop to 50% of original value. HEPATIC METABOLISM: Primary drug metabolism occurring in the liver. INDICATION: Reason to USE a drug; the disease/condition it treats. INTRAVENOUS (IV): Injection directly into vein; fastest route, 100% bioavailability. METABOLISM: Chemical breakdown of drug, primarily in liver, to make it water-soluble for excretion. NARROW THERAPEUTIC INDEX: Small difference between therapeutic and toxic dose; requires careful monitoring. ORAL (PO): Drug administration by mouth; slowest route. PARTIAL AGONIST: Drug binding to receptor with submaximal effect; ceiling effect. PHARMACODYNAMICS (PD): What the drug does to the body \u2014 mechanism of action, effects. PHARMACOKINETICS (PK): What the body does to the drug \u2014 ADME processes. PHARMACOLOGY: Science of drug effects on living organisms. PLASMA PROTEIN BINDING: Reversible attachment of drug molecules to blood proteins; only unbound drug is active. POTENCY: Amount of drug needed to produce given effect; more potent = lower dose needed. RECEPTORS: Proteins on cell surface or intracellular that drugs bind to. RENAL CLEARANCE: Volume of plasma from which drug is completely removed per unit time. SIDE EFFECT: Expected, unintended drug effect; usually manageable. THERAPEUTIC INDEX: Ratio of toxic dose to effective dose (TD50/ED50); higher = safer. TOLERANCE: Decreased response to drug after repeated use; requires higher doses. TRADE NAME: Manufacturer's proprietary brand name for drug; capitalized. TOXICITY: Harmful effect from overdose or cumulative effect of drug. VOLUME OF DISTRIBUTION (Vd): Theoretical volume drug distributes into; affects dosing and overdose reversal."
           }
-        ]
+        ],
+        "content": "Essential pharmacology terms:\n\nAbsorption - Movement of drug from administration site into bloodstream\nADME - Absorption, Distribution, Metabolism, Elimination cycle\nAgoONist - Drug that binds and activates receptor, producing effect\nAntagonist - Drug that binds but doesn't activate; blocks agonist\nBioavailability - Fraction of administered dose reaching systemic circulation\nHalf-Life - Time for drug concentration to drop 50%\nPharmacodynamics - What the drug does to the body\nPharmackinetics - What the body does to the drug\nTherapeutic Index - TD50/ED50; narrow=dangerous, wide=safe\nTolerance - Decreased effect with repeated use (requires higher doses)\nWithdrawal - Symptoms upon stopping dependence-forming drugs\n\nAll terms defined fully in glossary section."
       },
       {
         "sectionNumber": 11,
         "id": "sec1_10_clinical_story_allergy_decision",
-        "title": "Section 1.10: Clinical Story — \"The Allergy Decision\"",
+        "title": "Section 1.10: Clinical Story \u2014 \"The Allergy Decision\"",
         "duration": 35,
         "wordCount": 3200,
-        "learningObjectives": ["Apply clinical judgment to medication allergy assessment", "Make evidence-based drug selection decisions", "Communicate effectively with prescribers", "Implement safe medication administration protocols"],
-        "keyTakeaways": ["ALWAYS clarify allergy details before assuming incompatibility", "Rash-type penicillin allergy (non-anaphylaxis) has <1% cross-reactivity with other beta-lactams", "Risk vs. benefit analysis: Sometimes the safest alternative is the best choice", "Communication with prescriber is essential for collaborative decision-making", "Documentation prevents future providers from repeating work", "First-dose monitoring and patient education are critical safety precautions", "Nurses are the patient's advocates and last line of defense"],
+        "learningObjectives": [
+          "Apply clinical judgment to medication allergy assessment",
+          "Make evidence-based drug selection decisions",
+          "Communicate effectively with prescribers",
+          "Implement safe medication administration protocols"
+        ],
+        "keyTakeaways": [
+          "ALWAYS clarify allergy details before assuming incompatibility",
+          "Rash-type penicillin allergy (non-anaphylaxis) has <1% cross-reactivity with other beta-lactams",
+          "Risk vs. benefit analysis: Sometimes the safest alternative is the best choice",
+          "Communication with prescriber is essential for collaborative decision-making",
+          "Documentation prevents future providers from repeating work",
+          "First-dose monitoring and patient education are critical safety precautions",
+          "Nurses are the patient's advocates and last line of defense"
+        ],
         "contentBlocks": [
           {
             "blockId": "sec1_10_block1",
             "type": "case_scenario",
             "title": "Jacob Chen: A Real Patient with Pneumonia & Penicillin Allergy",
-            "content": "Patient: Jacob Chen, 62-year-old male. Presentation: Cough, fever, SOB × 4 days. Vitals: 102.7°F, HR 110, RR 24, O2 91% (tachycardic, tachypneic, low O2). CXR: Left lower lobe infiltrate. Diagnosis: Community-acquired pneumonia (CAP). Social History: Lives independently, no recent hospitalizations, non-smoker. PMH: Hypertension, no documented antibiotic allergies... BUT WAIT: Allergy note: 'Penicillin — SEVERE REACTION, 1999, rash + difficulty breathing.' The Order Arrives: 4:15 PM. Amoxicillin-clavulanate 875 mg PO BID × 10 days. Your Response: PAUSE. What should you do BEFORE administering?"
+            "content": "Patient: Jacob Chen, 62-year-old male. Presentation: Cough, fever, SOB \u00d7 4 days. Vitals: 102.7\u00b0F, HR 110, RR 24, O2 91% (tachycardic, tachypneic, low O2). CXR: Left lower lobe infiltrate. Diagnosis: Community-acquired pneumonia (CAP). Social History: Lives independently, no recent hospitalizations, non-smoker. PMH: Hypertension, no documented antibiotic allergies... BUT WAIT: Allergy note: 'Penicillin \u2014 SEVERE REACTION, 1999, rash + difficulty breathing.' The Order Arrives: 4:15 PM. Amoxicillin-clavulanate 875 mg PO BID \u00d7 10 days. Your Response: PAUSE. What should you do BEFORE administering?"
           },
           {
             "blockId": "sec1_10_block2",
             "type": "decision_point",
             "title": "Question 1: Allergy Assessment",
-            "content": "What should you do BEFORE administering amoxicillin? Option A: 'Give the amoxicillin. The allergy was 25 years ago; it's outdated.' Analysis: INCORRECT & DANGEROUS. Amoxicillin IS a penicillin. If Jacob has true IgE-mediated allergy (anaphylaxis), amoxicillin could cause anaphylaxis → life-threatening. CORRECT ANSWER: Option B: 'Clarify allergy details with Jacob and communicate with prescriber.' Why: Need specifics before deciding. Questions for Jacob: 'What happened when you took penicillin in 1999?' 'What did you notice? (rash, swelling, breathing difficulty, hives?)' 'When did reaction start? Right away or hours later?' 'How long did it last?' 'Did you seek medical care?' 'Have you taken penicillin since then?' Then contact prescriber with clarified information."
+            "content": "What should you do BEFORE administering amoxicillin? Option A: 'Give the amoxicillin. The allergy was 25 years ago; it's outdated.' Analysis: INCORRECT & DANGEROUS. Amoxicillin IS a penicillin. If Jacob has true IgE-mediated allergy (anaphylaxis), amoxicillin could cause anaphylaxis \u2192 life-threatening. CORRECT ANSWER: Option B: 'Clarify allergy details with Jacob and communicate with prescriber.' Why: Need specifics before deciding. Questions for Jacob: 'What happened when you took penicillin in 1999?' 'What did you notice? (rash, swelling, breathing difficulty, hives?)' 'When did reaction start? Right away or hours later?' 'How long did it last?' 'Did you seek medical care?' 'Have you taken penicillin since then?' Then contact prescriber with clarified information."
           },
           {
             "blockId": "sec1_10_block3",
             "type": "clinical_assessment",
             "title": "Jacob Clarifies His Allergy",
-            "content": "Jacob explains: 'Yeah, I took penicillin for strep throat when I was in my 30s. I developed a rash all over my arms and back — really itchy. And my lips felt a little tingly, like they were swelling a bit. I waited it out and it went away in a couple hours. Scared me at the time, but the doctor said just don't take penicillin again.' Your Assessment: Type of reaction: Localized rash + angioedema (lip swelling). NOT anaphylaxis (would include respiratory distress, hypotension, loss of consciousness). This is mild-to-moderate allergic reaction. Timing: Long ago (25 years). Some patients outgrow allergies (especially non-anaphylaxis). But assume: Still allergic until proven otherwise. Risk Assessment: Penicillin/cephalosporin cross-reactivity = 1-3% in non-anaphylaxis. Very low risk of anaphylaxis with amoxicillin. BUT: Risk of rash/angioedema is higher. Clinical Context: Jacob has pneumonia (serious, can worsen). He needs effective antibiotics. Amoxicillin-clavulanate is excellent for CAP. BUT: Alternatives exist (fluoroquinolones, macrolides)."
+            "content": "Jacob explains: 'Yeah, I took penicillin for strep throat when I was in my 30s. I developed a rash all over my arms and back \u2014 really itchy. And my lips felt a little tingly, like they were swelling a bit. I waited it out and it went away in a couple hours. Scared me at the time, but the doctor said just don't take penicillin again.' Your Assessment: Type of reaction: Localized rash + angioedema (lip swelling). NOT anaphylaxis (would include respiratory distress, hypotension, loss of consciousness). This is mild-to-moderate allergic reaction. Timing: Long ago (25 years). Some patients outgrow allergies (especially non-anaphylaxis). But assume: Still allergic until proven otherwise. Risk Assessment: Penicillin/cephalosporin cross-reactivity = 1-3% in non-anaphylaxis. Very low risk of anaphylaxis with amoxicillin. BUT: Risk of rash/angioedema is higher. Clinical Context: Jacob has pneumonia (serious, can worsen). He needs effective antibiotics. Amoxicillin-clavulanate is excellent for CAP. BUT: Alternatives exist (fluoroquinolones, macrolides)."
           },
           {
             "blockId": "sec1_10_block4",
             "type": "decision_point",
             "title": "Question 2: Clinical Decision-Making",
-            "content": "Given the allergy clarification, what's the best approach? Option A: 'Administer amoxicillin with precautions (epinephrine available, observe 30 min).' Analysis: ACCEPTABLE but not ideal. Option B: 'Recommend levofloxacin (fluoroquinolone) instead — no cross-reactivity.' Analysis: BETTER CHOICE ✓. Why: Eliminates allergy risk entirely. Fluoroquinolones actually preferred for CAP in elderly. Broadens spectrum. Oral available (patient can go home). Your Call to Prescriber: 'Hi Dr. Smith. I've clarified Jacob's penicillin allergy — localized rash with lip swelling 25 years ago, non-anaphylaxis. However, I wanted to suggest levofloxacin 750 mg as an alternative. It's actually ideal for CAP in his age group and avoids cross-reactivity risk. Would that work?' Dr. Smith: 'Good point. Yes, levofloxacin 750 mg once daily is actually ideal. Change to that × 5 days.'"
+            "content": "Given the allergy clarification, what's the best approach? Option A: 'Administer amoxicillin with precautions (epinephrine available, observe 30 min).' Analysis: ACCEPTABLE but not ideal. Option B: 'Recommend levofloxacin (fluoroquinolone) instead \u2014 no cross-reactivity.' Analysis: BETTER CHOICE \u2713. Why: Eliminates allergy risk entirely. Fluoroquinolones actually preferred for CAP in elderly. Broadens spectrum. Oral available (patient can go home). Your Call to Prescriber: 'Hi Dr. Smith. I've clarified Jacob's penicillin allergy \u2014 localized rash with lip swelling 25 years ago, non-anaphylaxis. However, I wanted to suggest levofloxacin 750 mg as an alternative. It's actually ideal for CAP in his age group and avoids cross-reactivity risk. Would that work?' Dr. Smith: 'Good point. Yes, levofloxacin 750 mg once daily is actually ideal. Change to that \u00d7 5 days.'"
           },
           {
             "blockId": "sec1_10_block5",
             "type": "decision_point",
             "title": "Question 3: Safe Administration & Monitoring",
-            "content": "The prescriber changed the order to levofloxacin. What's your safety protocol now? Option A: 'Just administer; prescriber approved it.' Analysis: INCOMPLETE. Option B: 'Observe 30 min post-dose, educate patient, have epinephrine available.' Analysis: COMPREHENSIVE & CORRECT ✓. Your Execution: (1) Administer: 'Jacob, I'm giving you levofloxacin 750 mg. Take it with water, with or without food.' Document time given. (2) Observe 30 minutes. Check vitals at 15 and 30 min. Watch for: rash, tingling, difficulty breathing, dizziness, chest pain, GI upset. (3) Educate: 'This antibiotic works well for your pneumonia. Watch for rash, difficulty breathing, severe dizziness. Avoid sun exposure — can cause severe sunburn. Complete the full 5-day course even if you feel better.' (4) Document: 'Levofloxacin 750 mg given 1600 hrs; patient observed × 30 min, no adverse reaction. Patient educated. Allergy history documented. No reported rash, breathing difficulty.'"
+            "content": "The prescriber changed the order to levofloxacin. What's your safety protocol now? Option A: 'Just administer; prescriber approved it.' Analysis: INCOMPLETE. Option B: 'Observe 30 min post-dose, educate patient, have epinephrine available.' Analysis: COMPREHENSIVE & CORRECT \u2713. Your Execution: (1) Administer: 'Jacob, I'm giving you levofloxacin 750 mg. Take it with water, with or without food.' Document time given. (2) Observe 30 minutes. Check vitals at 15 and 30 min. Watch for: rash, tingling, difficulty breathing, dizziness, chest pain, GI upset. (3) Educate: 'This antibiotic works well for your pneumonia. Watch for rash, difficulty breathing, severe dizziness. Avoid sun exposure \u2014 can cause severe sunburn. Complete the full 5-day course even if you feel better.' (4) Document: 'Levofloxacin 750 mg given 1600 hrs; patient observed \u00d7 30 min, no adverse reaction. Patient educated. Allergy history documented. No reported rash, breathing difficulty.'"
           },
           {
             "blockId": "sec1_10_block6",
             "type": "clinical_outcome",
             "title": "The Outcome",
-            "content": "Jacob tolerates levofloxacin well. No adverse reactions. Day 3: Fever resolves, cough improves, O2 sat 96%. Day 5: Completes course, discharged home. Follow-up (1 week): Jacob back to baseline, pneumonia resolved. Provider counsels: 'Your allergy 25 years ago was likely a drug reaction, not a true penicillin allergy. You're documented as questionable allergy — non-anaphylaxis, 1999. Future providers can consider penicillins with allergy precautions if needed. But levofloxacin works great for you.'"
+            "content": "Jacob tolerates levofloxacin well. No adverse reactions. Day 3: Fever resolves, cough improves, O2 sat 96%. Day 5: Completes course, discharged home. Follow-up (1 week): Jacob back to baseline, pneumonia resolved. Provider counsels: 'Your allergy 25 years ago was likely a drug reaction, not a true penicillin allergy. You're documented as questionable allergy \u2014 non-anaphylaxis, 1999. Future providers can consider penicillins with allergy precautions if needed. But levofloxacin works great for you.'"
           },
           {
             "blockId": "sec1_10_block7",
             "type": "learning_summary",
             "title": "Lessons & Learning Points",
-            "content": "1. Always clarify allergies. Old charts are often incomplete. Details matter: Rash ≠ anaphylaxis. Ask open-ended questions. 2. Risk vs. benefit analysis. Sometimes the safest drug is the best drug. Other times, allergy risk is worth taking if benefit is huge. Communicate with prescriber. 3. Clinical judgment is your superpower. Protocol-following is important. But recognizing when to question, when to suggest alternatives, when to advocate — that's nursing excellence. 4. Documentation prevents error. Clear notes mean other providers don't repeat work. 5. Communication is key. With patient: Ask, explain, educate. With prescriber: Propose alternatives, explain reasoning. With team: Document thoroughly. 6. Pharmacology knowledge = patient safety. You recognized the allergy concern. You knew cross-reactivity risks. You suggested evidence-based alternative. You implemented safety precautions. Result: Patient got excellent care, allergy risk eliminated."
+            "content": "1. Always clarify allergies. Old charts are often incomplete. Details matter: Rash \u2260 anaphylaxis. Ask open-ended questions. 2. Risk vs. benefit analysis. Sometimes the safest drug is the best drug. Other times, allergy risk is worth taking if benefit is huge. Communicate with prescriber. 3. Clinical judgment is your superpower. Protocol-following is important. But recognizing when to question, when to suggest alternatives, when to advocate \u2014 that's nursing excellence. 4. Documentation prevents error. Clear notes mean other providers don't repeat work. 5. Communication is key. With patient: Ask, explain, educate. With prescriber: Propose alternatives, explain reasoning. With team: Document thoroughly. 6. Pharmacology knowledge = patient safety. You recognized the allergy concern. You knew cross-reactivity risks. You suggested evidence-based alternative. You implemented safety precautions. Result: Patient got excellent care, allergy risk eliminated."
           }
-        ]
+        ],
+        "content": "Clinical Case: Jacob Chen, 62-year-old with community-acquired pneumonia\n\nPresentation: Fever 102.7\u00b0F, cough, shortness of breath, O2 sat 91%, crackles in left lower lobe, chest X-ray shows left lower lobe infiltrate.\n\nOrder Received: Amoxicillin-clavulanate 875 mg PO BID \u00d7 10 days\n\nALERT: Chart shows 'Penicillin \u2014 SEVERE REACTION, 1999, rash + difficulty breathing'\n\nCritical Question: What do you do BEFORE administering amoxicillin?\n\nOption A: Give it. The allergy was 25 years ago.\nWhy Wrong: Amoxicillin IS a penicillin. Even if allergy was long ago, serious reactions can recur.\n\nOption B: Clarify allergy details with Jacob + call prescriber.\nWhy Correct: You need specifics about the reaction type to assess risk.\n\nOption C: Give Benadryl first to prevent reaction.\nWhy Wrong: Doesn't address the real safety concern.\n\nYou Clarify:\nJacob describes: Rash on arms/back, lip tingling/swelling, lasted hours, never took penicillin since.\n\nYour Assessment:\n- Type: Localized rash + mild angioedema (NOT anaphylaxis which would include respiratory distress/hypotension)\n- Risk: Low risk of anaphylaxis with amoxicillin (~1-3%)\n- Context: Jacob has serious pneumonia; needs effective antibiotics\n- Options: Use amoxicillin with precautions, or use fluoroquinolone/macrolide as alternative\n\nYour Action: Contact prescriber with clarified information and discuss options. This is clinical judgment in action."
       },
       {
         "sectionNumber": 12,
@@ -495,38 +724,47 @@
         "title": "Section 1.11: Review Questions & Assessment",
         "duration": 30,
         "wordCount": 2200,
-        "learningObjectives": ["Assess understanding of chapter content", "Apply knowledge to clinical decision-making", "Identify areas needing further study"],
-        "keyTakeaways": ["8 comprehensive review questions covering major chapter topics", "Multiple choice questions test foundational knowledge", "Short answer questions assess deeper understanding", "Case-based question integrates multiple concepts into realistic scenario"],
+        "learningObjectives": [
+          "Assess understanding of chapter content",
+          "Apply knowledge to clinical decision-making",
+          "Identify areas needing further study"
+        ],
+        "keyTakeaways": [
+          "8 comprehensive review questions covering major chapter topics",
+          "Multiple choice questions test foundational knowledge",
+          "Short answer questions assess deeper understanding",
+          "Case-based question integrates multiple concepts into realistic scenario"
+        ],
         "contentBlocks": [
           {
             "blockId": "sec1_11_block1",
             "type": "assessment_question",
             "title": "Question 1: PK vs. PD",
-            "content": "Which statement best describes the relationship between pharmacokinetics and pharmacodynamics? A) Pharmacokinetics is what the drug does to the body; Pharmacodynamics is what the body does to the drug. B) Pharmacokinetics is what the body does to the drug; Pharmacodynamics is what the drug does to the body. C) They are the same concept, just different names. D) Pharmacodynamics involves drug metabolism only. ANSWER: B ✓. Rationale: PK = what body does to drug (ADME); PD = what drug does to body (mechanism, receptor binding)."
+            "content": "Which statement best describes the relationship between pharmacokinetics and pharmacodynamics? A) Pharmacokinetics is what the drug does to the body; Pharmacodynamics is what the body does to the drug. B) Pharmacokinetics is what the body does to the drug; Pharmacodynamics is what the drug does to the body. C) They are the same concept, just different names. D) Pharmacodynamics involves drug metabolism only. ANSWER: B \u2713. Rationale: PK = what body does to drug (ADME); PD = what drug does to body (mechanism, receptor binding)."
           },
           {
             "blockId": "sec1_11_block2",
             "type": "assessment_question",
             "title": "Question 2: Allergy Management",
-            "content": "Patient has documented 'penicillin allergy — rash, 15 years ago.' Prescriber orders amoxicillin for UTI. Best initial action? A) Administer immediately; allergy was long ago. B) Refuse to administer; penicillin allergy is absolute contraindication. C) Clarify allergy details and communicate with prescriber. D) Give Benadryl prophylactically. ANSWER: C ✓. Rationale: Allergy clarification is essential. Rash ≠ anaphylaxis. Inform prescriber; make collaborative decision."
+            "content": "Patient has documented 'penicillin allergy \u2014 rash, 15 years ago.' Prescriber orders amoxicillin for UTI. Best initial action? A) Administer immediately; allergy was long ago. B) Refuse to administer; penicillin allergy is absolute contraindication. C) Clarify allergy details and communicate with prescriber. D) Give Benadryl prophylactically. ANSWER: C \u2713. Rationale: Allergy clarification is essential. Rash \u2260 anaphylaxis. Inform prescriber; make collaborative decision."
           },
           {
             "blockId": "sec1_11_block3",
             "type": "assessment_question",
             "title": "Question 3: Drug Interaction",
-            "content": "Patient on digoxin (narrow TI) is prescribed verapamil for afib. Primary concern? A) No interaction; both lower heart rate, which is desired. B) Verapamil inhibits digoxin metabolism → digoxin level increases → toxicity risk. C) Digoxin is metabolized too quickly with verapamil. D) No interaction; digoxin is older drug without modern interactions. ANSWER: B ✓. Rationale: Verapamil is CYP3A4 inhibitor; decreases digoxin elimination → toxicity (arrhythmias, nausea)."
+            "content": "Patient on digoxin (narrow TI) is prescribed verapamil for afib. Primary concern? A) No interaction; both lower heart rate, which is desired. B) Verapamil inhibits digoxin metabolism \u2192 digoxin level increases \u2192 toxicity risk. C) Digoxin is metabolized too quickly with verapamil. D) No interaction; digoxin is older drug without modern interactions. ANSWER: B \u2713. Rationale: Verapamil is CYP3A4 inhibitor; decreases digoxin elimination \u2192 toxicity (arrhythmias, nausea)."
           },
           {
             "blockId": "sec1_11_block4",
             "type": "assessment_question",
             "title": "Question 4: Dosage Calculation",
-            "content": "Patient weighs 60 lbs. Order is amoxicillin 25 mg/kg. Calculate total dose. A) 600 mg. B) 650 mg. C) 682 mg. D) 750 mg. ANSWER: C ✓. Calculation: 60 lbs ÷ 2.2 = 27.3 kg; 25 mg/kg × 27.3 kg = 682.5 ≈ 682 mg."
+            "content": "Patient weighs 60 lbs. Order is amoxicillin 25 mg/kg. Calculate total dose. A) 600 mg. B) 650 mg. C) 682 mg. D) 750 mg. ANSWER: C \u2713. Calculation: 60 lbs \u00f7 2.2 = 27.3 kg; 25 mg/kg \u00d7 27.3 kg = 682.5 \u2248 682 mg."
           },
           {
             "blockId": "sec1_11_block5",
             "type": "assessment_question",
             "title": "Question 5: Drug Classification",
-            "content": "Based on drug name 'clopidogrel,' what can you infer? A) Beta-blocker (lowers HR/BP). B) Antiplatelet agent (-grel suffix); prevents blood clots. C) Antibiotic. D) SSRI antidepressant. ANSWER: B ✓. Rationale: Thienopyridine antiplatelet agents end in -grel. Name pattern reveals drug class."
+            "content": "Based on drug name 'clopidogrel,' what can you infer? A) Beta-blocker (lowers HR/BP). B) Antiplatelet agent (-grel suffix); prevents blood clots. C) Antibiotic. D) SSRI antidepressant. ANSWER: B \u2713. Rationale: Thienopyridine antiplatelet agents end in -grel. Name pattern reveals drug class."
           },
           {
             "blockId": "sec1_11_block6",
@@ -538,16 +776,39 @@
             "blockId": "sec1_11_block7",
             "type": "short_answer",
             "title": "Question 7: Metformin & IV Contrast",
-            "content": "78-year-old with kidney disease (GFR 45) prescribed metformin. IV contrast procedure ordered. Identify concerns and outline nursing actions. Answer should include: Concern 1 (Metformin + IV contrast = contrast-induced AKI → metformin accumulation → lactic acidosis), Concern 2 (Baseline renal impairment increases risk), Nursing Actions (Alert prescriber, implement metformin-contrast protocol, hold metformin 24-48h before/after contrast, recheck renal function, monitor for lactic acidosis signs)."
+            "content": "78-year-old with kidney disease (GFR 45) prescribed metformin. IV contrast procedure ordered. Identify concerns and outline nursing actions. Answer should include: Concern 1 (Metformin + IV contrast = contrast-induced AKI \u2192 metformin accumulation \u2192 lactic acidosis), Concern 2 (Baseline renal impairment increases risk), Nursing Actions (Alert prescriber, implement metformin-contrast protocol, hold metformin 24-48h before/after contrast, recheck renal function, monitor for lactic acidosis signs)."
           },
           {
             "blockId": "sec1_11_block8",
             "type": "case_based",
             "title": "Question 8: Complex Case",
-            "content": "Mr. Park, 82 years old, CHF exacerbation. Current meds: furosemide, lisinopril, metoprolol, digoxin, spironolactone. New order: ibuprofen 600 mg TID for arthritis. Identify ALL interactions, prioritize by severity, describe nursing response. Answer should identify: MAJOR interactions (Triple whammy = NSAID+ACE inhibitor+diuretic → AKI; NSAID+spironolactone+lisinopril → hyperkalemia; NSAID reduces digoxin elimination → toxicity). Nursing Response: DO NOT ADMINISTER. Contact prescriber. Propose acetaminophen or topical NSAID alternatives. If prescriber insists, implement strict monitoring protocol with baseline labs, daily clinical checks, repeat labs at day 3-7."
+            "content": "Mr. Park, 82 years old, CHF exacerbation. Current meds: furosemide, lisinopril, metoprolol, digoxin, spironolactone. New order: ibuprofen 600 mg TID for arthritis. Identify ALL interactions, prioritize by severity, describe nursing response. Answer should identify: MAJOR interactions (Triple whammy = NSAID+ACE inhibitor+diuretic \u2192 AKI; NSAID+spironolactone+lisinopril \u2192 hyperkalemia; NSAID reduces digoxin elimination \u2192 toxicity). Nursing Response: DO NOT ADMINISTER. Contact prescriber. Propose acetaminophen or topical NSAID alternatives. If prescriber insists, implement strict monitoring protocol with baseline labs, daily clinical checks, repeat labs at day 3-7."
           }
-        ]
+        ],
+        "content": "Review Questions for Chapter 1: Introduction to Pharmacology\n\nSection 1: Overview & Introduction\n1. Define pharmacology and explain why it's important for nursing practice.\n2. List five roles nurses play in medication safety daily.\n3. What is the difference between pharmacology and nursing pharmacology?\n\nSection 1.1: Definitions & Scope\n4. Distinguish between drug, medicine, and medication.\n5. Name the five branches of pharmacology and explain each briefly.\n6. What does ADME stand for?\n\nSection 1.2: Historical Context\n7. Why was the antibiotic revolution (1920s-1950s) so important to medicine?\n8. When was penicillin discovered and mass-produced?\n9. What is pharmacogenomics and why does it matter?\n\nSection 1.3: Drug Classification\n10. List three ways drugs are classified and give one example of each.\n11. What is the DEA Controlled Substance Schedule, and why do nurses need to understand it?\n\nSection 1.4: FDA & Regulatory Bodies\n12. Describe the phases of FDA drug approval (0-4).\n13. How long does the FDA drug approval process typically take, and what is the cost?\n14. What is a Black Box Warning, and when is it used?\n15. What is MedWatch and how do you report an adverse event?\n\nSection 1.5: Drug Names\n16. Explain the difference between generic, brand, and chemical names.\n17. If you see a drug name ending in -statin, what drug class is it, and what side effects would you expect?\n18. Why is it dangerous for patients to take both 'Tylenol' and 'acetaminophen'?\n\nSection 1.6: Pharmacokinetics & Pharmacodynamics\n19. Using the lock-and-key model, explain the difference between an agonist and an antagonist.\n20. What is bioavailability, and why is it important for dosing?\n21. If a drug has a half-life of 8 hours, how long until it reaches steady state?\n22. Explain why a lipophilic drug crosses the blood-brain barrier but a hydrophilic drug does not.\n\nSection 1.7: Drug Interactions\n23. What is the difference between a pharmacokinetic and a pharmacodynamic interaction?\n24. Rifampin (enzyme inducer) + oral contraceptive = pregnancy risk. Why?\n25. Name three dangerous drug combinations and explain the risk in each.\n\nSection 1.8: Dosage Calculations\n26. Order: Amoxicillin 500 mg. On hand: 250 mg/tablet. Calculate the dose.\n27. Order: Cefixime 8 mg/kg. Patient: 16 kg. Calculate the dose.\n28. Order: Vancomycin 1000 mg IV over 60 minutes in 250 mL NS. Calculate mL/hr.\n\nSection 1.9: Key Terms\n29. Define absorption, distribution, metabolism, and elimination.\n30. What is the therapeutic index and why does it matter?\n\nSection 1.10: Clinical Case\n31. In Jacob Chen's case, why was it dangerous to simply give amoxicillin without clarifying his penicillin allergy first?\n32. What questions should you ask a patient about a documented drug allergy?\n33. How would you manage Jacob's pneumonia treatment given his allergy history?"
       }
-    ]
+    ],
+    "mediaAssets": {
+      "videos": [
+        {
+          "id": "video_01_pharmacokinetics",
+          "title": "Pharmacokinetics - The Verbatim Masterclass",
+          "description": "Comprehensive video on the ADME process (Absorption, Distribution, Metabolism, Elimination)",
+          "sectionId": "sec1_6_pk_vs_pd",
+          "duration": 460,
+          "narrator": "Atlas Delgado",
+          "format": "1080p HD",
+          "url": "https://unavida-videos.s3.us-east-2.amazonaws.com/4982BE2B-4807-F9DC-41B2-6CCF565CF232.mp4",
+          "thumbnail": "https://via.placeholder.com/1280x720?text=Pharmacokinetics",
+          "captions": "available",
+          "transcriptAvailable": true,
+          "uploadDate": "2026-02-25",
+          "videoOrder": 1
+        }
+      ],
+      "illustrations": [],
+      "diagrams": [],
+      "interactiveTools": []
+    }
   }
 }

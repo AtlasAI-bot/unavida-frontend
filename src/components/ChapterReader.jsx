@@ -266,15 +266,19 @@ export const ChapterReader = () => {
               )}
 
               {/* Embedded Video - if this section has a video segment */}
-              {currentSection.videoSegmentId && (
-                <EmbeddedVideo
-                  videoId={currentSection.videoSegmentId}
-                  videoPath={`/videos/chapter1_videos/${currentSection.videoSegmentId}.mp4`}
-                  title={`📹 Video: ${currentSection.title}`}
-                  caption={currentSection.videoCaption || `Watch this video to learn more about ${currentSection.title.toLowerCase()}`}
-                  showCaption={true}
-                />
-              )}
+              {currentSection.videoSegmentId && (() => {
+                // Find video from mediaAssets by ID
+                const video = chapter.mediaAssets?.videos?.find(v => v.id === currentSection.videoSegmentId);
+                return (
+                  <EmbeddedVideo
+                    videoId={currentSection.videoSegmentId}
+                    videoPath={video?.url || `/videos/chapter1_videos/${currentSection.videoSegmentId}.mp4`}
+                    title={`📹 ${video?.title || `Video: ${currentSection.title}`}`}
+                    caption={currentSection.videoCaption || video?.description || `Watch this video to learn more about ${currentSection.title.toLowerCase()}`}
+                    showCaption={true}
+                  />
+                );
+              })()}
             </div>
 
             {/* Main Content Blocks */}
