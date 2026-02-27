@@ -31,6 +31,19 @@ export const ChapterReader = () => {
   const sections = chapter.sections;
   const currentSection = sections[activeSection];
 
+  // Helper function to get video URL from mediaAssets
+  const getVideoUrl = (videoSegmentId) => {
+    if (!videoSegmentId) return null;
+    try {
+      const videos = chapter.mediaAssets?.videos || [];
+      const video = videos.find(v => v.id === videoSegmentId);
+      return video?.url || `/videos/chapter1_videos/${videoSegmentId}.mp4`;
+    } catch (e) {
+      console.error('Error getting video URL:', e);
+      return `/videos/chapter1_videos/${videoSegmentId}.mp4`;
+    }
+  };
+
   // Timer for tracking reading time - only runs once on mount
   useEffect(() => {
     timerRef.current = setInterval(() => {
@@ -266,19 +279,17 @@ export const ChapterReader = () => {
               )}
 
               {/* Embedded Video - if this section has a video segment */}
-              {currentSection.videoSegmentId && (() => {
-                // Find video from mediaAssets by ID
-                const video = chapter.mediaAssets?.videos?.find(v => v.id === currentSection.videoSegmentId);
-                return (
+              {currentSection.videoSegmentId && (
+                <div className="my-6">
                   <EmbeddedVideo
                     videoId={currentSection.videoSegmentId}
-                    videoPath={video?.url || `/videos/chapter1_videos/${currentSection.videoSegmentId}.mp4`}
-                    title={`📹 ${video?.title || `Video: ${currentSection.title}`}`}
-                    caption={currentSection.videoCaption || video?.description || `Watch this video to learn more about ${currentSection.title.toLowerCase()}`}
+                    videoPath={getVideoUrl(currentSection.videoSegmentId)}
+                    title={`📹 Video: ${currentSection.title}`}
+                    caption={currentSection.videoCaption || `Watch this video to learn more about ${currentSection.title.toLowerCase()}`}
                     showCaption={true}
                   />
-                );
-              })()}
+                </div>
+              )}
             </div>
 
             {/* Main Content Blocks */}
