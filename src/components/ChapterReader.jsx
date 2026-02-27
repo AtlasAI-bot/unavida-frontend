@@ -354,6 +354,26 @@ export const ChapterReader = () => {
                     </div>
                   )}
 
+                  {block.type === 'detailed_adme' && (
+                    <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg mb-6">
+                      <h4 className="font-bold text-blue-900 mb-2">{block.title}</h4>
+                      {block.content ? (
+                        <p className="text-gray-800 leading-relaxed whitespace-pre-wrap">{block.content}</p>
+                      ) : (
+                        <p className="text-gray-500 italic">Content not available</p>
+                      )}
+                    </div>
+                  )}
+
+                  {block.type === 'section_header' && (
+                    <div className="mb-6">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-4">{block.title}</h3>
+                      {block.content && (
+                        <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">{block.content}</p>
+                      )}
+                    </div>
+                  )}
+
                   {block.type === 'key_point' && (
                     <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg mb-6">
                       <h4 className="font-bold text-red-900 mb-2">⚠️ Key Point: {block.title}</h4>
