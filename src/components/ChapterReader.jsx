@@ -34,13 +34,21 @@ export const ChapterReader = () => {
   // Helper function to get video URL from mediaAssets
   const getVideoUrl = (videoSegmentId) => {
     if (!videoSegmentId) return null;
+
+    // Local fallback map (used only if media asset URL is missing)
+    const localVideoMap = {
+      video_01_pharmacokinetics: '/videos/chapter1_videos/section_1_6_pharmacokinetics_vs_pharmacodynamics.mp4',
+    };
+
     try {
       const videos = chapter.mediaAssets?.videos || [];
       const video = videos.find(v => v.id === videoSegmentId);
-      return video?.url || `/videos/chapter1_videos/${videoSegmentId}.mp4`;
+
+      // Prefer configured media URL first (S3), then fallback to local asset
+      return video?.url || localVideoMap[videoSegmentId] || `/videos/chapter1_videos/${videoSegmentId}.mp4`;
     } catch (e) {
       console.error('Error getting video URL:', e);
-      return `/videos/chapter1_videos/${videoSegmentId}.mp4`;
+      return localVideoMap[videoSegmentId] || `/videos/chapter1_videos/${videoSegmentId}.mp4`;
     }
   };
 
@@ -235,6 +243,27 @@ export const ChapterReader = () => {
           {/* Regular Content View */}
           {currentViewMode === 'content' && (
           <div className="max-w-4xl mx-auto px-8 py-12">
+            {/* Featured Video Panel */}
+            <div className="mb-10 p-6 bg-gradient-to-r from-slate-50 to-blue-50 border border-blue-200 rounded-xl">
+              <div className="flex items-center justify-between mb-4 gap-3 flex-wrap">
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900">🎥 Featured Lesson Video</h3>
+                  <p className="text-sm text-gray-600">
+                    {currentSection.videoSegmentId
+                      ? `Video matched to: ${currentSection.title}`
+                      : 'Quick chapter overview while you read this section'}
+                  </p>
+                </div>
+              </div>
+              <EmbeddedVideo
+                videoId={currentSection.videoSegmentId || 'chapter1_seg1_intro'}
+                videoPath={currentSection.videoSegmentId ? getVideoUrl(currentSection.videoSegmentId) : '/videos/chapter1_videos/chapter1_seg1_intro.mp4'}
+                title={currentSection.videoSegmentId ? `📹 ${currentSection.title}` : '📹 Chapter 1 Overview'}
+                caption={currentSection.videoCaption || 'Watch, then continue reading for deeper detail and practice.'}
+                showCaption={true}
+              />
+            </div>
+
             {/* Section Header */}
             <div className="mb-8">
               <div className="flex items-start justify-between mb-4">
@@ -278,18 +307,6 @@ export const ChapterReader = () => {
                 </div>
               )}
 
-              {/* Embedded Video - if this section has a video segment */}
-              {currentSection.videoSegmentId && (
-                <div className="my-6">
-                  <EmbeddedVideo
-                    videoId={currentSection.videoSegmentId}
-                    videoPath={getVideoUrl(currentSection.videoSegmentId)}
-                    title={`📹 Video: ${currentSection.title}`}
-                    caption={currentSection.videoCaption || `Watch this video to learn more about ${currentSection.title.toLowerCase()}`}
-                    showCaption={true}
-                  />
-                </div>
-              )}
             </div>
 
             {/* Main Content Blocks */}
