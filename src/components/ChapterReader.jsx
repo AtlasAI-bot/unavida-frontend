@@ -96,67 +96,17 @@ export const ChapterReader = () => {
       .filter(chunk => !bannedPatterns.some((re) => re.test(chunk)));
   };
 
-  const sectionIllustrationGallery = {
-    sec1_1_definitions_scope: [
-      '/images/ch1/section-1-1/ch1_s1_1_v01.png.png',
-      'https://source.unsplash.com/1600x900/?pharmacology,classroom',
-      'https://source.unsplash.com/1600x900/?medical,students,study'
-    ],
-    sec1_2_historical_context: [
-      '/images/ch1/section-1-2/ch1_s1_2_v01.png.png',
-      'https://source.unsplash.com/1600x900/?old,medical,book',
-      'https://source.unsplash.com/1600x900/?history,science,museum'
-    ],
-    sec1_3_drug_classification: [
-      '/images/ch1/section-1-3/ch1_s1_3_v01.png.png',
-      'https://source.unsplash.com/1600x900/?medicine,pills,bottles',
-      'https://source.unsplash.com/1600x900/?pharmacy,shelves,drugs'
-    ],
-    sec1_4_regulatory_bodies_fda: [
-      '/images/ch1/section-1-4/ch1_s1_4_v01.png.png',
-      'https://source.unsplash.com/1600x900/?laboratory,research,clinical',
-      'https://source.unsplash.com/1600x900/?scientist,trial,medical'
-    ],
-    sec1_5_drug_names_codes: [
-      'https://source.unsplash.com/1600x900/?prescription,label,pharmacy',
-      'https://source.unsplash.com/1600x900/?medication,bottle,label',
-      'https://source.unsplash.com/1600x900/?doctor,prescription,pad'
-    ],
-    sec1_6_pk_vs_pd: [
-      'https://source.unsplash.com/1600x900/?human,anatomy,medical',
-      'https://source.unsplash.com/1600x900/?cells,biology,microscope',
-      'https://source.unsplash.com/1600x900/?hospital,medicine,infographic'
-    ],
-    sec1_7_drug_interactions: [
-      '/images/ch1/section-1-7/ch1_s1_7_v01.png.png',
-      'https://source.unsplash.com/1600x900/?nurse,patient,safety',
-      'https://source.unsplash.com/1600x900/?hospital,medication,alert'
-    ],
-    sec1_8_dosage_calculations: [
-      '/images/ch1/section-1-8/ch1_s1_8_v01.png.png',
-      'https://source.unsplash.com/1600x900/?calculator,medical,math',
-      'https://source.unsplash.com/1600x900/?nurse,chart,calculation'
-    ],
-    sec1_9_key_terms_glossary: [
-      'https://source.unsplash.com/1600x900/?dictionary,study,medical',
-      'https://source.unsplash.com/1600x900/?notes,education,healthcare',
-      'https://source.unsplash.com/1600x900/?library,books,medicine'
-    ],
-    sec1_10_clinical_story_allergy_decision: [
-      '/images/ch1/section-1-10/ch1_s1_10_v01.png.png',
-      'https://source.unsplash.com/1600x900/?hospital,bedside,doctor',
-      'https://source.unsplash.com/1600x900/?patient,care,nurse'
-    ],
-    sec1_11_review_questions: [
-      'https://source.unsplash.com/1600x900/?exam,study,students',
-      'https://source.unsplash.com/1600x900/?quiz,learning,healthcare',
-      'https://source.unsplash.com/1600x900/?notebook,learning,medicine'
-    ],
+  const sectionIllustrationMap = {
+    sec1_1_definitions_scope: '/images/ch1/section-1-1/ch1_s1_1_v01.png.png',
+    sec1_2_historical_context: '/images/ch1/section-1-2/ch1_s1_2_v01.png.png',
+    sec1_3_drug_classification: '/images/ch1/section-1-3/ch1_s1_3_v01.png.png',
+    sec1_4_regulatory_bodies_fda: '/images/ch1/section-1-4/ch1_s1_4_v01.png.png',
+    sec1_7_drug_interactions: '/images/ch1/section-1-7/ch1_s1_7_v01.png.png',
+    sec1_8_dosage_calculations: '/images/ch1/section-1-8/ch1_s1_8_v01.png.png',
+    sec1_10_clinical_story_allergy_decision: '/images/ch1/section-1-10/ch1_s1_10_v01.png.png',
   };
 
-  const currentSectionGallery = sectionIllustrationGallery[currentSection?.id] || [
-    'https://source.unsplash.com/1600x900/?medical,education'
-  ];
+  const currentSectionIllustration = sectionIllustrationMap[currentSection?.id] || 'https://source.unsplash.com/1600x900/?medical,education';
 
   // Timer for tracking reading time - only runs once on mount
   useEffect(() => {
@@ -446,14 +396,13 @@ export const ChapterReader = () => {
                           <p className="text-gray-800 leading-relaxed whitespace-pre-wrap">{card}</p>
                         )}
 
-                        {idx % 2 === 1 && (
+                        {idx === 1 && (
                           <div className="mt-4 rounded-lg overflow-hidden border border-slate-200 bg-slate-50">
                             <img
-                              src={currentSectionGallery[(Math.floor(idx / 2)) % currentSectionGallery.length]}
-                              alt="Section visual reference"
-                              className="w-full max-h-72 object-cover bg-white"
+                              src={currentSectionIllustration}
+                              alt="Atlas demonstrating clinical concept"
+                              className="w-full max-h-72 object-contain bg-white"
                               loading="lazy"
-                              referrerPolicy="no-referrer"
                             />
                             <p className="px-3 py-2 text-xs text-slate-600">Visual reference • concept reinforcement</p>
                           </div>
