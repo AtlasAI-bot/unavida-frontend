@@ -89,11 +89,37 @@ export const ChapterReader = () => {
       /^\[\s*EXPANDED CONTENT FOR .*\]\s*$/i,
     ];
 
-    return content
+    const paragraphs = content
       .split(/\n\s*\n/g)
       .map(chunk => chunk.trim())
       .filter(Boolean)
       .filter(chunk => !bannedPatterns.some((re) => re.test(chunk)));
+
+    const grouped = [];
+    for (let i = 0; i < paragraphs.length; i++) {
+      const current = paragraphs[i];
+      const next = paragraphs[i + 1];
+
+      const isHeadingLike =
+        current.length < 90 &&
+        !current.includes(':') &&
+        !current.includes('.') &&
+        !current.startsWith('-');
+
+      if (isHeadingLike && next) {
+        grouped.push(`${current}\n\n${next}`);
+        i += 1;
+        continue;
+      }
+
+      if (grouped.length > 0 && grouped[grouped.length - 1].split(/\n\n/).length < 4) {
+        grouped[grouped.length - 1] = `${grouped[grouped.length - 1]}\n\n${current}`;
+      } else {
+        grouped.push(current);
+      }
+    }
+
+    return grouped;
   };
 
   const sectionIllustrationMap = {
@@ -381,19 +407,32 @@ export const ChapterReader = () => {
                 <div className="space-y-4">
                   {readableCards.map((card, idx) => {
                     const isList = card.split('\n').every(line => line.trim().startsWith('- '));
-                    const maybeHeading = !isList && card.length < 80 && !card.includes('.');
+                    const blocks = card.split(/\n\n/).filter(Boolean);
+                    const first = blocks[0] || '';
+                    const rest = blocks.slice(1).join('\n\n');
+                    const hasInlineHeading =
+                      blocks.length > 1 &&
+                      first.length < 100 &&
+                      !first.includes('.') &&
+                      !first.includes(':') &&
+                      !first.startsWith('-');
+
                     return (
-                      <div key={`reading-${idx}`} className="bg-white border border-slate-200 shadow-sm rounded-xl p-5">
-                        {maybeHeading ? (
-                          <h4 className="text-lg font-bold text-slate-900">{card}</h4>
-                        ) : isList ? (
+                      <div key={`reading-${idx}`} className="bg-white border border-slate-200 shadow-sm rounded-xl p-6">
+                        {hasInlineHeading && (
+                          <h4 className="text-xl font-bold text-slate-900 mb-3">{first}</h4>
+                        )}
+
+                        {isList ? (
                           <ul className="list-disc pl-6 space-y-1 text-gray-700">
                             {card.split('\n').map((line, li) => (
                               <li key={li}>{line.replace(/^-\s*/, '')}</li>
                             ))}
                           </ul>
                         ) : (
-                          <p className="text-gray-800 leading-relaxed whitespace-pre-wrap">{card}</p>
+                          <p className="text-gray-800 leading-relaxed whitespace-pre-wrap">
+                            {hasInlineHeading ? rest : card}
+                          </p>
                         )}
 
                         {idx === 1 && currentSectionIllustration && (

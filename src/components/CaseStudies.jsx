@@ -177,6 +177,62 @@ const CaseStudies = ({ chapterId }) => {
           answer: 'Parent education: (1) Give the medication WITH FOOD to reduce GI upset; (2) Use the provided measuring syringe - NOT a teaspoon; (3) Complete the full course even if Tommy feels better; (4) Watch for signs of allergic reaction (rash, swelling of lips/tongue, difficulty breathing) - call immediately if occur; (5) Common side effects: diarrhea, upset stomach - contact provider if severe; (6) Space doses about 8 hours apart for BID dosing; (7) Store suspension in refrigerator if directed; (8) Shake suspension well before each dose to distribute drug evenly; (9) Contact prescriber if symptoms don\'t improve in 48 hours.'
         }
       ]
+    },
+    {
+      id: 6,
+      title: 'Renal Dosing Adjustment in Older Adult',
+      difficulty: 'Intermediate',
+      patientInfo: '74-year-old Elena Ruiz with CKD stage 3 (eGFR 38) admitted for UTI. Orders include Levofloxacin standard dose and Metformin continuation.',
+      scenario: 'You notice pharmacy profile flags reduced renal function. The patient reports nausea and fatigue since admission.',
+      questions: [
+        {
+          id: 'q1',
+          question: 'What is the key pharmacokinetic issue here?',
+          type: 'multiple-choice',
+          options: [
+            'A) Increased absorption in CKD',
+            'B) Reduced renal elimination causing drug accumulation',
+            'C) Faster hepatic metabolism in older adults',
+            'D) Lower protein binding always improves safety'
+          ],
+          correctAnswer: 'B',
+          explanation: 'Reduced renal clearance can cause concentration-dependent toxicity unless dose/frequency are adjusted.'
+        },
+        {
+          id: 'q2',
+          question: 'What nursing steps should occur before administration?',
+          type: 'short-answer',
+          answer: 'Verify latest eGFR/creatinine, hold questionable doses, contact prescriber/pharmacy for renal-adjusted regimen, monitor adverse effects, and document intervention.'
+        }
+      ]
+    },
+    {
+      id: 7,
+      title: 'High-Alert Medication Double-Check',
+      difficulty: 'Beginner',
+      patientInfo: '45-year-old ICU patient on insulin infusion protocol with fluctuating blood glucose levels.',
+      scenario: 'A new bag concentration appears different from prior shift documentation. You are asked to hang it quickly during handoff.',
+      questions: [
+        {
+          id: 'q1',
+          question: 'Which action best reflects safe practice with high-alert meds?',
+          type: 'multiple-choice',
+          options: [
+            'A) Hang immediately to avoid delay',
+            'B) Perform independent double-check of concentration, rate, and patient',
+            'C) Ask another nurse to sign without reviewing',
+            'D) Use previous shift rate regardless of new order'
+          ],
+          correctAnswer: 'B',
+          explanation: 'High-alert medications require independent verification to prevent serious harm.'
+        },
+        {
+          id: 'q2',
+          question: 'Name two documentation elements after correction of a near-miss.',
+          type: 'short-answer',
+          answer: 'Document discrepancy found, who was notified, corrected order/rate, and patient response/monitoring plan.'
+        }
+      ]
     }
   ];
 
@@ -324,10 +380,10 @@ const CaseStudies = ({ chapterId }) => {
                                       ? isCorrect
                                         ? 'border-green-500 bg-green-900 bg-opacity-30 text-green-200'
                                         : 'border-red-500 bg-red-900 bg-opacity-30 text-red-200'
-                                      : 'border-gray-700 hover:border-gray-600'
+                                      : 'border-gray-700 hover:border-gray-600 text-gray-100'
                                   }`}
                                 >
-                                  {option}
+                                  <span className="font-medium">{option}</span>
                                 </button>
                               );
                             })}
