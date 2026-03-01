@@ -90,7 +90,17 @@ export const ChapterReader = () => {
       .filter(Boolean);
   };
 
-  const atlasImages = ['/images/atlas/atlas.png'];
+  const sectionIllustrationMap = {
+    sec1_1_definitions_scope: '/images/ch1/section-1-1/ch1_s1_1_v01.png.png',
+    sec1_2_historical_context: '/images/ch1/section-1-2/ch1_s1_2_v01.png.png',
+    sec1_3_drug_classification: '/images/ch1/section-1-3/ch1_s1_3_v01.png.png',
+    sec1_4_regulatory_bodies_fda: '/images/ch1/section-1-4/ch1_s1_4_v01.png.png',
+    sec1_7_drug_interactions: '/images/ch1/section-1-7/ch1_s1_7_v01.png.png',
+    sec1_8_dosage_calculations: '/images/ch1/section-1-8/ch1_s1_8_v01.png.png',
+    sec1_10_clinical_story_allergy_decision: '/images/ch1/section-1-10/ch1_s1_10_v01.png.png',
+  };
+
+  const currentSectionIllustration = sectionIllustrationMap[currentSection?.id] || '/images/atlas/atlas.png';
 
   // Timer for tracking reading time - only runs once on mount
   useEffect(() => {
@@ -380,10 +390,10 @@ export const ChapterReader = () => {
                           <p className="text-gray-800 leading-relaxed whitespace-pre-wrap">{card}</p>
                         )}
 
-                        {idx % 4 === 2 && (
+                        {idx === 1 && (
                           <div className="mt-4 rounded-lg overflow-hidden border border-slate-200 bg-slate-50">
                             <img
-                              src={atlasImages[0]}
+                              src={currentSectionIllustration}
                               alt="Atlas demonstrating clinical concept"
                               className="w-full max-h-72 object-contain bg-white"
                               loading="lazy"
