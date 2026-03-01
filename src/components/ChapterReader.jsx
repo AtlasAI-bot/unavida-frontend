@@ -52,6 +52,46 @@ export const ChapterReader = () => {
     }
   };
 
+  const sectionVideoMap = {
+    sec1_1_definitions_scope: { id: 'video_07_definition_scope', title: 'Section 1.1 Narration', status: 'placeholder' },
+    sec1_3_drug_classification: { id: 'video_06_drug_classification', title: 'Section 1.3 Narration', status: 'placeholder' },
+    sec1_4_regulatory_bodies_fda: { id: 'video_02_fda_approval_process', title: 'Section 1.4 Narration', status: 'placeholder' },
+    sec1_6_pk_vs_pd: { id: 'video_01_pharmacokinetics', title: 'Section 1.6 Narration', status: 'live' },
+    sec1_7_drug_interactions: { id: 'video_03_drug_interactions', title: 'Section 1.7 Narration', status: 'placeholder' },
+    sec1_8_dosage_calculations: { id: 'video_04_dosage_calculations', title: 'Section 1.8 Narration', status: 'placeholder' },
+    sec1_10_clinical_story_allergy_decision: { id: 'video_05_clinical_story', title: 'Section 1.10 Narration', status: 'placeholder' },
+  };
+
+  const getSectionVideoConfig = (section) => {
+    if (!section) return null;
+    const mapped = sectionVideoMap[section.id];
+    if (!mapped) return null;
+
+    if (mapped.status === 'live') {
+      return {
+        ...mapped,
+        url: getVideoUrl(section.videoSegmentId || mapped.id),
+        caption: section.videoCaption || 'Watch, then continue reading for deeper detail and practice.'
+      };
+    }
+
+    return {
+      ...mapped,
+      url: null,
+      caption: 'Video placeholder ready — upcoming narration/video will be added here.'
+    };
+  };
+
+  const getReadableCards = (content) => {
+    if (!content || typeof content !== 'string') return [];
+    return content
+      .split(/\n\s*\n/g)
+      .map(chunk => chunk.trim())
+      .filter(Boolean);
+  };
+
+  const atlasImages = ['/images/atlas/atlas.png'];
+
   // Timer for tracking reading time - only runs once on mount
   useEffect(() => {
     timerRef.current = setInterval(() => {
@@ -127,6 +167,8 @@ export const ChapterReader = () => {
   };
 
   const progressPercentage = Math.round((activeSection / sections.length) * 100);
+  const currentVideo = getSectionVideoConfig(currentSection);
+  const readableCards = getReadableCards(currentSection?.content);
 
   return (
     <div className="h-screen flex bg-gradient-to-br from-slate-50 to-slate-100 text-gray-900">
@@ -243,27 +285,33 @@ export const ChapterReader = () => {
           {/* Regular Content View */}
           {currentViewMode === 'content' && (
           <div className="max-w-4xl mx-auto px-8 py-12">
-            {/* Featured Video Panel */}
-            <div className="mb-10 p-6 bg-gradient-to-r from-slate-50 to-blue-50 border border-blue-200 rounded-xl">
-              <div className="flex items-center justify-between mb-4 gap-3 flex-wrap">
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900">🎥 Featured Lesson Video</h3>
-                  <p className="text-sm text-gray-600">
-                    {currentSection.videoSegmentId
-                      ? `Video matched to: ${currentSection.title}`
-                      : 'Quick chapter overview while you read this section'}
-                  </p>
+            {/* Featured Video Panel (only for mapped sections) */}
+            {currentVideo && (
+              <div className="mb-10 p-6 bg-gradient-to-r from-slate-50 to-blue-50 border border-blue-200 rounded-xl">
+                <div className="flex items-center justify-between mb-4 gap-3 flex-wrap">
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900">🎥 Featured Lesson Video</h3>
+                    <p className="text-sm text-gray-600">Video matched to: {currentSection.title}</p>
+                  </div>
                 </div>
+
+                {currentVideo.url ? (
+                  <EmbeddedVideo
+                    key={`${currentSection.id || activeSection}-${currentVideo.id}`}
+                    videoId={currentVideo.id}
+                    videoPath={currentVideo.url}
+                    title={`📹 ${currentSection.title}`}
+                    caption={currentVideo.caption}
+                    showCaption={true}
+                  />
+                ) : (
+                  <div className="rounded-lg border border-dashed border-blue-300 bg-white p-5">
+                    <h4 className="font-semibold text-blue-900 mb-1">📹 {currentVideo.title}</h4>
+                    <p className="text-sm text-gray-700">{currentVideo.caption}</p>
+                  </div>
+                )}
               </div>
-              <EmbeddedVideo
-                key={`${currentSection.id || activeSection}-${currentSection.videoSegmentId || 'chapter1_seg1_intro'}`}
-                videoId={currentSection.videoSegmentId || 'chapter1_seg1_intro'}
-                videoPath={currentSection.videoSegmentId ? getVideoUrl(currentSection.videoSegmentId) : '/videos/chapter1_videos/chapter1_seg1_intro.mp4'}
-                title={currentSection.videoSegmentId ? `📹 ${currentSection.title}` : '📹 Chapter 1 Overview'}
-                caption={currentSection.videoCaption || 'Watch, then continue reading for deeper detail and practice.'}
-                showCaption={true}
-              />
-            </div>
+            )}
 
             {/* Section Header */}
             <div className="mb-8">
@@ -309,6 +357,46 @@ export const ChapterReader = () => {
               )}
 
             </div>
+
+            {/* Primary Reading Content */}
+            {readableCards.length > 0 && (
+              <div className="mb-10">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">📘 Reading Content</h3>
+                <div className="space-y-4">
+                  {readableCards.map((card, idx) => {
+                    const isList = card.split('\n').every(line => line.trim().startsWith('- '));
+                    const maybeHeading = !isList && card.length < 80 && !card.includes('.');
+                    return (
+                      <div key={`reading-${idx}`} className="bg-white border border-slate-200 shadow-sm rounded-xl p-5">
+                        {maybeHeading ? (
+                          <h4 className="text-lg font-bold text-slate-900">{card}</h4>
+                        ) : isList ? (
+                          <ul className="list-disc pl-6 space-y-1 text-gray-700">
+                            {card.split('\n').map((line, li) => (
+                              <li key={li}>{line.replace(/^-\s*/, '')}</li>
+                            ))}
+                          </ul>
+                        ) : (
+                          <p className="text-gray-800 leading-relaxed whitespace-pre-wrap">{card}</p>
+                        )}
+
+                        {idx % 4 === 2 && (
+                          <div className="mt-4 rounded-lg overflow-hidden border border-slate-200 bg-slate-50">
+                            <img
+                              src={atlasImages[0]}
+                              alt="Atlas demonstrating clinical concept"
+                              className="w-full max-h-72 object-contain bg-white"
+                              loading="lazy"
+                            />
+                            <p className="px-3 py-2 text-xs text-slate-600">Atlas visual guide • concept reinforcement</p>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
 
             {/* Main Content Blocks */}
             <div className="prose prose-lg max-w-none">
