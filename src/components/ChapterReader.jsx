@@ -84,23 +84,30 @@ export const ChapterReader = () => {
 
   const getReadableCards = (content) => {
     if (!content || typeof content !== 'string') return [];
+
+    const bannedPatterns = [
+      /^\[\s*EXPANDED CONTENT FOR .*\]\s*$/i,
+    ];
+
     return content
       .split(/\n\s*\n/g)
       .map(chunk => chunk.trim())
-      .filter(Boolean);
+      .filter(Boolean)
+      .filter(chunk => !bannedPatterns.some((re) => re.test(chunk)));
   };
 
   const sectionIllustrationMap = {
-    sec1_1_definitions_scope: '/images/ch1/section-1-1/ch1_s1_1_v01.png.png',
-    sec1_2_historical_context: '/images/ch1/section-1-2/ch1_s1_2_v01.png.png',
-    sec1_3_drug_classification: '/images/ch1/section-1-3/ch1_s1_3_v01.png.png',
-    sec1_4_regulatory_bodies_fda: '/images/ch1/section-1-4/ch1_s1_4_v01.png.png',
-    sec1_7_drug_interactions: '/images/ch1/section-1-7/ch1_s1_7_v01.png.png',
-    sec1_8_dosage_calculations: '/images/ch1/section-1-8/ch1_s1_8_v01.png.png',
-    sec1_10_clinical_story_allergy_decision: '/images/ch1/section-1-10/ch1_s1_10_v01.png.png',
+    sec1_1_definitions_scope: 'https://source.unsplash.com/1600x900/?pharmacology,education',
+    sec1_2_historical_context: 'https://source.unsplash.com/1600x900/?medical,history,books',
+    sec1_3_drug_classification: 'https://source.unsplash.com/1600x900/?medicine,pills,classification',
+    sec1_4_regulatory_bodies_fda: 'https://source.unsplash.com/1600x900/?laboratory,clinical,research',
+    sec1_7_drug_interactions: 'https://source.unsplash.com/1600x900/?nurse,medication,safety',
+    sec1_8_dosage_calculations: 'https://source.unsplash.com/1600x900/?calculator,healthcare,dosage',
+    sec1_10_clinical_story_allergy_decision: 'https://source.unsplash.com/1600x900/?hospital,patient,care',
+    sec1_11_review_questions: 'https://source.unsplash.com/1600x900/?study,exam,healthcare',
   };
 
-  const currentSectionIllustration = sectionIllustrationMap[currentSection?.id] || '/images/atlas/atlas.png';
+  const currentSectionIllustration = sectionIllustrationMap[currentSection?.id] || 'https://source.unsplash.com/1600x900/?medical,education';
 
   // Timer for tracking reading time - only runs once on mount
   useEffect(() => {
@@ -398,7 +405,7 @@ export const ChapterReader = () => {
                               className="w-full max-h-72 object-contain bg-white"
                               loading="lazy"
                             />
-                            <p className="px-3 py-2 text-xs text-slate-600">Atlas visual guide • concept reinforcement</p>
+                            <p className="px-3 py-2 text-xs text-slate-600">Visual reference • concept reinforcement</p>
                           </div>
                         )}
                       </div>
