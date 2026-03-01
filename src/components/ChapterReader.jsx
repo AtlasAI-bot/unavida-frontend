@@ -123,16 +123,24 @@ export const ChapterReader = () => {
   };
 
   const sectionIllustrationMap = {
-    sec1_1_definitions_scope: '/images/ch1/section-1-1/ch1_s1_1_v01.png.png',
-    sec1_2_historical_context: '/images/ch1/section-1-2/ch1_s1_2_v01.png.png',
-    sec1_3_drug_classification: '/images/ch1/section-1-3/ch1_s1_3_v01.png.png',
-    sec1_4_regulatory_bodies_fda: '/images/ch1/section-1-4/ch1_s1_4_v01.png.png',
-    sec1_7_drug_interactions: '/images/ch1/section-1-7/ch1_s1_7_v01.png.png',
-    sec1_8_dosage_calculations: '/images/ch1/section-1-8/ch1_s1_8_v01.png.png',
-    sec1_10_clinical_story_allergy_decision: '/images/ch1/section-1-10/ch1_s1_10_v01.png.png',
+    sec1_overview_introduction: [
+      '/images/ch1/section-1-0/ch1_s1_0_v01.png',
+      '/images/ch1/section-1-0/Pharmacology Overview.png',
+      '/images/ch1/section-1-0/Key Principles.png',
+      '/images/ch1/section-1-0/Eight Rights Med.png',
+      '/images/ch1/section-1-0/Drug Calcutation.png',
+      '/images/ch1/section-1-0/Screenshot 2026-03-01 at 5.05.35 PM.png',
+    ],
+    sec1_1_definitions_scope: ['/images/ch1/section-1-1/ch1_s1_1_v01.png.png'],
+    sec1_2_historical_context: ['/images/ch1/section-1-2/ch1_s1_2_v01.png.png'],
+    sec1_3_drug_classification: ['/images/ch1/section-1-3/ch1_s1_3_v01.png.png'],
+    sec1_4_regulatory_bodies_fda: ['/images/ch1/section-1-4/ch1_s1_4_v01.png.png'],
+    sec1_7_drug_interactions: ['/images/ch1/section-1-7/ch1_s1_7_v01.png.png'],
+    sec1_8_dosage_calculations: ['/images/ch1/section-1-8/ch1_s1_8_v01.png.png'],
+    sec1_10_clinical_story_allergy_decision: ['/images/ch1/section-1-10/ch1_s1_10_v01.png.png'],
   };
 
-  const currentSectionIllustration = sectionIllustrationMap[currentSection?.id] || null;
+  const currentSectionIllustrations = sectionIllustrationMap[currentSection?.id] || [];
 
   // Timer for tracking reading time - only runs once on mount
   useEffect(() => {
@@ -435,14 +443,18 @@ export const ChapterReader = () => {
                           </p>
                         )}
 
-                        {idx === 1 && currentSectionIllustration && (
-                          <div className="mt-4 rounded-lg overflow-hidden border border-slate-200 bg-slate-50">
-                            <img
-                              src={currentSectionIllustration}
-                              alt="Section visual"
-                              className="w-full max-h-72 object-contain bg-white"
-                              loading="lazy"
-                            />
+                        {idx === 1 && currentSectionIllustrations.length > 0 && (
+                          <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
+                            {currentSectionIllustrations.map((imgSrc, imgIdx) => (
+                              <div key={imgIdx} className="rounded-lg overflow-hidden border border-slate-200 bg-slate-50">
+                                <img
+                                  src={imgSrc}
+                                  alt={`Section visual ${imgIdx + 1}`}
+                                  className="w-full max-h-72 object-contain bg-white"
+                                  loading="lazy"
+                                />
+                              </div>
+                            ))}
                           </div>
                         )}
                       </div>
