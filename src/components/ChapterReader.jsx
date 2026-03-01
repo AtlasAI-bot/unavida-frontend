@@ -646,19 +646,24 @@ export const ChapterReader = () => {
                         <div className="space-y-4">
                           {block.categories.map((category, idx) => (
                             <div key={idx} className="bg-white p-4 rounded border border-orange-100">
-                              <p className="font-bold text-orange-900">{category.name}</p>
-                              <p className="text-gray-700">{category.examples}</p>
+                              <p className="font-bold text-orange-900">{category.name || category.category}</p>
+                              {category.examples && <p className="text-gray-700">{category.examples}</p>}
+                              {category.description && <p className="text-gray-700">{category.description}</p>}
                             </div>
                           ))}
                         </div>
                       ) : block.items ? (
-                        <ul className="space-y-2">
-                          {block.items.map((item, idx) => (
-                            <li key={idx} className="flex gap-3 text-gray-800">
-                              <span className="text-orange-600 font-bold">•</span>
-                              <span>{item}</span>
-                            </li>
-                          ))}
+                        <ul className="space-y-3">
+                          {block.items.map((item, idx) => {
+                            const itemTitle = typeof item === 'string' ? item : (item.name || item.title || `Item ${idx + 1}`);
+                            const itemDesc = typeof item === 'object' ? (item.description || item.examples || '') : '';
+                            return (
+                              <li key={idx} className="bg-white rounded border border-orange-100 p-3 text-gray-800">
+                                <p className="font-semibold text-orange-900">{itemTitle}</p>
+                                {itemDesc && <p className="text-gray-700 mt-1">{itemDesc}</p>}
+                              </li>
+                            );
+                          })}
                         </ul>
                       ) : null}
                     </div>
@@ -955,16 +960,24 @@ export const ChapterReader = () => {
                               Question {qIdx + 1}: {question.question}
                             </summary>
                             <div className="mt-4 ml-2 space-y-3">
-                              {question.options && question.options.map((option, optIdx) => (
-                                <div key={optIdx} className="p-2 bg-slate-50 rounded">
-                                  <p className="font-semibold text-slate-800">{option.option}. {option.text}</p>
-                                </div>
-                              ))}
+                              {question.options && (
+                                Array.isArray(question.options)
+                                  ? question.options.map((option, optIdx) => (
+                                      <div key={optIdx} className="p-2 bg-slate-50 rounded">
+                                        <p className="font-semibold text-slate-800">{option.option}. {option.text}</p>
+                                      </div>
+                                    ))
+                                  : Object.entries(question.options).map(([key, value]) => (
+                                      <div key={key} className="p-2 bg-slate-50 rounded">
+                                        <p className="font-semibold text-slate-800">{key}. {value}</p>
+                                      </div>
+                                    ))
+                              )}
                               {question.correctAnswer && (
                                 <div className="mt-3 p-3 bg-green-50 border border-green-200 rounded">
                                   <p className="text-green-900 font-bold">Correct Answer: {question.correctAnswer}</p>
-                                  {question.explanation && (
-                                    <p className="text-gray-700 mt-2">{question.explanation}</p>
+                                  {(question.explanation || question.rationale) && (
+                                    <p className="text-gray-700 mt-2">{question.explanation || question.rationale}</p>
                                   )}
                                 </div>
                               )}
