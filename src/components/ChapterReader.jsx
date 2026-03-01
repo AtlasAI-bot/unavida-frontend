@@ -99,70 +99,63 @@ export const ChapterReader = () => {
   const sectionIllustrationGallery = {
     sec1_1_definitions_scope: [
       '/images/ch1/section-1-1/ch1_s1_1_v01.png.png',
-      '/images/ch1/web/sec1_1_1.jpg',
-      '/images/ch1/web/sec1_1_2.jpg',
-      '/images/ch1/web/sec1_1_3.jpg'
+      'https://source.unsplash.com/1600x900/?pharmacology,classroom',
+      'https://source.unsplash.com/1600x900/?medical,students,study'
     ],
     sec1_2_historical_context: [
       '/images/ch1/section-1-2/ch1_s1_2_v01.png.png',
-      '/images/ch1/web/sec1_2_1.jpg',
-      '/images/ch1/web/sec1_2_2.jpg',
-      '/images/ch1/web/sec1_2_3.jpg'
+      'https://source.unsplash.com/1600x900/?old,medical,book',
+      'https://source.unsplash.com/1600x900/?history,science,museum'
     ],
     sec1_3_drug_classification: [
       '/images/ch1/section-1-3/ch1_s1_3_v01.png.png',
-      '/images/ch1/web/sec1_3_1.jpg',
-      '/images/ch1/web/sec1_3_2.jpg',
-      '/images/ch1/web/sec1_3_3.jpg'
+      'https://source.unsplash.com/1600x900/?medicine,pills,bottles',
+      'https://source.unsplash.com/1600x900/?pharmacy,shelves,drugs'
     ],
     sec1_4_regulatory_bodies_fda: [
       '/images/ch1/section-1-4/ch1_s1_4_v01.png.png',
-      '/images/ch1/web/sec1_4_1.jpg',
-      '/images/ch1/web/sec1_4_2.jpg',
-      '/images/ch1/web/sec1_4_3.jpg'
+      'https://source.unsplash.com/1600x900/?laboratory,research,clinical',
+      'https://source.unsplash.com/1600x900/?scientist,trial,medical'
     ],
     sec1_5_drug_names_codes: [
-      '/images/ch1/web/sec1_5_1.jpg',
-      '/images/ch1/web/sec1_5_2.jpg',
-      '/images/ch1/web/sec1_5_3.jpg'
+      'https://source.unsplash.com/1600x900/?prescription,label,pharmacy',
+      'https://source.unsplash.com/1600x900/?medication,bottle,label',
+      'https://source.unsplash.com/1600x900/?doctor,prescription,pad'
     ],
     sec1_6_pk_vs_pd: [
-      '/images/ch1/web/sec1_6_1.jpg',
-      '/images/ch1/web/sec1_6_2.jpg',
-      '/images/ch1/web/sec1_6_3.jpg'
+      'https://source.unsplash.com/1600x900/?human,anatomy,medical',
+      'https://source.unsplash.com/1600x900/?cells,biology,microscope',
+      'https://source.unsplash.com/1600x900/?hospital,medicine,infographic'
     ],
     sec1_7_drug_interactions: [
       '/images/ch1/section-1-7/ch1_s1_7_v01.png.png',
-      '/images/ch1/web/sec1_7_1.jpg',
-      '/images/ch1/web/sec1_7_2.jpg',
-      '/images/ch1/web/sec1_7_3.jpg'
+      'https://source.unsplash.com/1600x900/?nurse,patient,safety',
+      'https://source.unsplash.com/1600x900/?hospital,medication,alert'
     ],
     sec1_8_dosage_calculations: [
       '/images/ch1/section-1-8/ch1_s1_8_v01.png.png',
-      '/images/ch1/web/sec1_8_1.jpg',
-      '/images/ch1/web/sec1_8_2.jpg',
-      '/images/ch1/web/sec1_8_3.jpg'
+      'https://source.unsplash.com/1600x900/?calculator,medical,math',
+      'https://source.unsplash.com/1600x900/?nurse,chart,calculation'
     ],
     sec1_9_key_terms_glossary: [
-      '/images/ch1/web/sec1_9_1.jpg',
-      '/images/ch1/web/sec1_9_2.jpg',
-      '/images/ch1/web/sec1_9_3.jpg'
+      'https://source.unsplash.com/1600x900/?dictionary,study,medical',
+      'https://source.unsplash.com/1600x900/?notes,education,healthcare',
+      'https://source.unsplash.com/1600x900/?library,books,medicine'
     ],
     sec1_10_clinical_story_allergy_decision: [
       '/images/ch1/section-1-10/ch1_s1_10_v01.png.png',
-      '/images/ch1/web/sec1_10_1.jpg',
-      '/images/ch1/web/sec1_10_2.jpg',
-      '/images/ch1/web/sec1_10_3.jpg'
+      'https://source.unsplash.com/1600x900/?hospital,bedside,doctor',
+      'https://source.unsplash.com/1600x900/?patient,care,nurse'
     ],
     sec1_11_review_questions: [
-      '/images/ch1/web/sec1_11_1.jpg',
-      '/images/ch1/web/sec1_11_2.jpg',
-      '/images/ch1/web/sec1_11_3.jpg'
+      'https://source.unsplash.com/1600x900/?exam,study,students',
+      'https://source.unsplash.com/1600x900/?quiz,learning,healthcare',
+      'https://source.unsplash.com/1600x900/?notebook,learning,medicine'
     ],
   };
 
   const currentSectionGallery = sectionIllustrationGallery[currentSection?.id] || [
-    '/images/ch1/web/sec1_1_1.jpg'
+    'https://source.unsplash.com/1600x900/?medical,education'
   ];
 
   // Timer for tracking reading time - only runs once on mount
