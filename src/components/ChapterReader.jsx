@@ -272,7 +272,7 @@ export const ChapterReader = () => {
                     {currentSection.title}
                   </h2>
                   <p className="text-gray-600">
-                    {currentSection.duration} min read • {currentSection.wordCount.toLocaleString()} words
+                    {currentSection.duration || 0} min read • {Number(currentSection.wordCount || 0).toLocaleString()} words
                   </p>
                 </div>
                 <div className="flex gap-2">

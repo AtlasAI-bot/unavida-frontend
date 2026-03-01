@@ -47,7 +47,7 @@ const ChapterNav = ({
             {chapter.metadata.title}
           </h3>
           <p className="text-xs text-gray-600 mt-1">
-            {chapter.metadata.wordCount.toLocaleString()} words • {chapter.metadata.estimatedReadingTime} min
+            {Number(chapter.metadata.wordCount || 0).toLocaleString()} words • {chapter.metadata.estimatedReadingTime || 0} min
           </p>
         </div>
 
@@ -95,7 +95,7 @@ const ChapterNav = ({
                         {section.title}
                       </p>
                       <p className="text-xs text-gray-500 mt-1">
-                        {section.wordCount.toLocaleString()} words • {section.duration} min
+                        {Number(section.wordCount || 0).toLocaleString()} words • {section.duration || 0} min
                       </p>
                     </div>
                     <div className="flex items-center gap-2 ml-2 flex-shrink-0">
