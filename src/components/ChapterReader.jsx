@@ -106,7 +106,7 @@ export const ChapterReader = () => {
     sec1_10_clinical_story_allergy_decision: '/images/ch1/section-1-10/ch1_s1_10_v01.png.png',
   };
 
-  const currentSectionIllustration = sectionIllustrationMap[currentSection?.id] || 'https://source.unsplash.com/1600x900/?medical,education';
+  const currentSectionIllustration = sectionIllustrationMap[currentSection?.id] || null;
 
   // Timer for tracking reading time - only runs once on mount
   useEffect(() => {
@@ -396,15 +396,14 @@ export const ChapterReader = () => {
                           <p className="text-gray-800 leading-relaxed whitespace-pre-wrap">{card}</p>
                         )}
 
-                        {idx === 1 && (
+                        {idx === 1 && currentSectionIllustration && (
                           <div className="mt-4 rounded-lg overflow-hidden border border-slate-200 bg-slate-50">
                             <img
                               src={currentSectionIllustration}
-                              alt="Atlas demonstrating clinical concept"
+                              alt="Section visual"
                               className="w-full max-h-72 object-contain bg-white"
                               loading="lazy"
                             />
-                            <p className="px-3 py-2 text-xs text-slate-600">Visual reference • concept reinforcement</p>
                           </div>
                         )}
                       </div>
