@@ -256,6 +256,7 @@ export const ChapterReader = () => {
                 </div>
               </div>
               <EmbeddedVideo
+                key={`${currentSection.id || activeSection}-${currentSection.videoSegmentId || 'chapter1_seg1_intro'}`}
                 videoId={currentSection.videoSegmentId || 'chapter1_seg1_intro'}
                 videoPath={currentSection.videoSegmentId ? getVideoUrl(currentSection.videoSegmentId) : '/videos/chapter1_videos/chapter1_seg1_intro.mp4'}
                 title={currentSection.videoSegmentId ? `📹 ${currentSection.title}` : '📹 Chapter 1 Overview'}
