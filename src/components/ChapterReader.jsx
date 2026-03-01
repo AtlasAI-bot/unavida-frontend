@@ -527,13 +527,26 @@ export const ChapterReader = () => {
                     <div className="bg-gray-50 border border-gray-300 p-6 rounded-lg mb-6">
                       <h4 className="font-bold text-gray-900 mb-4">{block.title}</h4>
                       {block.steps && (
-                        <ol className="space-y-3">
+                        <ol className="space-y-4">
                           {block.steps.map((step, idx) => (
                             <li key={idx} className="flex gap-4 text-gray-800">
                               <span className="font-bold text-gray-600 flex-shrink-0 w-6 h-6 flex items-center justify-center bg-gray-300 rounded-full text-sm">
                                 {idx + 1}
                               </span>
-                              <span>{step}</span>
+                              <div className="flex-1">
+                                {typeof step === 'string' ? (
+                                  <p>{step}</p>
+                                ) : (
+                                  <div className="bg-white border border-gray-200 rounded p-3 space-y-1">
+                                    {step.action && <p><strong>Action:</strong> {step.action}</p>}
+                                    {step.tools && <p><strong>Tools:</strong> {Array.isArray(step.tools) ? step.tools.join(', ') : step.tools}</p>}
+                                    {step.levels && <p><strong>Levels:</strong> {Array.isArray(step.levels) ? step.levels.join(' • ') : step.levels}</p>}
+                                    {step.options && <p><strong>Options:</strong> {Array.isArray(step.options) ? step.options.join(' • ') : step.options}</p>}
+                                    {step.approach && <p><strong>Approach:</strong> {step.approach}</p>}
+                                    {step.include && <p><strong>Include:</strong> {step.include}</p>}
+                                  </div>
+                                )}
+                              </div>
                             </li>
                           ))}
                         </ol>
