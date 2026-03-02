@@ -498,20 +498,20 @@ export const ChapterReader = () => {
 
                         {(() => {
                           if (currentSection.id !== 'sec1_overview_introduction') {
-                            return idx === 1 && currentSectionIllustrations.length > 0 ? (
-                              <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
-                                {currentSectionIllustrations.map((imgSrc, imgIdx) => (
-                                  <div key={imgIdx} className="rounded-lg overflow-hidden border border-slate-200 bg-slate-50">
-                                    <img
-                                      src={imgSrc}
-                                      alt={`Section visual ${imgIdx + 1}`}
-                                      className="w-full max-h-72 object-contain bg-white"
-                                      loading="lazy"
-                                    />
-                                  </div>
-                                ))}
+                            if (currentSectionIllustrations.length === 0) return null;
+                            if (idx % 2 !== 1) return null;
+
+                            const imgSrc = currentSectionIllustrations[Math.floor(idx / 2) % currentSectionIllustrations.length];
+                            return (
+                              <div className="mt-4 rounded-lg overflow-hidden border border-slate-200 bg-slate-50">
+                                <img
+                                  src={imgSrc}
+                                  alt={`Section visual ${Math.floor(idx / 2) + 1}`}
+                                  className="w-full max-h-72 object-contain bg-white"
+                                  loading="lazy"
+                                />
                               </div>
-                            ) : null;
+                            );
                           }
 
                           const hasInlineHeading =
