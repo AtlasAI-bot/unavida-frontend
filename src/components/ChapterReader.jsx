@@ -60,10 +60,10 @@ export const ChapterReader = () => {
     sec1_overview_introduction: { id: 'video_00_chapter_intro', title: 'Chapter 1 Introduction', status: 'live' },
     sec1_1_definitions_scope: { id: 'video_07_definition_scope', title: 'Section 1.1 Narration', status: 'placeholder' },
     sec1_3_drug_classification: { id: 'video_06_drug_classification', title: 'Section 1.3 Narration', status: 'placeholder' },
-    sec1_4_regulatory_bodies_fda: { id: 'video_02_fda_approval_process', title: 'Section 1.4 Narration', status: 'live' },
+    sec1_4_regulatory_bodies_fda: { id: 'video_02_fda_approval_process', title: 'Section 1.4 Narration', status: 'placeholder' },
     sec1_6_pk_vs_pd: { id: 'video_01_pharmacokinetics', title: 'Section 1.6 Narration', status: 'live' },
-    sec1_7_drug_interactions: { id: 'video_03_drug_interactions', title: 'Section 1.7 Narration', status: 'live' },
-    sec1_8_dosage_calculations: { id: 'video_04_dosage_calculations', title: 'Section 1.8 Narration', status: 'live' },
+    sec1_7_drug_interactions: { id: 'video_03_drug_interactions', title: 'Section 1.7 Narration', status: 'placeholder' },
+    sec1_8_dosage_calculations: { id: 'video_04_dosage_calculations', title: 'Section 1.8 Narration', status: 'placeholder' },
     sec1_10_clinical_story_allergy_decision: { id: 'video_05_clinical_story', title: 'Section 1.10 Narration', status: 'placeholder' },
   };
 
