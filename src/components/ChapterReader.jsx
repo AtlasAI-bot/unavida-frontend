@@ -148,11 +148,28 @@ export const ChapterReader = () => {
 
   const currentSectionIllustrations = sectionIllustrationMap[currentSection?.id] || [];
 
-  const overviewTitleImageMap = {
-    'Understanding Pharmacology in Context': '/images/ch1/section-1-0/Pharmacology Overview.png',
-    'Key Principles for Safe Medication Use': '/images/ch1/section-1-0/Key Principles.png',
-    'The Six Rights (Extended to Eight)': '/images/ch1/section-1-0/Eight Rights Med.png',
-    'Dosage Calculations as a Safety Skill': '/images/ch1/section-1-0/Drug Calcutation.png',
+  const getOverviewImageForCard = (headingText, cardText) => {
+    const heading = (headingText || '').toLowerCase();
+    const body = (cardText || '').toLowerCase();
+    const combined = `${heading} ${body}`;
+
+    if (combined.includes('understanding pharmacology in context') || combined.includes('pharmacology is the study of drugs')) {
+      return '/images/ch1/section-1-0/Pharmacology Overview.png';
+    }
+    if (combined.includes('key principles for safe medication use') || combined.includes('therapeutic intent') || combined.includes('individualization')) {
+      return '/images/ch1/section-1-0/Key Principles.png';
+    }
+    if (combined.includes('the six rights (extended to eight)') || combined.includes('right patient') || combined.includes('right drug')) {
+      return '/images/ch1/section-1-0/Eight Rights Med.png';
+    }
+    if (combined.includes('dosage') || combined.includes('calculation')) {
+      return '/images/ch1/section-1-0/Drug Calcutation.png';
+    }
+    if (combined.includes('scope of this course') || combined.includes('throughout this chapter')) {
+      return '/images/ch1/section-1-0/Screenshot 2026-03-01 at 5.05.35 PM.png';
+    }
+
+    return null;
   };
 
   // Timer for tracking reading time - only runs once on mount
@@ -490,7 +507,7 @@ export const ChapterReader = () => {
                             !first.startsWith('-');
 
                           const heading = hasInlineHeading ? first : null;
-                          const mappedImage = heading ? overviewTitleImageMap[heading] : null;
+                          const mappedImage = getOverviewImageForCard(heading, hasInlineHeading ? rest : card);
 
                           return mappedImage ? (
                             <div className="mt-4 rounded-lg overflow-hidden border border-slate-200 bg-slate-50">
