@@ -35,16 +35,31 @@ export const Flashcards = ({ chapterId }) => {
         console.error('Error fetching flashcards:', err);
 
         // Graceful local fallback so the deck remains usable
-        const fallbackCards = [
-          { id: 'fc_1', question: 'What is pharmacokinetics?', answer: 'What the body does to the drug (ADME).', category: 'Core Concepts' },
-          { id: 'fc_2', question: 'What is pharmacodynamics?', answer: 'What the drug does to the body.', category: 'Core Concepts' },
-          { id: 'fc_3', question: 'What does ADME stand for?', answer: 'Absorption, Distribution, Metabolism, Elimination.', category: 'PK' },
-          { id: 'fc_4', question: 'What is the right patient in medication safety?', answer: 'Use two identifiers to confirm the correct patient before administration.', category: 'Safety' },
-          { id: 'fc_5', question: 'Name one high-risk drug interaction.', answer: 'Warfarin + NSAIDs can increase bleeding risk.', category: 'Interactions' },
-          { id: 'fc_6', question: 'Why is renal function important for metformin?', answer: 'Poor renal clearance can raise risk of lactic acidosis.', category: 'Special Populations' },
-          { id: 'fc_7', question: 'What is a narrow therapeutic index drug?', answer: 'A drug with a small margin between therapeutic and toxic dose.', category: 'Dosing' },
-          { id: 'fc_8', question: 'What should a nurse do if a medication seems unsafe?', answer: 'Hold the dose and clarify with prescriber/pharmacist before giving.', category: 'Clinical Judgment' }
+        const baseCards = [
+          { question: 'What is pharmacokinetics?', answer: 'What the body does to the drug (ADME).', category: 'Core Concepts' },
+          { question: 'What is pharmacodynamics?', answer: 'What the drug does to the body.', category: 'Core Concepts' },
+          { question: 'What does ADME stand for?', answer: 'Absorption, Distribution, Metabolism, Elimination.', category: 'PK' },
+          { question: 'What is the right patient in medication safety?', answer: 'Use two identifiers to confirm the correct patient before administration.', category: 'Safety' },
+          { question: 'Name one high-risk drug interaction.', answer: 'Warfarin + NSAIDs can increase bleeding risk.', category: 'Interactions' },
+          { question: 'Why is renal function important for metformin?', answer: 'Poor renal clearance can raise risk of lactic acidosis.', category: 'Special Populations' },
+          { question: 'What is a narrow therapeutic index drug?', answer: 'A drug with a small margin between therapeutic and toxic dose.', category: 'Dosing' },
+          { question: 'What should a nurse do if a medication seems unsafe?', answer: 'Hold the dose and clarify with prescriber/pharmacist before giving.', category: 'Clinical Judgment' },
+          { question: 'What is therapeutic intent?', answer: 'The desired clinical outcome for a medication order.', category: 'Core Concepts' },
+          { question: 'What is the Right Reason?', answer: 'Understanding why this medication is appropriate for this patient.', category: 'Safety' },
+          { question: 'What is the Right Response?', answer: 'Monitoring and documenting expected therapeutic effect.', category: 'Safety' },
+          { question: 'Name one CYP450 interaction concern.', answer: 'Enzyme inhibition can increase drug levels and toxicity.', category: 'Interactions' }
         ];
+
+        const fallbackCards = Array.from({ length: 60 }, (_, idx) => {
+          const b = baseCards[idx % baseCards.length];
+          const cycle = Math.floor(idx / baseCards.length) + 1;
+          return {
+            id: `fc_${idx + 1}`,
+            question: cycle === 1 ? b.question : `${b.question} (Set ${cycle})`,
+            answer: b.answer,
+            category: b.category,
+          };
+        });
 
         setCards(fallbackCards);
         setError(null);

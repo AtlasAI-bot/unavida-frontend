@@ -94,9 +94,11 @@ const ChapterNav = ({
                       <p className="text-sm font-semibold leading-tight">
                         {section.title}
                       </p>
-                      <p className="text-xs text-gray-500 mt-1">
-                        {Number(section.wordCount || 0).toLocaleString()} words • {section.duration || 0} min
-                      </p>
+                      {section.id !== 'references' && (
+                        <p className="text-xs text-gray-500 mt-1">
+                          {Number(section.wordCount || 0).toLocaleString()} words • {section.duration || 0} min
+                        </p>
+                      )}
                     </div>
                     <div className="flex items-center gap-2 ml-2 flex-shrink-0">
                       {isCompleted && (

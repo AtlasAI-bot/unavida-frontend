@@ -382,7 +382,7 @@ export const ChapterReader = () => {
                 <div className="flex items-center justify-between mb-4 gap-3 flex-wrap">
                   <div>
                     <h3 className="text-xl font-bold text-gray-900">🎥 Featured Lesson Video</h3>
-                    <p className="text-sm text-gray-600">Video matched to: {currentSection.title}</p>
+
                   </div>
                 </div>
 
@@ -412,7 +412,9 @@ export const ChapterReader = () => {
                     {currentSection.title}
                   </h2>
                   <p className="text-gray-600">
-                    {currentSection.duration || 0} min read • {Number(currentSection.wordCount || 0).toLocaleString()} words
+                    {currentSection.id === 'references'
+                      ? 'References'
+                      : `${currentSection.duration || 0} min read • ${Number(currentSection.wordCount || 0).toLocaleString()} words`}
                   </p>
                 </div>
                 <div className="flex gap-2">
@@ -466,7 +468,15 @@ export const ChapterReader = () => {
                 )}
 
                 <div className="space-y-4">
-                  {readableCards.map((card, idx) => {
+                  {currentSection.id === 'references' ? (
+                    <div className="space-y-3">
+                      {readableCards.map((refText, idx) => (
+                        <p key={`ref-${idx}`} className="text-gray-800 leading-relaxed pl-8 -indent-8">
+                          {refText}
+                        </p>
+                      ))}
+                    </div>
+                  ) : readableCards.map((card, idx) => {
                     const isList = card.split('\n').every(line => line.trim().startsWith('- '));
                     const blocks = card.split(/\n\n/).filter(Boolean);
                     const first = blocks[0] || '';
@@ -546,6 +556,7 @@ export const ChapterReader = () => {
             )}
 
             {/* Main Content Blocks */}
+            {currentSection.id !== 'references' && (
             <div className="prose prose-lg max-w-none">
               {currentSection.contentBlocks && currentSection.contentBlocks.map((block) => (
                 <div key={block.blockId} className="mb-8">
@@ -1541,6 +1552,7 @@ export const ChapterReader = () => {
                 </div>
               )}
             </div>
+            )}
 
             {/* Navigation Buttons */}
             <div className="flex gap-4 mt-12 pt-8 border-t border-gray-200">

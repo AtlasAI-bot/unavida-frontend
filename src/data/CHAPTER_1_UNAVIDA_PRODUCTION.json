@@ -9,7 +9,7 @@
       "week": 1,
       "estimatedReadingTime": 180,
       "estimatedStudyTime": 240,
-      "wordCount": 33566,
+      "wordCount": 28156,
       "author": "Atlas Delgado ",
       "textbookReference": "Karch, A.M. (2020). Focus on Nursing Pharmacology (8th ed.). Wolters Kluwer.",
       "targetAudience": [
@@ -144,7 +144,7 @@
         "id": "sec1_overview_introduction",
         "title": "Section 1: Overview & Introduction",
         "duration": 25,
-        "wordCount": 7170,
+        "wordCount": 1075,
         "learningObjectives": [
           "Understand why pharmacology is critical for nursing practice",
           "Define pharmacology in the context of nursing",
@@ -199,7 +199,7 @@
         "id": "sec1_1_definitions_scope",
         "title": "Section 1.1: Definition & Scope of Pharmacology",
         "duration": 20,
-        "wordCount": 1913,
+        "wordCount": 1897,
         "learningObjectives": [
           "Define core pharmacology terms",
           "Understand five major branches of pharmacology",
@@ -266,7 +266,7 @@
         "id": "sec1_2_historical_context",
         "title": "Section 1.2: Historical Context of Pharmacology",
         "duration": 20,
-        "wordCount": 2274,
+        "wordCount": 2268,
         "learningObjectives": [
           "Trace the evolution of pharmacology from ancient times to the modern era",
           "Understand how historical events shaped current drug development and safety practices",
@@ -342,7 +342,7 @@
         "id": "sec1_3_drug_classification",
         "title": "Section 1.3: Drug Classification Systems",
         "duration": 30,
-        "wordCount": 2364,
+        "wordCount": 2336,
         "learningObjectives": [
           "Classify drugs using three major systems: therapeutic, chemical, and regulatory",
           "Predict drug effects and side effects based on drug class",
@@ -480,7 +480,7 @@
         "id": "sec1_4_regulatory_bodies_fda",
         "title": "Section 1.4: Regulatory Bodies & The FDA Drug Approval Process",
         "duration": 25,
-        "wordCount": 2609,
+        "wordCount": 2569,
         "learningObjectives": [
           "Understand the FDA drug approval timeline and phases",
           "Identify key regulatory bodies and their roles",
@@ -589,7 +589,7 @@
         "id": "sec1_5_drug_names_codes",
         "title": "Section 1.5: Drug Names & Classification Codes",
         "duration": 15,
-        "wordCount": 1590,
+        "wordCount": 1556,
         "learningObjectives": [
           "Understand the three names every drug has",
           "Prevent medication errors due to drug name confusion",
@@ -627,7 +627,7 @@
         "id": "sec1_6_pk_vs_pd",
         "title": "Section 1.6: Pharmacokinetics vs. Pharmacodynamics",
         "duration": 45,
-        "wordCount": 3336,
+        "wordCount": 3286,
         "learningObjectives": [
           "Distinguish between pharmacokinetics and pharmacodynamics",
           "Understand ADME processes and how they affect drug action",
@@ -866,7 +866,7 @@
         "id": "sec1_7_drug_interactions",
         "title": "Section 1.7: Drug Interactions & Patient Safety",
         "duration": 30,
-        "wordCount": 2680,
+        "wordCount": 2648,
         "learningObjectives": [
           "Identify pharmacokinetic and pharmacodynamic drug interactions",
           "Apply drug interaction knowledge to recognize dangerous combinations",
@@ -1030,7 +1030,7 @@
         "id": "sec1_8_dosage_calculations",
         "title": "Section 1.8: Dosage Calculations",
         "duration": 40,
-        "wordCount": 2705,
+        "wordCount": 2644,
         "learningObjectives": [
           "Master three dosage calculation methods: Formula, Ratio-Proportion, Dimensional Analysis",
           "Apply calculations to simple and complex clinical scenarios",
@@ -1382,7 +1382,7 @@
         "id": "sec1_10_clinical_story_allergy_decision",
         "title": "Section 1.10: Clinical Story — \"The Allergy Decision\"",
         "duration": 35,
-        "wordCount": 1736,
+        "wordCount": 1732,
         "learningObjectives": [
           "Apply clinical judgment to medication allergy assessment",
           "Make evidence-based drug selection decisions",
@@ -1524,7 +1524,7 @@
         "id": "sec1_11_review_questions",
         "title": "Section 1.11: Review Questions & Assessment",
         "duration": 30,
-        "wordCount": 1416,
+        "wordCount": 1408,
         "learningObjectives": [
           "Assess understanding of chapter content",
           "Apply knowledge to clinical decision-making",
@@ -1646,7 +1646,8 @@
       {
         "id": "references",
         "title": "References",
-        "content": "\nREFERENCES\n\nAmerican Association of Colleges of Nursing. (2021). The Essentials: Core competencies for professional nursing education. Retrieved from https://www.aacnnursing.org/\n\nAmerican Nurses Association. (2021). Code of ethics for nurses with interpretive statements. Silver Spring, MD: ANA.\n\nBerman, A., Snyder, S. J., & Fong, Z. (2016). Kozier and Erb's fundamentals of nursing: Concepts, process, and practice (10th ed.). Upper Saddle River, NJ: Pearson Education.\n\nBrenner, Z. R., & Brenner, P. S. (2020). Pharmacology in nursing practice: A comprehensive guide. Philadelphia: Wolters Kluwer.\n\nCheng, T. O. (2019). History of the ancient world and pharmacology. International Journal of Cardiology, 141(1), 2-6.\n\nCipolle, R. J., Strand, L. M., & Morley, P. C. (2012). Pharmaceutical care practice: The clinician's guide (3rd ed.). New York: McGraw-Hill.\n\nCreswell, J. D., Irwin, M. R., & Burklund, L. J. (2015). Mindfulness-based stress reduction and immune function: A systematic review. Annals of the New York Academy of Sciences, 1373(1), 13-24.\n\nDavidoff, F., Haynes, B., Sackett, D., & Smith, R. (2002). Evidence based medicine. BMJ, 310(6987), 1085-1086.\n\nDeglin, J. H., Vallerand, A. H., & Sanoski, C. A. (2023). Davis's drug guide for nurses (16th ed.). Philadelphia: F.A. Davis Company.\n\nFlannery, S. (2017). The nurse's guide to drug interactions: Avoiding therapeutic pitfalls. American Journal of Nursing, 117(11), 48-53.\n\nFDA. (2023). Code of Federal Regulations Title 21 – Food and Drugs. U.S. Government Publishing Office.\n\nFDA. (2023). FDA approval process. Retrieved from https://www.fda.gov/drugs/development-approval-process-drugs\n\nGoodman, L. S., & Gilman, A. G. (2020). Goodman & Gilman's: The pharmacological basis of therapeutics (13th ed.). New York: McGraw-Hill Education.\n\nGulbrandsen, G. L., & Safran, D. G. (2011). Clinician communication with patients and families: The voice of patient safety. Patient Education and Counseling, 95(2), 176-182.\n\nHenderson, M. C., Tierney, L. M., & Smetana, G. W. (2012). The patient history: Evidence-based approach. New York: McGraw-Hill.\n\nInstitute for Safe Medication Practices. (2023). ISMP medication safety standards. Retrieved from https://www.ismp.org/\n\nInstitute of Medicine. (2006). Preventing medication errors: Quality chasm series. Washington, DC: National Academies Press.\n\nJoint Commission. (2023). The Joint Commission patient safety standards. Retrieved from https://www.jointcommission.org/\n\nKarch, A. M. (2020). Focus on nursing pharmacology (8th ed.). Lippincott Williams & Wilkins.\n\nKucukarslan, S. N. (2012). A review of published studies of patients' pill taking compliance. Journal of the American Pharmaceutical Association, 42(1), 41-51.\n\nLeape, L. L., Brennan, T. A., Laird, N., Lawthers, A. G., Localio, A. R., Barnes, B. A., ... & Hiatt, H. (2011). The nature of adverse events in hospitalized patients. The New England Journal of Medicine, 324(6), 377-384.\n\nLewis, S. L., Dirksen, S. R., Heitkemper, M. M., & Bucher, L. (2019). Medical-surgical nursing: Assessment and management of clinical problems (11th ed.). St. Louis: Elsevier.\n\nLillie-Blanton, M., & Hoffman, C. (2005). The role of health insurance coverage in reducing racial/ethnic disparities in health care. Health Affairs, 24(2), 398-408.\n\nNANDA International. (2023). Nursing diagnoses: Definitions & classification 2023-2025. New York: Thieme.\n\nNational Institute for Health and Clinical Excellence. (2023). NICE guidance on medication management. Retrieved from https://www.nice.org.uk/\n\nNational Quality Forum. (2023). NQF endorsed measures for medication safety. Retrieved from https://www.qualityforum.org/\n\nNorthrup, D. T., & Purkis, M. E. (2011). Nurses' knowledge of medication administration. Journal of Nursing Administration, 25(4), 30-34.\n\nPorth, C. M., & Matfin, G. (2018). Pathophysiology: Concepts of altered health states (10th ed.). Philadelphia: Wolters Kluwer.\n\nRosenthal, L. D., & Rubenstein, J. S. (2016). Pharmacology for nurses: A pathophysiologic approach (5th ed.). Boston: Pearson.\n\nSackett, D. L., Rosenberg, W. M., Gray, J. A., Haynes, R. B., & Richardson, W. S. (2012). Evidence based medicine: What it is and what it isn't. BMJ, 312(7023), 71-72.\n\nShea, B. J., Hamel, C., Wells, G. A., Bouter, L. M., Kristjansson, E., Grimshaw, J., ... & Boers, M. (2019). AMSTAR 2: A critical appraisal tool for systematic reviews that include randomised or quasi-randomised studies of healthcare interventions. BMJ, 358, j4008.\n\nSmeltzer, S. C., Bare, B. G., Hinkle, J. L., & Cheever, K. H. (2018). Brunner & Suddarth's textbook of medical-surgical nursing (14th ed.). Philadelphia: Wolters Kluwer.\n\nStultz, J. S., & Tran, H. (2020). Clinical pharmacology in nursing. Clinical Advisor, 23(7), 24-32.\n\nTjia, J., Vellturo, K. A., & Briesacher, B. A. (2013). Pharmacy quality measures. Journal of the American Pharmacists Association, 53(4), 354-362.\n\nU.S. Department of Health and Human Services. (2023). National action plan to improve health literacy. Retrieved from https://health.gov/communication/hlactionplan/\n\nWestbrook, J. I., Rob, M. I., Woods, A., & Parry, M. (2011). A multi-hospital comparison of adverse events and nursing actions that may precede them. Journal of Nursing Administration, 41(1), 41-46.\n\nWHO. (2023). WHO guidelines on medication safety. Retrieved from https://www.who.int/publications\n\nWorely, W. H. (2019). The evolution of pharmacology in nursing practice. Nursing History Review, 27, 156-178.\n\nYelnick, J. (2020). Evidence-based medication administration in clinical nursing. American Journal of Nursing, 120(6), 28-35.\n\n---\n\n**Additional Resources for Continued Learning:**\n\n1. **Professional Organizations:**\n   - American Nurses Association (ANA): https://www.nursingworld.org/\n   - National Council of State Boards of Nursing (NCSBN): https://www.ncsbn.org/\n   - Institute for Safe Medication Practices (ISMP): https://www.ismp.org/\n\n2. **Government Resources:**\n   - FDA Drug Information: https://www.fda.gov/drugs\n   - MEDLINE Plus: https://medlineplus.gov/\n   - National Institutes of Health: https://www.nih.gov/\n\n3. **Clinical References:**\n   - Micromedex: Drug interaction and toxicity information\n   - Lexicomp: Comprehensive drug information\n   - UpToDate: Evidence-based clinical resource\n\n4. **Educational Resources:**\n   - Nursing textbooks (current editions recommended)\n   - Journal of Nursing Administration\n   - Nursing Research\n   - American Journal of Nursing\n   - Journal of Nursing Education\n\n**Note on Attribution:**\nThe content in this chapter synthesizes information from multiple peer-reviewed nursing, pharmacology, and medical literature sources. Individual sections may reference specific works in the references list above. All clinical examples are either based on common case presentations or fictional scenarios created for educational purposes.\n\nFor the most current information on specific drugs, regulatory changes, and clinical guidelines, consult current evidence-based resources and institutional protocols.\n"
+        "content": "\nREFERENCES\n\nAmerican Association of Colleges of Nursing. (2021). The Essentials: Core competencies for professional nursing education. Retrieved from https://www.aacnnursing.org/\n\nAmerican Nurses Association. (2021). Code of ethics for nurses with interpretive statements. Silver Spring, MD: ANA.\n\nBerman, A., Snyder, S. J., & Fong, Z. (2016). Kozier and Erb's fundamentals of nursing: Concepts, process, and practice (10th ed.). Upper Saddle River, NJ: Pearson Education.\n\nBrenner, Z. R., & Brenner, P. S. (2020). Pharmacology in nursing practice: A comprehensive guide. Philadelphia: Wolters Kluwer.\n\nCheng, T. O. (2019). History of the ancient world and pharmacology. International Journal of Cardiology, 141(1), 2-6.\n\nCipolle, R. J., Strand, L. M., & Morley, P. C. (2012). Pharmaceutical care practice: The clinician's guide (3rd ed.). New York: McGraw-Hill.\n\nCreswell, J. D., Irwin, M. R., & Burklund, L. J. (2015). Mindfulness-based stress reduction and immune function: A systematic review. Annals of the New York Academy of Sciences, 1373(1), 13-24.\n\nDavidoff, F., Haynes, B., Sackett, D., & Smith, R. (2002). Evidence based medicine. BMJ, 310(6987), 1085-1086.\n\nDeglin, J. H., Vallerand, A. H., & Sanoski, C. A. (2023). Davis's drug guide for nurses (16th ed.). Philadelphia: F.A. Davis Company.\n\nFlannery, S. (2017). The nurse's guide to drug interactions: Avoiding therapeutic pitfalls. American Journal of Nursing, 117(11), 48-53.\n\nFDA. (2023). Code of Federal Regulations Title 21 – Food and Drugs. U.S. Government Publishing Office.\n\nFDA. (2023). FDA approval process. Retrieved from https://www.fda.gov/drugs/development-approval-process-drugs\n\nGoodman, L. S., & Gilman, A. G. (2020). Goodman & Gilman's: The pharmacological basis of therapeutics (13th ed.). New York: McGraw-Hill Education.\n\nGulbrandsen, G. L., & Safran, D. G. (2011). Clinician communication with patients and families: The voice of patient safety. Patient Education and Counseling, 95(2), 176-182.\n\nHenderson, M. C., Tierney, L. M., & Smetana, G. W. (2012). The patient history: Evidence-based approach. New York: McGraw-Hill.\n\nInstitute for Safe Medication Practices. (2023). ISMP medication safety standards. Retrieved from https://www.ismp.org/\n\nInstitute of Medicine. (2006). Preventing medication errors: Quality chasm series. Washington, DC: National Academies Press.\n\nJoint Commission. (2023). The Joint Commission patient safety standards. Retrieved from https://www.jointcommission.org/\n\nKarch, A. M. (2020). Focus on nursing pharmacology (8th ed.). Lippincott Williams & Wilkins.\n\nKucukarslan, S. N. (2012). A review of published studies of patients' pill taking compliance. Journal of the American Pharmaceutical Association, 42(1), 41-51.\n\nLeape, L. L., Brennan, T. A., Laird, N., Lawthers, A. G., Localio, A. R., Barnes, B. A., ... & Hiatt, H. (2011). The nature of adverse events in hospitalized patients. The New England Journal of Medicine, 324(6), 377-384.\n\nLewis, S. L., Dirksen, S. R., Heitkemper, M. M., & Bucher, L. (2019). Medical-surgical nursing: Assessment and management of clinical problems (11th ed.). St. Louis: Elsevier.\n\nLillie-Blanton, M., & Hoffman, C. (2005). The role of health insurance coverage in reducing racial/ethnic disparities in health care. Health Affairs, 24(2), 398-408.\n\nNANDA International. (2023). Nursing diagnoses: Definitions & classification 2023-2025. New York: Thieme.\n\nNational Institute for Health and Clinical Excellence. (2023). NICE guidance on medication management. Retrieved from https://www.nice.org.uk/\n\nNational Quality Forum. (2023). NQF endorsed measures for medication safety. Retrieved from https://www.qualityforum.org/\n\nNorthrup, D. T., & Purkis, M. E. (2011). Nurses' knowledge of medication administration. Journal of Nursing Administration, 25(4), 30-34.\n\nPorth, C. M., & Matfin, G. (2018). Pathophysiology: Concepts of altered health states (10th ed.). Philadelphia: Wolters Kluwer.\n\nRosenthal, L. D., & Rubenstein, J. S. (2016). Pharmacology for nurses: A pathophysiologic approach (5th ed.). Boston: Pearson.\n\nSackett, D. L., Rosenberg, W. M., Gray, J. A., Haynes, R. B., & Richardson, W. S. (2012). Evidence based medicine: What it is and what it isn't. BMJ, 312(7023), 71-72.\n\nShea, B. J., Hamel, C., Wells, G. A., Bouter, L. M., Kristjansson, E., Grimshaw, J., ... & Boers, M. (2019). AMSTAR 2: A critical appraisal tool for systematic reviews that include randomised or quasi-randomised studies of healthcare interventions. BMJ, 358, j4008.\n\nSmeltzer, S. C., Bare, B. G., Hinkle, J. L., & Cheever, K. H. (2018). Brunner & Suddarth's textbook of medical-surgical nursing (14th ed.). Philadelphia: Wolters Kluwer.\n\nStultz, J. S., & Tran, H. (2020). Clinical pharmacology in nursing. Clinical Advisor, 23(7), 24-32.\n\nTjia, J., Vellturo, K. A., & Briesacher, B. A. (2013). Pharmacy quality measures. Journal of the American Pharmacists Association, 53(4), 354-362.\n\nU.S. Department of Health and Human Services. (2023). National action plan to improve health literacy. Retrieved from https://health.gov/communication/hlactionplan/\n\nWestbrook, J. I., Rob, M. I., Woods, A., & Parry, M. (2011). A multi-hospital comparison of adverse events and nursing actions that may precede them. Journal of Nursing Administration, 41(1), 41-46.\n\nWHO. (2023). WHO guidelines on medication safety. Retrieved from https://www.who.int/publications\n\nWorely, W. H. (2019). The evolution of pharmacology in nursing practice. Nursing History Review, 27, 156-178.\n\nYelnick, J. (2020). Evidence-based medication administration in clinical nursing. American Journal of Nursing, 120(6), 28-35.\n\n---\n\n**Additional Resources for Continued Learning:**\n\n1. **Professional Organizations:**\n   - American Nurses Association (ANA): https://www.nursingworld.org/\n   - National Council of State Boards of Nursing (NCSBN): https://www.ncsbn.org/\n   - Institute for Safe Medication Practices (ISMP): https://www.ismp.org/\n\n2. **Government Resources:**\n   - FDA Drug Information: https://www.fda.gov/drugs\n   - MEDLINE Plus: https://medlineplus.gov/\n   - National Institutes of Health: https://www.nih.gov/\n\n3. **Clinical References:**\n   - Micromedex: Drug interaction and toxicity information\n   - Lexicomp: Comprehensive drug information\n   - UpToDate: Evidence-based clinical resource\n\n4. **Educational Resources:**\n   - Nursing textbooks (current editions recommended)\n   - Journal of Nursing Administration\n   - Nursing Research\n   - American Journal of Nursing\n   - Journal of Nursing Education\n\n**Note on Attribution:**\nThe content in this chapter synthesizes information from multiple peer-reviewed nursing, pharmacology, and medical literature sources. Individual sections may reference specific works in the references list above. All clinical examples are either based on common case presentations or fictional scenarios created for educational purposes.\n\nFor the most current information on specific drugs, regulatory changes, and clinical guidelines, consult current evidence-based resources and institutional protocols.\n",
+        "wordCount": 964
       }
     ],
     "mediaAssets": {
