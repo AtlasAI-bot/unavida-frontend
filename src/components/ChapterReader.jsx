@@ -501,12 +501,15 @@ export const ChapterReader = () => {
                             if (currentSectionIllustrations.length === 0) return null;
                             if (idx % 2 !== 1) return null;
 
-                            const imgSrc = currentSectionIllustrations[Math.floor(idx / 2) % currentSectionIllustrations.length];
+                            const imageIndex = Math.floor(idx / 2);
+                            if (imageIndex >= currentSectionIllustrations.length) return null;
+
+                            const imgSrc = currentSectionIllustrations[imageIndex];
                             return (
                               <div className="mt-4 rounded-lg overflow-hidden border border-slate-200 bg-slate-50">
                                 <img
                                   src={imgSrc}
-                                  alt={`Section visual ${Math.floor(idx / 2) + 1}`}
+                                  alt={`Section visual ${imageIndex + 1}`}
                                   className="w-full max-h-72 object-contain bg-white"
                                   loading="lazy"
                                 />
