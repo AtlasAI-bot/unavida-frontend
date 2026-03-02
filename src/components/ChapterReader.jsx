@@ -42,6 +42,9 @@ export const ChapterReader = () => {
       video_02_fda_approval_process: 'https://unavida-videos.s3.us-east-2.amazonaws.com/02_fda_approval_process.mp4',
       video_03_drug_interactions: 'https://unavida-videos.s3.us-east-2.amazonaws.com/03_drug_interactions_and_safety.mp4',
       video_04_dosage_calculations: 'https://unavida-videos.s3.us-east-2.amazonaws.com/04_dosage_calculations.mp4',
+      video_05_clinical_story: 'https://unavida-videos.s3.us-east-2.amazonaws.com/05_clinical_story_allergy_decision.mp4',
+      video_06_drug_classification: 'https://unavida-videos.s3.us-east-2.amazonaws.com/06_drug_classification_systems.mp4',
+      video_07_definition_scope: 'https://unavida-videos.s3.us-east-2.amazonaws.com/07_definition_and_scope.mp4',
     };
 
     try {
@@ -58,13 +61,13 @@ export const ChapterReader = () => {
 
   const sectionVideoMap = {
     sec1_overview_introduction: { id: 'video_00_chapter_intro', title: 'Chapter 1 Introduction', status: 'live' },
-    sec1_1_definitions_scope: { id: 'video_07_definition_scope', title: 'Section 1.1 Narration', status: 'placeholder' },
-    sec1_3_drug_classification: { id: 'video_06_drug_classification', title: 'Section 1.3 Narration', status: 'placeholder' },
+    sec1_1_definitions_scope: { id: 'video_07_definition_scope', title: 'Section 1.1 Narration', status: 'live' },
+    sec1_3_drug_classification: { id: 'video_06_drug_classification', title: 'Section 1.3 Narration', status: 'live' },
     sec1_4_regulatory_bodies_fda: { id: 'video_02_fda_approval_process', title: 'Section 1.4 Narration', status: 'live' },
     sec1_6_pk_vs_pd: { id: 'video_01_pharmacokinetics', title: 'Section 1.6 Narration', status: 'live' },
     sec1_7_drug_interactions: { id: 'video_03_drug_interactions', title: 'Section 1.7 Narration', status: 'live' },
     sec1_8_dosage_calculations: { id: 'video_04_dosage_calculations', title: 'Section 1.8 Narration', status: 'live' },
-    sec1_10_clinical_story_allergy_decision: { id: 'video_05_clinical_story', title: 'Section 1.10 Narration', status: 'placeholder' },
+    sec1_10_clinical_story_allergy_decision: { id: 'video_05_clinical_story', title: 'Section 1.10 Narration', status: 'live' },
   };
 
   const getSectionVideoConfig = (section) => {
