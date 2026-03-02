@@ -1620,7 +1620,7 @@ export const ChapterReader = () => {
                 >
                   <BookOpen className="text-green-600 mb-3" size={28} />
                   <h4 className="font-bold text-green-900 text-lg mb-1">Case Studies</h4>
-                  <p className="text-sm text-green-700">Work through 5 realistic clinical scenarios</p>
+                  <p className="text-sm text-green-700">Work through 7 realistic clinical scenarios</p>
                 </button>
                 <button
                   onClick={() => setCurrentViewMode('outcomes')}
