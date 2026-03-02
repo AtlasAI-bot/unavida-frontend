@@ -37,7 +37,11 @@ export const ChapterReader = () => {
 
     // Local fallback map (used only if media asset URL is missing)
     const localVideoMap = {
+      video_00_chapter_intro: '/videos/chapter1_videos/Pharmacology_ Chapter 1 Introduction_1080p_caption.mp4',
       video_01_pharmacokinetics: '/videos/chapter1_videos/section_1_6_pharmacokinetics_vs_pharmacodynamics.mp4',
+      video_02_fda_approval_process: '/videos/chapter1_videos/02_fda_approval_process.mp4',
+      video_03_drug_interactions: '/videos/chapter1_videos/03_drug_interactions_and_safety.mp4',
+      video_04_dosage_calculations: '/videos/chapter1_videos/04_dosage_calculations.mp4',
     };
 
     try {
@@ -53,12 +57,13 @@ export const ChapterReader = () => {
   };
 
   const sectionVideoMap = {
+    sec1_overview_introduction: { id: 'video_00_chapter_intro', title: 'Chapter 1 Introduction', status: 'live' },
     sec1_1_definitions_scope: { id: 'video_07_definition_scope', title: 'Section 1.1 Narration', status: 'placeholder' },
     sec1_3_drug_classification: { id: 'video_06_drug_classification', title: 'Section 1.3 Narration', status: 'placeholder' },
-    sec1_4_regulatory_bodies_fda: { id: 'video_02_fda_approval_process', title: 'Section 1.4 Narration', status: 'placeholder' },
+    sec1_4_regulatory_bodies_fda: { id: 'video_02_fda_approval_process', title: 'Section 1.4 Narration', status: 'live' },
     sec1_6_pk_vs_pd: { id: 'video_01_pharmacokinetics', title: 'Section 1.6 Narration', status: 'live' },
-    sec1_7_drug_interactions: { id: 'video_03_drug_interactions', title: 'Section 1.7 Narration', status: 'placeholder' },
-    sec1_8_dosage_calculations: { id: 'video_04_dosage_calculations', title: 'Section 1.8 Narration', status: 'placeholder' },
+    sec1_7_drug_interactions: { id: 'video_03_drug_interactions', title: 'Section 1.7 Narration', status: 'live' },
+    sec1_8_dosage_calculations: { id: 'video_04_dosage_calculations', title: 'Section 1.8 Narration', status: 'live' },
     sec1_10_clinical_story_allergy_decision: { id: 'video_05_clinical_story', title: 'Section 1.10 Narration', status: 'placeholder' },
   };
 
@@ -87,6 +92,7 @@ export const ChapterReader = () => {
 
     const bannedPatterns = [
       /^\[\s*EXPANDED CONTENT FOR .*\]\s*$/i,
+      /^\(\s*Comprehensive Overview Section\s*\)$/i,
     ];
 
     const paragraphs = content
@@ -141,6 +147,13 @@ export const ChapterReader = () => {
   };
 
   const currentSectionIllustrations = sectionIllustrationMap[currentSection?.id] || [];
+
+  const overviewTitleImageMap = {
+    'Understanding Pharmacology in Context': '/images/ch1/section-1-0/Pharmacology Overview.png',
+    'Key Principles for Safe Medication Use': '/images/ch1/section-1-0/Key Principles.png',
+    'The Six Rights (Extended to Eight)': '/images/ch1/section-1-0/Eight Rights Med.png',
+    'Dosage Calculations as a Safety Skill': '/images/ch1/section-1-0/Drug Calcutation.png',
+  };
 
   // Timer for tracking reading time - only runs once on mount
   useEffect(() => {
@@ -412,6 +425,18 @@ export const ChapterReader = () => {
             {readableCards.length > 0 && (
               <div className="mb-10">
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">📘 Reading Content</h3>
+
+                {currentSection.id === 'sec1_overview_introduction' && currentSectionIllustrations[0] && (
+                  <div className="mb-5 rounded-lg overflow-hidden border border-slate-200 bg-slate-50">
+                    <img
+                      src={currentSectionIllustrations[0]}
+                      alt="Chapter 1 overview"
+                      className="w-full max-h-[430px] object-contain bg-white"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
+
                 <div className="space-y-4">
                   {readableCards.map((card, idx) => {
                     const isList = card.split('\n').every(line => line.trim().startsWith('- '));
@@ -443,20 +468,41 @@ export const ChapterReader = () => {
                           </p>
                         )}
 
-                        {idx === 1 && currentSectionIllustrations.length > 0 && (
-                          <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
-                            {currentSectionIllustrations.map((imgSrc, imgIdx) => (
-                              <div key={imgIdx} className="rounded-lg overflow-hidden border border-slate-200 bg-slate-50">
+                        {(() => {
+                          if (currentSection.id !== 'sec1_overview_introduction') {
+                            return idx === 1 && currentSectionIllustrations.length > 0 ? (
+                              <div className="mt-4 rounded-lg overflow-hidden border border-slate-200 bg-slate-50">
                                 <img
-                                  src={imgSrc}
-                                  alt={`Section visual ${imgIdx + 1}`}
+                                  src={currentSectionIllustrations[0]}
+                                  alt="Section visual"
                                   className="w-full max-h-72 object-contain bg-white"
                                   loading="lazy"
                                 />
                               </div>
-                            ))}
-                          </div>
-                        )}
+                            ) : null;
+                          }
+
+                          const hasInlineHeading =
+                            blocks.length > 1 &&
+                            first.length < 100 &&
+                            !first.includes('.') &&
+                            !first.includes(':') &&
+                            !first.startsWith('-');
+
+                          const heading = hasInlineHeading ? first : null;
+                          const mappedImage = heading ? overviewTitleImageMap[heading] : null;
+
+                          return mappedImage ? (
+                            <div className="mt-4 rounded-lg overflow-hidden border border-slate-200 bg-slate-50">
+                              <img
+                                src={mappedImage}
+                                alt={heading}
+                                className="w-full max-h-[380px] object-contain bg-white"
+                                loading="lazy"
+                              />
+                            </div>
+                          ) : null;
+                        })()}
                       </div>
                     );
                   })}
