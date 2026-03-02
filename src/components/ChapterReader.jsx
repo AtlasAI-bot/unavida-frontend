@@ -37,11 +37,11 @@ export const ChapterReader = () => {
 
     // Local fallback map (used only if media asset URL is missing)
     const localVideoMap = {
-      video_00_chapter_intro: '/videos/chapter1_videos/Pharmacology_ Chapter 1 Introduction_1080p_caption.mp4',
-      video_01_pharmacokinetics: '/videos/chapter1_videos/section_1_6_pharmacokinetics_vs_pharmacodynamics.mp4',
-      video_02_fda_approval_process: '/videos/chapter1_videos/02_fda_approval_process.mp4',
-      video_03_drug_interactions: '/videos/chapter1_videos/03_drug_interactions_and_safety.mp4',
-      video_04_dosage_calculations: '/videos/chapter1_videos/04_dosage_calculations.mp4',
+      video_00_chapter_intro: 'https://unavida-videos.s3.us-east-2.amazonaws.com/Pharmacology_+Chapter+1+Introduction_1080p_caption.mp4',
+      video_01_pharmacokinetics: 'https://unavida-videos.s3.us-east-2.amazonaws.com/4982BE2B-4807-F9DC-41B2-6CCF565CF232.mp4',
+      video_02_fda_approval_process: 'https://unavida-videos.s3.us-east-2.amazonaws.com/02_fda_approval_process.mp4',
+      video_03_drug_interactions: 'https://unavida-videos.s3.us-east-2.amazonaws.com/03_drug_interactions_and_safety.mp4',
+      video_04_dosage_calculations: 'https://unavida-videos.s3.us-east-2.amazonaws.com/04_dosage_calculations.mp4',
     };
 
     try {
@@ -60,10 +60,10 @@ export const ChapterReader = () => {
     sec1_overview_introduction: { id: 'video_00_chapter_intro', title: 'Chapter 1 Introduction', status: 'live' },
     sec1_1_definitions_scope: { id: 'video_07_definition_scope', title: 'Section 1.1 Narration', status: 'placeholder' },
     sec1_3_drug_classification: { id: 'video_06_drug_classification', title: 'Section 1.3 Narration', status: 'placeholder' },
-    sec1_4_regulatory_bodies_fda: { id: 'video_02_fda_approval_process', title: 'Section 1.4 Narration', status: 'placeholder' },
+    sec1_4_regulatory_bodies_fda: { id: 'video_02_fda_approval_process', title: 'Section 1.4 Narration', status: 'live' },
     sec1_6_pk_vs_pd: { id: 'video_01_pharmacokinetics', title: 'Section 1.6 Narration', status: 'live' },
-    sec1_7_drug_interactions: { id: 'video_03_drug_interactions', title: 'Section 1.7 Narration', status: 'placeholder' },
-    sec1_8_dosage_calculations: { id: 'video_04_dosage_calculations', title: 'Section 1.8 Narration', status: 'placeholder' },
+    sec1_7_drug_interactions: { id: 'video_03_drug_interactions', title: 'Section 1.7 Narration', status: 'live' },
+    sec1_8_dosage_calculations: { id: 'video_04_dosage_calculations', title: 'Section 1.8 Narration', status: 'live' },
     sec1_10_clinical_story_allergy_decision: { id: 'video_05_clinical_story', title: 'Section 1.10 Narration', status: 'placeholder' },
   };
 
