@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://unavida-frontend-production.up.railway.app/$1",
+      "permanent": true
+    }
+  ]
+}
