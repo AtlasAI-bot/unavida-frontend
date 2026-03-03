@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import PressPrototypeBookshelfNative from './PressPrototypeBookshelfNative';
 
 const pages = {
-  bookshelf: '/press-demo/bookshelf_offline_redesign_demo.html',
   textbook: '/press-demo/bookshelf_offline_redesign_pharmacology_detail.html',
   reader: '/press-demo/bookshelf_offline_redesign_chapter_1_6_reader.html',
 };
@@ -11,7 +11,11 @@ export const PressPrototypeViewer = () => {
   const navigate = useNavigate();
   const [search] = useSearchParams();
   const page = search.get('page') || 'bookshelf';
-  const src = pages[page] || pages.bookshelf;
+  const src = pages[page] || pages.textbook;
+  const isActive = (key) =>
+    page === key
+      ? 'px-3 py-1.5 rounded bg-cyan-600 hover:bg-cyan-500 text-sm font-semibold'
+      : 'px-3 py-1.5 rounded bg-slate-700 hover:bg-slate-600 text-sm';
 
   return (
     <div className="h-screen bg-slate-950 text-white flex flex-col">
@@ -24,14 +28,20 @@ export const PressPrototypeViewer = () => {
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <button onClick={() => navigate('/press/prototype?page=bookshelf')} className="px-3 py-1.5 rounded bg-slate-700 hover:bg-slate-600 text-sm">Bookshelf</button>
-          <button onClick={() => navigate('/press/prototype?page=textbook')} className="px-3 py-1.5 rounded bg-slate-700 hover:bg-slate-600 text-sm">Textbook</button>
-          <button onClick={() => navigate('/press/prototype?page=reader')} className="px-3 py-1.5 rounded bg-cyan-600 hover:bg-cyan-500 text-sm font-semibold">Reader</button>
+          <button onClick={() => navigate('/press/prototype?page=bookshelf')} className={isActive('bookshelf')}>Bookshelf</button>
+          <button onClick={() => navigate('/press/prototype?page=textbook')} className={isActive('textbook')}>Textbook</button>
+          <button onClick={() => navigate('/press/prototype?page=reader')} className={isActive('reader')}>Reader</button>
           <button onClick={() => navigate('/bookshelf')} className="px-3 py-1.5 rounded border border-slate-500 text-sm">Back</button>
         </div>
       </div>
 
-      <iframe title="UnaVida Press Prototype" src={src} className="flex-1 w-full border-0 bg-white" />
+      {page === 'bookshelf' ? (
+        <div className="flex-1 min-h-0">
+          <PressPrototypeBookshelfNative />
+        </div>
+      ) : (
+        <iframe title="UnaVida Press Prototype" src={src} className="flex-1 w-full border-0 bg-white" />
+      )}
     </div>
   );
 };
