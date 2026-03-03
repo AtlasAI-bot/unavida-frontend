@@ -27,15 +27,31 @@ const EmbeddedVideo = ({
   const [videoDuration, setVideoDuration] = useState(0);
   const [volume, setVolume] = useState(1);
   const [isMuted, setIsMuted] = useState(false);
+  const [showOverlayControls, setShowOverlayControls] = useState(true);
+  const controlsTimerRef = useRef(null);
+
+  const scheduleControlsHide = () => {
+    if (controlsTimerRef.current) clearTimeout(controlsTimerRef.current);
+    if (!hideControls || !videoRef.current) return;
+    if (!videoRef.current.paused) {
+      controlsTimerRef.current = setTimeout(() => {
+        setShowOverlayControls(false);
+      }, 1800);
+    }
+  };
 
   const handlePlayPause = () => {
     if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
+      if (videoRef.current.paused) {
         videoRef.current.play();
+        setIsPlaying(true);
+        setShowOverlayControls(true);
+        scheduleControlsHide();
+      } else {
+        videoRef.current.pause();
+        setIsPlaying(false);
+        setShowOverlayControls(true);
       }
-      setIsPlaying(!isPlaying);
     }
   };
 
@@ -84,6 +100,7 @@ const EmbeddedVideo = ({
 
   const handleEnded = () => {
     setIsPlaying(false);
+    setShowOverlayControls(true);
   };
 
   const formatTime = (time) => {
@@ -96,6 +113,12 @@ const EmbeddedVideo = ({
   // Construct video path if not provided
   const resolvedVideoPath = videoPath || `/videos/${videoId}.mp4`;
 
+  const handlePointerActivity = () => {
+    if (!hideControls) return;
+    setShowOverlayControls(true);
+    scheduleControlsHide();
+  };
+
   // Reload video source when section/video changes
   useEffect(() => {
     if (videoRef.current) {
@@ -103,13 +126,26 @@ const EmbeddedVideo = ({
       videoRef.current.load();
       setIsPlaying(false);
       setCurrentTime(0);
+      setShowOverlayControls(true);
     }
   }, [resolvedVideoPath]);
+
+  useEffect(() => {
+    return () => {
+      if (controlsTimerRef.current) clearTimeout(controlsTimerRef.current);
+    };
+  }, []);
 
   return (
     <div className="embedded-video-container">
       <div className="embedded-video-wrapper">
-        <div className="video-player">
+        <div
+          className="video-player"
+          onMouseMove={handlePointerActivity}
+          onMouseLeave={() => {
+            if (hideControls && isPlaying) setShowOverlayControls(false);
+          }}
+        >
           <video
             ref={videoRef}
             className="video-element"
@@ -123,7 +159,18 @@ const EmbeddedVideo = ({
             Your browser does not support the video tag.
           </video>
 
-          {!hideControls && (
+          {(showOverlayControls || !isPlaying || !hideControls) && (
+            <button
+              className="center-play-btn"
+              onClick={handlePlayPause}
+              title={isPlaying ? 'Pause' : 'Play'}
+              aria-label={isPlaying ? 'Pause video' : 'Play video'}
+            >
+              {isPlaying ? '❚❚' : '▶'}
+            </button>
+          )}
+
+          {(showOverlayControls || !hideControls) && (
             <div className="video-controls">
               <button
                 className="play-pause-btn"

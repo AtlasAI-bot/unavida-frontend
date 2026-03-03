@@ -30,6 +30,7 @@ export const ChapterReader = () => {
   const chapter = chapterData.chapter;
   const sections = chapter.sections;
   const currentSection = sections[activeSection];
+  const sectionStorageKey = `unavida:lastSection:${chapterId}`;
 
   // Helper function to get video URL from mediaAssets
   const getVideoUrl = (videoSegmentId) => {
@@ -201,11 +202,35 @@ export const ChapterReader = () => {
       return '/images/ch1/section-1-0/Drug Calcutation.png';
     }
     if (combined.includes('scope of this course') || combined.includes('throughout this chapter')) {
-      return '/images/ch1/section-1-0/Screenshot 2026-03-01 at 5.05.35 PM.png';
+      return '/images/ch1/section-1-0/Pharmacokinetics vs. Pharmacodynamics.png';
     }
 
     return null;
   };
+
+  // Restore last opened section for this chapter on refresh/revisit
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(sectionStorageKey);
+      if (saved !== null) {
+        const idx = parseInt(saved, 10);
+        if (!Number.isNaN(idx) && idx >= 0 && idx < sections.length) {
+          setActiveSection(idx);
+        }
+      }
+    } catch (e) {
+      console.warn('Could not restore saved section:', e);
+    }
+  }, [sectionStorageKey, sections.length]);
+
+  // Persist current section so refresh keeps reader location
+  useEffect(() => {
+    try {
+      localStorage.setItem(sectionStorageKey, String(activeSection));
+    } catch (e) {
+      console.warn('Could not save section state:', e);
+    }
+  }, [activeSection, sectionStorageKey]);
 
   // Timer for tracking reading time - only runs once on mount
   useEffect(() => {
