@@ -58,8 +58,8 @@ export const Bookshelf = () => {
           <div className="flex items-center gap-3">
             <div className="text-4xl font-black text-cyan-500">U</div>
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">UnaVida</h1>
-              <p className="text-sm text-gray-500">Pharmacology Learning Platform</p>
+              <h1 className="text-3xl font-bold text-gray-900">UnaVida Press</h1>
+              <p className="text-sm text-gray-500">Nursing Education & Curriculum Publishing • UnaVidaPress.com</p>
             </div>
           </div>
           <div className="flex items-center gap-4">
@@ -83,9 +83,15 @@ export const Bookshelf = () => {
         <div className="absolute inset-0 flex items-center px-8">
           <div className="max-w-2xl">
             <h2 className="text-5xl font-bold mb-4 text-white">Your Pharmacology Library</h2>
-            <p className="text-xl mb-6 text-white font-light">
+            <p className="text-xl mb-4 text-white font-light">
               Welcome back, {user?.name}! Select a textbook to begin your learning journey
             </p>
+            <button
+              onClick={() => navigate('/press/prototype?page=bookshelf')}
+              className="px-4 py-2 rounded-lg bg-white/90 text-slate-900 font-semibold hover:bg-white transition-colors"
+            >
+              Try New UnaVida Press Experience (Beta)
+            </button>
           </div>
         </div>
       </div>

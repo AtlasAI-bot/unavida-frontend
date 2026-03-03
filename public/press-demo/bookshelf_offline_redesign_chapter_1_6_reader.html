@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter Reader Demo • Accordion TOC</title>
+  <style>
+    :root{
+      --bg:#eaf0ff;
+      --text:#1b2542;
+      --top:#dfe8ff;
+      --panel:#ffffff;
+      --panel-border:#cfd9f7;
+      --chapter:#eaf0ff;
+      --chapter-2:#f3f6ff;
+      --chapter-active:#dbe6ff;
+      --chapter-hover:#e1eaff;
+      --muted:#5b6a95;
+      --card:#f7f9ff;
+      --card-text:#122047;
+      --video:#eef3ff;
+      --video-frame:#d8e3ff;
+      --right:#eef3ff;
+      --atlas-bg:#edf8ff;
+      --atlas-text:#14384f;
+      --img-bg:#e8edff;
+      --img-text:#5f6ea5;
+      --reader-font: Inter, system-ui, sans-serif;
+      --reader-size: 17px;
+      --reader-line: 1.65;
+      --reader-max: 920px;
+    }
+
+    body.dark{
+      --bg:#141618;
+      --text:#f3f4f6;
+      --top:#1b1e21;
+      --panel:#202327;
+      --panel-border:rgba(255,255,255,.14);
+      --chapter:#2a2e33;
+      --chapter-2:#25292d;
+      --chapter-active:#34414a;
+      --chapter-hover:#30363c;
+      --muted:#c0c6cf;
+      --card:#2a2f35;
+      --card-text:#f3f4f6;
+      --video:#252a2f;
+      --video-frame:#333940;
+      --right:#2a2e33;
+      --atlas-bg:#1f3334;
+      --atlas-text:#d9f5f1;
+      --img-bg:#343a40;
+      --img-text:#d9dee6;
+    }
+
+    body.darkplus{
+      --bg:#0f1113;
+      --text:#f5f7fa;
+      --top:#14171a;
+      --panel:#181b1f;
+      --panel-border:rgba(255,255,255,.16);
+      --chapter:#22262b;
+      --chapter-2:#1d2125;
+      --chapter-active:#2f3a42;
+      --chapter-hover:#272d33;
+      --muted:#c5cbd3;
+      --card:#22272e;
+      --card-text:#f5f7fa;
+      --video:#1c2025;
+      --video-frame:#2c3239;
+      --right:#22262b;
+      --atlas-bg:#1a2d2e;
+      --atlas-text:#e0faf5;
+      --img-bg:#2c3239;
+      --img-text:#dde3eb;
+    }
+
+    body.sepia{
+      --bg:#f4ece1;
+      --text:#3c2f1f;
+      --top:#eadfce;
+      --panel:#fff9f1;
+      --panel-border:#decfb8;
+      --chapter:#f7eee0;
+      --chapter-2:#f5ead8;
+      --chapter-active:#eddcbf;
+      --chapter-hover:#efe1ca;
+      --muted:#7a684f;
+      --card:#fffaf3;
+      --card-text:#3b2d1f;
+      --video:#efe2cf;
+      --video-frame:#e1d0b7;
+      --right:#f3e7d6;
+      --atlas-bg:#f6e8d5;
+      --atlas-text:#4a3a27;
+    }
+
+    body.cyan{
+      --bg:#eaf8ff;
+      --text:#12354a;
+      --top:#d5f0ff;
+      --panel:#f7fdff;
+      --panel-border:#b9e7ff;
+      --chapter:#e9f8ff;
+      --chapter-2:#def3ff;
+      --chapter-active:#cdecff;
+      --chapter-hover:#d9f2ff;
+      --muted:#4f7388;
+      --card:#f7fdff;
+      --card-text:#14384b;
+      --video:#e6f6ff;
+      --video-frame:#cfeeff;
+      --right:#e8f7ff;
+      --atlas-bg:#ddf3ff;
+      --atlas-text:#134056;
+    }
+
+    *{box-sizing:border-box}
+    body{margin:0;font-family:var(--reader-font);background:var(--bg);color:var(--text);transition:background .2s,color .2s}
+    .top{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--panel-border);background:var(--top);position:sticky;top:0;z-index:8}
+    .crumb{font-size:12px;color:var(--muted)}
+    .btn{padding:8px 12px;border-radius:9px;border:1px solid var(--panel-border);background:transparent;color:var(--text);text-decoration:none;display:inline-block;cursor:pointer}
+    .btn.primary{background:#39d0c8;color:#032320;border:none;font-weight:700}
+
+    .layout{display:grid;grid-template-columns:320px 1fr 320px;gap:14px;padding:14px;transition:grid-template-columns .25s}
+    body.focus-reader .layout{grid-template-columns:1fr}
+    body.focus-reader .toc, body.focus-reader .right{display:none}
+
+    body.hide-toc .layout{grid-template-columns:1fr 320px}
+    body.hide-toc .toc{display:none}
+    body.hide-toc .mainWrap{max-width:1220px}
+    body.focus-reader .mainWrap{max-width:1300px}
+    .panel{background:var(--panel);border:1px solid var(--panel-border);border-radius:12px;padding:12px}
+
+    .chap{margin-bottom:8px;border:1px solid var(--panel-border);border-radius:10px;overflow:hidden}
+    .chapBtn{width:100%;text-align:left;background:var(--chapter);color:var(--text);border:0;padding:10px 12px;font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+    .chapBtn small{font-weight:500;color:var(--muted)}
+    .secWrap{display:none;background:var(--chapter-2);padding:8px}
+    .chap.open .secWrap{display:block}
+    .sec{display:block;padding:8px;border-radius:8px;color:var(--text);text-decoration:none;font-size:13px}
+    .sec:hover{background:var(--chapter-hover)}
+    .sec.active{background:var(--chapter-active);border-left:3px solid #39d0c8;padding-left:6px}
+
+    .mainWrap{max-width:var(--reader-max);margin:0 auto}
+    .main h1{margin:0;font-size:24px}
+    .meta{color:var(--muted);font-size:13px;margin-top:6px}
+    .video{margin-top:12px;background:var(--video);border:1px solid var(--panel-border);border-radius:10px;padding:10px}
+    .video .frame{aspect-ratio:16/9;border-radius:8px;background:var(--video-frame);display:flex;align-items:center;justify-content:center;color:var(--muted)}
+    .card{margin-top:12px;background:var(--card);color:var(--card-text);border-radius:12px;padding:14px}
+    .card h3{margin:0 0 8px;font-size:18px}
+    .card p{margin:0;line-height:var(--reader-line);font-size:var(--reader-size)}
+    .img{margin-top:10px;background:var(--img-bg);border-radius:10px;height:170px;display:flex;align-items:center;justify-content:center;color:var(--img-text);font-size:13px}
+
+    .right .stat{background:var(--right);border-radius:10px;padding:10px;margin-bottom:10px}
+    .atlas{margin-top:10px;padding:10px;border:1px dashed #39d0c8;border-radius:10px;background:var(--atlas-bg);color:var(--atlas-text);font-size:13px}
+    .tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+    .pill{display:inline-block;padding:4px 8px;border-radius:999px;border:1px solid var(--panel-border);font-size:11px;color:var(--muted)}
+    .alertBar{margin-top:10px;padding:10px;border-radius:10px;background:#fff3cd;border:1px solid #e6d58f;color:#5e4a08;font-size:13px}
+    .knowledge{margin-top:12px;background:var(--panel);border:1px solid var(--panel-border);border-radius:10px;padding:10px}
+    .knowledge button{margin-top:8px}
+    .resumeMark{font-size:12px;color:var(--muted);margin-top:6px}
+    .confidence{margin-top:12px;background:var(--panel);border:1px solid var(--panel-border);border-radius:10px;padding:10px}
+    .confidence input{width:100%}
+    .anchors{display:grid;gap:6px;margin-top:8px}
+    .anchors button{padding:6px 8px;font-size:12px}
+    .toc-float-toggle{
+      position:fixed;
+      left:20px;
+      top:91px;
+      z-index:30;
+      display:block;
+      width:28px;
+      height:28px;
+      padding:0;
+      border-radius:999px;
+      border:1px solid var(--panel-border);
+      background:var(--panel);
+      color:var(--text);
+      cursor:pointer;
+      font-weight:700;
+      box-shadow:0 2px 8px rgba(0,0,0,.12);
+      line-height:26px;
+    }
+
+    .accordion{margin-bottom:10px;border:1px solid var(--panel-border);border-radius:10px;overflow:hidden}
+    .accBtn{width:100%;border:0;background:var(--chapter);padding:10px 12px;color:var(--text);text-align:left;font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+    .accBody{display:none;background:var(--chapter-2);padding:10px}
+    .accordion.open .accBody{display:block}
+    .toolGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .toolItem{padding:9px;border:1px solid var(--panel-border);border-radius:8px;background:var(--panel);font-size:12px}
+
+    .modal{position:fixed;inset:0;background:rgba(8,16,32,.45);display:none;align-items:center;justify-content:center;z-index:20}
+    .modal.show{display:flex}
+    .modalCard{width:min(720px,92vw);max-height:88vh;overflow:auto;background:var(--panel);color:var(--text);border:1px solid var(--panel-border);border-radius:12px}
+    .modalHead{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid var(--panel-border);font-weight:800}
+    .modalBody{padding:14px}
+    .row{margin-bottom:12px}
+    .label{font-size:12px;color:var(--muted);margin-bottom:6px}
+    .seg{display:flex;gap:8px;flex-wrap:wrap}
+    .seg button{padding:8px 10px;border:1px solid var(--panel-border);background:var(--panel);color:var(--text);border-radius:8px;cursor:pointer}
+    .seg button.active{background:#39d0c8;color:#032320;border:none;font-weight:700}
+    select, textarea, input[type="text"]{width:100%;padding:8px;border-radius:8px;border:1px solid var(--panel-border);background:var(--panel);color:var(--text)}
+    .wbList{display:grid;gap:8px}
+    .wbItem{padding:8px;border:1px solid var(--panel-border);border-radius:8px;background:var(--panel);font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="top">
+    <div>
+      <div class="crumb">Home / Pharmacology I / Reader</div>
+      <strong>Reader Demo — Chapter Navigation Accordion</strong>
+    </div>
+    <div class="tools">
+      <button class="btn" onclick="toggleTheme()" id="themeBtn">🌙 Dark Mode</button>
+      <button class="btn" onclick="toggleFocusReader()" id="focusBtn">↔ Expand Reader</button>
+      <button class="btn" onclick="openPrefs()">⚙️ Reader Preferences</button>
+      <button class="btn" onclick="toggleReadAloud()" id="readAloudBtn">🔊 Read Aloud</button>
+      <button class="btn" onclick="toggleNclex()" id="nclexBtn">🧠 NCLEX Lens</button>
+      <button class="btn" onclick="exportStudySheet()">🖨️ Export Study Sheet</button>
+      <a href="./bookshelf_offline_redesign_pharmacology_detail.html" class="btn">Back to Chapter List</a>
+    </div>
+  </div>
+
+  <button class="toc-float-toggle" id="tocFloatBtn" onclick="toggleToc()">▶ Show Navigation</button>
+
+  <div class="layout">
+    <aside class="panel toc">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+        <h3 style="margin:0; padding-left:28px;">Textbook Navigation</h3>
+      </div>
+
+      <div class="chap open">
+        <button class="chapBtn" onclick="toggleChap(this)">Chapter 1: Intro to Pharmacology <small>▼</small></button>
+        <div class="secWrap">
+          <a class="sec" href="#">1.0 Overview</a>
+          <a class="sec" href="#">1.1 Definition & Scope</a>
+          <a class="sec" href="#">1.2 Historical Context</a>
+          <a class="sec active" href="#">1.6 PK vs PD</a>
+          <a class="sec" href="#">1.11 Assessment</a>
+        </div>
+      </div>
+
+      <div class="chap">
+        <button class="chapBtn" onclick="toggleChap(this)">Chapter 2: Major Drug Classes <small>▶</small></button>
+        <div class="secWrap">
+          <a class="sec" href="#">2.1 Cardiovascular Agents</a>
+          <a class="sec" href="#">2.2 Respiratory Agents</a>
+          <a class="sec" href="#">2.3 Antibiotics</a>
+        </div>
+      </div>
+
+      <div class="chap">
+        <button class="chapBtn" onclick="toggleChap(this)">Chapter 3: Administration & Monitoring <small>▶</small></button>
+        <div class="secWrap">
+          <a class="sec" href="#">3.1 Routes & Timing</a>
+          <a class="sec" href="#">3.2 Safety Checks</a>
+        </div>
+      </div>
+
+      <div class="chap">
+        <button class="chapBtn" onclick="toggleChap(this)">Chapter 4: Advanced Clinical Application <small>▶</small></button>
+        <div class="secWrap">
+          <a class="sec" href="#">4.1 Complex Cases</a>
+          <a class="sec" href="#">4.2 NCLEX-Style Practice</a>
+        </div>
+      </div>
+    </aside>
+
+    <main class="panel main">
+      <div class="mainWrap">
+        <h1>Section 1.6: Pharmacokinetics vs Pharmacodynamics</h1>
+        <div class="meta">45 min • video + guided cards + embedded visuals</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
+          <span class="pill">⏱️ ~18 min reading</span>
+          <span class="pill">🎥 1 video</span>
+          <span class="pill">🎴 12 flashcards suggested</span>
+          <span class="pill" id="resumePill">📍 Resume point saved</span>
+        </div>
+        <div class="resumeMark" id="resumeMark">Last visit: Section 1.6 • paragraph 2</div>
+
+        <div class="alertBar" id="examAlerts">
+          <strong>Exam Alert:</strong> Instructor-highlighted topic — ADME sequence and first-pass metabolism are high-yield for next quiz.
+        </div>
+
+        <section class="video">
+          <strong>🎥 Featured Lesson Video</strong>
+          <div class="frame" style="margin-top:8px">Video Player Area (S3-backed in live app)</div>
+        </section>
+
+        <section class="card" id="anchor-adme">
+          <h3>Absorption, Distribution, Metabolism, Elimination (ADME)</h3>
+          <p>Pharmacokinetics describes how the body handles a drug over time. In this section, students walk through each ADME phase and connect it to safe administration timing and monitoring responsibilities.</p>
+          <div class="img">Section image placement (topic-relevant)</div>
+        </section>
+
+        <div class="knowledge" id="check1">
+          <strong>Quick Check #1</strong>
+          <div style="margin-top:6px;font-size:14px;">Which ADME stage is primarily responsible for biotransformation into metabolites?</div>
+          <button class="btn" onclick="showAnswer('a1')">Show Answer</button>
+          <div id="a1" style="display:none;margin-top:8px;color:var(--muted);">✅ Metabolism (mostly hepatic enzyme activity).</div>
+        </div>
+
+        <section class="card" id="anchor-pd">
+          <h3>What the Drug Does to the Body</h3>
+          <p>Pharmacodynamics explains receptor interactions, dose-response behavior, and why the same medication can produce different outcomes across patients depending on context and physiology.</p>
+        </section>
+
+        <div class="knowledge" id="check2">
+          <strong>Quick Check #2</strong>
+          <div style="margin-top:6px;font-size:14px;">In one line: PK vs PD?</div>
+          <button class="btn" onclick="showAnswer('a2')">Show Answer</button>
+          <div id="a2" style="display:none;margin-top:8px;color:var(--muted);">✅ PK = what body does to drug. PD = what drug does to body.</div>
+        </div>
+      </div>
+    </main>
+
+    <aside class="panel right">
+      <div class="stat"><strong>Instructor Highlights</strong><br/>Jump to instructor-pinned key concepts and exam focus areas.</div>
+
+      <div class="accordion open" id="studyAccordion">
+        <button class="accBtn" onclick="toggleAcc(this)">Study Tools <span>▼</span></button>
+        <div class="accBody">
+          <div class="toolGrid">
+            <div class="toolItem">🎴 Flashcards</div>
+            <div class="toolItem">❓ Quiz</div>
+            <div class="toolItem">🩺 Case Studies</div>
+            <div class="toolItem">🧠 Practice Problems</div>
+            <div class="toolItem">✅ Learning Outcomes</div>
+            <div class="toolItem">📚 References</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion" id="workbookAccordion">
+        <button class="accBtn" onclick="toggleAcc(this)">Workbook <span>▶</span></button>
+        <div class="accBody">
+          <div class="wbList">
+            <div class="wbItem">📝 Annotations (7)</div>
+            <div class="wbItem">🔖 Bookmarks (3)</div>
+            <div class="wbItem">🖍️ Highlights (14)</div>
+            <div class="wbItem">🎴 My Flashcards (12 created)</div>
+          </div>
+          <div style="margin-top:10px;display:grid;gap:8px;">
+            <button class="btn">+ Add Annotation</button>
+            <button class="btn">+ Add Bookmark</button>
+            <button class="btn" onclick="createFlashcardDemo()">+ Create Flashcard</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stat"><strong>Quick Jump</strong><br/>Instructor-saved highlights:</div>
+      <div class="anchors">
+        <button class="btn" onclick="jumpTo('anchor-adme')">ADME Core Map</button>
+        <button class="btn" onclick="jumpTo('anchor-pd')">PD Receptor Effects</button>
+        <button class="btn" onclick="jumpTo('check1')">Checkpoint #1</button>
+        <button class="btn" onclick="jumpTo('check2')">Checkpoint #2</button>
+      </div>
+      <div class="atlas" id="atlasSays"><strong>Atlas says:</strong> “Nursing school is wild: one minute you’re learning receptors, next minute you’re calculating IV rates like your GPA depends on it… because it does.”</div>
+    </aside>
+  </div>
+
+  <div class="modal" id="prefsModal" role="dialog" aria-modal="true" aria-label="Reader Preferences">
+    <div class="modalCard">
+      <div class="modalHead">Reader Preferences <button class="btn" onclick="closePrefs()">✕</button></div>
+      <div class="modalBody">
+        <div class="row">
+          <div class="label">Text Size</div>
+          <div class="seg" id="sizeSeg">
+            <button onclick="setTextSize(15)">Aa</button>
+            <button onclick="setTextSize(17)" class="active">Aa</button>
+            <button onclick="setTextSize(19)">Aa</button>
+            <button onclick="setTextSize(21)">Aa</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="label">Font</div>
+          <select onchange="setFont(this.value)">
+            <option value="Inter, system-ui, sans-serif">Default Font</option>
+            <option value="Georgia, serif">Georgia</option>
+            <option value="'Times New Roman', serif">Times New Roman</option>
+            <option value="Arial, sans-serif">Arial</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <div class="label">Mode</div>
+          <div class="seg" id="modeSeg">
+            <button onclick="setMode('light')" class="active">Day</button>
+            <button onclick="setMode('dark')">Night</button>
+            <button onclick="setMode('darkplus')">Dark+</button>
+            <button onclick="setMode('sepia')">Sepia</button>
+            <button onclick="setMode('cyan')">Cyan</button>
+          </div>
+        </div>
+
+        <div class="row" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div>
+            <div class="label">Margin / Reader Width</div>
+            <div class="seg" id="marginSeg">
+              <button onclick="setReaderWidth(760)">Narrow</button>
+              <button onclick="setReaderWidth(920)" class="active">Medium</button>
+              <button onclick="setReaderWidth(1080)">Wide</button>
+            </div>
+          </div>
+          <div>
+            <div class="label">Line Height</div>
+            <div class="seg" id="lineSeg">
+              <button onclick="setLineHeight(1.45)">Tight</button>
+              <button onclick="setLineHeight(1.65)" class="active">Default</button>
+              <button onclick="setLineHeight(1.85)">Relaxed</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleChap(btn){
+      const chap=btn.closest('.chap');
+      chap.classList.toggle('open');
+      btn.querySelector('small').textContent = chap.classList.contains('open') ? '▼' : '▶';
+    }
+
+    function toggleAcc(btn){
+      const acc=btn.closest('.accordion');
+      acc.classList.toggle('open');
+      btn.querySelector('span').textContent = acc.classList.contains('open') ? '▼' : '▶';
+    }
+
+    function toggleTheme(){
+      const current = getCurrentMode();
+      const next = current === 'light' ? 'dark' : 'light';
+      setMode(next, false);
+    }
+
+    function toggleFocusReader(){
+      const body = document.body;
+      body.classList.toggle('focus-reader');
+      if(body.classList.contains('focus-reader')) body.classList.remove('hide-toc');
+      document.getElementById('focusBtn').textContent = body.classList.contains('focus-reader') ? '↔ Restore Layout' : '↔ Expand Reader';
+      syncTocButtons();
+    }
+
+    function toggleToc(){
+      const body = document.body;
+      if(body.classList.contains('focus-reader')) return;
+      body.classList.toggle('hide-toc');
+      syncTocButtons();
+    }
+
+    function syncTocButtons(){
+      const hidden = document.body.classList.contains('hide-toc');
+      const focus = document.body.classList.contains('focus-reader');
+      const tocFloatBtn = document.getElementById('tocFloatBtn');
+      if(tocFloatBtn){
+        tocFloatBtn.textContent = hidden ? '▶' : '◀';
+        tocFloatBtn.title = hidden ? 'Show navigation panel' : 'Hide navigation panel';
+        tocFloatBtn.style.opacity = focus ? '0.4' : '1';
+      }
+    }
+
+    function openPrefs(){ document.getElementById('prefsModal').classList.add('show'); }
+    function closePrefs(){ document.getElementById('prefsModal').classList.remove('show'); }
+
+    function showAnswer(id){
+      const el=document.getElementById(id);
+      if(el) el.style.display='block';
+    }
+
+    function jumpTo(id){
+      const el=document.getElementById(id);
+      if(el) el.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+
+    function toggleReadAloud(){
+      const btn=document.getElementById('readAloudBtn');
+      const on = btn.dataset.on === '1';
+      btn.dataset.on = on ? '0' : '1';
+      btn.textContent = on ? '🔊 Read Aloud' : '⏸ Stop Read Aloud';
+    }
+
+    function toggleNclex(){
+      const btn=document.getElementById('nclexBtn');
+      const on = btn.dataset.on === '1';
+      btn.dataset.on = on ? '0' : '1';
+      btn.textContent = on ? '🧠 NCLEX Lens' : '✅ NCLEX Lens ON';
+      document.getElementById('examAlerts').innerHTML = on
+        ? '<strong>Exam Alert:</strong> Instructor-highlighted topic — ADME sequence and first-pass metabolism are high-yield for next quiz.'
+        : '<strong>NCLEX Lens:</strong> Prioritize safety language, adverse effect recognition, and first nursing action in every question.';
+    }
+
+    function exportStudySheet(){
+      alert('Demo: export study sheet would include key points, notes, bookmarks, highlights, and your custom flashcards.');
+    }
+
+    function createFlashcardDemo(){
+      alert('Demo: new personal flashcard saved to Workbook > My Flashcards.');
+    }
+
+    function setTextSize(px){ document.documentElement.style.setProperty('--reader-size', px+'px'); activateButton('sizeSeg', event.target); }
+    function setFont(font){ document.documentElement.style.setProperty('--reader-font', font); }
+    function setLineHeight(v){ document.documentElement.style.setProperty('--reader-line', v); activateButton('lineSeg', event.target); }
+    function setReaderWidth(px){ document.documentElement.style.setProperty('--reader-max', px+'px'); activateButton('marginSeg', event.target); }
+
+    function getCurrentMode(){
+      if(document.body.classList.contains('darkplus')) return 'darkplus';
+      if(document.body.classList.contains('dark')) return 'dark';
+      if(document.body.classList.contains('sepia')) return 'sepia';
+      if(document.body.classList.contains('cyan')) return 'cyan';
+      return 'light';
+    }
+
+    function setMode(mode, fromClickEvent = true){
+      document.body.classList.remove('dark','darkplus','sepia','cyan');
+      if(mode !== 'light') document.body.classList.add(mode);
+      localStorage.setItem('unavidaTheme', mode);
+      const themeBtn = document.getElementById('themeBtn');
+      if(themeBtn){
+        themeBtn.textContent = mode === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode';
+      }
+      syncModeButtons(mode);
+      if(fromClickEvent && typeof event !== 'undefined') activateButton('modeSeg', event.target);
+    }
+
+    function syncModeButtons(mode){
+      const modeSeg=document.getElementById('modeSeg');
+      if(!modeSeg) return;
+      [...modeSeg.querySelectorAll('button')].forEach(b=>b.classList.remove('active'));
+      const idx = mode==='light'?0:mode==='dark'?1:mode==='darkplus'?2:mode==='sepia'?3:4;
+      const btn = modeSeg.querySelectorAll('button')[idx];
+      if(btn) btn.classList.add('active');
+    }
+
+    function activateButton(parentId, btn){
+      const parent=document.getElementById(parentId);
+      if(!parent||!btn) return;
+      [...parent.querySelectorAll('button')].forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    document.getElementById('prefsModal').addEventListener('click', (e)=>{
+      if(e.target.id==='prefsModal') closePrefs();
+    });
+
+    (function initTheme(){
+      const saved = localStorage.getItem('unavidaTheme') || 'light';
+      setMode(saved, false);
+      syncTocButtons();
+    })();
+
+    (function rotateAtlasLine(){
+      const lines = [
+        'If your calculator dies during dosage math, that\'s a character-building event.',
+        'Clinicals are like plot twists; the medication pass is where you become the main character.',
+        'Nursing school: where caffeine becomes a co-author on your care plans.',
+        'Pharmacology gets easier once ADME stops sounding like a Wi-Fi password.',
+        'You can skip drama episodes, not med safety episodes.',
+        'A good nurse catches errors before the patient catches side effects.',
+        'The only thing stronger than this chapter is your end-of-semester resilience.',
+        'Read once for confidence, read twice for competence.',
+        'When in doubt: verify, clarify, then administer.',
+        'You\'re not just memorizing meds; you\'re protecting futures.'
+      ];
+      const pick = lines[Math.floor(Math.random() * lines.length)];
+      const el = document.getElementById('atlasSays');
+      if(el) el.innerHTML = `<strong>Atlas says:</strong> “${pick}”`;
+    })();
+  </script>
+</body>
+</html>

@@ -15,6 +15,7 @@ import { StudentDashboard } from './components/StudentDashboard';
 import { InstructorDashboard } from './components/InstructorDashboard';
 import { AdminDashboard } from './components/AdminDashboard';
 import ChapterHub from './components/ChapterHub';
+import { PressPrototypeViewer } from './components/PressPrototypeViewer';
 
 export function App() {
   return (
@@ -87,6 +88,9 @@ export function App() {
                   } 
                 />
                 
+                {/* Canonical Chapter 1 route alignment (Railway + Vercel) */}
+                <Route path="/reader/ch1_intro_to_pharmacology" element={<Navigate to="/reader/ch1_intro" replace />} />
+
                 {/* Chapter Reader - Protected */}
                 <Route 
                   path="/reader/:chapterId" 
@@ -107,6 +111,16 @@ export function App() {
                   } 
                 />
                 
+                {/* UnaVida Press production prototype (safe preview route) */}
+                <Route
+                  path="/press/prototype"
+                  element={
+                    <ProtectedRoute requiredRole="student">
+                      <PressPrototypeViewer />
+                    </ProtectedRoute>
+                  }
+                />
+
                 {/* Catch all - redirect to home page (which will handle auth-based routing) */}
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>

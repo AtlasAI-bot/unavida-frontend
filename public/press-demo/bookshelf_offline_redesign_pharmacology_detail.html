@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pharmacology I • NUR1100 (Demo)</title>
+  <style>
+    body{margin:0;font-family:Inter,system-ui;background:#0a1022;color:#fff}
+    .top{padding:18px 24px;border-bottom:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;align-items:center;background:#0f1733}
+    .crumb{color:#9fb0e8;font-size:13px}
+    .hero{padding:28px 24px;background:linear-gradient(180deg,#15224b,#0a1022)}
+    .hero h1{margin:0;font-size:32px}.hero p{color:#c4cfef;max-width:900px}
+    .actions{display:flex;gap:10px;margin-top:14px}
+    .btn{padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:#ffffff10;color:#fff}
+    .btn.p{background:#39d0c8;color:#032320;border:none;font-weight:700}
+    .wrap{padding:20px 24px;display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
+    .panel{background:#111a38;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px}
+    .panel h2{margin:0 0 10px;font-size:18px}
+    .chap{display:grid;gap:10px}
+    .c{display:grid;grid-template-columns:70px 1fr auto;gap:10px;align-items:center;padding:10px;border-radius:10px;background:#1a2651}
+    .tag{font-size:11px;padding:3px 8px;border-radius:999px;background:#2f3e73;color:#d3ddff}
+    .thumb{width:70px;height:42px;border-radius:8px;background:#2f3e73;display:flex;align-items:center;justify-content:center;color:#b6c5ff;font-size:11px}
+    .c h4{margin:0;font-size:14px}.c p{margin:2px 0 0;color:#adbadf;font-size:12px}
+    .mini{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .card{background:#1a2651;padding:12px;border-radius:10px}
+    .atlas{margin-top:12px;padding:10px;border:1px dashed #39d0c8;border-radius:10px;color:#d8fff9;background:#101d3d}
+
+    body.light{background:#edf2ff;color:#1b2542}
+    body.light .top{background:#dfe8ff;border-bottom-color:#cfd9f7}
+    body.light .crumb{color:#5f6f9e}
+    body.light .hero{background:linear-gradient(180deg,#dfe8ff,#edf2ff)}
+    body.light .hero p{color:#455582}
+    body.light .btn{background:#fff;color:#1b2542;border-color:#cfd9f7}
+    body.light .panel, body.light .c, body.light .card{background:#fff}
+    body.light .panel{border-color:#d9e3ff}
+    body.light .c, body.light .card{background:#f7faff}
+    body.light .c p{color:#5c6c97}
+    body.light .atlas{background:#eef7ff;color:#144057}
+  </style>
+</head>
+<body>
+  <div class="top">
+    <div>
+      <div class="crumb">Home / My Courses / Pharmacology I</div>
+      <strong>UnaVida • Student View (Demo)</strong>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button class="btn" onclick="toggleTheme()" id="themeBtn">☀️ Light Mode</button>
+      <a href="./bookshelf_offline_redesign_demo.html" class="btn" style="text-decoration:none;display:inline-block;">Back to Bookshelf</a>
+    </div>
+  </div>
+
+  <section class="hero">
+    <h1>Pharmacology I (NUR1100)</h1>
+    <p>13 chapter episodes, interactive reading mode, integrated videos, case studies, flashcards, and progress checkpoints designed for nursing students.</p>
+    <div class="actions">
+      <a href="./bookshelf_offline_redesign_chapter_1_6_reader.html" class="btn p" style="text-decoration:none;display:inline-block;">Continue: Chapter 1.6</a>
+      <a href="./bookshelf_offline_redesign_chapter_1_6_reader.html" class="btn" style="text-decoration:none;display:inline-block;">Open Chapter 1</a>
+      <button class="btn">Open Study Hub</button>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="panel">
+      <h2>Chapter Episodes</h2>
+      <div class="chap">
+        <div class="c"><div class="thumb">1.0</div><div><h4>Overview & Introduction</h4><p>25 min • Intro video + guided reading</p></div><span class="tag">Completed</span></div>
+        <div class="c"><div class="thumb">1.1</div><div><h4>Definition & Scope of Pharmacology</h4><p>20 min • Video + visuals + learning objectives</p></div><span class="tag">In Progress</span></div>
+        <div class="c"><div class="thumb">1.2</div><div><h4>Historical Context of Pharmacology</h4><p>20 min • timeline + expanded narrative</p></div><span class="tag">Ready</span></div>
+        <div class="c"><div class="thumb">1.6</div><div><h4>Pharmacokinetics vs Pharmacodynamics</h4><p>45 min • featured lesson video</p></div><button class="btn p">Continue</button></div>
+        <div class="c"><div class="thumb">1.11</div><div><h4>Review Questions & Assessment</h4><p>30 min • quiz + case studies</p></div><button class="btn">Start</button></div>
+      </div>
+    </section>
+
+    <aside class="panel">
+      <h2>Quick Performance Snapshot</h2>
+      <div class="mini">
+        <div class="card"><strong>Overall Progress</strong><p>42% complete</p></div>
+        <div class="card"><strong>Time Studied</strong><p>3h 18m</p></div>
+        <div class="card"><strong>Flashcards</strong><p>60 cards available</p></div>
+        <div class="card"><strong>Case Studies</strong><p>7 scenarios</p></div>
+      </div>
+      <div class="atlas"><strong>Atlas says:</strong> “If nursing school had a boss level, it’d be dosage calculations without coffee.”</div>
+    </aside>
+  </div>
+
+  <script>
+    function toggleTheme(){
+      document.body.classList.toggle('light');
+      const light = document.body.classList.contains('light');
+      document.getElementById('themeBtn').textContent = light ? '🌙 Dark Mode' : '☀️ Light Mode';
+      localStorage.setItem('unavidaTheme', light ? 'light' : 'dark');
+    }
+    (function(){
+      if(localStorage.getItem('unavidaTheme')==='light'){
+        document.body.classList.add('light');
+        const b=document.getElementById('themeBtn'); if(b) b.textContent='🌙 Dark Mode';
+      }
+    })();
+  </script>
+</body>
+</html>

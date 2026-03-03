@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UnaVida Bookshelf Redesign Demo (Offline)</title>
+  <style>
+    body { margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background:#0b1020; color:#fff; }
+    .nav { display:flex; gap:24px; padding:18px 28px; align-items:center; position:sticky; top:0; background:linear-gradient(180deg, rgba(0,0,0,.65), rgba(0,0,0,0)); z-index:2; }
+    .logo { font-weight:800; color:#39d0c8; letter-spacing:.5px; }
+    .hero { padding:38px 28px 24px; background:radial-gradient(circle at 70% 20%, rgba(57,208,200,.2), transparent 40%), linear-gradient(180deg,#111831,#0b1020); border-bottom:1px solid rgba(255,255,255,.08); }
+    .hero h1 { margin:0 0 10px; font-size:34px; }
+    .hero p { margin:0; max-width:760px; color:#d7dcff; line-height:1.5; }
+    .cta { margin-top:16px; display:flex; gap:12px; }
+    .btn { padding:10px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.18); background:#ffffff14; color:#fff; cursor:pointer; }
+    .btn.primary { background:#39d0c8; color:#04201f; font-weight:700; border:none; }
+    .row { padding:20px 28px; }
+    .row h2 { font-size:18px; margin:0 0 12px; color:#e9edff; }
+    .cards { display:grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap:14px; }
+    .card { background:#151d38; border:1px solid rgba(255,255,255,.08); border-radius:14px; overflow:hidden; }
+    .cover { aspect-ratio:16/9; background:#202c57; display:flex; align-items:center; justify-content:center; color:#a6b3ff; font-size:13px; }
+    .meta { padding:10px; }
+    .title { font-size:14px; font-weight:700; margin-bottom:6px; }
+    .sub { font-size:12px; color:#aeb8db; }
+    .pill { display:inline-block; margin-top:8px; font-size:11px; padding:4px 8px; border-radius:999px; background:#2b3767; color:#c9d5ff; }
+    .detail { margin:8px 28px 28px; padding:18px; background:#121a34; border:1px solid rgba(255,255,255,.1); border-radius:14px; }
+    .episodes { display:grid; gap:10px; margin-top:12px; }
+    .ep { display:grid; grid-template-columns: 74px 1fr auto; gap:12px; align-items:center; padding:10px; background:#1a2448; border-radius:10px; }
+    .thumb { width:74px; height:44px; border-radius:8px; background:#2d3a71; display:flex; align-items:center; justify-content:center; font-size:11px; color:#b9c6ff; }
+    .ep h4 { margin:0; font-size:14px; }
+    .ep p { margin:2px 0 0; font-size:12px; color:#aeb8db; }
+    .atlas { margin-top:14px; padding:12px; background:#0f1833; border:1px dashed #39d0c8; border-radius:10px; color:#d9fff9; }
+
+    body.light { background:#edf2ff; color:#1b2542; }
+    body.light .nav { background:linear-gradient(180deg,#dfe8ff,#dfe8ff00); }
+    body.light .hero { background:radial-gradient(circle at 70% 20%, rgba(57,208,200,.18), transparent 40%), linear-gradient(180deg,#dfe8ff,#edf2ff); border-bottom:1px solid #cfd9f7; }
+    body.light .hero p, body.light .row h2 { color:#42527f; }
+    body.light .btn { border-color:#cfd9f7; background:#ffffff; color:#1b2542; }
+    body.light .card, body.light .detail, body.light .ep { background:#ffffff; border-color:#d9e3ff; }
+    body.light .cover { background:#ecf1ff; color:#6273a8; }
+    body.light .sub, body.light .ep p { color:#60709d; }
+    body.light .atlas { background:#eef7ff; color:#144057; }
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <div class="logo">UnaVida</div>
+    <div>Home</div>
+    <div>My Courses</div>
+    <div>Continue Learning</div>
+    <button class="btn" onclick="toggleTheme()" id="themeBtn" style="margin-left:auto;">☀️ Light Mode</button>
+  </div>
+
+  <section class="hero">
+    <h1>Pharmacology, but make it binge-worthy.</h1>
+    <p>Netflix-style discovery + nursing-school structure. Pick a textbook, jump into chapters like episodes, and keep your progress moving with flashcards, cases, and quick checkpoints.</p>
+    <div class="cta">
+      <a href="./bookshelf_offline_redesign_chapter_1_6_reader.html" class="btn primary" style="text-decoration:none;display:inline-block;">Continue Chapter 1.6</a>
+      <a href="./bookshelf_offline_redesign_pharmacology_detail.html" class="btn" style="text-decoration:none;display:inline-block;">Open Chapter List</a>
+    </div>
+  </section>
+
+  <section class="row">
+    <h2>Popular This Term</h2>
+    <div class="cards">
+      <a href="./bookshelf_offline_redesign_pharmacology_detail.html" class="card" style="text-decoration:none;color:inherit;"><div class="cover">Cover</div><div class="meta"><div class="title">Pharmacology I</div><div class="sub">NUR1100 • 13 chapters</div><span class="pill">In Progress</span></div></a>
+      <div class="card"><div class="cover">Cover</div><div class="meta"><div class="title">Medical-Surgical Nursing</div><div class="sub">NUR2300 • 24 chapters</div><span class="pill">New</span></div></div>
+      <div class="card"><div class="cover">Cover</div><div class="meta"><div class="title">Maternal-Child</div><div class="sub">NUR2200 • 18 chapters</div><span class="pill">Continue</span></div></div>
+      <div class="card"><div class="cover">Cover</div><div class="meta"><div class="title">Psychiatric Nursing</div><div class="sub">NUR2400 • 16 chapters</div><span class="pill">Saved</span></div></div>
+    </div>
+  </section>
+
+  <section class="detail">
+    <h2 style="margin:0">Pharmacology I — Chapter Lineup</h2>
+    <p style="margin:6px 0 0; color:#aeb8db">Click-to-open chapter episodes with progress state and quick tools.</p>
+
+    <div class="episodes">
+      <div class="ep"><div class="thumb">1.0</div><div><h4>Overview & Introduction</h4><p>Ready • 25 min • Intro video available</p></div><button class="btn">Open</button></div>
+      <div class="ep"><div class="thumb">1.1</div><div><h4>Definition & Scope</h4><p>Ready • 20 min • Video + image set</p></div><button class="btn">Open</button></div>
+      <div class="ep"><div class="thumb">1.6</div><div><h4>Pharmacokinetics vs Pharmacodynamics</h4><p>In progress • 45 min • Video live</p></div><button class="btn primary">Continue</button></div>
+      <div class="ep"><div class="thumb">1.11</div><div><h4>Review Questions & Assessment</h4><p>Not started • Quiz + case studies</p></div><button class="btn">Start</button></div>
+    </div>
+
+    <div class="atlas">
+      <strong>Atlas corner:</strong> “Think of chapters like episodes—except skipping this one won’t ruin the plot, it’ll ruin your med pass.”
+    </div>
+  </section>
+
+  <script>
+    function toggleTheme(){
+      document.body.classList.toggle('light');
+      const light = document.body.classList.contains('light');
+      document.getElementById('themeBtn').textContent = light ? '🌙 Dark Mode' : '☀️ Light Mode';
+      localStorage.setItem('unavidaTheme', light ? 'light' : 'dark');
+    }
+    (function(){
+      if(localStorage.getItem('unavidaTheme')==='light'){
+        document.body.classList.add('light');
+        const b=document.getElementById('themeBtn'); if(b) b.textContent='🌙 Dark Mode';
+      }
+    })();
+  </script>
+</body>
+</html>
