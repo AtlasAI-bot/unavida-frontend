@@ -176,6 +176,9 @@ export const ChapterReader = () => {
       '/images/ch1/section-1-10/ch1_s1_10_v01.png.png',
       '/images/ch1/section-1-10/ch1_s1_10_v02.png',
     ],
+    sec1_11_review_questions: [
+      '/images/ch1/section-1-11/ch1_s1_11_v01.png',
+    ],
   };
 
   const currentSectionIllustrations = sectionIllustrationMap[currentSection?.id] || [];
