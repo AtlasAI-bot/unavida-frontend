@@ -16,9 +16,12 @@ export const PressPrototypeViewer = () => {
   return (
     <div className="h-screen bg-slate-950 text-white flex flex-col">
       <div className="px-4 py-3 border-b border-slate-700 flex items-center justify-between gap-3">
-        <div>
-          <h1 className="font-bold text-lg">UnaVida Press • Production Prototype</h1>
-          <p className="text-xs text-slate-300">Nursing Education & Curriculum Publishing</p>
+        <div className="flex items-center gap-3">
+          <img src="/unavidapress-logo.jpg" alt="UnaVida Press" className="h-10 w-auto rounded bg-white p-1" />
+          <div>
+            <h1 className="font-bold text-lg">UnaVida Press • Production Prototype</h1>
+            <p className="text-xs text-slate-300">Nursing Education & Curriculum Publishing</p>
+          </div>
         </div>
         <div className="flex items-center gap-2">
           <button onClick={() => navigate('/press/prototype?page=bookshelf')} className="px-3 py-1.5 rounded bg-slate-700 hover:bg-slate-600 text-sm">Bookshelf</button>

@@ -56,7 +56,11 @@ export const Bookshelf = () => {
       <div className="sticky top-0 z-40 bg-white bg-opacity-90 backdrop-blur-md border-b border-cyan-200">
         <div className="max-w-7xl mx-auto px-4 py-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="text-4xl font-black text-cyan-500">U</div>
+            <img
+              src="/unavidapress-logo.jpg"
+              alt="UnaVida Press"
+              className="h-14 w-auto object-contain"
+            />
             <div>
               <h1 className="text-3xl font-bold text-gray-900">UnaVida Press</h1>
               <p className="text-sm text-gray-500">Nursing Education & Curriculum Publishing • UnaVidaPress.com</p>
