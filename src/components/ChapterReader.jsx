@@ -138,7 +138,7 @@ export const ChapterReader = () => {
       '/images/ch1/section-1-0/Key Principles.png',
       '/images/ch1/section-1-0/Eight Rights Med.png',
       '/images/ch1/section-1-0/Drug Calcutation.png',
-      '/images/ch1/section-1-0/Screenshot 2026-03-01 at 5.05.35 PM.png',
+      '/images/ch1/section-1-0/Pharmacokinetics vs. Pharmacodynamics.png',
     ],
     sec1_1_definitions_scope: [
       '/images/ch1/section-1-1/ch1_s1_1_v01.png.png',
@@ -150,11 +150,32 @@ export const ChapterReader = () => {
       '/images/ch1/section-1-2/Antibiotics and the Antibiotic Era.png',
       '/images/ch1/section-1-2/he rise of pharmacogenomics.png',
     ],
-    sec1_3_drug_classification: ['/images/ch1/section-1-3/ch1_s1_3_v01.png.png'],
-    sec1_4_regulatory_bodies_fda: ['/images/ch1/section-1-4/ch1_s1_4_v01.png.png'],
-    sec1_7_drug_interactions: ['/images/ch1/section-1-7/ch1_s1_7_v01.png.png'],
-    sec1_8_dosage_calculations: ['/images/ch1/section-1-8/ch1_s1_8_v01.png.png'],
-    sec1_10_clinical_story_allergy_decision: ['/images/ch1/section-1-10/ch1_s1_10_v01.png.png'],
+    sec1_3_drug_classification: [
+      '/images/ch1/section-1-3/ch1_s1_3_v01.png.png',
+      '/images/ch1/section-1-3/ch1_s1_3_v02.png',
+    ],
+    sec1_4_regulatory_bodies_fda: [
+      '/images/ch1/section-1-4/ch1_s1_4_v01.png.png',
+      '/images/ch1/section-1-4/ch1_s1_4_v02.png',
+    ],
+    sec1_6_pk_vs_pd: [
+      '/images/ch1/section-1-6/ch1_s1_6_v01.png',
+    ],
+    sec1_7_drug_interactions: [
+      '/images/ch1/section-1-7/ch1_s1_7_v01.png.png',
+      '/images/ch1/section-1-7/ch1_s1_7_v02.png',
+    ],
+    sec1_8_dosage_calculations: [
+      '/images/ch1/section-1-8/ch1_s1_8_v01.png.png',
+      '/images/ch1/section-1-8/ch1_s1_8_v02.png',
+    ],
+    sec1_9_key_terms_glossary: [
+      '/images/ch1/section-1-9/ch1_s1_9_v01.png',
+    ],
+    sec1_10_clinical_story_allergy_decision: [
+      '/images/ch1/section-1-10/ch1_s1_10_v01.png.png',
+      '/images/ch1/section-1-10/ch1_s1_10_v02.png',
+    ],
   };
 
   const currentSectionIllustrations = sectionIllustrationMap[currentSection?.id] || [];
