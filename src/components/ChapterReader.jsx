@@ -339,41 +339,28 @@ export const ChapterReader = () => {
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <div className="sticky top-0 z-20 bg-[#dfe8ff] border-b border-[#cfd9f7] shadow-sm px-6 py-4">
+        <div className="sticky top-0 z-20 bg-[#14171a] border-b border-white/10 shadow-sm px-5 py-3">
           <div className="flex items-center justify-between gap-4 flex-wrap">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               <button
                 onClick={() => setSidebarOpen(!sidebarOpen)}
-                className="lg:hidden text-[#1b2542] hover:text-[#5b6a95] transition-colors"
+                className="lg:hidden text-slate-300 hover:text-white transition-colors"
               >
-                <Menu size={24} />
+                <Menu size={22} />
               </button>
               <div className="flex-1">
-                <p className="text-xs text-[#5b6a95] font-medium">Home / {chapter.metadata.title} / Reader</p>
-                <h1 className="text-lg font-bold text-[#1b2542]">
-                  {currentViewMode === 'flashcards' 
-                    ? '📚 Flashcard Study'
-                    : currentViewMode === 'quiz'
-                    ? '❓ Chapter Quiz'
-                    : currentSection.title}
-                </h1>
+                <p className="text-xs text-slate-400">Home / Pharmacology I / Reader</p>
+                <h1 className="text-base font-bold text-slate-100">Reader Demo — Chapter Navigation Accordion</h1>
               </div>
             </div>
             <div className="flex items-center gap-2 flex-wrap">
               {currentViewMode !== 'content' && (
-                <button
-                  onClick={() => setCurrentViewMode('content')}
-                  className="px-3 py-2 bg-transparent border border-[#cfd9f7] text-[#1b2542] rounded-lg hover:bg-[#f3f6ff] transition-colors text-xs font-semibold"
-                >
-                  ← Back
-                </button>
+                <button onClick={() => setCurrentViewMode('content')} className="px-3 py-2 border border-white/20 text-sm rounded-lg">← Back</button>
               )}
-              <button
-                onClick={() => navigate('/')}
-                className="px-3 py-2 bg-transparent border border-[#cfd9f7] text-[#1b2542] rounded-lg hover:bg-[#f3f6ff] transition-colors text-xs"
-              >
-                Close
-              </button>
+              <button className="px-3 py-2 border border-white/20 text-sm rounded-lg">🌙 Dark Mode</button>
+              <button className="px-3 py-2 border border-white/20 text-sm rounded-lg">↔ Expand Reader</button>
+              <button className="px-3 py-2 border border-white/20 text-sm rounded-lg">⚙️ Reader Preferences</button>
+              <button onClick={() => navigate('/textbook/NUR1100')} className="px-3 py-2 border border-white/20 text-sm rounded-lg">Back to Chapter List</button>
             </div>
           </div>
 
@@ -381,14 +368,14 @@ export const ChapterReader = () => {
           {currentViewMode === 'content' && (
             <div className="mt-4">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-semibold text-[#5b6a95]">
+                <span className="text-xs font-semibold text-slate-300">
                   {progressPercentage}% Complete
                 </span>
-                <span className="text-xs text-[#5b6a95]">
+                <span className="text-xs text-slate-400">
                   {formatTime(timeSpent)} reading
                 </span>
               </div>
-              <div className="w-full h-2 bg-[#e1eaff] rounded-full overflow-hidden">
+              <div className="w-full h-2 bg-slate-700 rounded-full overflow-hidden">
                 <div
                   className="h-full bg-[#39d0c8] transition-all duration-300"
                   style={{ width: `${progressPercentage}%` }}
@@ -401,7 +388,7 @@ export const ChapterReader = () => {
         {/* Content Area */}
         <div 
           ref={contentRef}
-          className="flex-1 overflow-y-auto bg-[#f7f9ff]"
+          className="flex-1 overflow-y-auto bg-[#181b1f]"
         >
           {/* Flashcards View */}
           {currentViewMode === 'flashcards' && (
