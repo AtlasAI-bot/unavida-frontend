@@ -19,7 +19,7 @@ export const Bookshelf = () => {
       courseCode: 'NUR1100',
       description: 'Foundation pharmacology concepts for nursing practice - Drug actions, classifications, and basic therapeutic uses.',
       icon: '💊',
-      color: 'from-cyan-400 to-cyan-600',
+      color: 'from-cyan-500/50 to-indigo-700/60',
       chapters: 3,
       totalMinutes: 600,
     },
@@ -29,7 +29,7 @@ export const Bookshelf = () => {
       courseCode: 'NUR2110',
       description: 'Advanced drug therapies and specialized pharmacology for complex patient management.',
       icon: '🧬',
-      color: 'from-purple-400 to-purple-600',
+      color: 'from-fuchsia-500/40 to-purple-700/60',
       chapters: 3,
       totalMinutes: 680,
     },
@@ -39,10 +39,10 @@ export const Bookshelf = () => {
       courseCode: 'NUR3120',
       description: 'Real-world clinical applications and case studies in pharmacological practice.',
       icon: '🏥',
-      color: 'from-emerald-400 to-emerald-600',
+      color: 'from-emerald-500/40 to-teal-700/60',
       chapters: 2,
       totalMinutes: 420,
-      comingSoon: false, // Will build this later
+      comingSoon: false,
     },
   ];
 
@@ -51,130 +51,58 @@ export const Bookshelf = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-blue-50 to-slate-100 text-gray-900">
-      {/* Header */}
-      <div className="sticky top-0 z-40 bg-white bg-opacity-90 backdrop-blur-md border-b border-cyan-200">
-        <div className="max-w-7xl mx-auto px-4 py-6 flex items-center justify-between">
+    <div className="min-h-screen bg-[#0b1020] text-white">
+      <div className="sticky top-0 z-40 bg-black/40 backdrop-blur-md border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img
-              src="/unavidapress-logo.jpg"
-              alt="UnaVida Press"
-              className="h-14 w-auto object-contain"
-            />
+            <img src="/unavidapress-logo.jpg" alt="UnaVida Press" className="h-12 w-auto object-contain" />
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">UnaVida Press</h1>
-              <p className="text-sm text-gray-500">Nursing Education & Curriculum Publishing • UnaVidaPress.com</p>
+              <h1 className="text-2xl font-bold">UnaVida Press</h1>
+              <p className="text-xs text-slate-300">Nursing Education & Curriculum Publishing • UnaVidaPress.com</p>
             </div>
           </div>
-          <div className="flex items-center gap-4">
-            <span className="text-sm text-gray-600">
-              Welcome, <strong>{user?.name}</strong>!
-            </span>
-            <button
-              onClick={handleLogout}
-              className="flex items-center gap-2 px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg font-semibold transition-colors"
-            >
-              <LogOut size={18} />
-              Logout
+          <div className="flex items-center gap-3 text-sm">
+            <span className="text-slate-300">Welcome, <strong className="text-white">{user?.name}</strong></span>
+            <button onClick={handleLogout} className="flex items-center gap-2 px-3 py-2 bg-red-600 hover:bg-red-700 rounded-lg font-semibold">
+              <LogOut size={16} /> Logout
             </button>
           </div>
         </div>
       </div>
 
-      {/* Featured Banner */}
-      <div className="relative h-80 bg-gradient-to-r from-cyan-500 to-purple-600 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 via-purple-500 to-emerald-500 opacity-80"></div>
-        <div className="absolute inset-0 flex items-center px-8">
-          <div className="max-w-2xl">
-            <h2 className="text-5xl font-bold mb-4 text-white">Your Pharmacology Library</h2>
-            <p className="text-xl mb-4 text-white font-light">
-              Welcome back, {user?.name}! Select a textbook to begin your learning journey
-            </p>
-          </div>
+      <section className="px-6 py-10 border-b border-white/10 bg-[radial-gradient(circle_at_70%_20%,rgba(57,208,200,.2),transparent_40%),linear-gradient(180deg,#111831,#0b1020)]">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold mb-3">Your Pharmacology Library</h2>
+          <p className="text-slate-300 max-w-3xl">Welcome back, {user?.name}. Select a textbook to continue your learning journey with videos, case studies, flashcards, and guided practice.</p>
         </div>
-      </div>
+      </section>
 
-      {/* Bookshelf - Textbooks Grid */}
-      <div className="max-w-7xl mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">Your Textbooks</h2>
-        <p className="text-gray-600 mb-12">Click a textbook to explore chapters and learning materials</p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-6 py-8">
+        <h3 className="text-xl font-semibold mb-4 text-slate-100">Popular This Term</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {textbooks.map((textbook) => (
             <div
               key={textbook.id}
               onClick={() => !textbook.comingSoon && handleTextbookClick(textbook.id)}
-              className={`group relative rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all border-2 ${
-                textbook.comingSoon
-                  ? 'border-gray-300 opacity-60 cursor-not-allowed'
-                  : 'border-gray-200 hover:border-cyan-400 cursor-pointer hover:scale-105 transform duration-300'
-              }`}
+              className={`rounded-2xl border border-white/10 bg-[#151d38] overflow-hidden transition-all ${textbook.comingSoon ? 'opacity-60' : 'hover:scale-[1.02] hover:border-cyan-300/60 cursor-pointer'}`}
             >
-              {/* Book Cover - Top Half */}
-              <div className={`relative h-64 bg-gradient-to-br ${textbook.color} flex flex-col items-center justify-center overflow-hidden`}>
-                <div className="text-9xl mb-4 opacity-90">{textbook.icon}</div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
-                
-                {textbook.comingSoon && (
-                  <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                    <span className="text-white font-bold text-lg bg-purple-600 px-4 py-2 rounded">
-                      Coming Soon
-                    </span>
-                  </div>
-                )}
+              <div className={`h-40 bg-gradient-to-br ${textbook.color} flex items-center justify-center text-6xl`}>
+                {textbook.icon}
               </div>
-
-              {/* Book Info - Bottom Half */}
-              <div className="bg-white p-6">
-                <h3 className="text-2xl font-bold text-gray-900 mb-1">{textbook.title}</h3>
-                <p className="text-sm text-cyan-600 font-semibold mb-4">{textbook.courseCode}</p>
-
-                <p className="text-gray-600 text-sm mb-6 line-clamp-3 min-h-[3.5rem]">
-                  {textbook.description}
-                </p>
-
-                {!textbook.comingSoon && (
-                  <>
-                    {/* Metadata */}
-                    <div className="flex gap-6 mb-6 py-4 border-t border-b border-gray-200">
-                      <div>
-                        <p className="text-2xl font-bold text-cyan-600">{textbook.chapters}</p>
-                        <p className="text-xs text-gray-500">Chapters</p>
-                      </div>
-                      <div>
-                        <p className="text-2xl font-bold text-purple-600">{textbook.totalMinutes}</p>
-                        <p className="text-xs text-gray-500">Minutes</p>
-                      </div>
-                    </div>
-
-                    {/* CTA Button */}
-                    <button className="w-full py-3 bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white rounded-lg font-semibold transition-all flex items-center justify-center gap-2 group-hover:shadow-lg">
-                      <BookOpen size={18} />
-                      Open Textbook
-                    </button>
-                  </>
-                )}
+              <div className="p-4">
+                <h4 className="text-lg font-bold">{textbook.title}</h4>
+                <p className="text-cyan-300 text-sm">{textbook.courseCode}</p>
+                <p className="text-slate-300 text-sm mt-2 min-h-[3rem]">{textbook.description}</p>
+                <div className="flex gap-6 mt-3 text-sm text-slate-300">
+                  <span><strong className="text-white">{textbook.chapters}</strong> chapters</span>
+                  <span><strong className="text-white">{textbook.totalMinutes}</strong> min</span>
+                </div>
+                <button className="w-full mt-4 py-2.5 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-semibold flex items-center justify-center gap-2">
+                  <BookOpen size={16} /> Open Textbook
+                </button>
               </div>
             </div>
           ))}
-        </div>
-      </div>
-
-      {/* Stats Footer */}
-      <div className="border-t border-gray-300 bg-gradient-to-r from-blue-50 to-purple-50 mt-16">
-        <div className="max-w-7xl mx-auto px-4 py-8 grid grid-cols-3 gap-8 text-center">
-          <div>
-            <p className="text-4xl font-bold text-cyan-600">3</p>
-            <p className="text-gray-600">Textbooks Available</p>
-          </div>
-          <div>
-            <p className="text-4xl font-bold text-purple-600">8+</p>
-            <p className="text-gray-600">Total Chapters</p>
-          </div>
-          <div>
-            <p className="text-4xl font-bold text-emerald-600">1700+</p>
-            <p className="text-gray-600">Minutes of Content</p>
-          </div>
         </div>
       </div>
     </div>

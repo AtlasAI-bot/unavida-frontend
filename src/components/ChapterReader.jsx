@@ -311,7 +311,7 @@ export const ChapterReader = () => {
   const readableCards = getReadableCards(currentSection?.content);
 
   return (
-    <div className="h-screen flex bg-gradient-to-br from-slate-50 to-slate-100 text-gray-900">
+    <div className="h-screen flex bg-[#0f1113] text-slate-100">
       {/* Left Sidebar - Navigation */}
       <ChapterNav 
         sections={sections}
@@ -325,24 +325,24 @@ export const ChapterReader = () => {
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <div className="sticky top-0 z-20 bg-white border-b border-gray-200 shadow-sm px-6 py-4">
+        <div className="sticky top-0 z-20 bg-[#14171a] border-b border-white/10 shadow-sm px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <button
                 onClick={() => setSidebarOpen(!sidebarOpen)}
-                className="lg:hidden text-gray-600 hover:text-gray-900 transition-colors"
+                className="lg:hidden text-slate-300 hover:text-white transition-colors"
               >
                 <Menu size={24} />
               </button>
               <div className="flex-1">
-                <h1 className="text-2xl font-bold text-gray-900">
+                <h1 className="text-2xl font-bold text-slate-100">
                   {currentViewMode === 'flashcards' 
                     ? '📚 Flashcard Study'
                     : currentViewMode === 'quiz'
                     ? '❓ Chapter Quiz'
                     : chapter.metadata.title}
                 </h1>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-slate-300">
                   {currentViewMode === 'content' ? currentSection.title : 'Study Materials'}
                 </p>
               </div>
@@ -351,14 +351,14 @@ export const ChapterReader = () => {
               {currentViewMode !== 'content' && (
                 <button
                   onClick={() => setCurrentViewMode('content')}
-                  className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors text-sm font-semibold"
+                  className="px-4 py-2 bg-slate-700 text-slate-100 rounded-lg hover:bg-slate-600 transition-colors text-sm font-semibold"
                 >
                   ← Back
                 </button>
               )}
               <button
                 onClick={() => navigate('/')}
-                className="text-gray-400 hover:text-gray-900 transition-colors"
+                className="text-slate-400 hover:text-slate-100 transition-colors"
               >
                 <X size={24} />
               </button>
@@ -369,14 +369,14 @@ export const ChapterReader = () => {
           {currentViewMode === 'content' && (
             <div className="mt-4">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-semibold text-gray-600">
+                <span className="text-xs font-semibold text-slate-300">
                   {progressPercentage}% Complete
                 </span>
-                <span className="text-xs text-gray-500">
+                <span className="text-xs text-slate-400">
                   {formatTime(timeSpent)} reading
                 </span>
               </div>
-              <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div className="w-full h-2 bg-slate-700 rounded-full overflow-hidden">
                 <div
                   className="h-full bg-gradient-to-r from-teal-500 to-purple-500 transition-all duration-300"
                   style={{ width: `${progressPercentage}%` }}
