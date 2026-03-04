@@ -311,7 +311,21 @@ export const ChapterReader = () => {
   const readableCards = getReadableCards(currentSection?.content);
 
   return (
-    <div className="h-screen flex bg-[#eaf0ff] text-[#1b2542]">
+    <>
+      <style>{`
+        .reader-theme{--bg:#0f1113;--text:#f5f7fa;--top:#14171a;--panel:#181b1f;--panel2:#22262b;--muted:#c5cbd3;--accent:#39d0c8;}
+        .reader-theme{background:var(--bg);color:var(--text)}
+        .reader-theme .bg-white{background:var(--panel)!important;color:var(--text)!important}
+        .reader-theme .bg-gray-50,.reader-theme .bg-slate-50{background:var(--panel2)!important;color:var(--text)!important}
+        .reader-theme .text-gray-900,.reader-theme .text-slate-900{color:var(--text)!important}
+        .reader-theme .text-gray-800,.reader-theme .text-slate-800{color:#e6ebf2!important}
+        .reader-theme .text-gray-700,.reader-theme .text-slate-700{color:#d1d8e2!important}
+        .reader-theme .text-gray-600,.reader-theme .text-slate-600{color:var(--muted)!important}
+        .reader-theme .border-gray-200,.reader-theme .border-slate-200,.reader-theme .border-gray-300,.reader-theme .border-slate-300{border-color:rgba(255,255,255,.14)!important}
+        .reader-theme .bg-gradient-to-r,.reader-theme .bg-gradient-to-br{background-image:none!important}
+        .reader-theme .from-teal-500,.reader-theme .to-purple-500,.reader-theme .from-teal-600,.reader-theme .to-purple-600{background-color:var(--accent)!important;color:#032320!important}
+      `}</style>
+      <div className="reader-theme h-screen flex bg-[#0f1113] text-[#f5f7fa]">
       {/* Left Sidebar - Navigation */}
       <ChapterNav 
         sections={sections}
@@ -1723,6 +1737,7 @@ export const ChapterReader = () => {
         </button>
       )}
     </div>
+    </>
   );
 };
 
