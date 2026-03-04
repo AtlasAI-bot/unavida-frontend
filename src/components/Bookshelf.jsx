@@ -90,12 +90,6 @@ export const Bookshelf = () => {
             <p className="text-xl mb-4 text-white font-light">
               Welcome back, {user?.name}! Select a textbook to begin your learning journey
             </p>
-            <button
-              onClick={() => navigate('/press/prototype?page=bookshelf')}
-              className="px-4 py-2 rounded-lg bg-white/90 text-slate-900 font-semibold hover:bg-white transition-colors"
-            >
-              Try New UnaVida Press Experience (Beta)
-            </button>
           </div>
         </div>
       </div>
