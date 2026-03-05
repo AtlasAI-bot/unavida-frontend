@@ -30,6 +30,19 @@ export const ChapterReader = () => {
 
   const [atlasLine] = useState(() => atlasLines[Math.floor(Math.random() * atlasLines.length)]);
 
+  const sectionVideoMap = {
+    sec1_overview_introduction: 'https://unavida-videos.s3.us-east-2.amazonaws.com/Pharmacology_+Chapter+1+Introduction_1080p_caption.mp4',
+    sec1_1_definitions_scope: 'https://unavida-videos.s3.us-east-2.amazonaws.com/07_definition_and_scope.mp4',
+    sec1_3_drug_classification: 'https://unavida-videos.s3.us-east-2.amazonaws.com/06_drug_classification_systems.mp4',
+    sec1_4_regulatory_bodies_fda: 'https://unavida-videos.s3.us-east-2.amazonaws.com/02_fda_approval_process.mp4',
+    sec1_6_pk_vs_pd: 'https://unavida-videos.s3.us-east-2.amazonaws.com/4982BE2B-4807-F9DC-41B2-6CCF565CF232.mp4',
+    sec1_7_drug_interactions: 'https://unavida-videos.s3.us-east-2.amazonaws.com/03_drug_interactions_and_safety.mp4',
+    sec1_8_dosage_calculations: 'https://unavida-videos.s3.us-east-2.amazonaws.com/04_dosage_calculations.mp4',
+    sec1_10_clinical_story_allergy_decision: 'https://unavida-videos.s3.us-east-2.amazonaws.com/05_clinical_story_allergy_decision.mp4',
+  };
+
+  const currentVideoUrl = selectedSection ? sectionVideoMap[selectedSection.id] : null;
+
   // Load theme from localStorage
   useEffect(() => {
     const savedTheme = localStorage.getItem('unavidaTheme') || 'light';
@@ -665,14 +678,21 @@ export const ChapterReader = () => {
 
                 <section className="reader-video">
                   <strong>📺 Featured Lesson Video</strong>
-                  <div className="reader-frame">Video Player Area (S3-backed in live app)</div>
+                  {currentVideoUrl ? (
+                    <div className="reader-frame" style={{ padding: 0, overflow: 'hidden' }}>
+                      <video controls preload="metadata" src={currentVideoUrl} style={{ width: '100%', height: '100%' }} />
+                    </div>
+                  ) : (
+                    <div className="reader-frame">No video mapped for this section yet</div>
+                  )}
                 </section>
 
                 {selectedSection.content && (
                   <section className="reader-card">
                     <h3>Section Content</h3>
-                    <p>{selectedSection.content.substring(0, 500)}...</p>
-                    {selectedSection.content.length > 500 && <p><em>(Full content available in production app)</em></p>}
+                    {selectedSection.content.split(/\n\s*\n/).filter(Boolean).map((para, idx) => (
+                      <p key={idx}>{para}</p>
+                    ))}
                   </section>
                 )}
 
