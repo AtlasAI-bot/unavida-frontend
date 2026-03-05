@@ -265,6 +265,13 @@ export const ChapterReader = () => {
     setTheme(savedTheme);
   }, []);
 
+  // Mobile default: keep TOC closed initially
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.innerWidth <= 1024) {
+      setHideToc(true);
+    }
+  }, []);
+
   // Set default section on mount (restore last viewed section if available)
   useEffect(() => {
     const sections = chapterData.chapter.sections || [];
@@ -292,6 +299,9 @@ export const ChapterReader = () => {
   const handleSectionClick = (section) => {
     setSelectedSection(section);
     setRevealedAnswers({});
+    if (typeof window !== 'undefined' && window.innerWidth <= 1024) {
+      setHideToc(true);
+    }
   };
 
   const toggleTheme = () => {
@@ -829,6 +839,88 @@ export const ChapterReader = () => {
         }
 
         .reader-float-btn:hover { background: var(--chapter-hover); }
+
+        @media (max-width: 1024px) {
+          .reader-top {
+            padding: 10px 12px;
+            gap: 10px;
+          }
+
+          .reader-tools {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+          }
+
+          .reader-btn {
+            min-height: 40px;
+            font-size: 14px;
+          }
+
+          .reader-layout {
+            grid-template-columns: 1fr;
+            padding: 8px;
+            gap: 8px;
+          }
+
+          .reader-main {
+            min-height: calc(100vh - 150px);
+          }
+
+          .reader-right {
+            display: none;
+          }
+
+          .reader-toc {
+            position: fixed;
+            left: 8px;
+            top: 142px;
+            bottom: 8px;
+            width: min(90vw, 360px);
+            z-index: 50;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.28);
+          }
+
+          .reader-main-wrap h1 {
+            font-size: 1.45rem;
+          }
+
+          .reader-main-wrap p,
+          .reader-main-wrap li {
+            font-size: 0.98rem;
+          }
+
+          .reader-float-btn {
+            top: 100px;
+            left: 12px;
+            width: 34px;
+            height: 34px;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .reader-tools {
+            grid-template-columns: 1fr;
+          }
+
+          .reader-main-wrap {
+            max-width: 100%;
+          }
+
+          .reader-card {
+            padding: 12px;
+            border-radius: 10px;
+          }
+
+          .reader-pills {
+            gap: 6px;
+          }
+
+          .reader-pill {
+            font-size: 10px;
+          }
+        }
       `}</style>
 
       {/* Top Bar */}
