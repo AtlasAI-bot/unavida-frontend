@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import chapterData from '../data/CHAPTER_1_UNAVIDA_PRODUCTION.json';
 import './ChapterReader.css';
 
@@ -14,6 +14,7 @@ export const ChapterReader = () => {
   const [font, setFont] = useState('Inter, system-ui, sans-serif');
   const [lineHeight, setLineHeight] = useState(1.65);
   const [readerWidth, setReaderWidth] = useState(920);
+  const mainScrollRef = useRef(null);
 
   const atlasLines = [
     'If your calculator dies during dosage math, that\'s a character-building event.',
@@ -121,6 +122,27 @@ export const ChapterReader = () => {
 
   const sectionTitle = cleanHeading(selectedSection?.title || '');
 
+  const forcedSubheads = [
+    'Key Principles for Safe Medication Use',
+    'The Six Rights (Extended to Eight)',
+    'The Scope of This Course',
+  ];
+
+  const splitForcedSubhead = (text) => {
+    if (!text) return null;
+    for (const h of forcedSubheads) {
+      if (text.includes(h)) {
+        const parts = text.split(h);
+        return {
+          before: parts[0]?.trim() || '',
+          heading: h,
+          after: parts.slice(1).join(h).trim(),
+        };
+      }
+    }
+    return null;
+  };
+
   // Load theme from localStorage
   useEffect(() => {
     const savedTheme = localStorage.getItem('unavidaTheme') || 'light';
@@ -133,6 +155,13 @@ export const ChapterReader = () => {
       setSelectedSection(chapterData.chapter.sections[0]);
     }
   }, []);
+
+  // Always jump to top when section changes
+  useEffect(() => {
+    if (mainScrollRef.current) {
+      mainScrollRef.current.scrollTop = 0;
+    }
+  }, [selectedSection?.id]);
 
   const handleSectionClick = (section) => {
     setSelectedSection(section);
@@ -735,7 +764,7 @@ export const ChapterReader = () => {
         </aside>
 
         {/* Main Content Panel */}
-        <main className="reader-panel reader-main">
+        <main className="reader-panel reader-main" ref={mainScrollRef}>
           <div className="reader-main-wrap">
             {selectedSection ? (
               <>
@@ -766,20 +795,31 @@ export const ChapterReader = () => {
 
                 {selectedSection.content && (
                   <section className="reader-card">
-                    <h3>{selectedSection.id === 'references' ? 'References (APA Style)' : 'Section Content'}</h3>
                     {selectedSection.id === 'references' ? (
-                      <div>
-                        {sectionParagraphs.map((refText, idx) => (
-                          <p key={idx} className="apa-ref">{cleanBody(refText)}</p>
-                        ))}
-                      </div>
+                      <>
+                        <h3>References (APA Style)</h3>
+                        <div>
+                          {sectionParagraphs.map((refText, idx) => (
+                            <p key={idx} className="apa-ref">{cleanBody(refText)}</p>
+                          ))}
+                        </div>
+                      </>
                     ) : (
                       sectionParagraphs.map((para, idx) => {
                         const { heading, body } = splitHeadingFromText(para);
+                        const forced = splitForcedSubhead(body || para);
                         return (
                           <div key={idx} style={{ marginBottom: '18px' }}>
                             {heading && <h4 style={{ margin: '0 0 8px 0', fontSize: '1.08rem' }}>{heading}</h4>}
-                            <p style={{ fontSize: '1rem', lineHeight: 1.75 }}>{body}</p>
+                            {forced ? (
+                              <>
+                                {forced.before && <p style={{ fontSize: '1rem', lineHeight: 1.75 }}>{forced.before}</p>}
+                                <h4 style={{ margin: '8px 0', fontSize: '1.1rem' }}>{forced.heading}</h4>
+                                {forced.after && <p style={{ fontSize: '1rem', lineHeight: 1.75 }}>{forced.after}</p>}
+                              </>
+                            ) : (
+                              <p style={{ fontSize: '1rem', lineHeight: 1.75 }}>{body}</p>
+                            )}
                           </div>
                         );
                       })
