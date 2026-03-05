@@ -126,7 +126,38 @@ export const ChapterReader = () => {
     return { heading: null, body: cleanBody(text) };
   };
 
+  const countWords = (value = '') =>
+    value
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .split(' ')
+      .filter(Boolean).length;
+
+  const getSectionWordCount = (section) => {
+    if (!section) return 0;
+    let total = 0;
+    total += countWords(section.content || '');
+    (section.contentBlocks || []).forEach((block) => {
+      total += countWords(block.title || '');
+      total += countWords(block.content || '');
+      total += countWords(block.htmlReady || '');
+      (block.questions || []).forEach((q) => {
+        total += countWords(q.question || '');
+        total += countWords(q.rationale || '');
+        Object.values(q.options || {}).forEach((opt) => {
+          total += countWords(opt || '');
+        });
+        (q.expectedAnswerElements || []).forEach((el) => {
+          total += countWords(el || '');
+        });
+      });
+    });
+    return total;
+  };
+
   const sectionTitle = cleanHeading(selectedSection?.title || '');
+  const currentWordCount = getSectionWordCount(selectedSection);
 
   const paragraphImageSlots = sectionParagraphs.length > 0
     ? currentSectionImages.map((_, i) => Math.floor(((i + 1) * sectionParagraphs.length) / (currentSectionImages.length + 1)))
@@ -499,28 +530,28 @@ export const ChapterReader = () => {
           transition: grid-template-columns 0.25s;
         }
 
-        .reader-container.focus-reader .reader-layout {
+        .reader-layout.focus-reader {
           grid-template-columns: 1fr;
         }
 
-        .reader-container.focus-reader .reader-toc,
-        .reader-container.focus-reader .reader-right {
+        .reader-layout.focus-reader .reader-toc,
+        .reader-layout.focus-reader .reader-right {
           display: none;
         }
 
-        .reader-container.hide-toc .reader-layout {
+        .reader-layout.hide-toc {
           grid-template-columns: 1fr 320px;
         }
 
-        .reader-container.hide-toc .reader-toc {
+        .reader-layout.hide-toc .reader-toc {
           display: none;
         }
 
-        .reader-container.hide-toc .reader-main-wrap {
+        .reader-layout.hide-toc .reader-main-wrap {
           max-width: 1220px;
         }
 
-        .reader-container.focus-reader .reader-main-wrap {
+        .reader-layout.focus-reader .reader-main-wrap {
           max-width: 1300px;
         }
 
@@ -971,7 +1002,7 @@ export const ChapterReader = () => {
                   onClick={() => handleSectionClick(section)}
                 >
                   {section.title}
-                  {section.wordCount && <span style={{ fontSize: '11px', color: 'var(--muted)' }}> ({section.wordCount} words)</span>}
+                  <span style={{ fontSize: '11px', color: 'var(--muted)' }}> ({getSectionWordCount(section)} words)</span>
                   {section.duration && <span style={{ fontSize: '11px', color: 'var(--muted)' }}> • {section.duration} min</span>}
                 </a>
               ))}
@@ -987,7 +1018,7 @@ export const ChapterReader = () => {
                 <div className="reader-section-label">Chapter Reader</div>
                 <h1>{sectionTitle || selectedSection.title}</h1>
                 <div className="reader-meta reader-subtle">
-                  {selectedSection.duration} min {selectedSection.wordCount && `• ${selectedSection.wordCount} words`}
+                  {selectedSection.duration} min • {currentWordCount} words
                 </div>
                 <div className="reader-pills">
                   {selectedSection.duration && <span className="reader-pill">⏱️ ~{selectedSection.duration} min reading</span>}
