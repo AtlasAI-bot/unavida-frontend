@@ -217,12 +217,22 @@ export const ChapterReader = () => {
     setTheme(savedTheme);
   }, []);
 
-  // Set default section on mount
+  // Set default section on mount (restore last viewed section if available)
   useEffect(() => {
-    if (chapterData.chapter.sections && chapterData.chapter.sections.length > 0) {
-      setSelectedSection(chapterData.chapter.sections[0]);
-    }
+    const sections = chapterData.chapter.sections || [];
+    if (!sections.length) return;
+
+    const savedId = localStorage.getItem('unavida:lastReaderSection:ch1_intro');
+    const saved = sections.find((s) => s.id === savedId);
+    setSelectedSection(saved || sections[0]);
   }, []);
+
+  // Persist currently viewed section
+  useEffect(() => {
+    if (selectedSection?.id) {
+      localStorage.setItem('unavida:lastReaderSection:ch1_intro', selectedSection.id);
+    }
+  }, [selectedSection?.id]);
 
   // Always jump to top when section changes
   useEffect(() => {
