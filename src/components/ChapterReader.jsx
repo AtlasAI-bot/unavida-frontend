@@ -851,9 +851,9 @@ export const ChapterReader = () => {
                 </div>
                 <div className="reader-pills">
                   {selectedSection.duration && <span className="reader-pill">⏱️ ~{selectedSection.duration} min reading</span>}
-                  <span className="reader-pill">📺 1 video</span>
-                  <span className="reader-pill">🎴 12 flashcards suggested</span>
-                  <span className="reader-pill">📋 Resume point saved</span>
+                  {currentVideoUrl && <span className="reader-pill">📺 1 video</span>}
+                  <span className="reader-pill">🎴 60 flashcards available</span>
+                  <span className="reader-pill">✅ Progress autosaved</span>
                 </div>
 
                 <div className="reader-alert-bar">
