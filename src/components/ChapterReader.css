@@ -50,21 +50,21 @@
   font-size: 1.28rem;
   line-height: 1.3;
   margin: 0 0 12px 0;
-  color: #39d0c8;
+  color: #0b5cad;
 }
 
 .reader-main-wrap h4 {
   font-size: 1.08rem;
   line-height: 1.35;
   margin: 12px 0 8px;
-  color: #9adfd9;
+  color: #0f3f78;
 }
 
 .reader-main-wrap p {
   font-size: 1rem;
   line-height: 1.8;
   margin: 0 0 12px 0;
-  color: var(--text);
+  color: #000000;
 }
 
 .reader-main-wrap ul li,
@@ -74,7 +74,7 @@
 }
 
 .reader-main-wrap strong {
-  color: #f7fafc;
+  color: #0b1f3a;
 }
 
 .reader-section-label {
@@ -83,15 +83,15 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 700;
-  color: #88b8ff;
+  color: #0b5cad;
   margin-bottom: 6px;
 }
 
 .reader-subtle {
-  color: var(--muted);
+  color: #1c3557;
   font-size: 0.92rem;
 }
 
 .reader-card {
-  border-left: 3px solid rgba(57, 208, 200, 0.45);
+  border-left: 3px solid #0b5cad;
 }
