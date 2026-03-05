@@ -759,19 +759,10 @@ export const ChapterReader = () => {
                     <h3>Section Content</h3>
                     {sectionParagraphs.map((para, idx) => {
                       const { heading, body } = splitHeadingFromText(para);
-                      const imgSrc = imageForIndex(idx, sectionParagraphs.length);
                       return (
                         <div key={idx} style={{ marginBottom: '16px' }}>
                           {heading && <h4 style={{ margin: '0 0 8px 0' }}>{heading}</h4>}
                           <p>{body}</p>
-                          {imgSrc && (
-                            <img
-                              src={imgSrc}
-                              alt={`Section visual ${idx + 1}`}
-                              style={{ width: '100%', marginTop: '10px', maxHeight: '420px', objectFit: 'contain', background: 'var(--panel)', borderRadius: '10px' }}
-                              loading="lazy"
-                            />
-                          )}
                         </div>
                       );
                     })}
@@ -782,7 +773,7 @@ export const ChapterReader = () => {
                   <section className="reader-card">
                     <h3>Detailed Reading</h3>
                     {selectedSection.contentBlocks.map((block, idx) => {
-                      const imgSrc = imageForIndex(idx, selectedSection.contentBlocks.length);
+                      const imgSrc = currentSectionImages[idx] || null;
                       return (
                         <div key={idx} style={{ marginBottom: '16px' }}>
                           {block.title && <h4 style={{ margin: '0 0 6px 0' }}>{block.title}</h4>}
