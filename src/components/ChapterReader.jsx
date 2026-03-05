@@ -8,7 +8,6 @@ export const ChapterReader = () => {
   const [focusReader, setFocusReader] = useState(false);
   const [hideToc, setHideToc] = useState(false);
   const [readAloudOn, setReadAloudOn] = useState(false);
-  const [nclexOn, setNclexOn] = useState(false);
   const [prefsModalOpen, setPrefsModalOpen] = useState(false);
   const [textSize, setTextSize] = useState(17);
   const [font, setFont] = useState('Inter, system-ui, sans-serif');
@@ -145,6 +144,30 @@ export const ChapterReader = () => {
       }
     }
     return null;
+  };
+
+  const renderReviewQuestionText = (text) => {
+    const normalized = cleanBody(text)
+      .replace(/\s+/g, ' ')
+      .replace(/(\d+\.)\s*/g, '\n$1 ')
+      .replace(/\s([a-d]\.)\s*/gi, '\n$1 ')
+      .trim();
+
+    const lines = normalized.split('\n').map((l) => l.trim()).filter(Boolean);
+
+    return (
+      <div style={{ display: 'grid', gap: '6px' }}>
+        {lines.map((line, i) => {
+          if (/^\d+\./.test(line)) {
+            return <p key={i} style={{ fontWeight: 700, margin: 0 }}>{line}</p>;
+          }
+          if (/^[a-d]\./i.test(line)) {
+            return <p key={i} style={{ margin: 0, paddingLeft: '18px' }}>{line}</p>;
+          }
+          return <p key={i} style={{ margin: 0 }}>{line}</p>;
+        })}
+      </div>
+    );
   };
 
   // Load theme from localStorage
@@ -725,9 +748,6 @@ export const ChapterReader = () => {
           <button className="reader-btn" onClick={() => setReadAloudOn(!readAloudOn)}>
             {readAloudOn ? '⏸ Stop Read Aloud' : '🔊 Read Aloud'}
           </button>
-          <button className="reader-btn" onClick={() => setNclexOn(!nclexOn)}>
-            {nclexOn ? '✅ NCLEX Lens ON' : '🧠 NCLEX Lens'}
-          </button>
           <button className="reader-btn">📋 Export Study Sheet</button>
           <a href="/bookshelf" className="reader-btn">Back to Chapter List</a>
         </div>
@@ -785,7 +805,7 @@ export const ChapterReader = () => {
                 </div>
 
                 <div className="reader-alert-bar">
-                  <strong>{nclexOn ? 'NCLEX Lens:' : 'Exam Alert:'}</strong> {nclexOn ? 'Prioritize safety language, adverse effect recognition, and first nursing action in every question.' : 'Instructor-highlighted topic — High-yield content for next assessment.'}
+                  <strong>Exam Alert:</strong> Instructor-highlighted topic — High-yield content for next assessment.
                 </div>
 
                 {currentVideoUrl && (
@@ -817,7 +837,9 @@ export const ChapterReader = () => {
                         return (
                           <div key={idx} style={{ marginBottom: '18px' }}>
                             {heading && <h4 style={{ margin: '0 0 8px 0', fontSize: '1.08rem' }}>{heading}</h4>}
-                            {forced ? (
+                            {selectedSection.id === 'sec1_11_review_questions' ? (
+                              renderReviewQuestionText(body || para)
+                            ) : forced ? (
                               <>
                                 {forced.before && <p>{forced.before}</p>}
                                 <h4 style={{ margin: '8px 0', fontSize: '1.1rem' }}>{forced.heading}</h4>
