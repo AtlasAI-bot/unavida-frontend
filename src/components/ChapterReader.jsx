@@ -14,6 +14,7 @@ export const ChapterReader = () => {
   const [lineHeight, setLineHeight] = useState(1.5);
   const [readerWidth, setReaderWidth] = useState(920);
   const mainScrollRef = useRef(null);
+  const [revealedAnswers, setRevealedAnswers] = useState({});
 
   const atlasLines = [
     'If your calculator dies during dosage math, that\'s a character-building event.',
@@ -170,6 +171,46 @@ export const ChapterReader = () => {
     );
   };
 
+  const renderStructuredQuestion = (q) => {
+    const key = `q-${q.questionNumber}`;
+    const show = !!revealedAnswers[key];
+    return (
+      <div key={key} className="reader-card" style={{ marginBottom: '12px' }}>
+        <p style={{ fontWeight: 700, marginBottom: '8px' }}>{q.questionNumber}. {q.question}</p>
+
+        {q.options && (
+          <div style={{ display: 'grid', gap: '4px', marginBottom: '10px' }}>
+            {Object.entries(q.options).map(([letter, text]) => (
+              <p key={letter} style={{ margin: 0, paddingLeft: '14px' }}>
+                {letter.toLowerCase()}. {text}
+              </p>
+            ))}
+          </div>
+        )}
+
+        <button
+          className="reader-btn"
+          onClick={() => setRevealedAnswers((prev) => ({ ...prev, [key]: !show }))}
+          style={{ marginBottom: '8px' }}
+        >
+          {show ? 'Hide Answer' : 'Show Answer'}
+        </button>
+
+        {show && (
+          <div style={{ background: 'var(--panel)', border: '1px solid var(--panel-border)', borderRadius: '8px', padding: '10px' }}>
+            {q.correctAnswer && <p style={{ margin: '0 0 6px 0', fontWeight: 700 }}>Correct answer: {q.correctAnswer.toLowerCase()}</p>}
+            {q.rationale && <p style={{ margin: 0 }}><strong>Rationale:</strong> {q.rationale}</p>}
+            {q.expectedAnswerElements && (
+              <ul style={{ margin: '6px 0 0 0', paddingLeft: '20px' }}>
+                {q.expectedAnswerElements.map((el, i) => <li key={i}>{el}</li>)}
+              </ul>
+            )}
+          </div>
+        )}
+      </div>
+    );
+  };
+
   // Load theme from localStorage
   useEffect(() => {
     const savedTheme = localStorage.getItem('unavidaTheme') || 'light';
@@ -192,6 +233,7 @@ export const ChapterReader = () => {
 
   const handleSectionClick = (section) => {
     setSelectedSection(section);
+    setRevealedAnswers({});
   };
 
   const toggleTheme = () => {
@@ -867,7 +909,15 @@ export const ChapterReader = () => {
                   <section className="reader-card">
                     <h3>Detailed Reading</h3>
                     {selectedSection.contentBlocks.map((block, idx) => {
-                      const imgSrc = currentSectionImages[idx] || null;
+                      if (selectedSection.id === 'sec1_11_review_questions' && block.questions?.length) {
+                        return (
+                          <div key={idx} style={{ marginBottom: '16px' }}>
+                            {block.title && <h4 style={{ margin: '0 0 8px 0', fontSize: '1.08rem' }}>{cleanHeading(block.title)}</h4>}
+                            {block.questions.map((q) => renderStructuredQuestion(q))}
+                          </div>
+                        );
+                      }
+
                       return (
                         <div key={idx} style={{ marginBottom: '16px' }}>
                           {block.title && <h4 style={{ margin: '0 0 6px 0', fontSize: '1.06rem' }}>{cleanHeading(block.title)}</h4>}
@@ -876,7 +926,6 @@ export const ChapterReader = () => {
                           ) : block.content ? (
                             <p>{block.content}</p>
                           ) : null}
-
                         </div>
                       );
                     })}
