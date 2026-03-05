@@ -12,7 +12,7 @@ export const ChapterReader = () => {
   const [prefsModalOpen, setPrefsModalOpen] = useState(false);
   const [textSize, setTextSize] = useState(17);
   const [font, setFont] = useState('Inter, system-ui, sans-serif');
-  const [lineHeight, setLineHeight] = useState(1.65);
+  const [lineHeight, setLineHeight] = useState(1.5);
   const [readerWidth, setReaderWidth] = useState(920);
   const mainScrollRef = useRef(null);
 
@@ -813,12 +813,12 @@ export const ChapterReader = () => {
                             {heading && <h4 style={{ margin: '0 0 8px 0', fontSize: '1.08rem' }}>{heading}</h4>}
                             {forced ? (
                               <>
-                                {forced.before && <p style={{ fontSize: '1rem', lineHeight: 1.75 }}>{forced.before}</p>}
+                                {forced.before && <p>{forced.before}</p>}
                                 <h4 style={{ margin: '8px 0', fontSize: '1.1rem' }}>{forced.heading}</h4>
-                                {forced.after && <p style={{ fontSize: '1rem', lineHeight: 1.75 }}>{forced.after}</p>}
+                                {forced.after && <p>{forced.after}</p>}
                               </>
                             ) : (
-                              <p style={{ fontSize: '1rem', lineHeight: 1.75 }}>{body}</p>
+                              <p>{body}</p>
                             )}
                           </div>
                         );

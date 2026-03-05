@@ -22,7 +22,7 @@
   --img-text: #5f6ea5;
   --reader-font: Inter, system-ui, sans-serif;
   --reader-size: 17px;
-  --reader-line: 1.65;
+  --reader-line: 1.5;
   --reader-max: 920px;
 }
 
@@ -62,16 +62,16 @@
 }
 
 .reader-main-wrap p {
-  font-size: 1rem;
-  line-height: 1.8;
-  margin: 0 0 12px 0;
+  font-size: var(--reader-size);
+  line-height: var(--reader-line);
+  margin: 0 0 10px 0;
   color: #000000;
 }
 
 .reader-main-wrap ul li,
 .reader-main-wrap ol li {
   margin-bottom: 8px;
-  line-height: 1.75;
+  line-height: var(--reader-line);
 }
 
 .reader-main-wrap strong {
@@ -95,4 +95,30 @@
 
 .reader-card {
   border-left: 3px solid #0b5cad;
+}
+
+/* Theme-aware contrast so text stays readable in dark modes */
+.reader-container.dark .reader-main-wrap p,
+.reader-container.darkplus .reader-main-wrap p {
+  color: #eef2f7;
+}
+
+.reader-container.dark .reader-main-wrap strong,
+.reader-container.darkplus .reader-main-wrap strong {
+  color: #ffffff;
+}
+
+.reader-container.dark .reader-main-wrap h3,
+.reader-container.darkplus .reader-main-wrap h3 {
+  color: #6dd4ff;
+}
+
+.reader-container.dark .reader-main-wrap h4,
+.reader-container.darkplus .reader-main-wrap h4 {
+  color: #b9d8ff;
+}
+
+.reader-container.dark .reader-subtle,
+.reader-container.darkplus .reader-subtle {
+  color: #c5cbd3;
 }
