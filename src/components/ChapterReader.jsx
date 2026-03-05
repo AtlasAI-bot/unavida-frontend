@@ -43,6 +43,52 @@ export const ChapterReader = () => {
 
   const currentVideoUrl = selectedSection ? sectionVideoMap[selectedSection.id] : null;
 
+  const sectionIllustrationMap = {
+    sec1_overview_introduction: [
+      '/images/ch1/section-1-0/ch1_s1_0_v01.png',
+      '/images/ch1/section-1-0/Pharmacology Overview.png',
+      '/images/ch1/section-1-0/Key Principles.png',
+      '/images/ch1/section-1-0/Eight Rights Med.png',
+      '/images/ch1/section-1-0/Drug Calcutation.png',
+      '/images/ch1/section-1-0/Pharmacokinetics vs. Pharmacodynamics.png',
+    ],
+    sec1_1_definitions_scope: [
+      '/images/ch1/section-1-1/ch1_s1_1_v01.png.png',
+      '/images/ch1/section-1-1/Nurses administering care to elderly patient.png',
+      '/images/ch1/section-1-1/Pharmacology concepts in a visual grid.png',
+    ],
+    sec1_2_historical_context: [
+      '/images/ch1/section-1-2/ch1_s1_2_v01.png.png',
+      '/images/ch1/section-1-2/Antibiotics and the Antibiotic Era.png',
+      '/images/ch1/section-1-2/he rise of pharmacogenomics.png',
+    ],
+    sec1_3_drug_classification: [
+      '/images/ch1/section-1-3/ch1_s1_3_v01.png.png',
+      '/images/ch1/section-1-3/ch1_s1_3_v02.png',
+    ],
+    sec1_4_regulatory_bodies_fda: [
+      '/images/ch1/section-1-4/ch1_s1_4_v01.png.png',
+      '/images/ch1/section-1-4/ch1_s1_4_v02.png',
+    ],
+    sec1_6_pk_vs_pd: ['/images/ch1/section-1-6/ch1_s1_6_v01.png'],
+    sec1_7_drug_interactions: [
+      '/images/ch1/section-1-7/ch1_s1_7_v01.png.png',
+      '/images/ch1/section-1-7/ch1_s1_7_v02.png',
+    ],
+    sec1_8_dosage_calculations: [
+      '/images/ch1/section-1-8/ch1_s1_8_v01.png.png',
+      '/images/ch1/section-1-8/ch1_s1_8_v02.png',
+    ],
+    sec1_9_key_terms_glossary: ['/images/ch1/section-1-9/ch1_s1_9_v01.png'],
+    sec1_10_clinical_story_allergy_decision: [
+      '/images/ch1/section-1-10/ch1_s1_10_v01.png.png',
+      '/images/ch1/section-1-10/ch1_s1_10_v02.png',
+    ],
+    sec1_11_review_questions: ['/images/ch1/section-1-11/ch1_s1_11_v01.png'],
+  };
+
+  const currentSectionImages = selectedSection ? (sectionIllustrationMap[selectedSection.id] || []) : [];
+
   // Load theme from localStorage
   useEffect(() => {
     const savedTheme = localStorage.getItem('unavidaTheme') || 'light';
@@ -693,6 +739,39 @@ export const ChapterReader = () => {
                     {selectedSection.content.split(/\n\s*\n/).filter(Boolean).map((para, idx) => (
                       <p key={idx}>{para}</p>
                     ))}
+                  </section>
+                )}
+
+                {selectedSection.contentBlocks && selectedSection.contentBlocks.length > 0 && (
+                  <section className="reader-card">
+                    <h3>Detailed Reading</h3>
+                    {selectedSection.contentBlocks.map((block, idx) => (
+                      <div key={idx} style={{ marginBottom: '14px' }}>
+                        {block.title && <h4 style={{ margin: '0 0 6px 0' }}>{block.title}</h4>}
+                        {block.htmlReady ? (
+                          <div dangerouslySetInnerHTML={{ __html: block.htmlReady }} />
+                        ) : block.content ? (
+                          <p>{block.content}</p>
+                        ) : null}
+                      </div>
+                    ))}
+                  </section>
+                )}
+
+                {currentSectionImages.length > 0 && (
+                  <section className="reader-card">
+                    <h3>Section Visuals</h3>
+                    <div style={{ display: 'grid', gap: '12px' }}>
+                      {currentSectionImages.map((imgSrc, idx) => (
+                        <img
+                          key={idx}
+                          src={imgSrc}
+                          alt={`Section visual ${idx + 1}`}
+                          style={{ width: '100%', maxHeight: '420px', objectFit: 'contain', background: 'var(--panel)', borderRadius: '10px' }}
+                          loading="lazy"
+                        />
+                      ))}
+                    </div>
                   </section>
                 )}
 
