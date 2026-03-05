@@ -93,22 +93,33 @@ export const ChapterReader = () => {
     ? selectedSection.content.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean)
     : [];
 
+  const cleanHeading = (value = '') =>
+    value
+      .replace(/^\[\s*EXPANDED CONTENT FOR\s*/i, '')
+      .replace(/^\(?\s*Comprehensive\s+Overview\s+Section\s*\)?/i, '')
+      .replace(/^Section\s+\d+(?:\.\d+)?\s*:\s*/i, '')
+      .replace(/^Expanded\s+content\s+for\s*/i, '')
+      .replace(/^[-–:\s]+|[-–:\s]+$/g, '')
+      .trim();
+
+  const cleanBody = (value = '') =>
+    value
+      .replace(/\[\s*EXPANDED CONTENT FOR[^\]]*\]/gi, '')
+      .replace(/\(\s*Comprehensive\s+Overview\s+Section\s*\)/gi, '')
+      .trim();
+
   const splitHeadingFromText = (text) => {
     if (!text) return { heading: null, body: '' };
     const lines = text.split('\n').map((l) => l.trim()).filter(Boolean);
     const first = lines[0] || '';
-    const isHeadingLike = first.length > 0 && first.length < 90 && !first.endsWith('.') && !first.endsWith('?');
+    const isHeadingLike = first.length > 0 && first.length < 110 && !first.endsWith('.') && !first.endsWith('?');
     if (isHeadingLike && lines.length > 1) {
-      return { heading: first, body: lines.slice(1).join('\n') };
+      return { heading: cleanHeading(first), body: cleanBody(lines.slice(1).join('\n')) };
     }
-    return { heading: null, body: text };
+    return { heading: null, body: cleanBody(text) };
   };
 
-  const imageForIndex = (idx, totalItems) => {
-    if (!currentSectionImages.length || totalItems === 0) return null;
-    const slot = Math.floor(((idx + 1) * currentSectionImages.length) / (totalItems + 1));
-    return currentSectionImages[Math.min(slot, currentSectionImages.length - 1)] || null;
-  };
+  const sectionTitle = cleanHeading(selectedSection?.title || '');
 
   // Load theme from localStorage
   useEffect(() => {
@@ -728,7 +739,7 @@ export const ChapterReader = () => {
           <div className="reader-main-wrap">
             {selectedSection ? (
               <>
-                <h1>{selectedSection.title}</h1>
+                <h1>{sectionTitle || selectedSection.title}</h1>
                 <div className="reader-meta">
                   {selectedSection.duration} min {selectedSection.wordCount && `• ${selectedSection.wordCount} words`}
                 </div>
@@ -743,29 +754,35 @@ export const ChapterReader = () => {
                   <strong>{nclexOn ? 'NCLEX Lens:' : 'Exam Alert:'}</strong> {nclexOn ? 'Prioritize safety language, adverse effect recognition, and first nursing action in every question.' : 'Instructor-highlighted topic — High-yield content for next assessment.'}
                 </div>
 
-                <section className="reader-video">
-                  <strong>📺 Featured Lesson Video</strong>
-                  {currentVideoUrl ? (
+                {currentVideoUrl && (
+                  <section className="reader-video">
+                    <strong>📺 Featured Lesson Video</strong>
                     <div className="reader-frame" style={{ padding: 0, overflow: 'hidden' }}>
                       <video controls preload="metadata" src={currentVideoUrl} style={{ width: '100%', height: '100%' }} />
                     </div>
-                  ) : (
-                    <div className="reader-frame">No video mapped for this section yet</div>
-                  )}
-                </section>
+                  </section>
+                )}
 
                 {selectedSection.content && (
                   <section className="reader-card">
-                    <h3>Section Content</h3>
-                    {sectionParagraphs.map((para, idx) => {
-                      const { heading, body } = splitHeadingFromText(para);
-                      return (
-                        <div key={idx} style={{ marginBottom: '16px' }}>
-                          {heading && <h4 style={{ margin: '0 0 8px 0' }}>{heading}</h4>}
-                          <p>{body}</p>
-                        </div>
-                      );
-                    })}
+                    <h3>{selectedSection.id === 'references' ? 'References (APA Style)' : 'Section Content'}</h3>
+                    {selectedSection.id === 'references' ? (
+                      <div>
+                        {sectionParagraphs.map((refText, idx) => (
+                          <p key={idx} className="apa-ref">{cleanBody(refText)}</p>
+                        ))}
+                      </div>
+                    ) : (
+                      sectionParagraphs.map((para, idx) => {
+                        const { heading, body } = splitHeadingFromText(para);
+                        return (
+                          <div key={idx} style={{ marginBottom: '18px' }}>
+                            {heading && <h4 style={{ margin: '0 0 8px 0', fontSize: '1.08rem' }}>{heading}</h4>}
+                            <p style={{ fontSize: '1rem', lineHeight: 1.75 }}>{body}</p>
+                          </div>
+                        );
+                      })
+                    )}
                   </section>
                 )}
 
@@ -776,7 +793,7 @@ export const ChapterReader = () => {
                       const imgSrc = currentSectionImages[idx] || null;
                       return (
                         <div key={idx} style={{ marginBottom: '16px' }}>
-                          {block.title && <h4 style={{ margin: '0 0 6px 0' }}>{block.title}</h4>}
+                          {block.title && <h4 style={{ margin: '0 0 6px 0', fontSize: '1.06rem' }}>{cleanHeading(block.title)}</h4>}
                           {block.htmlReady ? (
                             <div dangerouslySetInnerHTML={{ __html: block.htmlReady }} />
                           ) : block.content ? (

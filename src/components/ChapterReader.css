@@ -29,3 +29,11 @@
 .reader-hidden {
   display: none !important;
 }
+
+.apa-ref {
+  margin: 0 0 10px 0;
+  padding-left: 28px;
+  text-indent: -28px;
+  line-height: 1.7;
+  font-size: 0.98rem;
+}
