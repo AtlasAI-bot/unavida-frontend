@@ -89,6 +89,27 @@ export const ChapterReader = () => {
 
   const currentSectionImages = selectedSection ? (sectionIllustrationMap[selectedSection.id] || []) : [];
 
+  const sectionParagraphs = selectedSection?.content
+    ? selectedSection.content.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean)
+    : [];
+
+  const splitHeadingFromText = (text) => {
+    if (!text) return { heading: null, body: '' };
+    const lines = text.split('\n').map((l) => l.trim()).filter(Boolean);
+    const first = lines[0] || '';
+    const isHeadingLike = first.length > 0 && first.length < 90 && !first.endsWith('.') && !first.endsWith('?');
+    if (isHeadingLike && lines.length > 1) {
+      return { heading: first, body: lines.slice(1).join('\n') };
+    }
+    return { heading: null, body: text };
+  };
+
+  const imageForIndex = (idx, totalItems) => {
+    if (!currentSectionImages.length || totalItems === 0) return null;
+    const slot = Math.floor(((idx + 1) * currentSectionImages.length) / (totalItems + 1));
+    return currentSectionImages[Math.min(slot, currentSectionImages.length - 1)] || null;
+  };
+
   // Load theme from localStorage
   useEffect(() => {
     const savedTheme = localStorage.getItem('unavidaTheme') || 'light';
@@ -736,42 +757,51 @@ export const ChapterReader = () => {
                 {selectedSection.content && (
                   <section className="reader-card">
                     <h3>Section Content</h3>
-                    {selectedSection.content.split(/\n\s*\n/).filter(Boolean).map((para, idx) => (
-                      <p key={idx}>{para}</p>
-                    ))}
+                    {sectionParagraphs.map((para, idx) => {
+                      const { heading, body } = splitHeadingFromText(para);
+                      const imgSrc = imageForIndex(idx, sectionParagraphs.length);
+                      return (
+                        <div key={idx} style={{ marginBottom: '16px' }}>
+                          {heading && <h4 style={{ margin: '0 0 8px 0' }}>{heading}</h4>}
+                          <p>{body}</p>
+                          {imgSrc && (
+                            <img
+                              src={imgSrc}
+                              alt={`Section visual ${idx + 1}`}
+                              style={{ width: '100%', marginTop: '10px', maxHeight: '420px', objectFit: 'contain', background: 'var(--panel)', borderRadius: '10px' }}
+                              loading="lazy"
+                            />
+                          )}
+                        </div>
+                      );
+                    })}
                   </section>
                 )}
 
                 {selectedSection.contentBlocks && selectedSection.contentBlocks.length > 0 && (
                   <section className="reader-card">
                     <h3>Detailed Reading</h3>
-                    {selectedSection.contentBlocks.map((block, idx) => (
-                      <div key={idx} style={{ marginBottom: '14px' }}>
-                        {block.title && <h4 style={{ margin: '0 0 6px 0' }}>{block.title}</h4>}
-                        {block.htmlReady ? (
-                          <div dangerouslySetInnerHTML={{ __html: block.htmlReady }} />
-                        ) : block.content ? (
-                          <p>{block.content}</p>
-                        ) : null}
-                      </div>
-                    ))}
-                  </section>
-                )}
-
-                {currentSectionImages.length > 0 && (
-                  <section className="reader-card">
-                    <h3>Section Visuals</h3>
-                    <div style={{ display: 'grid', gap: '12px' }}>
-                      {currentSectionImages.map((imgSrc, idx) => (
-                        <img
-                          key={idx}
-                          src={imgSrc}
-                          alt={`Section visual ${idx + 1}`}
-                          style={{ width: '100%', maxHeight: '420px', objectFit: 'contain', background: 'var(--panel)', borderRadius: '10px' }}
-                          loading="lazy"
-                        />
-                      ))}
-                    </div>
+                    {selectedSection.contentBlocks.map((block, idx) => {
+                      const imgSrc = imageForIndex(idx, selectedSection.contentBlocks.length);
+                      return (
+                        <div key={idx} style={{ marginBottom: '16px' }}>
+                          {block.title && <h4 style={{ margin: '0 0 6px 0' }}>{block.title}</h4>}
+                          {block.htmlReady ? (
+                            <div dangerouslySetInnerHTML={{ __html: block.htmlReady }} />
+                          ) : block.content ? (
+                            <p>{block.content}</p>
+                          ) : null}
+                          {imgSrc && (
+                            <img
+                              src={imgSrc}
+                              alt={`Topic visual ${idx + 1}`}
+                              style={{ width: '100%', marginTop: '10px', maxHeight: '420px', objectFit: 'contain', background: 'var(--panel)', borderRadius: '10px' }}
+                              loading="lazy"
+                            />
+                          )}
+                        </div>
+                      );
+                    })}
                   </section>
                 )}
 
