@@ -122,6 +122,10 @@ export const ChapterReader = () => {
 
   const sectionTitle = cleanHeading(selectedSection?.title || '');
 
+  const paragraphImageSlots = sectionParagraphs.length > 0
+    ? currentSectionImages.map((_, i) => Math.floor(((i + 1) * sectionParagraphs.length) / (currentSectionImages.length + 1)))
+    : [];
+
   const forcedSubheads = [
     'Key Principles for Safe Medication Use',
     'The Six Rights (Extended to Eight)',
@@ -808,6 +812,8 @@ export const ChapterReader = () => {
                       sectionParagraphs.map((para, idx) => {
                         const { heading, body } = splitHeadingFromText(para);
                         const forced = splitForcedSubhead(body || para);
+                        const slotIdx = paragraphImageSlots.indexOf(idx);
+                        const imgSrc = slotIdx >= 0 ? currentSectionImages[slotIdx] : null;
                         return (
                           <div key={idx} style={{ marginBottom: '18px' }}>
                             {heading && <h4 style={{ margin: '0 0 8px 0', fontSize: '1.08rem' }}>{heading}</h4>}
@@ -819,6 +825,14 @@ export const ChapterReader = () => {
                               </>
                             ) : (
                               <p>{body}</p>
+                            )}
+                            {imgSrc && (
+                              <img
+                                src={imgSrc}
+                                alt={`Section visual ${slotIdx + 1}`}
+                                style={{ width: '100%', marginTop: '10px', maxHeight: '420px', objectFit: 'contain', background: 'var(--panel)', borderRadius: '10px' }}
+                                loading="lazy"
+                              />
                             )}
                           </div>
                         );
@@ -840,14 +854,7 @@ export const ChapterReader = () => {
                           ) : block.content ? (
                             <p>{block.content}</p>
                           ) : null}
-                          {imgSrc && (
-                            <img
-                              src={imgSrc}
-                              alt={`Topic visual ${idx + 1}`}
-                              style={{ width: '100%', marginTop: '10px', maxHeight: '420px', objectFit: 'contain', background: 'var(--panel)', borderRadius: '10px' }}
-                              loading="lazy"
-                            />
-                          )}
+
                         </div>
                       );
                     })}
