@@ -1,0 +1,31 @@
+/* ChapterReader.css - Styles for the Chapter Reader component */
+
+:root {
+  --bg: #eaf0ff;
+  --text: #1b2542;
+  --top: #dfe8ff;
+  --panel: #ffffff;
+  --panel-border: #cfd9f7;
+  --chapter: #eaf0ff;
+  --chapter-2: #f3f6ff;
+  --chapter-active: #dbe6ff;
+  --chapter-hover: #e1eaff;
+  --muted: #5b6a95;
+  --card: #f7f9ff;
+  --card-text: #122047;
+  --video: #eef3ff;
+  --video-frame: #d8e3ff;
+  --right: #eef3ff;
+  --atlas-bg: #edf8ff;
+  --atlas-text: #14384f;
+  --img-bg: #e8edff;
+  --img-text: #5f6ea5;
+  --reader-font: Inter, system-ui, sans-serif;
+  --reader-size: 17px;
+  --reader-line: 1.65;
+  --reader-max: 920px;
+}
+
+.reader-hidden {
+  display: none !important;
+}
