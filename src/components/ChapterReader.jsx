@@ -739,8 +739,9 @@ export const ChapterReader = () => {
           <div className="reader-main-wrap">
             {selectedSection ? (
               <>
+                <div className="reader-section-label">Chapter Reader</div>
                 <h1>{sectionTitle || selectedSection.title}</h1>
-                <div className="reader-meta">
+                <div className="reader-meta reader-subtle">
                   {selectedSection.duration} min {selectedSection.wordCount && `• ${selectedSection.wordCount} words`}
                 </div>
                 <div className="reader-pills">
