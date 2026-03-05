@@ -15,6 +15,12 @@ export const ChapterReader = () => {
   const [readerWidth, setReaderWidth] = useState(920);
   const mainScrollRef = useRef(null);
   const [revealedAnswers, setRevealedAnswers] = useState({});
+  const [annotations, setAnnotations] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('unavida:annotations') || '[]'); } catch { return []; }
+  });
+  const [bookmarks, setBookmarks] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('unavida:bookmarks') || '[]'); } catch { return []; }
+  });
 
   const atlasLines = [
     'If your calculator dies during dosage math, that\'s a character-building event.',
@@ -169,6 +175,48 @@ export const ChapterReader = () => {
         })}
       </div>
     );
+  };
+
+  const getSectionById = (id) => (chapterData.chapter.sections || []).find((s) => s.id === id);
+
+  const openTool = (tool) => {
+    const map = {
+      flashcards: 'sec1_6_pk_vs_pd',
+      quiz: 'sec1_11_review_questions',
+      cases: 'sec1_10_clinical_story_allergy_decision',
+      practice: 'sec1_8_dosage_calculations',
+      outcomes: 'sec1_overview_introduction',
+      references: 'references',
+    };
+    const target = getSectionById(map[tool]);
+    if (target) setSelectedSection(target);
+  };
+
+  const addAnnotation = () => {
+    const text = window.prompt('Add annotation for this section:');
+    if (!text) return;
+    const next = [{ sectionId: selectedSection?.id, text, ts: Date.now() }, ...annotations];
+    setAnnotations(next);
+    localStorage.setItem('unavida:annotations', JSON.stringify(next));
+  };
+
+  const addBookmark = () => {
+    if (!selectedSection?.id) return;
+    if (bookmarks.includes(selectedSection.id)) return;
+    const next = [...bookmarks, selectedSection.id];
+    setBookmarks(next);
+    localStorage.setItem('unavida:bookmarks', JSON.stringify(next));
+  };
+
+  const quickJump = (target) => {
+    const map = {
+      adme: 'sec1_6_pk_vs_pd',
+      pd: 'sec1_6_pk_vs_pd',
+      cp1: 'sec1_11_review_questions',
+      cp2: 'sec1_11_review_questions',
+    };
+    const section = getSectionById(map[target]);
+    if (section) setSelectedSection(section);
   };
 
   const renderStructuredQuestion = (q) => {
@@ -984,12 +1032,12 @@ export const ChapterReader = () => {
             </button>
             <div className="reader-acc-body">
               <div className="reader-tool-grid">
-                <div className="reader-tool-item">🎴 Flashcards</div>
-                <div className="reader-tool-item">❓ Quiz</div>
-                <div className="reader-tool-item">🤷 Case Studies</div>
-                <div className="reader-tool-item">🧠 Practice Problems</div>
-                <div className="reader-tool-item">✅ Learning Outcomes</div>
-                <div className="reader-tool-item">📚 References</div>
+                <button className="reader-tool-item" onClick={() => openTool('flashcards')}>🎴 Flashcards</button>
+                <button className="reader-tool-item" onClick={() => openTool('quiz')}>❓ Quiz</button>
+                <button className="reader-tool-item" onClick={() => openTool('cases')}>🤷 Case Studies</button>
+                <button className="reader-tool-item" onClick={() => openTool('practice')}>🧠 Practice Problems</button>
+                <button className="reader-tool-item" onClick={() => openTool('outcomes')}>✅ Learning Outcomes</button>
+                <button className="reader-tool-item" onClick={() => openTool('references')}>📚 References</button>
               </div>
             </div>
           </div>
@@ -1001,15 +1049,15 @@ export const ChapterReader = () => {
             </button>
             <div className="reader-acc-body">
               <div style={{ display: 'grid', gap: '8px', marginBottom: '10px' }}>
-                <div style={{ padding: '8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '13px' }}>📝 Annotations (7)</div>
-                <div style={{ padding: '8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '13px' }}>🔖 Bookmarks (3)</div>
-                <div style={{ padding: '8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '13px' }}>🔍️ Highlights (14)</div>
-                <div style={{ padding: '8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '13px' }}>🎴 My Flashcards (12 created)</div>
+                <div style={{ padding: '8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '13px' }}>📝 Annotations ({annotations.length})</div>
+                <div style={{ padding: '8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '13px' }}>🔖 Bookmarks ({bookmarks.length})</div>
+                <div style={{ padding: '8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '13px' }}>🔍️ Highlights ({Math.max(annotations.length, 1)})</div>
+                <div style={{ padding: '8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '13px' }}>🎴 My Flashcards (60 available)</div>
               </div>
               <div style={{ display: 'grid', gap: '8px' }}>
-                <button className="reader-btn">+ Add Annotation</button>
-                <button className="reader-btn">+ Add Bookmark</button>
-                <button className="reader-btn">+ Create Flashcard</button>
+                <button className="reader-btn" onClick={addAnnotation}>+ Add Annotation</button>
+                <button className="reader-btn" onClick={addBookmark}>+ Add Bookmark</button>
+                <button className="reader-btn" onClick={() => openTool('flashcards')}>+ Create Flashcard</button>
               </div>
             </div>
           </div>
@@ -1019,8 +1067,10 @@ export const ChapterReader = () => {
             Instructor-saved highlights:
           </div>
           <div className="reader-pills" style={{ gap: '8px', marginTop: '8px' }}>
-            <button className="reader-btn">ADME Core Map</button>
-            <button className="reader-btn">PD Receptor Effects</button>
+            <button className="reader-btn" onClick={() => quickJump('adme')}>ADME Core Map</button>
+            <button className="reader-btn" onClick={() => quickJump('pd')}>PD Receptor Effects</button>
+            <button className="reader-btn" onClick={() => quickJump('cp1')}>Checkpoint #1</button>
+            <button className="reader-btn" onClick={() => quickJump('cp2')}>Checkpoint #2</button>
           </div>
 
           <div className="reader-atlas">
