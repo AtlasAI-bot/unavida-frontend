@@ -191,18 +191,46 @@ export const ChapterReader = () => {
     return entries;
   })();
 
-  const generatedDeck = (chapterData.chapter.sections || []).flatMap((s) => {
-    const title = cleanHeading(s.title || 'Section');
-    const sectionId = s.id;
-    const cards = [];
-    (s.learningObjectives || []).forEach((obj, i) => {
-      cards.push({ sectionId, sectionTitle: title, front: `${title} — Objective ${i + 1}`, back: obj });
+  const flashcardEligibleSectionIds = new Set([
+    'sec1_overview_introduction',
+    'sec1_1_definitions_scope',
+    'sec1_2_historical_context',
+    'sec1_3_drug_classification',
+    'sec1_4_regulatory_bodies_fda',
+    'sec1_5_drug_names_classification_codes',
+    'sec1_6_pk_vs_pd',
+    'sec1_7_drug_interactions',
+    'sec1_8_dosage_calculations',
+  ]);
+
+  const generatedDeck = (chapterData.chapter.sections || [])
+    .filter((s) => flashcardEligibleSectionIds.has(s.id))
+    .flatMap((s) => {
+      const title = cleanHeading(s.title || 'Section');
+      const sectionId = s.id;
+      const cards = [];
+
+      (s.learningObjectives || []).forEach((obj) => {
+        cards.push({
+          sectionId,
+          sectionTitle: title,
+          front: `In ${title}, what should you be able to do regarding: ${obj.toLowerCase()}?`,
+          back: obj,
+        });
+      });
+
+      (s.keyTakeaways || []).forEach((kt) => {
+        const cleanKt = (kt || '').trim();
+        cards.push({
+          sectionId,
+          sectionTitle: title,
+          front: `What is a key concept from ${title}?`,
+          back: cleanKt,
+        });
+      });
+
+      return cards;
     });
-    (s.keyTakeaways || []).forEach((kt, i) => {
-      cards.push({ sectionId, sectionTitle: title, front: `${title} — Key Point ${i + 1}`, back: kt });
-    });
-    return cards;
-  });
 
   const sourceDeck = (flashcards.length > 0 ? flashcards : generatedDeck);
   const flashcardDeck = sourceDeck
@@ -1334,7 +1362,7 @@ export const ChapterReader = () => {
                       <label style={{ fontSize: '12px', color: 'var(--muted)' }}>Section:</label>
                       <select value={flashFilter} onChange={(e) => setFlashFilter(e.target.value)} style={{ border: '1px solid var(--panel-border)', borderRadius: '8px', padding: '4px 8px', background: 'var(--panel)', color: 'var(--text)' }}>
                         <option value="all">All sections</option>
-                        {(chapterData.chapter.sections || []).map((s) => (
+                        {(chapterData.chapter.sections || []).filter((s) => flashcardEligibleSectionIds.has(s.id)).map((s) => (
                           <option key={s.id} value={s.id}>{cleanHeading(s.title)}</option>
                         ))}
                       </select>
