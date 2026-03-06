@@ -168,6 +168,24 @@ export const ChapterReader = () => {
   const sectionTitle = cleanHeading(selectedSection?.title || '');
   const currentWordCount = getSectionWordCount(selectedSection);
 
+  const glossaryEntries = (() => {
+    if (selectedSection?.id !== 'sec1_9_key_terms_glossary') return [];
+    const lines = (selectedSection.content || '').split('\n').map((l) => l.trim()).filter(Boolean);
+    const entries = [];
+    let current = null;
+    for (const line of lines) {
+      const m = line.match(/^([A-Z0-9\-\s\/]+):\s*(.+)$/);
+      if (m) {
+        if (current) entries.push(current);
+        current = { term: m[1].trim(), definition: m[2].trim() };
+      } else if (current) {
+        current.definition += ' ' + line;
+      }
+    }
+    if (current) entries.push(current);
+    return entries;
+  })();
+
   const generatedDeck = (chapterData.chapter.sections || []).flatMap((s) => {
     const title = cleanHeading(s.title || '');
     const cards = [];
@@ -1299,6 +1317,25 @@ export const ChapterReader = () => {
                           ))}
                         </div>
                       </>
+                    ) : selectedSection.id === 'sec1_9_key_terms_glossary' && glossaryEntries.length > 0 ? (
+                      <div style={{ overflowX: 'auto' }}>
+                        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                          <thead>
+                            <tr>
+                              <th style={{ textAlign: 'left', borderBottom: '2px solid var(--panel-border)', padding: '8px', width: '32%' }}>Term</th>
+                              <th style={{ textAlign: 'left', borderBottom: '2px solid var(--panel-border)', padding: '8px' }}>Explanation</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {glossaryEntries.map((g, idx) => (
+                              <tr key={idx}>
+                                <td style={{ verticalAlign: 'top', borderBottom: '1px solid var(--panel-border)', padding: '8px', fontWeight: 800 }}>{g.term}</td>
+                                <td style={{ verticalAlign: 'top', borderBottom: '1px solid var(--panel-border)', padding: '8px' }}>{g.definition}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
                     ) : (
                       sectionParagraphs.map((para, idx) => {
                         const { heading, body } = splitHeadingFromText(para);
