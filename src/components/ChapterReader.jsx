@@ -28,6 +28,7 @@ export const ChapterReader = () => {
   const [toolView, setToolView] = useState('content');
   const [flashIndex, setFlashIndex] = useState(0);
   const [flashShowBack, setFlashShowBack] = useState(false);
+  const [topMenuOpen, setTopMenuOpen] = useState(false);
   const [newNote, setNewNote] = useState('');
   const [highlightColor, setHighlightColor] = useState('yellow');
 
@@ -186,19 +187,20 @@ export const ChapterReader = () => {
     return entries;
   })();
 
-  const generatedDeck = (chapterData.chapter.sections || []).flatMap((s) => {
-    const title = cleanHeading(s.title || '');
-    const cards = [];
-    (s.learningObjectives || []).forEach((obj, i) => {
-      cards.push({ front: `${title} — Objective ${i + 1}`, back: obj });
-    });
-    (s.keyTakeaways || []).forEach((kt, i) => {
-      cards.push({ front: `${title} — Key Point ${i + 1}`, back: kt });
-    });
-    return cards;
-  });
+  const curatedDeck = [
+    { front: 'What does pharmacokinetics (PK) describe?', back: 'What the body does to a drug: absorption, distribution, metabolism, and elimination (ADME).' },
+    { front: 'What does pharmacodynamics (PD) describe?', back: 'What the drug does to the body, including receptor interaction and physiologic effect.' },
+    { front: 'Name the ADME phases in order.', back: 'Absorption → Distribution → Metabolism → Elimination.' },
+    { front: 'What is first-pass metabolism?', back: 'Drug metabolism in the liver before reaching systemic circulation, often reducing bioavailability.' },
+    { front: 'Why are ACE inhibitors used?', back: 'To lower blood pressure and reduce cardiac workload; common in HTN and heart failure.' },
+    { front: 'What is a therapeutic index?', back: 'A safety ratio between toxic dose and effective dose; lower index means higher risk.' },
+    { front: 'Difference between agonist and antagonist?', back: 'Agonist activates receptor; antagonist blocks receptor activation.' },
+    { front: 'High-risk medication safety step before admin?', back: 'Independent double-check + verify rights of medication administration.' },
+    { front: 'Most important action when allergy history is unclear?', back: 'Clarify details with patient and prescriber before administration.' },
+    { front: 'Why is dosage calculation accuracy critical?', back: 'Small errors can cause major patient harm, especially with narrow therapeutic index drugs.' },
+  ];
 
-  const flashcardDeck = (flashcards.length > 0 ? flashcards : generatedDeck).slice(0, 80);
+  const flashcardDeck = (flashcards.length > 0 ? flashcards : curatedDeck).slice(0, 80);
 
   const paragraphImageSlots = sectionParagraphs.length > 0
     ? currentSectionImages.map((_, i) => Math.floor(((i + 1) * sectionParagraphs.length) / (currentSectionImages.length + 1)))
@@ -401,43 +403,81 @@ export const ChapterReader = () => {
     return `<!doctype html><html><head><meta charset="utf-8"/><title>Study Sheet</title><style>body{font-family:Georgia,serif;color:#111;line-height:1.5;padding:24px}h1{margin:0 0 16px}h2{margin:20px 0 8px;font-size:24px;font-weight:700}h3{margin:14px 0 6px;font-size:18px;font-weight:700;color:#111}p{margin:0 0 10px;font-size:15px} @media print{body{padding:0 10mm}}</style></head><body><h1>Chapter 1 Study Sheet</h1>${blocks}</body></html>`;
   };
 
-  const exportStudySheet = () => {
-    const choice = window.prompt('Export options:\n1 = Current section\n2 = All sections\n3 = Choose specific section numbers (e.g. 1.1,1.6)');
+  const chooseSections = () => {
+    const choice = window.prompt('Options:\n1 = Current section\n2 = All sections\n3 = Choose specific section numbers (e.g. 1.1,1.6)');
     const all = chapterData.chapter.sections || [];
-    let selected = [];
-    if (choice === '2') selected = all;
-    else if (choice === '3') {
+    if (choice === '2') return all;
+    if (choice === '3') {
       const picks = (window.prompt('Enter section numbers comma-separated:') || '').split(',').map((s) => s.trim()).filter(Boolean);
-      selected = all.filter((s) => picks.some((p) => s.title.includes(`Section ${p}`) || s.title.includes(`Section ${p}:`) || s.title.includes(`Section ${p} `)));
-    } else {
-      selected = selectedSection ? [selectedSection] : [];
+      return all.filter((s) => picks.some((p) => s.title.includes(`Section ${p}`) || s.title.includes(`Section ${p}:`) || s.title.includes(`Section ${p} `)));
     }
+    return selectedSection ? [selectedSection] : [];
+  };
+
+  const printReader = () => {
+    const selected = chooseSections();
     if (!selected.length) {
       window.alert('No sections selected for print.');
       return;
     }
-
     const html = buildPrintHtml(selected);
     const blob = new Blob([html], { type: 'text/html' });
     const url = URL.createObjectURL(blob);
     const win = window.open(url, '_blank');
-
     if (!win) {
-      // Fallback if popup is blocked: download html file
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Chapter1_Print_${Date.now()}.html`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.alert('Popup blocked. Downloaded printable HTML file instead.');
+      return;
+    }
+    setTimeout(() => { try { win.focus(); } catch {} }, 250);
+  };
+
+  const exportStudySheet = () => {
+    const selected = chooseSections();
+    if (!selected.length) {
+      window.alert('No sections selected for study sheet.');
+      return;
+    }
+
+    const summary = selected.map((s) => {
+      const title = cleanHeading(s.title || '');
+      const keyPoints = (s.keyTakeaways || []).slice(0, 3);
+      const safety = (s.content || '').match(/(warning|safety|contraindication|allergy|adverse)/gi) ? 'Review safety alerts in this section.' : 'Standard medication safety checks apply.';
+      return { title, keyPoints, safety };
+    });
+
+    const blocks = summary.map((s) => `
+      <section style="margin-bottom:18px;">
+        <h2 style="margin:0 0 6px;font-size:20px;">${s.title}</h2>
+        <p style="margin:0 0 6px;"><strong>Mechanism/Concept Focus:</strong> Core pharmacology principles and nursing application.</p>
+        <p style="margin:0 0 6px;"><strong>Safety Alert:</strong> ${s.safety}</p>
+        <p style="margin:0 0 6px;"><strong>Clinical Nursing Considerations:</strong> Verify rights, assess patient status, monitor response, and educate patient.</p>
+        <ul style="margin:4px 0 0 18px;">
+          ${s.keyPoints.map((k) => `<li>${k}</li>`).join('')}
+        </ul>
+      </section>
+    `).join('');
+
+    const html = `<!doctype html><html><head><meta charset="utf-8"/><title>Chapter 1 Study Sheet</title><style>body{font-family:Arial,sans-serif;color:#111;padding:22px;line-height:1.5}h1{margin:0 0 10px;font-size:28px}h2{font-weight:700}</style></head><body><h1>Chapter 1 Study Sheet</h1><p style="margin:0 0 14px;color:#444;">Structured summary of key pharmacology concepts, safety alerts, dosage reminders, and clinical nursing considerations for rapid review.</p>${blocks}</body></html>`;
+
+    const blob = new Blob([html], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const win = window.open(url, '_blank');
+    if (!win) {
       const a = document.createElement('a');
       a.href = url;
       a.download = `Chapter1_StudySheet_${Date.now()}.html`;
       document.body.appendChild(a);
       a.click();
       a.remove();
-      window.alert('Popup was blocked. Downloaded study sheet HTML instead. Open and print from browser.');
       return;
     }
-
-    // Let user print manually for better cross-browser reliability
-    setTimeout(() => {
-      try { win.focus(); } catch {}
-    }, 250);
+    setTimeout(() => { try { win.focus(); } catch {} }, 250);
   };
 
   const renderStructuredQuestion = (q) => {
@@ -695,6 +735,7 @@ export const ChapterReader = () => {
           gap: 8px;
           align-items: center;
           flex-wrap: wrap;
+          position: relative;
         }
 
         .reader-btn {
@@ -1063,6 +1104,23 @@ export const ChapterReader = () => {
 
         .reader-float-btn:hover { background: var(--chapter-hover); }
 
+        .reader-menu {
+          position: absolute;
+          right: 0;
+          top: 44px;
+          min-width: 220px;
+          background: var(--panel);
+          border: 1px solid var(--panel-border);
+          border-radius: 10px;
+          box-shadow: 0 8px 24px rgba(0,0,0,0.16);
+          padding: 8px;
+          display: grid;
+          gap: 6px;
+          z-index: 70;
+        }
+
+        .reader-menu .reader-btn { width: 100%; text-align: left; }
+
         @media (max-width: 1024px) {
           .reader-top {
             padding: 10px 12px;
@@ -1153,18 +1211,19 @@ export const ChapterReader = () => {
           <div className="reader-header">Reader Demo — Chapter Navigation Accordion</div>
         </div>
         <div className="reader-tools">
-          <button className="reader-btn" onClick={toggleTheme}>
-            {theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}
-          </button>
-          <button className="reader-btn" onClick={() => setFocusReader(!focusReader)}>
-            {focusReader ? '↔ Restore Layout' : '↔ Expand Reader'}
-          </button>
-          <button className="reader-btn" onClick={() => setPrefsModalOpen(true)}>⚙️ Reader Preferences</button>
-          <button className="reader-btn" onClick={toggleReadAloud}>
-            {readAloudOn ? '⏸ Stop Read Aloud' : '🔊 Read Aloud'}
-          </button>
-          <button className="reader-btn" onClick={exportStudySheet}>📋 Export Study Sheet</button>
+          <button className="reader-btn" onClick={() => setTopMenuOpen((v) => !v)}>☰ Reader Menu</button>
           <a href="/bookshelf" className="reader-btn">Back to Chapter List</a>
+
+          {topMenuOpen && (
+            <div className="reader-menu">
+              <button className="reader-btn" onClick={toggleTheme}>{theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}</button>
+              <button className="reader-btn" onClick={() => setFocusReader(!focusReader)}>{focusReader ? '↔ Restore Layout' : '↔ Expand Reader'}</button>
+              <button className="reader-btn" onClick={() => setPrefsModalOpen(true)}>⚙️ Reader Preferences</button>
+              <button className="reader-btn" onClick={toggleReadAloud}>{readAloudOn ? '⏸ Stop Read Aloud' : '🔊 Read Aloud'}</button>
+              <button className="reader-btn" onClick={exportStudySheet}>🗂 Export Study Sheet</button>
+              <button className="reader-btn" onClick={printReader}>🖨 Print Reader</button>
+            </div>
+          )}
         </div>
       </div>
 
@@ -1460,9 +1519,9 @@ export const ChapterReader = () => {
               <span>▶</span>
             </button>
             <div className="reader-acc-body">
-              <div style={{ display: 'grid', gap: '6px', marginBottom: '10px' }}>
-                <div style={{ padding: '6px 8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '11px' }}>🔖 Bookmarks ({bookmarks.length})</div>
-                <div style={{ padding: '6px 8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '11px' }}>🔍️ Highlights ({Math.max(annotations.length, 1)})</div>
+              <div style={{ display: 'flex', gap: '6px', marginBottom: '10px', flexWrap: 'nowrap' }}>
+                <div style={{ padding: '4px 7px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '10px', whiteSpace: 'nowrap' }}>🔖 Bookmarks ({bookmarks.length})</div>
+                <div style={{ padding: '4px 7px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '10px', whiteSpace: 'nowrap' }}>🔍️ Highlights ({Math.max(annotations.length, 1)})</div>
               </div>
               <div style={{ display: 'grid', gap: '8px' }}>
                 <textarea
@@ -1471,11 +1530,11 @@ export const ChapterReader = () => {
                   placeholder="Write a note for this section..."
                   style={{ minHeight: '78px', borderRadius: '8px', border: '1px solid var(--panel-border)', background: 'var(--panel)', color: 'var(--text)', padding: '8px' }}
                 />
-                <div style={{ display: 'flex', gap: '6px', alignItems: 'center', flexWrap: 'wrap' }}>
-                  <span style={{ fontSize: '11px', color: 'var(--muted)' }}>Highlight priority:</span>
-                  <button className="reader-btn" onClick={() => setHighlightColor('orange')} style={highlightColor === 'orange' ? { background: '#f97316', color: '#111' } : {}}>🟧 High</button>
-                  <button className="reader-btn" onClick={() => setHighlightColor('yellow')} style={highlightColor === 'yellow' ? { background: '#facc15', color: '#111' } : {}}>🟨 Medium</button>
-                  <button className="reader-btn" onClick={() => setHighlightColor('green')} style={highlightColor === 'green' ? { background: '#22c55e', color: '#111' } : {}}>🟩 Low</button>
+                <div style={{ display: 'flex', gap: '4px', alignItems: 'center', flexWrap: 'nowrap', overflowX: 'auto' }}>
+                  <span style={{ fontSize: '10px', color: 'var(--muted)', whiteSpace: 'nowrap' }}>Priority:</span>
+                  <button className="reader-btn" onClick={() => setHighlightColor('orange')} style={{ padding: '3px 6px', fontSize: '11px', ...(highlightColor === 'orange' ? { background: '#f97316', color: '#111' } : {}) }}>🟧 High</button>
+                  <button className="reader-btn" onClick={() => setHighlightColor('yellow')} style={{ padding: '3px 6px', fontSize: '11px', ...(highlightColor === 'yellow' ? { background: '#facc15', color: '#111' } : {}) }}>🟨 Medium</button>
+                  <button className="reader-btn" onClick={() => setHighlightColor('green')} style={{ padding: '3px 6px', fontSize: '11px', ...(highlightColor === 'green' ? { background: '#22c55e', color: '#111' } : {}) }}>🟩 Low</button>
                 </div>
                 <button className="reader-btn" onClick={addAnnotation}>+ Save Highlight</button>
                 <button className="reader-btn" onClick={addBookmark}>+ Add Bookmark Placeholder</button>
