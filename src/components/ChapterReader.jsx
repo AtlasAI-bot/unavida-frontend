@@ -26,6 +26,8 @@ export const ChapterReader = () => {
   });
   const [quickJumpOpen, setQuickJumpOpen] = useState(false);
   const [toolView, setToolView] = useState('content');
+  const [flashIndex, setFlashIndex] = useState(0);
+  const [flashShowBack, setFlashShowBack] = useState(false);
   const [newNote, setNewNote] = useState('');
   const [highlightColor, setHighlightColor] = useState('yellow');
 
@@ -234,6 +236,8 @@ export const ChapterReader = () => {
   const openTool = (tool) => {
     if (tool === 'flashcards') {
       setToolView('flashcards');
+      setFlashIndex(0);
+      setFlashShowBack(false);
       return;
     }
 
@@ -1200,12 +1204,59 @@ export const ChapterReader = () => {
                     {flashcardDeck.length === 0 ? (
                       <p>No flashcards available yet.</p>
                     ) : (
-                      flashcardDeck.map((fc, i) => (
-                        <div key={i} style={{ border: '1px solid var(--panel-border)', borderRadius: '10px', padding: '10px', marginBottom: '8px', background: 'var(--panel)' }}>
-                          <div style={{ fontWeight: 700 }}>Q: {fc.front || fc.question || `Flashcard ${i + 1}`}</div>
-                          <div style={{ marginTop: '6px' }}>A: {fc.back || fc.answer || ''}</div>
+                      <>
+                        <div
+                          onClick={() => setFlashShowBack((v) => !v)}
+                          style={{
+                            border: '1px solid var(--panel-border)',
+                            borderRadius: '12px',
+                            padding: '18px',
+                            background: 'var(--panel)',
+                            minHeight: '170px',
+                            cursor: 'pointer'
+                          }}
+                        >
+                          <div style={{ fontSize: '12px', color: 'var(--muted)', marginBottom: '8px' }}>
+                            Card {flashIndex + 1} of {flashcardDeck.length} • tap card to flip
+                          </div>
+                          {!flashShowBack ? (
+                            <div>
+                              <div style={{ fontWeight: 700, marginBottom: '8px' }}>Question</div>
+                              <div>{flashcardDeck[flashIndex].front || flashcardDeck[flashIndex].question || `Flashcard ${flashIndex + 1}`}</div>
+                            </div>
+                          ) : (
+                            <div>
+                              <div style={{ fontWeight: 700, marginBottom: '8px' }}>Answer</div>
+                              <div>{flashcardDeck[flashIndex].back || flashcardDeck[flashIndex].answer || ''}</div>
+                            </div>
+                          )}
                         </div>
-                      ))
+                        <div style={{ display: 'flex', gap: '8px', marginTop: '10px' }}>
+                          <button
+                            className="reader-btn"
+                            onClick={() => {
+                              setFlashIndex((i) => Math.max(0, i - 1));
+                              setFlashShowBack(false);
+                            }}
+                            disabled={flashIndex === 0}
+                          >
+                            ← Prev
+                          </button>
+                          <button className="reader-btn" onClick={() => setFlashShowBack((v) => !v)}>
+                            {flashShowBack ? 'Show Question' : 'Show Answer'}
+                          </button>
+                          <button
+                            className="reader-btn"
+                            onClick={() => {
+                              setFlashIndex((i) => Math.min(flashcardDeck.length - 1, i + 1));
+                              setFlashShowBack(false);
+                            }}
+                            disabled={flashIndex === flashcardDeck.length - 1}
+                          >
+                            Next →
+                          </button>
+                        </div>
+                      </>
                     )}
                   </section>
                 )}
