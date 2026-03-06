@@ -28,7 +28,7 @@ export const ChapterReader = () => {
   const [toolView, setToolView] = useState('content');
   const [flashIndex, setFlashIndex] = useState(0);
   const [flashShowBack, setFlashShowBack] = useState(false);
-  const [actionsOpen, setActionsOpen] = useState(false);
+  const [topMenuOpen, setTopMenuOpen] = useState(false);
   const [flashFilter, setFlashFilter] = useState('all');
   const [printPickerOpen, setPrintPickerOpen] = useState(false);
   const [printSelectedIds, setPrintSelectedIds] = useState([]);
@@ -1157,14 +1157,18 @@ export const ChapterReader = () => {
         .reader-float-btn:hover { background: var(--chapter-hover); }
 
         .reader-menu {
-          width: 100%;
+          position: absolute;
+          right: 0;
+          top: 44px;
+          min-width: 220px;
           background: var(--panel);
           border: 1px solid var(--panel-border);
           border-radius: 10px;
+          box-shadow: 0 8px 24px rgba(0,0,0,0.16);
           padding: 8px;
           display: grid;
           gap: 6px;
-          margin-top: 8px;
+          z-index: 70;
         }
 
         .reader-menu .reader-btn { width: 100%; text-align: left; }
@@ -1259,21 +1263,21 @@ export const ChapterReader = () => {
           <div className="reader-header">Reader Demo — Chapter Navigation Accordion</div>
         </div>
         <div className="reader-tools">
-          <button className="reader-btn" onClick={() => setActionsOpen((v) => !v)}>☰ Reader Actions</button>
+          <button className="reader-btn" onClick={() => setTopMenuOpen((v) => !v)}>☰ Reader Menu</button>
           <a href="/bookshelf" className="reader-btn">Back to Chapter List</a>
+
+          {topMenuOpen && (
+            <div className="reader-menu">
+              <button className="reader-btn" onClick={toggleTheme}>{theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}</button>
+              <button className="reader-btn" onClick={() => setFocusReader(!focusReader)}>{focusReader ? '↔ Restore Layout' : '↔ Expand Reader'}</button>
+              <button className="reader-btn" onClick={() => setPrefsModalOpen(true)}>⚙️ Reader Preferences</button>
+              <button className="reader-btn" onClick={toggleReadAloud}>{readAloudOn ? '⏸ Stop Read Aloud' : '🔊 Read Aloud'}</button>
+              <button className="reader-btn" onClick={exportStudySheet}>🗂 Export Study Sheet</button>
+              <button className="reader-btn" onClick={printReader}>🖨 Print Section</button>
+            </div>
+          )}
         </div>
       </div>
-
-      {actionsOpen && (
-        <div className="reader-menu" style={{ margin: '0 14px 8px' }}>
-          <button className="reader-btn" onClick={toggleTheme}>{theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}</button>
-          <button className="reader-btn" onClick={() => setFocusReader(!focusReader)}>{focusReader ? '↔ Restore Layout' : '↔ Expand Reader'}</button>
-          <button className="reader-btn" onClick={() => setPrefsModalOpen(true)}>⚙️ Reader Preferences</button>
-          <button className="reader-btn" onClick={toggleReadAloud}>{readAloudOn ? '⏸ Stop Read Aloud' : '🔊 Read Aloud'}</button>
-          <button className="reader-btn" onClick={exportStudySheet}>🗂 Export Study Sheet</button>
-          <button className="reader-btn" onClick={printReader}>🖨 Print Section</button>
-        </div>
-      )}
 
       {/* TOC Float Button */}
       <button
