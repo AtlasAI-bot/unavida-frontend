@@ -1300,7 +1300,6 @@ export const ChapterReader = () => {
               <button className="reader-btn" onClick={() => setFocusReader(!focusReader)}>{focusReader ? '↔ Restore Layout' : '↔ Expand Reader'}</button>
               <button className="reader-btn" onClick={() => setPrefsModalOpen(true)}>⚙️ Reader Preferences</button>
               <button className="reader-btn" onClick={toggleReadAloud}>{readAloudOn ? '⏸ Stop Read Aloud' : '🔊 Read Aloud'}</button>
-              <button className="reader-btn" onClick={exportStudySheet}>🗂 Export Study Sheet</button>
               <button className="reader-btn" onClick={printReader}>🖨 Print Section</button>
             </div>
           )}
