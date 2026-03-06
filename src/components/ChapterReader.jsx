@@ -603,6 +603,27 @@ export const ChapterReader = () => {
     openPrintPicker('study');
   };
 
+  const existingReviewQuestions = (selectedSection?.contentBlocks || [])
+    .flatMap((b) => b.questions || [])
+    .map((q, idx) => ({ ...q, questionNumber: q.questionNumber || idx + 1 }));
+
+  const generatedReviewQuestions = sourceDeck
+    .slice(0, Math.max(0, 50 - existingReviewQuestions.length))
+    .map((c, i) => ({
+      questionNumber: existingReviewQuestions.length + i + 1,
+      question: c.front,
+      options: {
+        A: c.back,
+        B: 'This is unrelated to the chapter objective.',
+        C: 'This reflects a contraindicated clinical action.',
+        D: 'This is not supported by the chapter content.'
+      },
+      correctAnswer: 'A',
+      rationale: c.back,
+    }));
+
+  const reviewQuestionBank = [...existingReviewQuestions, ...generatedReviewQuestions].slice(0, 50);
+
   const renderStructuredQuestion = (q) => {
     const key = `q-${q.questionNumber}`;
     const show = !!revealedAnswers[key];
@@ -689,7 +710,7 @@ export const ChapterReader = () => {
     setSelectedSection(section);
     setToolView('content');
     setRevealedAnswers({});
-    if (typeof window !== 'undefined' && window.innerWidth <= 1024) {
+    if (typeof window !== 'undefined' && (window.innerWidth <= 1024 || focusReader)) {
       setHideToc(true);
     }
   };
@@ -895,9 +916,18 @@ export const ChapterReader = () => {
           grid-template-columns: 1fr;
         }
 
-        .reader-layout.focus-reader .reader-toc,
         .reader-layout.focus-reader .reader-right {
           display: none;
+        }
+
+        .reader-layout.focus-reader .reader-toc {
+          position: fixed;
+          left: 10px;
+          top: 142px;
+          bottom: 10px;
+          width: min(90vw, 360px);
+          z-index: 60;
+          box-shadow: 0 12px 32px rgba(0,0,0,0.28);
         }
 
         .reader-layout.hide-toc {
@@ -1345,7 +1375,7 @@ export const ChapterReader = () => {
           {topMenuOpen && (
             <div className="reader-menu">
               <button className="reader-btn" onClick={() => { toggleTheme(); setTopMenuOpen(false); }}>{theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}</button>
-              <button className="reader-btn" onClick={() => { setFocusReader(!focusReader); setTopMenuOpen(false); }}>{focusReader ? '↔ Restore Layout' : '↔ Expand Reader'}</button>
+              <button className="reader-btn" onClick={() => { const next = !focusReader; setFocusReader(next); if (next) setHideToc(true); setTopMenuOpen(false); }}>{focusReader ? '↔ Restore Layout' : '↔ Expand Reader'}</button>
               <button className="reader-btn" onClick={() => { setPrefsModalOpen(true); setTopMenuOpen(false); }}>⚙️ Reader Preferences</button>
               <button className="reader-btn" onClick={() => { toggleReadAloud(); setTopMenuOpen(false); }}>{readAloudOn ? '⏸ Stop Read Aloud' : '🔊 Read Aloud'}</button>
               <button className="reader-btn" onClick={() => { printReader(); setTopMenuOpen(false); }}>🖨 Print Section</button>
@@ -1357,9 +1387,7 @@ export const ChapterReader = () => {
       {/* TOC Float Button */}
       <button
         className="reader-float-btn"
-        onClick={() => !focusReader && setHideToc(!hideToc)}
-        disabled={focusReader}
-        style={focusReader ? { opacity: 0.45, cursor: 'not-allowed' } : undefined}
+        onClick={() => setHideToc(!hideToc)}
       >
         {hideToc ? '▶' : '◀'}
       </button>
@@ -1566,30 +1594,23 @@ export const ChapterReader = () => {
                   </section>
                 )}
 
-                {selectedSection.contentBlocks && selectedSection.contentBlocks.length > 0 && (
+                {selectedSection.id === 'sec1_11_review_questions' ? (
+                  <section className="reader-card">
+                    {reviewQuestionBank.map((q) => renderStructuredQuestion(q))}
+                  </section>
+                ) : selectedSection.contentBlocks && selectedSection.contentBlocks.length > 0 && (
                   <section className="reader-card">
                     <h3>Detailed Reading</h3>
-                    {selectedSection.contentBlocks.map((block, idx) => {
-                      if (selectedSection.id === 'sec1_11_review_questions' && block.questions?.length) {
-                        return (
-                          <div key={idx} style={{ marginBottom: '16px' }}>
-                            {block.title && <h4 style={{ margin: '0 0 8px 0', fontSize: '1.08rem' }}>{cleanHeading(block.title)}</h4>}
-                            {block.questions.map((q) => renderStructuredQuestion(q))}
-                          </div>
-                        );
-                      }
-
-                      return (
-                        <div key={idx} style={{ marginBottom: '16px' }}>
-                          {block.title && <h4 style={{ margin: '0 0 6px 0', fontSize: '1.06rem' }}>{cleanHeading(block.title)}</h4>}
-                          {block.htmlReady ? (
-                            <div dangerouslySetInnerHTML={{ __html: block.htmlReady }} />
-                          ) : block.content ? (
-                            <p>{block.content}</p>
-                          ) : null}
-                        </div>
-                      );
-                    })}
+                    {selectedSection.contentBlocks.map((block, idx) => (
+                      <div key={idx} style={{ marginBottom: '16px' }}>
+                        {block.title && <h4 style={{ margin: '0 0 6px 0', fontSize: '1.06rem' }}>{cleanHeading(block.title)}</h4>}
+                        {block.htmlReady ? (
+                          <div dangerouslySetInnerHTML={{ __html: block.htmlReady }} />
+                        ) : block.content ? (
+                          <p>{block.content}</p>
+                        ) : null}
+                      </div>
+                    ))}
                   </section>
                 )}
 
@@ -1635,7 +1656,6 @@ export const ChapterReader = () => {
                 <button className="reader-tool-item" onClick={() => openTool('flashcards')}>🎴 Flashcards</button>
                 <button className="reader-tool-item" onClick={() => openTool('quiz')}>❓ Quiz</button>
                 <button className="reader-tool-item" onClick={() => openTool('cases')}>🤷 Case Studies</button>
-                <button className="reader-tool-item" onClick={() => openTool('practice')}>🧠 Practice Problems</button>
                 <button className="reader-tool-item" onClick={() => setQuickJumpOpen((v) => !v)}>⚡ Quick Jump</button>
               </div>
               {quickJumpOpen && (
