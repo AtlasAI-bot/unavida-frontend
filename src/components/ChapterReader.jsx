@@ -26,6 +26,7 @@ export const ChapterReader = () => {
   });
   const [quickJumpOpen, setQuickJumpOpen] = useState(true);
   const [newNote, setNewNote] = useState('');
+  const [highlightColor, setHighlightColor] = useState('yellow');
 
   const atlasLines = [
     'If your calculator dies during dosage math, that\'s a character-building event.',
@@ -236,7 +237,15 @@ export const ChapterReader = () => {
       window.alert('Type a note first.');
       return;
     }
-    const next = [{ sectionId: selectedSection?.id, title: cleanHeading(selectedSection?.title || ''), text, ts: Date.now() }, ...annotations];
+    const priorityMap = { orange: 'High', yellow: 'Medium', green: 'Low' };
+    const next = [{
+      sectionId: selectedSection?.id,
+      title: cleanHeading(selectedSection?.title || ''),
+      text,
+      color: highlightColor,
+      priority: priorityMap[highlightColor] || 'Medium',
+      ts: Date.now()
+    }, ...annotations];
     setAnnotations(next);
     localStorage.setItem('unavida:annotations', JSON.stringify(next));
     setNewNote('');
@@ -1321,10 +1330,8 @@ export const ChapterReader = () => {
             </button>
             <div className="reader-acc-body">
               <div style={{ display: 'grid', gap: '6px', marginBottom: '10px' }}>
-                <div style={{ padding: '6px 8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '11px' }}>📝 Annotations ({annotations.length})</div>
                 <div style={{ padding: '6px 8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '11px' }}>🔖 Bookmarks ({bookmarks.length})</div>
                 <div style={{ padding: '6px 8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '11px' }}>🔍️ Highlights ({Math.max(annotations.length, 1)})</div>
-                <div style={{ padding: '6px 8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '11px' }}>🧷 Placeholders ({bookmarks.length})</div>
               </div>
               <div style={{ display: 'grid', gap: '8px' }}>
                 <textarea
@@ -1333,7 +1340,13 @@ export const ChapterReader = () => {
                   placeholder="Write a note for this section..."
                   style={{ minHeight: '78px', borderRadius: '8px', border: '1px solid var(--panel-border)', background: 'var(--panel)', color: 'var(--text)', padding: '8px' }}
                 />
-                <button className="reader-btn" onClick={addAnnotation}>+ Save Note</button>
+                <div style={{ display: 'flex', gap: '6px', alignItems: 'center', flexWrap: 'wrap' }}>
+                  <span style={{ fontSize: '11px', color: 'var(--muted)' }}>Highlight priority:</span>
+                  <button className="reader-btn" onClick={() => setHighlightColor('orange')} style={highlightColor === 'orange' ? { background: '#f97316', color: '#111' } : {}}>🟧 High</button>
+                  <button className="reader-btn" onClick={() => setHighlightColor('yellow')} style={highlightColor === 'yellow' ? { background: '#facc15', color: '#111' } : {}}>🟨 Medium</button>
+                  <button className="reader-btn" onClick={() => setHighlightColor('green')} style={highlightColor === 'green' ? { background: '#22c55e', color: '#111' } : {}}>🟩 Low</button>
+                </div>
+                <button className="reader-btn" onClick={addAnnotation}>+ Save Highlight</button>
                 <button className="reader-btn" onClick={addBookmark}>+ Add Bookmark Placeholder</button>
               </div>
               {(annotations.length > 0 || bookmarks.length > 0) && (
@@ -1341,7 +1354,14 @@ export const ChapterReader = () => {
                   {annotations.slice(0, 4).map((a, i) => (
                     <div key={`a-${i}`} style={{ padding: '8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '12px' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', alignItems: 'center' }}>
-                        <strong>{a.title || 'Section Note'}</strong>
+                        <div>
+                          <strong>{a.title || 'Section Note'}</strong>
+                          <div style={{ marginTop: '3px', fontSize: '11px' }}>
+                            <span style={{ padding: '1px 6px', borderRadius: '999px', background: a.color === 'orange' ? '#fed7aa' : a.color === 'green' ? '#bbf7d0' : '#fef08a', color: '#111' }}>
+                              {a.color === 'orange' ? '🟧 High' : a.color === 'green' ? '🟩 Low' : '🟨 Medium'}
+                            </span>
+                          </div>
+                        </div>
                         <div style={{ display: 'flex', gap: '4px' }}>
                           <button className="reader-btn" style={{ padding: '2px 6px', fontSize: '11px' }} onClick={() => editAnnotation(i)}>Edit</button>
                           <button className="reader-btn" style={{ padding: '2px 6px', fontSize: '11px' }} onClick={() => deleteAnnotation(i)}>Delete</button>
