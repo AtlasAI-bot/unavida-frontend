@@ -257,13 +257,37 @@ export const ChapterReader = () => {
   };
 
   const deleteAnnotation = (index) => {
+    if (!window.confirm('Delete this note?')) return;
     const next = annotations.filter((_, i) => i !== index);
     setAnnotations(next);
     localStorage.setItem('unavida:annotations', JSON.stringify(next));
   };
 
+  const editAnnotation = (index) => {
+    const current = annotations[index];
+    if (!current) return;
+    const updated = window.prompt('Edit note:', current.text || '');
+    if (updated === null) return;
+    const next = [...annotations];
+    next[index] = { ...next[index], text: updated.trim(), editedAt: Date.now() };
+    setAnnotations(next);
+    localStorage.setItem('unavida:annotations', JSON.stringify(next));
+  };
+
   const deleteBookmark = (index) => {
+    if (!window.confirm('Delete this bookmark placeholder?')) return;
     const next = bookmarks.filter((_, i) => i !== index);
+    setBookmarks(next);
+    localStorage.setItem('unavida:bookmarks', JSON.stringify(next));
+  };
+
+  const editBookmark = (index) => {
+    const current = bookmarks[index];
+    if (!current || typeof current === 'string') return;
+    const updated = window.prompt('Edit bookmark label:', current.marker || '');
+    if (updated === null) return;
+    const next = [...bookmarks];
+    next[index] = { ...next[index], marker: updated.trim(), editedAt: Date.now() };
     setBookmarks(next);
     localStorage.setItem('unavida:bookmarks', JSON.stringify(next));
   };
@@ -1318,7 +1342,10 @@ export const ChapterReader = () => {
                     <div key={`a-${i}`} style={{ padding: '8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '12px' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', alignItems: 'center' }}>
                         <strong>{a.title || 'Section Note'}</strong>
-                        <button className="reader-btn" style={{ padding: '2px 6px', fontSize: '11px' }} onClick={() => deleteAnnotation(i)}>Delete</button>
+                        <div style={{ display: 'flex', gap: '4px' }}>
+                          <button className="reader-btn" style={{ padding: '2px 6px', fontSize: '11px' }} onClick={() => editAnnotation(i)}>Edit</button>
+                          <button className="reader-btn" style={{ padding: '2px 6px', fontSize: '11px' }} onClick={() => deleteAnnotation(i)}>Delete</button>
+                        </div>
                       </div>
                       <div style={{ marginTop: '4px' }}>{a.text}</div>
                     </div>
@@ -1335,6 +1362,7 @@ export const ChapterReader = () => {
                         >
                           🔖 {cleanHeading(section?.title || 'Bookmarked Section')} {label ? `— ${label}` : ''}
                         </button>
+                        {typeof b !== 'string' && <button className="reader-btn" style={{ padding: '2px 6px', fontSize: '11px' }} onClick={() => editBookmark(i)}>Edit</button>}
                         <button className="reader-btn" style={{ padding: '2px 6px', fontSize: '11px' }} onClick={() => deleteBookmark(i)}>Delete</button>
                       </div>
                     );
