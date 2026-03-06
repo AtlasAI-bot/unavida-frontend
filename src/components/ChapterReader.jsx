@@ -1366,7 +1366,7 @@ export const ChapterReader = () => {
       <div className="reader-top">
         <div>
           <div className="reader-crumb">Home / Pharmacology I / Reader</div>
-          <div className="reader-header">Reader Demo — Chapter Navigation Accordion</div>
+          <div className="reader-header">Mastering Pharmacology</div>
         </div>
         <div className="reader-tools">
           <button className="reader-btn" onClick={() => setTopMenuOpen((v) => !v)}>☰ Reader Menu</button>
