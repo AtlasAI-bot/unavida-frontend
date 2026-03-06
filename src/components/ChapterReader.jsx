@@ -1296,11 +1296,11 @@ export const ChapterReader = () => {
 
           {topMenuOpen && (
             <div className="reader-menu">
-              <button className="reader-btn" onClick={toggleTheme}>{theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}</button>
-              <button className="reader-btn" onClick={() => setFocusReader(!focusReader)}>{focusReader ? '↔ Restore Layout' : '↔ Expand Reader'}</button>
-              <button className="reader-btn" onClick={() => setPrefsModalOpen(true)}>⚙️ Reader Preferences</button>
-              <button className="reader-btn" onClick={toggleReadAloud}>{readAloudOn ? '⏸ Stop Read Aloud' : '🔊 Read Aloud'}</button>
-              <button className="reader-btn" onClick={printReader}>🖨 Print Section</button>
+              <button className="reader-btn" onClick={() => { toggleTheme(); setTopMenuOpen(false); }}>{theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}</button>
+              <button className="reader-btn" onClick={() => { setFocusReader(!focusReader); setTopMenuOpen(false); }}>{focusReader ? '↔ Restore Layout' : '↔ Expand Reader'}</button>
+              <button className="reader-btn" onClick={() => { setPrefsModalOpen(true); setTopMenuOpen(false); }}>⚙️ Reader Preferences</button>
+              <button className="reader-btn" onClick={() => { toggleReadAloud(); setTopMenuOpen(false); }}>{readAloudOn ? '⏸ Stop Read Aloud' : '🔊 Read Aloud'}</button>
+              <button className="reader-btn" onClick={() => { printReader(); setTopMenuOpen(false); }}>🖨 Print Section</button>
             </div>
           )}
         </div>
