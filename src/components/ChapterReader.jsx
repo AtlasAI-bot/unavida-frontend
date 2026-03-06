@@ -166,6 +166,20 @@ export const ChapterReader = () => {
   const sectionTitle = cleanHeading(selectedSection?.title || '');
   const currentWordCount = getSectionWordCount(selectedSection);
 
+  const generatedDeck = (chapterData.chapter.sections || []).flatMap((s) => {
+    const title = cleanHeading(s.title || '');
+    const cards = [];
+    (s.learningObjectives || []).forEach((obj, i) => {
+      cards.push({ front: `${title} — Objective ${i + 1}`, back: obj });
+    });
+    (s.keyTakeaways || []).forEach((kt, i) => {
+      cards.push({ front: `${title} — Key Point ${i + 1}`, back: kt });
+    });
+    return cards;
+  });
+
+  const flashcardDeck = (flashcards.length > 0 ? flashcards : generatedDeck).slice(0, 80);
+
   const paragraphImageSlots = sectionParagraphs.length > 0
     ? currentSectionImages.map((_, i) => Math.floor(((i + 1) * sectionParagraphs.length) / (currentSectionImages.length + 1)))
     : [];
@@ -1178,14 +1192,21 @@ export const ChapterReader = () => {
               <>
                 {toolView === 'flashcards' && (
                   <section className="reader-card" style={{ marginBottom: '12px' }}>
-                    <h3>Flashcards</h3>
-                    <p>Study deck for Chapter 1. This tool view is opened from Study Tools.</p>
-                    {(flashcards.length > 0 ? flashcards : (selectedSection.keyTakeaways || []).map((k, i) => ({ front: `Key Point ${i + 1}`, back: k }))).slice(0, 40).map((fc, i) => (
-                      <div key={i} style={{ border: '1px solid var(--panel-border)', borderRadius: '10px', padding: '10px', marginBottom: '8px', background: 'var(--panel)' }}>
-                        <div style={{ fontWeight: 700 }}>Q: {fc.front || fc.question || 'Flashcard'}</div>
-                        <div style={{ marginTop: '6px' }}>A: {fc.back || fc.answer || ''}</div>
-                      </div>
-                    ))}
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '8px' }}>
+                      <h3 style={{ marginBottom: 0 }}>Flashcards</h3>
+                      <button className="reader-btn" onClick={() => setToolView('content')}>← Back to Reader</button>
+                    </div>
+                    <p>Chapter 1 deck ({flashcardDeck.length} cards).</p>
+                    {flashcardDeck.length === 0 ? (
+                      <p>No flashcards available yet.</p>
+                    ) : (
+                      flashcardDeck.map((fc, i) => (
+                        <div key={i} style={{ border: '1px solid var(--panel-border)', borderRadius: '10px', padding: '10px', marginBottom: '8px', background: 'var(--panel)' }}>
+                          <div style={{ fontWeight: 700 }}>Q: {fc.front || fc.question || `Flashcard ${i + 1}`}</div>
+                          <div style={{ marginTop: '6px' }}>A: {fc.back || fc.answer || ''}</div>
+                        </div>
+                      ))
+                    )}
                   </section>
                 )}
 
