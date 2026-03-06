@@ -28,7 +28,11 @@ export const ChapterReader = () => {
   const [toolView, setToolView] = useState('content');
   const [flashIndex, setFlashIndex] = useState(0);
   const [flashShowBack, setFlashShowBack] = useState(false);
-  const [topMenuOpen, setTopMenuOpen] = useState(false);
+  const [actionsOpen, setActionsOpen] = useState(false);
+  const [flashFilter, setFlashFilter] = useState('all');
+  const [printPickerOpen, setPrintPickerOpen] = useState(false);
+  const [printSelectedIds, setPrintSelectedIds] = useState([]);
+  const [printAction, setPrintAction] = useState('print');
   const [newNote, setNewNote] = useState('');
   const [highlightColor, setHighlightColor] = useState('yellow');
 
@@ -187,20 +191,23 @@ export const ChapterReader = () => {
     return entries;
   })();
 
-  const curatedDeck = [
-    { front: 'What does pharmacokinetics (PK) describe?', back: 'What the body does to a drug: absorption, distribution, metabolism, and elimination (ADME).' },
-    { front: 'What does pharmacodynamics (PD) describe?', back: 'What the drug does to the body, including receptor interaction and physiologic effect.' },
-    { front: 'Name the ADME phases in order.', back: 'Absorption → Distribution → Metabolism → Elimination.' },
-    { front: 'What is first-pass metabolism?', back: 'Drug metabolism in the liver before reaching systemic circulation, often reducing bioavailability.' },
-    { front: 'Why are ACE inhibitors used?', back: 'To lower blood pressure and reduce cardiac workload; common in HTN and heart failure.' },
-    { front: 'What is a therapeutic index?', back: 'A safety ratio between toxic dose and effective dose; lower index means higher risk.' },
-    { front: 'Difference between agonist and antagonist?', back: 'Agonist activates receptor; antagonist blocks receptor activation.' },
-    { front: 'High-risk medication safety step before admin?', back: 'Independent double-check + verify rights of medication administration.' },
-    { front: 'Most important action when allergy history is unclear?', back: 'Clarify details with patient and prescriber before administration.' },
-    { front: 'Why is dosage calculation accuracy critical?', back: 'Small errors can cause major patient harm, especially with narrow therapeutic index drugs.' },
-  ];
+  const generatedDeck = (chapterData.chapter.sections || []).flatMap((s) => {
+    const title = cleanHeading(s.title || 'Section');
+    const sectionId = s.id;
+    const cards = [];
+    (s.learningObjectives || []).forEach((obj, i) => {
+      cards.push({ sectionId, sectionTitle: title, front: `${title} — Objective ${i + 1}`, back: obj });
+    });
+    (s.keyTakeaways || []).forEach((kt, i) => {
+      cards.push({ sectionId, sectionTitle: title, front: `${title} — Key Point ${i + 1}`, back: kt });
+    });
+    return cards;
+  });
 
-  const flashcardDeck = (flashcards.length > 0 ? flashcards : curatedDeck).slice(0, 80);
+  const sourceDeck = (flashcards.length > 0 ? flashcards : generatedDeck);
+  const flashcardDeck = sourceDeck
+    .filter((c) => flashFilter === 'all' || c.sectionId === flashFilter)
+    .slice(0, 120);
 
   const paragraphImageSlots = sectionParagraphs.length > 0
     ? currentSectionImages.map((_, i) => Math.floor(((i + 1) * sectionParagraphs.length) / (currentSectionImages.length + 1)))
@@ -352,7 +359,10 @@ export const ChapterReader = () => {
       cp2: 'sec1_11_review_questions',
     };
     const section = getSectionById(map[target]);
-    if (section) setSelectedSection(section);
+    if (section) {
+      setToolView('content');
+      setSelectedSection(section);
+    }
   };
 
   const toggleReadAloud = () => {
@@ -365,11 +375,24 @@ export const ChapterReader = () => {
       setReadAloudOn(false);
       return;
     }
-    const text = [
-      selectedSection?.title || '',
-      ...(sectionParagraphs || []),
-      ...(selectedSection?.keyTakeaways || []),
-    ].join(' ');
+
+    const selectedText = (window.getSelection && window.getSelection().toString().trim()) || '';
+    const choice = window.prompt('Read aloud options:\n1 = Selected text\n2 = Current section\n3 = Key takeaways only', selectedText ? '1' : '2');
+
+    let text = '';
+    if (choice === '1' && selectedText) {
+      text = selectedText;
+    } else if (choice === '3') {
+      text = (selectedSection?.keyTakeaways || []).join('. ');
+    } else {
+      text = [selectedSection?.title || '', ...(sectionParagraphs || [])].join(' ');
+    }
+
+    if (!text.trim()) {
+      window.alert('No readable text found for that option.');
+      return;
+    }
+
     const utter = new SpeechSynthesisUtterance(text);
     utter.rate = 1;
     utter.onend = () => setReadAloudOn(false);
@@ -382,20 +405,29 @@ export const ChapterReader = () => {
   const buildPrintHtml = (sectionsToPrint) => {
     const sectionToHtml = (s) => {
       const paragraphs = (s.content || '').split(/\n\s*\n/).map((x) => x.trim()).filter(Boolean);
-      const paras = paragraphs.map((p) => {
+      const images = sectionIllustrationMap[s.id] || [];
+      const slots = paragraphs.length > 0 ? images.map((_, i) => Math.floor(((i + 1) * paragraphs.length) / (images.length + 1))) : [];
+
+      const paras = paragraphs.map((p, idx) => {
         const { heading, body } = splitHeadingFromText(p);
         const forced = splitForcedSubhead(body || p);
+        let html = '';
         if (forced) {
-          return `${forced.before ? `<p>${cleanBody(forced.before)}</p>` : ''}<h3>${cleanHeading(forced.heading)}</h3>${forced.after ? `<p>${cleanBody(forced.after)}</p>` : ''}`;
+          html = `${forced.before ? `<p>${cleanBody(forced.before)}</p>` : ''}<h3>${cleanHeading(forced.heading)}</h3>${forced.after ? `<p>${cleanBody(forced.after)}</p>` : ''}`;
+        } else if (heading) {
+          html = `<h3>${cleanHeading(heading)}</h3><p>${cleanBody(body)}</p>`;
+        } else {
+          html = `<p>${cleanBody(p)}</p>`;
         }
-        if (heading) {
-          return `<h3>${cleanHeading(heading)}</h3><p>${cleanBody(body)}</p>`;
+
+        const slotIdx = slots.indexOf(idx);
+        if (slotIdx >= 0 && images[slotIdx]) {
+          html += `<img src="${images[slotIdx]}" style="max-width:100%;height:auto;margin:10px 0;"/>`;
         }
-        return `<p>${cleanBody(p)}</p>`;
+        return html;
       }).join('');
 
-      const imgs = (sectionIllustrationMap[s.id] || []).map((src) => `<img src="${src}" style="max-width:100%;height:auto;margin:10px 0;"/>`).join('');
-      return `<section style="page-break-inside:avoid;margin-bottom:28px;">\n<h2>${cleanHeading(s.title)}</h2>\n${paras}${imgs}\n</section>`;
+      return `<section style="page-break-inside:avoid;margin-bottom:28px;">\n<h2>${cleanHeading(s.title)}</h2>\n${paras}\n</section>`;
     };
 
     const blocks = sectionsToPrint.map(sectionToHtml).join('\n');
@@ -403,44 +435,33 @@ export const ChapterReader = () => {
     return `<!doctype html><html><head><meta charset="utf-8"/><title>Study Sheet</title><style>body{font-family:Georgia,serif;color:#111;line-height:1.5;padding:24px}h1{margin:0 0 16px}h2{margin:20px 0 8px;font-size:24px;font-weight:700}h3{margin:14px 0 6px;font-size:18px;font-weight:700;color:#111}p{margin:0 0 10px;font-size:15px} @media print{body{padding:0 10mm}}</style></head><body><h1>Chapter 1 Study Sheet</h1>${blocks}</body></html>`;
   };
 
-  const chooseSections = () => {
-    const choice = window.prompt('Options:\n1 = Current section\n2 = All sections\n3 = Choose specific section numbers (e.g. 1.1,1.6)');
-    const all = chapterData.chapter.sections || [];
-    if (choice === '2') return all;
-    if (choice === '3') {
-      const picks = (window.prompt('Enter section numbers comma-separated:') || '').split(',').map((s) => s.trim()).filter(Boolean);
-      return all.filter((s) => picks.some((p) => s.title.includes(`Section ${p}`) || s.title.includes(`Section ${p}:`) || s.title.includes(`Section ${p} `)));
-    }
-    return selectedSection ? [selectedSection] : [];
+  const openPrintPicker = (actionType) => {
+    setPrintAction(actionType);
+    setPrintSelectedIds((selectedSection?.id ? [selectedSection.id] : []));
+    setPrintPickerOpen(true);
   };
 
-  const printReader = () => {
-    const selected = chooseSections();
-    if (!selected.length) {
-      window.alert('No sections selected for print.');
+  const runPrintAction = (selected, actionType) => {    if (!selected.length) {
+      window.alert(`No sections selected for ${actionType === 'print' ? 'print' : 'study sheet'}.`);
       return;
     }
-    const html = buildPrintHtml(selected);
-    const blob = new Blob([html], { type: 'text/html' });
-    const url = URL.createObjectURL(blob);
-    const win = window.open(url, '_blank');
-    if (!win) {
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `Chapter1_Print_${Date.now()}.html`;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      window.alert('Popup blocked. Downloaded printable HTML file instead.');
-      return;
-    }
-    setTimeout(() => { try { win.focus(); } catch {} }, 250);
-  };
 
-  const exportStudySheet = () => {
-    const selected = chooseSections();
-    if (!selected.length) {
-      window.alert('No sections selected for study sheet.');
+    if (actionType === 'print') {
+      const html = buildPrintHtml(selected);
+      const blob = new Blob([html], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const win = window.open(url, '_blank');
+      if (!win) {
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Chapter1_Print_${Date.now()}.html`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        window.alert('Popup blocked. Downloaded printable HTML file instead.');
+        return;
+      }
+      setTimeout(() => { try { win.focus(); } catch {} }, 250);
       return;
     }
 
@@ -478,6 +499,32 @@ export const ChapterReader = () => {
       return;
     }
     setTimeout(() => { try { win.focus(); } catch {} }, 250);
+  };
+
+  const printReader = () => {
+    const all = chapterData.chapter.sections || [];
+    if (window.confirm('Print current section only?')) {
+      runPrintAction(selectedSection ? [selectedSection] : [], 'print');
+      return;
+    }
+    if (window.confirm('Print all sections?')) {
+      runPrintAction(all, 'print');
+      return;
+    }
+    openPrintPicker('print');
+  };
+
+  const exportStudySheet = () => {
+    const all = chapterData.chapter.sections || [];
+    if (window.confirm('Create study sheet for current section only?')) {
+      runPrintAction(selectedSection ? [selectedSection] : [], 'study');
+      return;
+    }
+    if (window.confirm('Create study sheet for all sections?')) {
+      runPrintAction(all, 'study');
+      return;
+    }
+    openPrintPicker('study');
   };
 
   const renderStructuredQuestion = (q) => {
@@ -556,6 +603,11 @@ export const ChapterReader = () => {
       mainScrollRef.current.scrollTop = 0;
     }
   }, [selectedSection?.id]);
+
+  useEffect(() => {
+    setFlashIndex(0);
+    setFlashShowBack(false);
+  }, [flashFilter]);
 
   const handleSectionClick = (section) => {
     setSelectedSection(section);
@@ -1105,18 +1157,14 @@ export const ChapterReader = () => {
         .reader-float-btn:hover { background: var(--chapter-hover); }
 
         .reader-menu {
-          position: absolute;
-          right: 0;
-          top: 44px;
-          min-width: 220px;
+          width: 100%;
           background: var(--panel);
           border: 1px solid var(--panel-border);
           border-radius: 10px;
-          box-shadow: 0 8px 24px rgba(0,0,0,0.16);
           padding: 8px;
           display: grid;
           gap: 6px;
-          z-index: 70;
+          margin-top: 8px;
         }
 
         .reader-menu .reader-btn { width: 100%; text-align: left; }
@@ -1211,21 +1259,21 @@ export const ChapterReader = () => {
           <div className="reader-header">Reader Demo — Chapter Navigation Accordion</div>
         </div>
         <div className="reader-tools">
-          <button className="reader-btn" onClick={() => setTopMenuOpen((v) => !v)}>☰ Reader Menu</button>
+          <button className="reader-btn" onClick={() => setActionsOpen((v) => !v)}>☰ Reader Actions</button>
           <a href="/bookshelf" className="reader-btn">Back to Chapter List</a>
-
-          {topMenuOpen && (
-            <div className="reader-menu">
-              <button className="reader-btn" onClick={toggleTheme}>{theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}</button>
-              <button className="reader-btn" onClick={() => setFocusReader(!focusReader)}>{focusReader ? '↔ Restore Layout' : '↔ Expand Reader'}</button>
-              <button className="reader-btn" onClick={() => setPrefsModalOpen(true)}>⚙️ Reader Preferences</button>
-              <button className="reader-btn" onClick={toggleReadAloud}>{readAloudOn ? '⏸ Stop Read Aloud' : '🔊 Read Aloud'}</button>
-              <button className="reader-btn" onClick={exportStudySheet}>🗂 Export Study Sheet</button>
-              <button className="reader-btn" onClick={printReader}>🖨 Print Reader</button>
-            </div>
-          )}
         </div>
       </div>
+
+      {actionsOpen && (
+        <div className="reader-menu" style={{ margin: '0 14px 8px' }}>
+          <button className="reader-btn" onClick={toggleTheme}>{theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}</button>
+          <button className="reader-btn" onClick={() => setFocusReader(!focusReader)}>{focusReader ? '↔ Restore Layout' : '↔ Expand Reader'}</button>
+          <button className="reader-btn" onClick={() => setPrefsModalOpen(true)}>⚙️ Reader Preferences</button>
+          <button className="reader-btn" onClick={toggleReadAloud}>{readAloudOn ? '⏸ Stop Read Aloud' : '🔊 Read Aloud'}</button>
+          <button className="reader-btn" onClick={exportStudySheet}>🗂 Export Study Sheet</button>
+          <button className="reader-btn" onClick={printReader}>🖨 Print Section</button>
+        </div>
+      )}
 
       {/* TOC Float Button */}
       <button
@@ -1277,7 +1325,16 @@ export const ChapterReader = () => {
                       <h3 style={{ marginBottom: 0 }}>Flashcards</h3>
                       <button className="reader-btn" onClick={() => setToolView('content')}>← Back to Reader</button>
                     </div>
-                    <p>Chapter 1 deck ({flashcardDeck.length} cards).</p>
+                    <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap', marginBottom: '8px' }}>
+                      <p style={{ margin: 0 }}>Chapter 1 deck ({flashcardDeck.length} cards).</p>
+                      <label style={{ fontSize: '12px', color: 'var(--muted)' }}>Section:</label>
+                      <select value={flashFilter} onChange={(e) => setFlashFilter(e.target.value)} style={{ border: '1px solid var(--panel-border)', borderRadius: '8px', padding: '4px 8px', background: 'var(--panel)', color: 'var(--text)' }}>
+                        <option value="all">All sections</option>
+                        {(chapterData.chapter.sections || []).map((s) => (
+                          <option key={s.id} value={s.id}>{cleanHeading(s.title)}</option>
+                        ))}
+                      </select>
+                    </div>
                     {flashcardDeck.length === 0 ? (
                       <p>No flashcards available yet.</p>
                     ) : (
@@ -1586,6 +1643,47 @@ export const ChapterReader = () => {
             <strong>Atlas says:</strong> "{atlasLine}"
           </div>
         </aside>
+      </div>
+
+      {/* Print/Study Section Picker Modal */}
+      <div className={`reader-modal ${printPickerOpen ? 'show' : ''}`} onClick={() => printPickerOpen && setPrintPickerOpen(false)}>
+        <div className="reader-modal-card" onClick={(e) => e.stopPropagation()}>
+          <div className="reader-modal-head">
+            {printAction === 'print' ? 'Print Section Selection' : 'Study Sheet Section Selection'}
+            <button className="reader-btn" onClick={() => setPrintPickerOpen(false)}>✕</button>
+          </div>
+          <div className="reader-modal-body" style={{ display: 'grid', gap: '8px', maxHeight: '52vh', overflowY: 'auto' }}>
+            {(chapterData.chapter.sections || []).map((s) => {
+              const checked = printSelectedIds.includes(s.id);
+              return (
+                <label key={s.id} style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                  <input
+                    type="checkbox"
+                    checked={checked}
+                    onChange={(e) => {
+                      setPrintSelectedIds((prev) => e.target.checked ? [...prev, s.id] : prev.filter((id) => id !== s.id));
+                    }}
+                  />
+                  <span>{cleanHeading(s.title)}</span>
+                </label>
+              );
+            })}
+            <div style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>
+              <button className="reader-btn" onClick={() => setPrintSelectedIds((chapterData.chapter.sections || []).map((s) => s.id))}>Select All</button>
+              <button className="reader-btn" onClick={() => setPrintSelectedIds([])}>Clear</button>
+              <button
+                className="reader-btn"
+                onClick={() => {
+                  const selected = (chapterData.chapter.sections || []).filter((s) => printSelectedIds.includes(s.id));
+                  setPrintPickerOpen(false);
+                  runPrintAction(selected, printAction);
+                }}
+              >
+                Continue
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Preferences Modal */}
