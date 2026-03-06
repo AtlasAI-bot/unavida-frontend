@@ -256,6 +256,18 @@ export const ChapterReader = () => {
     localStorage.setItem('unavida:bookmarks', JSON.stringify(next));
   };
 
+  const deleteAnnotation = (index) => {
+    const next = annotations.filter((_, i) => i !== index);
+    setAnnotations(next);
+    localStorage.setItem('unavida:annotations', JSON.stringify(next));
+  };
+
+  const deleteBookmark = (index) => {
+    const next = bookmarks.filter((_, i) => i !== index);
+    setBookmarks(next);
+    localStorage.setItem('unavida:bookmarks', JSON.stringify(next));
+  };
+
   const quickJump = (target) => {
     const map = {
       adme: 'sec1_6_pk_vs_pd',
@@ -292,13 +304,27 @@ export const ChapterReader = () => {
   };
 
   const buildPrintHtml = (sectionsToPrint) => {
-    const blocks = sectionsToPrint.map((s) => {
-      const paras = (s.content || '').split(/\n\s*\n/).filter(Boolean).map((p) => `<p>${cleanBody(p)}</p>`).join('');
+    const sectionToHtml = (s) => {
+      const paragraphs = (s.content || '').split(/\n\s*\n/).map((x) => x.trim()).filter(Boolean);
+      const paras = paragraphs.map((p) => {
+        const { heading, body } = splitHeadingFromText(p);
+        const forced = splitForcedSubhead(body || p);
+        if (forced) {
+          return `${forced.before ? `<p>${cleanBody(forced.before)}</p>` : ''}<h3>${cleanHeading(forced.heading)}</h3>${forced.after ? `<p>${cleanBody(forced.after)}</p>` : ''}`;
+        }
+        if (heading) {
+          return `<h3>${cleanHeading(heading)}</h3><p>${cleanBody(body)}</p>`;
+        }
+        return `<p>${cleanBody(p)}</p>`;
+      }).join('');
+
       const imgs = (sectionIllustrationMap[s.id] || []).map((src) => `<img src="${src}" style="max-width:100%;height:auto;margin:10px 0;"/>`).join('');
       return `<section style="page-break-inside:avoid;margin-bottom:28px;">\n<h2>${cleanHeading(s.title)}</h2>\n${paras}${imgs}\n</section>`;
-    }).join('\n');
+    };
 
-    return `<!doctype html><html><head><meta charset="utf-8"/><title>Study Sheet</title><style>body{font-family:Georgia,serif;color:#111;line-height:1.5;padding:24px}h1{margin:0 0 16px}h2{margin:20px 0 8px}p{margin:0 0 10px}</style></head><body><h1>Chapter 1 Study Sheet</h1>${blocks}</body></html>`;
+    const blocks = sectionsToPrint.map(sectionToHtml).join('\n');
+
+    return `<!doctype html><html><head><meta charset="utf-8"/><title>Study Sheet</title><style>body{font-family:Georgia,serif;color:#111;line-height:1.5;padding:24px}h1{margin:0 0 16px}h2{margin:20px 0 8px;font-size:24px;font-weight:700}h3{margin:14px 0 6px;font-size:18px;font-weight:700;color:#111}p{margin:0 0 10px;font-size:15px} @media print{body{padding:0 10mm}}</style></head><body><h1>Chapter 1 Study Sheet</h1>${blocks}</body></html>`;
   };
 
   const exportStudySheet = () => {
@@ -316,16 +342,28 @@ export const ChapterReader = () => {
       window.alert('No sections selected for print.');
       return;
     }
-    const win = window.open('', '_blank');
+
+    const html = buildPrintHtml(selected);
+    const blob = new Blob([html], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const win = window.open(url, '_blank');
+
     if (!win) {
-      window.alert('Popup blocked. Please allow popups to export.');
+      // Fallback if popup is blocked: download html file
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Chapter1_StudySheet_${Date.now()}.html`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.alert('Popup was blocked. Downloaded study sheet HTML instead. Open and print from browser.');
       return;
     }
-    win.document.open();
-    win.document.write(buildPrintHtml(selected));
-    win.document.close();
-    win.focus();
-    setTimeout(() => win.print(), 300);
+
+    // Let user print manually for better cross-browser reliability
+    setTimeout(() => {
+      try { win.focus(); } catch {}
+    }, 250);
   };
 
   const renderStructuredQuestion = (q) => {
@@ -1258,11 +1296,11 @@ export const ChapterReader = () => {
               <span>▶</span>
             </button>
             <div className="reader-acc-body">
-              <div style={{ display: 'grid', gap: '8px', marginBottom: '10px' }}>
-                <div style={{ padding: '8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '13px' }}>📝 Annotations ({annotations.length})</div>
-                <div style={{ padding: '8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '13px' }}>🔖 Bookmarks ({bookmarks.length})</div>
-                <div style={{ padding: '8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '13px' }}>🔍️ Highlights ({Math.max(annotations.length, 1)})</div>
-                <div style={{ padding: '8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '13px' }}>🧷 Placeholders ({bookmarks.length})</div>
+              <div style={{ display: 'grid', gap: '6px', marginBottom: '10px' }}>
+                <div style={{ padding: '6px 8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '11px' }}>📝 Annotations ({annotations.length})</div>
+                <div style={{ padding: '6px 8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '11px' }}>🔖 Bookmarks ({bookmarks.length})</div>
+                <div style={{ padding: '6px 8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '11px' }}>🔍️ Highlights ({Math.max(annotations.length, 1)})</div>
+                <div style={{ padding: '6px 8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '11px' }}>🧷 Placeholders ({bookmarks.length})</div>
               </div>
               <div style={{ display: 'grid', gap: '8px' }}>
                 <textarea
@@ -1278,7 +1316,10 @@ export const ChapterReader = () => {
                 <div style={{ marginTop: '10px', display: 'grid', gap: '8px' }}>
                   {annotations.slice(0, 4).map((a, i) => (
                     <div key={`a-${i}`} style={{ padding: '8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '12px' }}>
-                      <strong>{a.title || 'Section Note'}</strong>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', alignItems: 'center' }}>
+                        <strong>{a.title || 'Section Note'}</strong>
+                        <button className="reader-btn" style={{ padding: '2px 6px', fontSize: '11px' }} onClick={() => deleteAnnotation(i)}>Delete</button>
+                      </div>
                       <div style={{ marginTop: '4px' }}>{a.text}</div>
                     </div>
                   ))}
@@ -1286,14 +1327,16 @@ export const ChapterReader = () => {
                     const section = typeof b === 'string' ? getSectionById(b) : getSectionById(b.sectionId);
                     const label = typeof b === 'string' ? '' : (b.marker || '');
                     return (
-                      <button
-                        key={`b-${i}`}
-                        className="reader-btn"
-                        onClick={() => section && setSelectedSection(section)}
-                        style={{ textAlign: 'left' }}
-                      >
-                        🔖 {cleanHeading(section?.title || 'Bookmarked Section')} {label ? `— ${label}` : ''}
-                      </button>
+                      <div key={`b-${i}`} style={{ display: 'flex', gap: '6px' }}>
+                        <button
+                          className="reader-btn"
+                          onClick={() => section && setSelectedSection(section)}
+                          style={{ textAlign: 'left', flex: 1 }}
+                        >
+                          🔖 {cleanHeading(section?.title || 'Bookmarked Section')} {label ? `— ${label}` : ''}
+                        </button>
+                        <button className="reader-btn" style={{ padding: '2px 6px', fontSize: '11px' }} onClick={() => deleteBookmark(i)}>Delete</button>
+                      </div>
                     );
                   })}
                 </div>
