@@ -1395,7 +1395,7 @@ export const ChapterReader = () => {
       {/* Main Layout */}
       <div className={`reader-layout ${focusReader ? 'focus-reader' : ''} ${hideToc ? 'hide-toc' : ''}`}>
         {/* Left Panel - TOC */}
-        <aside className={`reader-panel reader-toc ${focusReader || hideToc ? 'reader-hidden' : ''}`}>
+        <aside className={`reader-panel reader-toc ${hideToc ? 'reader-hidden' : ''}`}>
           <div className="reader-toc-title">
             <h3 style={{ margin: 0 }}>Textbook Navigation</h3>
           </div>
