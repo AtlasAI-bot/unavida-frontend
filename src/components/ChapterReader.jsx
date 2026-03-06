@@ -25,6 +25,7 @@ export const ChapterReader = () => {
     try { return JSON.parse(localStorage.getItem('unavida:flashcards') || '[]'); } catch { return []; }
   });
   const [quickJumpOpen, setQuickJumpOpen] = useState(true);
+  const [newNote, setNewNote] = useState('');
 
   const atlasLines = [
     'If your calculator dies during dosage math, that\'s a character-building event.',
@@ -230,34 +231,29 @@ export const ChapterReader = () => {
   };
 
   const addAnnotation = () => {
-    const text = window.prompt('Add annotation for this section:');
-    if (!text) return;
-    const next = [{ sectionId: selectedSection?.id, text, ts: Date.now() }, ...annotations];
+    const text = (newNote || '').trim();
+    if (!text) {
+      window.alert('Type a note first.');
+      return;
+    }
+    const next = [{ sectionId: selectedSection?.id, title: cleanHeading(selectedSection?.title || ''), text, ts: Date.now() }, ...annotations];
     setAnnotations(next);
     localStorage.setItem('unavida:annotations', JSON.stringify(next));
+    setNewNote('');
   };
 
   const addBookmark = () => {
     if (!selectedSection?.id) return;
-    if (bookmarks.includes(selectedSection.id)) {
-      window.alert('Bookmark already saved for this section.');
+    const marker = window.prompt('Optional bookmark label (e.g., "ADME chart", "Exam note"):') || '';
+    const exists = bookmarks.some((b) => (typeof b === 'string' ? b === selectedSection.id : b.sectionId === selectedSection.id && b.marker === marker));
+    if (exists) {
+      window.alert('Bookmark already exists for this section/label.');
       return;
     }
-    const next = [...bookmarks, selectedSection.id];
+    const entry = { sectionId: selectedSection.id, title: cleanHeading(selectedSection.title || ''), marker: marker.trim(), ts: Date.now() };
+    const next = [entry, ...bookmarks.filter((b) => typeof b !== 'string')];
     setBookmarks(next);
     localStorage.setItem('unavida:bookmarks', JSON.stringify(next));
-    window.alert('Bookmark saved.');
-  };
-
-  const addFlashcard = () => {
-    const front = window.prompt('Flashcard front (question/term):');
-    if (!front) return;
-    const back = window.prompt('Flashcard back (answer/definition):');
-    if (!back) return;
-    const next = [{ sectionId: selectedSection?.id, front, back, ts: Date.now() }, ...flashcards];
-    setFlashcards(next);
-    localStorage.setItem('unavida:flashcards', JSON.stringify(next));
-    window.alert('Flashcard created.');
   };
 
   const quickJump = (target) => {
@@ -1266,13 +1262,42 @@ export const ChapterReader = () => {
                 <div style={{ padding: '8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '13px' }}>📝 Annotations ({annotations.length})</div>
                 <div style={{ padding: '8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '13px' }}>🔖 Bookmarks ({bookmarks.length})</div>
                 <div style={{ padding: '8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '13px' }}>🔍️ Highlights ({Math.max(annotations.length, 1)})</div>
-                <div style={{ padding: '8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '13px' }}>🎴 My Flashcards ({flashcards.length} created)</div>
+                <div style={{ padding: '8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '13px' }}>🧷 Placeholders ({bookmarks.length})</div>
               </div>
               <div style={{ display: 'grid', gap: '8px' }}>
-                <button className="reader-btn" onClick={addAnnotation}>+ Add Annotation</button>
-                <button className="reader-btn" onClick={addBookmark}>+ Add Bookmark</button>
-                <button className="reader-btn" onClick={addFlashcard}>+ Create Flashcard</button>
+                <textarea
+                  value={newNote}
+                  onChange={(e) => setNewNote(e.target.value)}
+                  placeholder="Write a note for this section..."
+                  style={{ minHeight: '78px', borderRadius: '8px', border: '1px solid var(--panel-border)', background: 'var(--panel)', color: 'var(--text)', padding: '8px' }}
+                />
+                <button className="reader-btn" onClick={addAnnotation}>+ Save Note</button>
+                <button className="reader-btn" onClick={addBookmark}>+ Add Bookmark Placeholder</button>
               </div>
+              {(annotations.length > 0 || bookmarks.length > 0) && (
+                <div style={{ marginTop: '10px', display: 'grid', gap: '8px' }}>
+                  {annotations.slice(0, 4).map((a, i) => (
+                    <div key={`a-${i}`} style={{ padding: '8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '12px' }}>
+                      <strong>{a.title || 'Section Note'}</strong>
+                      <div style={{ marginTop: '4px' }}>{a.text}</div>
+                    </div>
+                  ))}
+                  {bookmarks.slice(0, 4).map((b, i) => {
+                    const section = typeof b === 'string' ? getSectionById(b) : getSectionById(b.sectionId);
+                    const label = typeof b === 'string' ? '' : (b.marker || '');
+                    return (
+                      <button
+                        key={`b-${i}`}
+                        className="reader-btn"
+                        onClick={() => section && setSelectedSection(section)}
+                        style={{ textAlign: 'left' }}
+                      >
+                        🔖 {cleanHeading(section?.title || 'Bookmarked Section')} {label ? `— ${label}` : ''}
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
 
