@@ -21,6 +21,10 @@ export const ChapterReader = () => {
   const [bookmarks, setBookmarks] = useState(() => {
     try { return JSON.parse(localStorage.getItem('unavida:bookmarks') || '[]'); } catch { return []; }
   });
+  const [flashcards, setFlashcards] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('unavida:flashcards') || '[]'); } catch { return []; }
+  });
+  const [quickJumpOpen, setQuickJumpOpen] = useState(true);
 
   const atlasLines = [
     'If your calculator dies during dosage math, that\'s a character-building event.',
@@ -217,10 +221,12 @@ export const ChapterReader = () => {
       cases: 'sec1_10_clinical_story_allergy_decision',
       practice: 'sec1_8_dosage_calculations',
       outcomes: 'sec1_overview_introduction',
-      references: 'references',
     };
     const target = getSectionById(map[tool]);
-    if (target) setSelectedSection(target);
+    if (target) {
+      setSelectedSection(target);
+      if (mainScrollRef.current) mainScrollRef.current.scrollTop = 0;
+    }
   };
 
   const addAnnotation = () => {
@@ -233,10 +239,25 @@ export const ChapterReader = () => {
 
   const addBookmark = () => {
     if (!selectedSection?.id) return;
-    if (bookmarks.includes(selectedSection.id)) return;
+    if (bookmarks.includes(selectedSection.id)) {
+      window.alert('Bookmark already saved for this section.');
+      return;
+    }
     const next = [...bookmarks, selectedSection.id];
     setBookmarks(next);
     localStorage.setItem('unavida:bookmarks', JSON.stringify(next));
+    window.alert('Bookmark saved.');
+  };
+
+  const addFlashcard = () => {
+    const front = window.prompt('Flashcard front (question/term):');
+    if (!front) return;
+    const back = window.prompt('Flashcard back (answer/definition):');
+    if (!back) return;
+    const next = [{ sectionId: selectedSection?.id, front, back, ts: Date.now() }, ...flashcards];
+    setFlashcards(next);
+    localStorage.setItem('unavida:flashcards', JSON.stringify(next));
+    window.alert('Flashcard created.');
   };
 
   const quickJump = (target) => {
@@ -248,6 +269,67 @@ export const ChapterReader = () => {
     };
     const section = getSectionById(map[target]);
     if (section) setSelectedSection(section);
+  };
+
+  const toggleReadAloud = () => {
+    if (!('speechSynthesis' in window)) {
+      window.alert('Read Aloud is not supported in this browser.');
+      return;
+    }
+    if (readAloudOn) {
+      window.speechSynthesis.cancel();
+      setReadAloudOn(false);
+      return;
+    }
+    const text = [
+      selectedSection?.title || '',
+      ...(sectionParagraphs || []),
+      ...(selectedSection?.keyTakeaways || []),
+    ].join(' ');
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.rate = 1;
+    utter.onend = () => setReadAloudOn(false);
+    utter.onerror = () => setReadAloudOn(false);
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(utter);
+    setReadAloudOn(true);
+  };
+
+  const buildPrintHtml = (sectionsToPrint) => {
+    const blocks = sectionsToPrint.map((s) => {
+      const paras = (s.content || '').split(/\n\s*\n/).filter(Boolean).map((p) => `<p>${cleanBody(p)}</p>`).join('');
+      const imgs = (sectionIllustrationMap[s.id] || []).map((src) => `<img src="${src}" style="max-width:100%;height:auto;margin:10px 0;"/>`).join('');
+      return `<section style="page-break-inside:avoid;margin-bottom:28px;">\n<h2>${cleanHeading(s.title)}</h2>\n${paras}${imgs}\n</section>`;
+    }).join('\n');
+
+    return `<!doctype html><html><head><meta charset="utf-8"/><title>Study Sheet</title><style>body{font-family:Georgia,serif;color:#111;line-height:1.5;padding:24px}h1{margin:0 0 16px}h2{margin:20px 0 8px}p{margin:0 0 10px}</style></head><body><h1>Chapter 1 Study Sheet</h1>${blocks}</body></html>`;
+  };
+
+  const exportStudySheet = () => {
+    const choice = window.prompt('Export options:\n1 = Current section\n2 = All sections\n3 = Choose specific section numbers (e.g. 1.1,1.6)');
+    const all = chapterData.chapter.sections || [];
+    let selected = [];
+    if (choice === '2') selected = all;
+    else if (choice === '3') {
+      const picks = (window.prompt('Enter section numbers comma-separated:') || '').split(',').map((s) => s.trim()).filter(Boolean);
+      selected = all.filter((s) => picks.some((p) => s.title.includes(`Section ${p}`) || s.title.includes(`Section ${p}:`) || s.title.includes(`Section ${p} `)));
+    } else {
+      selected = selectedSection ? [selectedSection] : [];
+    }
+    if (!selected.length) {
+      window.alert('No sections selected for print.');
+      return;
+    }
+    const win = window.open('', '_blank');
+    if (!win) {
+      window.alert('Popup blocked. Please allow popups to export.');
+      return;
+    }
+    win.document.open();
+    win.document.write(buildPrintHtml(selected));
+    win.document.close();
+    win.focus();
+    setTimeout(() => win.print(), 300);
   };
 
   const renderStructuredQuestion = (q) => {
@@ -336,7 +418,8 @@ export const ChapterReader = () => {
   };
 
   const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
+    const preferredDark = localStorage.getItem('unavidaThemeLastDark') || 'darkplus';
+    const newTheme = theme === 'light' ? preferredDark : 'light';
     setTheme(newTheme);
     localStorage.setItem('unavidaTheme', newTheme);
   };
@@ -784,7 +867,7 @@ export const ChapterReader = () => {
         .reader-modal.show { display: flex; }
 
         .reader-modal-card {
-          width: min(720px, 92vw);
+          width: min(620px, 90vw);
           max-height: 88vh;
           overflow: auto;
           background: var(--panel);
@@ -968,16 +1051,21 @@ export const ChapterReader = () => {
             {focusReader ? '↔ Restore Layout' : '↔ Expand Reader'}
           </button>
           <button className="reader-btn" onClick={() => setPrefsModalOpen(true)}>⚙️ Reader Preferences</button>
-          <button className="reader-btn" onClick={() => setReadAloudOn(!readAloudOn)}>
+          <button className="reader-btn" onClick={toggleReadAloud}>
             {readAloudOn ? '⏸ Stop Read Aloud' : '🔊 Read Aloud'}
           </button>
-          <button className="reader-btn">📋 Export Study Sheet</button>
+          <button className="reader-btn" onClick={exportStudySheet}>📋 Export Study Sheet</button>
           <a href="/bookshelf" className="reader-btn">Back to Chapter List</a>
         </div>
       </div>
 
       {/* TOC Float Button */}
-      <button className="reader-float-btn" onClick={() => setHideToc(!hideToc)}>
+      <button
+        className="reader-float-btn"
+        onClick={() => !focusReader && setHideToc(!hideToc)}
+        disabled={focusReader}
+        style={focusReader ? { opacity: 0.45, cursor: 'not-allowed' } : undefined}
+      >
         {hideToc ? '▶' : '◀'}
       </button>
 
@@ -1143,11 +1231,6 @@ export const ChapterReader = () => {
 
         {/* Right Panel - Study Tools */}
         <aside className={`reader-panel reader-right ${focusReader ? 'reader-hidden' : ''}`}>
-          <div className="reader-stat">
-            <strong>Instructor Highlights</strong><br />
-            Jump to instructor-pinned key concepts and exam focus areas.
-          </div>
-
           <div className="reader-accordion open">
             <button className="reader-acc-btn" onClick={(e) => e.currentTarget.closest('.reader-accordion').classList.toggle('open')}>
               Study Tools
@@ -1160,8 +1243,16 @@ export const ChapterReader = () => {
                 <button className="reader-tool-item" onClick={() => openTool('cases')}>🤷 Case Studies</button>
                 <button className="reader-tool-item" onClick={() => openTool('practice')}>🧠 Practice Problems</button>
                 <button className="reader-tool-item" onClick={() => openTool('outcomes')}>✅ Learning Outcomes</button>
-                <button className="reader-tool-item" onClick={() => openTool('references')}>📚 References</button>
+                <button className="reader-tool-item" onClick={() => setQuickJumpOpen((v) => !v)}>⚡ Quick Jump</button>
               </div>
+              {quickJumpOpen && (
+                <div style={{ marginTop: '10px', display: 'grid', gap: '8px' }}>
+                  <button className="reader-btn" onClick={() => quickJump('adme')}>ADME Core Map</button>
+                  <button className="reader-btn" onClick={() => quickJump('pd')}>PD Receptor Effects</button>
+                  <button className="reader-btn" onClick={() => quickJump('cp1')}>Checkpoint #1</button>
+                  <button className="reader-btn" onClick={() => quickJump('cp2')}>Checkpoint #2</button>
+                </div>
+              )}
             </div>
           </div>
 
@@ -1175,25 +1266,14 @@ export const ChapterReader = () => {
                 <div style={{ padding: '8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '13px' }}>📝 Annotations ({annotations.length})</div>
                 <div style={{ padding: '8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '13px' }}>🔖 Bookmarks ({bookmarks.length})</div>
                 <div style={{ padding: '8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '13px' }}>🔍️ Highlights ({Math.max(annotations.length, 1)})</div>
-                <div style={{ padding: '8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '13px' }}>🎴 My Flashcards (60 available)</div>
+                <div style={{ padding: '8px', border: '1px solid var(--panel-border)', borderRadius: '8px', background: 'var(--panel)', fontSize: '13px' }}>🎴 My Flashcards ({flashcards.length} created)</div>
               </div>
               <div style={{ display: 'grid', gap: '8px' }}>
                 <button className="reader-btn" onClick={addAnnotation}>+ Add Annotation</button>
                 <button className="reader-btn" onClick={addBookmark}>+ Add Bookmark</button>
-                <button className="reader-btn" onClick={() => openTool('flashcards')}>+ Create Flashcard</button>
+                <button className="reader-btn" onClick={addFlashcard}>+ Create Flashcard</button>
               </div>
             </div>
-          </div>
-
-          <div className="reader-stat">
-            <strong>Quick Jump</strong><br />
-            Instructor-saved highlights:
-          </div>
-          <div className="reader-pills" style={{ gap: '8px', marginTop: '8px' }}>
-            <button className="reader-btn" onClick={() => quickJump('adme')}>ADME Core Map</button>
-            <button className="reader-btn" onClick={() => quickJump('pd')}>PD Receptor Effects</button>
-            <button className="reader-btn" onClick={() => quickJump('cp1')}>Checkpoint #1</button>
-            <button className="reader-btn" onClick={() => quickJump('cp2')}>Checkpoint #2</button>
           </div>
 
           <div className="reader-atlas">
@@ -1245,6 +1325,7 @@ export const ChapterReader = () => {
                     onClick={() => {
                       setTheme(m);
                       localStorage.setItem('unavidaTheme', m);
+                      if (m !== 'light') localStorage.setItem('unavidaThemeLastDark', m);
                     }}
                   >
                     {m === 'light' ? 'Day' : m === 'dark' ? 'Night' : m === 'darkplus' ? 'Dark+' : m === 'sepia' ? 'Sepia' : 'Cyan'}
