@@ -191,48 +191,96 @@ export const ChapterReader = () => {
     return entries;
   })();
 
-  const flashcardEligibleSectionIds = new Set([
-    'sec1_overview_introduction',
-    'sec1_1_definitions_scope',
-    'sec1_2_historical_context',
-    'sec1_3_drug_classification',
-    'sec1_4_regulatory_bodies_fda',
-    'sec1_5_drug_names_classification_codes',
-    'sec1_6_pk_vs_pd',
-    'sec1_7_drug_interactions',
-    'sec1_8_dosage_calculations',
-  ]);
+  const curatedFlashcardsByTopic = {
+    'Clinical Application & Safety': [
+      { front: 'What percentage of hospital admissions involve medication errors according to the text?', back: 'Approximately 4-5%.' },
+      { front: 'What must a nurse do if a drug name looks or sounds like another?', back: 'Verify the Right Drug carefully to prevent a look-alike/sound-alike error.' },
+      { front: 'Is pharmacology a static field? Why?', back: 'No; new drugs, new uses for old drugs, and new resistance patterns are constantly evolving.' },
+      { front: 'What is Evidence-Based Practice (EBP) in pharmacology?', back: 'Using the best available research to guide medication interventions and patient care.' },
+      { front: 'What role do Advanced Practice Nurses (NPs) play in pharmacology?', back: 'They have prescriptive authority and manage complex therapy regimens.' },
+      { front: 'Why is Communication listed as a key principle for safe use?', back: 'To ensure all team members are aware of doses, changes, and patient responses to prevent errors.' },
+      { front: "What should a nurse check for in a patient's medical history before administration?", back: 'Contraindications and potential drug-drug interactions.' },
+      { front: 'What does the Right Route prevent?', back: 'Complications like tissue damage or lack of efficacy from inappropriate administration route.' },
+      { front: 'What is the relationship between drug structure and drug action?', back: "Small changes in chemical structure can drastically change a drug's efficacy or side effect profile." },
+      { front: 'What is the ultimate goal of pharmacology in a nursing context?', back: 'To improve human health and ensure patient safety.' },
+    ],
+    'Core Pharmacological Concepts': [
+      { front: 'What is Selective Toxicity?', back: 'The ability of a drug to strike a target (like bacteria) without harming the host (human cells).' },
+      { front: 'Define the Dose-Response Relationship.', back: 'The relationship between dose size and the intensity of response produced.' },
+      { front: 'What is the difference between Potency and Efficacy?', back: 'Potency is amount needed for effect; Efficacy is the maximum effect a drug can produce.' },
+      { front: 'What is a Narrow Therapeutic Index?', back: 'A small range between therapeutic and toxic dose, requiring careful monitoring.' },
+      { front: 'Why is Individualization important in pharmacology?', back: 'Because age, weight, genetics, and physiology mean one dose does not fit all patients.' },
+      { front: 'What is the Therapeutic Intent of a drug?', back: 'The specific intended beneficial goal of the medication for the patient.' },
+    ],
+    'Foundations & Definitions': [
+      { front: 'What is the literal Greek derivation of the word Pharmacology?', back: 'Pharmakon (drug or poison) and logos (study or science).' },
+      { front: 'How is modern pharmacology defined beyond its Greek roots?', back: 'The study of drugs and their interactions with biological systems.' },
+      { front: 'What is Pharmacognosy?', back: 'The study of natural drug sources, such as plants, fungi, and animals.' },
+      { front: 'What is Pharmaceutics?', back: 'The study of how drugs are formulated and delivered to the body.' },
+      { front: 'Define Pharmacokinetics.', back: 'How the body handles a drug: Absorption, Distribution, Metabolism, and Excretion.' },
+      { front: 'Define Pharmacodynamics.', back: 'How a drug affects the body: mechanism of action and receptor binding.' },
+      { front: 'What does Toxicology specifically examine?', back: 'The harmful effects of drugs and the nature of toxicity.' },
+      { front: 'What is Clinical Pharmacology?', back: 'Application of pharmacological principles to treatment of patients.' },
+      { front: 'What is Pharmacoepidemiology?', back: 'Study of drug effects and usage at the population level.' },
+      { front: 'What is Pharmacogenomics?', back: "Study of how genetic variation affects an individual's response to drugs." },
+    ],
+    'Historical Context': [
+      { front: 'Which ancient civilization used willow bark for pain?', back: 'Ancient Egypt.' },
+      { front: 'Who is known as founder of pharmacology and said the dose makes the poison?', back: 'Paracelsus.' },
+      { front: 'What drug used for heart conditions comes from foxglove?', back: 'Digoxin.' },
+      { front: 'What was the first major synthetic drug created in 1897?', back: 'Acetylsalicylic acid (Aspirin).' },
+      { front: 'What drug was first active compound isolated from opium in early 19th century?', back: 'Morphine.' },
+      { front: 'Who discovered antibacterial properties of penicillin in 1928?', back: 'Alexander Fleming.' },
+      { front: 'Why was streptomycin discovery significant?', back: 'It was the first effective treatment against tuberculosis.' },
+    ],
+    'Modern Technology & Science': [
+      { front: 'How did radioisotope labeling advance pharmacology?', back: 'It allowed scientists to trace exactly how drugs move through the body.' },
+      { front: 'What is the benefit of computer modeling in drug development?', back: 'Virtual screening of millions of compounds and modeling receptor interactions.' },
+      { front: 'What are Monoclonal Antibodies?', back: 'Highly specific drugs targeting particular proteins, often in cancer/autoimmune care.' },
+      { front: 'What are Tyrosine Kinase Inhibitors?', back: 'Drugs that target specific cell signaling pathways.' },
+      { front: 'What is the primary concern regarding the Antibiotic Era today?', back: 'Development of antibiotic resistance.' },
+    ],
+    'Nursing Responsibilities & The Eight Rights': [
+      { front: 'Why is the nurse considered the final safeguard in medication administration?', back: 'They are the last point before drug reaches patient and can catch errors.' },
+      { front: 'What are the two identifiers used for the Right Patient?', back: 'Typically name and date of birth (or medical record number).' },
+      { front: 'What does Right Reason entail for a nurse?', back: "Confirming medication is appropriate for the patient's diagnosis." },
+      { front: 'What is Right Response in the extended Eight Rights?', back: 'Monitoring whether the medication achieved desired effect.' },
+      { front: 'What does Right Documentation require?', back: 'Recording administration immediately, accurately, and completely.' },
+      { front: 'Beyond giving the pill, what is a key post-administration nursing responsibility?', back: 'Ongoing monitoring for adverse and therapeutic effects.' },
+      { front: 'What should a nurse provide regarding Patient Education?', back: 'Explain purpose, instructions, and side effects to report.' },
+      { front: 'How does kidney function affect the Right Dose?', back: 'Reduced kidney function may require lower dose to prevent toxicity.' },
+    ],
+    'Regulation & Safety History': [
+      { front: 'What did the Pure Food and Drug Act of 1906 require?', back: 'Accurate labeling and prohibition of false claims.' },
+      { front: 'What was required by the Food, Drug, and Cosmetic Act of 1938?', back: 'Drugs had to be proven safe before marketing.' },
+      { front: 'What tragedy led to 1962 amendments requiring efficacy proof?', back: 'The thalidomide tragedy.' },
+      { front: 'What is the modern requirement for drug approval today?', back: 'Drug must be proven both safe and effective.' },
+    ],
+    'Review & Reflection Concepts': [
+      { front: 'What is an Apothecary?', back: 'Historical precursor to pharmacist who prepared drugs from plants and minerals.' },
+      { front: 'How does age affect drug response in the elderly?', back: 'Decreased organ function increases toxicity risk.' },
+      { front: 'What does Broad-Spectrum mean in antibiotics?', back: 'Effective against a wide variety of bacteria.' },
+      { front: 'Why is study of Drug Interactions critical?', back: 'Multiple medications can cancel effects or cause toxic buildup.' },
+      { front: 'What is the Right Time window for medication?', back: "Administration within facility-approved timeframe to maintain therapeutic levels." },
+      { front: 'What is Selective toxicity in cancer treatment context?', back: 'Attempting to kill cancer cells while sparing healthy cells.' },
+      { front: 'Define Bioavailability.', back: 'Proportion of a drug entering circulation and able to produce active effect.' },
+      { front: 'What is the Right Patient verification process?', back: "Compare MAR/order with wristband and ask patient to state identity." },
+      { front: 'Why is Monitoring considered a nursing duty?', back: 'To detect adverse effects early and verify therapeutic goals are met.' },
+      { front: 'What is Pharmacology in Context?', back: 'Understanding drugs as tools within legal, social, and biological patient-care frameworks.' },
+    ],
+  };
 
-  const generatedDeck = (chapterData.chapter.sections || [])
-    .filter((s) => flashcardEligibleSectionIds.has(s.id))
-    .flatMap((s) => {
-      const title = cleanHeading(s.title || 'Section');
-      const sectionId = s.id;
-      const cards = [];
+  const flashcardTopics = Object.keys(curatedFlashcardsByTopic).sort();
+  const sourceDeck = flashcardTopics.flatMap((topic) =>
+    (curatedFlashcardsByTopic[topic] || []).map((card, idx) => ({
+      sectionId: topic,
+      sectionTitle: topic,
+      front: card.front,
+      back: card.back,
+      idx,
+    }))
+  );
 
-      (s.learningObjectives || []).forEach((obj) => {
-        cards.push({
-          sectionId,
-          sectionTitle: title,
-          front: `In ${title}, what should you be able to do regarding: ${obj.toLowerCase()}?`,
-          back: obj,
-        });
-      });
-
-      (s.keyTakeaways || []).forEach((kt) => {
-        const cleanKt = (kt || '').trim();
-        cards.push({
-          sectionId,
-          sectionTitle: title,
-          front: `What is a key concept from ${title}?`,
-          back: cleanKt,
-        });
-      });
-
-      return cards;
-    });
-
-  const sourceDeck = (flashcards.length > 0 ? flashcards : generatedDeck);
   const flashcardDeck = sourceDeck
     .filter((c) => flashFilter === 'all' || c.sectionId === flashFilter)
     .slice(0, 120);
@@ -1358,11 +1406,11 @@ export const ChapterReader = () => {
                     </div>
                     <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap', marginBottom: '8px' }}>
                       <p style={{ margin: 0 }}>Chapter 1 deck ({flashcardDeck.length} cards).</p>
-                      <label style={{ fontSize: '12px', color: 'var(--muted)' }}>Section:</label>
+                      <label style={{ fontSize: '12px', color: 'var(--muted)' }}>Topic:</label>
                       <select value={flashFilter} onChange={(e) => setFlashFilter(e.target.value)} style={{ border: '1px solid var(--panel-border)', borderRadius: '8px', padding: '4px 8px', background: 'var(--panel)', color: 'var(--text)' }}>
-                        <option value="all">All sections</option>
-                        {(chapterData.chapter.sections || []).filter((s) => flashcardEligibleSectionIds.has(s.id)).map((s) => (
-                          <option key={s.id} value={s.id}>{cleanHeading(s.title)}</option>
+                        <option value="all">All topics</option>
+                        {flashcardTopics.map((topic) => (
+                          <option key={topic} value={topic}>{topic}</option>
                         ))}
                       </select>
                     </div>
