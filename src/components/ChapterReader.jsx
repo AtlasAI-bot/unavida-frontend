@@ -24,7 +24,8 @@ export const ChapterReader = () => {
   const [flashcards, setFlashcards] = useState(() => {
     try { return JSON.parse(localStorage.getItem('unavida:flashcards') || '[]'); } catch { return []; }
   });
-  const [quickJumpOpen, setQuickJumpOpen] = useState(true);
+  const [quickJumpOpen, setQuickJumpOpen] = useState(false);
+  const [toolView, setToolView] = useState('content');
   const [newNote, setNewNote] = useState('');
   const [highlightColor, setHighlightColor] = useState('yellow');
 
@@ -217,12 +218,16 @@ export const ChapterReader = () => {
   const getSectionById = (id) => (chapterData.chapter.sections || []).find((s) => s.id === id);
 
   const openTool = (tool) => {
+    if (tool === 'flashcards') {
+      setToolView('flashcards');
+      return;
+    }
+
+    setToolView('content');
     const map = {
-      flashcards: 'sec1_6_pk_vs_pd',
       quiz: 'sec1_11_review_questions',
       cases: 'sec1_10_clinical_story_allergy_decision',
       practice: 'sec1_8_dosage_calculations',
-      outcomes: 'sec1_overview_introduction',
     };
     const target = getSectionById(map[tool]);
     if (target) {
@@ -478,6 +483,7 @@ export const ChapterReader = () => {
 
   const handleSectionClick = (section) => {
     setSelectedSection(section);
+    setToolView('content');
     setRevealedAnswers({});
     if (typeof window !== 'undefined' && window.innerWidth <= 1024) {
       setHideToc(true);
@@ -1170,6 +1176,21 @@ export const ChapterReader = () => {
           <div className="reader-main-wrap">
             {selectedSection ? (
               <>
+                {toolView === 'flashcards' && (
+                  <section className="reader-card" style={{ marginBottom: '12px' }}>
+                    <h3>Flashcards</h3>
+                    <p>Study deck for Chapter 1. This tool view is opened from Study Tools.</p>
+                    {(flashcards.length > 0 ? flashcards : (selectedSection.keyTakeaways || []).map((k, i) => ({ front: `Key Point ${i + 1}`, back: k }))).slice(0, 40).map((fc, i) => (
+                      <div key={i} style={{ border: '1px solid var(--panel-border)', borderRadius: '10px', padding: '10px', marginBottom: '8px', background: 'var(--panel)' }}>
+                        <div style={{ fontWeight: 700 }}>Q: {fc.front || fc.question || 'Flashcard'}</div>
+                        <div style={{ marginTop: '6px' }}>A: {fc.back || fc.answer || ''}</div>
+                      </div>
+                    ))}
+                  </section>
+                )}
+
+                {toolView !== 'flashcards' && (
+                  <>
                 <div className="reader-section-label">Chapter Reader</div>
                 <h1>{sectionTitle || selectedSection.title}</h1>
                 <div className="reader-meta reader-subtle">
@@ -1289,6 +1310,8 @@ export const ChapterReader = () => {
                     </ul>
                   </section>
                 )}
+                  </>
+                )}
               </>
             ) : (
               <p>Loading content...</p>
@@ -1309,7 +1332,6 @@ export const ChapterReader = () => {
                 <button className="reader-tool-item" onClick={() => openTool('quiz')}>❓ Quiz</button>
                 <button className="reader-tool-item" onClick={() => openTool('cases')}>🤷 Case Studies</button>
                 <button className="reader-tool-item" onClick={() => openTool('practice')}>🧠 Practice Problems</button>
-                <button className="reader-tool-item" onClick={() => openTool('outcomes')}>✅ Learning Outcomes</button>
                 <button className="reader-tool-item" onClick={() => setQuickJumpOpen((v) => !v)}>⚡ Quick Jump</button>
               </div>
               {quickJumpOpen && (
