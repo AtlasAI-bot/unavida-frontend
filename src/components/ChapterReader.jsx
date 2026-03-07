@@ -914,7 +914,9 @@ export const ChapterReader = () => {
 
         .reader-layout.focus-reader {
           grid-template-columns: 1fr;
-          padding-right: 4px;
+          padding-left: 0;
+          padding-right: 0;
+          gap: 0;
         }
 
         .reader-layout.focus-reader .reader-right {
@@ -928,8 +930,13 @@ export const ChapterReader = () => {
         }
 
         .reader-layout.focus-reader .reader-main {
-          margin-left: 10px;
-          width: calc(100% - 10px);
+          margin-left: 40px;
+          width: calc(100% - 40px);
+          max-width: calc(100vw - 40px);
+        }
+
+        .reader-layout.focus-reader .reader-main-wrap {
+          margin-right: 0;
         }
 
         .reader-layout.focus-reader .reader-toc {
@@ -1662,7 +1669,7 @@ export const ChapterReader = () => {
         </main>
 
         {/* Right Panel - Study Tools */}
-        <aside className={`reader-panel reader-right ${focusReader ? 'reader-hidden' : ''}`} style={focusReader ? { display: 'none' } : undefined}>
+        <aside className={`reader-panel reader-right ${focusReader ? 'reader-hidden' : ''}`} style={focusReader ? { display: 'none', width: 0, minWidth: 0, maxWidth: 0, padding: 0, border: 0, overflow: 'hidden' } : undefined}>
           <div className="reader-accordion open">
             <button className="reader-acc-btn" onClick={(e) => e.currentTarget.closest('.reader-accordion').classList.toggle('open')}>
               Study Tools
