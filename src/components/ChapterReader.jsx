@@ -913,7 +913,8 @@ export const ChapterReader = () => {
         }
 
         .reader-layout.focus-reader {
-          grid-template-columns: 1fr;
+          grid-template-columns: minmax(0, 980px);
+          justify-content: flex-start;
           padding-left: 0;
           padding-right: 0;
           gap: 0;
@@ -931,8 +932,8 @@ export const ChapterReader = () => {
 
         .reader-layout.focus-reader .reader-main {
           margin-left: 50px;
-          width: calc(100vw - 50px);
-          max-width: calc(100vw - 50px);
+          width: 100%;
+          max-width: 930px;
           margin-right: 0;
         }
 
