@@ -930,9 +930,10 @@ export const ChapterReader = () => {
         }
 
         .reader-layout.focus-reader .reader-main {
-          margin-left: 40px;
-          width: calc(100% - 40px);
-          max-width: calc(100vw - 40px);
+          margin-left: 50px;
+          width: calc(100vw - 50px);
+          max-width: calc(100vw - 50px);
+          margin-right: 0;
         }
 
         .reader-layout.focus-reader .reader-main-wrap {
