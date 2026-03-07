@@ -173,6 +173,11 @@ export const ChapterReader = () => {
   const sectionTitle = cleanHeading(selectedSection?.title || '');
   const currentWordCount = getSectionWordCount(selectedSection);
 
+  const allSections = chapterData.chapter.sections || [];
+  const currentSectionIndex = allSections.findIndex((s) => s.id === selectedSection?.id);
+  const prevSection = currentSectionIndex > 0 ? allSections[currentSectionIndex - 1] : null;
+  const nextSection = currentSectionIndex >= 0 && currentSectionIndex < allSections.length - 1 ? allSections[currentSectionIndex + 1] : null;
+
   const glossaryEntries = (() => {
     if (selectedSection?.id !== 'sec1_9_key_terms_glossary') return [];
     const lines = (selectedSection.content || '').split('\n').map((l) => l.trim()).filter(Boolean);
@@ -1667,6 +1672,28 @@ export const ChapterReader = () => {
                     </ul>
                   </section>
                 )}
+
+                <section className="reader-card" style={{ marginTop: '12px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', gap: '10px', flexWrap: 'wrap' }}>
+                    <button
+                      className="reader-btn"
+                      onClick={() => prevSection && handleSectionClick(prevSection)}
+                      disabled={!prevSection}
+                      style={!prevSection ? { opacity: 0.45, cursor: 'not-allowed' } : undefined}
+                    >
+                      ← Back {prevSection ? `(${cleanHeading(prevSection.title)})` : ''}
+                    </button>
+
+                    <button
+                      className="reader-btn"
+                      onClick={() => nextSection && handleSectionClick(nextSection)}
+                      disabled={!nextSection}
+                      style={!nextSection ? { opacity: 0.45, cursor: 'not-allowed' } : undefined}
+                    >
+                      Next → {nextSection ? `(${cleanHeading(nextSection.title)})` : ''}
+                    </button>
+                  </div>
+                </section>
                   </>
                 )}
               </>
