@@ -917,7 +917,11 @@ export const ChapterReader = () => {
         }
 
         .reader-layout.focus-reader .reader-right {
-          display: none;
+          display: none !important;
+        }
+
+        .reader-layout.focus-reader .reader-main {
+          margin-left: 15px;
         }
 
         .reader-layout.focus-reader .reader-toc {
