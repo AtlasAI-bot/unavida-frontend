@@ -914,14 +914,22 @@ export const ChapterReader = () => {
 
         .reader-layout.focus-reader {
           grid-template-columns: 1fr;
+          padding-right: 4px;
         }
 
         .reader-layout.focus-reader .reader-right {
           display: none !important;
+          width: 0 !important;
+          min-width: 0 !important;
+          max-width: 0 !important;
+          padding: 0 !important;
+          border: 0 !important;
+          overflow: hidden !important;
         }
 
         .reader-layout.focus-reader .reader-main {
-          margin-left: 5px;
+          margin-left: 10px;
+          width: calc(100% - 10px);
         }
 
         .reader-layout.focus-reader .reader-toc {
