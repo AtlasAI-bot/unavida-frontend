@@ -943,7 +943,12 @@ export const ChapterReader = () => {
         }
 
         .reader-layout.focus-reader .reader-main-wrap {
-          max-width: 1300px;
+          max-width: none;
+          width: 100%;
+        }
+
+        .reader-layout.focus-reader .reader-main {
+          width: 100%;
         }
 
         .reader-panel {
