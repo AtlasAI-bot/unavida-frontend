@@ -933,17 +933,18 @@ export const ChapterReader = () => {
         }
 
         .reader-layout.focus-reader .reader-main {
-          margin-left: 0;
-          width: 100%;
-          max-width: 100vw;
-          margin-right: 0;
+          margin-left: 0 !important;
+          margin-right: 0 !important;
+          width: 100vw !important;
+          max-width: 100vw !important;
+          padding: 0 !important;
         }
 
         .reader-layout.focus-reader .reader-main-wrap {
-          margin-right: 0;
-          max-width: none;
-          width: 100%;
-          padding: 0;
+          margin: 0 !important;
+          max-width: none !important;
+          width: 100vw !important;
+          padding: 0 14px 0 14px !important;
         }
 
         .reader-layout.focus-reader .reader-toc {
