@@ -921,7 +921,7 @@ export const ChapterReader = () => {
         }
 
         .reader-layout.focus-reader .reader-main {
-          margin-left: 15px;
+          margin-left: 30px;
         }
 
         .reader-layout.focus-reader .reader-toc {
@@ -1384,7 +1384,7 @@ export const ChapterReader = () => {
           {topMenuOpen && (
             <div className="reader-menu">
               <button className="reader-btn" onClick={() => { toggleTheme(); setTopMenuOpen(false); }}>{theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}</button>
-              <button className="reader-btn" onClick={() => { const next = !focusReader; setFocusReader(next); if (next) setHideToc(true); setTopMenuOpen(false); }}>{focusReader ? '↔ Restore Layout' : '↔ Expand Reader'}</button>
+              <button className="reader-btn" onClick={() => { const next = !focusReader; setFocusReader(next); if (next) setHideToc(true); else setHideToc(false); setTopMenuOpen(false); }}>{focusReader ? '↔ Restore Layout' : '↔ Expand Reader'}</button>
               <button className="reader-btn" onClick={() => { setPrefsModalOpen(true); setTopMenuOpen(false); }}>⚙️ Reader Preferences</button>
               <button className="reader-btn" onClick={() => { toggleReadAloud(); setTopMenuOpen(false); }}>{readAloudOn ? '⏸ Stop Read Aloud' : '🔊 Read Aloud'}</button>
               <button className="reader-btn" onClick={() => { printReader(); setTopMenuOpen(false); }}>🖨 Print Section</button>
@@ -1654,7 +1654,7 @@ export const ChapterReader = () => {
         </main>
 
         {/* Right Panel - Study Tools */}
-        <aside className={`reader-panel reader-right ${focusReader ? 'reader-hidden' : ''}`}>
+        <aside className={`reader-panel reader-right ${focusReader ? 'reader-hidden' : ''}`} style={focusReader ? { display: 'none' } : undefined}>
           <div className="reader-accordion open">
             <button className="reader-acc-btn" onClick={(e) => e.currentTarget.closest('.reader-accordion').classList.toggle('open')}>
               Study Tools
