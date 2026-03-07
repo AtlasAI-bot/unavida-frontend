@@ -943,6 +943,7 @@ export const ChapterReader = () => {
           margin-right: 0;
           max-width: none;
           width: 100%;
+          padding: 0;
         }
 
         .reader-layout.focus-reader .reader-toc {
