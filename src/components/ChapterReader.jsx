@@ -944,7 +944,7 @@ export const ChapterReader = () => {
           margin: 0 !important;
           max-width: none !important;
           width: 100vw !important;
-          padding: 0 14px 0 45px !important;
+          padding: 0 14px 0 50px !important;
         }
 
         .reader-layout.focus-reader .reader-toc {
