@@ -921,7 +921,7 @@ export const ChapterReader = () => {
         }
 
         .reader-layout.focus-reader .reader-main {
-          margin-left: 35px;
+          margin-left: 5px;
         }
 
         .reader-layout.focus-reader .reader-toc {
@@ -964,7 +964,7 @@ export const ChapterReader = () => {
         }
 
         .reader-toc { flex: 0 0 320px; }
-        .reader-main { flex: 1; min-width: 0; margin-left: 5px; }
+        .reader-main { flex: 1; min-width: 0; margin-left: 35px; }
         .reader-right { flex: 0 0 320px; }
 
         .reader-toc-title {
