@@ -913,11 +913,13 @@ export const ChapterReader = () => {
         }
 
         .reader-layout.focus-reader {
-          grid-template-columns: minmax(0, 980px);
-          justify-content: flex-start;
+          grid-template-columns: 1fr;
+          justify-content: stretch;
           padding-left: 0;
           padding-right: 0;
           gap: 0;
+          width: 100vw;
+          max-width: 100vw;
         }
 
         .reader-layout.focus-reader .reader-right {
@@ -931,14 +933,16 @@ export const ChapterReader = () => {
         }
 
         .reader-layout.focus-reader .reader-main {
-          margin-left: 50px;
+          margin-left: 0;
           width: 100%;
-          max-width: 930px;
+          max-width: 100vw;
           margin-right: 0;
         }
 
         .reader-layout.focus-reader .reader-main-wrap {
           margin-right: 0;
+          max-width: none;
+          width: 100%;
         }
 
         .reader-layout.focus-reader .reader-toc {
