@@ -150,7 +150,7 @@ export const TextbookDashboard = () => {
           Mastering Pharmacology is used in NUR1100 and NUR2110.
         </div>
 
-        <div style={{ marginTop: 12, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+        <div style={{ marginTop: 12, display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
           <button
             onClick={() => {
               const nextDark = !isDarkMode;
