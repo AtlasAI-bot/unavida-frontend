@@ -261,16 +261,35 @@ export const TextbookDashboard = () => {
           </section>
 
           <section style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: 12 }}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(110px,140px) 1fr', gap: 10, alignItems: 'end' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr minmax(120px,150px)', gap: 10, alignItems: 'end' }}>
+              <div style={{ fontSize: 13, alignSelf: 'start' }}>
+                <div style={{
+                  position: 'relative',
+                  background: palette.panel2,
+                  border: `1px solid ${palette.border}`,
+                  borderRadius: 12,
+                  padding: '10px 12px',
+                  marginBottom: 8
+                }}>
+                  <strong>Atlas says:</strong>
+                  <div style={{ marginTop: 4 }}>{atlasPhrase}</div>
+                  <span style={{
+                    position: 'absolute',
+                    right: -8,
+                    bottom: 14,
+                    width: 0,
+                    height: 0,
+                    borderTop: '8px solid transparent',
+                    borderBottom: '8px solid transparent',
+                    borderLeft: `10px solid ${palette.panel2}`
+                  }} />
+                </div>
+              </div>
               <img
                 src="/assets/atlas-standing.png"
                 alt="Atlas"
-                style={{ width: '100%', maxHeight: 220, objectFit: 'contain', objectPosition: 'bottom center', borderRadius: 8, background: palette.panel2 }}
+                style={{ width: '100%', maxHeight: 240, objectFit: 'contain', objectPosition: 'bottom center' }}
               />
-              <div style={{ fontSize: 13 }}>
-                <strong>Atlas says:</strong>
-                <div style={{ marginTop: 4 }}>{atlasPhrase}</div>
-              </div>
             </div>
           </section>
         </aside>
