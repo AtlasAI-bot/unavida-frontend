@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const atlasPhrases = [
@@ -76,6 +76,11 @@ export const TextbookDashboard = () => {
   const navigate = useNavigate();
   const { textbookId } = useParams();
   const [isDarkMode, setIsDarkMode] = useState(true);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('unavidaTheme') || 'darkplus';
+    setIsDarkMode(savedTheme !== 'light');
+  }, []);
   const [activeCourse, setActiveCourse] = useState(textbookId === 'NUR2110' ? 'NUR2110' : 'NUR1100');
   const [openChapterId, setOpenChapterId] = useState('ch1');
   const [atlasPhrase] = useState(() => atlasPhrases[Math.floor(Math.random() * atlasPhrases.length)]);
@@ -109,12 +114,18 @@ export const TextbookDashboard = () => {
         <div style={{ fontSize: 13, color: palette.muted }}>Bookshelf / Mastering Pharmacology</div>
         <div style={{ marginTop: 4, fontWeight: 700, fontSize: 22 }}>Mastering Pharmacology</div>
         <div style={{ marginTop: 6, fontSize: 13, color: palette.muted }}>
-          Shared textbook shell for both NUR1100 and NUR2110 with course-specific chapter tracks.
+          Mastering pharmacology is used in NUR1100 and NUR2110.
         </div>
 
         <div style={{ marginTop: 12, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
           <button
-            onClick={() => setIsDarkMode((v) => !v)}
+            onClick={() => {
+              const nextDark = !isDarkMode;
+              setIsDarkMode(nextDark);
+              const nextTheme = nextDark ? (localStorage.getItem('unavidaThemeLastDark') || 'darkplus') : 'light';
+              localStorage.setItem('unavidaTheme', nextTheme);
+              if (nextDark) localStorage.setItem('unavidaThemeLastDark', nextTheme);
+            }}
             style={{ padding: '8px 12px', borderRadius: 8, border: `1px solid ${palette.border}`, background: palette.panel, color: palette.text, cursor: 'pointer' }}
           >
             {isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}

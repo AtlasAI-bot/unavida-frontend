@@ -15,8 +15,11 @@ export const Bookshelf = () => {
   }, []);
 
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-    localStorage.setItem('unavidaTheme', isDarkMode ? 'light' : 'dark');
+    const nextDark = !isDarkMode;
+    setIsDarkMode(nextDark);
+    const nextTheme = nextDark ? (localStorage.getItem('unavidaThemeLastDark') || 'darkplus') : 'light';
+    localStorage.setItem('unavidaTheme', nextTheme);
+    if (nextDark) localStorage.setItem('unavidaThemeLastDark', nextTheme);
   };
 
   const textbooks = [
