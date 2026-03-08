@@ -16,6 +16,8 @@ import { InstructorDashboard } from './components/InstructorDashboard';
 import { AdminDashboard } from './components/AdminDashboard';
 import ChapterHub from './components/ChapterHub';
 import { PressPrototypeViewer } from './components/PressPrototypeViewer';
+import { WorkbookPage } from './components/WorkbookPage';
+import { VideoLibraryPage } from './components/VideoLibraryPage';
 
 export function App() {
   return (
@@ -111,6 +113,26 @@ export function App() {
                   } 
                 />
                 
+                {/* Workbook page scaffold */}
+                <Route
+                  path="/workbook"
+                  element={
+                    <ProtectedRoute requiredRole="student">
+                      <WorkbookPage />
+                    </ProtectedRoute>
+                  }
+                />
+
+                {/* Video library page scaffold */}
+                <Route
+                  path="/video-library"
+                  element={
+                    <ProtectedRoute requiredRole="student">
+                      <VideoLibraryPage />
+                    </ProtectedRoute>
+                  }
+                />
+
                 {/* UnaVida Press production prototype (safe preview route) */}
                 <Route
                   path="/press/prototype"

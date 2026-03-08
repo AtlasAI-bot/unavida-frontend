@@ -84,6 +84,39 @@ export const TextbookDashboard = () => {
   const [activeCourse, setActiveCourse] = useState(textbookId === 'NUR2110' ? 'NUR2110' : 'NUR1100');
   const [openChapterId, setOpenChapterId] = useState('ch1');
   const [atlasPhrase] = useState(() => atlasPhrases[Math.floor(Math.random() * atlasPhrases.length)]);
+  const [snapshot, setSnapshot] = useState({
+    quizAvg: 0,
+    flashMastery: 0,
+    chaptersCompleted: 0,
+    minutesStudied: 0,
+  });
+
+  useEffect(() => {
+    try {
+      const quiz = JSON.parse(localStorage.getItem('quiz_progress') || '{}');
+      const flash = JSON.parse(localStorage.getItem('flashcard_progress') || '{}');
+      const progress = JSON.parse(localStorage.getItem('unavida_progress') || '{}');
+      const chapterProgress = JSON.parse(localStorage.getItem('unavida_progress_advanced') || '{}');
+
+      const quizAvg = Number(quiz.percentage || 0);
+      const mastered = Number(flash?.stats?.cardsMastered || 0);
+      const studied = Number(flash?.stats?.cardsStudied || 0);
+      const flashMastery = studied > 0 ? Math.round((mastered / studied) * 100) : 0;
+      const chaptersCompleted = Object.values(progress || {}).filter((v) => Number(v) >= 100).length;
+      const totalMinutes = Math.round(
+        Object.values(chapterProgress || {}).reduce((acc, item) => acc + Number(item?.totalTimeSpent || 0), 0) / 60
+      );
+
+      setSnapshot({
+        quizAvg,
+        flashMastery,
+        chaptersCompleted,
+        minutesStudied: totalMinutes,
+      });
+    } catch {
+      // keep defaults
+    }
+  }, []);
 
   const palette = useMemo(() => {
     if (isDarkMode) {
@@ -201,29 +234,29 @@ export const TextbookDashboard = () => {
           <section style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: 14 }}>
             <h3 style={{ margin: '0 0 10px' }}>Quick Performance Snapshot</h3>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,minmax(0,1fr))', gap: 8 }}>
-              <div style={{ background: palette.panel2, borderRadius: 8, padding: 10 }}><strong>Quiz Avg</strong><div>86%</div></div>
-              <div style={{ background: palette.panel2, borderRadius: 8, padding: 10 }}><strong>Flashcard Mastery</strong><div>74%</div></div>
-              <div style={{ background: palette.panel2, borderRadius: 8, padding: 10 }}><strong>Chapters Completed</strong><div>1 / 13</div></div>
-              <div style={{ background: palette.panel2, borderRadius: 8, padding: 10 }}><strong>Time Studied</strong><div>3h 42m</div></div>
+              <div style={{ background: palette.panel2, borderRadius: 8, padding: 10 }}><strong>Quiz Avg</strong><div>{snapshot.quizAvg}%</div></div>
+              <div style={{ background: palette.panel2, borderRadius: 8, padding: 10 }}><strong>Flashcard Mastery</strong><div>{snapshot.flashMastery}%</div></div>
+              <div style={{ background: palette.panel2, borderRadius: 8, padding: 10 }}><strong>Chapters Completed</strong><div>{snapshot.chaptersCompleted} / {course.chapters.length}</div></div>
+              <div style={{ background: palette.panel2, borderRadius: 8, padding: 10 }}><strong>Time Studied</strong><div>{snapshot.minutesStudied}m</div></div>
             </div>
           </section>
 
           <section style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: 14 }}>
             <h3 style={{ margin: '0 0 10px' }}>Study Tools</h3>
             <div style={{ display: 'grid', gap: 8 }}>
-              <button onClick={() => navigate('/reader/ch1_0')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>🎴 Flashcards</button>
-              <button onClick={() => navigate('/reader/ch1_11')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>❓ Quiz</button>
-              <button style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>🩺 Case Studies (Design next)</button>
+              <button onClick={() => navigate('/reader/ch1_intro')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>🎴 Flashcards</button>
+              <button onClick={() => navigate('/reader/ch1_intro')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>❓ Quiz</button>
+              <button onClick={() => navigate('/chapter/ch1_intro/hub')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>🩺 Case Studies (open hub)</button>
             </div>
           </section>
 
           <section style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: 14 }}>
             <h3 style={{ margin: '0 0 10px' }}>Workbook + Video Library</h3>
             <div style={{ display: 'grid', gap: 8 }}>
-              <button style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>📝 Notes</button>
-              <button style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>⚡ Quick Jump</button>
-              <button style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>🔖 Bookmarks</button>
-              <button style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>🎥 Video Library (Design next)</button>
+              <button onClick={() => navigate('/workbook')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>📝 Notes</button>
+              <button onClick={() => navigate('/workbook')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>⚡ Quick Jump</button>
+              <button onClick={() => navigate('/workbook')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>🔖 Bookmarks</button>
+              <button onClick={() => navigate('/video-library')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>🎥 Video Library</button>
             </div>
           </section>
 
