@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import chapterData from '../data/CHAPTER_1_UNAVIDA_PRODUCTION.json';
 import './ChapterReader.css';
 
 export const ChapterReader = () => {
+  const location = useLocation();
   const [selectedSection, setSelectedSection] = useState(null);
   const [theme, setTheme] = useState('light');
   const [focusReader, setFocusReader] = useState(false);
@@ -682,15 +684,23 @@ export const ChapterReader = () => {
     }
   }, []);
 
-  // Set default section on mount (restore last viewed section if available)
+  // Set section from URL query (?section=...), else restore last viewed section
   useEffect(() => {
     const sections = chapterData.chapter.sections || [];
     if (!sections.length) return;
 
+    const query = new URLSearchParams(location.search || '');
+    const sectionId = query.get('section');
+    const fromQuery = sections.find((s) => s.id === sectionId);
+    if (fromQuery) {
+      setSelectedSection(fromQuery);
+      return;
+    }
+
     const savedId = localStorage.getItem('unavida:lastReaderSection:ch1_intro');
     const saved = sections.find((s) => s.id === savedId);
     setSelectedSection(saved || sections[0]);
-  }, []);
+  }, [location.search]);
 
   // Persist currently viewed section
   useEffect(() => {

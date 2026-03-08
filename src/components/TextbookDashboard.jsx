@@ -19,11 +19,18 @@ const courseContent = {
         title: 'Chapter 1: Introduction to Pharmacology',
         status: 'In Progress',
         sections: [
-          { id: 'ch1_0', label: '1.0 Overview & Introduction', status: 'Completed' },
-          { id: 'ch1_1', label: '1.1 Definition & Scope', status: 'In Progress' },
-          { id: 'ch1_2', label: '1.2 Historical Context', status: 'In Progress' },
-          { id: 'ch1_3', label: '1.3 Drug Classification Systems', status: 'Not Started' },
-          { id: 'ch1_11', label: '1.11 Review Questions & Assessment', status: 'Not Started' },
+          { id: 'sec1_overview_introduction', label: '1.0 Overview & Introduction', status: 'Completed' },
+          { id: 'sec1_1_definitions_scope', label: '1.1 Definition & Scope of Pharmacology', status: 'In Progress' },
+          { id: 'sec1_2_historical_context', label: '1.2 Historical Context of Pharmacology', status: 'In Progress' },
+          { id: 'sec1_3_drug_classification', label: '1.3 Drug Classification Systems', status: 'Not Started' },
+          { id: 'sec1_4_regulatory_bodies_fda', label: '1.4 Regulatory Bodies & FDA Process', status: 'Not Started' },
+          { id: 'sec1_5_drug_names_codes', label: '1.5 Drug Names & Classification Codes', status: 'Not Started' },
+          { id: 'sec1_6_pk_vs_pd', label: '1.6 Pharmacokinetics vs Pharmacodynamics', status: 'In Progress' },
+          { id: 'sec1_7_drug_interactions', label: '1.7 Drug Interactions & Patient Safety', status: 'Not Started' },
+          { id: 'sec1_8_dosage_calculations', label: '1.8 Dosage Calculations', status: 'Not Started' },
+          { id: 'sec1_9_key_terms_glossary', label: '1.9 Key Terms Glossary', status: 'Not Started' },
+          { id: 'sec1_10_clinical_story_allergy_decision', label: '1.10 Clinical Story: The Allergy Decision', status: 'Not Started' },
+          { id: 'sec1_11_review_questions', label: '1.11 Review Questions & Assessment', status: 'Not Started' },
         ],
       },
       {
@@ -215,7 +222,7 @@ export const TextbookDashboard = () => {
                       {chapter.sections.map((section) => (
                         <button
                           key={section.id}
-                          onClick={() => navigate(`/reader/${section.id}`)}
+                          onClick={() => navigate(`/reader/ch1_intro?section=${section.id}`)}
                           style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel, color: palette.text, padding: 9, cursor: 'pointer' }}
                         >
                           <div style={{ fontWeight: 600 }}>{section.label}</div>
