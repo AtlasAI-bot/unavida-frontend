@@ -114,7 +114,7 @@ export const TextbookDashboard = () => {
         <div style={{ fontSize: 13, color: palette.muted }}>Bookshelf / Mastering Pharmacology</div>
         <div style={{ marginTop: 4, fontWeight: 700, fontSize: 22 }}>Mastering Pharmacology</div>
         <div style={{ marginTop: 6, fontSize: 13, color: palette.muted }}>
-          Mastering pharmacology is used in NUR1100 and NUR2110.
+          Mastering Pharmacology is used in NUR1100 and NUR2110.
         </div>
 
         <div style={{ marginTop: 12, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
