@@ -227,11 +227,17 @@ export const TextbookDashboard = () => {
             </div>
           </section>
 
-          <section style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: 12, display: 'grid', gridTemplateColumns: '72px 1fr', gap: 10, alignItems: 'center' }}>
-            <img src="/assets/atlas-standing.jpg" alt="Atlas" style={{ width: 72, height: 72, objectFit: 'cover', borderRadius: 999 }} />
-            <div style={{ fontSize: 13 }}>
-              <strong>Atlas says:</strong>
-              <div style={{ marginTop: 4 }}>{atlasPhrase}</div>
+          <section style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: 12 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(110px,140px) 1fr', gap: 10, alignItems: 'end' }}>
+              <img
+                src="/assets/atlas-standing.jpg"
+                alt="Atlas"
+                style={{ width: '100%', maxHeight: 220, objectFit: 'contain', objectPosition: 'bottom center', borderRadius: 8, background: palette.panel2 }}
+              />
+              <div style={{ fontSize: 13 }}>
+                <strong>Atlas says:</strong>
+                <div style={{ marginTop: 4 }}>{atlasPhrase}</div>
+              </div>
             </div>
           </section>
         </aside>
