@@ -1407,7 +1407,7 @@ export const ChapterReader = () => {
         </div>
         <div className="reader-tools">
           <button className="reader-btn" onClick={() => setTopMenuOpen((v) => !v)}>☰ Reader Menu</button>
-          <a href="/bookshelf" className="reader-btn">Back to Textbook</a>
+          <a href="/textbook/NUR1100" className="reader-btn">Back to Textbook</a>
 
           {topMenuOpen && (
             <div className="reader-menu">

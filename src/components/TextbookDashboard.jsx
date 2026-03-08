@@ -1,286 +1,228 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
-import { useStudentProgress } from '../context/StudentProgressContext';
+
+const atlasPhrases = [
+  'Small steps, safe meds, strong nurse.',
+  'You are building clinical judgment one section at a time.',
+  'Read for understanding, not just completion.',
+  'If it seems unclear, slow down and verify.',
+  'Confidence comes from repetition + reflection.',
+];
+
+const courseContent = {
+  NUR1100: {
+    code: 'NUR1100',
+    name: 'Pharmacology I',
+    chapters: [
+      {
+        id: 'ch1',
+        title: 'Chapter 1: Introduction to Pharmacology',
+        status: 'In Progress',
+        sections: [
+          { id: 'ch1_0', label: '1.0 Overview & Introduction', status: 'Completed' },
+          { id: 'ch1_1', label: '1.1 Definition & Scope', status: 'In Progress' },
+          { id: 'ch1_2', label: '1.2 Historical Context', status: 'In Progress' },
+          { id: 'ch1_3', label: '1.3 Drug Classification Systems', status: 'Not Started' },
+          { id: 'ch1_11', label: '1.11 Review Questions & Assessment', status: 'Not Started' },
+        ],
+      },
+      {
+        id: 'ch2',
+        title: 'Chapter 2: Medication Safety Foundations',
+        status: 'Not Started',
+        sections: [
+          { id: 'ch2_0', label: '2.0 Safety Framework', status: 'Not Started' },
+          { id: 'ch2_1', label: '2.1 Error Prevention', status: 'Not Started' },
+          { id: 'ch2_2', label: '2.2 Clinical Monitoring', status: 'Not Started' },
+        ],
+      },
+    ],
+  },
+  NUR2110: {
+    code: 'NUR2110',
+    name: 'Pharmacology II',
+    chapters: [
+      {
+        id: 'p2_ch1',
+        title: 'Chapter 1: Advanced Therapeutics',
+        status: 'Not Started',
+        sections: [
+          { id: 'p2_ch1_0', label: '1.0 Complex Drug Regimens', status: 'Not Started' },
+          { id: 'p2_ch1_1', label: '1.1 Polypharmacy Strategy', status: 'Not Started' },
+          { id: 'p2_ch1_2', label: '1.2 High-Risk Populations', status: 'Not Started' },
+        ],
+      },
+      {
+        id: 'p2_ch2',
+        title: 'Chapter 2: Critical Care Pharmacology',
+        status: 'Not Started',
+        sections: [
+          { id: 'p2_ch2_0', label: '2.0 Vasoactive Medications', status: 'Not Started' },
+          { id: 'p2_ch2_1', label: '2.1 Sedation & Analgesia', status: 'Not Started' },
+          { id: 'p2_ch2_2', label: '2.2 Sepsis Protocols', status: 'Not Started' },
+        ],
+      },
+    ],
+  },
+};
+
+const statusColor = (status) => {
+  if (status === 'Completed') return '#16a34a';
+  if (status === 'In Progress') return '#eab308';
+  return '#ef4444';
+};
 
 export const TextbookDashboard = () => {
   const navigate = useNavigate();
   const { textbookId } = useParams();
-  const { getChapterProgress } = useStudentProgress();
   const [isDarkMode, setIsDarkMode] = useState(true);
+  const [activeCourse, setActiveCourse] = useState(textbookId === 'NUR2110' ? 'NUR2110' : 'NUR1100');
+  const [openChapterId, setOpenChapterId] = useState('ch1');
+  const [atlasPhrase] = useState(() => atlasPhrases[Math.floor(Math.random() * atlasPhrases.length)]);
 
-  const textbookData = {
-    NUR1100: {
-      id: 'NUR1100',
-      title: 'Pharmacology I',
-      courseCode: 'NUR1100',
-      description: '13 chapter episodes, interactive reading mode, integrated videos, case studies, flashcards, and progress checkpoints designed for nursing students.',
-      icon: '💊',
-      episodes: [
-        { id: 'ch1_0', number: '1.0', title: 'Overview & Introduction', duration: '25 min • Intro video + guided reading', status: 'Completed', progress: 100 },
-        { id: 'ch1_1', number: '1.1', title: 'Definition & Scope of Pharmacology', duration: '20 min • Video + visuals + learning objectives', status: 'In Progress', progress: 60 },
-        { id: 'ch1_2', number: '1.2', title: 'Historical Context of Pharmacology', duration: '20 min • timeline + expanded narrative', status: 'Ready', progress: 0 },
-        { id: 'ch1_6', number: '1.6', title: 'Pharmacokinetics vs Pharmacodynamics', duration: '45 min • featured lesson video', status: 'In Progress', progress: 50 },
-        { id: 'ch1_11', number: '1.11', title: 'Review Questions & Assessment', duration: '30 min • quiz + case studies', status: 'Ready', progress: 0 },
-      ],
-    },
-  };
-
-  const textbook = textbookData[textbookId] || textbookData.NUR1100;
-
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-  };
-
-  const getStatusColor = (status) => {
-    switch (status) {
-      case 'Completed':
-        return '#39d0c8';
-      case 'In Progress':
-        return '#fbbf24';
-      case 'Ready':
-        return '#6b7280';
-      default:
-        return '#6b7280';
+  const palette = useMemo(() => {
+    if (isDarkMode) {
+      return {
+        page: '#0f1113',
+        panel: '#181b1f',
+        panel2: '#22262b',
+        text: '#f5f7fa',
+        muted: '#c5cbd3',
+        border: 'rgba(255,255,255,.12)',
+      };
     }
-  };
+    return {
+      page: '#edf2ff',
+      panel: '#d8e3ff',
+      panel2: '#c8d8ff',
+      text: '#101827',
+      muted: '#334155',
+      border: '#9fb3e8',
+    };
+  }, [isDarkMode]);
+
+  const course = courseContent[activeCourse];
 
   return (
-    <div className={isDarkMode ? 'bg-[#0a1022] text-white' : 'bg-[#edf2ff] text-[#1b2542]'} style={{ minHeight: '100vh' }}>
-      {/* Top Bar */}
-      <div style={{
-        padding: '18px 24px',
-        borderBottom: `1px solid ${isDarkMode ? 'rgba(255,255,255,.1)' : '#cfd9f7'}`,
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        background: isDarkMode ? '#0f1733' : '#dfe8ff',
-      }}>
-        <div>
-          <div style={{ color: isDarkMode ? '#9fb0e8' : '#5f6f9e', fontSize: '13px' }}>Home / My Courses / Pharmacology I</div>
-          <strong>UnaVida • Student View (Demo)</strong>
+    <div style={{ minHeight: '100vh', background: palette.page, color: palette.text }}>
+      <div style={{ padding: '16px 22px', borderBottom: `1px solid ${palette.border}`, background: isDarkMode ? '#14171a' : '#dfe8ff' }}>
+        <div style={{ fontSize: 13, color: palette.muted }}>Bookshelf / Mastering Pharmacology</div>
+        <div style={{ marginTop: 4, fontWeight: 700, fontSize: 22 }}>Mastering Pharmacology</div>
+        <div style={{ marginTop: 6, fontSize: 13, color: palette.muted }}>
+          Shared textbook shell for both NUR1100 and NUR2110 with course-specific chapter tracks.
         </div>
-        <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+
+        <div style={{ marginTop: 12, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
           <button
-            onClick={toggleTheme}
-            style={{
-              padding: '10px 14px',
-              borderRadius: '10px',
-              border: `1px solid ${isDarkMode ? 'rgba(255,255,255,.2)' : '#cfd9f7'}`,
-              background: isDarkMode ? '#ffffff10' : '#fff',
-              color: isDarkMode ? '#fff' : '#1b2542',
-              cursor: 'pointer',
-              fontSize: '13px',
-            }}
+            onClick={() => setIsDarkMode((v) => !v)}
+            style={{ padding: '8px 12px', borderRadius: 8, border: `1px solid ${palette.border}`, background: palette.panel, color: palette.text, cursor: 'pointer' }}
           >
             {isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
           </button>
-          <button
-            onClick={() => navigate('/bookshelf')}
-            style={{
-              padding: '10px 14px',
-              borderRadius: '10px',
-              border: `1px solid ${isDarkMode ? 'rgba(255,255,255,.2)' : '#cfd9f7'}`,
-              background: isDarkMode ? '#ffffff10' : '#fff',
-              color: isDarkMode ? '#fff' : '#1b2542',
-              cursor: 'pointer',
-              fontSize: '13px',
-              textDecoration: 'none',
-              display: 'inline-block',
-            }}
-          >
+          <button onClick={() => navigate('/bookshelf')} style={{ padding: '8px 12px', borderRadius: 8, border: `1px solid ${palette.border}`, background: palette.panel, color: palette.text, cursor: 'pointer' }}>
             Back to Bookshelf
           </button>
         </div>
       </div>
 
-      {/* Hero Section */}
-      <section style={{
-        padding: '28px 24px',
-        background: isDarkMode ? 'linear-gradient(180deg,#15224b,#0a1022)' : 'linear-gradient(180deg,#dfe8ff,#edf2ff)',
-      }}>
-        <h1 style={{ margin: 0, fontSize: '32px', fontWeight: 'bold' }}>{textbook.title} ({textbook.courseCode})</h1>
-        <p style={{ color: isDarkMode ? '#c4cfef' : '#455582', maxWidth: '900px', marginTop: '12px' }}>
-          {textbook.description}
-        </p>
-        <div style={{ display: 'flex', gap: '10px', marginTop: '14px' }}>
-          <button
-            onClick={() => navigate(`/reader/${textbook.episodes[3].id}`)}
-            style={{
-              padding: '10px 14px',
-              borderRadius: '10px',
-              border: 'none',
-              background: '#39d0c8',
-              color: '#032320',
-              fontWeight: '700',
-              cursor: 'pointer',
-            }}
-          >
-            Continue: Chapter {textbook.episodes[3].number}
-          </button>
-          <button
-            onClick={() => navigate(`/reader/${textbook.episodes[0].id}`)}
-            style={{
-              padding: '10px 14px',
-              borderRadius: '10px',
-              border: `1px solid ${isDarkMode ? 'rgba(255,255,255,.2)' : '#cfd9f7'}`,
-              background: isDarkMode ? '#ffffff10' : '#fff',
-              color: isDarkMode ? '#fff' : '#1b2542',
-              cursor: 'pointer',
-            }}
-          >
-            Open Chapter 1
-          </button>
-          <button
-            style={{
-              padding: '10px 14px',
-              borderRadius: '10px',
-              border: `1px solid ${isDarkMode ? 'rgba(255,255,255,.2)' : '#cfd9f7'}`,
-              background: isDarkMode ? '#ffffff10' : '#fff',
-              color: isDarkMode ? '#fff' : '#1b2542',
-              cursor: 'pointer',
-            }}
-          >
-            Open Study Hub
-          </button>
-        </div>
-      </section>
-
-      {/* Main Content Grid */}
-      <div style={{
-        padding: '20px 24px',
-        display: 'grid',
-        gridTemplateColumns: '1.2fr .8fr',
-        gap: '16px',
-      }}>
-        {/* Left Panel - Chapter Episodes */}
-        <section style={{
-          background: isDarkMode ? '#111a38' : '#fff',
-          border: `1px solid ${isDarkMode ? 'rgba(255,255,255,.08)' : '#d9e3ff'}`,
-          borderRadius: '12px',
-          padding: '14px',
-        }}>
-          <h2 style={{ margin: '0 0 10px', fontSize: '18px' }}>Chapter Episodes</h2>
-          <div style={{ display: 'grid', gap: '10px' }}>
-            {textbook.episodes.map((episode) => (
-              <div
-                key={episode.id}
-                onClick={() => navigate(`/reader/${episode.id}`)}
+      <div style={{ padding: 20, display: 'grid', gridTemplateColumns: '1.25fr .75fr', gap: 16 }}>
+        <section style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: 14 }}>
+          <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
+            {(['NUR1100', 'NUR2110']).map((code) => (
+              <button
+                key={code}
+                onClick={() => {
+                  setActiveCourse(code);
+                  setOpenChapterId(courseContent[code].chapters[0]?.id || null);
+                }}
                 style={{
-                  display: 'grid',
-                  gridTemplateColumns: '70px 1fr auto',
-                  gap: '10px',
-                  alignItems: 'center',
-                  padding: '10px',
-                  borderRadius: '10px',
-                  background: isDarkMode ? '#1a2651' : '#f7faff',
+                  padding: '7px 12px',
+                  borderRadius: 999,
+                  border: `1px solid ${palette.border}`,
+                  background: activeCourse === code ? '#39d0c8' : palette.panel2,
+                  color: activeCourse === code ? '#032320' : palette.text,
+                  fontWeight: 700,
                   cursor: 'pointer',
-                  transition: 'all 0.2s',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = isDarkMode ? '#1f2f5a' : '#eef7ff';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = isDarkMode ? '#1a2651' : '#f7faff';
                 }}
               >
-                <div
-                  style={{
-                    width: '70px',
-                    height: '42px',
-                    borderRadius: '8px',
-                    background: isDarkMode ? '#2f3e73' : '#eef7ff',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: isDarkMode ? '#b6c5ff' : '#144057',
-                    fontSize: '11px',
-                    fontWeight: '600',
-                  }}
-                >
-                  {episode.number}
-                </div>
-                <div>
-                  <h4 style={{ margin: 0, fontSize: '14px', fontWeight: '600' }}>{episode.title}</h4>
-                  <p style={{ margin: '2px 0 0', color: isDarkMode ? '#adbadf' : '#5c6c97', fontSize: '12px' }}>
-                    {episode.duration}
-                  </p>
-                </div>
-                <span
-                  style={{
-                    fontSize: '11px',
-                    padding: '3px 8px',
-                    borderRadius: '999px',
-                    background: isDarkMode ? '#2f3e73' : '#eef7ff',
-                    color: isDarkMode ? '#d3ddff' : '#144057',
-                    fontWeight: '600',
-                    whiteSpace: 'nowrap',
-                  }}
-                >
-                  {episode.status}
-                </span>
-              </div>
+                {code}
+              </button>
             ))}
+          </div>
+
+          <h2 style={{ margin: '0 0 10px', fontSize: 18 }}>{course.name} Chapters</h2>
+          <div style={{ display: 'grid', gap: 10 }}>
+            {course.chapters.map((chapter) => {
+              const isOpen = openChapterId === chapter.id;
+              return (
+                <div key={chapter.id} style={{ border: `1px solid ${palette.border}`, borderRadius: 10, background: palette.panel2 }}>
+                  <button
+                    onClick={() => setOpenChapterId(isOpen ? null : chapter.id)}
+                    style={{ width: '100%', textAlign: 'left', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: 10, background: 'transparent', border: 0, color: palette.text, cursor: 'pointer' }}
+                  >
+                    <span style={{ fontWeight: 700 }}>{chapter.title}</span>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+                      <span style={{ fontSize: 12, padding: '2px 8px', borderRadius: 999, background: isDarkMode ? '#0f1113' : '#edf2ff', color: statusColor(chapter.status), fontWeight: 700 }}>{chapter.status}</span>
+                      {isOpen ? '▲' : '▼'}
+                    </span>
+                  </button>
+                  {isOpen && (
+                    <div style={{ padding: '0 10px 10px', display: 'grid', gap: 8 }}>
+                      {chapter.sections.map((section) => (
+                        <button
+                          key={section.id}
+                          onClick={() => navigate(`/reader/${section.id}`)}
+                          style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel, color: palette.text, padding: 9, cursor: 'pointer' }}
+                        >
+                          <div style={{ fontWeight: 600 }}>{section.label}</div>
+                          <div style={{ fontSize: 12, color: statusColor(section.status) }}>{section.status}</div>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </section>
 
-        {/* Right Panel - Performance Snapshot */}
-        <aside style={{
-          background: isDarkMode ? '#111a38' : '#fff',
-          border: `1px solid ${isDarkMode ? 'rgba(255,255,255,.08)' : '#d9e3ff'}`,
-          borderRadius: '12px',
-          padding: '14px',
-        }}>
-          <h2 style={{ margin: '0 0 10px', fontSize: '18px' }}>Quick Performance Snapshot</h2>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
-            gap: '10px',
-          }}>
-            <div style={{
-              background: isDarkMode ? '#1a2651' : '#f7faff',
-              padding: '12px',
-              borderRadius: '10px',
-            }}>
-              <strong>Overall Progress</strong>
-              <p style={{ margin: '4px 0 0' }}>42% complete</p>
+        <aside style={{ display: 'grid', gap: 12 }}>
+          <section style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: 14 }}>
+            <h3 style={{ margin: '0 0 10px' }}>Quick Performance Snapshot</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,minmax(0,1fr))', gap: 8 }}>
+              <div style={{ background: palette.panel2, borderRadius: 8, padding: 10 }}><strong>Quiz Avg</strong><div>86%</div></div>
+              <div style={{ background: palette.panel2, borderRadius: 8, padding: 10 }}><strong>Flashcard Mastery</strong><div>74%</div></div>
+              <div style={{ background: palette.panel2, borderRadius: 8, padding: 10 }}><strong>Chapters Completed</strong><div>1 / 13</div></div>
+              <div style={{ background: palette.panel2, borderRadius: 8, padding: 10 }}><strong>Time Studied</strong><div>3h 42m</div></div>
             </div>
-            <div style={{
-              background: isDarkMode ? '#1a2651' : '#f7faff',
-              padding: '12px',
-              borderRadius: '10px',
-            }}>
-              <strong>Time Studied</strong>
-              <p style={{ margin: '4px 0 0' }}>3h 18m</p>
+          </section>
+
+          <section style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: 14 }}>
+            <h3 style={{ margin: '0 0 10px' }}>Study Tools</h3>
+            <div style={{ display: 'grid', gap: 8 }}>
+              <button onClick={() => navigate('/reader/ch1_0')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>🎴 Flashcards</button>
+              <button onClick={() => navigate('/reader/ch1_11')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>❓ Quiz</button>
+              <button style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>🩺 Case Studies (Design next)</button>
             </div>
-            <div style={{
-              background: isDarkMode ? '#1a2651' : '#f7faff',
-              padding: '12px',
-              borderRadius: '10px',
-            }}>
-              <strong>Flashcards</strong>
-              <p style={{ margin: '4px 0 0' }}>60 cards available</p>
+          </section>
+
+          <section style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: 14 }}>
+            <h3 style={{ margin: '0 0 10px' }}>Workbook + Video Library</h3>
+            <div style={{ display: 'grid', gap: 8 }}>
+              <button style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>📝 Notes</button>
+              <button style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>⚡ Quick Jump</button>
+              <button style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>🔖 Bookmarks</button>
+              <button style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>🎥 Video Library (Design next)</button>
             </div>
-            <div style={{
-              background: isDarkMode ? '#1a2651' : '#f7faff',
-              padding: '12px',
-              borderRadius: '10px',
-            }}>
-              <strong>Case Studies</strong>
-              <p style={{ margin: '4px 0 0' }}>7 scenarios</p>
+          </section>
+
+          <section style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: 12, display: 'grid', gridTemplateColumns: '72px 1fr', gap: 10, alignItems: 'center' }}>
+            <img src="/assets/atlas-standing.jpg" alt="Atlas" style={{ width: 72, height: 72, objectFit: 'cover', borderRadius: 999 }} />
+            <div style={{ fontSize: 13 }}>
+              <strong>Atlas says:</strong>
+              <div style={{ marginTop: 4 }}>{atlasPhrase}</div>
             </div>
-          </div>
-          <div style={{
-            marginTop: '12px',
-            padding: '10px',
-            border: isDarkMode ? '1px dashed #39d0c8' : '1px dashed #39d0c8',
-            borderRadius: '10px',
-            color: isDarkMode ? '#d8fff9' : '#144057',
-            background: isDarkMode ? '#101d3d' : '#eef7ff',
-            fontSize: '13px',
-          }}>
-            <strong>Atlas says:</strong> "If nursing school had a boss level, it'd be dosage calculations without coffee."
-          </div>
+          </section>
         </aside>
       </div>
     </div>
