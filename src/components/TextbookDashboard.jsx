@@ -251,7 +251,7 @@ export const TextbookDashboard = () => {
           <section style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: 14 }}>
             <h3 style={{ margin: '0 0 10px' }}>Study Tools</h3>
             <div style={{ display: 'grid', gap: 8 }}>
-              <button onClick={() => navigate('/reader/ch1_intro')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>🎴 Flashcards</button>
+              <button onClick={() => navigate('/flashcards')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>🎴 Flashcards</button>
               <button onClick={() => navigate('/quizzes')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>❓ Quiz</button>
               <button onClick={() => navigate('/chapter/ch1_intro/hub')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>🩺 Case Studies (open hub)</button>
             </div>

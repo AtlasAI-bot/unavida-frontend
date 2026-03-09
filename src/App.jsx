@@ -19,6 +19,7 @@ import { PressPrototypeViewer } from './components/PressPrototypeViewer';
 import { WorkbookPage } from './components/WorkbookPage';
 import { VideoLibraryPage } from './components/VideoLibraryPage';
 import { QuizzesPage } from './components/QuizzesPage';
+import { FlashcardsPage } from './components/FlashcardsPage';
 
 export function App() {
   return (
@@ -139,6 +140,15 @@ export function App() {
                   element={
                     <ProtectedRoute requiredRole="student">
                       <QuizzesPage />
+                    </ProtectedRoute>
+                  }
+                />
+
+                <Route
+                  path="/flashcards"
+                  element={
+                    <ProtectedRoute requiredRole="student">
+                      <FlashcardsPage />
                     </ProtectedRoute>
                   }
                 />
