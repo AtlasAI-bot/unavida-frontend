@@ -11,7 +11,6 @@ import { Bookshelf } from './components/Bookshelf';
 import { TextbookDashboard } from './components/TextbookDashboard';
 import { ChapterReader } from './components/ChapterReader';
 import { Login } from './components/Login';
-import { StudentDashboard } from './components/StudentDashboard';
 import { InstructorDashboard } from './components/InstructorDashboard';
 import { AdminDashboard } from './components/AdminDashboard';
 import ChapterHub from './components/ChapterHub';
@@ -20,6 +19,7 @@ import { WorkbookPage } from './components/WorkbookPage';
 import { VideoLibraryPage } from './components/VideoLibraryPage';
 import { QuizzesPage } from './components/QuizzesPage';
 import { FlashcardsPage } from './components/FlashcardsPage';
+import { CaseStudiesPage } from './components/CaseStudiesPage';
 
 export function App() {
   return (
@@ -71,7 +71,7 @@ export function App() {
                   path="/student-dashboard" 
                   element={
                     <ProtectedRoute requiredRole="student">
-                      <StudentDashboard />
+                      <ChapterHub />
                     </ProtectedRoute>
                   } 
                 />
@@ -149,6 +149,15 @@ export function App() {
                   element={
                     <ProtectedRoute requiredRole="student">
                       <FlashcardsPage />
+                    </ProtectedRoute>
+                  }
+                />
+
+                <Route
+                  path="/case-studies"
+                  element={
+                    <ProtectedRoute requiredRole="student">
+                      <CaseStudiesPage />
                     </ProtectedRoute>
                   }
                 />

@@ -11,7 +11,9 @@ import PracticeProblems from './PracticeProblems';
 import StudentAchievements from './StudentAchievements';
 
 const ChapterHub = () => {
-  const { chapterId = '1' } = useParams();
+  const { chapterId } = useParams();
+  const effectiveChapterId = chapterId || '1';
+  const isDashboardMode = !chapterId;
   const {
     initializeChapter,
     getStats,
@@ -26,23 +28,23 @@ const ChapterHub = () => {
   const [sessionActive, setSessionActive] = useState(false);
 
   useEffect(() => {
-    initializeChapter(chapterId, 3);
-    startStudySession(chapterId);
+    initializeChapter(effectiveChapterId, 3);
+    startStudySession(effectiveChapterId);
     setSessionActive(true);
 
     return () => {
       if (sessionActive) {
-        endStudySession(chapterId);
+        endStudySession(effectiveChapterId);
       }
     };
-  }, [chapterId, initializeChapter, startStudySession, endStudySession]);
+  }, [effectiveChapterId, initializeChapter, startStudySession, endStudySession, sessionActive]);
 
-  const stats = getStats(chapterId);
-  const progressPercentage = getProgress(chapterId);
-  const nextSteps = getNextSteps(chapterId);
+  const stats = getStats(effectiveChapterId);
+  const progressPercentage = getProgress(effectiveChapterId);
+  const nextSteps = getNextSteps(effectiveChapterId);
 
   const handleCheckAchievements = () => {
-    const newAchievements = checkAchievements(chapterId);
+    const newAchievements = checkAchievements(effectiveChapterId);
     if (newAchievements && newAchievements.length > 0) {
       alert(`🎉 Congratulations! You earned: ${newAchievements.join(', ')}`);
     }
@@ -64,8 +66,8 @@ const ChapterHub = () => {
           <div className="flex items-center gap-3">
             <BookOpen size={32} className="text-red-500" />
             <div>
-              <h1 className="text-3xl font-bold">Chapter {chapterId} Learning Hub</h1>
-              <p className="text-gray-400">Introduction to Pharmacology</p>
+              <h1 className="text-3xl font-bold">{isDashboardMode ? 'Student Learning Hub' : `Chapter ${chapterId} Learning Hub`}</h1>
+              <p className="text-gray-400">{isDashboardMode ? 'Mastering Pharmacology Dashboard' : 'Introduction to Pharmacology'}</p>
             </div>
           </div>
           <button
