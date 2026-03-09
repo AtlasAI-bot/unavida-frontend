@@ -89,7 +89,7 @@ export const TextbookDashboard = () => {
     setIsDarkMode(savedTheme !== 'light');
   }, []);
   const [activeCourse, setActiveCourse] = useState(textbookId === 'NUR2110' ? 'NUR2110' : 'NUR1100');
-  const [openChapterId, setOpenChapterId] = useState('ch1');
+  const [openChapterId, setOpenChapterId] = useState(null);
   const [atlasPhrase] = useState(() => atlasPhrases[Math.floor(Math.random() * atlasPhrases.length)]);
   const [snapshot, setSnapshot] = useState({
     quizAvg: 0,
@@ -184,7 +184,7 @@ export const TextbookDashboard = () => {
                 key={code}
                 onClick={() => {
                   setActiveCourse(code);
-                  setOpenChapterId(courseContent[code].chapters[0]?.id || null);
+                  setOpenChapterId(null);
                 }}
                 style={{
                   padding: '7px 12px',
