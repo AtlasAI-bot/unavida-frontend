@@ -1,86 +1,66 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const videoCatalog = {
+const sectionVideos = {
   NUR1100: [
     {
-      id: 'pk-overview',
-      title: 'Pharmacokinetics: ADME in Clinical Practice',
-      chapter: 'Chapter 1',
-      duration: '6:56',
-      format: 'Lesson Video',
-      status: 'Ready',
-      description: 'Breakdown of absorption, distribution, metabolism, and excretion with bedside nursing examples.',
-      readerLink: '/reader/ch1_intro?section=sec1_6_pk_vs_pd',
+      id: 'ch1-sec1-0',
+      chapter: 'Chapter 1: Introduction to Pharmacology',
+      section: 'Section 1.0 — Overview & Introduction',
+      title: 'Chapter 1 Segment 1: Introduction',
+      src: '/videos/chapter1_videos/chapter1_seg1_intro.mp4',
     },
     {
-      id: 'pd-overview',
-      title: 'Pharmacodynamics: How Drugs Produce Effects',
-      chapter: 'Chapter 1',
-      duration: '7:53',
-      format: 'Lesson Video',
-      status: 'Ready',
-      description: 'Receptors, dose-response basics, and practical implications for med administration safety.',
-      readerLink: '/reader/ch1_intro?section=sec1_6_pk_vs_pd',
+      id: 'ch1-sec1-1',
+      chapter: 'Chapter 1: Introduction to Pharmacology',
+      section: 'Section 1.1 — Definition & Scope of Pharmacology',
+      title: 'Chapter 1 Segment 2: Pharmacology Definition',
+      src: '/videos/chapter1_videos/chapter1_seg2_pharmacology_definition.mp4',
     },
     {
-      id: 'dosage-calc',
-      title: 'Dosage Calculations: Safe Math for Nursing',
-      chapter: 'Chapter 1',
-      duration: '10:25',
-      format: 'Skills Video',
-      status: 'Ready',
-      description: 'Step-by-step dosage calculations, common pitfalls, and quick verification checks.',
-      readerLink: '/reader/ch1_intro?section=sec1_8_dosage_calculations',
+      id: 'ch1-sec1-6',
+      chapter: 'Chapter 1: Introduction to Pharmacology',
+      section: 'Section 1.6 — Pharmacokinetics vs Pharmacodynamics',
+      title: 'Chapter 1 Segment 3: ADME',
+      src: '/videos/chapter1_videos/chapter1_seg3_adme.mp4',
     },
     {
-      id: 'ch2-safety-video',
-      title: 'Medication Safety Foundations',
-      chapter: 'Chapter 2',
-      duration: 'TBD',
-      format: 'Lesson Video',
-      status: 'Coming Soon',
-      description: 'Core safety framework, error prevention, and nurse accountability workflow.',
-      readerLink: '/reader/ch1_intro',
+      id: 'ch1-sec1-3',
+      chapter: 'Chapter 1: Introduction to Pharmacology',
+      section: 'Section 1.3 — Drug Classification Systems',
+      title: 'Chapter 1 Segment 4: Classification',
+      src: '/videos/chapter1_videos/chapter1_seg4_classification.mp4',
+    },
+    {
+      id: 'ch1-sec1-4',
+      chapter: 'Chapter 1: Introduction to Pharmacology',
+      section: 'Section 1.4 — Regulatory Bodies & FDA Process',
+      title: 'Chapter 1 Segment 5: FDA Approval',
+      src: '/videos/chapter1_videos/chapter1_seg5_fda_approval.mp4',
+    },
+    {
+      id: 'ch1-sec1-5',
+      chapter: 'Chapter 1: Introduction to Pharmacology',
+      section: 'Section 1.5 — Drug Names & Classification Codes',
+      title: 'Chapter 1 Segment 6: Regulatory',
+      src: '/videos/chapter1_videos/chapter1_seg6_regulatory.mp4',
+    },
+    {
+      id: 'ch1-sec1-7',
+      chapter: 'Chapter 1: Introduction to Pharmacology',
+      section: 'Section 1.7 — Drug Interactions & Patient Safety',
+      title: 'Chapter 1 Segment 7: Nursing Role',
+      src: '/videos/chapter1_videos/chapter1_seg7_nursing_role.mp4',
+    },
+    {
+      id: 'ch1-sec1-11',
+      chapter: 'Chapter 1: Introduction to Pharmacology',
+      section: 'Section 1.11 — Review Questions & Assessment',
+      title: 'Chapter 1 Segment 8: Summary',
+      src: '/videos/chapter1_videos/chapter1_seg8_summary.mp4',
     },
   ],
-  NUR2110: [
-    {
-      id: 'adv-therapeutics-intro',
-      title: 'Advanced Therapeutics Orientation',
-      chapter: 'Chapter 1',
-      duration: 'TBD',
-      format: 'Orientation',
-      status: 'Coming Soon',
-      description: 'Roadmap for high-risk medications, polypharmacy, and advanced patient scenarios.',
-      readerLink: '/textbook/NUR2110',
-    },
-    {
-      id: 'critical-care-pharm',
-      title: 'Critical Care Pharmacology Essentials',
-      chapter: 'Chapter 2',
-      duration: 'TBD',
-      format: 'Lesson Video',
-      status: 'Coming Soon',
-      description: 'Vasoactive drips, sedation protocols, and rapid-response medication priorities.',
-      readerLink: '/textbook/NUR2110',
-    },
-  ],
-};
-
-const statusStyle = (isDarkMode, status) => {
-  if (status === 'Ready') {
-    return {
-      background: isDarkMode ? 'rgba(34,197,94,.15)' : '#dcfce7',
-      color: isDarkMode ? '#86efac' : '#166534',
-      border: isDarkMode ? '1px solid rgba(34,197,94,.4)' : '1px solid #86efac',
-    };
-  }
-  return {
-    background: isDarkMode ? 'rgba(234,179,8,.15)' : '#fef9c3',
-    color: isDarkMode ? '#fde047' : '#854d0e',
-    border: isDarkMode ? '1px solid rgba(234,179,8,.4)' : '1px solid #facc15',
-  };
+  NUR2110: [],
 };
 
 export const VideoLibraryPage = () => {
@@ -114,8 +94,7 @@ export const VideoLibraryPage = () => {
     };
   }, [isDarkMode]);
 
-  const videos = videoCatalog[activeCourse] || [];
-  const readyCount = videos.filter((video) => video.status === 'Ready').length;
+  const videos = sectionVideos[activeCourse] || [];
 
   return (
     <div style={{ minHeight: '100vh', background: palette.page, color: palette.text }}>
@@ -123,7 +102,7 @@ export const VideoLibraryPage = () => {
         <div style={{ fontSize: 13, color: palette.muted }}>Bookshelf / Mastering Pharmacology / Video Library</div>
         <div style={{ marginTop: 4, fontWeight: 700, fontSize: 22 }}>Video Library</div>
         <div style={{ marginTop: 6, fontSize: 13, color: palette.muted }}>
-          Quick access to chapter videos by course with direct jump back into Reader.
+          Videos are organized by chapter and section, and play directly on this page.
         </div>
 
         <div style={{ marginTop: 12, display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
@@ -169,50 +148,29 @@ export const VideoLibraryPage = () => {
           ))}
         </div>
 
-        <div style={{ marginBottom: 16, fontSize: 14, color: palette.muted }}>
-          {readyCount} of {videos.length} videos ready for {activeCourse}
-        </div>
-
-        <div style={{ display: 'grid', gap: 10 }}>
-          {videos.map((video) => {
-            const pill = statusStyle(isDarkMode, video.status);
-            const isReady = video.status === 'Ready';
-            return (
+        {videos.length === 0 ? (
+          <div style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: 14, color: palette.muted }}>
+            No section videos published yet for {activeCourse}.
+          </div>
+        ) : (
+          <div style={{ display: 'grid', gap: 14 }}>
+            {videos.map((video) => (
               <article key={video.id} style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: 14 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8, alignItems: 'flex-start' }}>
-                  <div>
-                    <h3 style={{ margin: '0 0 6px', fontSize: 17 }}>{video.title}</h3>
-                    <div style={{ fontSize: 13, color: palette.muted }}>
-                      {video.chapter} • {video.format} • {video.duration}
-                    </div>
-                  </div>
-                  <span style={{ ...pill, borderRadius: 999, padding: '2px 10px', fontSize: 12, fontWeight: 700 }}>
-                    {video.status}
-                  </span>
-                </div>
-
-                <p style={{ margin: '10px 0 14px', color: palette.muted }}>{video.description}</p>
-
-                <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                  <button
-                    onClick={() => navigate(video.readerLink)}
-                    style={{
-                      padding: '8px 11px',
-                      borderRadius: 8,
-                      border: `1px solid ${palette.border}`,
-                      background: isReady ? '#39d0c8' : palette.panel2,
-                      color: isReady ? '#032320' : palette.text,
-                      fontWeight: 700,
-                      cursor: 'pointer',
-                    }}
-                  >
-                    {isReady ? 'Open in Reader' : 'View Chapter'}
-                  </button>
-                </div>
+                <div style={{ marginBottom: 8, fontSize: 12, color: palette.muted }}>{video.chapter}</div>
+                <h3 style={{ margin: '0 0 6px', fontSize: 17 }}>{video.section}</h3>
+                <div style={{ marginBottom: 10, fontSize: 13, color: palette.muted }}>{video.title}</div>
+                <video
+                  controls
+                  preload="metadata"
+                  style={{ width: '100%', borderRadius: 10, background: '#000' }}
+                  src={video.src}
+                >
+                  Your browser does not support the video tag.
+                </video>
               </article>
-            );
-          })}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
