@@ -18,6 +18,7 @@ import ChapterHub from './components/ChapterHub';
 import { PressPrototypeViewer } from './components/PressPrototypeViewer';
 import { WorkbookPage } from './components/WorkbookPage';
 import { VideoLibraryPage } from './components/VideoLibraryPage';
+import { QuizzesPage } from './components/QuizzesPage';
 
 export function App() {
   return (
@@ -129,6 +130,15 @@ export function App() {
                   element={
                     <ProtectedRoute requiredRole="student">
                       <VideoLibraryPage />
+                    </ProtectedRoute>
+                  }
+                />
+
+                <Route
+                  path="/quizzes"
+                  element={
+                    <ProtectedRoute requiredRole="student">
+                      <QuizzesPage />
                     </ProtectedRoute>
                   }
                 />
