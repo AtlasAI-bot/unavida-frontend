@@ -4,69 +4,91 @@ import { useNavigate } from 'react-router-dom';
 const sectionVideos = {
   NUR1100: [
     {
-      id: 'ch1-sec1-0',
+      id: 'sec1_overview_introduction',
+      chapterNumber: 1,
       chapter: 'Chapter 1: Introduction to Pharmacology',
-      section: 'Section 1.0 — Overview & Introduction',
-      title: 'Chapter 1 Segment 1: Introduction',
-      src: '/videos/chapter1_videos/chapter1_seg1_intro.mp4',
+      sectionNumber: '1.0',
+      section: 'Overview & Introduction',
+      title: 'Chapter 1 Introduction',
+      src: 'https://unavida-videos.s3.us-east-2.amazonaws.com/Pharmacology_+Chapter+1+Introduction_1080p_caption.mp4',
     },
     {
-      id: 'ch1-sec1-1',
+      id: 'sec1_1_definitions_scope',
+      chapterNumber: 1,
       chapter: 'Chapter 1: Introduction to Pharmacology',
-      section: 'Section 1.1 — Definition & Scope of Pharmacology',
-      title: 'Chapter 1 Segment 2: Pharmacology Definition',
-      src: '/videos/chapter1_videos/chapter1_seg2_pharmacology_definition.mp4',
+      sectionNumber: '1.1',
+      section: 'Definition & Scope of Pharmacology',
+      title: 'Definition and Scope',
+      src: 'https://unavida-videos.s3.us-east-2.amazonaws.com/07_definition_and_scope.mp4',
     },
     {
-      id: 'ch1-sec1-6',
+      id: 'sec1_3_drug_classification',
+      chapterNumber: 1,
       chapter: 'Chapter 1: Introduction to Pharmacology',
-      section: 'Section 1.6 — Pharmacokinetics vs Pharmacodynamics',
-      title: 'Chapter 1 Segment 3: ADME',
-      src: '/videos/chapter1_videos/chapter1_seg3_adme.mp4',
+      sectionNumber: '1.3',
+      section: 'Drug Classification Systems',
+      title: 'Drug Classification Systems',
+      src: 'https://unavida-videos.s3.us-east-2.amazonaws.com/06_drug_classification_systems.mp4',
     },
     {
-      id: 'ch1-sec1-3',
+      id: 'sec1_4_regulatory_bodies_fda',
+      chapterNumber: 1,
       chapter: 'Chapter 1: Introduction to Pharmacology',
-      section: 'Section 1.3 — Drug Classification Systems',
-      title: 'Chapter 1 Segment 4: Classification',
-      src: '/videos/chapter1_videos/chapter1_seg4_classification.mp4',
+      sectionNumber: '1.4',
+      section: 'Regulatory Bodies & FDA Process',
+      title: 'FDA Approval Process',
+      src: 'https://unavida-videos.s3.us-east-2.amazonaws.com/02_fda_approval_process.mp4',
     },
     {
-      id: 'ch1-sec1-4',
+      id: 'sec1_6_pk_vs_pd',
+      chapterNumber: 1,
       chapter: 'Chapter 1: Introduction to Pharmacology',
-      section: 'Section 1.4 — Regulatory Bodies & FDA Process',
-      title: 'Chapter 1 Segment 5: FDA Approval',
-      src: '/videos/chapter1_videos/chapter1_seg5_fda_approval.mp4',
+      sectionNumber: '1.6',
+      section: 'Pharmacokinetics vs Pharmacodynamics',
+      title: 'Pharmacokinetics vs Pharmacodynamics',
+      src: 'https://unavida-videos.s3.us-east-2.amazonaws.com/4982BE2B-4807-F9DC-41B2-6CCF565CF232.mp4',
     },
     {
-      id: 'ch1-sec1-5',
+      id: 'sec1_7_drug_interactions',
+      chapterNumber: 1,
       chapter: 'Chapter 1: Introduction to Pharmacology',
-      section: 'Section 1.5 — Drug Names & Classification Codes',
-      title: 'Chapter 1 Segment 6: Regulatory',
-      src: '/videos/chapter1_videos/chapter1_seg6_regulatory.mp4',
+      sectionNumber: '1.7',
+      section: 'Drug Interactions & Patient Safety',
+      title: 'Drug Interactions and Safety',
+      src: 'https://unavida-videos.s3.us-east-2.amazonaws.com/03_drug_interactions_and_safety.mp4',
     },
     {
-      id: 'ch1-sec1-7',
+      id: 'sec1_8_dosage_calculations',
+      chapterNumber: 1,
       chapter: 'Chapter 1: Introduction to Pharmacology',
-      section: 'Section 1.7 — Drug Interactions & Patient Safety',
-      title: 'Chapter 1 Segment 7: Nursing Role',
-      src: '/videos/chapter1_videos/chapter1_seg7_nursing_role.mp4',
+      sectionNumber: '1.8',
+      section: 'Dosage Calculations',
+      title: 'Dosage Calculations',
+      src: 'https://unavida-videos.s3.us-east-2.amazonaws.com/04_dosage_calculations.mp4',
     },
     {
-      id: 'ch1-sec1-11',
+      id: 'sec1_10_clinical_story_allergy_decision',
+      chapterNumber: 1,
       chapter: 'Chapter 1: Introduction to Pharmacology',
-      section: 'Section 1.11 — Review Questions & Assessment',
-      title: 'Chapter 1 Segment 8: Summary',
-      src: '/videos/chapter1_videos/chapter1_seg8_summary.mp4',
+      sectionNumber: '1.10',
+      section: 'Clinical Story: The Allergy Decision',
+      title: 'Clinical Story: Allergy Decision',
+      src: 'https://unavida-videos.s3.us-east-2.amazonaws.com/05_clinical_story_allergy_decision.mp4',
     },
   ],
   NUR2110: [],
+};
+
+const sortBySection = (a, b) => {
+  if (a.chapterNumber !== b.chapterNumber) return a.chapterNumber - b.chapterNumber;
+  return Number(a.sectionNumber) - Number(b.sectionNumber);
 };
 
 export const VideoLibraryPage = () => {
   const navigate = useNavigate();
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [activeCourse, setActiveCourse] = useState('NUR1100');
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('unavidaTheme') || 'darkplus';
@@ -94,7 +116,24 @@ export const VideoLibraryPage = () => {
     };
   }, [isDarkMode]);
 
-  const videos = sectionVideos[activeCourse] || [];
+  const videos = useMemo(() => {
+    const courseVideos = [...(sectionVideos[activeCourse] || [])].sort(sortBySection);
+    const q = query.trim().toLowerCase();
+    if (!q) return courseVideos;
+    return courseVideos.filter((video) => {
+      const haystack = `${video.chapter} ${video.sectionNumber} ${video.section} ${video.title}`.toLowerCase();
+      return haystack.includes(q);
+    });
+  }, [activeCourse, query]);
+
+  const groupedByChapter = useMemo(() => {
+    const map = new Map();
+    videos.forEach((video) => {
+      if (!map.has(video.chapter)) map.set(video.chapter, []);
+      map.get(video.chapter).push(video);
+    });
+    return Array.from(map.entries());
+  }, [videos]);
 
   return (
     <div style={{ minHeight: '100vh', background: palette.page, color: palette.text }}>
@@ -102,7 +141,7 @@ export const VideoLibraryPage = () => {
         <div style={{ fontSize: 13, color: palette.muted }}>Bookshelf / Mastering Pharmacology / Video Library</div>
         <div style={{ marginTop: 4, fontWeight: 700, fontSize: 22 }}>Video Library</div>
         <div style={{ marginTop: 6, fontSize: 13, color: palette.muted }}>
-          Videos are organized by chapter and section, and play directly on this page.
+          Videos are sorted by chapter and section, with direct playback on this page.
         </div>
 
         <div style={{ marginTop: 12, display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
@@ -148,26 +187,45 @@ export const VideoLibraryPage = () => {
           ))}
         </div>
 
-        {videos.length === 0 ? (
+        <div style={{ marginBottom: 14 }}>
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search videos by chapter, section, or title..."
+            style={{
+              width: '100%',
+              padding: '10px 12px',
+              borderRadius: 10,
+              border: `1px solid ${palette.border}`,
+              background: palette.panel,
+              color: palette.text,
+              outline: 'none',
+            }}
+          />
+        </div>
+
+        {groupedByChapter.length === 0 ? (
           <div style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: 14, color: palette.muted }}>
-            No section videos published yet for {activeCourse}.
+            No videos found for {activeCourse}{query ? ` matching "${query}"` : ''}.
           </div>
         ) : (
-          <div style={{ display: 'grid', gap: 14 }}>
-            {videos.map((video) => (
-              <article key={video.id} style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: 14 }}>
-                <div style={{ marginBottom: 8, fontSize: 12, color: palette.muted }}>{video.chapter}</div>
-                <h3 style={{ margin: '0 0 6px', fontSize: 17 }}>{video.section}</h3>
-                <div style={{ marginBottom: 10, fontSize: 13, color: palette.muted }}>{video.title}</div>
-                <video
-                  controls
-                  preload="metadata"
-                  style={{ width: '100%', borderRadius: 10, background: '#000' }}
-                  src={video.src}
-                >
-                  Your browser does not support the video tag.
-                </video>
-              </article>
+          <div style={{ display: 'grid', gap: 16 }}>
+            {groupedByChapter.map(([chapter, chapterVideos]) => (
+              <section key={chapter}>
+                <h2 style={{ margin: '0 0 10px', fontSize: 18 }}>{chapter}</h2>
+                <div style={{ display: 'grid', gap: 12 }}>
+                  {chapterVideos.map((video) => (
+                    <article key={video.id} style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: 14 }}>
+                      <h3 style={{ margin: '0 0 6px', fontSize: 16 }}>Section {video.sectionNumber} — {video.section}</h3>
+                      <div style={{ marginBottom: 10, fontSize: 13, color: palette.muted }}>{video.title}</div>
+                      <video controls preload="metadata" style={{ width: '100%', borderRadius: 10, background: '#000' }} src={video.src}>
+                        Your browser does not support the video tag.
+                      </video>
+                    </article>
+                  ))}
+                </div>
+              </section>
             ))}
           </div>
         )}
