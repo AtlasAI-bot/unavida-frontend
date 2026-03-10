@@ -1,15 +1,9 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Home, Search, Sparkles, UserCircle2, Store, MoreHorizontal, HelpCircle, Ticket, MessageCircle } from 'lucide-react';
 
 export const Bookshelf = () => {
   const navigate = useNavigate();
-  const [showcaseMode, setShowcaseMode] = useState(false);
-
-  useEffect(() => {
-    const saved = localStorage.getItem('unavida:bookshelfShowcase');
-    setShowcaseMode(saved === 'true');
-  }, []);
 
   const palette = useMemo(() => ({
     page: '#f3f4f7',
@@ -23,7 +17,7 @@ export const Bookshelf = () => {
     activeBar: '#0ea5c6',
   }), []);
 
-  const allBooks = [
+  const books = [
     {
       id: 'NUR1100',
       title: 'Mastering Pharmacology',
@@ -33,51 +27,7 @@ export const Bookshelf = () => {
       cover: '/assets/mastering-pharmacology-cover.jpg',
       route: '/textbook/NUR1100',
     },
-    {
-      id: 'NUR2200',
-      title: 'Maternal Nursing Care',
-      subtitle: 'NUR2200',
-      edition: 'Nursing Education Series',
-      badges: ['eBook'],
-      cover: '/assets/covers/nur2200-maternal-nursing-care.jpg',
-      route: '/textbook/NUR1100',
-    },
-    {
-      id: 'NUR2300',
-      title: 'Pediatric Nursing',
-      subtitle: 'NUR2300',
-      edition: 'Nursing Education Series',
-      badges: ['eBook'],
-      cover: '/assets/covers/nur2300-pediatric-nursing.jpg',
-      route: '/textbook/NUR1100',
-    },
-    {
-      id: 'NUR2500',
-      title: 'Psychiatric Nursing',
-      subtitle: 'NUR2500',
-      edition: 'Nursing Education Series',
-      badges: ['eBook'],
-      cover: '/assets/covers/nur2500-psychiatric-nursing.jpg',
-      route: '/textbook/NUR1100',
-    },
-    {
-      id: 'NUR2900',
-      title: 'Nursing Leadership',
-      subtitle: 'NUR2900',
-      edition: 'Nursing Education Series',
-      badges: ['eBook'],
-      cover: '/assets/covers/nur2900-nursing-leadership.jpg',
-      route: '/textbook/NUR1100',
-    },
   ];
-
-  const books = showcaseMode ? allBooks : [allBooks[0]];
-
-  const toggleShowcase = () => {
-    const next = !showcaseMode;
-    setShowcaseMode(next);
-    localStorage.setItem('unavida:bookshelfShowcase', String(next));
-  };
 
   return (
     <div style={{ minHeight: '100vh', background: palette.page, color: palette.text, display: 'grid', gridTemplateColumns: '185px 1fr' }}>
@@ -109,9 +59,6 @@ export const Bookshelf = () => {
 
       <div>
         <header style={{ height: 58, borderBottom: `1px solid ${palette.border}`, background: palette.topbar, display: 'flex', alignItems: 'center', justifyContent: 'flex-end', padding: '0 16px', gap: 8 }}>
-          <button onClick={toggleShowcase} style={{ border: `1px solid ${palette.border}`, background: '#fff', borderRadius: 7, padding: '7px 10px', fontSize: 12, cursor: 'pointer' }}>
-            {showcaseMode ? 'Showcase: ON' : 'Showcase: OFF'}
-          </button>
           <button style={{ border: `1px solid ${palette.border}`, background: '#fff', borderRadius: 7, padding: '7px 10px', fontSize: 12, display: 'inline-flex', alignItems: 'center', gap: 6, cursor: 'pointer' }}><Store size={14} /> Store</button>
           <button onClick={() => navigate('/student-dashboard')} style={{ border: `1px solid ${palette.border}`, background: '#fff', borderRadius: 7, padding: '7px 9px', display: 'inline-flex', alignItems: 'center', cursor: 'pointer' }}><UserCircle2 size={18} /></button>
         </header>
