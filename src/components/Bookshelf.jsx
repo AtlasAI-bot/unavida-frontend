@@ -33,9 +33,9 @@ export const Bookshelf = () => {
     <div style={{ minHeight: '100vh', background: palette.page, color: palette.text, display: 'grid', gridTemplateColumns: '185px 1fr' }}>
       {/* Left rail */}
       <aside style={{ background: palette.sidebar, borderRight: `1px solid ${palette.border}`, display: 'flex', flexDirection: 'column' }}>
-        <div style={{ padding: '16px 14px', borderBottom: `1px solid ${palette.border}`, fontWeight: 700, fontSize: 29, display: 'flex', alignItems: 'center', gap: 8 }}>
-          <span style={{ color: '#f59e0b', fontSize: 18 }}>▮</span>
-          <span style={{ fontSize: 32 }}>Bookshelf</span>
+        <div style={{ padding: '16px 14px', borderBottom: `1px solid ${palette.border}`, fontWeight: 700, fontSize: 23, display: 'flex', alignItems: 'center', gap: 8 }}>
+          <span style={{ color: '#f59e0b', fontSize: 16 }}>▮</span>
+          <span style={{ fontSize: 24 }}>Bookshelf</span>
         </div>
 
         <nav style={{ padding: 12, display: 'grid', gap: 4 }}>
@@ -80,7 +80,7 @@ export const Bookshelf = () => {
         </header>
 
         <main style={{ padding: '20px 24px' }}>
-          <h1 style={{ margin: '0 0 18px', fontSize: 42, fontWeight: 700 }}>My Library</h1>
+          <h1 style={{ margin: '0 0 18px', fontSize: 34, fontWeight: 700 }}>My Library</h1>
 
           <section style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(210px, 1fr))', gap: 22 }}>
             {books.map((book) => (
