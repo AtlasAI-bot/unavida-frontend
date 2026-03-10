@@ -1,9 +1,15 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Home, Search, Sparkles, UserCircle2, Store, MoreHorizontal, HelpCircle, Ticket, MessageCircle } from 'lucide-react';
 
 export const Bookshelf = () => {
   const navigate = useNavigate();
+  const [showcaseMode, setShowcaseMode] = useState(false);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('unavida:bookshelfShowcase');
+    setShowcaseMode(saved === 'true');
+  }, []);
 
   const palette = useMemo(() => ({
     page: '#f3f4f7',
@@ -17,8 +23,7 @@ export const Bookshelf = () => {
     activeBar: '#0ea5c6',
   }), []);
 
-  // Single textbook per product rule (shared across NUR1100 + NUR2110)
-  const books = [
+  const allBooks = [
     {
       id: 'NUR1100',
       title: 'Mastering Pharmacology',
@@ -26,12 +31,56 @@ export const Bookshelf = () => {
       edition: '9th Edition',
       badges: ['eBook'],
       cover: '/assets/mastering-pharmacology-cover.jpg',
+      route: '/textbook/NUR1100',
+    },
+    {
+      id: 'NUR2200',
+      title: 'Maternal Nursing Care',
+      subtitle: 'NUR2200',
+      edition: 'Nursing Education Series',
+      badges: ['eBook'],
+      cover: '/assets/covers/nur2200-maternal-nursing-care.jpg',
+      route: '/textbook/NUR1100',
+    },
+    {
+      id: 'NUR2300',
+      title: 'Pediatric Nursing',
+      subtitle: 'NUR2300',
+      edition: 'Nursing Education Series',
+      badges: ['eBook'],
+      cover: '/assets/covers/nur2300-pediatric-nursing.jpg',
+      route: '/textbook/NUR1100',
+    },
+    {
+      id: 'NUR2500',
+      title: 'Psychiatric Nursing',
+      subtitle: 'NUR2500',
+      edition: 'Nursing Education Series',
+      badges: ['eBook'],
+      cover: '/assets/covers/nur2500-psychiatric-nursing.jpg',
+      route: '/textbook/NUR1100',
+    },
+    {
+      id: 'NUR2900',
+      title: 'Nursing Leadership',
+      subtitle: 'NUR2900',
+      edition: 'Nursing Education Series',
+      badges: ['eBook'],
+      cover: '/assets/covers/nur2900-nursing-leadership.jpg',
+      route: '/textbook/NUR1100',
     },
   ];
 
+  const books = showcaseMode ? allBooks : [allBooks[0]];
+
+  const toggleShowcase = () => {
+    const next = !showcaseMode;
+    setShowcaseMode(next);
+    localStorage.setItem('unavida:bookshelfShowcase', String(next));
+  };
+
   return (
     <div style={{ minHeight: '100vh', background: palette.page, color: palette.text, display: 'grid', gridTemplateColumns: '185px 1fr' }}>
-      {/* Left rail */}
       <aside style={{ background: palette.sidebar, borderRight: `1px solid ${palette.border}`, display: 'flex', flexDirection: 'column' }}>
         <div style={{ padding: '16px 14px', borderBottom: `1px solid ${palette.border}`, fontWeight: 700, fontSize: 23, display: 'flex', alignItems: 'center', gap: 8 }}>
           <span style={{ color: '#f59e0b', fontSize: 16 }}>▮</span>
@@ -39,25 +88,15 @@ export const Bookshelf = () => {
         </div>
 
         <nav style={{ padding: 12, display: 'grid', gap: 4 }}>
-          <button onClick={() => navigate('/bookshelf')} style={{ display: 'flex', alignItems: 'center', gap: 8, border: 'none', background: 'transparent', padding: '8px 9px', borderRadius: 6, cursor: 'pointer', color: palette.text, fontSize: 13 }}>
-            <Home size={15} /> Home
-          </button>
-          <button onClick={() => navigate('/bookshelf')} style={{ display: 'flex', alignItems: 'center', gap: 8, border: 'none', background: 'transparent', padding: '8px 9px', borderRadius: 6, cursor: 'pointer', color: palette.text, fontSize: 13 }}>
-            <Search size={15} /> Search
-          </button>
-          <button onClick={() => navigate('/student-dashboard')} style={{ display: 'flex', alignItems: 'center', gap: 8, border: 'none', background: 'transparent', padding: '8px 9px', borderRadius: 6, cursor: 'pointer', color: palette.text, fontSize: 13 }}>
-            <Sparkles size={15} /> Recommendations
-          </button>
+          <button onClick={() => navigate('/bookshelf')} style={{ display: 'flex', alignItems: 'center', gap: 8, border: 'none', background: 'transparent', padding: '8px 9px', borderRadius: 6, cursor: 'pointer', color: palette.text, fontSize: 13 }}><Home size={15} /> Home</button>
+          <button onClick={() => navigate('/bookshelf')} style={{ display: 'flex', alignItems: 'center', gap: 8, border: 'none', background: 'transparent', padding: '8px 9px', borderRadius: 6, cursor: 'pointer', color: palette.text, fontSize: 13 }}><Search size={15} /> Search</button>
+          <button onClick={() => navigate('/student-dashboard')} style={{ display: 'flex', alignItems: 'center', gap: 8, border: 'none', background: 'transparent', padding: '8px 9px', borderRadius: 6, cursor: 'pointer', color: palette.text, fontSize: 13 }}><Sparkles size={15} /> Recommendations</button>
         </nav>
 
         <div style={{ marginTop: 8, padding: '0 14px', fontSize: 12, fontWeight: 700, color: palette.muted }}>MY SHELVES</div>
         <div style={{ marginTop: 6 }}>
-          <button style={{ width: '100%', textAlign: 'left', border: 'none', background: palette.active, borderRight: `3px solid ${palette.activeBar}`, padding: '10px 14px', fontSize: 13, fontWeight: 700, cursor: 'pointer', color: palette.text }}>
-            My Library
-          </button>
-          <button style={{ width: '100%', textAlign: 'left', border: 'none', background: 'transparent', padding: '10px 14px', fontSize: 13, cursor: 'pointer', color: palette.text }}>
-            Favorites
-          </button>
+          <button style={{ width: '100%', textAlign: 'left', border: 'none', background: palette.active, borderRight: `3px solid ${palette.activeBar}`, padding: '10px 14px', fontSize: 13, fontWeight: 700, cursor: 'pointer', color: palette.text }}>My Library</button>
+          <button style={{ width: '100%', textAlign: 'left', border: 'none', background: 'transparent', padding: '10px 14px', fontSize: 13, cursor: 'pointer', color: palette.text }}>Favorites</button>
         </div>
 
         <div style={{ marginTop: 'auto', padding: 12, borderTop: `1px solid ${palette.border}`, display: 'grid', gap: 6 }}>
@@ -68,15 +107,13 @@ export const Bookshelf = () => {
         </div>
       </aside>
 
-      {/* Main */}
       <div>
         <header style={{ height: 58, borderBottom: `1px solid ${palette.border}`, background: palette.topbar, display: 'flex', alignItems: 'center', justifyContent: 'flex-end', padding: '0 16px', gap: 8 }}>
-          <button style={{ border: `1px solid ${palette.border}`, background: '#fff', borderRadius: 7, padding: '7px 10px', fontSize: 12, display: 'inline-flex', alignItems: 'center', gap: 6, cursor: 'pointer' }}>
-            <Store size={14} /> Store
+          <button onClick={toggleShowcase} style={{ border: `1px solid ${palette.border}`, background: '#fff', borderRadius: 7, padding: '7px 10px', fontSize: 12, cursor: 'pointer' }}>
+            {showcaseMode ? 'Showcase: ON' : 'Showcase: OFF'}
           </button>
-          <button onClick={() => navigate('/student-dashboard')} style={{ border: `1px solid ${palette.border}`, background: '#fff', borderRadius: 7, padding: '7px 9px', display: 'inline-flex', alignItems: 'center', cursor: 'pointer' }}>
-            <UserCircle2 size={18} />
-          </button>
+          <button style={{ border: `1px solid ${palette.border}`, background: '#fff', borderRadius: 7, padding: '7px 10px', fontSize: 12, display: 'inline-flex', alignItems: 'center', gap: 6, cursor: 'pointer' }}><Store size={14} /> Store</button>
+          <button onClick={() => navigate('/student-dashboard')} style={{ border: `1px solid ${palette.border}`, background: '#fff', borderRadius: 7, padding: '7px 9px', display: 'inline-flex', alignItems: 'center', cursor: 'pointer' }}><UserCircle2 size={18} /></button>
         </header>
 
         <main style={{ padding: '20px 24px' }}>
@@ -86,18 +123,8 @@ export const Bookshelf = () => {
             {books.map((book) => (
               <article key={book.id}>
                 <button
-                  onClick={() => navigate('/textbook/NUR1100')}
-                  style={{
-                    width: '100%',
-                    aspectRatio: '0.74',
-                    border: `1px solid ${palette.border}`,
-                    borderRadius: 6,
-                    overflow: 'hidden',
-                    background: '#fff',
-                    padding: 0,
-                    cursor: 'pointer',
-                    boxShadow: '0 2px 6px rgba(0,0,0,.08)',
-                  }}
+                  onClick={() => navigate(book.route)}
+                  style={{ width: '100%', aspectRatio: '0.74', border: `1px solid ${palette.border}`, borderRadius: 6, overflow: 'hidden', background: '#fff', padding: 0, cursor: 'pointer', boxShadow: '0 2px 6px rgba(0,0,0,.08)' }}
                 >
                   <img src={book.cover} alt={book.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </button>
@@ -106,9 +133,7 @@ export const Bookshelf = () => {
                   {book.badges.map((badge) => (
                     <span key={badge} style={{ fontSize: 11, borderRadius: 999, border: `1px solid ${palette.border}`, background: '#f9fafb', padding: '2px 8px' }}>{badge}</span>
                   ))}
-                  <button style={{ marginLeft: 'auto', border: 'none', background: 'transparent', cursor: 'pointer', color: palette.muted }}>
-                    <MoreHorizontal size={18} />
-                  </button>
+                  <button style={{ marginLeft: 'auto', border: 'none', background: 'transparent', cursor: 'pointer', color: palette.muted }}><MoreHorizontal size={18} /></button>
                 </div>
 
                 <div style={{ fontSize: 16, fontWeight: 700, marginTop: 4, lineHeight: 1.25 }}>{book.title}</div>
