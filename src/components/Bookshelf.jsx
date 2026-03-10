@@ -54,7 +54,7 @@ export const Bookshelf = () => {
       vbid: 'NUR1100-UNAVIDA',
       url: 'https://unavida-frontend.vercel.app/textbook/NUR1100',
       description:
-        'Mastering Pharmacology is a unified nursing pharmacology experience spanning NUR1100 and NUR2110 with interactive reading, quizzes, flashcards, and case-based practice.',
+        'Mastering Pharmacology is a comprehensive nursing pharmacology experience designed across NUR1100 and NUR2110. It blends core medication science with bedside clinical judgment through structured chapter reading, interactive videos, adaptive quizzes, flashcard practice, and scenario-based case studies. Students build confidence in safe administration, dosage reasoning, pharmacokinetics/pharmacodynamics, and patient-centered medication decision-making as they progress from foundational to advanced coursework.',
     },
     {
       id: 'NUR1000',
@@ -70,7 +70,7 @@ export const Bookshelf = () => {
       format: 'ePub',
       vbid: 'NUR1000-PLACEHOLDER',
       url: 'https://unavida-frontend.vercel.app/textbook/NUR1100',
-      description: 'Placeholder cover and metadata card for future Fundamentals content integration.',
+      description: 'Fundamentals of Nursing introduces essential nursing principles that support safe, compassionate, and evidence-based patient care. Planned content focuses on foundational skills, communication, safety, infection prevention, clinical reasoning, and professionalism across care settings. This title is positioned as an early-sequence course anchor to help students develop confidence before entering complex specialty coursework.'
     },
     {
       id: 'NUR2200',
@@ -86,7 +86,7 @@ export const Bookshelf = () => {
       format: 'ePub',
       vbid: 'NUR2200-PLACEHOLDER',
       url: 'https://unavida-frontend.vercel.app/textbook/NUR1100',
-      description: 'Placeholder cover and metadata card for future Maternal Nursing Care content integration.',
+      description: 'Maternal Nursing Care centers on pregnancy, labor, delivery, postpartum care, and newborn stabilization, with emphasis on family-centered and culturally responsive nursing practice. Planned modules include prenatal assessment, high-risk pregnancy warning signs, maternal complications, neonatal transition, and interdisciplinary communication for safer outcomes. The learning design supports both theory mastery and real-world bedside readiness.'
     },
     {
       id: 'NUR2300',
@@ -102,7 +102,7 @@ export const Bookshelf = () => {
       format: 'ePub',
       vbid: 'NUR2300-PLACEHOLDER',
       url: 'https://unavida-frontend.vercel.app/textbook/NUR1100',
-      description: 'Placeholder cover and metadata card for future Pediatric Nursing content integration.',
+      description: 'Pediatric Nursing is focused on age-specific nursing care from infancy through adolescence, integrating growth and development with clinical assessment, family education, and safety planning. Planned content includes medication considerations for children, pediatric communication strategies, common acute and chronic conditions, and prevention-oriented care. The course emphasizes clinical judgment that balances child physiology, family dynamics, and developmental needs.'
     },
     {
       id: 'NUR2400',
@@ -118,7 +118,7 @@ export const Bookshelf = () => {
       format: 'ePub',
       vbid: 'NUR2400-PLACEHOLDER',
       url: 'https://unavida-frontend.vercel.app/textbook/NUR1100',
-      description: 'Placeholder cover and metadata card for future Medical-Surgical Nursing content integration.',
+      description: 'Medical-Surgical Nursing prepares students to manage adult patients across diverse acute and chronic health conditions using systematic assessment, prioritization, and intervention frameworks. Planned coverage includes cardiovascular, respiratory, endocrine, renal, neurologic, and perioperative care with strong focus on deterioration recognition and escalation. Students practice translating pathophysiology into safe nursing action, patient education, and coordinated team-based care.'
     },
     {
       id: 'NUR2500',
@@ -134,7 +134,7 @@ export const Bookshelf = () => {
       format: 'ePub',
       vbid: 'NUR2500-PLACEHOLDER',
       url: 'https://unavida-frontend.vercel.app/textbook/NUR1100',
-      description: 'Placeholder cover and metadata card for future Psychiatric Nursing content integration.',
+      description: 'Psychiatric Nursing addresses mental health assessment, therapeutic communication, psychopharmacology safety, crisis management, and trauma-informed care across inpatient and community settings. Planned modules include anxiety and mood disorders, psychosis, substance use, suicide risk screening, and legal/ethical standards in behavioral health. The course is designed to strengthen stigma-free practice and patient-centered mental health advocacy.'
     },
     {
       id: 'NUR2900',
@@ -150,7 +150,7 @@ export const Bookshelf = () => {
       format: 'ePub',
       vbid: 'NUR2900-PLACEHOLDER',
       url: 'https://unavida-frontend.vercel.app/textbook/NUR1100',
-      description: 'Placeholder cover and metadata card for future Nursing Leadership content integration.',
+      description: 'Nursing Leadership develops the management and leadership competencies needed for safe unit operations, effective delegation, quality improvement, and interprofessional collaboration. Planned content includes staffing decisions, communication under pressure, conflict resolution, ethical leadership, and systems thinking in nursing practice. Students build readiness to lead teams, coordinate care delivery, and support positive patient and organizational outcomes.'
     },
   ];
 
