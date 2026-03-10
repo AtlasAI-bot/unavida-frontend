@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Home, Library, BookOpen, UserCircle2, Settings, LogOut } from 'lucide-react';
+import { Home, Library, Search, UserCircle2, BookOpen } from 'lucide-react';
 
 export const Bookshelf = () => {
   const navigate = useNavigate();
   const [isDarkMode, setIsDarkMode] = useState(true);
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('unavidaTheme') || 'darkplus';
@@ -22,167 +23,118 @@ export const Bookshelf = () => {
   const palette = useMemo(() => {
     if (isDarkMode) {
       return {
-        page: '#0f1113',
-        sidebar: '#11161b',
-        topbar: '#141a20',
-        panel: '#181f26',
-        panel2: '#232c35',
-        text: '#f5f7fa',
-        muted: '#b9c3cf',
-        border: 'rgba(255,255,255,.12)',
+        page: '#0f1113', sidebar: '#12171d', topbar: '#161d24', panel: '#1a222b', panel2: '#222c36',
+        text: '#f5f7fa', muted: '#b7c2ce', border: 'rgba(255,255,255,.12)'
       };
     }
     return {
-      page: '#edf2ff',
-      sidebar: '#dce7ff',
-      topbar: '#e7efff',
-      panel: '#d8e3ff',
-      panel2: '#c8d8ff',
-      text: '#101827',
-      muted: '#334155',
-      border: '#9fb3e8',
+      page: '#edf2ff', sidebar: '#dce7ff', topbar: '#e7efff', panel: '#d8e3ff', panel2: '#c8d8ff',
+      text: '#101827', muted: '#334155', border: '#9fb3e8'
     };
   }, [isDarkMode]);
 
-  const bookCovers = {
-    NUR1100: '/assets/mastering-pharmacology-cover.jpg',
-    NUR2110: '/assets/mastering-pharmacology-cover.jpg',
-  };
-
-  const textbooks = [
+  const books = [
     {
       id: 'NUR1100',
       title: 'Mastering Pharmacology',
       subtitle: 'NUR1100 • Pharmacology I',
       edition: 'Foundation Track',
-      progress: 'Chapter 1 active',
+      type: 'eBook',
+      status: 'Continue Reading',
+      meta: 'Chapter 1 in progress',
+      cover: '/assets/mastering-pharmacology-cover.jpg',
     },
     {
       id: 'NUR2110',
       title: 'Mastering Pharmacology',
       subtitle: 'NUR2110 • Pharmacology II',
       edition: 'Advanced Track',
-      progress: 'Ready to begin',
+      type: 'eBook',
+      status: 'Open',
+      meta: 'Ready to start',
+      cover: '/assets/mastering-pharmacology-cover.jpg',
     },
   ];
 
+  const filteredBooks = books.filter((b) => `${b.title} ${b.subtitle} ${b.edition}`.toLowerCase().includes(query.toLowerCase()));
+
   return (
     <div style={{ minHeight: '100vh', background: palette.page, color: palette.text, display: 'grid', gridTemplateColumns: '240px 1fr' }}>
-      {/* Left Sidebar */}
+      {/* Sidebar */}
       <aside style={{ background: palette.sidebar, borderRight: `1px solid ${palette.border}`, padding: 16, position: 'sticky', top: 0, height: '100vh' }}>
-        <div style={{ fontWeight: 900, color: '#39d0c8', letterSpacing: 0.3, marginBottom: 18 }}>UnaVida</div>
+        <div style={{ fontWeight: 900, color: '#39d0c8', marginBottom: 18 }}>UnaVida</div>
 
-        <nav style={{ display: 'grid', gap: 8 }}>
-          {[
-            { label: 'Home', icon: <Home size={16} />, onClick: () => navigate('/bookshelf') },
-            { label: 'My Library', icon: <Library size={16} />, onClick: () => navigate('/bookshelf') },
-            { label: 'Continue Learning', icon: <BookOpen size={16} />, onClick: () => navigate('/textbook/NUR1100') },
-          ].map((item) => (
-            <button
-              key={item.label}
-              onClick={item.onClick}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 8,
-                textAlign: 'left',
-                borderRadius: 8,
-                border: `1px solid ${palette.border}`,
-                background: palette.panel,
-                color: palette.text,
-                padding: '8px 10px',
-                cursor: 'pointer',
-                fontWeight: 600,
-              }}
-            >
-              {item.icon}
-              {item.label}
-            </button>
-          ))}
-        </nav>
+        <div style={{ display: 'grid', gap: 8 }}>
+          <button onClick={() => navigate('/bookshelf')} style={{ display: 'flex', gap: 8, alignItems: 'center', border: `1px solid ${palette.border}`, background: palette.panel, color: palette.text, borderRadius: 8, padding: '8px 10px', cursor: 'pointer' }}><Home size={16} /> Home</button>
+          <button onClick={() => navigate('/bookshelf')} style={{ display: 'flex', gap: 8, alignItems: 'center', border: `1px solid ${palette.border}`, background: palette.panel2, color: palette.text, borderRadius: 8, padding: '8px 10px', cursor: 'pointer' }}><Library size={16} /> My Library</button>
+          <button onClick={() => navigate('/student-dashboard')} style={{ display: 'flex', gap: 8, alignItems: 'center', border: `1px solid ${palette.border}`, background: palette.panel, color: palette.text, borderRadius: 8, padding: '8px 10px', cursor: 'pointer' }}><BookOpen size={16} /> Learning Hub</button>
+        </div>
 
-        <div style={{ marginTop: 16, fontSize: 12, color: palette.muted }}>My Shelves</div>
+        <div style={{ marginTop: 16, fontSize: 12, color: palette.muted }}>Study Tools</div>
         <div style={{ display: 'grid', gap: 6, marginTop: 8 }}>
-          <button onClick={() => navigate('/bookshelf')} style={{ textAlign: 'left', borderRadius: 8, border: `1px solid ${palette.border}`, background: palette.panel2, color: palette.text, padding: '7px 10px', cursor: 'pointer' }}>My Library</button>
-          <button onClick={() => navigate('/workbook')} style={{ textAlign: 'left', borderRadius: 8, border: `1px solid ${palette.border}`, background: palette.panel2, color: palette.text, padding: '7px 10px', cursor: 'pointer' }}>Bookmarks + Highlights</button>
+          <button onClick={() => navigate('/quizzes')} style={{ textAlign: 'left', borderRadius: 8, border: `1px solid ${palette.border}`, background: palette.panel, color: palette.text, padding: '7px 10px', cursor: 'pointer' }}>Quizzes</button>
+          <button onClick={() => navigate('/flashcards')} style={{ textAlign: 'left', borderRadius: 8, border: `1px solid ${palette.border}`, background: palette.panel, color: palette.text, padding: '7px 10px', cursor: 'pointer' }}>Flashcards</button>
+          <button onClick={() => navigate('/case-studies')} style={{ textAlign: 'left', borderRadius: 8, border: `1px solid ${palette.border}`, background: palette.panel, color: palette.text, padding: '7px 10px', cursor: 'pointer' }}>Case Studies</button>
+          <button onClick={() => navigate('/video-library')} style={{ textAlign: 'left', borderRadius: 8, border: `1px solid ${palette.border}`, background: palette.panel, color: palette.text, padding: '7px 10px', cursor: 'pointer' }}>Video Library</button>
         </div>
       </aside>
 
-      {/* Main Content */}
+      {/* Main */}
       <div>
-        {/* Top Bar */}
-        <header style={{ position: 'sticky', top: 0, zIndex: 30, background: palette.topbar, borderBottom: `1px solid ${palette.border}`, padding: '12px 18px', display: 'flex', alignItems: 'center', gap: 10 }}>
-          <div style={{ fontSize: 13, color: palette.muted }}>Bookshelf / Mastering Pharmacology</div>
-          <div style={{ marginLeft: 'auto', display: 'flex', gap: 8 }}>
-            <button onClick={toggleTheme} style={{ padding: '7px 10px', borderRadius: 8, border: `1px solid ${palette.border}`, background: palette.panel, color: palette.text, cursor: 'pointer' }}>
-              {isDarkMode ? '☀️ Light' : '🌙 Dark'}
-            </button>
-            <button onClick={() => navigate('/student-dashboard')} title="Account" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '7px 10px', borderRadius: 8, border: `1px solid ${palette.border}`, background: palette.panel, color: palette.text, cursor: 'pointer' }}>
-              <UserCircle2 size={18} />
-              Account
-            </button>
+        <header style={{ position: 'sticky', top: 0, zIndex: 30, background: palette.topbar, borderBottom: `1px solid ${palette.border}`, padding: '12px 18px', display: 'flex', gap: 8, alignItems: 'center' }}>
+          <div style={{ position: 'relative', flex: 1, maxWidth: 480 }}>
+            <Search size={16} style={{ position: 'absolute', left: 10, top: 10, color: palette.muted }} />
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search in My Library..."
+              style={{ width: '100%', padding: '8px 10px 8px 32px', borderRadius: 8, border: `1px solid ${palette.border}`, background: palette.panel, color: palette.text }}
+            />
           </div>
+          <button onClick={toggleTheme} style={{ padding: '7px 10px', borderRadius: 8, border: `1px solid ${palette.border}`, background: palette.panel, color: palette.text, cursor: 'pointer' }}>{isDarkMode ? '☀️' : '🌙'}</button>
+          <button onClick={() => navigate('/student-dashboard')} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '7px 10px', borderRadius: 8, border: `1px solid ${palette.border}`, background: palette.panel, color: palette.text, cursor: 'pointer' }}><UserCircle2 size={18} /> My Account</button>
         </header>
 
         <main style={{ padding: 20 }}>
-          <h1 style={{ margin: '0 0 6px', fontSize: 30 }}>My Library</h1>
-          <p style={{ margin: '0 0 16px', color: palette.muted }}>Select a textbook to continue your learning.</p>
+          <h1 style={{ margin: '0 0 10px', fontSize: 30 }}>My Library</h1>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(260px,320px))', gap: 18 }}>
-            {textbooks.map((book) => (
-              <article key={book.id} style={{ display: 'grid', gridTemplateColumns: '20px 1fr', height: 290 }}>
-                {/* Spine */}
-                <div style={{ borderRadius: '8px 0 0 8px', border: `1px solid ${palette.border}`, borderRight: 'none', background: isDarkMode ? 'linear-gradient(180deg,#1e293b,#111827)' : 'linear-gradient(180deg,#b6c8f5,#8fb0ee)' }} />
+          <div style={{ border: `1px solid ${palette.border}`, borderRadius: 12, overflow: 'hidden', background: palette.panel }}>
+            {filteredBooks.map((book, idx) => (
+              <article
+                key={book.id}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '76px 1fr auto',
+                  gap: 12,
+                  alignItems: 'center',
+                  padding: 12,
+                  borderTop: idx === 0 ? 'none' : `1px solid ${palette.border}`,
+                  background: idx % 2 === 0 ? palette.panel : palette.panel2,
+                }}
+              >
+                <button onClick={() => navigate(`/textbook/${book.id}`)} style={{ border: `1px solid ${palette.border}`, padding: 0, borderRadius: 6, overflow: 'hidden', cursor: 'pointer', background: '#0b1323', width: 64, height: 88 }}>
+                  <img src={book.cover} alt={book.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                </button>
 
-                {/* Cover */}
-                <button
-                  onClick={() => navigate(`/textbook/${book.id}`)}
-                  style={{
-                    textAlign: 'left',
-                    border: `1px solid ${palette.border}`,
-                    borderRadius: '0 10px 10px 0',
-                    background: palette.panel,
-                    padding: 0,
-                    cursor: 'pointer',
-                    overflow: 'hidden',
-                    boxShadow: isDarkMode ? '0 12px 26px rgba(0,0,0,.35)' : '0 10px 20px rgba(77,99,158,.22)',
-                  }}
-                >
-                  <div style={{ height: 170, background: '#0b1323', position: 'relative' }}>
-                    {bookCovers[book.id] ? (
-                      <img src={bookCovers[book.id]} alt={`${book.title} cover`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                    ) : (
-                      <div style={{ width: '100%', height: '100%', background: 'linear-gradient(135deg,#0f172a,#1d4ed8,#06b6d4)' }} />
-                    )}
-                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,transparent 45%, rgba(0,0,0,.45))' }} />
+                <div>
+                  <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 4 }}>
+                    <span style={{ fontSize: 11, borderRadius: 999, padding: '2px 8px', border: `1px solid ${palette.border}`, background: palette.page }}>{book.type}</span>
                   </div>
+                  <div style={{ fontWeight: 800 }}>{book.title}</div>
+                  <div style={{ fontSize: 13, color: palette.muted }}>{book.subtitle}</div>
+                  <div style={{ fontSize: 12, color: palette.muted }}>{book.edition} • {book.meta}</div>
+                </div>
 
-                  <div style={{ padding: 12 }}>
-                    <div style={{ fontWeight: 800, fontSize: 16, marginBottom: 4 }}>{book.title}</div>
-                    <div style={{ fontSize: 13, color: palette.muted, marginBottom: 4 }}>{book.subtitle}</div>
-                    <div style={{ fontSize: 12, color: palette.muted }}>{book.edition}</div>
-                    <div style={{ marginTop: 10, display: 'inline-block', fontSize: 11, borderRadius: 999, padding: '3px 8px', border: `1px solid ${palette.border}`, background: palette.panel2 }}>{book.progress}</div>
-                  </div>
+                <button onClick={() => navigate(`/textbook/${book.id}`)} style={{ padding: '8px 12px', borderRadius: 8, border: `1px solid ${palette.border}`, background: '#39d0c8', color: '#032320', fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap' }}>
+                  {book.status}
                 </button>
               </article>
             ))}
-          </div>
 
-          <section style={{ marginTop: 24, display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: 10 }}>
-            {[
-              { label: 'Quizzes', onClick: () => navigate('/quizzes') },
-              { label: 'Flashcards', onClick: () => navigate('/flashcards') },
-              { label: 'Case Studies', onClick: () => navigate('/case-studies') },
-              { label: 'Video Library', onClick: () => navigate('/video-library') },
-              { label: 'Learning Hub', onClick: () => navigate('/student-dashboard') },
-              { label: 'Settings', onClick: () => navigate('/student-dashboard'), icon: <Settings size={14} /> },
-            ].map((item) => (
-              <button key={item.label} onClick={item.onClick} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderRadius: 10, border: `1px solid ${palette.border}`, background: palette.panel, color: palette.text, padding: '10px 12px', cursor: 'pointer' }}>
-                <span>{item.label}</span>
-                {item.icon || <span style={{ color: palette.muted }}>→</span>}
-              </button>
-            ))}
-          </section>
+            {filteredBooks.length === 0 && (
+              <div style={{ padding: 14, color: palette.muted }}>No books match your search.</div>
+            )}
+          </div>
         </main>
       </div>
     </div>
