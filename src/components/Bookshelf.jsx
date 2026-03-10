@@ -22,7 +22,7 @@ export const Bookshelf = () => {
       id: 'NUR1100',
       title: 'Mastering Pharmacology',
       subtitle: 'Used in NUR1100 and NUR2110',
-      edition: '9th Edition',
+      edition: 'Nursing Education Series',
       badges: ['NUR1100', 'NUR2110', 'eBook'],
       cover: '/assets/mastering-pharmacology-cover.jpg',
       route: '/textbook/NUR1100',
