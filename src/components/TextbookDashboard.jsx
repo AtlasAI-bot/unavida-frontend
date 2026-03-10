@@ -9,6 +9,33 @@ const atlasPhrases = [
   'Confidence comes from repetition + reflection.',
 ];
 
+const makeScaffoldCourse = (code, name) => ({
+  code,
+  name,
+  chapters: [
+    {
+      id: `${code.toLowerCase()}_ch1`,
+      title: 'Chapter 1: Foundations',
+      status: 'Not Started',
+      sections: [
+        { id: `${code.toLowerCase()}_ch1_s0`, label: '1.0 Course Orientation', status: 'Not Started' },
+        { id: `${code.toLowerCase()}_ch1_s1`, label: '1.1 Core Concepts', status: 'Not Started' },
+        { id: `${code.toLowerCase()}_ch1_s2`, label: '1.2 Clinical Application', status: 'Not Started' },
+      ],
+    },
+    {
+      id: `${code.toLowerCase()}_ch2`,
+      title: 'Chapter 2: Patient Care Integration',
+      status: 'Not Started',
+      sections: [
+        { id: `${code.toLowerCase()}_ch2_s0`, label: '2.0 Safety Framework', status: 'Not Started' },
+        { id: `${code.toLowerCase()}_ch2_s1`, label: '2.1 Priority Interventions', status: 'Not Started' },
+        { id: `${code.toLowerCase()}_ch2_s2`, label: '2.2 Case Reflection', status: 'Not Started' },
+      ],
+    },
+  ],
+});
+
 const courseContent = {
   NUR1100: {
     code: 'NUR1100',
@@ -71,6 +98,12 @@ const courseContent = {
       },
     ],
   },
+  NUR1000: makeScaffoldCourse('NUR1000', 'Fundamentals of Nursing'),
+  NUR2200: makeScaffoldCourse('NUR2200', 'Maternal Nursing Care'),
+  NUR2300: makeScaffoldCourse('NUR2300', 'Pediatric Nursing'),
+  NUR2400: makeScaffoldCourse('NUR2400', 'Medical-Surgical Nursing'),
+  NUR2500: makeScaffoldCourse('NUR2500', 'Psychiatric Nursing'),
+  NUR2900: makeScaffoldCourse('NUR2900', 'Nursing Leadership'),
 };
 
 const statusColor = (status) => {
@@ -88,7 +121,7 @@ export const TextbookDashboard = () => {
     const savedTheme = localStorage.getItem('unavidaTheme') || 'darkplus';
     setIsDarkMode(savedTheme !== 'light');
   }, []);
-  const [activeCourse, setActiveCourse] = useState(textbookId === 'NUR2110' ? 'NUR2110' : 'NUR1100');
+  const [activeCourse, setActiveCourse] = useState(courseContent[textbookId] ? textbookId : 'NUR1100');
   const [openChapterId, setOpenChapterId] = useState(null);
   const [atlasPhrase] = useState(() => atlasPhrases[Math.floor(Math.random() * atlasPhrases.length)]);
   const [snapshot, setSnapshot] = useState({
@@ -97,6 +130,10 @@ export const TextbookDashboard = () => {
     chaptersCompleted: 0,
     minutesStudied: 0,
   });
+
+  useEffect(() => {
+    if (courseContent[textbookId]) setActiveCourse(textbookId);
+  }, [textbookId]);
 
   useEffect(() => {
     try {
@@ -148,38 +185,13 @@ export const TextbookDashboard = () => {
 
   const course = courseContent[activeCourse];
 
-  const coverBackgroundMap = {
-    NUR1100: '/assets/mastering-pharmacology-cover.jpg',
-    NUR2110: '/assets/mastering-pharmacology-cover.jpg',
-    NUR1000: '/assets/covers/nur1000-fundamentals-of-nursing.jpg',
-    NUR2200: '/assets/covers/nur2200-maternal-nursing-care.jpg',
-    NUR2300: '/assets/covers/nur2300-pediatric-nursing.jpg',
-    NUR2400: '/assets/covers/nur2400-medical-surgical-nursing.jpg',
-    NUR2500: '/assets/covers/nur2500-psychiatric-nursing.jpg',
-    NUR2900: '/assets/covers/nur2900-nursing-leadership.jpg',
-  };
-
-  const coverImage = coverBackgroundMap[activeCourse] || '/assets/mastering-pharmacology-cover.jpg';
-
   return (
-    <div
-      style={{
-        minHeight: '100vh',
-        color: palette.text,
-        backgroundColor: palette.page,
-        backgroundImage: isDarkMode
-          ? `linear-gradient(rgba(10,12,16,.88), rgba(10,12,16,.92)), linear-gradient(135deg, rgba(15,17,19,.75), rgba(15,17,19,.82)), url(${coverImage})`
-          : `linear-gradient(rgba(244,247,255,.88), rgba(237,242,255,.9)), linear-gradient(135deg, rgba(255,255,255,.52), rgba(237,242,255,.62)), url(${coverImage})`,
-        backgroundSize: 'cover, cover, cover',
-        backgroundPosition: 'center, center, center',
-        backgroundAttachment: 'fixed',
-      }}
-    >
+    <div style={{ minHeight: '100vh', background: palette.page, color: palette.text }}>
       <div style={{ padding: '16px 22px', borderBottom: `1px solid ${palette.border}`, background: isDarkMode ? '#14171a' : '#dfe8ff' }}>
-        <div style={{ fontSize: 13, color: palette.muted }}>Bookshelf / Mastering Pharmacology</div>
-        <div style={{ marginTop: 4, fontWeight: 700, fontSize: 22 }}>Mastering Pharmacology</div>
+        <div style={{ fontSize: 13, color: palette.muted }}>{`Bookshelf / ${course.name}`}</div>
+        <div style={{ marginTop: 4, fontWeight: 700, fontSize: 22 }}>{course.name}</div>
         <div style={{ marginTop: 6, fontSize: 13, color: palette.muted }}>
-          Mastering Pharmacology is used in NUR1100 and NUR2110.
+          {`${course.code} • Nursing Education Series`}
         </div>
 
         <div style={{ marginTop: 12, display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
@@ -204,7 +216,7 @@ export const TextbookDashboard = () => {
       <div style={{ padding: 20, display: 'grid', gridTemplateColumns: '1.25fr .75fr', gap: 16 }}>
         <section style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: 14 }}>
           <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
-            {(['NUR1100', 'NUR2110']).map((code) => (
+            {Object.keys(courseContent).map((code) => (
               <button
                 key={code}
                 onClick={() => {
@@ -247,7 +259,13 @@ export const TextbookDashboard = () => {
                       {chapter.sections.map((section) => (
                         <button
                           key={section.id}
-                          onClick={() => navigate(`/reader/ch1_intro?section=${section.id}`)}
+                          onClick={() => {
+                            if (activeCourse === 'NUR1100' || activeCourse === 'NUR2110') {
+                              navigate(`/reader/ch1_intro?section=${section.id}`);
+                            } else {
+                              window.alert('This textbook structure is in place. Full chapter content is coming soon.');
+                            }
+                          }}
                           style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel, color: palette.text, padding: 9, cursor: 'pointer' }}
                         >
                           <div style={{ fontWeight: 600 }}>{section.label}</div>
