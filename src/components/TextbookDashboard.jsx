@@ -184,6 +184,8 @@ export const TextbookDashboard = () => {
   }, [isDarkMode]);
 
   const course = courseContent[activeCourse];
+  const isMasteringPharmacology = textbookId === 'NUR1100' || textbookId === 'NUR2110';
+  const selectableCourses = isMasteringPharmacology ? ['NUR1100', 'NUR2110'] : [activeCourse];
 
   return (
     <div style={{ minHeight: '100vh', background: palette.page, color: palette.text }}>
@@ -216,10 +218,11 @@ export const TextbookDashboard = () => {
       <div style={{ padding: 20, display: 'grid', gridTemplateColumns: '1.25fr .75fr', gap: 16 }}>
         <section style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: 14 }}>
           <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
-            {Object.keys(courseContent).map((code) => (
+            {selectableCourses.map((code) => (
               <button
                 key={code}
                 onClick={() => {
+                  if (!isMasteringPharmacology) return;
                   setActiveCourse(code);
                   setOpenChapterId(null);
                 }}
@@ -230,7 +233,7 @@ export const TextbookDashboard = () => {
                   background: activeCourse === code ? '#39d0c8' : palette.panel2,
                   color: activeCourse === code ? '#032320' : palette.text,
                   fontWeight: 700,
-                  cursor: 'pointer',
+                  cursor: isMasteringPharmacology ? 'pointer' : 'default',
                 }}
               >
                 {code}
