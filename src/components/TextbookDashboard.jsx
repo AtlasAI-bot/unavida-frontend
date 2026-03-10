@@ -148,8 +148,33 @@ export const TextbookDashboard = () => {
 
   const course = courseContent[activeCourse];
 
+  const coverBackgroundMap = {
+    NUR1100: '/assets/mastering-pharmacology-cover.jpg',
+    NUR2110: '/assets/mastering-pharmacology-cover.jpg',
+    NUR1000: '/assets/covers/nur1000-fundamentals-of-nursing.jpg',
+    NUR2200: '/assets/covers/nur2200-maternal-nursing-care.jpg',
+    NUR2300: '/assets/covers/nur2300-pediatric-nursing.jpg',
+    NUR2400: '/assets/covers/nur2400-medical-surgical-nursing.jpg',
+    NUR2500: '/assets/covers/nur2500-psychiatric-nursing.jpg',
+    NUR2900: '/assets/covers/nur2900-nursing-leadership.jpg',
+  };
+
+  const coverImage = coverBackgroundMap[activeCourse] || '/assets/mastering-pharmacology-cover.jpg';
+
   return (
-    <div style={{ minHeight: '100vh', background: palette.page, color: palette.text }}>
+    <div
+      style={{
+        minHeight: '100vh',
+        color: palette.text,
+        backgroundColor: palette.page,
+        backgroundImage: isDarkMode
+          ? `linear-gradient(rgba(10,12,16,.88), rgba(10,12,16,.92)), linear-gradient(135deg, rgba(15,17,19,.75), rgba(15,17,19,.82)), url(${coverImage})`
+          : `linear-gradient(rgba(244,247,255,.88), rgba(237,242,255,.9)), linear-gradient(135deg, rgba(255,255,255,.52), rgba(237,242,255,.62)), url(${coverImage})`,
+        backgroundSize: 'cover, cover, cover',
+        backgroundPosition: 'center, center, center',
+        backgroundAttachment: 'fixed',
+      }}
+    >
       <div style={{ padding: '16px 22px', borderBottom: `1px solid ${palette.border}`, background: isDarkMode ? '#14171a' : '#dfe8ff' }}>
         <div style={{ fontSize: 13, color: palette.muted }}>Bookshelf / Mastering Pharmacology</div>
         <div style={{ marginTop: 4, fontWeight: 700, fontSize: 22 }}>Mastering Pharmacology</div>
