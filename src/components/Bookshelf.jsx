@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Home, Library, Search, UserCircle2, BookOpen } from 'lucide-react';
+import { Home, Library, Search, UserCircle2, BookOpen, MoreVertical } from 'lucide-react';
 
 export const Bookshelf = () => {
   const navigate = useNavigate();
@@ -23,12 +23,12 @@ export const Bookshelf = () => {
   const palette = useMemo(() => {
     if (isDarkMode) {
       return {
-        page: '#0f1113', sidebar: '#12171d', topbar: '#161d24', panel: '#1a222b', panel2: '#222c36',
+        page: '#0f1113', sidebar: '#12171d', topbar: '#161d24', panel: '#1a222b', panel2: '#202a34',
         text: '#f5f7fa', muted: '#b7c2ce', border: 'rgba(255,255,255,.12)'
       };
     }
     return {
-      page: '#edf2ff', sidebar: '#dce7ff', topbar: '#e7efff', panel: '#d8e3ff', panel2: '#c8d8ff',
+      page: '#edf2ff', sidebar: '#dce7ff', topbar: '#e7efff', panel: '#d8e3ff', panel2: '#cfddff',
       text: '#101827', muted: '#334155', border: '#9fb3e8'
     };
   }, [isDarkMode]);
@@ -82,7 +82,7 @@ export const Bookshelf = () => {
       {/* Main */}
       <div>
         <header style={{ position: 'sticky', top: 0, zIndex: 30, background: palette.topbar, borderBottom: `1px solid ${palette.border}`, padding: '12px 18px', display: 'flex', gap: 8, alignItems: 'center' }}>
-          <div style={{ position: 'relative', flex: 1, maxWidth: 480 }}>
+          <div style={{ position: 'relative', flex: 1, maxWidth: 520 }}>
             <Search size={16} style={{ position: 'absolute', left: 10, top: 10, color: palette.muted }} />
             <input
               value={query}
@@ -104,29 +104,33 @@ export const Bookshelf = () => {
                 key={book.id}
                 style={{
                   display: 'grid',
-                  gridTemplateColumns: '76px 1fr auto',
-                  gap: 12,
+                  gridTemplateColumns: '132px 1fr auto auto',
+                  gap: 14,
                   alignItems: 'center',
-                  padding: 12,
+                  padding: 14,
                   borderTop: idx === 0 ? 'none' : `1px solid ${palette.border}`,
                   background: idx % 2 === 0 ? palette.panel : palette.panel2,
                 }}
               >
-                <button onClick={() => navigate(`/textbook/${book.id}`)} style={{ border: `1px solid ${palette.border}`, padding: 0, borderRadius: 6, overflow: 'hidden', cursor: 'pointer', background: '#0b1323', width: 64, height: 88 }}>
+                <button onClick={() => navigate(`/textbook/${book.id}`)} style={{ border: `1px solid ${palette.border}`, padding: 0, borderRadius: 8, overflow: 'hidden', cursor: 'pointer', background: '#0b1323', width: 112, height: 154, justifySelf: 'center', boxShadow: isDarkMode ? '0 10px 18px rgba(0,0,0,.35)' : '0 8px 14px rgba(77,99,158,.25)' }}>
                   <img src={book.cover} alt={book.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </button>
 
                 <div>
-                  <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 4 }}>
+                  <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 6 }}>
                     <span style={{ fontSize: 11, borderRadius: 999, padding: '2px 8px', border: `1px solid ${palette.border}`, background: palette.page }}>{book.type}</span>
                   </div>
-                  <div style={{ fontWeight: 800 }}>{book.title}</div>
+                  <div style={{ fontWeight: 800, fontSize: 17 }}>{book.title}</div>
                   <div style={{ fontSize: 13, color: palette.muted }}>{book.subtitle}</div>
                   <div style={{ fontSize: 12, color: palette.muted }}>{book.edition} • {book.meta}</div>
                 </div>
 
                 <button onClick={() => navigate(`/textbook/${book.id}`)} style={{ padding: '8px 12px', borderRadius: 8, border: `1px solid ${palette.border}`, background: '#39d0c8', color: '#032320', fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap' }}>
                   {book.status}
+                </button>
+
+                <button title="More options" style={{ padding: 6, borderRadius: 8, border: `1px solid ${palette.border}`, background: palette.panel, color: palette.text, cursor: 'pointer' }}>
+                  <MoreVertical size={16} />
                 </button>
               </article>
             ))}
