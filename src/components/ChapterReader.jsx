@@ -346,31 +346,35 @@ export const ChapterReader = () => {
   const renderParagraphWithNumberedList = (text) => {
     const normalized = cleanBody(text || '').replace(/\s+/g, ' ').trim();
 
-    if (!/Eight Rights to Medication Administration/i.test(normalized) || !/1\.\s*Right Patient/i.test(normalized)) {
+    const canonicalEightRights = [
+      'Right Patient: Using two identifiers to ensure the correct patient receives the medication',
+      'Right Drug: Verifying that the ordered drug is the intended drug, accounting for similar names',
+      'Right Dose: Calculating and verifying that the prescribed dose is appropriate',
+      'Right Route: Ensuring the medication is administered via the correct route',
+      'Right Time: Administering the medication at the appropriate time',
+      'Right Documentation: Accurately recording medication administration',
+      'Right Reason: Understanding the therapeutic indication for the medication',
+      'Right Response: Monitoring for the expected therapeutic response',
+    ];
+
+    const hasEightRightsBlock =
+      /Eight Rights to Medication Administration/i.test(normalized) ||
+      (/Right Patient:/i.test(normalized) && /Right Response:/i.test(normalized));
+
+    if (!hasEightRightsBlock) {
       return <p>{text}</p>;
     }
 
-    const heading = 'Eight Rights to Medication Administration';
-    const headingIndex = normalized.toLowerCase().indexOf(heading.toLowerCase());
-    const before = headingIndex > 0 ? normalized.slice(0, headingIndex).trim() : '';
-    const afterHeading = normalized.slice(headingIndex + heading.length).trim();
-
-    const parts = afterHeading.split(/(?=\d+\.\s*Right\s+)/g).map((p) => p.trim()).filter(Boolean);
-    const listItems = parts.filter((p) => /^\d+\.\s*Right\s+/i.test(p)).map((p) => p.replace(/^\d+\.\s*/, '').trim());
-    const trailing = parts.filter((p) => !/^\d+\.\s*Right\s+/i.test(p)).join(' ').trim();
-
     return (
       <>
-        {before && <p>{before}</p>}
-        <h4 style={{ margin: '8px 0', fontSize: '1.1rem' }}>{heading}</h4>
+        <h4 style={{ margin: '8px 0', fontSize: '1.1rem' }}>Eight Rights to Medication Administration</h4>
         <ol style={{ margin: '0 0 10px 18px', padding: 0 }}>
-          {listItems.map((item, idx) => (
+          {canonicalEightRights.map((item, idx) => (
             <li key={idx} style={{ marginBottom: 6 }}>
               {item}
             </li>
           ))}
         </ol>
-        {trailing && <p>{trailing}</p>}
       </>
     );
   };
