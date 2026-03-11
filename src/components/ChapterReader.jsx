@@ -299,6 +299,7 @@ export const ChapterReader = () => {
 
   const forcedSubheads = [
     'Key Principles for Safe Medication Use',
+    'Eight Rights to Medication Administration',
     'The Six Rights (Extended to Eight)',
     'The Scope of This Course',
   ];
@@ -339,6 +340,38 @@ export const ChapterReader = () => {
           return <p key={i} style={{ margin: 0 }}>{line}</p>;
         })}
       </div>
+    );
+  };
+
+  const renderParagraphWithNumberedList = (text) => {
+    const normalized = cleanBody(text || '').replace(/\s+/g, ' ').trim();
+
+    if (!/Eight Rights to Medication Administration/i.test(normalized) || !/1\.\s*Right Patient/i.test(normalized)) {
+      return <p>{text}</p>;
+    }
+
+    const heading = 'Eight Rights to Medication Administration';
+    const headingIndex = normalized.toLowerCase().indexOf(heading.toLowerCase());
+    const before = headingIndex > 0 ? normalized.slice(0, headingIndex).trim() : '';
+    const afterHeading = normalized.slice(headingIndex + heading.length).trim();
+
+    const parts = afterHeading.split(/(?=\d+\.\s*Right\s+)/g).map((p) => p.trim()).filter(Boolean);
+    const listItems = parts.filter((p) => /^\d+\.\s*Right\s+/i.test(p)).map((p) => p.replace(/^\d+\.\s*/, '').trim());
+    const trailing = parts.filter((p) => !/^\d+\.\s*Right\s+/i.test(p)).join(' ').trim();
+
+    return (
+      <>
+        {before && <p>{before}</p>}
+        <h4 style={{ margin: '8px 0', fontSize: '1.1rem' }}>{heading}</h4>
+        <ol style={{ margin: '0 0 10px 18px', padding: 0 }}>
+          {listItems.map((item, idx) => (
+            <li key={idx} style={{ marginBottom: 6 }}>
+              {item}
+            </li>
+          ))}
+        </ol>
+        {trailing && <p>{trailing}</p>}
+      </>
     );
   };
 
@@ -1105,7 +1138,7 @@ export const ChapterReader = () => {
           border-radius: 10px;
           background: #fff3cd;
           border: 1px solid #e6d58f;
-          color: #5e4a08;
+          color: #111111;
           font-size: 13px;
         }
 
@@ -1571,7 +1604,7 @@ export const ChapterReader = () => {
                 </div>
 
                 <div className="reader-alert-bar">
-                  <strong>Exam Alert:</strong> Instructor-highlighted topic — High-yield content for next assessment.
+                  <strong style={{ color: '#111111' }}>Exam Alert:</strong> Instructor-highlighted topic — High-yield content for next assessment.
                 </div>
 
                 {currentVideoUrl && (
@@ -1626,12 +1659,12 @@ export const ChapterReader = () => {
                               renderReviewQuestionText(body || para)
                             ) : forced ? (
                               <>
-                                {forced.before && <p>{forced.before}</p>}
+                                {forced.before && (selectedSection.id === 'sec1_overview_introduction' ? renderParagraphWithNumberedList(forced.before) : <p>{forced.before}</p>)}
                                 <h4 style={{ margin: '8px 0', fontSize: '1.1rem' }}>{forced.heading}</h4>
-                                {forced.after && <p>{forced.after}</p>}
+                                {forced.after && (selectedSection.id === 'sec1_overview_introduction' ? renderParagraphWithNumberedList(forced.after) : <p>{forced.after}</p>)}
                               </>
                             ) : (
-                              <p>{body}</p>
+                              selectedSection.id === 'sec1_overview_introduction' ? renderParagraphWithNumberedList(body) : <p>{body}</p>
                             )}
                             {imgSrc && (
                               <img
