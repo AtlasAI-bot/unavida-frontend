@@ -1698,7 +1698,9 @@ export const ChapterReader = () => {
                         {block.htmlReady ? (
                           <div dangerouslySetInnerHTML={{ __html: block.htmlReady }} />
                         ) : block.content ? (
-                          <p>{block.content}</p>
+                          selectedSection.id === 'sec1_overview_introduction'
+                            ? renderParagraphWithNumberedList(block.content)
+                            : <p>{block.content}</p>
                         ) : null}
                       </div>
                     ))}
