@@ -237,7 +237,10 @@ export const ChapterReader = () => {
     'Chapter 53: Respiratory System I',
     'Chapter 54: Respiratory System II',
     'Chapter 55: Respiratory System III',
-  ];
+  ].map((title) => ({
+    title,
+    sections: ['1.0 Overview (Placeholder)', '1.1 Core Concepts (Placeholder)', '1.2 Clinical Focus (Placeholder)'],
+  }));
 
   const currentSectionIndex = allSections.findIndex((s) => s.id === selectedSection?.id);
   const prevSection = currentSectionIndex > 0 ? allSections[currentSectionIndex - 1] : null;
@@ -1614,24 +1617,26 @@ export const ChapterReader = () => {
             </div>
           </div>
 
-          <div className="reader-chap open">
-            <button className="reader-chap-btn" onClick={(e) => handleChapClick(e.currentTarget.closest('.reader-chap'))}>
-              Remaining NUR1100 Chapters (Scaffold)
-              <small>▼</small>
-            </button>
-            <div className="reader-sec-wrap">
-              {chapterScaffoldTitles.map((title) => (
-                <a
-                  key={title}
-                  className="reader-sec"
-                  onClick={() => window.alert('This chapter is already mapped in course structure and will be filled next.')}
-                >
-                  {title}
-                  <span style={{ fontSize: '11px', color: 'var(--muted)' }}> (placeholder)</span>
-                </a>
-              ))}
+          {chapterScaffoldTitles.map((chapter) => (
+            <div className="reader-chap" key={chapter.title}>
+              <button className="reader-chap-btn" onClick={(e) => handleChapClick(e.currentTarget.closest('.reader-chap'))}>
+                {chapter.title}
+                <small>▼</small>
+              </button>
+              <div className="reader-sec-wrap">
+                {chapter.sections.map((label) => (
+                  <a
+                    key={`${chapter.title}-${label}`}
+                    className="reader-sec"
+                    onClick={() => window.alert('This chapter is mapped and queued for content build.')}
+                  >
+                    {label}
+                    <span style={{ fontSize: '11px', color: 'var(--muted)' }}> (placeholder)</span>
+                  </a>
+                ))}
+              </div>
             </div>
-          </div>
+          ))}
         </aside>
 
         {/* Main Content Panel */}
