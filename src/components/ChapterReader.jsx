@@ -219,6 +219,25 @@ export const ChapterReader = () => {
   // allSections is defined above with Chapter 2 scaffold entries included.
   const chapter1Sections = allSections.filter((s) => !s.id.startsWith('sec2_'));
   const chapter2Sections = allSections.filter((s) => s.id.startsWith('sec2_'));
+  const chapterScaffoldTitles = [
+    'Chapter 3: Toxicity',
+    'Chapter 5: Dosage Calculations',
+    'Chapter 9: Antibiotics',
+    'Chapter 10: Antivirals',
+    'Chapter 11: Antifungals',
+    'Chapter 14: Antineoplastics',
+    'Chapter 42: Cardiovascular Introduction',
+    'Chapter 43: Blood Pressure',
+    'Chapter 44: Cardiotonic',
+    'Chapter 45: Antiarrhythmics',
+    'Chapter 46: Antianginals',
+    'Chapter 47: Lipid-Lowering',
+    'Chapter 48: Blood Coagulation',
+    'Chapter 49: Anemias',
+    'Chapter 53: Respiratory System I',
+    'Chapter 54: Respiratory System II',
+    'Chapter 55: Respiratory System III',
+  ];
 
   const currentSectionIndex = allSections.findIndex((s) => s.id === selectedSection?.id);
   const prevSection = currentSectionIndex > 0 ? allSections[currentSectionIndex - 1] : null;
@@ -1590,6 +1609,25 @@ export const ChapterReader = () => {
                 >
                   {section.title}
                   <span style={{ fontSize: '11px', color: 'var(--muted)' }}> ({getSectionWordCount(section)} words)</span>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="reader-chap open">
+            <button className="reader-chap-btn" onClick={(e) => handleChapClick(e.currentTarget.closest('.reader-chap'))}>
+              Remaining NUR1100 Chapters (Scaffold)
+              <small>▼</small>
+            </button>
+            <div className="reader-sec-wrap">
+              {chapterScaffoldTitles.map((title) => (
+                <a
+                  key={title}
+                  className="reader-sec"
+                  onClick={() => window.alert('This chapter is already mapped in course structure and will be filled next.')}
+                >
+                  {title}
+                  <span style={{ fontSize: '11px', color: 'var(--muted)' }}> (placeholder)</span>
                 </a>
               ))}
             </div>
