@@ -1451,11 +1451,11 @@ export const ChapterReader = () => {
       <div className="reader-top">
         <div>
           <div className="reader-crumb" style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
-            <button className="reader-btn" style={{ padding: '2px 6px' }} onClick={() => navigate('/bookshelf')}>Home</button>
+            <span style={{ cursor: 'pointer', textDecoration: 'underline' }} onClick={() => navigate('/bookshelf')}>Home</span>
             <span>/</span>
-            <button className="reader-btn" style={{ padding: '2px 6px' }} onClick={() => navigate('/textbook/NUR1100')}>Pharmacology I</button>
+            <span style={{ cursor: 'pointer', textDecoration: 'underline' }} onClick={() => navigate('/textbook/NUR1100')}>Pharmacology I</span>
             <span>/</span>
-            <button className="reader-btn" style={{ padding: '2px 6px' }} onClick={() => navigate('/reader/ch1_intro')}>Reader</button>
+            <span style={{ cursor: 'pointer', textDecoration: 'underline' }} onClick={() => navigate('/reader/ch1_intro')}>Reader</span>
           </div>
           <div className="reader-header">Mastering Pharmacology</div>
         </div>
