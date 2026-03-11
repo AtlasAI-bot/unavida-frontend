@@ -111,6 +111,46 @@ export const ChapterReader = () => {
     sec1_11_review_questions: ['/images/ch1/section-1-11/ch1_s1_11_v01.png'],
   };
 
+  const chapter2SeedSections = [
+    {
+      id: 'sec2_1_pk_overview',
+      title: 'Section 2.1: Pharmacokinetics Overview',
+      content:
+        'Pharmacokinetics explains what the body does to a drug through absorption, distribution, metabolism, and excretion (ADME). This section introduces the full ADME framework and why it drives safe medication decisions in nursing care.\n\n🎥 Video Placeholder: Chapter 2 Overview Video\n🖼️ Image Placeholder: ADME Process Map',
+    },
+    {
+      id: 'sec2_2_absorption',
+      title: 'Section 2.2: Absorption & Bioavailability',
+      content:
+        'Absorption describes how medications enter systemic circulation and begin producing therapeutic effects. Route of administration, formulation, and patient factors all influence absorption and bioavailability.\n\n🎥 Video Placeholder: Absorption Explained\n🖼️ Image Placeholder: Route vs Bioavailability Diagram',
+    },
+    {
+      id: 'sec2_3_distribution',
+      title: 'Section 2.3: Distribution — Where Drugs Go',
+      content:
+        'Distribution describes how drugs move from blood into tissues and organs. Protein binding, blood flow, and physiologic barriers determine how much active drug reaches target sites.\n\n🎥 Video Placeholder: Distribution Factors\n🖼️ Image Placeholder: Tissue Distribution Visual',
+    },
+    {
+      id: 'sec2_4_metabolism',
+      title: 'Section 2.4: Metabolism & CYP450',
+      content:
+        'Metabolism (biotransformation) primarily occurs in the liver and changes drugs into more excretable forms. CYP450 interactions are a major nursing safety concern in polypharmacy.\n\n🎥 Video Placeholder: CYP450 Interactions\n🖼️ Image Placeholder: Phase I/II Metabolism Flow',
+    },
+    {
+      id: 'sec2_5_excretion',
+      title: 'Section 2.5: Excretion & Drug Elimination',
+      content:
+        'Excretion removes drugs and metabolites from the body, mainly through the kidneys. Renal and hepatic function changes can significantly alter therapeutic and toxic drug levels.\n\n🎥 Video Placeholder: Renal Elimination Basics\n🖼️ Image Placeholder: Excretion Pathway Diagram',
+    },
+    {
+      id: 'sec2_6_half_life_clearance',
+      title: 'Section 2.6: Half-Life, Clearance & Steady State',
+      content:
+        'Half-life, clearance, and steady state guide dose timing and monitoring strategy. Nurses use these concepts to anticipate onset, peak effect, and accumulation risk.\n\n🎥 Video Placeholder: Half-Life & Steady State\n🖼️ Image Placeholder: Plasma Concentration-Time Curve',
+    },
+  ];
+
+  const allSections = [...(chapterData.chapter.sections || []), ...chapter2SeedSections];
   const currentSectionImages = selectedSection ? (sectionIllustrationMap[selectedSection.id] || []) : [];
 
   const sectionParagraphs = selectedSection?.content
@@ -176,7 +216,7 @@ export const ChapterReader = () => {
   const sectionTitle = cleanHeading(selectedSection?.title || '');
   const currentWordCount = getSectionWordCount(selectedSection);
 
-  const allSections = chapterData.chapter.sections || [];
+  // allSections is defined above with Chapter 2 scaffold entries included.
   const currentSectionIndex = allSections.findIndex((s) => s.id === selectedSection?.id);
   const prevSection = currentSectionIndex > 0 ? allSections[currentSectionIndex - 1] : null;
   const nextSection = currentSectionIndex >= 0 && currentSectionIndex < allSections.length - 1 ? allSections[currentSectionIndex + 1] : null;
@@ -380,7 +420,7 @@ export const ChapterReader = () => {
     return renderCanonicalEightRights();
   };
 
-  const getSectionById = (id) => (chapterData.chapter.sections || []).find((s) => s.id === id);
+  const getSectionById = (id) => allSections.find((s) => s.id === id);
 
   const fixEightRightsHtml = (html = '') => {
     if (!html || !/Right Patient:/i.test(html) || !/Right Response:/i.test(html)) return html;
@@ -645,7 +685,7 @@ export const ChapterReader = () => {
   };
 
   const printReader = () => {
-    const all = chapterData.chapter.sections || [];
+    const all = allSections;
     if (window.confirm('Print current section only?')) {
       runPrintAction(selectedSection ? [selectedSection] : [], 'print');
       return;
@@ -658,7 +698,7 @@ export const ChapterReader = () => {
   };
 
   const exportStudySheet = () => {
-    const all = chapterData.chapter.sections || [];
+    const all = allSections;
     if (window.confirm('Create study sheet for current section only?')) {
       runPrintAction(selectedSection ? [selectedSection] : [], 'study');
       return;
@@ -746,7 +786,7 @@ export const ChapterReader = () => {
 
   // Set section from URL query (?section=...), else restore last viewed section
   useEffect(() => {
-    const sections = chapterData.chapter.sections || [];
+    const sections = allSections;
     if (!sections.length) return;
 
     const query = new URLSearchParams(location.search || '');
@@ -1519,7 +1559,7 @@ export const ChapterReader = () => {
               <small>▼</small>
             </button>
             <div className="reader-sec-wrap">
-              {chapterData.chapter.sections?.map((section) => (
+              {allSections?.map((section) => (
                 <a
                   key={section.id}
                   className={`reader-sec ${selectedSection?.id === section.id ? 'active' : ''}`}
@@ -1908,7 +1948,7 @@ export const ChapterReader = () => {
             <button className="reader-btn" onClick={() => setPrintPickerOpen(false)}>✕</button>
           </div>
           <div className="reader-modal-body" style={{ display: 'grid', gap: '8px', maxHeight: '52vh', overflowY: 'auto' }}>
-            {(chapterData.chapter.sections || []).map((s) => {
+            {allSections.map((s) => {
               const checked = printSelectedIds.includes(s.id);
               return (
                 <label key={s.id} style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
@@ -1924,12 +1964,12 @@ export const ChapterReader = () => {
               );
             })}
             <div style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>
-              <button className="reader-btn" onClick={() => setPrintSelectedIds((chapterData.chapter.sections || []).map((s) => s.id))}>Select All</button>
+              <button className="reader-btn" onClick={() => setPrintSelectedIds(allSections.map((s) => s.id))}>Select All</button>
               <button className="reader-btn" onClick={() => setPrintSelectedIds([])}>Clear</button>
               <button
                 className="reader-btn"
                 onClick={() => {
-                  const selected = (chapterData.chapter.sections || []).filter((s) => printSelectedIds.includes(s.id));
+                  const selected = allSections.filter((s) => printSelectedIds.includes(s.id));
                   setPrintPickerOpen(false);
                   runPrintAction(selected, printAction);
                 }}
