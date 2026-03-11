@@ -381,6 +381,27 @@ export const ChapterReader = () => {
 
   const getSectionById = (id) => (chapterData.chapter.sections || []).find((s) => s.id === id);
 
+  const fixEightRightsHtml = (html = '') => {
+    if (!html || !/Right Patient:/i.test(html) || !/Right Response:/i.test(html)) return html;
+    const canonical = `
+      <h4>Eight Rights to Medication Administration</h4>
+      <ol>
+        <li>Right Patient: Using two identifiers to ensure the correct patient receives the medication</li>
+        <li>Right Drug: Verifying that the ordered drug is the intended drug, accounting for similar names</li>
+        <li>Right Dose: Calculating and verifying that the prescribed dose is appropriate</li>
+        <li>Right Route: Ensuring the medication is administered via the correct route</li>
+        <li>Right Time: Administering the medication at the appropriate time</li>
+        <li>Right Documentation: Accurately recording medication administration</li>
+        <li>Right Reason: Understanding the therapeutic indication for the medication</li>
+        <li>Right Response: Monitoring for the expected therapeutic response</li>
+      </ol>
+    `;
+
+    return html
+      .replace(/<h[34][^>]*>\s*(The Six Rights \(Extended to Eight\)|Eight Rights to Medication Administration)\s*<\/h[34]>[\s\S]*?(?=<h[34]|$)/i, canonical)
+      .replace(/<p>\s*1\.\s*Right Patient:[\s\S]*?8\.\s*Right Response:[\s\S]*?<\/p>/i, canonical);
+  };
+
   const openTool = (tool) => {
     if (tool === 'flashcards') {
       setToolView('flashcards');
@@ -1696,7 +1717,14 @@ export const ChapterReader = () => {
                       <div key={idx} style={{ marginBottom: '16px' }}>
                         {block.title && <h4 style={{ margin: '0 0 6px 0', fontSize: '1.06rem' }}>{cleanHeading(block.title)}</h4>}
                         {block.htmlReady ? (
-                          <div dangerouslySetInnerHTML={{ __html: block.htmlReady }} />
+                          <div
+                            dangerouslySetInnerHTML={{
+                              __html:
+                                selectedSection.id === 'sec1_overview_introduction'
+                                  ? fixEightRightsHtml(block.htmlReady)
+                                  : block.htmlReady,
+                            }}
+                          />
                         ) : block.content ? (
                           selectedSection.id === 'sec1_overview_introduction'
                             ? renderParagraphWithNumberedList(block.content)
