@@ -217,6 +217,9 @@ export const ChapterReader = () => {
   const currentWordCount = getSectionWordCount(selectedSection);
 
   // allSections is defined above with Chapter 2 scaffold entries included.
+  const chapter1Sections = allSections.filter((s) => !s.id.startsWith('sec2_'));
+  const chapter2Sections = allSections.filter((s) => s.id.startsWith('sec2_'));
+
   const currentSectionIndex = allSections.findIndex((s) => s.id === selectedSection?.id);
   const prevSection = currentSectionIndex > 0 ? allSections[currentSectionIndex - 1] : null;
   const nextSection = currentSectionIndex >= 0 && currentSectionIndex < allSections.length - 1 ? allSections[currentSectionIndex + 1] : null;
@@ -1559,7 +1562,7 @@ export const ChapterReader = () => {
               <small>▼</small>
             </button>
             <div className="reader-sec-wrap">
-              {allSections?.map((section) => (
+              {chapter1Sections.map((section) => (
                 <a
                   key={section.id}
                   className={`reader-sec ${selectedSection?.id === section.id ? 'active' : ''}`}
@@ -1568,6 +1571,25 @@ export const ChapterReader = () => {
                   {section.title}
                   <span style={{ fontSize: '11px', color: 'var(--muted)' }}> ({getSectionWordCount(section)} words)</span>
                   {section.duration && <span style={{ fontSize: '11px', color: 'var(--muted)' }}> • {section.duration} min</span>}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="reader-chap open">
+            <button className="reader-chap-btn" onClick={(e) => handleChapClick(e.currentTarget.closest('.reader-chap'))}>
+              Chapter 2: Pharmacokinetics
+              <small>▼</small>
+            </button>
+            <div className="reader-sec-wrap">
+              {chapter2Sections.map((section) => (
+                <a
+                  key={section.id}
+                  className={`reader-sec ${selectedSection?.id === section.id ? 'active' : ''}`}
+                  onClick={() => handleSectionClick(section)}
+                >
+                  {section.title}
+                  <span style={{ fontSize: '11px', color: 'var(--muted)' }}> ({getSectionWordCount(section)} words)</span>
                 </a>
               ))}
             </div>
