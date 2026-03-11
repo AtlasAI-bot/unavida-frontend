@@ -42,35 +42,72 @@ const courseContent = {
     name: 'Pharmacology I',
     chapters: [
       {
-        id: 'ch1',
-        title: 'Chapter 1: Introduction to Pharmacology',
+        id: 'nur1100_w1',
+        title: 'Week 1: Chapters 1, 2, 3, 5',
         status: 'In Progress',
         sections: [
-          { id: 'sec1_overview_introduction', label: '1.0 Overview & Introduction', status: 'Completed' },
-          { id: 'sec1_1_definitions_scope', label: '1.1 Definition & Scope of Pharmacology', status: 'In Progress' },
-          { id: 'sec1_2_historical_context', label: '1.2 Historical Context of Pharmacology', status: 'In Progress' },
-          { id: 'sec1_3_drug_classification', label: '1.3 Drug Classification Systems', status: 'Not Started' },
-          { id: 'sec1_4_regulatory_bodies_fda', label: '1.4 Regulatory Bodies & FDA Process', status: 'Not Started' },
-          { id: 'sec1_5_drug_names_codes', label: '1.5 Drug Names & Classification Codes', status: 'Not Started' },
-          { id: 'sec1_6_pk_vs_pd', label: '1.6 Pharmacokinetics vs Pharmacodynamics', status: 'In Progress' },
-          { id: 'sec1_7_drug_interactions', label: '1.7 Drug Interactions & Patient Safety', status: 'Not Started' },
-          { id: 'sec1_8_dosage_calculations', label: '1.8 Dosage Calculations', status: 'Not Started' },
-          { id: 'sec1_9_key_terms_glossary', label: '1.9 Key Terms Glossary', status: 'Not Started' },
-          { id: 'sec1_10_clinical_story_allergy_decision', label: '1.10 Clinical Story: The Allergy Decision', status: 'Not Started' },
-          { id: 'sec1_11_review_questions', label: '1.11 Review Questions & Assessment', status: 'Not Started' },
+          { id: 'sec1_overview_introduction', label: 'Chapter 1: Intro to Drugs', status: 'In Progress' },
+          { id: 'sec2_1_pk_overview', label: 'Chapter 2: Pharmacokinetics', status: 'In Progress' },
+          { id: 'nur1100_ch3_toxicity', label: 'Chapter 3: Toxicity', status: 'Not Started' },
+          { id: 'sec1_8_dosage_calculations', label: 'Chapter 5: Dosage Calculations', status: 'Not Started' },
         ],
       },
       {
-        id: 'ch2',
-        title: 'Chapter 2: Pharmacokinetics — The Journey of a Drug Through the Body',
-        status: 'In Progress',
+        id: 'nur1100_w2',
+        title: 'Week 2: Chapters 9, 10, 11, 14',
+        status: 'Not Started',
         sections: [
-          { id: 'sec2_1_pk_overview', label: '2.1 Pharmacokinetics Overview', status: 'In Progress' },
-          { id: 'sec2_2_absorption', label: '2.2 Absorption & Bioavailability', status: 'Not Started' },
-          { id: 'sec2_3_distribution', label: '2.3 Distribution — Where Drugs Go', status: 'Not Started' },
-          { id: 'sec2_4_metabolism', label: '2.4 Metabolism & CYP450', status: 'Not Started' },
-          { id: 'sec2_5_excretion', label: '2.5 Excretion & Drug Elimination', status: 'Not Started' },
-          { id: 'sec2_6_half_life_clearance', label: '2.6 Half-Life, Clearance & Steady State', status: 'Not Started' },
+          { id: 'nur1100_ch9_antibiotics', label: 'Chapter 9: Antibiotics', status: 'Not Started' },
+          { id: 'nur1100_ch10_antivirals', label: 'Chapter 10: Antivirals', status: 'Not Started' },
+          { id: 'nur1100_ch11_antifungals', label: 'Chapter 11: Antifungals', status: 'Not Started' },
+          { id: 'nur1100_ch14_antineoplastics', label: 'Chapter 14: Antineoplastics', status: 'Not Started' },
+        ],
+      },
+      {
+        id: 'nur1100_w3',
+        title: 'Week 3: Chapters 53, 54, 55',
+        status: 'Not Started',
+        sections: [
+          { id: 'nur1100_ch53_respiratory_intro', label: 'Chapter 53: Respiratory System I', status: 'Not Started' },
+          { id: 'nur1100_ch54_respiratory_advanced', label: 'Chapter 54: Respiratory System II', status: 'Not Started' },
+          { id: 'nur1100_ch55_respiratory_clinical', label: 'Chapter 55: Respiratory System III', status: 'Not Started' },
+        ],
+      },
+      {
+        id: 'nur1100_w4',
+        title: 'Week 4: Chapters 42, 43, 44',
+        status: 'Not Started',
+        sections: [
+          { id: 'nur1100_ch42_cardiovascular_intro', label: 'Chapter 42: Cardiovascular Introduction', status: 'Not Started' },
+          { id: 'nur1100_ch43_blood_pressure', label: 'Chapter 43: Blood Pressure', status: 'Not Started' },
+          { id: 'nur1100_ch44_cardiotonic', label: 'Chapter 44: Cardiotonic', status: 'Not Started' },
+        ],
+      },
+      {
+        id: 'nur1100_w5',
+        title: 'Week 5: Chapters 45, 46, 47',
+        status: 'Not Started',
+        sections: [
+          { id: 'nur1100_ch45_antiarrhythmics', label: 'Chapter 45: Antiarrhythmics', status: 'Not Started' },
+          { id: 'nur1100_ch46_antianginals', label: 'Chapter 46: Antianginals', status: 'Not Started' },
+          { id: 'nur1100_ch47_lipid_lowering', label: 'Chapter 47: Lipid-Lowering', status: 'Not Started' },
+        ],
+      },
+      {
+        id: 'nur1100_w6',
+        title: 'Week 6: Chapters 48, 49',
+        status: 'Not Started',
+        sections: [
+          { id: 'nur1100_ch48_blood_coagulation', label: 'Chapter 48: Blood Coagulation', status: 'Not Started' },
+          { id: 'nur1100_ch49_anemias', label: 'Chapter 49: Anemias', status: 'Not Started' },
+        ],
+      },
+      {
+        id: 'nur1100_w7',
+        title: 'Week 7: Final Exam',
+        status: 'Not Started',
+        sections: [
+          { id: 'nur1100_final_exam', label: 'Comprehensive Final Exam Review', status: 'Not Started' },
         ],
       },
     ],
@@ -80,23 +117,72 @@ const courseContent = {
     name: 'Pharmacology II',
     chapters: [
       {
-        id: 'p2_ch1',
-        title: 'Chapter 1: Advanced Therapeutics',
+        id: 'nur2110_w1',
+        title: 'Week 1: Chapters 56, 57, 58, 59',
         status: 'Not Started',
         sections: [
-          { id: 'p2_ch1_0', label: '1.0 Complex Drug Regimens', status: 'Not Started' },
-          { id: 'p2_ch1_1', label: '1.1 Polypharmacy Strategy', status: 'Not Started' },
-          { id: 'p2_ch1_2', label: '1.2 High-Risk Populations', status: 'Not Started' },
+          { id: 'nur2110_ch56_gi_intro', label: 'Chapter 56: GI System I', status: 'Not Started' },
+          { id: 'nur2110_ch57_gi_advanced', label: 'Chapter 57: GI System II', status: 'Not Started' },
+          { id: 'nur2110_ch58_gi_supportive', label: 'Chapter 58: GI System III', status: 'Not Started' },
+          { id: 'nur2110_ch59_gi_clinical', label: 'Chapter 59: GI System IV', status: 'Not Started' },
         ],
       },
       {
-        id: 'p2_ch2',
-        title: 'Chapter 2: Critical Care Pharmacology',
+        id: 'nur2110_w2',
+        title: 'Week 2: Chapters 34, 35, 36, 37, 38',
         status: 'Not Started',
         sections: [
-          { id: 'p2_ch2_0', label: '2.0 Vasoactive Medications', status: 'Not Started' },
-          { id: 'p2_ch2_1', label: '2.1 Sedation & Analgesia', status: 'Not Started' },
-          { id: 'p2_ch2_2', label: '2.2 Sepsis Protocols', status: 'Not Started' },
+          { id: 'nur2110_ch34_hypothalamic', label: 'Chapter 34: Hypothalamic', status: 'Not Started' },
+          { id: 'nur2110_ch35_pituitary', label: 'Chapter 35: Pituitary', status: 'Not Started' },
+          { id: 'nur2110_ch36_adrenal', label: 'Chapter 36: Adrenal', status: 'Not Started' },
+          { id: 'nur2110_ch37_thyroid', label: 'Chapter 37: Thyroid', status: 'Not Started' },
+          { id: 'nur2110_ch38_glucose', label: 'Chapter 38: Glucose', status: 'Not Started' },
+        ],
+      },
+      {
+        id: 'nur2110_w3',
+        title: 'Week 3: Chapters 50, 51, 52',
+        status: 'Not Started',
+        sections: [
+          { id: 'nur2110_ch50_renal_intro', label: 'Chapter 50: Renal System I', status: 'Not Started' },
+          { id: 'nur2110_ch51_renal_advanced', label: 'Chapter 51: Renal System II', status: 'Not Started' },
+          { id: 'nur2110_ch52_renal_clinical', label: 'Chapter 52: Renal System III', status: 'Not Started' },
+        ],
+      },
+      {
+        id: 'nur2110_w4',
+        title: 'Week 4: Chapters 15, 16',
+        status: 'Not Started',
+        sections: [
+          { id: 'nur2110_ch15_immune_response', label: 'Chapter 15: Immune Response / Inflammation I', status: 'Not Started' },
+          { id: 'nur2110_ch16_immune_response_2', label: 'Chapter 16: Immune Response / Inflammation II', status: 'Not Started' },
+        ],
+      },
+      {
+        id: 'nur2110_w5',
+        title: 'Week 5: Chapters 24, 25, 26',
+        status: 'Not Started',
+        sections: [
+          { id: 'nur2110_ch24_antiparkinsonism', label: 'Chapter 24: Antiparkinsonism', status: 'Not Started' },
+          { id: 'nur2110_ch25_muscle_relaxants', label: 'Chapter 25: Muscle Relaxants', status: 'Not Started' },
+          { id: 'nur2110_ch26_narcotics_antimigraine', label: 'Chapter 26: Narcotics / Antimigraine', status: 'Not Started' },
+        ],
+      },
+      {
+        id: 'nur2110_w6',
+        title: 'Week 6: Chapters 17, 18',
+        status: 'Not Started',
+        sections: [
+          { id: 'nur2110_ch17_immune_modulators', label: 'Chapter 17: Immune Modulators', status: 'Not Started' },
+          { id: 'nur2110_ch18_vaccines_sera', label: 'Chapter 18: Vaccines / Sera', status: 'Not Started' },
+        ],
+      },
+      {
+        id: 'nur2110_w7',
+        title: 'Week 7: Final Exam',
+        status: 'Not Started',
+        sections: [
+          { id: 'nur2110_final_exam', label: 'Comprehensive Final Exam Review', status: 'Not Started' },
         ],
       },
     ],
@@ -266,10 +352,10 @@ export const TextbookDashboard = () => {
                         <button
                           key={section.id}
                           onClick={() => {
-                            if (activeCourse === 'NUR1100' || activeCourse === 'NUR2110') {
+                            if ((activeCourse === 'NUR1100' || activeCourse === 'NUR2110') && (section.id.startsWith('sec1_') || section.id.startsWith('sec2_'))) {
                               navigate(`/reader/ch1_intro?section=${section.id}`);
                             } else {
-                              window.alert('This textbook structure is in place. Full chapter content is coming soon.');
+                              window.alert('This chapter is mapped in the course blueprint. Full reading content is coming soon.');
                             }
                           }}
                           style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel, color: palette.text, padding: 9, cursor: 'pointer' }}
