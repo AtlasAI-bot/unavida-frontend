@@ -42,8 +42,8 @@ const courseContent = {
     name: 'Pharmacology I',
     chapters: [
       {
-        id: 'nur1100_w1',
-        title: 'Week 1: Chapters 1, 2, 3, 5',
+        id: 'nur1100_chapters_1_2_3_5',
+        title: 'Chapters 1, 2, 3, 5',
         status: 'In Progress',
         sections: [
           { id: 'sec1_overview_introduction', label: 'Chapter 1: Intro to Drugs', status: 'In Progress' },
@@ -53,8 +53,8 @@ const courseContent = {
         ],
       },
       {
-        id: 'nur1100_w2',
-        title: 'Week 2: Chapters 9, 10, 11, 14',
+        id: 'nur1100_chapters_9_10_11_14',
+        title: 'Chapters 9, 10, 11, 14',
         status: 'Not Started',
         sections: [
           { id: 'nur1100_ch9_antibiotics', label: 'Chapter 9: Antibiotics', status: 'Not Started' },
@@ -64,8 +64,8 @@ const courseContent = {
         ],
       },
       {
-        id: 'nur1100_w3',
-        title: 'Week 3: Chapters 53, 54, 55',
+        id: 'nur1100_chapters_53_54_55',
+        title: 'Chapters 53, 54, 55',
         status: 'Not Started',
         sections: [
           { id: 'nur1100_ch53_respiratory_intro', label: 'Chapter 53: Respiratory System I', status: 'Not Started' },
@@ -74,8 +74,8 @@ const courseContent = {
         ],
       },
       {
-        id: 'nur1100_w4',
-        title: 'Week 4: Chapters 42, 43, 44',
+        id: 'nur1100_chapters_42_43_44',
+        title: 'Chapters 42, 43, 44',
         status: 'Not Started',
         sections: [
           { id: 'nur1100_ch42_cardiovascular_intro', label: 'Chapter 42: Cardiovascular Introduction', status: 'Not Started' },
@@ -84,8 +84,8 @@ const courseContent = {
         ],
       },
       {
-        id: 'nur1100_w5',
-        title: 'Week 5: Chapters 45, 46, 47',
+        id: 'nur1100_chapters_45_46_47',
+        title: 'Chapters 45, 46, 47',
         status: 'Not Started',
         sections: [
           { id: 'nur1100_ch45_antiarrhythmics', label: 'Chapter 45: Antiarrhythmics', status: 'Not Started' },
@@ -94,8 +94,8 @@ const courseContent = {
         ],
       },
       {
-        id: 'nur1100_w6',
-        title: 'Week 6: Chapters 48, 49',
+        id: 'nur1100_chapters_48_49',
+        title: 'Chapters 48, 49',
         status: 'Not Started',
         sections: [
           { id: 'nur1100_ch48_blood_coagulation', label: 'Chapter 48: Blood Coagulation', status: 'Not Started' },
@@ -103,8 +103,8 @@ const courseContent = {
         ],
       },
       {
-        id: 'nur1100_w7',
-        title: 'Week 7: Final Exam',
+        id: 'nur1100_final',
+        title: 'Final Exam',
         status: 'Not Started',
         sections: [
           { id: 'nur1100_final_exam', label: 'Comprehensive Final Exam Review', status: 'Not Started' },
@@ -117,8 +117,8 @@ const courseContent = {
     name: 'Pharmacology II',
     chapters: [
       {
-        id: 'nur2110_w1',
-        title: 'Week 1: Chapters 56, 57, 58, 59',
+        id: 'nur2110_chapters_56_57_58_59',
+        title: 'Chapters 56, 57, 58, 59',
         status: 'Not Started',
         sections: [
           { id: 'nur2110_ch56_gi_intro', label: 'Chapter 56: GI System I', status: 'Not Started' },
@@ -128,8 +128,8 @@ const courseContent = {
         ],
       },
       {
-        id: 'nur2110_w2',
-        title: 'Week 2: Chapters 34, 35, 36, 37, 38',
+        id: 'nur2110_chapters_34_35_36_37_38',
+        title: 'Chapters 34, 35, 36, 37, 38',
         status: 'Not Started',
         sections: [
           { id: 'nur2110_ch34_hypothalamic', label: 'Chapter 34: Hypothalamic', status: 'Not Started' },
@@ -140,8 +140,8 @@ const courseContent = {
         ],
       },
       {
-        id: 'nur2110_w3',
-        title: 'Week 3: Chapters 50, 51, 52',
+        id: 'nur2110_chapters_50_51_52',
+        title: 'Chapters 50, 51, 52',
         status: 'Not Started',
         sections: [
           { id: 'nur2110_ch50_renal_intro', label: 'Chapter 50: Renal System I', status: 'Not Started' },
@@ -150,8 +150,8 @@ const courseContent = {
         ],
       },
       {
-        id: 'nur2110_w4',
-        title: 'Week 4: Chapters 15, 16',
+        id: 'nur2110_chapters_15_16',
+        title: 'Chapters 15, 16',
         status: 'Not Started',
         sections: [
           { id: 'nur2110_ch15_immune_response', label: 'Chapter 15: Immune Response / Inflammation I', status: 'Not Started' },
@@ -159,8 +159,8 @@ const courseContent = {
         ],
       },
       {
-        id: 'nur2110_w5',
-        title: 'Week 5: Chapters 24, 25, 26',
+        id: 'nur2110_chapters_24_25_26',
+        title: 'Chapters 24, 25, 26',
         status: 'Not Started',
         sections: [
           { id: 'nur2110_ch24_antiparkinsonism', label: 'Chapter 24: Antiparkinsonism', status: 'Not Started' },
@@ -169,8 +169,8 @@ const courseContent = {
         ],
       },
       {
-        id: 'nur2110_w6',
-        title: 'Week 6: Chapters 17, 18',
+        id: 'nur2110_chapters_17_18',
+        title: 'Chapters 17, 18',
         status: 'Not Started',
         sections: [
           { id: 'nur2110_ch17_immune_modulators', label: 'Chapter 17: Immune Modulators', status: 'Not Started' },
@@ -178,8 +178,8 @@ const courseContent = {
         ],
       },
       {
-        id: 'nur2110_w7',
-        title: 'Week 7: Final Exam',
+        id: 'nur2110_final',
+        title: 'Final Exam',
         status: 'Not Started',
         sections: [
           { id: 'nur2110_final_exam', label: 'Comprehensive Final Exam Review', status: 'Not Started' },
