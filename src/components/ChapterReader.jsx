@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import chapterData from '../data/CHAPTER_1_UNAVIDA_PRODUCTION.json';
 import './ChapterReader.css';
 
 export const ChapterReader = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [selectedSection, setSelectedSection] = useState(null);
   const [theme, setTheme] = useState('light');
   const [focusReader, setFocusReader] = useState(false);
@@ -1412,7 +1413,13 @@ export const ChapterReader = () => {
       {/* Top Bar */}
       <div className="reader-top">
         <div>
-          <div className="reader-crumb">Home / Pharmacology I / Reader</div>
+          <div className="reader-crumb" style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
+            <button className="reader-btn" style={{ padding: '2px 6px' }} onClick={() => navigate('/bookshelf')}>Home</button>
+            <span>/</span>
+            <button className="reader-btn" style={{ padding: '2px 6px' }} onClick={() => navigate('/textbook/NUR1100')}>Pharmacology I</button>
+            <span>/</span>
+            <button className="reader-btn" style={{ padding: '2px 6px' }} onClick={() => navigate('/reader/ch1_intro')}>Reader</button>
+          </div>
           <div className="reader-header">Mastering Pharmacology</div>
         </div>
         <div className="reader-tools">
