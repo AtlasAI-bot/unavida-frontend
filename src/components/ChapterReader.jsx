@@ -343,40 +343,41 @@ export const ChapterReader = () => {
     );
   };
 
+  const canonicalEightRights = [
+    'Right Patient: Using two identifiers to ensure the correct patient receives the medication',
+    'Right Drug: Verifying that the ordered drug is the intended drug, accounting for similar names',
+    'Right Dose: Calculating and verifying that the prescribed dose is appropriate',
+    'Right Route: Ensuring the medication is administered via the correct route',
+    'Right Time: Administering the medication at the appropriate time',
+    'Right Documentation: Accurately recording medication administration',
+    'Right Reason: Understanding the therapeutic indication for the medication',
+    'Right Response: Monitoring for the expected therapeutic response',
+  ];
+
+  const isEightRightsText = (value = '') => {
+    const normalized = cleanBody(value).replace(/\s+/g, ' ');
+    return /Right Patient:/i.test(normalized) && /Right Response:/i.test(normalized);
+  };
+
+  const renderCanonicalEightRights = () => (
+    <>
+      <h4 style={{ margin: '8px 0', fontSize: '1.1rem' }}>Eight Rights to Medication Administration</h4>
+      <ol style={{ margin: '0 0 10px 18px', padding: 0 }}>
+        {canonicalEightRights.map((item, idx) => (
+          <li key={idx} style={{ marginBottom: 6 }}>
+            {item}
+          </li>
+        ))}
+      </ol>
+    </>
+  );
+
   const renderParagraphWithNumberedList = (text) => {
-    const normalized = cleanBody(text || '').replace(/\s+/g, ' ').trim();
-
-    const canonicalEightRights = [
-      'Right Patient: Using two identifiers to ensure the correct patient receives the medication',
-      'Right Drug: Verifying that the ordered drug is the intended drug, accounting for similar names',
-      'Right Dose: Calculating and verifying that the prescribed dose is appropriate',
-      'Right Route: Ensuring the medication is administered via the correct route',
-      'Right Time: Administering the medication at the appropriate time',
-      'Right Documentation: Accurately recording medication administration',
-      'Right Reason: Understanding the therapeutic indication for the medication',
-      'Right Response: Monitoring for the expected therapeutic response',
-    ];
-
-    const hasEightRightsBlock =
-      /Eight Rights to Medication Administration/i.test(normalized) ||
-      (/Right Patient:/i.test(normalized) && /Right Response:/i.test(normalized));
-
-    if (!hasEightRightsBlock) {
+    if (!isEightRightsText(text) && !/Eight Rights to Medication Administration/i.test(cleanBody(text || ''))) {
       return <p>{text}</p>;
     }
 
-    return (
-      <>
-        <h4 style={{ margin: '8px 0', fontSize: '1.1rem' }}>Eight Rights to Medication Administration</h4>
-        <ol style={{ margin: '0 0 10px 18px', padding: 0 }}>
-          {canonicalEightRights.map((item, idx) => (
-            <li key={idx} style={{ marginBottom: 6 }}>
-              {item}
-            </li>
-          ))}
-        </ol>
-      </>
-    );
+    return renderCanonicalEightRights();
   };
 
   const getSectionById = (id) => (chapterData.chapter.sections || []).find((s) => s.id === id);
@@ -1673,6 +1674,14 @@ export const ChapterReader = () => {
                       </div>
                     ) : (
                       sectionParagraphs.map((para, idx) => {
+                        if (selectedSection.id === 'sec1_overview_introduction' && isEightRightsText(para)) {
+                          return (
+                            <div key={idx} style={{ marginBottom: '18px' }}>
+                              {renderCanonicalEightRights()}
+                            </div>
+                          );
+                        }
+
                         const { heading, body } = splitHeadingFromText(para);
                         const forced = splitForcedSubhead(body || para);
                         const slotIdx = paragraphImageSlots.indexOf(idx);
@@ -1717,14 +1726,18 @@ export const ChapterReader = () => {
                       <div key={idx} style={{ marginBottom: '16px' }}>
                         {block.title && <h4 style={{ margin: '0 0 6px 0', fontSize: '1.06rem' }}>{cleanHeading(block.title)}</h4>}
                         {block.htmlReady ? (
-                          <div
-                            dangerouslySetInnerHTML={{
-                              __html:
-                                selectedSection.id === 'sec1_overview_introduction'
-                                  ? fixEightRightsHtml(block.htmlReady)
-                                  : block.htmlReady,
-                            }}
-                          />
+                          selectedSection.id === 'sec1_overview_introduction' && isEightRightsText(block.htmlReady) ? (
+                            renderCanonicalEightRights()
+                          ) : (
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html:
+                                  selectedSection.id === 'sec1_overview_introduction'
+                                    ? fixEightRightsHtml(block.htmlReady)
+                                    : block.htmlReady,
+                              }}
+                            />
+                          )
                         ) : block.content ? (
                           selectedSection.id === 'sec1_overview_introduction'
                             ? renderParagraphWithNumberedList(block.content)
