@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import chapterData from '../data/CHAPTER_1_UNAVIDA_PRODUCTION.json';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import chapter1Data from '../data/CHAPTER_1_UNAVIDA_PRODUCTION.json';
+import chapter2Data from '../data/CHAPTER_2_UNAVIDA_PRODUCTION.json';
 import chapter2SeedSections from '../content/reader/chapter2SeedSections';
 import './ChapterReader.css';
 
@@ -113,7 +114,22 @@ export const ChapterReader = () => {
   };
 
 
-  const allSections = [...(chapterData.chapter.sections || []), ...chapter2SeedSections];
+  const { chapterId } = useParams();
+  const activeChapterId = chapterId || 'ch1_intro';
+
+  const chapter1Sections = [...(chapter1Data.chapter.sections || [])];
+
+  // Chapter 2 is now sourced from a dedicated JSON file, with 2.7–2.8 placeholders
+  // filled from the seed module until full content is provided.
+  const chapter2SectionsBase = [...(chapter2Data.chapter.sections || [])];
+  const chapter2Sections = [
+    ...chapter2SectionsBase,
+    ...chapter2SeedSections.filter((s) => !chapter2SectionsBase.some((b) => b.id === s.id)),
+  ];
+
+  const allSections = [...chapter1Sections, ...chapter2Sections];
+  const activeSections = activeChapterId.startsWith('ch2') ? chapter2Sections : chapter1Sections;
+
   const currentSectionImages = selectedSection ? (sectionIllustrationMap[selectedSection.id] || []) : [];
 
   const sectionParagraphs = selectedSection?.content
@@ -179,9 +195,9 @@ export const ChapterReader = () => {
   const sectionTitle = cleanHeading(selectedSection?.title || '');
   const currentWordCount = getSectionWordCount(selectedSection);
 
-  // allSections is defined above with Chapter 2 scaffold entries included.
-  const chapter1Sections = allSections.filter((s) => !s.id.startsWith('sec2_'));
-  const chapter2Sections = allSections.filter((s) => s.id.startsWith('sec2_'));
+  // Navigation groupings (chapter sections are sourced above)
+  const navChapter1Sections = chapter1Sections;
+  const navChapter2Sections = chapter2Sections;
   const chapterScaffoldTitles = [
     'Chapter 3: Toxicity',
     'Chapter 5: Dosage Calculations',
@@ -773,29 +789,39 @@ export const ChapterReader = () => {
   }, []);
 
   // Set section from URL query (?section=...), else restore last viewed section
+  // Also ensures chapter routes are canonical (Chapter 2 sections live under /reader/ch2_pharmacokinetics).
   useEffect(() => {
     const sections = allSections;
     if (!sections.length) return;
 
     const query = new URLSearchParams(location.search || '');
     const sectionId = query.get('section');
-    const fromQuery = sections.find((s) => s.id === sectionId);
-    if (fromQuery) {
-      setSelectedSection(fromQuery);
-      return;
+
+    if (sectionId) {
+      const fromQuery = sections.find((s) => s.id === sectionId);
+      if (fromQuery) {
+        const targetChapter = fromQuery.id.startsWith('sec2_') ? 'ch2_pharmacokinetics' : 'ch1_intro';
+        if (activeChapterId !== targetChapter) {
+          navigate(`/reader/${targetChapter}?section=${fromQuery.id}`, { replace: true });
+          return;
+        }
+        setSelectedSection(fromQuery);
+        return;
+      }
     }
 
-    const savedId = localStorage.getItem('unavida:lastReaderSection:ch1_intro');
-    const saved = sections.find((s) => s.id === savedId);
-    setSelectedSection(saved || sections[0]);
-  }, [location.search]);
+    const savedKey = `unavida:lastReaderSection:${activeChapterId}`;
+    const savedId = localStorage.getItem(savedKey);
+    const saved = activeSections.find((s) => s.id === savedId);
+    setSelectedSection(saved || activeSections[0]);
+  }, [location.search, activeChapterId]);
 
   // Persist currently viewed section
   useEffect(() => {
     if (selectedSection?.id) {
-      localStorage.setItem('unavida:lastReaderSection:ch1_intro', selectedSection.id);
+      localStorage.setItem(`unavida:lastReaderSection:${activeChapterId}`, selectedSection.id);
     }
-  }, [selectedSection?.id]);
+  }, [selectedSection?.id, activeChapterId]);
 
   // Always jump to top when section changes
   useEffect(() => {
@@ -810,9 +836,20 @@ export const ChapterReader = () => {
   }, [flashFilter]);
 
   const handleSectionClick = (section) => {
+    if (!section) return;
+    const targetChapter = section.id?.startsWith('sec2_') ? 'ch2_pharmacokinetics' : 'ch1_intro';
+    const nextUrl = `/reader/${targetChapter}?section=${section.id}`;
+
     setSelectedSection(section);
     setToolView('content');
     setRevealedAnswers({});
+
+    // Keep URL in sync so chapters/sections have their own address.
+    if (typeof window !== 'undefined') {
+      const current = `${window.location.pathname}${window.location.search}`;
+      if (current !== nextUrl) navigate(nextUrl, { replace: false });
+    }
+
     if (typeof window !== 'undefined' && (window.innerWidth <= 1024 || focusReader)) {
       setHideToc(true);
     }

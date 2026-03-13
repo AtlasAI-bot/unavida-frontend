@@ -95,6 +95,9 @@ export function App() {
                 {/* Canonical Chapter 1 route alignment (Railway + Vercel) */}
                 <Route path="/reader/ch1_intro_to_pharmacology" element={<Navigate to="/reader/ch1_intro" replace />} />
 
+                {/* Reader root - canonical entry */}
+                <Route path="/reader" element={<Navigate to="/reader/ch1_intro" replace />} />
+
                 {/* Chapter Reader - Protected */}
                 <Route 
                   path="/reader/:chapterId" 

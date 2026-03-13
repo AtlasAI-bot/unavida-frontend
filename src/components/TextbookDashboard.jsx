@@ -353,7 +353,8 @@ export const TextbookDashboard = () => {
                           key={section.id}
                           onClick={() => {
                             if ((activeCourse === 'NUR1100' || activeCourse === 'NUR2110') && (section.id.startsWith('sec1_') || section.id.startsWith('sec2_'))) {
-                              navigate(`/reader/ch1_intro?section=${section.id}`);
+                              const targetChapter = section.id.startsWith('sec2_') ? 'ch2_pharmacokinetics' : 'ch1_intro';
+                              navigate(`/reader/${targetChapter}?section=${section.id}`);
                             } else {
                               window.alert('This chapter is mapped in the course blueprint. Full reading content is coming soon.');
                             }
