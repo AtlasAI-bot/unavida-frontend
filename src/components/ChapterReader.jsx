@@ -226,8 +226,16 @@ export const ChapterReader = () => {
   const nextSection = currentSectionIndex >= 0 && currentSectionIndex < allSections.length - 1 ? allSections[currentSectionIndex + 1] : null;
 
   const glossaryEntries = (() => {
-    if (selectedSection?.id !== 'sec1_9_key_terms_glossary') return [];
-    const lines = (selectedSection.content || '').split('\n').map((l) => l.trim()).filter(Boolean);
+    // Preferred: structured glossary block (used by Chapter 1 JSON; also used for future chapters)
+    const glossaryBlock = (selectedSection?.contentBlocks || []).find((b) => b && b.type === 'glossary');
+    if (glossaryBlock && Array.isArray(glossaryBlock.terms) && glossaryBlock.terms.length) {
+      return glossaryBlock.terms
+        .filter((t) => t && t.term && t.definition)
+        .map((t) => ({ term: String(t.term).trim(), definition: String(t.definition).trim() }));
+    }
+
+    // Fallback: parse TERM: definition lines from raw content
+    const lines = (selectedSection?.content || '').split('\n').map((l) => l.trim()).filter(Boolean);
     const entries = [];
     let current = null;
     for (const line of lines) {
@@ -1749,7 +1757,7 @@ export const ChapterReader = () => {
 
                 {selectedSection.content && (
                   <section className="reader-card">
-                    {selectedSection.id === 'references' ? (
+                    {selectedSection.id === 'references' || selectedSection.id === 'ch2_references' ? (
                       <>
                         <h3>References (APA Style)</h3>
                         <div>
@@ -1758,7 +1766,7 @@ export const ChapterReader = () => {
                           ))}
                         </div>
                       </>
-                    ) : selectedSection.id === 'sec1_9_key_terms_glossary' && glossaryEntries.length > 0 ? (
+                    ) : glossaryEntries.length > 0 && /glossary/i.test(selectedSection.title || '') ? (
                       <div style={{ overflowX: 'auto' }}>
                         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                           <thead>

@@ -86,6 +86,287 @@
         "flashcardLinks": [],
         "interactiveElements": [],
         "content": "What Is Half-Life?\n\nHalf-life (t½) is the time required for the plasma drug concentration to decrease by half. It's one of the most important pharmacokinetic parameters because it determines:\n- How long the drug stays in the body\n- How frequently you need to dose\n- How long it takes to reach steady state\n- When toxicity may develop if dosing is too frequent\n\nCalculating Half-Life (Optional—For Conceptual Understanding)\n\nt½ = 0.693 / ke (where ke = elimination rate constant)\n\nOr, more practically:\n\nt½ = 0.693 × Vd / CL (where Vd = volume of distribution, CL = clearance)\n\nKey concept: Half-life is dose-independent and metabolic-independent in first-order kinetics (which applies to most drugs).\n\nWhat This Means:\n- If a patient takes 5 mg of digoxin and another takes 50 mg digoxin, both have the same half-life (~40 hours).\n- Half-life depends on the drug's properties (Vd and clearance), not the dose.\n\nExamples of Half-Lives and Their Clinical Implications\n\n| Drug | Half-Life | Dosing Interval | Clinical Implication |\n|---|---|---|---|\n| Penicillin | ~1 hour | Every 4–6 hours | Short half-life; frequent dosing needed |\n| Cephalosporin | 1–2 hours | Every 6–8 hours | Short; frequent dosing |\n| Metoprolol | 3–7 hours | Every 6–12 hours | Intermediate; dosing 1–2× daily |\n| Warfarin | 40 hours | Once daily | Long; reaches steady state in 8–9 days |\n| Digoxin | 36–48 hours | Once daily | Long; accumulates with frequent dosing |\n| Amiodarone (antiarrhythmic) | 40–60 days | Once daily (but loads first) | Very long; reaches steady state in 4+ weeks |\n\nGraph showing plasma drug concentration over time on a log scale. After each half-life (marked on X-axis), concentration drops by 50%. Show example: digoxin t½ = 40 hours; level 8 ng/mL at hour 0 → 4 ng/mL at 40 hours → 2 ng/mL at 80 hours → 1 ng/mL at 120 hours, etc.\n\nSteady State: When Drug Input = Drug Output\n\nWith repeated dosing at regular intervals, drug levels rise with each dose until they plateau. At this plateau, the amount of drug being added (from each dose) equals the amount being eliminated → equilibrium = steady state (Css).\n\nTime to Reach Steady State\n\nSteady state is reached after approximately 5 half-lives of the drug.\n\nExamples:\n- Penicillin (t½ = 1 hour) → steady state in ~5 hours\n- Metoprolol (t½ = 5 hours) → steady state in ~25 hours\n- Warfarin (t½ = 40 hours) → steady state in ~8–9 days\n- Amiodarone (t½ = 50 days) → steady state in ~4 weeks\n\nClinical implication: When you start a patient on a drug with a long half-life, don't expect immediate therapeutic effect. Warfarin's anticoagulant effect takes days to develop; amiodarone's antiarrhythmic effect takes weeks.\n\nGraph showing plasma concentration with repeated dosing. After each dose, concentration rises; after each dose is eliminated, concentration drops. Over time, peak and trough levels increase until reaching steady-state plateau. Shaded area shows therapeutic window. Mark \"5 half-lives\" point where steady state is reached.\n\nLoading Dose: Achieving Steady-State Concentration Quickly\n\nWhen rapid therapeutic effect is needed, a loading dose is given first, immediately achieving the steady-state concentration. Then maintenance doses sustain the level.\n\nCalculation:\n\nLoading Dose = (Desired Css × Vd) / F\n\nWhere:\n- Css = desired plasma concentration (ng/mL or mcg/mL)\n- Vd = volume of distribution (L or mL)\n- F = bioavailability (fraction reaching systemic circulation; 1.0 for IV, less for oral)\n\nMaintenance Dose = (Css × CL × τ) / F\n\nWhere:\n- τ (tau) = dosing interval (hours)\n- CL = clearance (L/hr)\n\nClinical Example: Digoxin Loading and Maintenance\n\nA patient with acute heart failure needs digoxin urgently.\n\n- Loading dose: 500 mcg IV (achieves therapeutic digoxin level immediately)\n  - Without a loading dose, the patient would have to wait 5 × 40 hours = 200 hours (~8 days) to reach therapeutic levels—unacceptable for acute heart failure.\n\n- Maintenance dose: 250 mcg IV daily (sustains therapeutic level)\n  - The maintenance dose replaces the drug eliminated each day, keeping the patient at steady state.\n\nPatient education: Explain to the patient: \"Your initial dose is larger to quickly get the medication in your system. Then your daily doses keep you stable. Don't be alarmed by the bigger first dose.\"\n\nAnimation showing two scenarios: (1) without loading dose (steady state reached after 5 half-lives, delayed therapeutic effect); (2) with loading dose (therapeutic effect immediate, maintenance doses sustain). Superimpose therapeutic window to show how loading gets you there fast.\n\nClearance: The Rate at Which the Body Eliminates Drug\n\nClearance (CL) is defined as the volume of plasma completely cleared of drug per unit time. Units are typically mL/min or L/hr.\n\nConcept: If a drug has a clearance of 100 mL/min, that means 100 mL of plasma loses all drug molecules per minute.\n\nCalculation:\n\nCL = Dose / AUC (where AUC = area under the curve, a measure of total drug exposure over time)\n\nOr more practically:\n\nCL = Vd × ke (volume of distribution × elimination rate constant)\n\nRelationship Between Clearance and Steady-State Concentration\n\nCss = (Dose/τ) / CL\n\nThis relationship is clinically crucial:\n- If clearance decreases (liver disease, kidney disease, drug interaction), Css rises → toxicity risk.\n- If clearance increases (enzyme induction), Css drops → therapeutic failure.\n\nTotal Clearance = Multiple Components\n\nTotal CL = Hepatic CL + Renal CL + Other CL\n\n- Hepatic clearance: Drugs metabolized by liver.\n- Renal clearance: Drugs excreted by kidneys (filtered + secreted − reabsorbed).\n- Other clearance: GI metabolism, pulmonary, etc.\n\nExample: Gentamicin is 95% renally excreted, so almost all of its clearance is renal. In kidney disease, gentamicin clearance drops dramatically.\n\nBioavailability: How Much Drug Actually Reaches Circulation\n\nBioavailability (F) is the fraction of an administered dose that reaches systemic circulation in unchanged form.\n\n- IV administration: F = 100% (by definition; all drug enters circulation).\n- Oral administration: F = typically 20–90% (affected by absorption, first-pass metabolism).\n\nExample:\n- Nitroglycerin oral: F ~10% (due to extensive first-pass metabolism).\n- Nitroglycerin sublingual: F ~90% (bypasses first-pass).\n- So a 0.5 mg sublingual nitroglycerin dose is equivalent to a 5 mg oral dose in terms of bioavailable drug reaching systemic circulation.\n\nPractical Application: Dosing Scenarios\n\nScenario 1: Starting Warfarin\n\nA patient with newly diagnosed atrial fibrillation needs anticoagulation.\n\n- Goal: INR 2–3 (therapeutic for AFib).\n- Warfarin dosing:\n  - Initial dose: 5–10 mg daily (loading dose).\n  - Steady state: Reached in ~8–9 days (5 half-lives).\n  - Maintenance: Adjusted based on INR, typically 2–10 mg daily.\n\nNursing considerations:\n- Patient won't have therapeutic INR immediately; it takes days.\n- INR is monitored frequently initially (daily until stable, then weekly, then monthly).\n- Tell patient: \"This medication takes about a week to work. We'll monitor your blood regularly and adjust your dose.\"\n- Until therapeutic INR is reached, patient may need bridging anticoagulation (e.g., LMWH or IV heparin).\n\nScenario 2: Gentamicin Dosing in Renal Impairment\n\nA patient with CrCl = 20 mL/min (severe renal impairment) needs gentamicin for sepsis.\n\n- Normal dosing: 1.5 mg/kg every 8 hours.\n- This patient: Gentamicin clearance is severely reduced.\n  - Dose adjusted to 1–1.5 mg/kg every 24–48 hours (extended-interval dosing).\n  - Clearance (CL) is reduced → if normal dosing were used, Css would accumulate → toxicity.\n\nNursing action:\n- Verify dose adjustment with pharmacy.\n- Obtain gentamicin peak and trough levels (therapeutic: peak 5–10 mcg/mL, trough <2 mcg/mL).\n- Monitor serum creatinine, urine output (gentamicin is nephrotoxic).\n\nDrugs with Altered Clearance in Disease States\n\n| Disease State | Effect on Clearance | Clinical Example |\n|---|---|---|\n| Liver disease | ↓ Hepatic CL | Warfarin, benzodiazepines accumulate → reduce dose by 25–75% |\n| Kidney disease | ↓ Renal CL | Gentamicin, digoxin accumulate → extend interval or reduce dose |\n| Heart failure | ↓ Hepatic & renal CL | Reduced organ perfusion → drug accumulation |\n| Sepsis | ↑ Clearance (sometimes) | Increased metabolism; some drugs need higher doses |\n| Obesity | Variable | Lipophilic drugs have ↑ Vd; clearance varies |\n\n⚠️ SAFETY CALLOUTS\n\n⚠️ Critical Dosing Alert: Long-Acting Drugs + Overdosing = Delayed Toxicity\n\nDrugs with long half-lives (warfarin, methotrexate, digoxin) accumulate with overdosing. A patient who doubles their digoxin dose by accident may not develop immediate symptoms—but toxicity develops over days as drug accumulates. Educate patients: if you accidentally double a dose, contact your doctor; don't wait for symptoms. Serum levels can be checked before toxicity develops.\n\n⚠️ Dosing Alert: Don't \"Catch Up\" on Missed Doses of Long-Acting Drugs\n\nPatient misses a dose of warfarin and then takes a double dose the next day to \"catch up.\" This risks overdose and bleeding. Teach: \"If you miss a dose of warfarin, take your next scheduled dose without doubling. Call your doctor for specific guidance.\" Same applies to digoxin, methotrexate, metformin, and other long-acting drugs.\n\n⚠️ Exam Alert: Relationship Between Clearance and Steady-State Concentration\n\nCss = (Dose/τ) / CL. If clearance decreases (kidney disease, liver disease, drug interaction), Css increases → toxicity risk. If clearance increases (enzyme induction), Css decreases → therapeutic failure. This is one of the most tested relationships in pharmacokinetics.\n\nClinical Scenario: Warfarin Dosing Variability\n\nJames, 62 years old, is started on warfarin for atrial fibrillation.\n\n- Day 1: Warfarin 5 mg → INR still not therapeutic (expected; t½ = 40 hours).\n- Day 3: INR = 1.5 (subtherapeutic). Dose increased to 7.5 mg.\n- Day 5: INR = 2.8 (therapeutic). Continue 7.5 mg.\n- Day 7: INR = 4.2 (supratherapeutic). Dose decreased to 5 mg.\n\nWhy the variability?\n1. Warfarin has variable absorption and metabolism (CYP2C9 genetics, drug interactions).\n2. Steady state isn't reached until day 8–9, so INR changes gradually as drug accumulates.\n3. Initial INR fluctuations are expected and don't predict final maintenance dose.\n\nNursing lesson: Warfarin dosing requires patience and frequent INR monitoring. Don't adjust doses daily; wait for steady state. Communicate with patients that INR titration takes time.\n\nSection Recap\n\nHalf-life determines how long a drug stays in the body and how frequently you must dose. Steady state is reached after 5 half-lives, when drug input equals drug output. Loading doses achieve therapeutic effect immediately for drugs with long half-lives (warfarin, digoxin). Maintenance doses sustain steady-state concentration. Clearance is the rate at which the body eliminates drug; reduced clearance (in liver/kidney disease) causes accumulation and toxicity; this relationship is quantified as Css = (Dose/τ) / CL. Understanding these concepts allows you to anticipate how quickly drugs reach therapeutic effect, recognize why steady-state concentrations vary among patients, and prevent toxicity from overdosing or accumulation in patients with reduced clearance.\n\n---\n\nCHAPTER 2.1–2.6: KEY TAKEAWAYS\n\n1. ADME is the framework: Pharmacokinetics encompasses four sequential stages (absorption, distribution, metabolism, excretion) that determine drug concentration at the site of action.\n\n2. Route of administration matters critically: IV = 100% bioavailability, immediate; oral = 20–90%, affected by food/pH/disease; sublingual bypasses first-pass.\n\n3. Protein binding affects drug activity: Only free (unbound) drug is active; displacement interactions raise free drug concentration → toxicity.\n\n4. The liver is the primary drug processor: CYP450 enzymes (Phase I), conjugation (Phase II), and transporters (Phase III) metabolize drugs; induction speeds metabolism (subtherapeutic levels); inhibition slows it (toxicity).\n\n5. Kidneys eliminate 90% of drugs: Glomerular filtration, active secretion, and reabsorption handle renal clearance; CrCl (not serum creatinine) predicts renal impairment in elderly patients.\n\n6. Half-life determines dosing intervals: 5 half-lives = steady state; long half-life drugs need loading doses for rapid effect.\n\n7. Steady-state concentration depends on clearance: Css = (Dose/interval) / Clearance; reduced clearance → accumulation → toxicity.\n\n8. Pharmacokinetics varies widely among patients: Age, weight, genetics, disease, organ function, and drug interactions necessitate dose individualization and close monitoring.\n\n---\n\nNAVIGATION & STRUCTURE NOTES\n\n- Section 2.1 establishes the ADME framework and therapeutic window concept.\n- Sections 2.2–2.6 dive into each ADME stage sequentially.\n- Clinical scenarios and safety callouts are embedded throughout for nursing relevance.\n- Media callouts (videos, images, animations, calculators) are placed at key learning moments.\n- Progression: Conceptual (what is pharmacokinetics?) → mechanical (how does ADME work?) → clinical (how does this affect my patient?).\n\n---\n\nDocument prepared for: Unavida Press | Mastering Pharmacology (NUR1100)  \nDate: 2026-03-11  \nStatus: Production-ready  for Chapter 2, Sections 2.1–2.6  \nAuthor: [Content Team]  \nReviewer notes: Ready for editorial review and media asset commissioning"
+      },
+      {
+        "sectionNumber": 9,
+        "id": "sec2_9_key_terms_glossary",
+        "title": "Key Terms Glossary",
+        "duration": 20,
+        "wordCount": 0,
+        "learningObjectives": [],
+        "keyTakeaways": [],
+        "contentBlocks": [
+          {
+            "blockId": "ch2_glossary",
+            "type": "glossary",
+            "title": "Pharmacokinetics Terms A–Z",
+            "terms": [
+              {
+                "term": "Pharmacokinetics",
+                "definition": "What the body does to the drug: absorption, distribution, metabolism, and excretion (ADME)."
+              },
+              {
+                "term": "ADME",
+                "definition": "Absorption, Distribution, Metabolism, Excretion — the four core pharmacokinetic processes."
+              },
+              {
+                "term": "Absorption",
+                "definition": "Movement of a drug from its administration site into the bloodstream."
+              },
+              {
+                "term": "Bioavailability",
+                "definition": "Fraction of an administered dose that reaches systemic circulation in active form."
+              },
+              {
+                "term": "First-pass metabolism",
+                "definition": "Metabolism of an oral drug by the liver before it reaches systemic circulation, reducing bioavailability."
+              },
+              {
+                "term": "Distribution",
+                "definition": "Movement of drug from blood into tissues and body fluids."
+              },
+              {
+                "term": "Plasma protein binding",
+                "definition": "Binding of drug (often to albumin); only free/unbound drug is usually active."
+              },
+              {
+                "term": "Free drug",
+                "definition": "Unbound drug in plasma that can cross membranes and exert pharmacologic effects."
+              },
+              {
+                "term": "Albumin",
+                "definition": "Major plasma protein; low levels can increase free drug and toxicity risk for highly protein-bound meds."
+              },
+              {
+                "term": "Volume of distribution (Vd)",
+                "definition": "Apparent volume that relates amount of drug in body to plasma concentration; helps predict distribution."
+              },
+              {
+                "term": "Blood–brain barrier (BBB)",
+                "definition": "Selective barrier limiting many drugs from entering the CNS."
+              },
+              {
+                "term": "Lipid solubility",
+                "definition": "Fat solubility; lipid-soluble drugs cross membranes more easily and may store in adipose tissue."
+              },
+              {
+                "term": "Metabolism (biotransformation)",
+                "definition": "Chemical alteration of a drug, usually in the liver, often to facilitate elimination."
+              },
+              {
+                "term": "Cytochrome P450 (CYP450)",
+                "definition": "Enzyme system responsible for many Phase I metabolism reactions; common source of interactions."
+              },
+              {
+                "term": "Enzyme inhibitor",
+                "definition": "Drug that decreases enzyme activity, raising levels of substrate drugs (toxicity risk)."
+              },
+              {
+                "term": "Enzyme inducer",
+                "definition": "Drug that increases enzyme activity, lowering levels of substrate drugs (treatment failure risk)."
+              },
+              {
+                "term": "Prodrug",
+                "definition": "Inactive compound that must be metabolized to become active."
+              },
+              {
+                "term": "Excretion",
+                "definition": "Removal of drug/metabolites from the body (kidneys most common)."
+              },
+              {
+                "term": "Renal clearance",
+                "definition": "Ability of kidneys to remove drug from plasma; reduced clearance increases accumulation risk."
+              },
+              {
+                "term": "Half-life (t½)",
+                "definition": "Time for plasma drug concentration to decrease by ~50%."
+              },
+              {
+                "term": "Clearance",
+                "definition": "Volume of plasma cleared of drug per unit time; determines maintenance dosing needs."
+              },
+              {
+                "term": "Steady state",
+                "definition": "Stable average drug concentration when rate in equals rate out; typically ~4–5 half-lives."
+              },
+              {
+                "term": "Loading dose",
+                "definition": "Initial larger dose used to reach target concentration quickly (often when half-life is long)."
+              },
+              {
+                "term": "Maintenance dose",
+                "definition": "Ongoing dosing to maintain therapeutic concentration once achieved."
+              }
+            ]
+          }
+        ],
+        "flashcardLinks": [],
+        "interactiveElements": [],
+        "content": "Key Terms and Glossary"
+      },
+      {
+        "sectionNumber": 10,
+        "id": "sec2_10_review_questions",
+        "title": "Review Questions",
+        "duration": 25,
+        "wordCount": 0,
+        "learningObjectives": [],
+        "keyTakeaways": [],
+        "contentBlocks": [
+          {
+            "blockId": "ch2_review",
+            "type": "assessment_section",
+            "title": "Review Questions",
+            "questions": [
+              {
+                "questionNumber": 1,
+                "type": "multiple_choice",
+                "question": "Which statement best defines pharmacokinetics?",
+                "options": {
+                  "A": "It describes how the drug changes the body at the receptor level",
+                  "B": "It describes what the body does to the drug through ADME processes",
+                  "C": "It is limited to renal excretion only",
+                  "D": "It only applies to IV medications"
+                },
+                "correctAnswer": "B",
+                "rationale": "Pharmacokinetics focuses on ADME — absorption, distribution, metabolism, and excretion."
+              },
+              {
+                "questionNumber": 2,
+                "type": "multiple_choice",
+                "question": "A patient with low albumin is receiving a highly protein-bound medication. What is the primary concern?",
+                "options": {
+                  "A": "Decreased free drug causing treatment failure",
+                  "B": "Increased free drug causing higher toxicity risk",
+                  "C": "The drug will not be absorbed from the GI tract",
+                  "D": "The drug will be unable to cross the blood–brain barrier"
+                },
+                "correctAnswer": "B",
+                "rationale": "Low albumin means fewer binding sites → more free/unbound drug → stronger effect/toxicity risk."
+              },
+              {
+                "questionNumber": 3,
+                "type": "multiple_choice",
+                "question": "First-pass metabolism most directly affects which route of administration?",
+                "options": {
+                  "A": "Intravenous (IV)",
+                  "B": "Oral (PO)",
+                  "C": "Inhaled",
+                  "D": "Transdermal"
+                },
+                "correctAnswer": "B",
+                "rationale": "Oral medications may be metabolized in the liver before reaching systemic circulation."
+              },
+              {
+                "questionNumber": 4,
+                "type": "multiple_choice",
+                "question": "A strong CYP450 inhibitor is added to a patient's regimen. What is a common clinical outcome for drugs metabolized by that CYP enzyme?",
+                "options": {
+                  "A": "Lower drug levels and reduced effect",
+                  "B": "Higher drug levels and increased toxicity risk",
+                  "C": "No change in drug levels",
+                  "D": "Immediate increased renal excretion"
+                },
+                "correctAnswer": "B",
+                "rationale": "Inhibitors slow metabolism → drug accumulates → higher levels/toxicity risk."
+              },
+              {
+                "questionNumber": 5,
+                "type": "multiple_choice",
+                "question": "Approximately how many half-lives does it take most drugs to reach steady state?",
+                "options": {
+                  "A": "1",
+                  "B": "2",
+                  "C": "4–5",
+                  "D": "10–12"
+                },
+                "correctAnswer": "C",
+                "rationale": "Rule of thumb: ~4–5 half-lives to approach steady state."
+              },
+              {
+                "questionNumber": 6,
+                "type": "multiple_choice",
+                "question": "Which patient scenario most increases risk for accumulation of a renally cleared drug?",
+                "options": {
+                  "A": "Young adult with normal creatinine",
+                  "B": "Older adult with decreased eGFR",
+                  "C": "Patient with increased appetite",
+                  "D": "Patient taking medication with food"
+                },
+                "correctAnswer": "B",
+                "rationale": "Reduced renal function slows elimination → accumulation and toxicity."
+              },
+              {
+                "questionNumber": 7,
+                "type": "multiple_choice",
+                "question": "Which concept explains why highly perfused organs receive medication sooner?",
+                "options": {
+                  "A": "Protein binding",
+                  "B": "Blood flow",
+                  "C": "First-pass metabolism",
+                  "D": "Excretion"
+                },
+                "correctAnswer": "B",
+                "rationale": "Distribution is influenced by perfusion; high blood flow delivers drug faster."
+              },
+              {
+                "questionNumber": 8,
+                "type": "multiple_choice",
+                "question": "A loading dose is most useful when:",
+                "options": {
+                  "A": "A drug has a long half-life and you need rapid therapeutic levels",
+                  "B": "A drug is eliminated very quickly",
+                  "C": "A drug has zero protein binding",
+                  "D": "A drug is only topical"
+                },
+                "correctAnswer": "A",
+                "rationale": "Loading doses help reach target concentration faster when half-life is long."
+              },
+              {
+                "questionNumber": 9,
+                "type": "multiple_choice",
+                "question": "Which statement about lipid-soluble drugs is most accurate?",
+                "options": {
+                  "A": "They distribute poorly into tissues",
+                  "B": "They may store in adipose tissue and persist longer",
+                  "C": "They cannot cross cell membranes",
+                  "D": "They are always eliminated unchanged by kidneys"
+                },
+                "correctAnswer": "B",
+                "rationale": "Lipid-soluble drugs can distribute widely and may remain longer in fat stores."
+              },
+              {
+                "questionNumber": 10,
+                "type": "multiple_choice",
+                "question": "Which is the best nursing action when a medication order seems unsafe due to organ impairment?",
+                "options": {
+                  "A": "Give the dose and document",
+                  "B": "Hold the dose and clarify with the prescriber/pharmacy",
+                  "C": "Ask the patient what they want",
+                  "D": "Double the dose to ensure effect"
+                },
+                "correctAnswer": "B",
+                "rationale": "Patient safety: hold and clarify when contraindications or dose adjustments may be needed."
+              }
+            ]
+          }
+        ],
+        "flashcardLinks": [],
+        "interactiveElements": [],
+        "content": "Review Questions & Assessment"
+      },
+      {
+        "sectionNumber": 11,
+        "id": "ch2_references",
+        "title": "References",
+        "duration": 10,
+        "wordCount": 0,
+        "learningObjectives": [],
+        "keyTakeaways": [],
+        "contentBlocks": [],
+        "flashcardLinks": [],
+        "interactiveElements": [],
+        "content": "REFERENCES\n\nOpenStax. (2019). Pharmacology for Nurses (Nursing Pharmacology). OpenStax, Rice University.\n\nLilley, L. L., Collins, S. R., & Snyder, J. S. (2020). Pharmacology and the Nursing Process (9th ed.). Elsevier.\n\nLehne, R. A. (2021). Pharmacology for Nursing Care (11th ed.). Elsevier."
       }
     ],
     "mediaAssets": {
