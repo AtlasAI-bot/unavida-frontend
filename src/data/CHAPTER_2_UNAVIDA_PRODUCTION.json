@@ -10,6 +10,25 @@
     "learningOutcomes": [],
     "sections": [
       {
+        "sectionNumber": "2.0",
+        "id": "sec2_0_overview_intro",
+        "title": "Section 2.0: Overview & How to Use This Chapter",
+        "duration": 10,
+        "wordCount": 650,
+        "learningObjectives": [
+          "Preview the chapter structure (ADME) and how each section builds nursing decision-making.",
+          "Identify the safety theme: dose and timing must match patient context (renal/liver function, interactions, age)."
+        ],
+        "keyTakeaways": [
+          "Chapter 2 is your ADME map: it helps you predict drug levels and prevent toxicity.",
+          "If something feels ‘off’ clinically, ask which part of ADME changed."
+        ],
+        "contentBlocks": [],
+        "flashcardLinks": [],
+        "interactiveElements": [],
+        "content": "Welcome to Chapter 2: Pharmacokinetics. In Chapter 1 you learned the foundations of pharmacology and why medication safety matters. Now we’re going to answer a practical bedside question: after a drug enters the body, what happens next?\n\nThis chapter follows one framework—ADME: Absorption, Distribution, Metabolism, and Excretion. Each section focuses on one part of that journey, then connects it back to nursing practice: dosing, monitoring, patient education, and preventing avoidable adverse drug events.\n\nHow to use this chapter: don’t memorize random facts—build the mental model. When a patient’s response doesn’t match expectations—no effect, too much effect, or delayed toxicity—pause and ask: Did absorption change? Did distribution change (albumin, body composition, barriers)? Did metabolism change (CYP interactions)? Did excretion change (renal function, dehydration)?\n\nIf you can ask that question consistently, you’ll catch medication problems early, communicate clearly with the provider/pharmacy team, and keep patients in the therapeutic window.\n\nLet’s start with the ADME framework and the big-picture overview of pharmacokinetics."
+      },
+      {
         "sectionNumber": "2.1",
         "id": "sec2_1_pk_overview",
         "title": "Section 2.1: Pharmacokinetics Overview (ADME)",
