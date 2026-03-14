@@ -122,10 +122,30 @@ export const ChapterReader = () => {
   // Chapter 2 is now sourced from a dedicated JSON file, with 2.7–2.8 placeholders
   // filled from the seed module until full content is provided.
   const chapter2SectionsBase = [...(chapter2Data.chapter.sections || [])];
-  const chapter2Sections = [
+  const chapter2SectionsMerged = [
     ...chapter2SectionsBase,
     ...chapter2SeedSections.filter((s) => !chapter2SectionsBase.some((b) => b.id === s.id)),
   ];
+
+  const getSectionSortKey = (section) => {
+    if (!section) return 999;
+    if (section.id === 'references' || section.id === 'ch2_references') return 999;
+
+    const raw = section.sectionNumber;
+    if (raw === null || raw === undefined || raw === '') return 998;
+
+    const n = Number(raw);
+    if (!Number.isNaN(n)) return n;
+
+    const str = String(raw);
+    const parsed = Number.parseFloat(str);
+    if (!Number.isNaN(parsed)) return parsed;
+
+    return 998;
+  };
+
+  // Ensure Chapter 2 navigation/content is ordered (2.1..2.10, then References at the bottom)
+  const chapter2Sections = [...chapter2SectionsMerged].sort((a, b) => getSectionSortKey(a) - getSectionSortKey(b));
 
   const allSections = [...chapter1Sections, ...chapter2Sections];
   const activeSections = activeChapterId.startsWith('ch2') ? chapter2Sections : chapter1Sections;
@@ -1761,9 +1781,12 @@ export const ChapterReader = () => {
                       <>
                         <h3>References (APA Style)</h3>
                         <div>
-                          {sectionParagraphs.map((refText, idx) => (
-                            <p key={idx} className="apa-ref">{cleanBody(refText)}</p>
-                          ))}
+                          {sectionParagraphs
+                            .map((t) => cleanBody(t))
+                            .filter((t) => t && !/^references$/i.test(t) && !/^[-–—]{2,}$/.test(t))
+                            .map((refText, idx) => (
+                              <p key={idx} className="apa-ref">{refText}</p>
+                            ))}
                         </div>
                       </>
                     ) : glossaryEntries.length > 0 && /glossary/i.test(selectedSection.title || '') ? (

@@ -41,14 +41,30 @@ export const chapter2SeedSections = [
 
   // Text-only extensions (no videos required)
   {
+    sectionNumber: '2.7',
     id: 'sec2_7_special_populations',
     title: 'Section 2.7: Special Populations & PK Adjustments',
+    duration: 20,
+    wordCount: 0,
+    learningObjectives: [],
+    keyTakeaways: [],
+    contentBlocks: [],
+    flashcardLinks: [],
+    interactiveElements: [],
     content:
       'Pharmacokinetics changes across the lifespan and in specific physiologic states. A “standard adult dose” may not be standard at all once pregnancy, childhood, aging, or organ impairment is in the picture.\n\nCommon high-risk populations:\n\n• Pediatrics: Dosing is often weight-based; organ systems are still maturing. Small errors can be large percentage errors.\n• Pregnancy/lactation: Changes in volume of distribution and renal clearance can alter drug levels; fetal and infant safety must be considered.\n• Older adults: Reduced renal/hepatic reserve, changes in body fat/water, increased sensitivity to CNS effects, and higher polypharmacy risk.\n• Renal impairment: Reduced excretion can cause accumulation; dosing or interval adjustments are often required.\n• Hepatic impairment: Reduced metabolism can increase drug levels; some prodrugs may also be less effective if not activated properly.\n\nNursing application: Always connect the medication plan to the patient’s context. When in doubt, verify: renal function, liver history, current labs, and the patient’s full medication list (including OTC and supplements).\n\n🧠 Key takeaway: “Same dose” does not mean “same exposure” across patients.',
   },
   {
+    sectionNumber: '2.8',
     id: 'sec2_8_clinical_application',
     title: 'Section 2.8: Clinical Application — Safe PK Thinking at the Bedside',
+    duration: 20,
+    wordCount: 0,
+    learningObjectives: [],
+    keyTakeaways: [],
+    contentBlocks: [],
+    flashcardLinks: [],
+    interactiveElements: [],
     content:
       'Pharmacokinetics is most useful when it changes what you do at the bedside. Here is a practical PK checklist nurses can use to prevent avoidable adverse events:\n\n1) Before giving the medication\n• Confirm route and formulation (especially ER/IR)\n• Review kidney and liver function when relevant\n• Scan for recent med changes that could create interactions\n\n2) After giving the medication\n• Monitor for therapeutic effect (is it working?)\n• Monitor for adverse effect (is it harming?)\n• Watch for delayed effects (accumulation) or lack of effect (poor absorption/induction)\n\n3) When you should escalate\n• Sudden change in mental status, respiratory status, bleeding, arrhythmia, or severe GI symptoms\n• New renal/hepatic lab abnormalities\n• Unusual sedation or loss of symptom control after a medication change\n\n4) How to communicate clearly\n• Describe timing: when the dose was given and when symptoms started\n• Provide relevant vitals/labs and current med list\n• Ask a direct question: “Could this be accumulation or interaction? Should we adjust dose/interval or check levels?”\n\n🧩 Bottom line: PK is your early-warning system. It helps you catch problems before they become emergencies.',
   },
