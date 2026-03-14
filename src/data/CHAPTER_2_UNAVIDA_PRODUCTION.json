@@ -166,17 +166,8 @@
         "title": "Section 2.7: Special Populations & PK Adjustments",
         "duration": 20,
         "wordCount": 0,
-        "learningObjectives": [
-          "Identify special populations with predictable pharmacokinetic changes (pediatrics, pregnancy, older adults).",
-          "Describe how renal and hepatic impairment alter drug handling and dosing risk.",
-          "Explain why “standard dose” may not equal “standard exposure.”",
-          "Apply patient-context checks before administering high-risk medications."
-        ],
-        "keyTakeaways": [
-          "Same dose does not mean same exposure across patients.",
-          "Renal/hepatic function and age-related changes are common reasons for adjustments.",
-          "Verify context (labs, organ function, interactions) before assuming dose failure."
-        ],
+        "learningObjectives": [],
+        "keyTakeaways": [],
         "contentBlocks": [],
         "flashcardLinks": [],
         "interactiveElements": [],
@@ -188,17 +179,8 @@
         "title": "Section 2.8: Clinical Application — Safe PK Thinking at the Bedside",
         "duration": 20,
         "wordCount": 0,
-        "learningObjectives": [
-          "Use a practical pharmacokinetic checklist before and after medication administration.",
-          "Identify red-flag findings that require escalation for possible toxicity or interaction.",
-          "Communicate medication safety concerns using clear timing, vitals, labs, and medication history.",
-          "Connect pharmacokinetic concepts to real bedside decision-making."
-        ],
-        "keyTakeaways": [
-          "Pharmacokinetics is a bedside safety tool, not just theory.",
-          "Communicate timing and medication changes clearly to identify accumulation/interactions.",
-          "Early escalation prevents avoidable adverse drug events."
-        ],
+        "learningObjectives": [],
+        "keyTakeaways": [],
         "contentBlocks": [],
         "flashcardLinks": [],
         "interactiveElements": [],
