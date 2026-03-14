@@ -62,6 +62,16 @@ function parseSections(md) {
     hits.push({ idx: m.index, num: m[1], titleRest: m[2].trim() });
   }
 
+  // Force chapter-title naming to match Chapter 1 style (Title Case + specific phrasing)
+  const TITLE_OVERRIDES = {
+    '2.1': 'Pharmacokinetics Overview (ADME)',
+    '2.2': 'Absorption & Bioavailability',
+    '2.3': 'Distribution — Where Drugs Go',
+    '2.4': 'Metabolism & CYP450',
+    '2.5': 'Excretion & Drug Elimination',
+    '2.6': 'Half-Life, Clearance & Steady State',
+  };
+
   const sections = [];
   for (let i = 0; i < hits.length; i += 1) {
     const cur = hits[i];
@@ -71,7 +81,8 @@ function parseSections(md) {
     const rawBody = md.slice(start, end).trim();
 
     const id = SECTION_ID_MAP[cur.num] || `sec2_${cur.num.replace('.', '_')}`;
-    const title = `Section ${cur.num}: ${cur.titleRest}`;
+    const titleCore = TITLE_OVERRIDES[cur.num] || cur.titleRest;
+    const title = `Section ${cur.num}: ${titleCore}`;
 
     const content = cleanMarkdownToReaderText(rawBody);
 
@@ -233,7 +244,7 @@ function main() {
   const glossarySection = {
     sectionNumber: 9,
     id: 'sec2_9_key_terms_glossary',
-    title: 'Key Terms Glossary',
+    title: 'Section 2.9: Key Terms Glossary',
     duration: 20,
     wordCount: 0,
     learningObjectives: [],
@@ -254,7 +265,7 @@ function main() {
   const reviewSection = {
     sectionNumber: 10,
     id: 'sec2_10_review_questions',
-    title: 'Review Questions',
+    title: 'Section 2.10: Review Questions & Assessment',
     duration: 25,
     wordCount: 0,
     learningObjectives: [],
@@ -273,7 +284,7 @@ function main() {
   };
 
   const referencesSection = {
-    sectionNumber: 11,
+    sectionNumber: null,
     id: 'ch2_references',
     title: 'References',
     duration: 10,

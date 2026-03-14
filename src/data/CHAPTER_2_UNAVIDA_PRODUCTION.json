@@ -12,7 +12,7 @@
       {
         "sectionNumber": "2.1",
         "id": "sec2_1_pk_overview",
-        "title": "Section 2.1: OVERVIEW: PHARMACOKINETICS IN CONTEXT",
+        "title": "Section 2.1: Pharmacokinetics Overview (ADME)",
         "duration": 25,
         "wordCount": 1253,
         "learningObjectives": [],
@@ -25,7 +25,7 @@
       {
         "sectionNumber": "2.2",
         "id": "sec2_2_absorption",
-        "title": "Section 2.2: ABSORPTION: GETTING THE DRUG INTO THE BODY",
+        "title": "Section 2.2: Absorption & Bioavailability",
         "duration": 25,
         "wordCount": 1655,
         "learningObjectives": [],
@@ -38,7 +38,7 @@
       {
         "sectionNumber": "2.3",
         "id": "sec2_3_distribution",
-        "title": "Section 2.3: DISTRIBUTION: WHERE THE DRUG GOES IN THE BODY",
+        "title": "Section 2.3: Distribution — Where Drugs Go",
         "duration": 25,
         "wordCount": 1321,
         "learningObjectives": [],
@@ -51,7 +51,7 @@
       {
         "sectionNumber": "2.4",
         "id": "sec2_4_metabolism",
-        "title": "Section 2.4: METABOLISM: HOW THE BODY BREAKS DOWN DRUGS",
+        "title": "Section 2.4: Metabolism & CYP450",
         "duration": 25,
         "wordCount": 1806,
         "learningObjectives": [],
@@ -64,7 +64,7 @@
       {
         "sectionNumber": "2.5",
         "id": "sec2_5_excretion",
-        "title": "Section 2.5: EXCRETION: HOW THE BODY ELIMINATES DRUGS",
+        "title": "Section 2.5: Excretion & Drug Elimination",
         "duration": 25,
         "wordCount": 1377,
         "learningObjectives": [],
@@ -77,7 +77,7 @@
       {
         "sectionNumber": "2.6",
         "id": "sec2_6_half_life_clearance",
-        "title": "Section 2.6: HALF-LIFE, STEADY STATE, AND CLEARANCE",
+        "title": "Section 2.6: Half-Life, Clearance & Steady State",
         "duration": 25,
         "wordCount": 2055,
         "learningObjectives": [],
@@ -90,7 +90,7 @@
       {
         "sectionNumber": 9,
         "id": "sec2_9_key_terms_glossary",
-        "title": "Key Terms Glossary",
+        "title": "Section 2.9: Key Terms Glossary",
         "duration": 20,
         "wordCount": 0,
         "learningObjectives": [],
@@ -207,7 +207,7 @@
       {
         "sectionNumber": 10,
         "id": "sec2_10_review_questions",
-        "title": "Review Questions",
+        "title": "Section 2.10: Review Questions & Assessment",
         "duration": 25,
         "wordCount": 0,
         "learningObjectives": [],
@@ -356,7 +356,7 @@
         "content": "Review Questions & Assessment"
       },
       {
-        "sectionNumber": 11,
+        "sectionNumber": null,
         "id": "ch2_references",
         "title": "References",
         "duration": 10,
