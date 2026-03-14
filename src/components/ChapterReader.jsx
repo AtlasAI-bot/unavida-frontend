@@ -1606,13 +1606,13 @@ export const ChapterReader = () => {
             <h3 style={{ margin: 0 }}>Textbook Navigation</h3>
           </div>
 
-          <div className="reader-chap open">
+          <div className={`reader-chap ${selectedSection?.id?.startsWith('sec2_') ? '' : 'open'}`}>
             <button className="reader-chap-btn" onClick={(e) => handleChapClick(e.currentTarget.closest('.reader-chap'))}>
               Chapter 1: Intro to Pharmacology
               <small>▼</small>
             </button>
             <div className="reader-sec-wrap">
-              {chapter1Sections.map((section) => (
+              {navChapter1Sections.map((section) => (
                 <a
                   key={section.id}
                   className={`reader-sec ${selectedSection?.id === section.id ? 'active' : ''}`}
@@ -1626,13 +1626,13 @@ export const ChapterReader = () => {
             </div>
           </div>
 
-          <div className="reader-chap open">
+          <div className={`reader-chap ${selectedSection?.id?.startsWith('sec2_') ? 'open' : ''}`}>
             <button className="reader-chap-btn" onClick={(e) => handleChapClick(e.currentTarget.closest('.reader-chap'))}>
               Chapter 2: Pharmacokinetics
               <small>▼</small>
             </button>
             <div className="reader-sec-wrap">
-              {chapter2Sections.map((section) => (
+              {navChapter2Sections.map((section) => (
                 <a
                   key={section.id}
                   className={`reader-sec ${selectedSection?.id === section.id ? 'active' : ''}`}
