@@ -30,13 +30,26 @@ function countWords(value = '') {
 
 function cleanMarkdownToReaderText(md = '') {
   // Keep content mostly as plain text with lightweight cues.
+  // Strip editorial/draft callouts that shouldn't render in the student reader.
   return String(md)
-    .replace(/^#+\s+/gm, '') // remove markdown heading markers
-    .replace(/\*\*(.*?)\*\*/g, '$1') // bold
-    .replace(/\*(.*?)\*/g, '$1') // italics
+    // Remove markdown heading markers
+    .replace(/^#+\s+/gm, '')
+    // Remove blockquote markers
+    .replace(/^>\s?/gm, '')
+    // Remove bracketed production callouts (VIDEO/IMAGE/CALLOUT, etc.)
+    // Handles lines like **[VIDEO CALLOUT: 2.1.A]** ...
+    .replace(/^\s*(?:\*\*|\*)?\s*\[[^\]]+\]\s*(?:\*\*|\*)?\s*.*$/gmi, '')
+    .replace(/^.*\[(?:VIDEO|IMAGE)[^\]]*\].*$/gmi, '')
+    // Remove leftover "Draft" markers
+    .replace(/\bDraft\b/gi, '')
+    // Unwrap basic markdown formatting
+    .replace(/\*\*(.*?)\*\*/g, '$1')
+    .replace(/\*(.*?)\*/g, '$1')
     .replace(/`([^`]+)`/g, '$1')
-    .replace(/^>\s?/gm, '') // blockquotes
+    // Normalize newlines
     .replace(/\r\n/g, '\n')
+    // Collapse excessive blank lines
+    .replace(/\n{3,}/g, '\n\n')
     .trim();
 }
 
