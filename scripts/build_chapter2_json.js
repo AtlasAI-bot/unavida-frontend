@@ -31,7 +31,7 @@ function countWords(value = '') {
 function cleanMarkdownToReaderText(md = '') {
   // Keep content mostly as plain text with lightweight cues.
   // Strip editorial/draft callouts that shouldn't render in the student reader.
-  return String(md)
+  let out = String(md)
     // Remove markdown heading markers
     .replace(/^#+\s+/gm, '')
     // Remove blockquote markers
@@ -47,7 +47,21 @@ function cleanMarkdownToReaderText(md = '') {
     .replace(/\*(.*?)\*/g, '$1')
     .replace(/`([^`]+)`/g, '$1')
     // Normalize newlines
-    .replace(/\r\n/g, '\n')
+    .replace(/\r\n/g, '\n');
+
+  // Remove/clean production-art direction lines that read like notes (keep the textbook tone)
+  out = out
+    .split('\n')
+    .filter((line) => {
+      const l = line.trim();
+      if (!l) return true;
+      // Example note-y lines we want to drop
+      if (/^(Infographic showing|Flowchart showing|Graph showing|Illustration of|Shows a graph|Visual:)/i.test(l)) return false;
+      return true;
+    })
+    .join('\n');
+
+  return out
     // Collapse excessive blank lines
     .replace(/\n{3,}/g, '\n\n')
     .trim();
