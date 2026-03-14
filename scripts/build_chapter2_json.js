@@ -121,6 +121,154 @@ function main() {
     process.exit(1);
   }
 
+  const applyOutcomes = (section, learningObjectives = [], keyTakeaways = []) => ({
+    ...section,
+    learningObjectives,
+    keyTakeaways,
+  });
+
+  const learningObjectivesBySection = {
+    '2.1': [
+      'Define pharmacokinetics and distinguish it from pharmacodynamics.',
+      'Describe the ADME framework and why it matters for nursing practice.',
+      'Explain therapeutic window, half-life, clearance, volume of distribution, and bioavailability at a conceptual level.',
+      'Identify patient factors that change pharmacokinetics and increase safety risk.',
+    ],
+    '2.2': [
+      'Define absorption and bioavailability and explain how route of administration influences both.',
+      'Identify key factors that affect oral absorption (food, motility, formulation, interactions).',
+      'Explain first-pass metabolism and its impact on medication effectiveness.',
+      'Apply absorption concepts to common bedside scenarios (delayed effect, “ineffective” medication).',
+    ],
+    '2.3': [
+      'Define distribution and describe how blood flow affects where drugs go first.',
+      'Explain plasma protein binding and why “free drug” drives effect and toxicity.',
+      'Describe how physiologic barriers (e.g., blood–brain barrier) influence drug action.',
+      'Connect body composition and albumin states to dosing risk and monitoring needs.',
+    ],
+    '2.4': [
+      'Define metabolism and differentiate Phase I and Phase II processes at a high level.',
+      'Explain how CYP450 induction and inhibition produce clinically significant drug interactions.',
+      'Recognize patient and medication factors that increase metabolism-related adverse effects.',
+      'Apply interaction thinking to polypharmacy and new-start/stop medication changes.',
+    ],
+    '2.5': [
+      'Define excretion and describe major elimination routes, especially renal elimination.',
+      'Explain how reduced renal function leads to drug accumulation and toxicity.',
+      'Identify nursing assessments and labs that inform safe dosing for renally cleared drugs.',
+      'Recognize early toxicity patterns that warrant escalation.',
+    ],
+    '2.6': [
+      'Define half-life and clearance and describe their relationship to dosing intervals.',
+      'Explain steady state and estimate time-to-steady-state using the 4–5 half-life rule.',
+      'Recognize accumulation risk when dosing frequency exceeds elimination capacity.',
+      'Apply timing concepts to monitoring (onset, peak, duration, therapeutic drug levels).',
+    ],
+    '2.7': [
+      'Identify special populations with predictable pharmacokinetic changes (pediatrics, pregnancy, older adults).',
+      'Describe how renal and hepatic impairment alter drug handling and dosing risk.',
+      'Explain why “standard dose” may not equal “standard exposure.”',
+      'Apply patient-context checks before administering high-risk medications.',
+    ],
+    '2.8': [
+      'Use a practical pharmacokinetic checklist before and after medication administration.',
+      'Identify red-flag findings that require escalation for possible toxicity or interaction.',
+      'Communicate medication safety concerns using clear timing, vitals, labs, and medication history.',
+      'Connect pharmacokinetic concepts to real bedside decision-making.',
+    ],
+  };
+
+  const keyTakeawaysBySection = {
+    '2.1': [
+      'Pharmacokinetics explains what the body does to the drug through ADME.',
+      'Patient factors can shift drug levels from therapeutic to toxic without changing the dose.',
+      'Half-life and steady state explain why some meds require patience, monitoring, or loading doses.',
+    ],
+    '2.2': [
+      'Absorption is variable for non-IV routes; IV bypasses absorption.',
+      'Bioavailability and first-pass metabolism explain why oral doses often differ from IV doses.',
+      'Food, motility, formulation, and interactions can make a medication appear “ineffective.”',
+    ],
+    '2.3': [
+      'Distribution depends on perfusion, barriers, and drug solubility.',
+      'Only free (unbound) drug is typically active; low albumin can increase toxicity risk.',
+      'Changes in body water/fat and perfusion can change response to standard doses.',
+    ],
+    '2.4': [
+      'Metabolism (often hepatic) makes drugs easier to eliminate but creates interaction risk.',
+      'CYP450 inhibitors raise drug levels; inducers lower drug levels.',
+      'Always reassess when medications are started, stopped, or doses are changed.',
+    ],
+    '2.5': [
+      'Renal impairment is a major driver of accumulation and toxicity for many medications.',
+      'Monitor eGFR/CrCl trends and urine output for renally cleared drugs.',
+      'Escalate early when renal function changes or toxicity signs appear.',
+    ],
+    '2.6': [
+      'Most drugs take ~4–5 half-lives to approach steady state.',
+      'Long half-life + frequent dosing increases accumulation risk.',
+      'Timing knowledge improves monitoring, education, and safe dose adjustments.',
+    ],
+    '2.7': [
+      'Same dose does not mean same exposure across patients.',
+      'Renal/hepatic function and age-related changes are common reasons for adjustments.',
+      'Verify context (labs, organ function, interactions) before assuming dose failure.',
+    ],
+    '2.8': [
+      'Pharmacokinetics is a bedside safety tool, not just theory.',
+      'Communicate timing and medication changes clearly to identify accumulation/interactions.',
+      'Early escalation prevents avoidable adverse drug events.',
+    ],
+  };
+
+  // Apply learning objectives/key takeaways to each section (2.1–2.6 from draft)
+  const enrichedSections = sections.map((s) =>
+    applyOutcomes(
+      s,
+      learningObjectivesBySection[s.sectionNumber] || [],
+      keyTakeawaysBySection[s.sectionNumber] || []
+    )
+  );
+
+  // Add 2.7 and 2.8 (text-only) into the Chapter 2 JSON so all Chapter 2 sections are fully defined
+  const section2_7 = applyOutcomes(
+    {
+      sectionNumber: '2.7',
+      id: 'sec2_7_special_populations',
+      title: 'Section 2.7: Special Populations & PK Adjustments',
+      duration: 20,
+      wordCount: 0,
+      learningObjectives: [],
+      keyTakeaways: [],
+      contentBlocks: [],
+      flashcardLinks: [],
+      interactiveElements: [],
+      content:
+        'Pharmacokinetics changes across the lifespan and in specific physiologic states. A “standard adult dose” may not be standard at all once pregnancy, childhood, aging, or organ impairment is in the picture.\n\nCommon high-risk populations:\n\n• Pediatrics: Dosing is often weight-based; organ systems are still maturing. Small errors can be large percentage errors.\n• Pregnancy/lactation: Changes in volume of distribution and renal clearance can alter drug levels; fetal and infant safety must be considered.\n• Older adults: Reduced renal/hepatic reserve, changes in body fat/water, increased sensitivity to CNS effects, and higher polypharmacy risk.\n• Renal impairment: Reduced excretion can cause accumulation; dosing or interval adjustments are often required.\n• Hepatic impairment: Reduced metabolism can increase drug levels; some prodrugs may also be less effective if not activated properly.\n\nNursing application: Always connect the medication plan to the patient’s context. When in doubt, verify: renal function, liver history, current labs, and the patient’s full medication list (including OTC and supplements).\n\n🧠 Key takeaway: “Same dose” does not mean “same exposure” across patients.',
+    },
+    learningObjectivesBySection['2.7'],
+    keyTakeawaysBySection['2.7']
+  );
+
+  const section2_8 = applyOutcomes(
+    {
+      sectionNumber: '2.8',
+      id: 'sec2_8_clinical_application',
+      title: 'Section 2.8: Clinical Application — Safe PK Thinking at the Bedside',
+      duration: 20,
+      wordCount: 0,
+      learningObjectives: [],
+      keyTakeaways: [],
+      contentBlocks: [],
+      flashcardLinks: [],
+      interactiveElements: [],
+      content:
+        'Pharmacokinetics is most useful when it changes what you do at the bedside. Here is a practical PK checklist nurses can use to prevent avoidable adverse events:\n\n1) Before giving the medication\n• Confirm route and formulation (especially ER/IR)\n• Review kidney and liver function when relevant\n• Scan for recent med changes that could create interactions\n\n2) After giving the medication\n• Monitor for therapeutic effect (is it working?)\n• Monitor for adverse effect (is it harming?)\n• Watch for delayed effects (accumulation) or lack of effect (poor absorption/induction)\n\n3) When you should escalate\n• Sudden change in mental status, respiratory status, bleeding, arrhythmia, or severe GI symptoms\n• New renal/hepatic lab abnormalities\n• Unusual sedation or loss of symptom control after a medication change\n\n4) How to communicate clearly\n• Describe timing: when the dose was given and when symptoms started\n• Provide relevant vitals/labs and current med list\n• Ask a direct question: “Could this be accumulation or interaction? Should we adjust dose/interval or check levels?”\n\n🧩 Bottom line: PK is your early-warning system. It helps you catch problems before they become emergencies.',
+    },
+    learningObjectivesBySection['2.8'],
+    keyTakeawaysBySection['2.8']
+  );
+
   const keyTerms = [
     { term: 'Pharmacokinetics', definition: 'What the body does to the drug: absorption, distribution, metabolism, and excretion (ADME).' },
     { term: 'ADME', definition: 'Absorption, Distribution, Metabolism, Excretion — the four core pharmacokinetic processes.' },
@@ -308,7 +456,7 @@ function main() {
         estimatedTimeMinutes: 180,
       },
       learningOutcomes: [],
-      sections: [...sections, glossarySection, reviewSection, referencesSection],
+      sections: [...enrichedSections, section2_7, section2_8, glossarySection, reviewSection, referencesSection],
       mediaAssets: {
         videos: [],
         images: [],
