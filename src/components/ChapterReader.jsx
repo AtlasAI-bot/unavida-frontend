@@ -454,6 +454,46 @@ export const ChapterReader = () => {
 
   const getSectionById = (id) => allSections.find((s) => s.id === id);
 
+  const renderTextbookBody = (text = '') => {
+    const raw = String(text || '').trim();
+    if (!raw) return null;
+
+    const lines = raw.split('\n').map((l) => l.trim()).filter(Boolean);
+
+    // Numbered list (e.g., 1. ... / 2. ...)
+    const isNumbered = lines.length >= 2 && lines.every((l) => /^\d+\.(\s+|$)/.test(l));
+    if (isNumbered) {
+      return (
+        <ol style={{ margin: '0 0 10px 18px', padding: 0 }}>
+          {lines.map((l, idx) => (
+            <li key={idx} style={{ marginBottom: 6 }}>{l.replace(/^\d+\.\s*/, '')}</li>
+          ))}
+        </ol>
+      );
+    }
+
+    // Bullet list (- ... or • ...)
+    const isBulleted = lines.length >= 2 && lines.every((l) => /^(-|•)\s+/.test(l));
+    if (isBulleted) {
+      return (
+        <ul style={{ margin: '0 0 10px 18px', padding: 0 }}>
+          {lines.map((l, idx) => (
+            <li key={idx} style={{ marginBottom: 6 }}>{l.replace(/^(-|•)\s+/, '')}</li>
+          ))}
+        </ul>
+      );
+    }
+
+    // Mixed content: render as separate paragraphs to preserve newlines.
+    return (
+      <>
+        {lines.map((l, idx) => (
+          <p key={idx}>{l}</p>
+        ))}
+      </>
+    );
+  };
+
   const fixEightRightsHtml = (html = '') => {
     if (!html || !/Right Patient:/i.test(html) || !/Right Response:/i.test(html)) return html;
     const canonical = `
@@ -1829,12 +1869,14 @@ export const ChapterReader = () => {
                               renderReviewQuestionText(body || para)
                             ) : forced ? (
                               <>
-                                {forced.before && (selectedSection.id === 'sec1_overview_introduction' ? renderParagraphWithNumberedList(forced.before) : <p>{forced.before}</p>)}
+                                {forced.before && (selectedSection.id === 'sec1_overview_introduction' ? renderParagraphWithNumberedList(forced.before) : renderTextbookBody(forced.before))}
                                 <h4 style={{ margin: '8px 0', fontSize: '1.1rem' }}>{forced.heading}</h4>
-                                {forced.after && (selectedSection.id === 'sec1_overview_introduction' ? renderParagraphWithNumberedList(forced.after) : <p>{forced.after}</p>)}
+                                {forced.after && (selectedSection.id === 'sec1_overview_introduction' ? renderParagraphWithNumberedList(forced.after) : renderTextbookBody(forced.after))}
                               </>
                             ) : (
-                              selectedSection.id === 'sec1_overview_introduction' ? renderParagraphWithNumberedList(body) : <p>{body}</p>
+                              selectedSection.id === 'sec1_overview_introduction'
+                                ? renderParagraphWithNumberedList(body)
+                                : renderTextbookBody(body)
                             )}
                             {imgSrc && (
                               <img
