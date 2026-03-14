@@ -460,6 +460,72 @@ export const ChapterReader = () => {
 
     const lines = raw.split('\n').map((l) => l.trim()).filter(Boolean);
 
+    // Markdown-like pipe table
+    // Example:
+    // | Col A | Col B |
+    // |---|---|
+    // | a | b |
+    const isTable =
+      lines.length >= 3 &&
+      lines[0].includes('|') &&
+      lines[1].includes('|') &&
+      /---/.test(lines[1]) &&
+      /^\|?\s*[:\-\s\|]+\|?\s*$/.test(lines[1]);
+
+    if (isTable) {
+      const parseRow = (row) => row
+        .replace(/^\|/, '')
+        .replace(/\|$/, '')
+        .split('|')
+        .map((c) => c.trim());
+
+      const headers = parseRow(lines[0]);
+      const rows = lines.slice(2).map(parseRow);
+
+      return (
+        <div style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+            <thead>
+              <tr>
+                {headers.map((h, idx) => (
+                  <th
+                    key={idx}
+                    style={{
+                      textAlign: 'left',
+                      borderBottom: '2px solid var(--panel-border)',
+                      padding: '8px',
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    {h}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((r, rIdx) => (
+                <tr key={rIdx}>
+                  {headers.map((_, cIdx) => (
+                    <td
+                      key={cIdx}
+                      style={{
+                        verticalAlign: 'top',
+                        borderBottom: '1px solid var(--panel-border)',
+                        padding: '8px',
+                        minWidth: cIdx === 0 ? 180 : 220,
+                      }}
+                    >
+                      {r[cIdx] || ''}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+    }
+
     // Numbered list (e.g., 1. ... / 2. ...)
     const isNumbered = lines.length >= 2 && lines.every((l) => /^\d+\.(\s+|$)/.test(l));
     if (isNumbered) {
