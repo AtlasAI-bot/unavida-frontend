@@ -20,6 +20,7 @@ export const ChapterReader = () => {
   const [readerWidth, setReaderWidth] = useState(920);
   const mainScrollRef = useRef(null);
   const [revealedAnswers, setRevealedAnswers] = useState({});
+  const [selectedMcAnswers, setSelectedMcAnswers] = useState({});
   const [annotations, setAnnotations] = useState(() => {
     try { return JSON.parse(localStorage.getItem('unavida:annotations') || '[]'); } catch { return []; }
   });
@@ -982,32 +983,88 @@ export const ChapterReader = () => {
 
   const renderStructuredQuestion = (q) => {
     const key = `q-${q.questionNumber}`;
+    const interactive = selectedSection?.id === 'sec2_10_review_questions';
+
     const show = !!revealedAnswers[key];
+    const picked = selectedMcAnswers[key];
+
+    const reveal = () => setRevealedAnswers((prev) => ({ ...prev, [key]: true }));
+
     return (
       <div key={key} className="reader-card" style={{ marginBottom: '12px' }}>
         <p style={{ fontWeight: 700, marginBottom: '8px' }}>{q.questionNumber}. {q.question}</p>
 
         {q.options && (
-          <div style={{ display: 'grid', gap: '4px', marginBottom: '10px' }}>
-            {Object.entries(q.options).map(([letter, text]) => (
-              <p key={letter} style={{ margin: 0, paddingLeft: '14px' }}>
-                {letter.toLowerCase()}. {text}
-              </p>
-            ))}
+          <div style={{ display: 'grid', gap: '6px', marginBottom: '10px' }}>
+            {Object.entries(q.options).map(([letter, text]) => {
+              const isPicked = picked === letter;
+              const isCorrect = q.correctAnswer === letter;
+              const showFeedback = interactive && show;
+
+              const baseStyle = {
+                textAlign: 'left',
+                borderRadius: '10px',
+                padding: '10px 12px',
+                border: '1px solid var(--panel-border)',
+                background: 'var(--panel)',
+                cursor: interactive ? 'pointer' : 'default',
+                fontSize: 'var(--reader-size)',
+                lineHeight: 'var(--reader-line)',
+              };
+
+              const feedbackStyle = showFeedback
+                ? isCorrect
+                  ? { borderColor: '#22c55e', boxShadow: '0 0 0 2px rgba(34,197,94,0.25) inset' }
+                  : isPicked
+                    ? { borderColor: '#ef4444', boxShadow: '0 0 0 2px rgba(239,68,68,0.22) inset' }
+                    : {}
+                : isPicked
+                  ? { borderColor: 'var(--accent)', boxShadow: '0 0 0 2px rgba(59,130,246,0.18) inset' }
+                  : {};
+
+              if (!interactive) {
+                return (
+                  <p key={letter} style={{ margin: 0, paddingLeft: '14px' }}>
+                    {letter.toLowerCase()}. {text}
+                  </p>
+                );
+              }
+
+              return (
+                <button
+                  key={letter}
+                  className="reader-btn"
+                  onClick={() => {
+                    setSelectedMcAnswers((prev) => ({ ...prev, [key]: letter }));
+                    reveal();
+                  }}
+                  style={{ ...baseStyle, ...feedbackStyle }}
+                >
+                  <strong style={{ marginRight: 8 }}>{letter}.</strong> {text}
+                </button>
+              );
+            })}
           </div>
         )}
 
-        <button
-          className="reader-btn"
-          onClick={() => setRevealedAnswers((prev) => ({ ...prev, [key]: !show }))}
-          style={{ marginBottom: '8px' }}
-        >
-          {show ? 'Hide Answer' : 'Show Answer'}
-        </button>
+        {!interactive && (
+          <button
+            className="reader-btn"
+            onClick={() => setRevealedAnswers((prev) => ({ ...prev, [key]: !show }))}
+            style={{ marginBottom: '8px' }}
+          >
+            {show ? 'Hide Answer' : 'Show Answer'}
+          </button>
+        )}
 
-        {show && (
+        {(show || !interactive) && show && (
           <div style={{ background: 'var(--panel)', border: '1px solid var(--panel-border)', borderRadius: '8px', padding: '10px' }}>
-            {q.correctAnswer && <p style={{ margin: '0 0 6px 0', fontWeight: 700 }}>Correct answer: {q.correctAnswer.toLowerCase()}</p>}
+            {q.correctAnswer && (
+              <p style={{ margin: '0 0 6px 0', fontWeight: 700 }}>
+                Correct answer: {q.correctAnswer.toLowerCase()}
+                {interactive && picked ? ` (you chose ${picked.toLowerCase()})` : ''}
+              </p>
+            )}
             {q.rationale && <p style={{ margin: 0 }}><strong>Rationale:</strong> {q.rationale}</p>}
             {q.expectedAnswerElements && (
               <ul style={{ margin: '6px 0 0 0', paddingLeft: '20px' }}>
