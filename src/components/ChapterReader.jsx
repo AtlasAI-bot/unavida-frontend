@@ -487,27 +487,16 @@ export const ChapterReader = () => {
 
     const lines = raw.split('\n').map((l) => l.trim()).filter(Boolean);
 
-    // Markdown-like pipe table
-    // Example:
-    // | Col A | Col B |
-    // |---|---|
-    // | a | b |
-    const isTable =
-      lines.length >= 3 &&
-      lines[0].includes('|') &&
-      lines[1].includes('|') &&
-      /---/.test(lines[1]) &&
-      /^\|?\s*[:\-\s\|]+\|?\s*$/.test(lines[1]);
+    const parseRow = (row) => row
+      .replace(/^\|/, '')
+      .replace(/\|$/, '')
+      .split('|')
+      .map((c) => c.trim());
 
-    if (isTable) {
-      const parseRow = (row) => row
-        .replace(/^\|/, '')
-        .replace(/\|$/, '')
-        .split('|')
-        .map((c) => c.trim());
-
-      const headers = parseRow(lines[0]);
-      const rows = lines.slice(2).map(parseRow);
+    const renderPipeTable = (tableLines = []) => {
+      if (!tableLines || tableLines.length < 3) return null;
+      const headers = parseRow(tableLines[0]);
+      const rows = tableLines.slice(2).map(parseRow);
 
       return (
         <div style={{ overflowX: 'auto' }}>
@@ -551,6 +540,49 @@ export const ChapterReader = () => {
           </table>
         </div>
       );
+    };
+
+    // Markdown-like pipe table (entire paragraph is a table)
+    // Example:
+    // | Col A | Col B |
+    // |---|---|
+    // | a | b |
+    const isWholeTable =
+      lines.length >= 3 &&
+      lines[0].includes('|') &&
+      lines[1].includes('|') &&
+      /---/.test(lines[1]) &&
+      /^\|?\s*[:\-\s\|]+\|?\s*$/.test(lines[1]);
+
+    if (isWholeTable) {
+      return renderPipeTable(lines);
+    }
+
+    // Mixed content: if a pipe table appears anywhere inside the paragraph,
+    // extract it and render it as a table instead of raw pipes.
+    const sepIdx = lines.findIndex((l) => l.includes('|') && /---/.test(l) && /^\|?\s*[:\-\s\|]+\|?\s*$/.test(l));
+    if (sepIdx > 0) {
+      const headerIdx = sepIdx - 1;
+      const header = lines[headerIdx];
+      if (header && header.includes('|')) {
+        // Collect contiguous table rows after separator
+        const after = [];
+        for (let i = sepIdx + 1; i < lines.length; i++) {
+          if (!lines[i].includes('|')) break;
+          after.push(lines[i]);
+        }
+        const beforeText = lines.slice(0, headerIdx).join('\n');
+        const afterText = lines.slice(sepIdx + 1 + after.length).join('\n');
+        const tableLines = [header, lines[sepIdx], ...after];
+
+        return (
+          <>
+            {beforeText ? <p>{beforeText}</p> : null}
+            {renderPipeTable(tableLines)}
+            {afterText ? <p>{afterText}</p> : null}
+          </>
+        );
+      }
     }
 
     // Numbered list (e.g., 1. ... / 2. ...)
