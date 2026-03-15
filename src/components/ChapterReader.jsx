@@ -93,6 +93,18 @@ export const ChapterReader = () => {
       '/images/ch2/section-2-3/ch2_s2_3_blood_brain_barrier.jpg',
       '/images/ch2/section-2-3/ch2_s2_3_vd_protein_binding_vs_lipophilic.jpg',
     ],
+    sec2_4_metabolism: [
+      '/images/ch2/section-2-4/ch2_s2_4_drug_metabolism_phases.jpg',
+      '/images/ch2/section-2-4/ch2_s2_4_cyp_induction_inhibition.jpg',
+    ],
+    sec2_5_excretion: [
+      '/images/ch2/section-2-5/ch2_s2_5_renal_excretion_processes.jpg',
+      '/images/ch2/section-2-5/ch2_s2_5_dose_adjustment_nomogram.jpg',
+    ],
+    sec2_6_half_life_clearance: [
+      '/images/ch2/section-2-6/ch2_s2_6_loading_dose_maintenance.jpg',
+      '/images/ch2/section-2-6/ch2_s2_6_half_life_accumulation.jpg',
+    ],
     sec1_1_definitions_scope: [
       '/images/ch1/section-1-1/ch1_s1_1_v01.png.png',
       '/images/ch1/section-1-1/Nurses administering care to elderly patient.png',
