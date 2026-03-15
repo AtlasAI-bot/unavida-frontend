@@ -87,6 +87,11 @@ export const ChapterReader = () => {
     ],
     sec2_2_absorption: [
       '/images/ch2/section-2-2/ch2_s2_2_routes_bioavailability.jpg',
+      '/images/ch2/section-2-2/ch2_s2_2_first_pass_vs_iv.jpg',
+    ],
+    sec2_3_distribution: [
+      '/images/ch2/section-2-3/ch2_s2_3_blood_brain_barrier.jpg',
+      '/images/ch2/section-2-3/ch2_s2_3_vd_protein_binding_vs_lipophilic.jpg',
     ],
     sec1_1_definitions_scope: [
       '/images/ch1/section-1-1/ch1_s1_1_v01.png.png',
