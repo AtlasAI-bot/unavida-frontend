@@ -83,6 +83,10 @@ export const ChapterReader = () => {
     // Chapter 2
     sec2_1_pk_overview: [
       '/images/ch2/section-2-1/ch2_s2_1_adme_overview.jpg',
+      '/images/ch2/section-2-1/ch2_s2_1_therapeutic_window.jpg',
+    ],
+    sec2_2_absorption: [
+      '/images/ch2/section-2-2/ch2_s2_2_routes_bioavailability.jpg',
     ],
     sec1_1_definitions_scope: [
       '/images/ch1/section-1-1/ch1_s1_1_v01.png.png',
