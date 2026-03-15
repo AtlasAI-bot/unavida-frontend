@@ -2160,7 +2160,7 @@ export const ChapterReader = () => {
                   </section>
                 )}
 
-                {selectedSection.learningObjectives && (
+                {selectedSection.learningObjectives && selectedSection.learningObjectives.length > 0 && (
                   <section className="reader-card">
                     <h3>Learning Objectives</h3>
                     <ul style={{ margin: 0, paddingLeft: '20px', lineHeight: 'var(--reader-line)', fontSize: 'var(--reader-size)' }}>
@@ -2171,7 +2171,7 @@ export const ChapterReader = () => {
                   </section>
                 )}
 
-                {selectedSection.keyTakeaways && (
+                {selectedSection.keyTakeaways && selectedSection.keyTakeaways.length > 0 && (
                   <section className="reader-card">
                     <h3>Key Takeaways</h3>
                     <ul style={{ margin: 0, paddingLeft: '20px', lineHeight: 'var(--reader-line)', fontSize: 'var(--reader-size)' }}>
