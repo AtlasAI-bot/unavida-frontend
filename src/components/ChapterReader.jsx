@@ -1102,7 +1102,8 @@ export const ChapterReader = () => {
     if (sectionId) {
       const fromQuery = sections.find((s) => s.id === sectionId);
       if (fromQuery) {
-        const targetChapter = fromQuery.id.startsWith('sec2_') ? 'ch2_pharmacokinetics' : 'ch1_intro';
+        const isCh2 = fromQuery.id.startsWith('sec2_') || fromQuery.id.startsWith('ch2_') || fromQuery.id === 'ch2_references';
+        const targetChapter = isCh2 ? 'ch2_pharmacokinetics' : 'ch1_intro';
         if (activeChapterId !== targetChapter) {
           navigate(`/reader/${targetChapter}?section=${fromQuery.id}`, { replace: true });
           return;
@@ -1139,7 +1140,8 @@ export const ChapterReader = () => {
 
   const handleSectionClick = (section) => {
     if (!section) return;
-    const targetChapter = section.id?.startsWith('sec2_') ? 'ch2_pharmacokinetics' : 'ch1_intro';
+    const isCh2 = section.id?.startsWith('sec2_') || section.id?.startsWith('ch2_') || section.id === 'ch2_references';
+    const targetChapter = isCh2 ? 'ch2_pharmacokinetics' : 'ch1_intro';
     const nextUrl = `/reader/${targetChapter}?section=${section.id}`;
 
     setSelectedSection(section);
