@@ -248,6 +248,12 @@ export const ChapterReader = () => {
     if (!text) return { heading: null, body: '' };
     const lines = text.split('\n').map((l) => l.trim()).filter(Boolean);
     const first = lines[0] || '';
+
+    // Never treat pipe-table rows as headings; doing so breaks table rendering.
+    if (first.startsWith('|')) {
+      return { heading: null, body: cleanBody(text) };
+    }
+
     const isHeadingLike = first.length > 0 && first.length < 110 && !first.endsWith('.') && !first.endsWith('?');
     if (isHeadingLike && lines.length > 1) {
       return { heading: cleanHeading(first), body: cleanBody(lines.slice(1).join('\n')) };
