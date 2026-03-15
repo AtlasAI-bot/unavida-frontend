@@ -70,6 +70,7 @@ export const ChapterReader = () => {
   const currentVideoUrl = selectedSection ? sectionVideoMap[selectedSection.id] : null;
 
   const sectionIllustrationMap = {
+    // Chapter 1
     sec1_overview_introduction: [
       '/images/ch1/section-1-0/ch1_s1_0_v01.png',
       '/images/ch1/section-1-0/Pharmacology Overview.png',
@@ -77,6 +78,11 @@ export const ChapterReader = () => {
       '/images/ch1/section-1-0/Eight Rights Med.png',
       '/images/ch1/section-1-0/Drug Calcutation.png',
       '/images/ch1/section-1-0/Pharmacokinetics vs. Pharmacodynamics.png',
+    ],
+
+    // Chapter 2
+    sec2_1_pk_overview: [
+      '/images/ch2/section-2-1/ch2_s2_1_adme_overview.jpg',
     ],
     sec1_1_definitions_scope: [
       '/images/ch1/section-1-1/ch1_s1_1_v01.png.png',
