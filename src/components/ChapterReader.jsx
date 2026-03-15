@@ -179,8 +179,54 @@ export const ChapterReader = () => {
 
   const currentSectionImages = selectedSection ? (sectionIllustrationMap[selectedSection.id] || []) : [];
 
+  const normalizePipeTableParagraphs = (paras = []) => {
+    const out = [];
+    let i = 0;
+
+    const isPipeLine = (p = '') => {
+      const t = String(p || '').trim();
+      return t.startsWith('|') && t.includes('|') && t.endsWith('|');
+    };
+
+    const isSeparatorLine = (p = '') => {
+      const t = String(p || '').trim();
+      return isPipeLine(t) && /---/.test(t) && /^\|?\s*[:\-\s\|]+\|?\s*$/.test(t);
+    };
+
+    while (i < paras.length) {
+      const cur = String(paras[i] || '').trim();
+
+      // Merge pipe-table lines that were split into separate paragraphs by blank lines.
+      // We consider a table if we see:
+      //   header line (|...|)
+      //   separator line (|---|---|)
+      //   at least one row line (|...|)
+      if (isPipeLine(cur) && i + 1 < paras.length && isSeparatorLine(paras[i + 1])) {
+        const tableLines = [cur, String(paras[i + 1]).trim()];
+        let j = i + 2;
+        while (j < paras.length && isPipeLine(paras[j])) {
+          tableLines.push(String(paras[j]).trim());
+          j++;
+        }
+        out.push(tableLines.join('\n'));
+        i = j;
+        continue;
+      }
+
+      out.push(cur);
+      i++;
+    }
+
+    return out;
+  };
+
   const sectionParagraphs = selectedSection?.content
-    ? selectedSection.content.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean)
+    ? normalizePipeTableParagraphs(
+        selectedSection.content
+          .split(/\n\s*\n/)
+          .map((p) => p.trim())
+          .filter(Boolean)
+      )
     : [];
 
   const cleanHeading = (value = '') =>
