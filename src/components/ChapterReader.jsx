@@ -42,6 +42,27 @@ export const ChapterReader = () => {
   const [newNote, setNewNote] = useState('');
   const [highlightColor, setHighlightColor] = useState('yellow');
 
+  // Image lightbox (click any diagram/image in the reader to expand)
+  const [lightbox, setLightbox] = useState({ open: false, src: '', alt: '' });
+
+  const openLightbox = (src, alt = '') => {
+    if (!src) return;
+    setLightbox({ open: true, src, alt });
+  };
+
+  const closeLightbox = () => setLightbox({ open: false, src: '', alt: '' });
+
+  const handleInlineImageClick = (e) => {
+    const t = e.target;
+    if (!t) return;
+    if (t.tagName === 'IMG') {
+      // For <img src="/path">, the DOM exposes both .src (absolute) and getAttribute('src') (original)
+      const src = t.getAttribute('src') || t.src;
+      const alt = t.getAttribute('alt') || '';
+      openLightbox(src, alt);
+    }
+  };
+
   const atlasLines = [
     'If your calculator dies during dosage math, that\'s a character-building event.',
     'Clinicals are like plot twists; the medication pass is where you become the main character.',
@@ -1945,7 +1966,7 @@ export const ChapterReader = () => {
 
         {/* Main Content Panel */}
         <main className="reader-panel reader-main" ref={mainScrollRef}>
-          <div className="reader-main-wrap">
+          <div className="reader-main-wrap" onClick={handleInlineImageClick}>
             {selectedSection ? (
               <>
                 {toolView === 'flashcards' && (
@@ -2116,10 +2137,15 @@ export const ChapterReader = () => {
                             )}
                             {imgSrc && (
                               <img
+                                className="reader-zoomable"
                                 src={imgSrc}
                                 alt={`Section visual ${slotIdx + 1}`}
                                 style={{ width: '100%', marginTop: '10px', maxHeight: '420px', objectFit: 'contain', background: 'var(--panel)', borderRadius: '10px' }}
                                 loading="lazy"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  openLightbox(imgSrc, `Section visual ${slotIdx + 1}`);
+                                }}
                               />
                             )}
                           </div>
@@ -2439,6 +2465,24 @@ export const ChapterReader = () => {
             </div>
           </div>
         </div>
+
+        {/* Image lightbox modal */}
+        {lightbox.open && (
+          <div
+            className="reader-lightbox"
+            role="dialog"
+            aria-modal="true"
+            onClick={closeLightbox}
+          >
+            <div className="reader-lightbox-inner" onClick={(e) => e.stopPropagation()}>
+              <button className="reader-lightbox-close" onClick={closeLightbox} aria-label="Close image">
+                ✕
+              </button>
+              <img src={lightbox.src} alt={lightbox.alt || 'Expanded diagram'} />
+              {lightbox.alt && <div className="reader-lightbox-caption">{lightbox.alt}</div>}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
