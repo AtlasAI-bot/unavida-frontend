@@ -127,6 +127,8 @@
 .reader-main-wrap img,
 .reader-zoomable {
   cursor: zoom-in;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Image lightbox modal */

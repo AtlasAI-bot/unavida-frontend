@@ -52,6 +52,32 @@ export const ChapterReader = () => {
 
   const closeLightbox = () => setLightbox({ open: false, src: '', alt: '' });
 
+  // Hard-fail safe: capture clicks/taps on ANY <img> inside the main reader panel
+  // using native event listeners (some environments swallow React onClick for images).
+  useEffect(() => {
+    const el = mainScrollRef.current;
+    if (!el) return;
+
+    const handler = (e) => {
+      const target = e.target;
+      const img = target?.closest ? target.closest('img') : null;
+      if (!img) return;
+      const src = img.getAttribute('src') || img.src;
+      const alt = img.getAttribute('alt') || '';
+      openLightbox(src, alt);
+    };
+
+    el.addEventListener('click', handler, true);
+    el.addEventListener('pointerup', handler, true);
+    el.addEventListener('touchend', handler, true);
+
+    return () => {
+      el.removeEventListener('click', handler, true);
+      el.removeEventListener('pointerup', handler, true);
+      el.removeEventListener('touchend', handler, true);
+    };
+  }, []);
+
   const handleInlineImageClick = (e) => {
     const t = e.target;
     if (!t) return;
