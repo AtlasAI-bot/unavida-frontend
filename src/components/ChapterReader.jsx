@@ -62,17 +62,27 @@ export const ChapterReader = () => {
       const target = e.target;
       const img = target?.closest ? target.closest('img') : null;
       if (!img) return;
+
+      // Prevent the same gesture from immediately closing the modal
+      // (some browsers deliver the original click to the newly-mounted overlay).
+      try {
+        e.preventDefault?.();
+        e.stopPropagation?.();
+        e.stopImmediatePropagation?.();
+      } catch {}
+
       const src = img.getAttribute('src') || img.src;
       const alt = img.getAttribute('alt') || '';
-      openLightbox(src, alt);
+
+      // Defer open to next tick to avoid same-event close
+      setTimeout(() => openLightbox(src, alt), 0);
     };
 
-    el.addEventListener('click', handler, true);
+    // Use pointer/touch events for best cross-device reliability.
     el.addEventListener('pointerup', handler, true);
     el.addEventListener('touchend', handler, true);
 
     return () => {
-      el.removeEventListener('click', handler, true);
       el.removeEventListener('pointerup', handler, true);
       el.removeEventListener('touchend', handler, true);
     };
@@ -2174,12 +2184,14 @@ export const ChapterReader = () => {
                                 style={{ width: '100%', marginTop: '10px', maxHeight: '420px', objectFit: 'contain', background: 'var(--panel)', borderRadius: '10px' }}
                                 loading="lazy"
                                 onClick={(e) => {
+                                  e.preventDefault();
                                   e.stopPropagation();
-                                  openLightbox(imgSrc, `Section visual ${slotIdx + 1}`);
+                                  setTimeout(() => openLightbox(imgSrc, `Section visual ${slotIdx + 1}`), 0);
                                 }}
                                 onPointerUp={(e) => {
+                                  e.preventDefault();
                                   e.stopPropagation();
-                                  openLightbox(imgSrc, `Section visual ${slotIdx + 1}`);
+                                  setTimeout(() => openLightbox(imgSrc, `Section visual ${slotIdx + 1}`), 0);
                                 }}
                               />
                             )}
