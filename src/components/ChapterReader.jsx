@@ -63,6 +63,11 @@ export const ChapterReader = () => {
     }
   };
 
+  // Mobile Safari can be finicky with click events on images inside scroll containers.
+  // Pointer/touch events improve reliability.
+  const handleInlineImagePointerUp = (e) => handleInlineImageClick(e);
+
+
   const atlasLines = [
     'If your calculator dies during dosage math, that\'s a character-building event.',
     'Clinicals are like plot twists; the medication pass is where you become the main character.',
@@ -1966,7 +1971,7 @@ export const ChapterReader = () => {
 
         {/* Main Content Panel */}
         <main className="reader-panel reader-main" ref={mainScrollRef}>
-          <div className="reader-main-wrap" onClick={handleInlineImageClick}>
+          <div className="reader-main-wrap" onClick={handleInlineImageClick} onPointerUp={handleInlineImagePointerUp}>
             {selectedSection ? (
               <>
                 {toolView === 'flashcards' && (
@@ -2143,6 +2148,10 @@ export const ChapterReader = () => {
                                 style={{ width: '100%', marginTop: '10px', maxHeight: '420px', objectFit: 'contain', background: 'var(--panel)', borderRadius: '10px' }}
                                 loading="lazy"
                                 onClick={(e) => {
+                                  e.stopPropagation();
+                                  openLightbox(imgSrc, `Section visual ${slotIdx + 1}`);
+                                }}
+                                onPointerUp={(e) => {
                                   e.stopPropagation();
                                   openLightbox(imgSrc, `Section visual ${slotIdx + 1}`);
                                 }}
