@@ -632,8 +632,45 @@ export const ChapterReader = () => {
 
   const getSectionById = (id) => allSections.find((s) => s.id === id);
 
+  const sanitizeReaderText = (value) => {
+    const raw = coerceText(value);
+    if (!raw) return '';
+
+    // Normalize a few markdown-ish artifacts that can leak into the reader.
+    // (We also sanitize the JSON sources, but this keeps the UI resilient.)
+    const lines = raw.split('\n');
+    const cleaned = [];
+
+    const tableSepRe = /^\|?\s*[:\-\s\|]+\|?\s*$/;
+    const hrRe = /^\s*-{3,}\s*$/;
+    const dashSpacedRe = /^\s*(?:-\s*){3,}\s*$/;
+    const longDashRe = /^\s*-{10,}\s*$/;
+
+    for (let line of lines) {
+      let l = String(line ?? '');
+      const trimmed = l.trim();
+      const hasPipe = trimmed.includes('|');
+      const isTableSep = hasPipe && tableSepRe.test(trimmed);
+      const isHr = !hasPipe && (hrRe.test(trimmed) || dashSpacedRe.test(trimmed) || longDashRe.test(trimmed));
+      if (isHr && !isTableSep) continue;
+
+      // Drop headings like "### "
+      l = l.replace(/^\s*#{1,6}\s+/, '');
+
+      // Remove bold markers
+      l = l.replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\*\*/g, '');
+
+      // Remove "(section summary)" labels
+      l = l.replace(/\(\s*section\s+summary\s*\)/gi, '');
+
+      cleaned.push(l.trimEnd());
+    }
+
+    return cleaned.join('\n').replace(/\n{3,}/g, '\n\n').trim();
+  };
+
   const renderTextbookBody = (text = '') => {
-    const raw = String(text || '').trim();
+    const raw = sanitizeReaderText(text);
     if (!raw) return null;
 
     const lines = raw.split('\n').map((l) => l.trim()).filter(Boolean);
