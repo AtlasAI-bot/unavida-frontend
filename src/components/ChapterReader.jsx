@@ -120,6 +120,7 @@ export const ChapterReader = () => {
   const [atlasLine] = useState(() => atlasLines[Math.floor(Math.random() * atlasLines.length)]);
 
   const sectionVideoMap = {
+    // Chapter 1
     sec1_overview_introduction: 'https://unavida-videos.s3.us-east-2.amazonaws.com/Pharmacology_+Chapter+1+Introduction_1080p_caption.mp4',
     sec1_1_definitions_scope: 'https://unavida-videos.s3.us-east-2.amazonaws.com/07_definition_and_scope.mp4',
     sec1_3_drug_classification: 'https://unavida-videos.s3.us-east-2.amazonaws.com/06_drug_classification_systems.mp4',
@@ -128,6 +129,14 @@ export const ChapterReader = () => {
     sec1_7_drug_interactions: 'https://unavida-videos.s3.us-east-2.amazonaws.com/03_drug_interactions_and_safety.mp4',
     sec1_8_dosage_calculations: 'https://unavida-videos.s3.us-east-2.amazonaws.com/04_dosage_calculations.mp4',
     sec1_10_clinical_story_allergy_decision: 'https://unavida-videos.s3.us-east-2.amazonaws.com/05_clinical_story_allergy_decision.mp4',
+
+    // Chapter 2
+    sec2_1_pk_overview: 'https://unavida-videos.s3.us-east-2.amazonaws.com/2.1+Pharmacokinetics+--+The+Body%27s+Interaction+with+Drugs.mp4',
+    sec2_2_absorption: 'https://unavida-videos.s3.us-east-2.amazonaws.com/2.2+ABSORPTION+%E2%80%94+GETTING+THE+DRUG+INTO+THE+BODY.mp4',
+    sec2_3_distribution: 'https://unavida-videos.s3.us-east-2.amazonaws.com/2.3+DISTRIBUTION+%E2%80%94+WHERE+THE+DRUG+GOES+IN+THE+BODY.mp4',
+    sec2_4_metabolism: 'https://unavida-videos.s3.us-east-2.amazonaws.com/2.4+METABOLISM+%E2%80%94+HOW+THE+BODY+BREAKS+DOWN+DRUGS.mp4',
+    sec2_5_excretion: 'https://unavida-videos.s3.us-east-2.amazonaws.com/2.5+EXCRETION+%E2%80%94+HOW+THE+BODY+ELIMINATES+DRUGS.mp4',
+    sec2_6_half_life_clearance: 'https://unavida-videos.s3.us-east-2.amazonaws.com/2.6+HALF-LIFE%2C+CLEARANCE%2C+AND+STEADY+STATE.mp4',
   };
 
   const currentVideoUrl = selectedSection ? sectionVideoMap[selectedSection.id] : null;
