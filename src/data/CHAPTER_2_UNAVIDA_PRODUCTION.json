@@ -310,176 +310,387 @@
         "sectionNumber": 9,
         "id": "sec2_9_key_terms_glossary",
         "title": "Section 2.9: Key Terms Glossary",
-        "duration": 20,
-        "wordCount": 0,
-        "learningObjectives": [],
-        "keyTakeaways": [],
+        "duration": 35,
+        "wordCount": 1544,
+        "learningObjectives": [
+          "Define core pharmacokinetic parameters and explain how they relate to patient response.",
+          "Differentiate peak, trough, half-life, clearance, and volume of distribution.",
+          "Identify common causes of altered drug exposure (interactions, organ impairment, formulation changes)."
+        ],
+        "keyTakeaways": [
+          "Clear definitions reduce medication errors and improve communication.",
+          "PK terms become clinically meaningful when tied to timing, monitoring, and patient context."
+        ],
         "contentBlocks": [
           {
             "blockId": "ch2_glossary",
             "type": "glossary",
-            "title": "Pharmacokinetics Terms A–Z",
+            "title": "Pharmacokinetics Key Terms (Nursing-Focused, A–Z)",
             "terms": [
               {
-                "term": "Pharmacokinetics",
-                "definition": "What the body does to the drug: absorption, distribution, metabolism, and excretion (ADME)."
+                "term": "Accumulation",
+                "definition": "Progressive increase in drug concentration with repeated dosing when dosing interval is too short for the patient’s current clearance; often presents as delayed toxicity."
+              },
+              {
+                "term": "Active metabolite",
+                "definition": "A metabolite that still has clinical effects. Active metabolites can prolong action or increase toxicity, especially when kidney function is reduced."
               },
               {
                 "term": "ADME",
-                "definition": "Absorption, Distribution, Metabolism, Excretion — the four core pharmacokinetic processes."
+                "definition": "Absorption, Distribution, Metabolism, and Excretion—the four processes that determine how much drug is in the body and for how long."
               },
               {
-                "term": "Absorption",
-                "definition": "Movement of a drug from its administration site into the bloodstream."
-              },
-              {
-                "term": "Bioavailability",
-                "definition": "Fraction of an administered dose that reaches systemic circulation in active form."
-              },
-              {
-                "term": "First-pass metabolism",
-                "definition": "Metabolism of an oral drug by the liver before it reaches systemic circulation, reducing bioavailability."
-              },
-              {
-                "term": "Distribution",
-                "definition": "Movement of drug from blood into tissues and body fluids."
-              },
-              {
-                "term": "Plasma protein binding",
-                "definition": "Binding of drug (often to albumin); only free/unbound drug is usually active."
-              },
-              {
-                "term": "Free drug",
-                "definition": "Unbound drug in plasma that can cross membranes and exert pharmacologic effects."
+                "term": "Adsorption (binding in GI tract)",
+                "definition": "Physical binding of a drug to another substance (e.g., antacids, tube feeds, activated charcoal), reducing absorption and effectiveness."
               },
               {
                 "term": "Albumin",
-                "definition": "Major plasma protein; low levels can increase free drug and toxicity risk for highly protein-bound meds."
+                "definition": "A major plasma protein that binds many acidic/neutral drugs. Low albumin increases the free (active) fraction of highly protein‑bound medications."
               },
               {
-                "term": "Volume of distribution (Vd)",
-                "definition": "Apparent volume that relates amount of drug in body to plasma concentration; helps predict distribution."
+                "term": "Alternative route (route reliability)",
+                "definition": "Choosing a different administration route (e.g., IV instead of PO) when the current route is unlikely to deliver the intended dose due to vomiting, poor perfusion, malabsorption, or NPO status."
+              },
+              {
+                "term": "Area under the curve (AUC)",
+                "definition": "Total drug exposure over time. Used to compare bioavailability and to guide dosing for certain drugs (e.g., AUC‑guided vancomycin dosing)."
+              },
+              {
+                "term": "Bioavailability (F)",
+                "definition": "Fraction of the administered dose that reaches systemic circulation in active form. IV is 100%; oral F is reduced by incomplete absorption and first‑pass metabolism."
+              },
+              {
+                "term": "Bioequivalence",
+                "definition": "When two products produce similar exposure (commonly similar AUC and Cmax) at the same dose; supports therapeutic interchange (e.g., some generics)."
+              },
+              {
+                "term": "Biotransformation",
+                "definition": "Another term for metabolism—chemical change to a drug, usually to make it easier to eliminate."
               },
               {
                 "term": "Blood–brain barrier (BBB)",
-                "definition": "Selective barrier limiting many drugs from entering the CNS."
+                "definition": "A selective barrier limiting many drugs from entering the CNS. Lipid solubility and transporters (e.g., P‑gp) affect CNS penetration."
               },
               {
-                "term": "Lipid solubility",
-                "definition": "Fat solubility; lipid-soluble drugs cross membranes more easily and may store in adipose tissue."
+                "term": "Bound drug",
+                "definition": "Drug attached to plasma proteins; generally not able to cross membranes or bind receptors until it becomes unbound."
               },
               {
-                "term": "Metabolism (biotransformation)",
-                "definition": "Chemical alteration of a drug, usually in the liver, often to facilitate elimination."
+                "term": "Clearance (CL)",
+                "definition": "The volume of plasma cleared of drug per unit time. Clearance drives maintenance dosing; when CL decreases, drug levels rise unless dose/interval is adjusted."
+              },
+              {
+                "term": "Cmax",
+                "definition": "Maximum (peak) concentration after a dose."
+              },
+              {
+                "term": "Cmin",
+                "definition": "Minimum concentration, often the trough just before the next dose."
+              },
+              {
+                "term": "Compartment model",
+                "definition": "A simplified way to describe drug distribution (e.g., “central” bloodstream compartment and “peripheral” tissue compartment)."
+              },
+              {
+                "term": "Concentration–time curve",
+                "definition": "Graph showing how drug concentration changes after a dose; used to interpret peak, trough, AUC, and half‑life."
+              },
+              {
+                "term": "Controlled/extended release (ER/CR/XR)",
+                "definition": "Formulation designed to release drug gradually. Do not crush unless specifically approved; altering can cause dose dumping."
+              },
+              {
+                "term": "Creatinine clearance (CrCl)",
+                "definition": "Estimate of kidney filtration used for dosing many renally cleared drugs. More informative than serum creatinine alone in older adults or low muscle mass."
+              },
+              {
+                "term": "CYP inducer",
+                "definition": "Medication/supplement that increases CYP activity over days–weeks, lowering concentrations of CYP substrates and risking therapeutic failure (e.g., rifampin, St. John’s wort)."
+              },
+              {
+                "term": "CYP inhibitor",
+                "definition": "Medication/food that decreases CYP activity (often quickly), raising concentrations of CYP substrates and risking toxicity (e.g., macrolides, azoles, grapefruit juice for some pathways)."
               },
               {
                 "term": "Cytochrome P450 (CYP450)",
-                "definition": "Enzyme system responsible for many Phase I metabolism reactions; common source of interactions."
+                "definition": "Enzyme system (mainly liver and intestinal) responsible for many Phase I metabolic reactions. Common source of drug–drug interactions."
               },
               {
-                "term": "Enzyme inhibitor",
-                "definition": "Drug that decreases enzyme activity, raising levels of substrate drugs (toxicity risk)."
+                "term": "Delayed-release / enteric-coated (DR/EC)",
+                "definition": "Formulation designed to dissolve later in the GI tract (often the intestine). Do not crush; altering changes absorption and adverse effects."
               },
               {
-                "term": "Enzyme inducer",
-                "definition": "Drug that increases enzyme activity, lowering levels of substrate drugs (treatment failure risk)."
+                "term": "Depot effect",
+                "definition": "Slow release of medication from an injection or implant site, prolonging action (e.g., long‑acting IM antipsychotics)."
               },
               {
-                "term": "Prodrug",
-                "definition": "Inactive compound that must be metabolized to become active."
+                "term": "Distribution",
+                "definition": "Movement of drug from blood into tissues/body fluids. Influenced by blood flow, protein binding, body water/fat, and barriers (BBB, placenta)."
+              },
+              {
+                "term": "Dose dumping",
+                "definition": "Rapid release of a large amount of drug when ER/DR products are crushed, chewed, or otherwise altered—can cause overdose."
+              },
+              {
+                "term": "Dose interval (τ)",
+                "definition": "Time between doses. When clearance decreases, extending the interval is often safer than increasing the dose."
+              },
+              {
+                "term": "Drug transporter",
+                "definition": "Protein that moves drugs across membranes (e.g., P‑glycoprotein, OAT/OCT). Transporters affect absorption, CNS entry, and elimination."
+              },
+              {
+                "term": "Enterohepatic recirculation",
+                "definition": "Drug excreted in bile is reabsorbed from the intestine back into circulation, prolonging effect; can be interrupted by some antibiotics or bile‑acid binders."
               },
               {
                 "term": "Excretion",
-                "definition": "Removal of drug/metabolites from the body (kidneys most common)."
+                "definition": "Removal of drug/metabolites from the body (kidney, bile/feces, lungs, sweat)."
               },
               {
-                "term": "Renal clearance",
-                "definition": "Ability of kidneys to remove drug from plasma; reduced clearance increases accumulation risk."
+                "term": "Extraction ratio (hepatic)",
+                "definition": "How efficiently the liver removes drug during one pass. High‑extraction drugs are more sensitive to changes in liver blood flow."
+              },
+              {
+                "term": "First-order kinetics",
+                "definition": "A constant percentage of drug is eliminated per unit time; most drugs follow this at therapeutic doses."
+              },
+              {
+                "term": "First-pass metabolism",
+                "definition": "Metabolism of an oral drug in the gut wall and liver before reaching systemic circulation; lowers bioavailability."
+              },
+              {
+                "term": "Free (unbound) drug",
+                "definition": "Drug not bound to proteins; typically the portion that crosses membranes and produces clinical effect/toxicity."
+              },
+              {
+                "term": "Glomerular filtration",
+                "definition": "Kidney process that filters small molecules from blood into urine. Reduced GFR can markedly increase levels of renally cleared drugs."
               },
               {
                 "term": "Half-life (t½)",
-                "definition": "Time for plasma drug concentration to decrease by ~50%."
+                "definition": "Time for plasma concentration to fall by ~50%. Rough guide: steady state is reached in ~4–5 half‑lives."
               },
               {
-                "term": "Clearance",
-                "definition": "Volume of plasma cleared of drug per unit time; determines maintenance dosing needs."
+                "term": "Hepatic impairment",
+                "definition": "Reduced liver function that can decrease metabolism and/or bile excretion, increasing drug exposure for hepatically cleared drugs."
               },
               {
-                "term": "Steady state",
-                "definition": "Stable average drug concentration when rate in equals rate out; typically ~4–5 half-lives."
+                "term": "High-alert medication (PK perspective)",
+                "definition": "Medication where small dosing/timing errors can cause harm because of narrow therapeutic range, rapid onset, or accumulation risk."
+              },
+              {
+                "term": "Hydrophilic",
+                "definition": "Water‑soluble; tends to stay in bloodstream/extracellular fluid and may have limited tissue/BBB penetration."
+              },
+              {
+                "term": "Induction (enzyme)",
+                "definition": "Increase in enzyme expression/activity leading to lower levels of substrate drugs; typically develops over days to weeks and can persist after stopping the inducer."
+              },
+              {
+                "term": "Infusion rate",
+                "definition": "Speed of IV administration. Too rapid an infusion can cause adverse effects even when the total dose is correct."
+              },
+              {
+                "term": "Inhibition (enzyme)",
+                "definition": "Decrease in enzyme activity leading to higher levels of substrate drugs; may happen quickly after starting an inhibitor."
+              },
+              {
+                "term": "Ion trapping",
+                "definition": "Process where drugs become “trapped” in compartments with different pH (e.g., fetal circulation, breast milk), affecting distribution and safety."
+              },
+              {
+                "term": "Lipophilic",
+                "definition": "Fat‑soluble; crosses membranes easily, may distribute into adipose tissue, and may have prolonged effects."
               },
               {
                 "term": "Loading dose",
-                "definition": "Initial larger dose used to reach target concentration quickly (often when half-life is long)."
+                "definition": "A higher initial dose used to reach a target concentration quickly, especially for long half‑life drugs."
               },
               {
                 "term": "Maintenance dose",
-                "definition": "Ongoing dosing to maintain therapeutic concentration once achieved."
+                "definition": "Dose regimen designed to keep drug levels in the therapeutic range once the target concentration is achieved; depends largely on clearance."
+              },
+              {
+                "term": "Metabolism (Phase I)",
+                "definition": "Chemical modification (often oxidation/reduction/hydrolysis) frequently via CYP enzymes; may create active or toxic metabolites."
+              },
+              {
+                "term": "Metabolism (Phase II / conjugation)",
+                "definition": "Conjugation (e.g., glucuronidation) that usually makes drugs more water‑soluble for elimination."
+              },
+              {
+                "term": "Michaelis–Menten / capacity-limited kinetics",
+                "definition": "Nonlinear PK where metabolism/transport becomes saturated, so small dose increases can cause disproportionate concentration increases (toxicity risk)."
+              },
+              {
+                "term": "Monitoring window",
+                "definition": "The best time to assess effect or draw a level based on absorption and distribution (e.g., correct trough timing)."
+              },
+              {
+                "term": "Narrow therapeutic index (NTI)",
+                "definition": "Small margin between effective and toxic concentrations (e.g., warfarin, digoxin, lithium). Requires careful monitoring and dose adjustment."
+              },
+              {
+                "term": "Onset",
+                "definition": "Time until clinical effect begins; often depends on absorption rate and route."
+              },
+              {
+                "term": "P-glycoprotein (P‑gp)",
+                "definition": "Efflux transporter that pumps drugs out of cells (intestine, BBB, kidney). Inhibitors/inducers can change absorption and CNS entry."
+              },
+              {
+                "term": "Peak level",
+                "definition": "Highest concentration after a dose. Peak timing depends on route/formulation; incorrect timing makes interpretation unsafe."
+              },
+              {
+                "term": "Pharmacodynamics (PD)",
+                "definition": "What the drug does to the body: receptor interactions and physiologic effect. PD + PK together determine response."
+              },
+              {
+                "term": "Pharmacogenomics",
+                "definition": "How genetic variation affects drug response, often through metabolism enzymes (e.g., CYP2D6) or transporters."
+              },
+              {
+                "term": "Pharmacokinetics (PK)",
+                "definition": "What the body does to the drug: absorption, distribution, metabolism, and excretion."
+              },
+              {
+                "term": "Plasma protein binding",
+                "definition": "Reversible binding of drugs to proteins (albumin, alpha‑1 acid glycoprotein). Changes can alter free fraction and toxicity risk."
+              },
+              {
+                "term": "Prodrug",
+                "definition": "Inactive (or less active) drug that must be metabolized into its active form (e.g., codeine → morphine)."
+              },
+              {
+                "term": "Reabsorption",
+                "definition": "Movement of drug from renal tubules back to blood. Urine pH and drug ionization influence reabsorption."
+              },
+              {
+                "term": "Renal impairment",
+                "definition": "Reduced kidney function decreasing filtration/secretion and increasing half‑life of renally cleared drugs—risk of delayed toxicity."
+              },
+              {
+                "term": "Renal tubular secretion",
+                "definition": "Active transport of drugs from blood into the renal tubule. Competition (e.g., for OAT) can change clearance."
+              },
+              {
+                "term": "Saturation",
+                "definition": "When an enzyme/transporter is at capacity; additional drug cannot be handled proportionally, promoting nonlinear increases."
+              },
+              {
+                "term": "Steady state",
+                "definition": "Average concentration becomes stable because drug input equals elimination. Usually achieved after ~4–5 half‑lives with consistent dosing."
+              },
+              {
+                "term": "Substrate (enzyme substrate)",
+                "definition": "A drug metabolized by a specific enzyme (e.g., CYP3A4 substrate). Substrates are affected by inhibitors and inducers."
+              },
+              {
+                "term": "Therapeutic drug monitoring (TDM)",
+                "definition": "Measuring drug concentrations (or AUC estimates) and adjusting dose/interval, especially for NTI drugs or variable clearance."
+              },
+              {
+                "term": "Therapeutic window",
+                "definition": "Concentration range where drug is effective without unacceptable toxicity."
+              },
+              {
+                "term": "Time to peak (Tmax)",
+                "definition": "Time after a dose when Cmax occurs; influenced by absorption rate and formulation."
+              },
+              {
+                "term": "Tolerance (PK vs PD distinction)",
+                "definition": "Decreased effect over time. Tolerance is often PD (receptor adaptation) but can also be PK (induction increasing metabolism)."
+              },
+              {
+                "term": "Trough level",
+                "definition": "Lowest concentration just before the next dose; often used to assess accumulation and guide dosing."
+              },
+              {
+                "term": "Volume of distribution (Vd)",
+                "definition": "Apparent volume relating amount of drug in the body to plasma concentration. Large Vd suggests extensive tissue distribution; dialysis removes large‑Vd drugs poorly."
+              },
+              {
+                "term": "Washout",
+                "definition": "Time needed for a drug to clear after stopping; typically several half‑lives. Important for switching therapies and avoiding interactions."
+              },
+              {
+                "term": "Zero-order kinetics",
+                "definition": "A constant amount (not percentage) is eliminated per unit time, often when pathways are saturated (classic example: ethanol)."
               }
             ]
           }
         ],
         "flashcardLinks": [],
         "interactiveElements": [],
-        "content": "Key Terms and Glossary"
+        "content": "# Key Terms Glossary (PK-focused)\n\nUse these definitions to connect **timing**, **patient factors**, and **monitoring** to safer medication administration and escalation."
       },
       {
         "sectionNumber": 10,
         "id": "sec2_10_review_questions",
         "title": "Section 2.10: Review Questions & Assessment",
-        "duration": 25,
-        "wordCount": 0,
-        "learningObjectives": [],
-        "keyTakeaways": [],
+        "duration": 45,
+        "wordCount": 2695,
+        "learningObjectives": [
+          "Apply ADME concepts to common bedside medication-safety scenarios.",
+          "Interpret delayed toxicity as possible accumulation related to clearance.",
+          "Recognize common interaction patterns involving CYP inhibition and induction.",
+          "Demonstrate safe nursing responses to special-population PK risk."
+        ],
+        "keyTakeaways": [
+          "The safest answers connect patient context to ADME and identify what to verify next.",
+          "Clear timing, trend data, and communication prevent PK-related harm."
+        ],
         "contentBlocks": [
           {
             "blockId": "ch2_assessment_2_10",
             "type": "assessment_section",
-            "title": "Chapter 2 Assessment (25 Questions)",
+            "title": "Chapter 2 Assessment (36 Questions)",
             "questions": [
               {
                 "questionNumber": 1,
                 "type": "multiple_choice",
-                "question": "A patient receives morphine IV for severe pain. Which pharmacokinetic principle best explains why the onset is rapid and predictable?",
+                "question": "A patient receives morphine IV for severe pain. Which pharmacokinetic concept best explains the rapid and predictable onset?",
                 "options": {
-                  "A": "IV administration bypasses absorption barriers, giving 100% bioavailability",
-                  "B": "IV drugs undergo first-pass metabolism in the liver before reaching circulation",
-                  "C": "IV drugs have a higher volume of distribution than oral drugs by default",
-                  "D": "IV drugs are always metabolized faster than oral drugs"
+                  "A": "IV administration bypasses absorption barriers, providing immediate systemic availability",
+                  "B": "IV drugs undergo first-pass hepatic metabolism before reaching systemic circulation",
+                  "C": "IV drugs always have a larger volume of distribution than oral drugs",
+                  "D": "IV drugs are eliminated faster than oral drugs by default"
                 },
                 "correctAnswer": "A",
-                "rationale": "IV administration delivers drug directly into systemic circulation (no absorption step), so bioavailability is effectively 100% and onset is immediate compared with oral routes."
+                "rationale": "IV administration delivers medication directly into systemic circulation. There is no absorption step to slow or vary delivery, so bioavailability is effectively 100% and onset is rapid. First-pass metabolism applies to some oral drugs, not IV administration. Volume of distribution and elimination depend on drug properties and patient physiology, not the route alone.\n\nTest-taking note: When the response is unexpected, use ADME to decide what changed (absorption, distribution/free fraction, metabolism/interactions, or excretion/clearance). Anchor your answer in timing and trend data whenever possible."
               },
               {
                 "questionNumber": 2,
                 "type": "multiple_choice",
-                "question": "A nurse is teaching a patient prescribed sublingual nitroglycerin for angina. Why is the sublingual route preferred over swallowing the tablet?",
+                "question": "An older adult with low muscle mass has serum creatinine 1.0 mg/dL. The patient becomes progressively more sedated after repeated doses of a renally cleared medication. What is the best interpretation?",
                 "options": {
-                  "A": "It increases renal excretion to prevent toxicity",
-                  "B": "It bypasses first-pass metabolism, increasing bioavailability and speed of onset",
-                  "C": "It forces the drug to cross the blood–brain barrier",
-                  "D": "It prevents protein binding in the bloodstream"
+                  "A": "The serum creatinine proves renal function is normal; sedation is unrelated to PK",
+                  "B": "Renal clearance may be reduced despite a “normal” creatinine, leading to drug accumulation",
+                  "C": "The drug’s half-life cannot change with age",
+                  "D": "The patient is experiencing placebo effect"
                 },
                 "correctAnswer": "B",
-                "rationale": "Sublingual absorption enters systemic circulation before the liver, bypassing first-pass metabolism. Nitroglycerin is extensively metabolized if swallowed, reducing effectiveness."
+                "rationale": "In frail older adults, serum creatinine can appear normal because creatinine production is lower. Clearance (CrCl/eGFR) may still be reduced, which increases half-life and promotes accumulation—often seen as delayed, progressive adverse effects after multiple doses. The appropriate response is to verify renal function trends, assess for additive sedatives, and communicate with the provider/pharmacy team.\n\nTest-taking note: When the response is unexpected, use ADME to decide what changed (absorption, distribution/free fraction, metabolism/interactions, or excretion/clearance). Anchor your answer in timing and trend data whenever possible."
               },
               {
                 "questionNumber": 3,
                 "type": "multiple_choice",
-                "question": "Which statement best describes bioavailability?",
+                "question": "Which definition best describes bioavailability (F)?",
                 "options": {
-                  "A": "The time it takes for a drug to reach steady state",
+                  "A": "The time required for drug concentration to decrease by 50%",
                   "B": "The fraction of an administered dose that reaches systemic circulation in active form",
                   "C": "The amount of drug bound to plasma proteins",
                   "D": "The rate at which the kidneys filter drug from plasma"
                 },
                 "correctAnswer": "B",
-                "rationale": "Bioavailability (F) is the portion of the dose that reaches systemic circulation unchanged. IV is 100%; oral varies due to absorption and first-pass metabolism."
+                "rationale": "Bioavailability is the proportion of the administered dose that reaches systemic circulation unchanged and active. IV administration is 100% by definition; oral bioavailability varies due to incomplete absorption and first-pass metabolism. Half-life and clearance describe elimination, and protein binding describes distribution characteristics.\n\nTest-taking note: When the response is unexpected, use ADME to decide what changed (absorption, distribution/free fraction, metabolism/interactions, or excretion/clearance). Anchor your answer in timing and trend data whenever possible."
               },
               {
                 "questionNumber": 4,
                 "type": "multiple_choice",
-                "question": "A patient with liver cirrhosis has low albumin. For a highly protein-bound medication, which change is most likely?",
+                "question": "A patient with cirrhosis has low albumin. For a highly protein-bound medication, which change is most likely?",
                 "options": {
                   "A": "Lower free drug level and decreased effect",
                   "B": "Higher free drug level and increased toxicity risk",
@@ -487,38 +698,25 @@
                   "D": "Reduced volume of distribution for lipophilic drugs"
                 },
                 "correctAnswer": "B",
-                "rationale": "When albumin is low, fewer binding sites are available. For highly protein-bound drugs, the free (active) fraction can increase, raising risk for adverse effects/toxicity even at the same dose."
+                "rationale": "When albumin is low, fewer binding sites are available. Highly protein-bound drugs will have a higher free (unbound) fraction, which is typically the pharmacologically active fraction. This can increase effect and toxicity even if the total drug level appears unchanged. Bile elimination and lipophilicity are separate issues.\n\nTest-taking note: When the response is unexpected, use ADME to decide what changed (absorption, distribution/free fraction, metabolism/interactions, or excretion/clearance). Anchor your answer in timing and trend data whenever possible."
               },
               {
                 "questionNumber": 5,
-                "type": "multiple_choice",
-                "question": "Which patient is at greatest risk for accumulation and toxicity from a renally cleared drug given at a standard adult dose?",
-                "options": {
-                  "A": "22-year-old athlete with creatinine 0.9 mg/dL",
-                  "B": "35-year-old postpartum patient with increased GFR",
-                  "C": "78-year-old with low muscle mass and creatinine 1.0 mg/dL",
-                  "D": "45-year-old with mild seasonal allergies"
-                },
-                "correctAnswer": "C",
-                "rationale": "Older adults may have reduced renal clearance despite “normal” serum creatinine due to low muscle mass. Renally cleared drugs can accumulate unless dosing is adjusted using CrCl/eGFR trends."
-              },
-              {
-                "questionNumber": 6,
                 "type": "multiple_choice",
                 "question": "A provider orders an extended-release (ER) tablet to be crushed for a patient with dysphagia. What is the best nursing response?",
                 "options": {
                   "A": "Crush the tablet and administer with applesauce",
                   "B": "Dissolve the tablet in hot water to preserve release properties",
-                  "C": "Clarify the order; crushing ER formulations can cause dose dumping",
+                  "C": "Clarify the order; crushing ER formulations can cause dose dumping and toxicity",
                   "D": "Administer the tablet rectally instead"
                 },
                 "correctAnswer": "C",
-                "rationale": "Crushing ER/DR tablets can release the full dose at once (“dose dumping”), increasing toxicity risk. The nurse should clarify and request an appropriate formulation/route."
+                "rationale": "ER/DR/EC formulations are designed to release drug slowly or in a specific location. Crushing can release the full dose at once (dose dumping), causing overdose or severe adverse effects. The nurse should clarify and request an appropriate formulation or route. Dissolving does not preserve extended-release properties, and rectal administration is not an automatic substitute.\n\nTest-taking note: When the response is unexpected, use ADME to decide what changed (absorption, distribution/free fraction, metabolism/interactions, or excretion/clearance). Anchor your answer in timing and trend data whenever possible."
               },
               {
-                "questionNumber": 7,
+                "questionNumber": 6,
                 "type": "multiple_choice",
-                "question": "A patient begins rifampin therapy. Two weeks later, warfarin INR decreases below goal. Which mechanism best explains this?",
+                "question": "A patient begins rifampin therapy. Two weeks later, the patient’s warfarin INR decreases below goal. Which mechanism best explains this?",
                 "options": {
                   "A": "Rifampin inhibits CYP450 enzymes, increasing warfarin levels",
                   "B": "Rifampin induces CYP450 enzymes, increasing warfarin metabolism",
@@ -526,38 +724,25 @@
                   "D": "Rifampin increases protein binding of warfarin, eliminating free drug"
                 },
                 "correctAnswer": "B",
-                "rationale": "Rifampin is a potent CYP inducer. Induction increases enzyme expression over days–weeks, speeding warfarin metabolism and lowering warfarin levels, decreasing INR."
+                "rationale": "Rifampin is a potent CYP inducer. Induction increases enzyme expression over days to weeks, accelerating warfarin metabolism and reducing warfarin exposure—lowering INR and increasing clot risk. Inhibition would increase INR, and renal filtration is not the primary clearance pathway for warfarin.\n\nTest-taking note: When the response is unexpected, use ADME to decide what changed (absorption, distribution/free fraction, metabolism/interactions, or excretion/clearance). Anchor your answer in timing and trend data whenever possible."
               },
               {
-                "questionNumber": 8,
+                "questionNumber": 7,
                 "type": "multiple_choice",
                 "question": "A patient taking simvastatin develops muscle pain after starting clarithromycin. Which interaction is most likely?",
                 "options": {
-                  "A": "CYP450 inhibition increases simvastatin levels, raising myopathy risk",
-                  "B": "CYP450 induction decreases simvastatin levels, causing withdrawal",
+                  "A": "CYP inhibition increases simvastatin levels, raising myopathy risk",
+                  "B": "CYP induction decreases simvastatin levels, causing withdrawal",
                   "C": "Increased renal secretion of simvastatin causes dehydration",
                   "D": "Reduced absorption from food causes statin failure"
                 },
                 "correctAnswer": "A",
-                "rationale": "Clarithromycin is a CYP3A4 inhibitor. Simvastatin is metabolized by CYP3A4; inhibition raises statin concentrations and increases risk of myopathy/rhabdomyolysis."
+                "rationale": "Clarithromycin inhibits CYP3A4. Simvastatin is metabolized via CYP3A4; inhibition increases simvastatin concentrations and raises risk of myopathy/rhabdomyolysis. The pattern (new symptoms after adding an inhibitor) is a classic PK safety signal.\n\nTest-taking note: When the response is unexpected, use ADME to decide what changed (absorption, distribution/free fraction, metabolism/interactions, or excretion/clearance). Anchor your answer in timing and trend data whenever possible."
               },
               {
-                "questionNumber": 9,
+                "questionNumber": 8,
                 "type": "multiple_choice",
-                "question": "Which statement about half-life is correct?",
-                "options": {
-                  "A": "Half-life is the time for drug concentration to decrease by 100%",
-                  "B": "Half-life is the time for drug concentration to decrease by about 50%",
-                  "C": "Half-life is the time required to reach peak concentration after a single dose",
-                  "D": "Half-life is independent of renal or hepatic function"
-                },
-                "correctAnswer": "B",
-                "rationale": "Half-life (t½) is the time required for plasma drug concentration to drop by ~50%. It is affected by clearance (kidney/liver function) and distribution."
-              },
-              {
-                "questionNumber": 10,
-                "type": "multiple_choice",
-                "question": "A patient starts a medication with a half-life of 12 hours. Approximately when will the patient approach steady state with consistent dosing?",
+                "question": "A patient starts a drug with a half-life of 12 hours. Approximately when will the patient approach steady state with consistent dosing?",
                 "options": {
                   "A": "12 hours",
                   "B": "24 hours",
@@ -565,10 +750,10 @@
                   "D": "2–3 weeks"
                 },
                 "correctAnswer": "C",
-                "rationale": "Steady state is reached after ~4–5 half-lives. With a 12-hour half-life, that’s ~48–60 hours (about 2–3 days)."
+                "rationale": "Steady state is reached after approximately 4–5 half-lives. With a 12-hour half-life, 4–5 half-lives is 48–60 hours (about 2–3 days). This timing helps nurses set expectations for onset of full effect and interpret early response.\n\nTest-taking note: When the response is unexpected, use ADME to decide what changed (absorption, distribution/free fraction, metabolism/interactions, or excretion/clearance). Anchor your answer in timing and trend data whenever possible."
               },
               {
-                "questionNumber": 11,
+                "questionNumber": 9,
                 "type": "multiple_choice",
                 "question": "Which scenario best supports giving a loading dose?",
                 "options": {
@@ -578,10 +763,10 @@
                   "D": "A drug that is 100% protein-bound"
                 },
                 "correctAnswer": "B",
-                "rationale": "Loading doses are used to rapidly achieve therapeutic concentrations when a drug has a long half-life and would otherwise take days to reach steady state."
+                "rationale": "Loading doses rapidly achieve target concentrations when a medication has a long half-life and would otherwise take days to reach steady state. The indication is urgency + long half-life. Oral absorption problems may require route change, and protein binding alone does not define the need for a loading dose.\n\nTest-taking note: When the response is unexpected, use ADME to decide what changed (absorption, distribution/free fraction, metabolism/interactions, or excretion/clearance). Anchor your answer in timing and trend data whenever possible."
               },
               {
-                "questionNumber": 12,
+                "questionNumber": 10,
                 "type": "multiple_choice",
                 "question": "A nurse notices a patient has no pain relief after codeine. Genetic testing reveals CYP2D6 poor metabolizer status. What is the best explanation?",
                 "options": {
@@ -591,23 +776,23 @@
                   "D": "Codeine cannot cross the blood–brain barrier"
                 },
                 "correctAnswer": "B",
-                "rationale": "Codeine is a prodrug activated by CYP2D6 to morphine. Poor metabolizers have reduced conversion, resulting in reduced analgesic effect."
+                "rationale": "Codeine is a prodrug that requires CYP2D6 activation to morphine. Poor metabolizers convert less codeine to active drug, resulting in reduced analgesia. This is a clinically important example of pharmacogenomics influencing metabolism and therapeutic response.\n\nTest-taking note: When the response is unexpected, use ADME to decide what changed (absorption, distribution/free fraction, metabolism/interactions, or excretion/clearance). Anchor your answer in timing and trend data whenever possible."
               },
               {
-                "questionNumber": 13,
+                "questionNumber": 11,
                 "type": "multiple_choice",
                 "question": "Which factor most directly affects distribution of a drug into the CNS?",
                 "options": {
-                  "A": "Blood–brain barrier permeability and drug lipophilicity",
+                  "A": "Blood–brain barrier permeability, lipophilicity, and transporter activity",
                   "B": "First-pass metabolism in the liver",
                   "C": "Renal tubular secretion",
                   "D": "Tablet formulation (ER vs IR)"
                 },
                 "correctAnswer": "A",
-                "rationale": "CNS penetration depends on BBB characteristics and whether the drug is lipophilic/hydrophilic, plus transporter activity (e.g., P-glycoprotein)."
+                "rationale": "CNS distribution depends primarily on the BBB, drug lipid solubility, and transporters such as P-glycoprotein. First-pass metabolism affects systemic availability after oral dosing, renal secretion affects excretion, and formulation affects absorption rate—not BBB penetration.\n\nTest-taking note: When the response is unexpected, use ADME to decide what changed (absorption, distribution/free fraction, metabolism/interactions, or excretion/clearance). Anchor your answer in timing and trend data whenever possible."
               },
               {
-                "questionNumber": 14,
+                "questionNumber": 12,
                 "type": "multiple_choice",
                 "question": "A patient is dehydrated with declining urine output. Which pharmacokinetic step is most immediately affected for renally cleared drugs?",
                 "options": {
@@ -617,142 +802,77 @@
                   "D": "First-pass metabolism"
                 },
                 "correctAnswer": "C",
-                "rationale": "Dehydration and reduced urine output can reduce renal clearance, increasing drug accumulation risk. This primarily affects excretion."
+                "rationale": "Dehydration and reduced urine output can reduce renal perfusion and filtration, lowering renal clearance. This primarily affects excretion, increasing the risk of accumulation and toxicity for renally cleared medications.\n\nTest-taking note: When the response is unexpected, use ADME to decide what changed (absorption, distribution/free fraction, metabolism/interactions, or excretion/clearance). Anchor your answer in timing and trend data whenever possible."
               },
               {
-                "questionNumber": 15,
+                "questionNumber": 13,
                 "type": "multiple_choice",
-                "question": "Which nursing action best prevents a clinically significant CYP interaction?",
+                "question": "Which statement best contrasts CYP inhibition with CYP induction?",
                 "options": {
-                  "A": "Assume OTC products are safe and don’t need review",
-                  "B": "Encourage grapefruit juice for patients on statins",
-                  "C": "Reassess interactions when a medication is started, stopped, or dose-changed",
-                  "D": "Use serum creatinine alone to judge hepatic metabolism"
-                },
-                "correctAnswer": "C",
-                "rationale": "CYP interactions commonly occur with medication changes. Nurses should review new-start/stop meds, supplements, and foods that affect metabolism and monitor for changes in effect/toxicity."
-              },
-              {
-                "questionNumber": 16,
-                "type": "multiple_choice",
-                "question": "Which statement is true regarding CYP inhibition vs induction?",
-                "options": {
-                  "A": "Inhibition typically takes 1–2 weeks to develop; induction is immediate",
-                  "B": "Induction increases enzyme activity and may cause therapeutic failure",
+                  "A": "Inhibition is usually delayed; induction is immediate",
+                  "B": "Induction increases enzyme activity and can cause therapeutic failure",
                   "C": "Inhibition lowers drug levels and reduces toxicity risk",
                   "D": "Induction affects only one CYP enzyme at a time"
                 },
                 "correctAnswer": "B",
-                "rationale": "Induction increases enzyme expression over days–weeks and can lower substrate drug levels (treatment failure). Inhibition is often rapid and can increase substrate levels (toxicity)."
+                "rationale": "Induction increases enzyme expression over days to weeks, lowering levels of substrate drugs and potentially causing therapeutic failure. Inhibition is often rapid and increases substrate drug levels (toxicity risk). Both inhibition and induction can affect multiple enzymes depending on the agent.\n\nTest-taking note: When the response is unexpected, use ADME to decide what changed (absorption, distribution/free fraction, metabolism/interactions, or excretion/clearance). Anchor your answer in timing and trend data whenever possible."
+              },
+              {
+                "questionNumber": 14,
+                "type": "multiple_choice",
+                "question": "A patient begins taking St. John’s Wort while on oral contraceptives. Why is this concerning?",
+                "options": {
+                  "A": "It is a CYP inducer that can reduce contraceptive levels and increase pregnancy risk",
+                  "B": "It is a CYP inhibitor that causes contraceptive overdose",
+                  "C": "It binds contraceptives in the stomach and causes vomiting",
+                  "D": "It increases protein binding and eliminates free drug"
+                },
+                "correctAnswer": "A",
+                "rationale": "St. John’s Wort can induce CYP enzymes and drug transporters, lowering concentrations of certain medications—including oral contraceptives—leading to reduced effectiveness. This is a classic example of an OTC/supplement causing a clinically meaningful PK interaction.\n\nTest-taking note: When the response is unexpected, use ADME to decide what changed (absorption, distribution/free fraction, metabolism/interactions, or excretion/clearance). Anchor your answer in timing and trend data whenever possible."
+              },
+              {
+                "questionNumber": 15,
+                "type": "multiple_choice",
+                "question": "Which patient is at greatest risk for toxicity from a standard adult dose of a renally cleared medication?",
+                "options": {
+                  "A": "22-year-old athlete with stable creatinine and normal urine output",
+                  "B": "35-year-old postpartum patient with increased GFR",
+                  "C": "78-year-old with low muscle mass and creatinine 1.0 mg/dL",
+                  "D": "45-year-old with mild seasonal allergies"
+                },
+                "correctAnswer": "C",
+                "rationale": "Older adults may have reduced renal clearance despite normal serum creatinine due to decreased muscle mass. Renally cleared drugs can accumulate unless dosing is guided by CrCl/eGFR and clinical trends.\n\nTest-taking note: When the response is unexpected, use ADME to decide what changed (absorption, distribution/free fraction, metabolism/interactions, or excretion/clearance). Anchor your answer in timing and trend data whenever possible."
+              },
+              {
+                "questionNumber": 16,
+                "type": "multiple_choice",
+                "question": "A patient is vomiting shortly after taking an oral medication. Which nursing question best targets the PK problem?",
+                "options": {
+                  "A": "“Do you believe the medication will work?”",
+                  "B": "“How many tablets were in the bottle?”",
+                  "C": "“How long after taking the dose do you vomit?”",
+                  "D": "“Do you prefer a different color pill?”"
+                },
+                "correctAnswer": "C",
+                "rationale": "Timing matters. If vomiting occurs soon after swallowing, absorption may be incomplete and the patient may not be receiving an effective dose. Asking when vomiting occurs helps the team decide whether to treat nausea, change the route, or adjust the plan.\n\nTest-taking note: When the response is unexpected, use ADME to decide what changed (absorption, distribution/free fraction, metabolism/interactions, or excretion/clearance). Anchor your answer in timing and trend data whenever possible."
               },
               {
                 "questionNumber": 17,
                 "type": "multiple_choice",
-                "question": "A patient on multiple meds begins taking St. John’s Wort. Why is this concerning?",
+                "question": "A nurse draws a trough level after the medication dose was already administered. What is the most accurate interpretation?",
                 "options": {
-                  "A": "It is a potent CYP inducer and may lower levels of many drugs",
-                  "B": "It irreversibly inhibits renal filtration",
-                  "C": "It increases albumin, decreasing toxicity risk",
-                  "D": "It guarantees higher bioavailability of oral medications"
+                  "A": "The level is still a trough because the sample was labeled “trough”",
+                  "B": "The level will likely be falsely elevated and may lead to unsafe dose reduction",
+                  "C": "The level will be falsely low and may lead to overdose",
+                  "D": "Timing never affects drug levels"
                 },
-                "correctAnswer": "A",
-                "rationale": "St. John’s Wort can induce CYP3A4 and other enzymes, reducing effectiveness of oral contraceptives, warfarin, antiretrovirals, etc."
+                "correctAnswer": "B",
+                "rationale": "A trough is the lowest concentration immediately before the next dose. If the sample is drawn after dosing, the concentration will rise and the result may be falsely high. Mis-timed levels can lead to inappropriate dose changes; accurate documentation of administration and draw time is essential.\n\nTest-taking note: When the response is unexpected, use ADME to decide what changed (absorption, distribution/free fraction, metabolism/interactions, or excretion/clearance). Anchor your answer in timing and trend data whenever possible."
               },
               {
                 "questionNumber": 18,
                 "type": "multiple_choice",
-                "question": "Which change would most likely increase free drug concentration without changing the dose?",
-                "options": {
-                  "A": "Increased albumin level",
-                  "B": "Decreased protein binding due to low albumin",
-                  "C": "Increased first-pass metabolism",
-                  "D": "Increased renal clearance"
-                },
-                "correctAnswer": "B",
-                "rationale": "Low albumin reduces binding, increasing the free (active) fraction of a protein-bound drug, potentially increasing effect/toxicity."
-              },
-              {
-                "questionNumber": 19,
-                "type": "multiple_choice",
-                "question": "A nurse evaluates a patient’s drug response and suspects “too much drug” despite the correct dose. Which ADME question is most appropriate first?",
-                "options": {
-                  "A": "Has the patient’s renal or hepatic clearance decreased?",
-                  "B": "Is the drug stored in the gallbladder?",
-                  "C": "Did the patient take the medication with grapefruit because it tastes good?",
-                  "D": "Is the patient’s blood type compatible with the drug?"
-                },
-                "correctAnswer": "A",
-                "rationale": "Clearance changes (renal/hepatic) are common causes of rising drug levels and toxicity. ADME thinking starts with checking absorption/route, distribution factors, metabolism interactions, and excretion function."
-              },
-              {
-                "questionNumber": 20,
-                "type": "multiple_choice",
-                "question": "Which statement best describes steady state?",
-                "options": {
-                  "A": "The point when half the dose has been excreted",
-                  "B": "The point when drug input equals drug output and average levels stabilize",
-                  "C": "The moment a drug first enters the bloodstream",
-                  "D": "The time it takes for a drug to become protein-bound"
-                },
-                "correctAnswer": "B",
-                "rationale": "At steady state, the rate of drug administration equals the rate of elimination, producing a stable average concentration with repeated dosing."
-              },
-              {
-                "questionNumber": 21,
-                "type": "multiple_choice",
-                "question": "A patient on warfarin starts fluconazole. What is the most likely outcome if no dose adjustment/monitoring occurs?",
-                "options": {
-                  "A": "INR decreases due to CYP induction",
-                  "B": "INR increases due to CYP inhibition and bleeding risk rises",
-                  "C": "Warfarin becomes inactive due to first-pass metabolism",
-                  "D": "Warfarin is excreted unchanged and no effect occurs"
-                },
-                "correctAnswer": "B",
-                "rationale": "Fluconazole inhibits CYP2C9 (and others), slowing warfarin metabolism. Warfarin levels can rise, increasing INR and bleeding risk without monitoring/dose adjustment."
-              },
-              {
-                "questionNumber": 22,
-                "type": "multiple_choice",
-                "question": "Which route generally has the most variable absorption and onset?",
-                "options": {
-                  "A": "IV",
-                  "B": "Oral",
-                  "C": "Intraosseous",
-                  "D": "Central line infusion"
-                },
-                "correctAnswer": "B",
-                "rationale": "Oral absorption varies with food, pH, motility, disease, and first-pass metabolism, leading to variable onset and bioavailability."
-              },
-              {
-                "questionNumber": 23,
-                "type": "multiple_choice",
-                "question": "Which statement best explains why lipophilic drugs may have longer apparent duration of action?",
-                "options": {
-                  "A": "They are filtered faster by the kidney",
-                  "B": "They remain only in plasma and do not enter tissues",
-                  "C": "They can distribute into fat stores and slowly redistribute back to plasma",
-                  "D": "They are immune to CYP metabolism"
-                },
-                "correctAnswer": "C",
-                "rationale": "Lipophilic drugs can distribute into adipose tissue (large Vd) and be released slowly, prolonging effect and clearance time."
-              },
-              {
-                "questionNumber": 24,
-                "type": "multiple_choice",
-                "question": "A patient says, “I missed my long-acting dose yesterday, so I doubled it today.” Which concept best explains why this is unsafe?",
-                "options": {
-                  "A": "First-pass metabolism will destroy the extra dose",
-                  "B": "Protein binding prevents any toxicity",
-                  "C": "Accumulation can push levels into the toxic range, especially with long half-life drugs",
-                  "D": "The BBB will block the medication from working"
-                },
-                "correctAnswer": "C",
-                "rationale": "Doubling long-acting medications can cause accumulation and delayed toxicity. Patients should be taught not to “catch up” doses without guidance."
-              },
-              {
-                "questionNumber": 25,
-                "type": "multiple_choice",
-                "question": "Which nursing statement best reflects safe pharmacokinetic thinking at the bedside?",
+                "question": "Which statement best reflects safe PK thinking at the bedside?",
                 "options": {
                   "A": "“If the dose is correct, the patient response should always be the same.”",
                   "B": "“If something feels off, I’ll ask which part of ADME changed and verify interactions and organ function.”",
@@ -760,27 +880,260 @@
                   "D": "“Serum creatinine is always a perfect measure of kidney clearance.”"
                 },
                 "correctAnswer": "B",
-                "rationale": "Safe PK thinking uses the ADME framework to interpret unexpected effects and prompts checking route/absorption, distribution factors (albumin), metabolism interactions, and renal/hepatic function trends."
+                "rationale": "Safe PK thinking uses ADME to interpret unexpected effects and prompts a structured check: route/absorption reliability, distribution factors (albumin/body composition), metabolism interactions, and renal/hepatic function trends.\n\nTest-taking note: When the response is unexpected, use ADME to decide what changed (absorption, distribution/free fraction, metabolism/interactions, or excretion/clearance). Anchor your answer in timing and trend data whenever possible."
+              },
+              {
+                "questionNumber": 19,
+                "type": "multiple_choice",
+                "question": "A pregnant patient asks whether she can take a medication she used before pregnancy. What is the most appropriate nursing response?",
+                "options": {
+                  "A": "“If it helped before, it is safe now.”",
+                  "B": "“Pregnancy does not change drug distribution or clearance.”",
+                  "C": "“Let’s verify pregnancy safety using a trusted reference and consult pharmacy if needed.”",
+                  "D": "“Avoid all medications during pregnancy, even if prescribed.”"
+                },
+                "correctAnswer": "C",
+                "rationale": "Pregnancy changes PK (volume of distribution, protein binding, renal clearance) and introduces fetal safety considerations. Nurses should avoid reassurance without evidence and use trusted references or pharmacy consultation to verify safety.\n\nTest-taking note: When the response is unexpected, use ADME to decide what changed (absorption, distribution/free fraction, metabolism/interactions, or excretion/clearance). Anchor your answer in timing and trend data whenever possible."
+              },
+              {
+                "questionNumber": 20,
+                "type": "multiple_choice",
+                "question": "Which situation best illustrates a distribution-related PK change?",
+                "options": {
+                  "A": "A patient’s medication is vomited 5 minutes after swallowing",
+                  "B": "A frail patient with low albumin develops toxicity from a highly protein-bound drug",
+                  "C": "A patient starts rifampin and later needs higher doses of a substrate drug",
+                  "D": "A patient with AKI develops drug accumulation due to reduced filtration"
+                },
+                "correctAnswer": "B",
+                "rationale": "Low albumin reduces protein binding and increases the free fraction of certain drugs—an important distribution-related change. Vomiting is absorption, rifampin is metabolism induction, and AKI is excretion.\n\nTest-taking note: When the response is unexpected, use ADME to decide what changed (absorption, distribution/free fraction, metabolism/interactions, or excretion/clearance). Anchor your answer in timing and trend data whenever possible."
+              },
+              {
+                "questionNumber": 21,
+                "type": "multiple_choice",
+                "question": "A patient with sepsis is hypotensive and vomiting. An oral antibiotic is ordered. What PK concern is most immediate?",
+                "options": {
+                  "A": "Absorption may be unreliable due to poor gut perfusion and vomiting",
+                  "B": "Distribution is always increased, so oral dosing is stronger",
+                  "C": "Metabolism is always faster in sepsis",
+                  "D": "Excretion is unchanged in critical illness"
+                },
+                "correctAnswer": "A",
+                "rationale": "In critical illness, gut perfusion can be reduced and vomiting can prevent retention of the dose, making oral absorption unreliable. The nurse should communicate route reliability concerns and monitor closely.\n\nTest-taking note: When the response is unexpected, use ADME to decide what changed (absorption, distribution/free fraction, metabolism/interactions, or excretion/clearance). Anchor your answer in timing and trend data whenever possible."
+              },
+              {
+                "questionNumber": 22,
+                "type": "multiple_choice",
+                "question": "A lactating patient is prescribed a medication. Which additional assessment is most relevant for infant safety?",
+                "options": {
+                  "A": "Infant gestational age at birth and current age",
+                  "B": "Whether the infant has a favorite bottle",
+                  "C": "Whether the parent’s blood pressure is normal",
+                  "D": "Whether the parent prefers morning or evening dosing"
+                },
+                "correctAnswer": "A",
+                "rationale": "Infant age and prematurity influence the infant’s ability to metabolize and excrete drugs that enter breast milk. This assessment helps determine risk and informs counseling and monitoring.\n\nTest-taking note: When the response is unexpected, use ADME to decide what changed (absorption, distribution/free fraction, metabolism/interactions, or excretion/clearance). Anchor your answer in timing and trend data whenever possible."
+              },
+              {
+                "questionNumber": 23,
+                "type": "multiple_choice",
+                "question": "A patient with obesity is prescribed a medication that is highly lipophilic. What PK change is most likely?",
+                "options": {
+                  "A": "Decreased volume of distribution",
+                  "B": "Increased volume of distribution with potential prolonged effect",
+                  "C": "Elimination becomes zero-order automatically",
+                  "D": "Bioavailability becomes 100%"
+                },
+                "correctAnswer": "B",
+                "rationale": "Lipophilic drugs may distribute into adipose tissue, increasing volume of distribution and potentially prolonging duration of effect. The direction and clinical impact depend on the drug and dosing strategy.\n\nTest-taking note: When the response is unexpected, use ADME to decide what changed (absorption, distribution/free fraction, metabolism/interactions, or excretion/clearance). Anchor your answer in timing and trend data whenever possible."
+              },
+              {
+                "questionNumber": 24,
+                "type": "multiple_choice",
+                "question": "Which nursing communication best supports safe PK-based escalation?",
+                "options": {
+                  "A": "“The patient looks worse.”",
+                  "B": "“I don’t like this medication.”",
+                  "C": "“After dose #3 at 1400, RR dropped from 18 to 10 and sedation increased; creatinine rose from 1.0 to 1.6. I’m concerned about accumulation.”",
+                  "D": "“Can you just stop all the meds?”"
+                },
+                "correctAnswer": "C",
+                "rationale": "PK concerns become actionable when tied to time, dose, objective assessment findings, and relevant labs. Clear timing and trend data helps the provider/pharmacy team adjust dose/interval/route safely.\n\nTest-taking note: When the response is unexpected, use ADME to decide what changed (absorption, distribution/free fraction, metabolism/interactions, or excretion/clearance). Anchor your answer in timing and trend data whenever possible."
+              },
+              {
+                "questionNumber": 25,
+                "type": "multiple_choice",
+                "question": "A patient takes a medication with a long half-life and misses a dose. Which teaching is most appropriate?",
+                "options": {
+                  "A": "“Double the next dose to catch up.”",
+                  "B": "“Skip all future doses.”",
+                  "C": "“Take the next scheduled dose as directed and call for guidance; do not automatically double doses.”",
+                  "D": "“Take doses closer together until you feel better.”"
+                },
+                "correctAnswer": "C",
+                "rationale": "Long half-life medications can accumulate. Doubling or compressing doses can cause delayed toxicity. The safest teaching is to resume the schedule and contact the prescriber for individualized guidance.\n\nTest-taking note: When the response is unexpected, use ADME to decide what changed (absorption, distribution/free fraction, metabolism/interactions, or excretion/clearance). Anchor your answer in timing and trend data whenever possible."
+              },
+              {
+                "questionNumber": 26,
+                "type": "select_all_that_apply",
+                "question": "Select all findings that increase risk for **drug accumulation** from a renally cleared medication.",
+                "options": {
+                  "A": "Urine output trending down over 6 hours",
+                  "B": "New nephrotoxic antibiotic started",
+                  "C": "eGFR decreased from 65 to 28 mL/min/1.73m²",
+                  "D": "Albumin 2.2 g/dL",
+                  "E": "Patient reports vomiting immediately after swallowing doses"
+                },
+                "correctAnswer": [
+                  "A",
+                  "B",
+                  "C"
+                ],
+                "rationale": "Accumulation risk rises when **clearance decreases** (AKI/low urine output, lower eGFR) or when nephrotoxins worsen kidney function. Low albumin changes free fraction (distribution) rather than renal clearance. Vomiting affects absorption (may cause therapeutic failure, not accumulation)."
+              },
+              {
+                "questionNumber": 27,
+                "type": "multiple_choice",
+                "question": "A patient is receiving IV vancomycin. The trough was drawn 1 hour **after** the dose finished infusing. What is the nurse’s priority action?",
+                "options": {
+                  "A": "Document the result as the trough and hold the next dose",
+                  "B": "Notify pharmacy/provider that the level is mis-timed and document exact dose/draw times",
+                  "C": "Repeat the level immediately without documentation",
+                  "D": "Ignore timing because vancomycin levels are stable"
+                },
+                "correctAnswer": "B",
+                "rationale": "Priority is **patient safety**: mis-timed levels can lead to inappropriate dose changes. Communicate that the level is not a true trough and provide exact administration and lab draw times so dosing decisions are based on accurate PK data."
+              },
+              {
+                "questionNumber": 28,
+                "type": "multiple_choice",
+                "question": "Which change most likely **decreases** oral drug absorption?",
+                "options": {
+                  "A": "Taking a medication with grapefruit juice",
+                  "B": "Severe diarrhea",
+                  "C": "Switching from immediate-release to IV route",
+                  "D": "Decreased albumin"
+                },
+                "correctAnswer": "B",
+                "rationale": "Severe diarrhea reduces GI transit time and contact time for absorption and can cause malabsorption. Grapefruit mainly affects metabolism/transport for certain drugs. IV bypasses absorption (increases reliability). Albumin affects distribution/free fraction."
+              },
+              {
+                "questionNumber": 29,
+                "type": "multiple_choice",
+                "question": "A patient on warfarin starts trimethoprim-sulfamethoxazole and returns with an INR of 6.2. Which PK mechanism is most consistent?",
+                "options": {
+                  "A": "CYP inhibition increases warfarin exposure",
+                  "B": "CYP induction decreases warfarin exposure",
+                  "C": "Increased renal filtration lowers warfarin levels",
+                  "D": "Reduced absorption due to ER formulation"
+                },
+                "correctAnswer": "A",
+                "rationale": "Many antibiotics (including TMP‑SMX) can **increase warfarin effect** via metabolic inhibition and altered vitamin K availability. The pattern (new inhibitor → higher INR/bleeding risk) reflects increased exposure."
+              },
+              {
+                "questionNumber": 30,
+                "type": "short_answer",
+                "question": "A medication has a half-life of 8 hours. About how long until the patient is near steady state with scheduled dosing? Show your reasoning.",
+                "correctAnswer": "Approximately 32–40 hours (4–5 half-lives × 8 hours).",
+                "rationale": "Steady state generally occurs after **~4–5 half-lives**. Nurses use this to set expectations for when full effect (and full toxicity risk) may appear."
+              },
+              {
+                "questionNumber": 31,
+                "type": "multiple_choice",
+                "question": "A patient with cirrhosis is prescribed a highly protein-bound drug. The total drug level is ‘normal,’ but the patient shows toxicity. What is the best explanation?",
+                "options": {
+                  "A": "Free drug fraction may be increased due to low albumin",
+                  "B": "First-pass metabolism is increased in cirrhosis",
+                  "C": "Renal filtration is increased, causing toxicity",
+                  "D": "The BBB blocks drug entry, causing toxicity"
+                },
+                "correctAnswer": "A",
+                "rationale": "Low albumin increases **free (active) drug**, so toxicity can occur even when **total** levels appear normal. Cirrhosis often decreases (not increases) metabolism."
+              },
+              {
+                "questionNumber": 32,
+                "type": "select_all_that_apply",
+                "question": "Select all examples of clinically important **timing** considerations in PK-based nursing care.",
+                "options": {
+                  "A": "Trough levels should be drawn immediately before the next dose",
+                  "B": "CYP induction effects may take days–weeks to fully appear",
+                  "C": "Crushing ER tablets can cause rapid peak-related adverse effects",
+                  "D": "Steady state is reached after ~4–5 half-lives",
+                  "E": "A dose missed for a long half-life drug is always corrected by doubling the next dose"
+                },
+                "correctAnswer": [
+                  "A",
+                  "B",
+                  "C",
+                  "D"
+                ],
+                "rationale": "PK safety is often about **when** things happen: correct lab timing, delayed induction, rapid dose dumping peaks, and predictable time to steady state. Doubling doses can cause delayed toxicity."
+              },
+              {
+                "questionNumber": 33,
+                "type": "multiple_choice",
+                "question": "A patient is NPO and has continuous tube feeding. The provider orders phenytoin via feeding tube. What is the best PK-focused nursing concern?",
+                "options": {
+                  "A": "Tube feeds can bind phenytoin and reduce absorption",
+                  "B": "Phenytoin cannot be given enterally",
+                  "C": "Tube feeds increase renal clearance and cause low levels",
+                  "D": "Phenytoin has no interactions"
+                },
+                "correctAnswer": "A",
+                "rationale": "Enteral nutrition can **reduce phenytoin absorption** (adsorption/binding). Nursing actions include verifying compatibility, holding feeds per protocol, and monitoring levels/clinical response."
+              },
+              {
+                "questionNumber": 34,
+                "type": "multiple_choice",
+                "question": "A patient is on an IV antibiotic that is primarily renally eliminated. Creatinine rises from 0.9 to 2.1 mg/dL over 24 hours. Which provider suggestion is most consistent with PK principles?",
+                "options": {
+                  "A": "Decrease the dosing interval (give more frequently)",
+                  "B": "Increase the dose to overcome reduced clearance",
+                  "C": "Reduce dose and/or extend dosing interval and monitor levels/response",
+                  "D": "No change is needed because creatinine lags behind AKI"
+                },
+                "correctAnswer": "C",
+                "rationale": "When renal clearance decreases, exposure increases. Safer strategies are **dose reduction and/or longer intervals**, guided by renal function trend, drug levels when applicable, and clinical response."
+              },
+              {
+                "questionNumber": 35,
+                "type": "short_answer",
+                "question": "In one to two sentences, explain why a medication may cause **delayed toxicity** after several days even if the first dose was tolerated.",
+                "correctAnswer": "Because the drug may accumulate as concentrations rise toward steady state, especially if clearance is reduced (renal/hepatic impairment) or inhibited by interactions.",
+                "rationale": "Delayed toxicity is a hallmark of **accumulation** and reminds nurses to reassess organ function, interactions, and timing relative to half-life."
+              },
+              {
+                "questionNumber": 36,
+                "type": "multiple_choice",
+                "question": "Which scenario best fits a **first-pass metabolism** effect?",
+                "options": {
+                  "A": "An IV medication has immediate effect",
+                  "B": "An oral medication requires a larger dose than IV to achieve the same effect",
+                  "C": "A transdermal patch produces slow, steady levels",
+                  "D": "A medication is removed by dialysis"
+                },
+                "correctAnswer": "B",
+                "rationale": "Oral doses may need to be higher because a portion is metabolized in the gut wall/liver before reaching systemic circulation (first-pass), lowering bioavailability."
               }
             ]
           }
         ],
         "flashcardLinks": [],
         "interactiveElements": [],
-        "content": "Review Questions & Assessment"
+        "content": "# Review Questions & Assessment\n\nFocus on **what to verify next** (timing, trends, ADME, and interactions) before changing doses."
       },
       {
         "sectionNumber": null,
         "id": "ch2_references",
         "title": "References",
-        "duration": 10,
-        "wordCount": 0,
+        "duration": 5,
+        "wordCount": 112,
         "learningObjectives": [],
         "keyTakeaways": [],
         "contentBlocks": [],
         "flashcardLinks": [],
         "interactiveElements": [],
-        "content": "REFERENCES\n\nOpenStax. (2019). Pharmacology for Nurses (Nursing Pharmacology). OpenStax, Rice University.\n\nLilley, L. L., Collins, S. R., & Snyder, J. S. (2020). Pharmacology and the Nursing Process (9th ed.). Elsevier.\n\nLehne, R. A. (2021). Pharmacology for Nursing Care (11th ed.). Elsevier."
+        "content": "REFERENCES\n\nBrunton LL, Hilal-Dandan R, Knollmann BC (eds.). Goodman & Gilman’s: The Pharmacological Basis of Therapeutics. 14th ed. McGraw-Hill; 2023.\n\nKatzung BG, Vanderah TW. Basic & Clinical Pharmacology. 16th ed. McGraw-Hill; 2024.\n\nLehne RA. Pharmacology for Nursing Care. 11th ed. Elsevier; 2023.\n\nDiPiro JT, Yee GC, Posey LM, et al. Pharmacotherapy: A Pathophysiologic Approach. 12th ed. McGraw-Hill; 2023.\n\nCenters for Disease Control and Prevention (CDC). Antibiotic Use and Antimicrobial Resistance Facts. Updated 2022. https://www.cdc.gov/antibiotic-use/\n\nFDA. Bioavailability and Bioequivalence Studies for Orally Administered Drug Products—General Considerations (Guidance for Industry). https://www.fda.gov/\n\nASHP. Principles of Therapeutic Drug Monitoring (TDM) (selected guidance and practice resources). https://www.ashp.org/\n"
       }
     ],
     "mediaAssets": {
