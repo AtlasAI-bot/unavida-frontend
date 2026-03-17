@@ -308,8 +308,26 @@ export const ChapterReader = () => {
       )
     : [];
 
+  const coerceText = (value) => {
+    if (value == null) return '';
+    if (typeof value === 'string') return value;
+    if (Array.isArray(value)) return value.map(coerceText).join('\n');
+    if (typeof value === 'object') {
+      // Common shapes from CMS/parsers
+      if (Object.prototype.hasOwnProperty.call(value, 'text')) return coerceText(value.text);
+      if (Object.prototype.hasOwnProperty.call(value, 'content')) return coerceText(value.content);
+      if (Object.prototype.hasOwnProperty.call(value, 'html')) return coerceText(value.html);
+      try {
+        return JSON.stringify(value);
+      } catch {
+        return String(value);
+      }
+    }
+    return String(value);
+  };
+
   const cleanHeading = (value = '') =>
-    value
+    coerceText(value)
       .replace(/^\[\s*EXPANDED CONTENT FOR\s*/i, '')
       .replace(/^\(?\s*Comprehensive\s+Overview\s+Section\s*\)?/i, '')
       .replace(/^Section\s+\d+(?:\.\d+)?\s*:\s*/i, '')
@@ -318,30 +336,31 @@ export const ChapterReader = () => {
       .trim();
 
   const cleanBody = (value = '') =>
-    value
+    coerceText(value)
       .replace(/\[\s*EXPANDED CONTENT FOR[^\]]*\]/gi, '')
       .replace(/\(\s*Comprehensive\s+Overview\s+Section\s*\)/gi, '')
       .trim();
 
   const splitHeadingFromText = (text) => {
-    if (!text) return { heading: null, body: '' };
-    const lines = text.split('\n').map((l) => l.trim()).filter(Boolean);
+    const safeText = coerceText(text);
+    if (!safeText) return { heading: null, body: '' };
+    const lines = safeText.split('\n').map((l) => l.trim()).filter(Boolean);
     const first = lines[0] || '';
 
     // Never treat pipe-table rows as headings; doing so breaks table rendering.
     if (first.startsWith('|')) {
-      return { heading: null, body: cleanBody(text) };
+      return { heading: null, body: cleanBody(safeText) };
     }
 
     const isHeadingLike = first.length > 0 && first.length < 110 && !first.endsWith('.') && !first.endsWith('?');
     if (isHeadingLike && lines.length > 1) {
       return { heading: cleanHeading(first), body: cleanBody(lines.slice(1).join('\n')) };
     }
-    return { heading: null, body: cleanBody(text) };
+    return { heading: null, body: cleanBody(safeText) };
   };
 
   const countWords = (value = '') =>
-    value
+    coerceText(value)
       .replace(/<[^>]+>/g, ' ')
       .replace(/\s+/g, ' ')
       .trim()
