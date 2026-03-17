@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import chapter1Data from '../data/CHAPTER_1_UNAVIDA_PRODUCTION.json';
 import chapter2Data from '../data/CHAPTER_2_UNAVIDA_PRODUCTION.json';
+import chapter3Data from '../data/CHAPTER_3_UNAVIDA_PRODUCTION.json';
 import chapter2SeedSections from '../content/reader/chapter2SeedSections';
 import './ChapterReader.css';
 
@@ -226,6 +227,8 @@ export const ChapterReader = () => {
     ...chapter2SeedSections.filter((s) => !chapter2SectionsBase.some((b) => b.id === s.id)),
   ];
 
+  const chapter3Sections = [...(chapter3Data.chapter.sections || [])];
+
   const getSectionSortKey = (section) => {
     if (!section) return 999;
     if (section.id === 'references' || section.id === 'ch2_references') return 999;
@@ -246,8 +249,12 @@ export const ChapterReader = () => {
   // Ensure Chapter 2 navigation/content is ordered (2.1..2.10, then References at the bottom)
   const chapter2Sections = [...chapter2SectionsMerged].sort((a, b) => getSectionSortKey(a) - getSectionSortKey(b));
 
-  const allSections = [...chapter1Sections, ...chapter2Sections];
-  const activeSections = activeChapterId.startsWith('ch2') ? chapter2Sections : chapter1Sections;
+  const allSections = [...chapter1Sections, ...chapter2Sections, ...chapter3Sections];
+  const activeSections = activeChapterId.startsWith('ch2')
+    ? chapter2Sections
+    : activeChapterId.startsWith('ch3')
+      ? chapter3Sections
+      : chapter1Sections;
 
   const currentSectionImages = selectedSection ? (sectionIllustrationMap[selectedSection.id] || []) : [];
 
@@ -369,8 +376,9 @@ export const ChapterReader = () => {
   // Navigation groupings (chapter sections are sourced above)
   const navChapter1Sections = chapter1Sections;
   const navChapter2Sections = chapter2Sections;
+  const navChapter3Sections = chapter3Sections;
+
   const chapterScaffoldTitles = [
-    'Chapter 3: Toxicity',
     'Chapter 5: Dosage Calculations',
     'Chapter 9: Antibiotics',
     'Chapter 10: Antivirals',
@@ -1174,7 +1182,8 @@ export const ChapterReader = () => {
       const fromQuery = sections.find((s) => s.id === sectionId);
       if (fromQuery) {
         const isCh2 = fromQuery.id.startsWith('sec2_') || fromQuery.id.startsWith('ch2_') || fromQuery.id === 'ch2_references';
-        const targetChapter = isCh2 ? 'ch2_pharmacokinetics' : 'ch1_intro';
+        const isCh3 = fromQuery.id.startsWith('sec3_') || fromQuery.id.startsWith('ch3_') || fromQuery.id === 'ch3_references';
+        const targetChapter = isCh2 ? 'ch2_pharmacokinetics' : isCh3 ? 'ch3_toxicity' : 'ch1_intro';
         if (activeChapterId !== targetChapter) {
           navigate(`/reader/${targetChapter}?section=${fromQuery.id}`, { replace: true });
           return;
@@ -1212,7 +1221,8 @@ export const ChapterReader = () => {
   const handleSectionClick = (section) => {
     if (!section) return;
     const isCh2 = section.id?.startsWith('sec2_') || section.id?.startsWith('ch2_') || section.id === 'ch2_references';
-    const targetChapter = isCh2 ? 'ch2_pharmacokinetics' : 'ch1_intro';
+    const isCh3 = section.id?.startsWith('sec3_') || section.id?.startsWith('ch3_') || section.id === 'ch3_references';
+    const targetChapter = isCh2 ? 'ch2_pharmacokinetics' : isCh3 ? 'ch3_toxicity' : 'ch1_intro';
     const nextUrl = `/reader/${targetChapter}?section=${section.id}`;
 
     setSelectedSection(section);
@@ -1980,6 +1990,25 @@ export const ChapterReader = () => {
             </button>
             <div className="reader-sec-wrap">
               {navChapter2Sections.map((section) => (
+                <a
+                  key={section.id}
+                  className={`reader-sec ${selectedSection?.id === section.id ? 'active' : ''}`}
+                  onClick={() => handleSectionClick(section)}
+                >
+                  {section.title}
+                  <span style={{ fontSize: '11px', color: 'var(--muted)' }}> ({getSectionWordCount(section)} words)</span>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className={`reader-chap ${selectedSection?.id?.startsWith('sec3_') || selectedSection?.id === 'ch3_references' ? 'open' : ''}`}>
+            <button className="reader-chap-btn" onClick={(e) => handleChapClick(e.currentTarget.closest('.reader-chap'))}>
+              Chapter 3: Toxicity
+              <small>▼</small>
+            </button>
+            <div className="reader-sec-wrap">
+              {navChapter3Sections.map((section) => (
                 <a
                   key={section.id}
                   className={`reader-sec ${selectedSection?.id === section.id ? 'active' : ''}`}
