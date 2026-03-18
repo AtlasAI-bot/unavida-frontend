@@ -131,6 +131,46 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Tables: prevent overflow and improve readability (mobile + desktop) */
+.reader-main-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0 16px;
+  font-size: 0.98rem;
+}
+
+/* Make wide tables scroll instead of breaking layout */
+.reader-main-wrap table {
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.reader-main-wrap th,
+.reader-main-wrap td {
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.reader-main-wrap thead th {
+  background: rgba(219, 230, 255, 0.65);
+  font-weight: 800;
+}
+
+.reader-container.dark .reader-main-wrap th,
+.reader-container.dark .reader-main-wrap td,
+.reader-container.darkplus .reader-main-wrap th,
+.reader-container.darkplus .reader-main-wrap td {
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.reader-container.dark .reader-main-wrap thead th,
+.reader-container.darkplus .reader-main-wrap thead th {
+  background: rgba(109, 212, 255, 0.10);
+}
+
 /* Image lightbox modal */
 .reader-lightbox {
   position: fixed;
