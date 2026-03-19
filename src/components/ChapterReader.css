@@ -104,8 +104,8 @@
 }
 
 .reader-html p {
-  margin: 0 0 18px;
-  line-height: 1.55;
+  margin: 0 0 22px !important;
+  line-height: 1.6;
 }
 
 .reader-html ul,
