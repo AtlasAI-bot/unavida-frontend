@@ -97,6 +97,25 @@
   border-left: 3px solid #0b5cad;
 }
 
+/* Rendered HTML blocks (DOCX imports) */
+.reader-html h4 {
+  margin: 12px 0 10px;
+  font-size: 1.1rem;
+}
+
+.reader-html p {
+  margin: 0 0 14px;
+}
+
+.reader-html ul,
+.reader-html ol {
+  margin: 8px 0 16px 20px;
+}
+
+.reader-html li {
+  margin: 6px 0;
+}
+
 /* Theme-aware contrast so text stays readable in dark modes */
 .reader-container.dark .reader-main-wrap p,
 .reader-container.darkplus .reader-main-wrap p {

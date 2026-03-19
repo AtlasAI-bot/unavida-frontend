@@ -2240,8 +2240,21 @@ export const ChapterReader = () => {
                           </tbody>
                         </table>
                       </div>
-                    ) : (
-                      sectionParagraphs.map((para, idx) => {
+                    ) : (() => {
+                      const looksLikeHtml = (t) => /<\s*\/?\s*(p|h\d|table|thead|tbody|tr|td|th|ul|ol|li)\b/i.test(String(t || ''));
+
+                      // If the section content is already HTML (e.g., imported from DOCX), render it as HTML.
+                      if (looksLikeHtml(selectedSection.content)) {
+                        return (
+                          <div
+                            className="reader-html"
+                            dangerouslySetInnerHTML={{ __html: selectedSection.content }}
+                          />
+                        );
+                      }
+
+                      // Otherwise, fall back to the legacy paragraph renderer.
+                      return sectionParagraphs.map((para, idx) => {
                         if (selectedSection.id === 'sec1_overview_introduction' && isEightRightsText(para)) {
                           return (
                             <div key={idx} style={{ marginBottom: '18px' }}>
@@ -2291,8 +2304,8 @@ export const ChapterReader = () => {
                             )}
                           </div>
                         );
-                      })
-                    )}
+                      });
+                    })()}
                   </section>
                 )}
 
