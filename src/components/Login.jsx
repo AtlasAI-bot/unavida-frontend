@@ -62,8 +62,17 @@ export const Login = () => {
 
       const user = login(email, password, activeRole);
 
-      // Redirect to home (textbooks/bookshelves) after successful login
-      navigate('/home', { replace: true });
+      // Role-based redirect after successful login
+      const role = user?.role || activeRole;
+      const redirectTo = role === 'student'
+        ? '/bookshelf'
+        : role === 'instructor'
+          ? '/instructor-dashboard'
+          : role === 'admin'
+            ? '/admin-dashboard'
+            : '/';
+
+      navigate(redirectTo, { replace: true });
     } catch (err) {
       setError(err.message || 'Login failed');
     } finally {
