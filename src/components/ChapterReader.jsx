@@ -2071,7 +2071,7 @@ export const ChapterReader = () => {
             <h3 style={{ margin: 0 }}>Textbook Navigation</h3>
           </div>
 
-          <div className={`reader-chap ${selectedSection?.id?.startsWith('sec2_') ? '' : 'open'}`}>
+          <div className={`reader-chap ${activeChapterId.startsWith('ch1') ? 'open' : ''}`}>
             <button className="reader-chap-btn" onClick={(e) => handleChapClick(e.currentTarget.closest('.reader-chap'))}>
               Chapter 1: Intro to Pharmacology
               <small>▼</small>
@@ -2091,7 +2091,7 @@ export const ChapterReader = () => {
             </div>
           </div>
 
-          <div className={`reader-chap ${selectedSection?.id?.startsWith('sec2_') ? 'open' : ''}`}>
+          <div className={`reader-chap ${activeChapterId.startsWith('ch2') ? 'open' : ''}`}>
             <button className="reader-chap-btn" onClick={(e) => handleChapClick(e.currentTarget.closest('.reader-chap'))}>
               Chapter 2: Pharmacokinetics
               <small>▼</small>
@@ -2110,7 +2110,7 @@ export const ChapterReader = () => {
             </div>
           </div>
 
-          <div className={`reader-chap ${selectedSection?.id?.startsWith('sec3_') || selectedSection?.id === 'ch3_references' ? 'open' : ''}`}>
+          <div className={`reader-chap ${activeChapterId.startsWith('ch3') ? 'open' : ''}`}>
             <button className="reader-chap-btn" onClick={(e) => handleChapClick(e.currentTarget.closest('.reader-chap'))}>
               Chapter 3: Toxicity
               <small>▼</small>
