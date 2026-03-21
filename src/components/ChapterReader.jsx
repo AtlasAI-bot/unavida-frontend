@@ -2243,12 +2243,53 @@ export const ChapterReader = () => {
                     ) : (() => {
                       const looksLikeHtml = (t) => /<\s*\/?\s*(p|h\d|table|thead|tbody|tr|td|th|ul|ol|li)\b/i.test(String(t || ''));
 
+                      const injectChapter3Images = (html = '') => {
+                        let out = String(html || '');
+
+                        // Remove any leftover placeholder tags like <<FIGURE_3_...>> that render as "<>".
+                        out = out.replace(/<<\s*FIGURE_3_[A-Z0-9_]+\s*>>/g, '');
+
+                        // Only inject for Chapter 3 content.
+                        const isChapter3 = selectedSection?.sectionNumber && String(selectedSection.sectionNumber).startsWith('3.');
+                        if (!isChapter3) return out;
+
+                        const figureForHeading = [
+                          ['3.3.2 The Therapeutic Window', '/images/ch3/FIGURE_3_1_THERAPEUTIC_WINDOW.png', 'Therapeutic Window'],
+                          ['3.3.5 Drug Accumulation', '/images/ch3/FIGURE_3_2_ACCUMULATION.png', 'Drug Accumulation'],
+                          ['3.4.1 Physiology of Glucose Regulation', '/images/ch3/FIGURE_3_3_GLUCOSE_REGULATION.png', 'Physiology of Glucose Regulation'],
+                          ['3.5.1 Normal Electrolyte Balance and Regulation', '/images/ch3/FIGURE_3_4_ELECTROLYTE_DISTRIBUTION.png', 'Electrolyte Distribution'],
+                          ['3.2.1 Mechanisms of Drug-Induced Injury', '/images/ch3/FIGURE_3_5_ORGAN_DAMAGE.png', 'Drug-Induced Organ Damage'],
+                          ['3.6.2 Peripheral Neuropathy', '/images/ch3/FIGURE_3_6_NEUROPATHY.png', 'Peripheral Neuropathy'],
+                          ['3.6.3 Ototoxicity', '/images/ch3/FIGURE_3_7_OTOTOXICITY.png', 'Ototoxicity'],
+                          ['3.7.1 Placental Transfer of Drugs', '/images/ch3/FIGURE_3_8_PLACENTA_TRANSFER.png', 'Placental Transfer'],
+                          ['3.7.2 Critical Periods of Fetal Development', '/images/ch3/FIGURE_3_9_TRIMESTER_RISK.png', 'Trimester Risk'],
+                          ['3.5.3 Drug-Induced Potassium Imbalance', '/images/ch3/FIGURE_3_10_POTASSIUM_ECG.png', 'Potassium ECG Changes'],
+                        ];
+
+                        const escapeRegExp = (s = '') => String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+                        const injectAfterH4 = (srcHtml, headingText, imgSrc, alt) => {
+                          if (!srcHtml || srcHtml.includes(imgSrc)) return srcHtml;
+                          const h4 = new RegExp(`<h4>(?:\\s|&nbsp;)*${escapeRegExp(headingText)}(?:\\s|&nbsp;)*<\\/h4>`, 'i');
+                          const m = srcHtml.match(h4);
+                          if (!m) return srcHtml;
+                          const fig = `\n<figure class="reader-figure">\n  <img class="reader-zoomable" src="${imgSrc}" alt="${alt}" />\n</figure>\n`;
+                          return srcHtml.replace(h4, (match) => `${match}${fig}`);
+                        };
+
+                        for (const [headingText, imgSrc, alt] of figureForHeading) {
+                          out = injectAfterH4(out, headingText, imgSrc, alt);
+                        }
+
+                        return out;
+                      };
+
                       // If the section content is already HTML (e.g., imported from DOCX), render it as HTML.
                       if (looksLikeHtml(selectedSection.content)) {
                         return (
                           <div
                             className="reader-html"
-                            dangerouslySetInnerHTML={{ __html: selectedSection.content }}
+                            dangerouslySetInnerHTML={{ __html: injectChapter3Images(selectedSection.content) }}
                           />
                         );
                       }
