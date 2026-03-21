@@ -2285,10 +2285,26 @@ export const ChapterReader = () => {
 
                         const injectAfterH4 = (srcHtml, headingText, imgSrc, alt) => {
                           if (!srcHtml || srcHtml.includes(imgSrc)) return srcHtml;
+
                           const h4 = new RegExp(`<h4>(?:\\s|&nbsp;)*${escapeRegExp(headingText)}(?:\\s|&nbsp;)*<\\/h4>`, 'i');
                           const m = srcHtml.match(h4);
                           if (!m) return srcHtml;
+
                           const fig = `\n<figure class="reader-figure">\n  <img class="reader-zoomable" src="${imgSrc}" alt="${alt}" />\n</figure>\n`;
+
+                          // Place image AFTER the first paragraph following the heading (so it sits under the passage)
+                          const idx = srcHtml.search(h4);
+                          const headingLen = m[0]?.length || 0;
+                          const afterHeadingIdx = idx >= 0 ? idx + headingLen : -1;
+                          if (afterHeadingIdx >= 0) {
+                            const pCloseIdx = srcHtml.indexOf('</p>', afterHeadingIdx);
+                            if (pCloseIdx !== -1) {
+                              const insertAt = pCloseIdx + 4;
+                              return srcHtml.slice(0, insertAt) + fig + srcHtml.slice(insertAt);
+                            }
+                          }
+
+                          // Fallback: if there isn't a paragraph after the heading, insert directly after heading
                           return srcHtml.replace(h4, (match) => `${match}${fig}`);
                         };
 
