@@ -272,7 +272,8 @@ export const ChapterReader = () => {
 
     const wrap = (label, content) => {
       if (!content) return '';
-      const body = looksLikeHtml(content) ? content : `<pre>${String(content)}</pre>`;
+      const isHtml = /<\s*\/?\s*(p|h\d|table|thead|tbody|tr|td|th|ul|ol|li)\b/i.test(String(content || ''));
+      const body = isHtml ? String(content) : `<pre>${String(content)}</pre>`;
       return `\n<h3>${label}</h3>\n<div class="references-block">${body}</div>\n`;
     };
 
