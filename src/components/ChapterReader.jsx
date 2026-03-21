@@ -2254,16 +2254,31 @@ export const ChapterReader = () => {
                         if (!isChapter3) return out;
 
                         const figureForHeading = [
+                          ['3.1.1 General Definition of Adverse Effects', '/images/ch3/FIGURE_3_15_ADVERSE_TYPES.png', 'Types of Adverse Effects'],
+                          ['3.1.4 Allergic Reactions', '/images/ch3/FIGURE_3_16_ALLERGY.png', 'Allergic Reactions'],
+
+                          ['3.2.1 Mechanisms of Drug-Induced Injury', '/images/ch3/FIGURE_3_5_ORGAN_DAMAGE.png', 'Drug-Induced Organ Damage'],
+                          ['3.2.2 Hepatotoxicity (Drug-Induced Liver Injury)', '/images/ch3/FIGURE_3_12_LIVER_METABOLISM.png', 'Drug Metabolism and Liver Injury'],
+                          ['3.2.3 Nephrotoxicity (Drug-Induced Kidney Injury)', '/images/ch3/FIGURE_3_13_KIDNEY_EXCRETION.png', 'Kidney Excretion'],
+                          ['3.2.6 Bone Marrow Suppression', '/images/ch3/FIGURE_3_14_BONE_MARROW.png', 'Bone Marrow Suppression'],
+
                           ['3.3.2 The Therapeutic Window', '/images/ch3/FIGURE_3_1_THERAPEUTIC_WINDOW.png', 'Therapeutic Window'],
                           ['3.3.5 Drug Accumulation', '/images/ch3/FIGURE_3_2_ACCUMULATION.png', 'Drug Accumulation'],
+
                           ['3.4.1 Physiology of Glucose Regulation', '/images/ch3/FIGURE_3_3_GLUCOSE_REGULATION.png', 'Physiology of Glucose Regulation'],
+                          ['3.4.2 Drug-Induced Hyperglycemia', '/images/ch3/FIGURE_3_17_GLUCOSE_SYMPTOMS.png', 'Hyperglycemia and Hypoglycemia Symptoms'],
+
+                          // Two visuals belong under 3.5.1
+                          ['3.5.1 Normal Electrolyte Balance and Regulation', '/images/ch3/FIGURE_3_18_FLUID_REGULATION.png', 'Fluid Regulation'],
                           ['3.5.1 Normal Electrolyte Balance and Regulation', '/images/ch3/FIGURE_3_4_ELECTROLYTE_DISTRIBUTION.png', 'Electrolyte Distribution'],
-                          ['3.2.1 Mechanisms of Drug-Induced Injury', '/images/ch3/FIGURE_3_5_ORGAN_DAMAGE.png', 'Drug-Induced Organ Damage'],
+                          ['3.5.3 Drug-Induced Potassium Imbalance', '/images/ch3/FIGURE_3_10_POTASSIUM_ECG.png', 'Potassium ECG Changes'],
+
+                          ['3.6.1 Effects of Drugs on the Central Nervous System', '/images/ch3/FIGURE_3_11_CNS_EFFECTS.png', 'CNS Effects'],
                           ['3.6.2 Peripheral Neuropathy', '/images/ch3/FIGURE_3_6_NEUROPATHY.png', 'Peripheral Neuropathy'],
                           ['3.6.3 Ototoxicity', '/images/ch3/FIGURE_3_7_OTOTOXICITY.png', 'Ototoxicity'],
+
                           ['3.7.1 Placental Transfer of Drugs', '/images/ch3/FIGURE_3_8_PLACENTA_TRANSFER.png', 'Placental Transfer'],
                           ['3.7.2 Critical Periods of Fetal Development', '/images/ch3/FIGURE_3_9_TRIMESTER_RISK.png', 'Trimester Risk'],
-                          ['3.5.3 Drug-Induced Potassium Imbalance', '/images/ch3/FIGURE_3_10_POTASSIUM_ECG.png', 'Potassium ECG Changes'],
                         ];
 
                         const escapeRegExp = (s = '') => String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -2279,6 +2294,21 @@ export const ChapterReader = () => {
 
                         for (const [headingText, imgSrc, alt] of figureForHeading) {
                           out = injectAfterH4(out, headingText, imgSrc, alt);
+                        }
+
+                        // End-of-section / end-of-chapter visuals
+                        const appendFigure = (srcHtml, imgSrc, alt) => {
+                          if (!srcHtml || srcHtml.includes(imgSrc)) return srcHtml;
+                          const fig = `\n<figure class="reader-figure">\n  <img class="reader-zoomable" src="${imgSrc}" alt="${alt}" />\n</figure>\n`;
+                          return srcHtml.trimEnd() + fig;
+                        };
+
+                        if (String(selectedSection?.sectionNumber) === '3.3') {
+                          out = appendFigure(out, '/images/ch3/FIGURE_3_19_TOXICITY_FLOW.png', 'Toxicity Flow');
+                        }
+
+                        if (String(selectedSection?.sectionNumber) === '3.7') {
+                          out = appendFigure(out, '/images/ch3/FIGURE_3_20_TOXICITY_SUMMARY.png', 'Toxicity Summary');
                         }
 
                         return out;
