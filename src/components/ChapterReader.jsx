@@ -2268,9 +2268,9 @@ export const ChapterReader = () => {
                           ['3.4.1 Physiology of Glucose Regulation', '/images/ch3/FIGURE_3_3_GLUCOSE_REGULATION.png', 'Physiology of Glucose Regulation'],
                           ['3.4.2 Drug-Induced Hyperglycemia', '/images/ch3/FIGURE_3_17_GLUCOSE_SYMPTOMS.png', 'Hyperglycemia and Hypoglycemia Symptoms'],
 
-                          // Two visuals belong under 3.5.1
+                          // Two visuals belong under 3.5.1 (keep a big passage between them)
                           ['3.5.1 Normal Electrolyte Balance and Regulation', '/images/ch3/FIGURE_3_18_FLUID_REGULATION.png', 'Fluid Regulation'],
-                          ['3.5.1 Normal Electrolyte Balance and Regulation', '/images/ch3/FIGURE_3_4_ELECTROLYTE_DISTRIBUTION.png', 'Electrolyte Distribution'],
+                          ['3.5.1 Normal Electrolyte Balance and Regulation__P3', '/images/ch3/FIGURE_3_4_ELECTROLYTE_DISTRIBUTION.png', 'Electrolyte Distribution'],
                           ['3.5.3 Drug-Induced Potassium Imbalance', '/images/ch3/FIGURE_3_10_POTASSIUM_ECG.png', 'Potassium ECG Changes'],
 
                           ['3.6.1 Effects of Drugs on the Central Nervous System', '/images/ch3/FIGURE_3_11_CNS_EFFECTS.png', 'CNS Effects'],
@@ -2283,7 +2283,7 @@ export const ChapterReader = () => {
 
                         const escapeRegExp = (s = '') => String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-                        const injectAfterH4 = (srcHtml, headingText, imgSrc, alt) => {
+                        const injectAfterH4NthParagraph = (srcHtml, headingText, paragraphIndex1Based, imgSrc, alt) => {
                           if (!srcHtml || srcHtml.includes(imgSrc)) return srcHtml;
 
                           const h4 = new RegExp(`<h4>(?:\\s|&nbsp;)*${escapeRegExp(headingText)}(?:\\s|&nbsp;)*<\\/h4>`, 'i');
@@ -2292,24 +2292,36 @@ export const ChapterReader = () => {
 
                           const fig = `\n<figure class="reader-figure">\n  <img class="reader-zoomable" src="${imgSrc}" alt="${alt}" />\n</figure>\n`;
 
-                          // Place image AFTER the first paragraph following the heading (so it sits under the passage)
                           const idx = srcHtml.search(h4);
                           const headingLen = m[0]?.length || 0;
-                          const afterHeadingIdx = idx >= 0 ? idx + headingLen : -1;
-                          if (afterHeadingIdx >= 0) {
-                            const pCloseIdx = srcHtml.indexOf('</p>', afterHeadingIdx);
-                            if (pCloseIdx !== -1) {
-                              const insertAt = pCloseIdx + 4;
-                              return srcHtml.slice(0, insertAt) + fig + srcHtml.slice(insertAt);
+                          let cursor = idx >= 0 ? idx + headingLen : -1;
+                          if (cursor >= 0) {
+                            let count = 0;
+                            while (count < Math.max(1, paragraphIndex1Based)) {
+                              const pCloseIdx = srcHtml.indexOf('</p>', cursor);
+                              if (pCloseIdx === -1) break;
+                              count += 1;
+                              cursor = pCloseIdx + 4;
+                              if (count === paragraphIndex1Based) {
+                                return srcHtml.slice(0, cursor) + fig + srcHtml.slice(cursor);
+                              }
                             }
                           }
 
-                          // Fallback: if there isn't a paragraph after the heading, insert directly after heading
+                          // Fallback: insert directly after heading
                           return srcHtml.replace(h4, (match) => `${match}${fig}`);
                         };
 
+                        const injectAfterH4 = (srcHtml, headingText, imgSrc, alt) =>
+                          injectAfterH4NthParagraph(srcHtml, headingText, 1, imgSrc, alt);
+
                         for (const [headingText, imgSrc, alt] of figureForHeading) {
-                          out = injectAfterH4(out, headingText, imgSrc, alt);
+                          if (headingText.endsWith('__P3')) {
+                            const baseHeading = headingText.replace(/__P3$/, '');
+                            out = injectAfterH4NthParagraph(out, baseHeading, 3, imgSrc, alt);
+                          } else {
+                            out = injectAfterH4(out, headingText, imgSrc, alt);
+                          }
                         }
 
                         // End-of-section / end-of-chapter visuals
