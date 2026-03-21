@@ -355,9 +355,16 @@ export const TextbookDashboard = () => {
                             if ((activeCourse === 'NUR1100' || activeCourse === 'NUR2110') && (section.id.startsWith('sec1_') || section.id.startsWith('sec2_'))) {
                               const targetChapter = section.id.startsWith('sec2_') ? 'ch2_pharmacokinetics' : 'ch1_intro';
                               navigate(`/reader/${targetChapter}?section=${section.id}`);
-                            } else {
-                              window.alert('This chapter is mapped in the course blueprint. Full reading content is coming soon.');
+                              return;
                             }
+
+                            // Chapter 3 (Toxicity) mapping
+                            if (activeCourse === 'NUR1100' && section.id === 'nur1100_ch3_toxicity') {
+                              navigate('/reader/ch3_toxicity');
+                              return;
+                            }
+
+                            window.alert('This chapter is mapped in the course blueprint. Full reading content is coming soon.');
                           }}
                           style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel, color: palette.text, padding: 9, cursor: 'pointer' }}
                         >
@@ -390,6 +397,7 @@ export const TextbookDashboard = () => {
               <button onClick={() => navigate('/flashcards')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>🎴 Flashcards</button>
               <button onClick={() => navigate('/quizzes')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>❓ Quiz</button>
               <button onClick={() => navigate('/case-studies')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>🩺 Case Studies</button>
+              <button onClick={() => navigate('/reader/references_all')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>📚 References (All Chapters)</button>
             </div>
           </section>
 

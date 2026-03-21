@@ -249,12 +249,63 @@ export const ChapterReader = () => {
   // Ensure Chapter 2 navigation/content is ordered (2.1..2.10, then References at the bottom)
   const chapter2Sections = [...chapter2SectionsMerged].sort((a, b) => getSectionSortKey(a) - getSectionSortKey(b));
 
-  const allSections = [...chapter1Sections, ...chapter2Sections, ...chapter3Sections];
-  const activeSections = activeChapterId.startsWith('ch2')
-    ? chapter2Sections
-    : activeChapterId.startsWith('ch3')
-      ? chapter3Sections
-      : chapter1Sections;
+  const getChapter3ReferencesHtml = () => {
+    try {
+      const sec37 = chapter3Sections.find((s) => String(s.sectionNumber) === '3.7') || chapter3Sections[chapter3Sections.length - 1];
+      const html = String(sec37?.content || '');
+      const start = html.search(/<h4>\s*Chapter References\s*<\/h4>/i);
+      if (start === -1) return '';
+      const slice = html.slice(start);
+      // Grab through the first </ul> after the heading.
+      const ulEnd = slice.search(/<\/ul>/i);
+      if (ulEnd === -1) return slice;
+      return slice.slice(0, ulEnd + 5);
+    } catch {
+      return '';
+    }
+  };
+
+  const getAllReferencesHtml = () => {
+    const ch1Ref = chapter1Sections.find((s) => s.id === 'references');
+    const ch2Ref = chapter2Sections.find((s) => s.id === 'ch2_references');
+    const ch3Refs = getChapter3ReferencesHtml();
+
+    const wrap = (label, content) => {
+      if (!content) return '';
+      const body = looksLikeHtml(content) ? content : `<pre>${String(content)}</pre>`;
+      return `\n<h3>${label}</h3>\n<div class="references-block">${body}</div>\n`;
+    };
+
+    return `
+      <div class="reader-html">
+        <h2>All Chapter References</h2>
+        <p class="reader-subtle"><em>Compiled from the reference sections of each available chapter.</em></p>
+        ${wrap('Chapter 1 References', ch1Ref?.content)}
+        ${wrap('Chapter 2 References', ch2Ref?.content)}
+        ${wrap('Chapter 3 References', ch3Refs)}
+      </div>
+    `;
+  };
+
+  const referencesAllSections = [
+    {
+      id: 'references_all',
+      title: 'References (All Chapters)',
+      sectionNumber: 'R',
+      content: getAllReferencesHtml(),
+      wordCount: 0,
+      duration: 5,
+    },
+  ];
+
+  const allSections = [...chapter1Sections, ...chapter2Sections, ...chapter3Sections, ...referencesAllSections];
+  const activeSections = activeChapterId === 'references_all'
+    ? referencesAllSections
+    : activeChapterId.startsWith('ch2')
+      ? chapter2Sections
+      : activeChapterId.startsWith('ch3')
+        ? chapter3Sections
+        : chapter1Sections;
 
   const currentSectionImages = selectedSection ? (sectionIllustrationMap[selectedSection.id] || []) : [];
 
