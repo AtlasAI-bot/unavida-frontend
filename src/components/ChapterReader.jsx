@@ -138,6 +138,15 @@ export const ChapterReader = () => {
     sec2_4_metabolism: 'https://unavida-videos.s3.us-east-2.amazonaws.com/2.4+METABOLISM+%E2%80%94+HOW+THE+BODY+BREAKS+DOWN+DRUGS.mp4',
     sec2_5_excretion: 'https://unavida-videos.s3.us-east-2.amazonaws.com/2.5+EXCRETION+%E2%80%94+HOW+THE+BODY+ELIMINATES+DRUGS.mp4',
     sec2_6_half_life_clearance: 'https://unavida-videos.s3.us-east-2.amazonaws.com/2.6+HALF-LIFE%2C+CLEARANCE%2C+AND+STEADY+STATE.mp4',
+
+    // Chapter 3
+    ch3_1_adverse_effects: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch03_s01_v01_%20Toxicity%20Basics.mp4',
+    ch3_2_organ_damage: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch03_s02_v01_%20How%20Drugs%20Cause%20Injury.mp4',
+    ch3_3_toxicity_overdose: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch03_s03_v01_Therapeutic_Window.mp4',
+    ch3_4_glucose: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch03_s04_v01_Glucose%20Management.mp4',
+    ch3_5_electrolytes: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch03_s05_v01_Electrolytes%20%26%20Fluid%20Regulation.mp4',
+    ch3_6_neuro_sensory: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch03_s06_v01_CNS%20%26%20Sensory%20Toxicity.mp4',
+    ch3_7_teratogenicity: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch03_s07_v01_Teratogenicity.mp4',
   };
 
   const currentVideoUrl = selectedSection ? sectionVideoMap[selectedSection.id] : null;
