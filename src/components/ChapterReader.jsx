@@ -2429,17 +2429,85 @@ export const ChapterReader = () => {
                       };
 
                       // If the section content is already HTML (e.g., imported from DOCX), render it as HTML.
+                      const chapter5FigureMap = {
+                        FIGURE_5_1_CALCULATION_SETUP: '/images/ch5/FIGURE_5_1_CALCULATION_SETUP.png',
+                        FIGURE_5_2_LABEL_READING: '/images/ch5/FIGURE_5_2_LABEL_READING.png',
+                        FIGURE_5_3_DECIMAL_SAFETY: '/images/ch5/FIGURE_5_3_DECIMAL_SAFETY.png',
+                        FIGURE_5_4_FORMULA_METHOD: '/images/ch5/FIGURE_5_4_FORMULA_METHOD.png',
+                        FIGURE_5_5_TABLET_CALCULATION: '/images/ch5/FIGURE_5_5_TABLET_CALCULATION.png',
+                        FIGURE_5_6_LIQUID_CALCULATION: '/images/ch5/FIGURE_5_6_LIQUID_CALCULATION.png',
+                        FIGURE_5_7_RATIO_PROPORTION_SETUP: '/images/ch5/FIGURE_5_7_RATIO_PROPORTION_SETUP.png',
+                        FIGURE_5_8_RATIO_CROSS_MULTIPLY: '/images/ch5/FIGURE_5_8_RATIO_CROSS_MULTIPLY.png',
+                        FIGURE_5_9_DIMENSIONAL_ANALYSIS: '/images/ch5/FIGURE_5_9_DIMENSIONAL_ANALYSIS.png',
+                        FIGURE_5_10_UNIT_CANCELLATION: '/images/ch5/FIGURE_5_10_UNIT_CANCELLATION.png',
+                        FIGURE_5_11_WEIGHT_BASED_SETUP: '/images/ch5/FIGURE_5_11_WEIGHT_BASED_SETUP.png',
+                      };
+
+                      const injectChapter5Images = (html) => {
+                        if (!html) return html;
+                        let out = String(html);
+                        Object.entries(chapter5FigureMap).forEach(([key, src]) => {
+                          const re = new RegExp(`<<\\s*${key}\\s*>>`, 'g');
+                          out = out.replace(
+                            re,
+                            `<figure style="margin: 14px 0; padding: 10px; border: 1px solid var(--panel-border); border-radius: 12px; background: var(--panel);">
+                               <img class="reader-zoomable" src="${src}" alt="${key}" style="width: 100%; max-height: 420px; object-fit: contain;" loading="lazy" />
+                             </figure>`
+                          );
+                        });
+                        return out;
+                      };
+
+                      const renderFigureToken = (tokenLine) => {
+                        const m = String(tokenLine || '').trim().match(/^<<\s*([A-Z0-9_]+)\s*>>$/);
+                        if (!m) return null;
+                        const key = m[1];
+                        const src = chapter5FigureMap[key];
+                        if (!src) return null;
+                        return (
+                          <img
+                            className="reader-zoomable"
+                            src={src}
+                            alt={key}
+                            style={{ width: '100%', marginTop: '10px', maxHeight: '420px', objectFit: 'contain', background: 'var(--panel)', borderRadius: '10px', border: '1px solid var(--panel-border)', padding: '8px' }}
+                            loading="lazy"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              setTimeout(() => openLightbox(src, key), 0);
+                            }}
+                            onPointerUp={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              setTimeout(() => openLightbox(src, key), 0);
+                            }}
+                          />
+                        );
+                      };
+
                       if (looksLikeHtml(selectedSection.content)) {
+                        const html = activeChapterId.startsWith('ch5')
+                          ? injectChapter5Images(selectedSection.content)
+                          : injectChapter3Images(selectedSection.content);
+
                         return (
                           <div
                             className="reader-html"
-                            dangerouslySetInnerHTML={{ __html: injectChapter3Images(selectedSection.content) }}
+                            dangerouslySetInnerHTML={{ __html: html }}
                           />
                         );
                       }
 
                       // Otherwise, fall back to the legacy paragraph renderer.
                       return sectionParagraphs.map((para, idx) => {
+                        const fig = activeChapterId.startsWith('ch5') ? renderFigureToken(para) : null;
+                        if (fig) {
+                          return (
+                            <div key={`fig-${idx}`} style={{ marginBottom: '18px' }}>
+                              {fig}
+                            </div>
+                          );
+                        }
                         if (selectedSection.id === 'sec1_overview_introduction' && isEightRightsText(para)) {
                           return (
                             <div key={idx} style={{ marginBottom: '18px' }}>
