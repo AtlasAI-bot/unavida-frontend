@@ -111,7 +111,7 @@ const courseContent = {
     chapters: [
       {
         id: 'nur2110_chapters_56_57_58_59',
-        title: 'Chapters 56, 57, 58, 59',
+        title: 'Unit: Gastrointestinal Pharmacology',
         status: 'Not Started',
         sections: [
           { id: 'nur2110_ch56_gi_intro', label: 'Chapter 56: GI System I', status: 'Not Started' },
@@ -122,7 +122,7 @@ const courseContent = {
       },
       {
         id: 'nur2110_chapters_34_35_36_37_38',
-        title: 'Chapters 34, 35, 36, 37, 38',
+        title: 'Unit: Endocrine Pharmacology',
         status: 'Not Started',
         sections: [
           { id: 'nur2110_ch34_hypothalamic', label: 'Chapter 34: Hypothalamic', status: 'Not Started' },
@@ -134,7 +134,7 @@ const courseContent = {
       },
       {
         id: 'nur2110_chapters_50_51_52',
-        title: 'Chapters 50, 51, 52',
+        title: 'Unit: Renal Pharmacology',
         status: 'Not Started',
         sections: [
           { id: 'nur2110_ch50_renal_intro', label: 'Chapter 50: Renal System I', status: 'Not Started' },
@@ -144,7 +144,7 @@ const courseContent = {
       },
       {
         id: 'nur2110_chapters_15_16',
-        title: 'Chapters 15, 16',
+        title: 'Unit: Inflammation & Immune Response',
         status: 'Not Started',
         sections: [
           { id: 'nur2110_ch15_immune_response', label: 'Chapter 15: Immune Response / Inflammation I', status: 'Not Started' },
@@ -153,7 +153,7 @@ const courseContent = {
       },
       {
         id: 'nur2110_chapters_24_25_26',
-        title: 'Chapters 24, 25, 26',
+        title: 'Unit: Neuro & Pain Pharmacology',
         status: 'Not Started',
         sections: [
           { id: 'nur2110_ch24_antiparkinsonism', label: 'Chapter 24: Antiparkinsonism', status: 'Not Started' },
@@ -163,7 +163,7 @@ const courseContent = {
       },
       {
         id: 'nur2110_chapters_17_18',
-        title: 'Chapters 17, 18',
+        title: 'Unit: Immunomodulators, Vaccines & Sera',
         status: 'Not Started',
         sections: [
           { id: 'nur2110_ch17_immune_modulators', label: 'Chapter 17: Immune Modulators', status: 'Not Started' },
