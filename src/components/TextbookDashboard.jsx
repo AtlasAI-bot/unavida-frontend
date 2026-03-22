@@ -49,7 +49,7 @@ const courseContent = {
           { id: 'sec1_overview_introduction', label: 'Chapter 1: Intro to Drugs', status: 'In Progress' },
           { id: 'sec2_1_pk_overview', label: 'Chapter 2: Pharmacokinetics', status: 'In Progress' },
           { id: 'nur1100_ch3_toxicity', label: 'Chapter 3: Toxicity', status: 'Not Started' },
-          { id: 'sec1_8_dosage_calculations', label: 'Chapter 5: Dosage Calculations', status: 'Not Started' },
+          { id: 'ch5_1_foundations', label: 'Chapter 5: Dosage Calculations', status: 'Not Started' },
         ],
       },
       {
@@ -347,6 +347,12 @@ export const TextbookDashboard = () => {
                             // Chapter 3 (Toxicity) mapping
                             if (activeCourse === 'NUR1100' && section.id === 'nur1100_ch3_toxicity') {
                               navigate('/reader/ch3_toxicity');
+                              return;
+                            }
+
+                            // Chapter 5 (Dosage Calculations) mapping
+                            if (activeCourse === 'NUR1100' && section.id.startsWith('ch5_')) {
+                              navigate(`/reader/ch5_dosage_calculations?section=${section.id}`);
                               return;
                             }
 

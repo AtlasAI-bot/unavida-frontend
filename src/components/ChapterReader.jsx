@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import chapter1Data from '../data/CHAPTER_1_UNAVIDA_PRODUCTION.json';
 import chapter2Data from '../data/CHAPTER_2_UNAVIDA_PRODUCTION.json';
 import chapter3Data from '../data/CHAPTER_3_UNAVIDA_PRODUCTION.json';
+import chapter5Data from '../data/CHAPTER_5_UNAVIDA_PRODUCTION.json';
 import chapter2SeedSections from '../content/reader/chapter2SeedSections';
 import './ChapterReader.css';
 
@@ -237,6 +238,7 @@ export const ChapterReader = () => {
   ];
 
   const chapter3Sections = [...(chapter3Data.chapter.sections || [])];
+  const chapter5Sections = [...(chapter5Data.chapter.sections || [])];
 
   const getSectionSortKey = (section) => {
     if (!section) return 999;
@@ -308,14 +310,16 @@ export const ChapterReader = () => {
     },
   ];
 
-  const allSections = [...chapter1Sections, ...chapter2Sections, ...chapter3Sections, ...referencesAllSections];
+  const allSections = [...chapter1Sections, ...chapter2Sections, ...chapter3Sections, ...chapter5Sections, ...referencesAllSections];
   const activeSections = activeChapterId === 'references_all'
     ? referencesAllSections
     : activeChapterId.startsWith('ch2')
       ? chapter2Sections
       : activeChapterId.startsWith('ch3')
         ? chapter3Sections
-        : chapter1Sections;
+        : activeChapterId.startsWith('ch5')
+          ? chapter5Sections
+          : chapter1Sections;
 
   const currentSectionImages = selectedSection ? (sectionIllustrationMap[selectedSection.id] || []) : [];
 
@@ -1179,7 +1183,7 @@ export const ChapterReader = () => {
 
   const renderStructuredQuestion = (q) => {
     const key = `q-${q.questionNumber}`;
-    const interactive = selectedSection?.id === 'sec2_10_review_questions' || selectedSection?.id === 'ch3_9_review_questions';
+    const interactive = selectedSection?.id === 'sec2_10_review_questions' || selectedSection?.id === 'ch3_9_review_questions' || selectedSection?.id === 'ch5_12_review_questions';
 
     const show = !!revealedAnswers[key];
     const picked = selectedMcAnswers[key];
@@ -2469,7 +2473,7 @@ export const ChapterReader = () => {
                   </section>
                 )}
 
-                {selectedSection.id === 'sec1_11_review_questions' || selectedSection.id === 'sec2_10_review_questions' || selectedSection.id === 'ch3_9_review_questions' ? (
+                {selectedSection.id === 'sec1_11_review_questions' || selectedSection.id === 'sec2_10_review_questions' || selectedSection.id === 'ch3_9_review_questions' || selectedSection.id === 'ch5_12_review_questions' ? (
                   <section className="reader-card">
                     {reviewQuestionBank.map((q) => renderStructuredQuestion(q))}
                   </section>
