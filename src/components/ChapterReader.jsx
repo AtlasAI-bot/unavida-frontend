@@ -2450,6 +2450,16 @@ export const ChapterReader = () => {
                         FIGURE_5_18_MEQ_DIAGRAM: '/images/ch5/FIGURE_5_18_MEQ_DIAGRAM.png',
                         FIGURE_5_19_MG_PER_KG: '/images/ch5/FIGURE_5_19_MG_PER_KG.png',
                         FIGURE_5_20_SAFE_RANGE: '/images/ch5/FIGURE_5_20_SAFE_RANGE.png',
+                        FIGURE_5_21_BSA_FORMULA: '/images/ch5/FIGURE_5_21_BSA_FORMULA.png',
+                        FIGURE_5_22_IV_PUMP: '/images/ch5/FIGURE_5_22_IV_PUMP.png',
+                        FIGURE_5_23_DROP_FACTOR: '/images/ch5/FIGURE_5_23_DROP_FACTOR.png',
+                        FIGURE_5_24_GTT_CALC: '/images/ch5/FIGURE_5_24_GTT_CALC.png',
+                        FIGURE_5_25_INFUSION_SETUP: '/images/ch5/FIGURE_5_25_INFUSION_SETUP.png',
+                        FIGURE_5_26_MCG_KG_MIN: '/images/ch5/FIGURE_5_26_MCG_KG_MIN.png',
+                        FIGURE_5_27_TITRATION: '/images/ch5/FIGURE_5_27_TITRATION.png',
+                        FIGURE_5_28_BAG_CHANGE: '/images/ch5/FIGURE_5_28_BAG_CHANGE.png',
+                        FIGURE_5_29_SAFETY_CHECK: '/images/ch5/FIGURE_5_29_SAFETY_CHECK.png',
+                        FIGURE_5_30_DOUBLE_CHECK: '/images/ch5/FIGURE_5_30_DOUBLE_CHECK.png',
                       };
 
                       const injectChapter5Images = (html) => {
