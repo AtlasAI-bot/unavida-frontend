@@ -6,7 +6,7 @@
       "title": "Chapter 3: Toxic Effects of Drugs",
       "subtitle": "Adverse Effects, Organ Injury, and Nursing Safety Actions",
       "estimatedTimeMinutes": 210,
-      "wordCount": 21423,
+      "wordCount": 21435,
       "lastUpdated": "2026-03-22",
       "status": "production_ready"
     },
@@ -211,8 +211,8 @@
         "contentBlocks": [],
         "flashcardLinks": [],
         "interactiveElements": [],
-        "content": "<h4>Chapter References</h4>\n<ul>\n  <li>Burchum, J.</li>\n  <li>R. , &amp; Rosenthal, L.</li>\n  <li>D. (2021).</li>\n  <li>Lehne’s pharmacology for nursing care.</li>\n  <li>Elsevier.</li>\n  <li>Katzung, B.</li>\n  <li>G. (2021).</li>\n  <li>McGraw-Hill.</li>\n  <li>Food and Drug Administration. (2023).</li>\n  <li>World Health Organization. (2022).</li>\n  <li>Brunton, L.</li>\n  <li>L. (2022).</li>\n  <li>Goodman &amp; Gilman’s pharmacological basis of therapeutics.</li>\n  <li>American Diabetes Association. (2024).</li>\n  <li>Standards of care in diabetes.</li>\n  <li>Pagana, K.</li>\n  <li>D. , &amp; Pagana, T.</li>\n  <li>J. (2023).</li>\n  <li>Mosby’s diagnostic &amp; laboratory test reference.</li>\n</ul>\n",
-        "wordCount": 68
+        "content": "<h4>Chapter References (APA)</h4>\n<ul>\n  <li>Burchum, J. R., & Rosenthal, L. D. (2021). <em>Lehne's pharmacology for nursing care</em>. Elsevier.</li>\n  <li>Katzung, B. G. (2021). <em>Basic and clinical pharmacology</em>. McGraw-Hill.</li>\n  <li>U.S. Food and Drug Administration. (2023). <em>Adverse event reporting system</em>.</li>\n  <li>World Health Organization. (2022). <em>Medication safety guidelines</em>.</li>\n  <li>Brunton, L. L. (2022). <em>Goodman &amp; Gilman's pharmacological basis of therapeutics</em>.</li>\n  <li>American Diabetes Association. (2024). <em>Standards of care in diabetes</em>.</li>\n  <li>Pagana, K. D., & Pagana, T. J. (2023). <em>Mosby's diagnostic &amp; laboratory test reference</em>.</li>\n</ul>\n",
+        "wordCount": 80
       }
     ]
   }
