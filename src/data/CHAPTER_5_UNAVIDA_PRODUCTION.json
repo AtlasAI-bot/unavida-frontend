@@ -6,7 +6,7 @@
       "title": "Chapter 5: Dosage Calculations",
       "subtitle": "Core Methods, IV Rates, and Safety Checks",
       "estimatedTimeMinutes": 180,
-      "wordCount": 11966,
+      "wordCount": 11614,
       "lastUpdated": "2026-03-22",
       "status": "production_ready"
     },
@@ -160,7 +160,7 @@
         "id": "ch5_12_review_questions",
         "title": "Section 5.12: Review Questions and Practice Problems",
         "duration": 20,
-        "wordCount": 384,
+        "wordCount": 32,
         "learningObjectives": [],
         "keyTakeaways": [],
         "contentBlocks": [
@@ -174,7 +174,10 @@
                 "type": "multiple_choice",
                 "question": "The provider orders 250 mg of a medication. The tablets available are 500 mg each. How many tablets should be given?",
                 "options": {
-                  "A": "0.25 tabletB.  0.5 tabletC.  1 tabletD.  2 tablets"
+                  "A": "0.25 tablet",
+                  "B": "0.5 tablet",
+                  "C": "1 tablet",
+                  "D": "2 tablets"
                 },
                 "correctAnswer": "B",
                 "rationale": "500 mg tablets; 250 mg is half a tablet."
@@ -184,7 +187,10 @@
                 "type": "multiple_choice",
                 "question": "A medication label reads 125 mg per 5 mL. How many milliliters contain 250 mg?",
                 "options": {
-                  "A": "5 mLB.  10 mLC.  2.5 mLD.  1 mL"
+                  "A": "5 mL",
+                  "B": "10 mL",
+                  "C": "2.5 mL",
+                  "D": "1 mL"
                 },
                 "correctAnswer": "B",
                 "rationale": "125 mg per 5 mL. Double the dose (250 mg) requires double the volume (10 mL)."
@@ -194,7 +200,10 @@
                 "type": "multiple_choice",
                 "question": "Which unit must be used for weight-based dosing?",
                 "options": {
-                  "A": "poundsB.  ouncesC.  kilogramsD.  grams"
+                  "A": "pounds",
+                  "B": "ounces",
+                  "C": "kilograms",
+                  "D": "grams"
                 },
                 "correctAnswer": "C",
                 "rationale": "Weight-based dosing uses kilograms to avoid conversion errors."
@@ -204,7 +213,10 @@
                 "type": "multiple_choice",
                 "question": "Which of the following is the correct leading-zero format?",
                 "options": {
-                  "A": ".5 mgB.  0.5 mgC.  5.0 mgD.  05 mg"
+                  "A": ".5 mg",
+                  "B": "0.5 mg",
+                  "C": "5.0 mg",
+                  "D": "05 mg"
                 },
                 "correctAnswer": "B",
                 "rationale": "A leading zero is required: 0.5 mg (not .5 mg)."
@@ -214,7 +226,10 @@
                 "type": "multiple_choice",
                 "question": "Which method uses unit cancellation to prevent errors?",
                 "options": {
-                  "A": "Formula methodB.  Ratio methodC.  Dimensional analysisD.  Estimation"
+                  "A": "Formula method",
+                  "B": "Ratio method",
+                  "C": "Dimensional analysis",
+                  "D": "Estimation"
                 },
                 "correctAnswer": "C",
                 "rationale": "Dimensional analysis uses units to cancel and prevent setup errors."
@@ -224,7 +239,10 @@
                 "type": "multiple_choice",
                 "question": "A drop factor of 60 gtt/mL is called",
                 "options": {
-                  "A": "macrodripB.  microdripC.  standard dripD.  gravity drip"
+                  "A": "macrodrip",
+                  "B": "microdrip",
+                  "C": "standard drip",
+                  "D": "gravity drip"
                 },
                 "correctAnswer": "B",
                 "rationale": "60 gtt/mL is a microdrip set."
@@ -234,7 +252,10 @@
                 "type": "multiple_choice",
                 "question": "Which medication type usually requires independent double check?",
                 "options": {
-                  "A": "vitaminsB.  insulinC.  antacidsD.  stool softeners"
+                  "A": "vitamins",
+                  "B": "insulin",
+                  "C": "antacids",
+                  "D": "stool softeners"
                 },
                 "correctAnswer": "B",
                 "rationale": "High-alert meds like insulin typically require an independent double-check."
@@ -244,7 +265,10 @@
                 "type": "multiple_choice",
                 "question": "The abbreviation mcg means",
                 "options": {
-                  "A": "milligramB.  microgramC.  milliliterD.  milliequivalent"
+                  "A": "milligram",
+                  "B": "microgram",
+                  "C": "milliliter",
+                  "D": "milliequivalent"
                 },
                 "correctAnswer": "B",
                 "rationale": "mcg stands for microgram."
@@ -254,7 +278,10 @@
                 "type": "multiple_choice",
                 "question": "Body surface area is measured in",
                 "options": {
-                  "A": "kgB.  mgC.  m²D.  mL"
+                  "A": "kg",
+                  "B": "mg",
+                  "C": "m²",
+                  "D": "mL"
                 },
                 "correctAnswer": "C",
                 "rationale": "BSA is expressed in square meters (m²)."
@@ -264,7 +291,10 @@
                 "type": "multiple_choice",
                 "question": "Which is the correct conversion?",
                 "options": {
-                  "A": "1 kg = 2.2 lbB.  1 lb = 2.2 kgC.  1 g = 100 mgD.  1 mg = 100 mcg"
+                  "A": "1 kg = 2.2 lb",
+                  "B": "1 lb = 2.2 kg",
+                  "C": "1 g = 100 mg",
+                  "D": "1 mg = 100 mcg"
                 },
                 "correctAnswer": "A",
                 "rationale": "1 kg is approximately 2.2 lb."
@@ -274,7 +304,7 @@
         ],
         "flashcardLinks": [],
         "interactiveElements": [],
-        "content": "<p>The following questions review the dosage calculation methods presented in this chapter. Some questions require selecting the correct answer, while others require performing a calculation. Show all work when solving calculation problems.</p>\n<h4>Calculation Problems — Show Your Work</h4>\n<ul>\n  <li>Order: 500 mgAvailable: 250 mg per tabletHow many tablets?</li>\n  <li>Order: 125 mgAvailable: 250 mg per 5 mLHow many mL?</li>\n  <li>Order: 2 mg IMAvailable: 4 mg/mLHow many mL?</li>\n  <li>Convert 44 lb to kg.</li>\n  <li>Order: 5 mg/kgWeight: 20 kgHow many mg?</li>\n  <li>Order: 5 mg/kgWeight: 44 lbAvailable: 50 mg/mLHow many mL?</li>\n  <li>Order: Infuse 1000 mL over 8 hrFind mL/hr.</li>\n  <li>Order: 500 mL over 4 hrDrop factor 15 gtt/mLFind gtt/min.</li>\n  <li>Order: 10 mcg/kg/minWeight: 70 kgBag: 400 mg in 250 mLFind mL/hr.</li>\n  <li>Order: 1000 units/hrBag: 25,000 units in 500 mLFind mL/hr.</li>\n</ul>\n<h4>Scenario-Based Questions</h4>\n<ul>\n  <li>A child weighs 10 kg.Safe range: 5–10 mg/kg/dayOrder: 150 mg/day</li>\n  <li>Is this safe?</li>\n  <li>A medication is ordered 20 mg/kg/day divided every 6 hr.Weight 12 kg.</li>\n  <li>How many mg per dose?</li>\n  <li>A new IV bag has twice the concentration of the previous bag.What happens to the infusion rate if the dose stays the same?</li>\n  <li>The order is written 5.0 mg.What is the safety concern?</li>\n  <li>The order is for 0.5 mg.Why must the leading zero be used?</li>\n  <li>A nurse calculates 10 tablets for a pediatric dose.What should the nurse do first?</li>\n  <li>A medication is ordered in mg, but the label is in mcg.What must be done before calculating?</li>\n  <li>A dopamine infusion is increased from 5 mcg/kg/min to 10 mcg/kg/min.What happens to the pump rate if concentration stays the same?</li>\n  <li>A medication requires reconstitution.Which concentration should be used for the calculation?</li>\n  <li>The calculated IV rate is 31.4 gtt/min.What should be administered?</li>\n  <li>Answer Key</li>\n  <li>B</li>\n  <li>B</li>\n  <li>C</li>\n  <li>B</li>\n  <li>C</li>\n  <li>B</li>\n  <li>B</li>\n  <li>B</li>\n  <li>C</li>\n  <li>A</li>\n  <li>2 tablets</li>\n  <li>2.5 mL</li>\n  <li>0.5 mL</li>\n  <li>20 kg</li>\n  <li>100 mg</li>\n  <li>2 mL</li>\n  <li>125 mL/hr</li>\n  <li>31 gtt/min</li>\n  <li>26.25 ≈ 26 mL/hr</li>\n  <li>20 mL/hr</li>\n  <li>Safe range = 50–100 mg → not safe</li>\n  <li>60 mg per dose</li>\n  <li>Rate decreases by half</li>\n  <li>Trailing zero unsafe</li>\n  <li>Prevents 5 mg error</li>\n  <li>Recheck calculation</li>\n  <li>Convert units</li>\n  <li>Rate doubles</li>\n  <li>After reconstitution</li>\n  <li>31 gtt/min</li>\n</ul>\n"
+        "content": "<p>The following questions review the dosage calculation methods presented in this chapter. Some questions require selecting the correct answer, while others require performing a calculation. Show all work when solving calculation problems.</p>\n"
       }
     ]
   }
