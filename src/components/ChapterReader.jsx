@@ -461,9 +461,9 @@ export const ChapterReader = () => {
   const navChapter1Sections = chapter1Sections;
   const navChapter2Sections = chapter2Sections;
   const navChapter3Sections = chapter3Sections;
+  const navChapter5Sections = chapter5Sections;
 
   const chapterScaffoldTitles = [
-    'Chapter 5: Dosage Calculations',
     'Chapter 9: Antibiotics',
     'Chapter 10: Antivirals',
     'Chapter 11: Antifungals',
@@ -1304,7 +1304,8 @@ export const ChapterReader = () => {
       if (fromQuery) {
         const isCh2 = fromQuery.id.startsWith('sec2_') || fromQuery.id.startsWith('ch2_') || fromQuery.id === 'ch2_references';
         const isCh3 = fromQuery.id.startsWith('sec3_') || fromQuery.id.startsWith('ch3_') || fromQuery.id === 'ch3_references';
-        const targetChapter = isCh2 ? 'ch2_pharmacokinetics' : isCh3 ? 'ch3_toxicity' : 'ch1_intro';
+        const isCh5 = fromQuery.id.startsWith('ch5_');
+        const targetChapter = isCh2 ? 'ch2_pharmacokinetics' : isCh3 ? 'ch3_toxicity' : isCh5 ? 'ch5_dosage_calculations' : 'ch1_intro';
         if (activeChapterId !== targetChapter) {
           navigate(`/reader/${targetChapter}?section=${fromQuery.id}`, { replace: true });
           return;
@@ -1343,7 +1344,8 @@ export const ChapterReader = () => {
     if (!section) return;
     const isCh2 = section.id?.startsWith('sec2_') || section.id?.startsWith('ch2_') || section.id === 'ch2_references';
     const isCh3 = section.id?.startsWith('sec3_') || section.id?.startsWith('ch3_') || section.id === 'ch3_references';
-    const targetChapter = isCh2 ? 'ch2_pharmacokinetics' : isCh3 ? 'ch3_toxicity' : 'ch1_intro';
+    const isCh5 = section.id?.startsWith('ch5_');
+    const targetChapter = isCh2 ? 'ch2_pharmacokinetics' : isCh3 ? 'ch3_toxicity' : isCh5 ? 'ch5_dosage_calculations' : 'ch1_intro';
     const nextUrl = `/reader/${targetChapter}?section=${section.id}`;
 
     setSelectedSection(section);
@@ -2130,6 +2132,25 @@ export const ChapterReader = () => {
             </button>
             <div className="reader-sec-wrap">
               {navChapter3Sections.map((section) => (
+                <a
+                  key={section.id}
+                  className={`reader-sec ${selectedSection?.id === section.id ? 'active' : ''}`}
+                  onClick={() => handleSectionClick(section)}
+                >
+                  {section.title}
+                  <span style={{ fontSize: '11px', color: 'var(--muted)' }}> ({getSectionWordCount(section)} words)</span>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className={`reader-chap ${activeChapterId.startsWith('ch5') ? 'open' : ''}`}>
+            <button className="reader-chap-btn" onClick={(e) => handleChapClick(e.currentTarget.closest('.reader-chap'))}>
+              Chapter 5: Dosage Calculations
+              <small>▼</small>
+            </button>
+            <div className="reader-sec-wrap">
+              {navChapter5Sections.map((section) => (
                 <a
                   key={section.id}
                   className={`reader-sec ${selectedSection?.id === section.id ? 'active' : ''}`}
