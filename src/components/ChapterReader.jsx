@@ -2460,6 +2460,9 @@ export const ChapterReader = () => {
                         FIGURE_5_28_BAG_CHANGE: '/images/ch5/FIGURE_5_28_BAG_CHANGE.png',
                         FIGURE_5_29_SAFETY_CHECK: '/images/ch5/FIGURE_5_29_SAFETY_CHECK.png',
                         FIGURE_5_30_DOUBLE_CHECK: '/images/ch5/FIGURE_5_30_DOUBLE_CHECK.png',
+                        FIGURE_5_31_HIGH_ALERT: '/images/ch5/FIGURE_5_31_HIGH_ALERT.png',
+                        FIGURE_5_32_REASONABLENESS: '/images/ch5/FIGURE_5_32_REASONABLENESS.png',
+                        FIGURE_5_33_CALCULATION_FLOW: '/images/ch5/FIGURE_5_33_CALCULATION_FLOW.png',
                       };
 
                       const injectChapter5Images = (html) => {
