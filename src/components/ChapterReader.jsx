@@ -2441,6 +2441,15 @@ export const ChapterReader = () => {
                         FIGURE_5_9_DIMENSIONAL_ANALYSIS: '/images/ch5/FIGURE_5_9_DIMENSIONAL_ANALYSIS.png',
                         FIGURE_5_10_UNIT_CANCELLATION: '/images/ch5/FIGURE_5_10_UNIT_CANCELLATION.png',
                         FIGURE_5_11_WEIGHT_BASED_SETUP: '/images/ch5/FIGURE_5_11_WEIGHT_BASED_SETUP.png',
+                        FIGURE_5_12_METRIC_CONVERSION: '/images/ch5/FIGURE_5_12_METRIC_CONVERSION.png',
+                        FIGURE_5_13_LB_TO_KG: '/images/ch5/FIGURE_5_13_LB_TO_KG.png',
+                        FIGURE_5_14_HOUSEHOLD_CONVERSION: '/images/ch5/FIGURE_5_14_HOUSEHOLD_CONVERSION.png',
+                        FIGURE_5_15_LIQUID_DOSE_DRAW: '/images/ch5/FIGURE_5_15_LIQUID_DOSE_DRAW.png',
+                        FIGURE_5_16_RECONSTITUTION: '/images/ch5/FIGURE_5_16_RECONSTITUTION.png',
+                        FIGURE_5_17_INSULIN_SYRINGE: '/images/ch5/FIGURE_5_17_INSULIN_SYRINGE.png',
+                        FIGURE_5_18_MEQ_DIAGRAM: '/images/ch5/FIGURE_5_18_MEQ_DIAGRAM.png',
+                        FIGURE_5_19_MG_PER_KG: '/images/ch5/FIGURE_5_19_MG_PER_KG.png',
+                        FIGURE_5_20_SAFE_RANGE: '/images/ch5/FIGURE_5_20_SAFE_RANGE.png',
                       };
 
                       const injectChapter5Images = (html) => {
