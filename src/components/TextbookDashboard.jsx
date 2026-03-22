@@ -43,7 +43,7 @@ const courseContent = {
     chapters: [
       {
         id: 'nur1100_chapters_1_2_3_5',
-        title: 'Chapters 1, 2, 3, 5',
+        title: 'Unit: Foundations & Medication Safety',
         status: 'In Progress',
         sections: [
           { id: 'sec1_overview_introduction', label: 'Chapter 1: Intro to Drugs', status: 'In Progress' },
@@ -54,7 +54,7 @@ const courseContent = {
       },
       {
         id: 'nur1100_chapters_9_10_11_14',
-        title: 'Chapters 9, 10, 11, 14',
+        title: 'Unit: Anti-Infectives & Antineoplastics',
         status: 'Not Started',
         sections: [
           { id: 'nur1100_ch9_antibiotics', label: 'Chapter 9: Antibiotics', status: 'Not Started' },
@@ -65,7 +65,7 @@ const courseContent = {
       },
       {
         id: 'nur1100_chapters_53_54_55',
-        title: 'Chapters 53, 54, 55',
+        title: 'Unit: Respiratory Pharmacology',
         status: 'Not Started',
         sections: [
           { id: 'nur1100_ch53_respiratory_intro', label: 'Chapter 53: Respiratory System I', status: 'Not Started' },
@@ -75,7 +75,7 @@ const courseContent = {
       },
       {
         id: 'nur1100_chapters_42_43_44',
-        title: 'Chapters 42, 43, 44',
+        title: 'Unit: Cardiovascular Pharmacology (Foundations)',
         status: 'Not Started',
         sections: [
           { id: 'nur1100_ch42_cardiovascular_intro', label: 'Chapter 42: Cardiovascular Introduction', status: 'Not Started' },
@@ -85,7 +85,7 @@ const courseContent = {
       },
       {
         id: 'nur1100_chapters_45_46_47',
-        title: 'Chapters 45, 46, 47',
+        title: 'Unit: Cardiovascular Pharmacology (Therapeutics)',
         status: 'Not Started',
         sections: [
           { id: 'nur1100_ch45_antiarrhythmics', label: 'Chapter 45: Antiarrhythmics', status: 'Not Started' },
@@ -95,21 +95,14 @@ const courseContent = {
       },
       {
         id: 'nur1100_chapters_48_49',
-        title: 'Chapters 48, 49',
+        title: 'Unit: Hematology & Coagulation',
         status: 'Not Started',
         sections: [
           { id: 'nur1100_ch48_blood_coagulation', label: 'Chapter 48: Blood Coagulation', status: 'Not Started' },
           { id: 'nur1100_ch49_anemias', label: 'Chapter 49: Anemias', status: 'Not Started' },
         ],
       },
-      {
-        id: 'nur1100_final',
-        title: 'Final Exam',
-        status: 'Not Started',
-        sections: [
-          { id: 'nur1100_final_exam', label: 'Comprehensive Final Exam Review', status: 'Not Started' },
-        ],
-      },
+
     ],
   },
   NUR2110: {
@@ -177,14 +170,7 @@ const courseContent = {
           { id: 'nur2110_ch18_vaccines_sera', label: 'Chapter 18: Vaccines / Sera', status: 'Not Started' },
         ],
       },
-      {
-        id: 'nur2110_final',
-        title: 'Final Exam',
-        status: 'Not Started',
-        sections: [
-          { id: 'nur2110_final_exam', label: 'Comprehensive Final Exam Review', status: 'Not Started' },
-        ],
-      },
+
     ],
   },
   NUR1000: makeScaffoldCourse('NUR1000', 'Fundamentals of Nursing'),
