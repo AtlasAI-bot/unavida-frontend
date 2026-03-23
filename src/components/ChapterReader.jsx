@@ -2612,7 +2612,7 @@ export const ChapterReader = () => {
                   </section>
                 )}
 
-                {selectedSection.id === 'sec1_11_review_questions' || selectedSection.id === 'sec2_10_review_questions' || selectedSection.id === 'ch3_9_review_questions' || selectedSection.id === 'ch5_12_review_questions' ? (
+                {selectedSection.id === 'sec1_11_review_questions' || selectedSection.id === 'sec2_10_review_questions' || selectedSection.id === 'ch3_9_review_questions' || selectedSection.id === 'ch5_12_review_questions' || selectedSection.id === 'ch9_14_review_questions' ? (
                   <section className="reader-card">
                     {reviewQuestionBank.map((q) => renderStructuredQuestion(q))}
                   </section>
