@@ -1,0 +1,402 @@
+{
+  "chapter": {
+    "metadata": {
+      "chapterNumber": 9,
+      "chapterId": "ch9_antibiotics",
+      "title": "Chapter 9: Antibacterial Antibiotics & Antimicrobial Therapy",
+      "subtitle": "Selection, PK/PD, Resistance, and Safe Nursing Care",
+      "estimatedTimeMinutes": 180,
+      "wordCount": 0,
+      "lastUpdated": "2026-03-23",
+      "status": "in_progress"
+    },
+    "learningOutcomes": [],
+    "sections": [
+      {
+        "sectionNumber": "9.1",
+        "id": "ch9_1_introduction",
+        "title": "Section 9.1: Introduction to Antimicrobial Therapy",
+        "duration": 15,
+        "wordCount": 0,
+        "learningObjectives": [],
+        "keyTakeaways": [],
+        "contentBlocks": [],
+        "flashcardLinks": [],
+        "interactiveElements": [],
+        "content": "<h4>9.1 Introduction to Antimicrobial Therapy</h4>\n<p><em>Chapter content is being built. This section will cover what antibiotics are, bactericidal vs bacteriostatic activity, spectrum of activity, and a high-level overview of resistance.</em></p>"
+      },
+      {
+        "sectionNumber": "9.2",
+        "id": "ch9_2_diagnostics",
+        "title": "Section 9.2: Microbiology & Diagnostics for Therapy Selection",
+        "duration": 15,
+        "wordCount": 0,
+        "learningObjectives": [],
+        "keyTakeaways": [],
+        "contentBlocks": [],
+        "flashcardLinks": [],
+        "interactiveElements": [],
+        "content": "<h4>9.2 Microbiology & Diagnostics for Therapy Selection</h4>\n<p><em>Chapter content is being built. This section will cover cultures, gram stain basics, MIC and susceptibility interpretation, and key limitations of testing.</em></p>"
+      },
+      {
+        "sectionNumber": "9.3",
+        "id": "ch9_3_principles",
+        "title": "Section 9.3: Principles of Antibiotic Therapy (Core Decision-Making)",
+        "duration": 20,
+        "wordCount": 0,
+        "learningObjectives": [],
+        "keyTakeaways": [],
+        "contentBlocks": [],
+        "flashcardLinks": [],
+        "interactiveElements": [],
+        "content": "<h4>9.3 Principles of Antibiotic Therapy (Core Decision-Making)</h4>\n<p><em>Chapter content is being built. This section will cover empiric vs targeted therapy, de-escalation, duration, source control, and monotherapy vs combination therapy.</em></p>"
+      },
+      {
+        "sectionNumber": "9.4",
+        "id": "ch9_4_pkpd",
+        "title": "Section 9.4: Pharmacokinetics/Pharmacodynamics (PK/PD) of Antibiotics",
+        "duration": 25,
+        "wordCount": 0,
+        "learningObjectives": [],
+        "keyTakeaways": [],
+        "contentBlocks": [],
+        "flashcardLinks": [],
+        "interactiveElements": [],
+        "content": "<h4>9.4 Pharmacokinetics/Pharmacodynamics (PK/PD) of Antibiotics</h4>\n<p><em>Chapter content is being built. This section will cover time vs concentration dependent killing, post-antibiotic effect, tissue penetration, renal/hepatic clearance, and therapeutic drug monitoring.</em></p>"
+      },
+      {
+        "sectionNumber": "9.5",
+        "id": "ch9_5_beta_lactams",
+        "title": "Section 9.5: Beta-Lactam Antibiotics (Cell Wall Synthesis Inhibitors)",
+        "duration": 25,
+        "wordCount": 0,
+        "learningObjectives": [],
+        "keyTakeaways": [],
+        "contentBlocks": [],
+        "flashcardLinks": [],
+        "interactiveElements": [],
+        "content": "<h4>9.5 Beta-Lactam Antibiotics (Cell Wall Synthesis Inhibitors)</h4>\n<p><em>Chapter content is being built. This section will cover penicillins, cephalosporins, carbapenems, aztreonam, beta-lactamase inhibitors, and allergy considerations.</em></p>"
+      },
+      {
+        "sectionNumber": "9.6",
+        "id": "ch9_6_protein_synthesis",
+        "title": "Section 9.6: Protein Synthesis Inhibitors (Ribosomal Targets)",
+        "duration": 25,
+        "wordCount": 0,
+        "learningObjectives": [],
+        "keyTakeaways": [],
+        "contentBlocks": [],
+        "flashcardLinks": [],
+        "interactiveElements": [],
+        "content": "<h4>9.6 Protein Synthesis Inhibitors (Ribosomal Targets)</h4>\n<p><em>Chapter content is being built. This section will cover macrolides, tetracyclines, and aminoglycosides, with high-yield adverse effects and interactions.</em></p>"
+      },
+      {
+        "sectionNumber": "9.7",
+        "id": "ch9_7_nucleic_acid",
+        "title": "Section 9.7: Nucleic Acid Synthesis/Function Inhibitors",
+        "duration": 20,
+        "wordCount": 0,
+        "learningObjectives": [],
+        "keyTakeaways": [],
+        "contentBlocks": [],
+        "flashcardLinks": [],
+        "interactiveElements": [],
+        "content": "<h4>9.7 Nucleic Acid Synthesis/Function Inhibitors</h4>\n<p><em>Chapter content is being built. This section will cover fluoroquinolones, rifampin, metronidazole (and optional nitrofurantoin), including key safety alerts.</em></p>"
+      },
+      {
+        "sectionNumber": "9.8",
+        "id": "ch9_8_folate_antagonists",
+        "title": "Section 9.8: Folate Antagonists (Sulfonamides & Antifolates)",
+        "duration": 15,
+        "wordCount": 0,
+        "learningObjectives": [],
+        "keyTakeaways": [],
+        "contentBlocks": [],
+        "flashcardLinks": [],
+        "interactiveElements": [],
+        "content": "<h4>9.8 Folate Antagonists (Sulfonamides & Antifolates)</h4>\n<p><em>Chapter content is being built. This section will cover TMP-SMX, key indications, hypersensitivity reactions, hematologic risks, and interactions.</em></p>"
+      },
+      {
+        "sectionNumber": "9.9",
+        "id": "ch9_9_resistance",
+        "title": "Section 9.9: Antibiotic Resistance (Deeper Dive)",
+        "duration": 20,
+        "wordCount": 0,
+        "learningObjectives": [],
+        "keyTakeaways": [],
+        "contentBlocks": [],
+        "flashcardLinks": [],
+        "interactiveElements": [],
+        "content": "<h4>9.9 Antibiotic Resistance (Deeper Dive)</h4>\n<p><em>Chapter content is being built. This section will cover resistance mechanisms (enzymes, target changes, efflux), treatment implications, and stewardship tools.</em></p>"
+      },
+      {
+        "sectionNumber": "9.10",
+        "id": "ch9_10_adverse_effects_interactions",
+        "title": "Section 9.10: Adverse Effects, Interactions, and Safety Alerts",
+        "duration": 20,
+        "wordCount": 0,
+        "learningObjectives": [],
+        "keyTakeaways": [],
+        "contentBlocks": [],
+        "flashcardLinks": [],
+        "interactiveElements": [],
+        "content": "<h4>9.10 Adverse Effects, Interactions, and Safety Alerts</h4>\n<p><em>Chapter content is being built. This section will consolidate allergy/anaphylaxis basics, organ toxicities, QT prolongation risk, C. difficile/superinfection, and major interaction patterns.</em></p>"
+      },
+      {
+        "sectionNumber": "9.11",
+        "id": "ch9_11_special_populations",
+        "title": "Section 9.11: Special Populations & Dose Adjustments",
+        "duration": 15,
+        "wordCount": 0,
+        "learningObjectives": [],
+        "keyTakeaways": [],
+        "contentBlocks": [],
+        "flashcardLinks": [],
+        "interactiveElements": [],
+        "content": "<h4>9.11 Special Populations & Dose Adjustments</h4>\n<p><em>Chapter content is being built. This section will cover pregnancy/lactation, pediatrics, geriatrics, renal/hepatic impairment, and dose/monitoring adjustments.</em></p>"
+      },
+      {
+        "sectionNumber": "9.12",
+        "id": "ch9_12_nursing_considerations",
+        "title": "Section 9.12: Nursing Considerations & Patient Education",
+        "duration": 20,
+        "wordCount": 0,
+        "learningObjectives": [],
+        "keyTakeaways": [],
+        "contentBlocks": [],
+        "flashcardLinks": [],
+        "interactiveElements": [],
+        "content": "<h4>9.12 Nursing Considerations & Patient Education</h4>\n<p><em>Chapter content is being built. This section will cover assessment, monitoring, safe administration, adherence counseling, and escalation/red flag symptoms.</em></p>"
+      },
+      {
+        "sectionNumber": "9.13",
+        "id": "ch9_13_key_terms_glossary",
+        "title": "Section 9.13: Key Terms Glossary",
+        "duration": 15,
+        "wordCount": 0,
+        "learningObjectives": [],
+        "keyTakeaways": [],
+        "contentBlocks": [],
+        "flashcardLinks": [],
+        "interactiveElements": [],
+        "content": "<h4>9.13 Key Terms Glossary</h4>\n<p><strong>How to use this glossary:</strong> These terms show up repeatedly in antibiotic selection, patient teaching, and exam questions. When you study, practice explaining each term out loud and connecting it to a clinical example.</p>\n\n<p><strong>Antibiogram:</strong> A facility- or unit-specific summary of local susceptibility data that helps guide empiric antibiotic choices.</p>\n<p><strong>Antimicrobial stewardship:</strong> A set of practices that promote appropriate antibiotic selection, dose, route, and duration to improve outcomes and reduce resistance.</p>\n<p><strong>Anaphylaxis:</strong> A severe, rapid-onset allergic reaction (e.g., airway swelling, hypotension, bronchospasm) requiring emergency treatment.</p>\n<p><strong>Bactericidal:</strong> Describes an antibiotic that kills bacteria (clinical significance depends on site, pathogen, and patient factors).</p>\n<p><strong>Bacteriostatic:</strong> Describes an antibiotic that inhibits bacterial growth, allowing host defenses to clear the infection.</p>\n<p><strong>Beta-lactam:</strong> A class of antibiotics containing a beta-lactam ring (e.g., penicillins, cephalosporins, carbapenems, monobactam) that primarily inhibit cell wall synthesis.</p>\n<p><strong>Beta-lactamase:</strong> A bacterial enzyme that breaks down certain beta-lactam antibiotics, causing resistance.</p>\n<p><strong>Beta-lactamase inhibitor:</strong> A medication combined with some beta-lactams to block beta-lactamases (e.g., clavulanate, tazobactam), restoring activity against susceptible organisms.</p>\n<p><strong>Bioavailability:</strong> The fraction of a dose that reaches systemic circulation unchanged; important for IV-to-PO conversion decisions.</p>\n<p><strong>Broad-spectrum antibiotic:</strong> An antibiotic active against a wide range of organisms; helpful for empiric therapy but increases risk of resistance and C. difficile.</p>\n<p><strong>Narrow-spectrum antibiotic:</strong> An antibiotic active against a smaller, targeted group of organisms; preferred when the causative pathogen is known.</p>\n<p><strong>Culture:</strong> A laboratory test that grows organisms from a specimen (e.g., blood, urine, sputum) to identify pathogens and guide therapy.</p>\n<p><strong>De-escalation:</strong> Narrowing antibiotic therapy based on culture results and clinical response to reduce adverse effects and resistance pressure.</p>\n<p><strong>Dysbiosis:</strong> Disruption of normal microbiota from antibiotics, which can contribute to diarrhea, yeast overgrowth, and C. difficile infection.</p>\n<p><strong>Empiric therapy:</strong> Antibiotic treatment started before the organism is identified, guided by likely pathogens, site of infection, and local susceptibility patterns.</p>\n<p><strong>Targeted (definitive) therapy:</strong> Antibiotic therapy tailored to the identified organism and susceptibility data.</p>\n<p><strong>Extended-spectrum beta-lactamase (ESBL):</strong> An enzyme produced by some gram-negative organisms that confers resistance to many penicillins and cephalosporins; often requires alternative agents.</p>\n<p><strong>Efflux pump:</strong> A bacterial resistance mechanism that actively removes antibiotics from the cell, lowering intracellular drug levels.</p>\n<p><strong>Gram stain:</strong> A rapid lab method to classify bacteria (gram-positive vs gram-negative) that can guide early empiric coverage.</p>\n<p><strong>Hypersensitivity reaction:</strong> An immune-mediated adverse reaction (mild rash to severe anaphylaxis) that may limit future antibiotic options.</p>\n<p><strong>IV-to-PO switch:</strong> Changing from intravenous to oral therapy when clinically appropriate, improving comfort and reducing line complications and cost.</p>\n<p><strong>Minimum inhibitory concentration (MIC):</strong> The lowest antibiotic concentration that inhibits visible bacterial growth; used to interpret susceptibility.</p>\n<p><strong>Post-antibiotic effect (PAE):</strong> Continued bacterial growth suppression after antibiotic levels fall below the MIC; influences dosing strategies for some drug classes.</p>\n<p><strong>Prophylaxis:</strong> Using antibiotics to prevent infection (e.g., surgical prophylaxis); requires correct timing and short duration to avoid harm.</p>\n<p><strong>QT prolongation:</strong> A change in cardiac repolarization that can increase risk of torsades de pointes; associated with some antibiotic classes and drug interactions.</p>\n<p><strong>Resistance:</strong> The ability of bacteria to survive or grow despite antibiotic exposure; can be intrinsic (natural) or acquired (mutation or gene transfer).</p>\n<p><strong>Superinfection:</strong> A new infection that occurs during antibiotic treatment due to disruption of normal flora (e.g., candidiasis, C. difficile).</p>\n<p><strong>Therapeutic drug monitoring (TDM):</strong> Measuring drug concentrations to optimize efficacy and reduce toxicity (commonly used with aminoglycosides and some other agents).</p>\n<p><strong>Time-dependent killing:</strong> Antibiotic effect depends on the time the drug level stays above the MIC; dosing focuses on frequency/infusion strategies.</p>\n<p><strong>Concentration-dependent killing:</strong> Antibiotic effect depends on achieving high peak concentrations relative to the MIC; dosing focuses on peak levels.</p>\n<p><strong>Toxicity:</strong> Harmful effects from a medication (e.g., nephrotoxicity, ototoxicity, hepatotoxicity) that require monitoring and sometimes dose adjustment.</p>\n<p><strong>C. difficile infection (CDI):</strong> Antibiotic-associated infection causing watery diarrhea and colitis; a major safety concern requiring early recognition and isolation precautions.</p>\n\n<p><strong>Summary:</strong> Strong antibiotic practice starts with understanding these terms, then applying them to real-world decisions: start smart (empiric), confirm (culture/MIC), narrow (de-escalate), and monitor safety.</p>"
+      },
+      {
+        "sectionNumber": "9.14",
+        "id": "ch9_14_review_questions",
+        "title": "Section 9.14: Review Questions",
+        "duration": 20,
+        "wordCount": 0,
+        "learningObjectives": [],
+        "keyTakeaways": [],
+        "contentBlocks": [
+          {
+            "blockId": "ch9_assessment",
+            "type": "quiz_bank",
+            "title": "Chapter 9 Assessment (15 Questions)",
+            "questions": [
+              {
+                "questionNumber": 1,
+                "type": "multiple_choice",
+                "question": "Which statement best distinguishes bactericidal from bacteriostatic antibiotics?",
+                "options": {
+                  "A": "Bactericidal antibiotics kill bacteria; bacteriostatic antibiotics inhibit bacterial growth.",
+                  "B": "Bactericidal antibiotics only work on gram-positive bacteria.",
+                  "C": "Bacteriostatic antibiotics always cause fewer adverse effects.",
+                  "D": "Bacteriostatic antibiotics are never appropriate for serious infections."
+                },
+                "correctAnswer": "A",
+                "rationale": "Bactericidal agents kill bacteria, while bacteriostatic agents inhibit growth; clinical relevance varies by infection site and host factors."
+              },
+              {
+                "questionNumber": 2,
+                "type": "multiple_choice",
+                "question": "A nurse is preparing to administer the first dose of IV antibiotics to a patient with suspected sepsis. Which action is most appropriate regarding cultures?",
+                "options": {
+                  "A": "Delay antibiotics until culture results are finalized.",
+                  "B": "Obtain ordered cultures before antibiotics if this does not significantly delay therapy.",
+                  "C": "Skip cultures if the patient has a fever.",
+                  "D": "Start antibiotics, then obtain cultures 24 hours later."
+                },
+                "correctAnswer": "B",
+                "rationale": "Cultures are ideally obtained before antibiotics, but therapy should not be delayed significantly in time-sensitive infections (e.g., sepsis)."
+              },
+              {
+                "questionNumber": 3,
+                "type": "multiple_choice",
+                "question": "Which best describes empiric antibiotic therapy?",
+                "options": {
+                  "A": "Therapy based on the identified organism and MIC.",
+                  "B": "Therapy chosen after completion of the full antibiotic course.",
+                  "C": "Therapy started before the organism is identified, guided by likely pathogens and local susceptibility data.",
+                  "D": "Therapy reserved only for viral infections."
+                },
+                "correctAnswer": "C",
+                "rationale": "Empiric therapy is initiated before definitive identification and is guided by clinical scenario, likely pathogens, and antibiogram data."
+              },
+              {
+                "questionNumber": 4,
+                "type": "multiple_choice",
+                "question": "The provider narrows antibiotic coverage after culture and sensitivity results are available. This practice is called:",
+                "options": {
+                  "A": "Prophylaxis",
+                  "B": "De-escalation",
+                  "C": "Therapeutic drug monitoring",
+                  "D": "Synergy"
+                },
+                "correctAnswer": "B",
+                "rationale": "De-escalation means narrowing therapy to the most targeted effective agent based on culture results and clinical response."
+              },
+              {
+                "questionNumber": 5,
+                "type": "multiple_choice",
+                "question": "Which antibiotic class primarily inhibits bacterial cell wall synthesis?",
+                "options": {
+                  "A": "Macrolides",
+                  "B": "Fluoroquinolones",
+                  "C": "Beta-lactams",
+                  "D": "Sulfonamides"
+                },
+                "correctAnswer": "C",
+                "rationale": "Beta-lactams (penicillins, cephalosporins, carbapenems, monobactam) inhibit cell wall synthesis by targeting PBPs."
+              },
+              {
+                "questionNumber": 6,
+                "type": "multiple_choice",
+                "question": "A patient reports a prior reaction to penicillin described as 'my throat swelled and I couldn't breathe.' Which nursing action is most appropriate?",
+                "options": {
+                  "A": "Document as an intolerance and proceed with penicillin.",
+                  "B": "Clarify the reaction and treat it as a serious allergy; notify the provider and ensure an alternative is selected.",
+                  "C": "Administer the dose slowly to prevent anaphylaxis.",
+                  "D": "Give diphenhydramine and administer penicillin."
+                },
+                "correctAnswer": "B",
+                "rationale": "Throat swelling/respiratory compromise suggests anaphylaxis. The nurse should treat this as a serious allergy, document clearly, and notify the provider for alternatives."
+              },
+              {
+                "questionNumber": 7,
+                "type": "multiple_choice",
+                "question": "Which statement best reflects time-dependent killing?",
+                "options": {
+                  "A": "Effect improves primarily when peak concentration is very high above the MIC.",
+                  "B": "Effect depends on how long antibiotic levels remain above the MIC.",
+                  "C": "Effect occurs only when MIC testing is unavailable.",
+                  "D": "Effect is unrelated to dosing frequency."
+                },
+                "correctAnswer": "B",
+                "rationale": "Time-dependent antibiotics are most effective when concentrations remain above the MIC for an adequate portion of the dosing interval."
+              },
+              {
+                "questionNumber": 8,
+                "type": "multiple_choice",
+                "question": "Which teaching is most appropriate for a patient prescribed doxycycline?",
+                "options": {
+                  "A": "Take the medication with milk to prevent stomach upset.",
+                  "B": "Avoid taking the medication with iron, calcium, or antacids near the same time.",
+                  "C": "Stop the medication when symptoms improve.",
+                  "D": "Expect orange discoloration of body fluids."
+                },
+                "correctAnswer": "B",
+                "rationale": "Tetracyclines chelate with cations (calcium/iron/magnesium), reducing absorption. Doxycycline adherence is important; orange discoloration is associated with rifampin."
+              },
+              {
+                "questionNumber": 9,
+                "type": "multiple_choice",
+                "question": "A nurse is monitoring a patient receiving an aminoglycoside. Which adverse effects are most important to assess for?",
+                "options": {
+                  "A": "Nephrotoxicity and ototoxicity",
+                  "B": "Hypoglycemia and bradycardia",
+                  "C": "Constipation and urinary retention",
+                  "D": "Photosensitivity and tooth discoloration"
+                },
+                "correctAnswer": "A",
+                "rationale": "Aminoglycosides are associated with nephrotoxicity and ototoxicity; monitoring renal function and hearing/balance symptoms is essential."
+              },
+              {
+                "questionNumber": 10,
+                "type": "multiple_choice",
+                "question": "Which counseling point is most appropriate for metronidazole?",
+                "options": {
+                  "A": "Avoid alcohol during therapy and for at least several days after the last dose.",
+                  "B": "Take with calcium supplements to improve absorption.",
+                  "C": "Expect tendon pain as a common side effect.",
+                  "D": "This medication is used to treat influenza."
+                },
+                "correctAnswer": "A",
+                "rationale": "Patients should avoid alcohol with metronidazole due to risk of adverse reactions; tendon pain is associated with fluoroquinolones."
+              },
+              {
+                "questionNumber": 11,
+                "type": "multiple_choice",
+                "question": "A patient taking rifampin is most likely to require additional teaching about which effect?",
+                "options": {
+                  "A": "Permanent hearing loss",
+                  "B": "Orange-red discoloration of urine/tears and major drug interactions due to enzyme induction",
+                  "C": "Severe hypoglycemia",
+                  "D": "Torsades de pointes as the most common reaction"
+                },
+                "correctAnswer": "B",
+                "rationale": "Rifampin can discolor body fluids orange-red and is a strong enzyme inducer, causing significant drug interactions."
+              },
+              {
+                "questionNumber": 12,
+                "type": "multiple_choice",
+                "question": "A patient develops watery diarrhea and abdominal cramping after several days of broad-spectrum antibiotics. Which complication should the nurse suspect and report?",
+                "options": {
+                  "A": "Pulmonary embolism",
+                  "B": "C. difficile infection",
+                  "C": "Myocardial infarction",
+                  "D": "Acute appendicitis"
+                },
+                "correctAnswer": "B",
+                "rationale": "Antibiotic exposure is a major risk factor for C. difficile infection. Prompt recognition, testing, and infection control measures are important."
+              },
+              {
+                "questionNumber": 13,
+                "type": "multiple_choice",
+                "question": "Which situation best illustrates antibiotic prophylaxis?",
+                "options": {
+                  "A": "Starting vancomycin after MRSA is confirmed in blood cultures.",
+                  "B": "Administering an antibiotic shortly before a surgical incision to prevent postoperative infection.",
+                  "C": "Continuing a broad-spectrum antibiotic for 21 days without reassessment.",
+                  "D": "Switching from IV to PO antibiotics after clinical improvement."
+                },
+                "correctAnswer": "B",
+                "rationale": "Prophylaxis is antibiotic use to prevent infection, commonly timed just before incision with limited duration."
+              },
+              {
+                "questionNumber": 14,
+                "type": "multiple_choice",
+                "question": "Which best describes the role of an antibiogram in stewardship?",
+                "options": {
+                  "A": "It replaces the need for culture and sensitivity testing.",
+                  "B": "It summarizes local susceptibility patterns to support empiric antibiotic selection.",
+                  "C": "It is used only for viral infections.",
+                  "D": "It reports a patient's personal allergy list."
+                },
+                "correctAnswer": "B",
+                "rationale": "An antibiogram provides local susceptibility patterns that help clinicians choose appropriate empiric therapy and reduce unnecessary broad-spectrum use."
+              },
+              {
+                "questionNumber": 15,
+                "type": "multiple_choice",
+                "question": "Which nursing action best supports antimicrobial stewardship?",
+                "options": {
+                  "A": "Encourage patients to save leftover antibiotics for future illness.",
+                  "B": "Promote adherence to the prescribed regimen and reinforce not sharing antibiotics.",
+                  "C": "Request broad-spectrum antibiotics for all fevers.",
+                  "D": "Recommend stopping antibiotics as soon as the patient feels better."
+                },
+                "correctAnswer": "B",
+                "rationale": "Patient education on adherence and not sharing/saving antibiotics helps reduce treatment failure and resistance."
+              }
+            ]
+          }
+        ],
+        "flashcardLinks": [],
+        "interactiveElements": [],
+        "content": "<h4>9.14 Review Questions</h4>\n<p><em>Select an answer to check yourself. Review the rationale to strengthen clinical judgment.</em></p>"
+      }
+    ]
+  }
+}

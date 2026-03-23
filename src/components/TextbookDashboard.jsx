@@ -57,7 +57,7 @@ const courseContent = {
         title: 'Unit: Anti-Infectives & Antineoplastics',
         status: 'Not Started',
         sections: [
-          { id: 'nur1100_ch9_antibiotics', label: 'Chapter 9: Antibiotics', status: 'Not Started' },
+          { id: 'ch9_1_introduction', label: 'Chapter 9: Antibiotics', status: 'Not Started' },
           { id: 'nur1100_ch10_antivirals', label: 'Chapter 10: Antivirals', status: 'Not Started' },
           { id: 'nur1100_ch11_antifungals', label: 'Chapter 11: Antifungals', status: 'Not Started' },
           { id: 'nur1100_ch14_antineoplastics', label: 'Chapter 14: Antineoplastics', status: 'Not Started' },
@@ -353,6 +353,12 @@ export const TextbookDashboard = () => {
                             // Chapter 5 (Dosage Calculations) mapping
                             if (activeCourse === 'NUR1100' && section.id.startsWith('ch5_')) {
                               navigate(`/reader/ch5_dosage_calculations?section=${section.id}`);
+                              return;
+                            }
+
+                            // Chapter 9 (Antibiotics) mapping
+                            if (activeCourse === 'NUR1100' && section.id.startsWith('ch9_')) {
+                              navigate(`/reader/ch9_antibiotics?section=${section.id}`);
                               return;
                             }
 

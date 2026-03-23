@@ -4,6 +4,7 @@ import chapter1Data from '../data/CHAPTER_1_UNAVIDA_PRODUCTION.json';
 import chapter2Data from '../data/CHAPTER_2_UNAVIDA_PRODUCTION.json';
 import chapter3Data from '../data/CHAPTER_3_UNAVIDA_PRODUCTION.json';
 import chapter5Data from '../data/CHAPTER_5_UNAVIDA_PRODUCTION.json';
+import chapter9Data from '../data/CHAPTER_9_UNAVIDA_PRODUCTION.json';
 import chapter2SeedSections from '../content/reader/chapter2SeedSections';
 import './ChapterReader.css';
 
@@ -239,6 +240,7 @@ export const ChapterReader = () => {
 
   const chapter3Sections = [...(chapter3Data.chapter.sections || [])];
   const chapter5Sections = [...(chapter5Data.chapter.sections || [])];
+  const chapter9Sections = [...(chapter9Data.chapter.sections || [])];
 
   const getSectionSortKey = (section) => {
     if (!section) return 999;
@@ -310,7 +312,7 @@ export const ChapterReader = () => {
     },
   ];
 
-  const allSections = [...chapter1Sections, ...chapter2Sections, ...chapter3Sections, ...chapter5Sections, ...referencesAllSections];
+  const allSections = [...chapter1Sections, ...chapter2Sections, ...chapter3Sections, ...chapter5Sections, ...chapter9Sections, ...referencesAllSections];
   const activeSections = activeChapterId === 'references_all'
     ? referencesAllSections
     : activeChapterId.startsWith('ch2')
@@ -319,7 +321,9 @@ export const ChapterReader = () => {
         ? chapter3Sections
         : activeChapterId.startsWith('ch5')
           ? chapter5Sections
-          : chapter1Sections;
+          : activeChapterId.startsWith('ch9')
+            ? chapter9Sections
+            : chapter1Sections;
 
   const currentSectionImages = selectedSection ? (sectionIllustrationMap[selectedSection.id] || []) : [];
 
@@ -462,9 +466,9 @@ export const ChapterReader = () => {
   const navChapter2Sections = chapter2Sections;
   const navChapter3Sections = chapter3Sections;
   const navChapter5Sections = chapter5Sections;
+  const navChapter9Sections = chapter9Sections;
 
   const chapterScaffoldTitles = [
-    'Chapter 9: Antibiotics',
     'Chapter 10: Antivirals',
     'Chapter 11: Antifungals',
     'Chapter 14: Antineoplastics',
@@ -1183,7 +1187,10 @@ export const ChapterReader = () => {
 
   const renderStructuredQuestion = (q) => {
     const key = `q-${q.questionNumber}`;
-    const interactive = selectedSection?.id === 'sec2_10_review_questions' || selectedSection?.id === 'ch3_9_review_questions' || selectedSection?.id === 'ch5_12_review_questions';
+    const interactive = selectedSection?.id === 'sec2_10_review_questions'
+      || selectedSection?.id === 'ch3_9_review_questions'
+      || selectedSection?.id === 'ch5_12_review_questions'
+      || selectedSection?.id === 'ch9_14_review_questions';
 
     const show = !!revealedAnswers[key];
     const picked = selectedMcAnswers[key];
@@ -1305,7 +1312,8 @@ export const ChapterReader = () => {
         const isCh2 = fromQuery.id.startsWith('sec2_') || fromQuery.id.startsWith('ch2_') || fromQuery.id === 'ch2_references';
         const isCh3 = fromQuery.id.startsWith('sec3_') || fromQuery.id.startsWith('ch3_') || fromQuery.id === 'ch3_references';
         const isCh5 = fromQuery.id.startsWith('ch5_');
-        const targetChapter = isCh2 ? 'ch2_pharmacokinetics' : isCh3 ? 'ch3_toxicity' : isCh5 ? 'ch5_dosage_calculations' : 'ch1_intro';
+        const isCh9 = fromQuery.id.startsWith('ch9_');
+        const targetChapter = isCh2 ? 'ch2_pharmacokinetics' : isCh3 ? 'ch3_toxicity' : isCh5 ? 'ch5_dosage_calculations' : isCh9 ? 'ch9_antibiotics' : 'ch1_intro';
         if (activeChapterId !== targetChapter) {
           navigate(`/reader/${targetChapter}?section=${fromQuery.id}`, { replace: true });
           return;
@@ -1345,7 +1353,8 @@ export const ChapterReader = () => {
     const isCh2 = section.id?.startsWith('sec2_') || section.id?.startsWith('ch2_') || section.id === 'ch2_references';
     const isCh3 = section.id?.startsWith('sec3_') || section.id?.startsWith('ch3_') || section.id === 'ch3_references';
     const isCh5 = section.id?.startsWith('ch5_');
-    const targetChapter = isCh2 ? 'ch2_pharmacokinetics' : isCh3 ? 'ch3_toxicity' : isCh5 ? 'ch5_dosage_calculations' : 'ch1_intro';
+    const isCh9 = section.id?.startsWith('ch9_');
+    const targetChapter = isCh2 ? 'ch2_pharmacokinetics' : isCh3 ? 'ch3_toxicity' : isCh5 ? 'ch5_dosage_calculations' : isCh9 ? 'ch9_antibiotics' : 'ch1_intro';
     const nextUrl = `/reader/${targetChapter}?section=${section.id}`;
 
     setSelectedSection(section);
@@ -2151,6 +2160,25 @@ export const ChapterReader = () => {
             </button>
             <div className="reader-sec-wrap">
               {navChapter5Sections.map((section) => (
+                <a
+                  key={section.id}
+                  className={`reader-sec ${selectedSection?.id === section.id ? 'active' : ''}`}
+                  onClick={() => handleSectionClick(section)}
+                >
+                  {section.title}
+                  <span style={{ fontSize: '11px', color: 'var(--muted)' }}> ({getSectionWordCount(section)} words)</span>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className={`reader-chap ${activeChapterId.startsWith('ch9') ? 'open' : ''}`}>
+            <button className="reader-chap-btn" onClick={(e) => handleChapClick(e.currentTarget.closest('.reader-chap'))}>
+              Chapter 9: Antibiotics
+              <small>▼</small>
+            </button>
+            <div className="reader-sec-wrap">
+              {navChapter9Sections.map((section) => (
                 <a
                   key={section.id}
                   className={`reader-sec ${selectedSection?.id === section.id ? 'active' : ''}`}
