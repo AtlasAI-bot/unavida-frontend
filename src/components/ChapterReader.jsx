@@ -149,6 +149,12 @@ export const ChapterReader = () => {
     ch3_5_electrolytes: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch03_s05_v01_Electrolytes%20%26%20Fluid%20Regulation.mp4',
     ch3_6_neuro_sensory: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch03_s06_v01_CNS%20%26%20Sensory%20Toxicity.mp4',
     ch3_7_teratogenicity: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch03_s07_v01_Teratogenicity.mp4',
+
+    // Chapter 5
+    ch5_1_foundations: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch05_s01_v01_The%20Dose%20Detective.mp4',
+    ch5_3_ratio_proportion: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch05_s02_v01_ratio-proportion-dimensional-analysis1.mp4',
+    ch5_8_iv_flow_rates: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch05_s03_v01_iv-rate-drip-calculations%20.mp4',
+    ch5_10_safety: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch05_s04_v01_Units%20Don%E2%80%99t%20Lie.mp4',
   };
 
   const currentVideoUrl = selectedSection ? sectionVideoMap[selectedSection.id] : null;
