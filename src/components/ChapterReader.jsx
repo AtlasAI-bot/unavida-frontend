@@ -872,12 +872,32 @@ export const ChapterReader = () => {
       );
     }
 
-    // Mixed content: render as separate paragraphs to preserve newlines.
+    // Mixed content: render as separate blocks while supporting simple markdown-style
+    // headings and bold text used in chapter source content.
+    const renderInline = (txt = '') => {
+      const parts = String(txt).split(/(\*\*[^*]+\*\*)/g);
+      return parts.map((part, i) => {
+        if (/^\*\*[^*]+\*\*$/.test(part)) return <strong key={i}>{part.slice(2, -2)}</strong>;
+        return <React.Fragment key={i}>{part}</React.Fragment>;
+      });
+    };
+
     return (
       <>
-        {lines.map((l, idx) => (
-          <p key={idx}>{l}</p>
-        ))}
+        {lines.map((l, idx) => {
+          if (/^#{1,4}\s+/.test(l)) {
+            const level = l.match(/^#+/)[0].length;
+            const text = l.replace(/^#{1,4}\s+/, '');
+            if (level <= 2) return <h3 key={idx}>{renderInline(text)}</h3>;
+            return <h4 key={idx}>{renderInline(text)}</h4>;
+          }
+
+          if (/^\d+\.\d+(?:\.\d+)?\s+/.test(l)) {
+            return <h4 key={idx}>{renderInline(l)}</h4>;
+          }
+
+          return <p key={idx}>{renderInline(l)}</p>;
+        })}
       </>
     );
   };
