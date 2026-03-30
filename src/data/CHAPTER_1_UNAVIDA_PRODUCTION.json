@@ -164,7 +164,8 @@
             "type": "narrative",
             "title": "The Critical Moment",
             "htmlReady": "<div class='narrative-block'><p><strong>Picture this:</strong> You're on a busy medical-surgical floor. A patient is admitted with pneumonia. The hospitalist orders an antibiotic. The patient's chart flags an allergy. Your phone buzzes with a medication alert.</p><p><strong>In the next 30 seconds, you will make a decision that affects whether this patient recovers safely or experiences a serious adverse event.</strong></p></div>",
-            "contentType": "scenario"
+            "contentType": "scenario",
+            "content": "Picture this: You're on a busy medical-surgical floor. A patient is admitted with pneumonia. The hospitalist orders an antibiotic. The patient's chart flags an allergy. Your phone buzzes with a medication alert. In the next 30 seconds, you will make a decision that affects whether this patient recovers safely or experiences a serious adverse event."
           },
           {
             "blockId": "block1_2",
@@ -178,7 +179,8 @@
             "type": "clinical_example",
             "title": "Mrs. Garcia: Drug Interaction Case",
             "description": "Real-world example of how pharmacology knowledge prevents medical disasters",
-            "htmlReady": "<div class='clinical-example'><h4>Mrs. Garcia: A Real-World Drug Interaction</h4><p>68-year-old admitted for heart failure on multiple medications: beta-blocker, ACE inhibitor, diuretic, digoxin, warfarin. New order: NSAID for arthritis.</p><p><strong>Without pharmacology knowledge:</strong> You might just give it.</p><p><strong>With pharmacology knowledge:</strong> You recognize NSAIDs interact with her medications → potential acute kidney injury, digoxin toxicity, bleeding risk. You suggest alternatives and prevent a medical disaster.</p></div>"
+            "htmlReady": "<div class='clinical-example'><h4>Mrs. Garcia: A Real-World Drug Interaction</h4><p>68-year-old admitted for heart failure on multiple medications: beta-blocker, ACE inhibitor, diuretic, digoxin, warfarin. New order: NSAID for arthritis.</p><p><strong>Without pharmacology knowledge:</strong> You might just give it.</p><p><strong>With pharmacology knowledge:</strong> You recognize NSAIDs interact with her medications → potential acute kidney injury, digoxin toxicity, bleeding risk. You suggest alternatives and prevent a medical disaster.</p></div>",
+            "content": "Real-world example of how pharmacology knowledge prevents medical disasters"
           }
         ],
         "flashcardLinks": [
@@ -192,7 +194,7 @@
             "prompt": "You notice a medication order that seems unusual for your patient. What do you do?"
           }
         ],
-        "content": "<h4>1 Overview & Introduction</h4>\n<p>Understanding Pharmacology in Context Pharmacology is the study of drugs and their interactions with biological systems. For nursing professionals, it represents far more than an academic discipline—it is the foundation upon which safe, effective medication administration rests.</p>\n<p>This chapter introduces you to the fundamental concepts, terminology, and principles that govern all drug-related decisions in clinical practice. You will learn how drugs are discovered, tested, approved, and regulated. You will understand how medications move through your patient's body (pharmacokinetics) and how they produce their effects (pharmacodynamics). You will learn to recognize and prevent drug interactions, calculate accurate doses, and monitor for both therapeutic and adverse effects.</p>\n<p>The knowledge in this chapter will support everything you learn in subsequent pharmacology courses. It provides the framework for understanding drug classes, specific medications, and the evidence-based approach to medication administration that characterizes modern nursing practice.</p>\n<h5>1.1 Key Principles for Safe Medication Use</h5>\n<h5>1.2 Every medication administration should reflect these core principles</h5>\n<p>Therapeutic Intent: Every drug is given for a specific therapeutic purpose. Before administering any medication, ensure you understand what therapeutic goal you're trying to achieve with that drug for that patient.</p>\n<p>Individualization: While standard doses exist, each patient is unique. You must consider the patient's age, weight, organ function, genetic makeup, other medications, and medical conditions when assessing whether a dose is appropriate.</p>\n<p>Monitoring: Administering a drug is not the end of nursing responsibility. Continued monitoring for therapeutic effects and adverse reactions is essential.</p>\n<p>Education: Patients should understand their medications—what they're for, how to take them, what to expect, and what to report.</p>\n<p>Communication: Clear communication with other healthcare professionals about medications, doses, and patient responses is critical for safety.</p>\n<h5>1.3 Eight Rights to Medication Administration</h5>\n<ol>\n<li>1. Right Patient: Using two identifiers to ensure the correct patient receives the medication</li>\n<li>2. Right Drug: Verifying that the ordered drug is the intended drug, accounting for similar names</li>\n<li>3. Right Dose: Calculating and verifying that the prescribed dose is appropriate</li>\n<li>4. Right Route: Ensuring the medication is administered via the correct route</li>\n<li>5. Right Time: Administering the medication at the appropriate time</li>\n<li>6. Right Documentation: Accurately recording medication administration</li>\n<li>7. Right Reason: Understanding the therapeutic indication for the medication</li>\n<li>8. Right Response: Monitoring for the expected therapeutic response</li>\n</ol>\n<p>Meeting all eight rights requires knowledge of pharmacology combined with careful clinical judgment and attention to detail.</p>\n<p>The Scope of This Course</p>\n<p>Throughout this chapter and subsequent chapters, you will develop the knowledge and skills needed to:</p>\n<ul>\n<li>Understand how medications work at the cellular level</li>\n<li>Recognize potential interactions between medications</li>\n<li>Calculate accurate doses for different patient populations</li>\n<li>Administer medications safely through various routes</li>\n<li>Monitor for therapeutic effects and adverse reactions</li>\n<li>Educate patients about their medications</li>\n<li>Stay current with new medications and evidence</li>\n<li>Collaborate effectively with pharmacists and other team members</li>\n<li>Advocate for appropriate medication use</li>\n</ul>\n<p>This is the beginning of a journey that will continue throughout your nursing career. Pharmacology is not static—new drugs are constantly being developed, new uses for existing drugs are being discovered, and our understanding of drug effects continues to evolve. As a nurse, you will need to engage in lifelong learning about medications.</p>\n<p>This comprehensive section provides the detailed knowledge necessary for competent nursing practice in medication administration and patient care involving medications. Mastering this material is foundational to your development as a professional nurse.</p>\n<p>The practice of nursing in the modern healthcare environment is complex and multifaceted. Medication administration represents only one aspect of nursing care, but it is a critical aspect that directly affects patient outcomes. Every medication administered by a nurse can have profound effects—beneficial or harmful—on patient health.</p>\n<p>The knowledge in this chapter provides the tools and concepts necessary to make sound decisions about medication use. As new medications are developed and our understanding of existing medications evolves, the principles presented in this chapter will remain relevant and applicable.</p>\n<p>Pharmacology is not a subject to memorize passively. It is a subject to understand deeply, apply thoughtfully, and use skillfully in clinical practice. As you develop your nursing career, you will continue to expand your knowledge of medications, but the foundation you establish in this chapter will serve you throughout your professional life.</p>\n<p>Welcome to the study of pharmacology. Your patients' safety and well-being depend on your expertise.</p>"
+        "content": "<h4>1 Overview & Introduction</h4>\n<p>Understanding Pharmacology in Context Pharmacology is the study of drugs and their interactions with biological systems. For nursing professionals, it represents far more than an academic discipline—it is the foundation upon which safe, effective medication administration rests.</p>\n<p>This chapter introduces you to the fundamental concepts, terminology, and principles that govern all drug-related decisions in clinical practice. You will learn how drugs are discovered, tested, approved, and regulated. You will understand how medications move through your patient's body (pharmacokinetics) and how they produce their effects (pharmacodynamics). You will learn to recognize and prevent drug interactions, calculate accurate doses, and monitor for both therapeutic and adverse effects.</p>\n<p>The knowledge in this chapter will support everything you learn in subsequent pharmacology courses. It provides the framework for understanding drug classes, specific medications, and the evidence-based approach to medication administration that characterizes modern nursing practice.</p>\n<h5>1.1 Key Principles for Safe Medication Use</h5>\n<p>These principles anchor safe nursing medication practice in every setting.</p>\n<h5>1.2 Every medication administration should reflect these core principles</h5>\n<p>Therapeutic Intent: Every drug is given for a specific therapeutic purpose. Before administering any medication, ensure you understand what therapeutic goal you're trying to achieve with that drug for that patient.</p>\n<p>Individualization: While standard doses exist, each patient is unique. You must consider the patient's age, weight, organ function, genetic makeup, other medications, and medical conditions when assessing whether a dose is appropriate.</p>\n<p>Monitoring: Administering a drug is not the end of nursing responsibility. Continued monitoring for therapeutic effects and adverse reactions is essential.</p>\n<p>Education: Patients should understand their medications—what they're for, how to take them, what to expect, and what to report.</p>\n<p>Communication: Clear communication with other healthcare professionals about medications, doses, and patient responses is critical for safety.</p>\n<h5>1.3 Eight Rights to Medication Administration</h5>\n<ol>\n<li>1. Right Patient: Using two identifiers to ensure the correct patient receives the medication</li>\n<li>2. Right Drug: Verifying that the ordered drug is the intended drug, accounting for similar names</li>\n<li>3. Right Dose: Calculating and verifying that the prescribed dose is appropriate</li>\n<li>4. Right Route: Ensuring the medication is administered via the correct route</li>\n<li>5. Right Time: Administering the medication at the appropriate time</li>\n<li>6. Right Documentation: Accurately recording medication administration</li>\n<li>7. Right Reason: Understanding the therapeutic indication for the medication</li>\n<li>8. Right Response: Monitoring for the expected therapeutic response</li>\n</ol>\n<p>Meeting all eight rights requires knowledge of pharmacology combined with careful clinical judgment and attention to detail.</p>\n<p>The Scope of This Course</p>\n<p>Throughout this chapter and subsequent chapters, you will develop the knowledge and skills needed to:</p>\n<ul>\n<li>Understand how medications work at the cellular level</li>\n<li>Recognize potential interactions between medications</li>\n<li>Calculate accurate doses for different patient populations</li>\n<li>Administer medications safely through various routes</li>\n<li>Monitor for therapeutic effects and adverse reactions</li>\n<li>Educate patients about their medications</li>\n<li>Stay current with new medications and evidence</li>\n<li>Collaborate effectively with pharmacists and other team members</li>\n<li>Advocate for appropriate medication use</li>\n</ul>\n<p>This is the beginning of a journey that will continue throughout your nursing career. Pharmacology is not static—new drugs are constantly being developed, new uses for existing drugs are being discovered, and our understanding of drug effects continues to evolve. As a nurse, you will need to engage in lifelong learning about medications.</p>\n<p>This comprehensive section provides the detailed knowledge necessary for competent nursing practice in medication administration and patient care involving medications. Mastering this material is foundational to your development as a professional nurse.</p>\n<p>The practice of nursing in the modern healthcare environment is complex and multifaceted. Medication administration represents only one aspect of nursing care, but it is a critical aspect that directly affects patient outcomes. Every medication administered by a nurse can have profound effects—beneficial or harmful—on patient health.</p>\n<p>The knowledge in this chapter provides the tools and concepts necessary to make sound decisions about medication use. As new medications are developed and our understanding of existing medications evolves, the principles presented in this chapter will remain relevant and applicable.</p>\n<p>Pharmacology is not a subject to memorize passively. It is a subject to understand deeply, apply thoughtfully, and use skillfully in clinical practice. As you develop your nursing career, you will continue to expand your knowledge of medications, but the foundation you establish in this chapter will serve you throughout your professional life.</p>\n<p>Welcome to the study of pharmacology. Your patients' safety and well-being depend on your expertise.</p>"
       },
       {
         "sectionNumber": 2,
@@ -223,7 +225,8 @@
               "Medicine": "a drug used therapeutically to treat, prevent, or diagnose disease",
               "Medication": "the actual preparation given to a patient"
             },
-            "htmlReady": "<div class='definition-set'><dl><dt>Pharmacology</dt><dd>The science of drug-organism interactions</dd><dt>Drug</dt><dd>Any chemical substance that affects biological function</dd><dt>Medicine</dt><dd>A drug used therapeutically to treat, prevent, or diagnose disease</dd><dt>Medication</dt><dd>The actual preparation given to a patient</dd></dl></div>"
+            "htmlReady": "<div class='definition-set'><dl><dt>Pharmacology</dt><dd>The science of drug-organism interactions</dd><dt>Drug</dt><dd>Any chemical substance that affects biological function</dd><dt>Medicine</dt><dd>A drug used therapeutically to treat, prevent, or diagnose disease</dd><dt>Medication</dt><dd>The actual preparation given to a patient</dd></dl></div>",
+            "content": "Pharmacology The science of drug-organism interactions Drug Any chemical substance that affects biological function Medicine A drug used therapeutically to treat, prevent, or diagnose disease Medication The actual preparation given to a patient"
           },
           {
             "blockId": "block1_5",
@@ -250,7 +253,8 @@
                 "name": "Pharmacotherapy",
                 "description": "Clinical application of pharmacology to treat disease - What nurses do daily"
               }
-            ]
+            ],
+            "content": "Overview: Five Branches of Pharmacology"
           }
         ],
         "flashcardLinks": [
@@ -321,13 +325,15 @@
                 "era": "Molecular Biology Era",
                 "keyMilestone": "Drug design based on understanding of receptors and mechanisms"
               }
-            ]
+            ],
+            "content": "Overview: Drug Development Timeline"
           },
           {
             "blockId": "block1_7",
             "type": "comparison_table",
             "title": "Era Comparison: What Changed",
-            "htmlReady": "<table><thead><tr><th>Era</th><th>Key Insight</th><th>Nursing Implication</th></tr></thead><tbody><tr><td>Ancient</td><td>Plants have effects</td><td>Respect that drugs are powerful</td></tr><tr><td>1800s</td><td>Chemistry reveals active ingredients</td><td>Drugs have specific mechanisms</td></tr><tr><td>1920s-40s</td><td>Antibiotics save lives</td><td>Drugs can cure diseases, not just palliate</td></tr><tr><td>1960s-70s</td><td>Molecular targets identified</td><td>Understand HOW drugs work</td></tr><tr><td>1980s-90s</td><td>Genetics matter</td><td>Different patients need different doses</td></tr><tr><td>2000s-present</td><td>Precision medicine</td><td>Combine genetics + pharmacology for individualized treatment</td></tr></tbody></table>"
+            "htmlReady": "<table><thead><tr><th>Era</th><th>Key Insight</th><th>Nursing Implication</th></tr></thead><tbody><tr><td>Ancient</td><td>Plants have effects</td><td>Respect that drugs are powerful</td></tr><tr><td>1800s</td><td>Chemistry reveals active ingredients</td><td>Drugs have specific mechanisms</td></tr><tr><td>1920s-40s</td><td>Antibiotics save lives</td><td>Drugs can cure diseases, not just palliate</td></tr><tr><td>1960s-70s</td><td>Molecular targets identified</td><td>Understand HOW drugs work</td></tr><tr><td>1980s-90s</td><td>Genetics matter</td><td>Different patients need different doses</td></tr><tr><td>2000s-present</td><td>Precision medicine</td><td>Combine genetics + pharmacology for individualized treatment</td></tr></tbody></table>",
+            "content": "Era Key Insight Nursing Implication Ancient Plants have effects Respect that drugs are powerful 1800s Chemistry reveals active ingredients Drugs have specific mechanisms 1920s-40s Antibiotics save lives Drugs can cure diseases, not just palliate 1960s-70s Molecular targets identified Understand HOW drugs work 1980s-90s Genetics matter Different patients need different doses 2000s-present Precision medicine Combine genetics + pharmacology for individualized treatment"
           }
         ],
         "flashcardLinks": [
@@ -383,7 +389,8 @@
                 "name": "Endocrine",
                 "examples": "Insulin, oral hypoglycemics, thyroid replacement"
               }
-            ]
+            ],
+            "content": "Grouping drugs by what disease/symptom they treat"
           },
           {
             "blockId": "block1_9",
@@ -426,7 +433,8 @@
                 "examples": "Ciprofloxacin, levofloxacin, moxifloxacin",
                 "predictableEffect": "Risk of C. difficile; tendon rupture risk"
               }
-            ]
+            ],
+            "content": "Overview: Drug Name Pattern Reference"
           },
           {
             "blockId": "block1_10",
@@ -463,7 +471,8 @@
                 "examples": "Cough syrups with codeine",
                 "nursingRole": "Less common in clinical practice"
               }
-            ]
+            ],
+            "content": "Overview: DEA Classification System"
           }
         ],
         "flashcardLinks": [
@@ -537,7 +546,8 @@
                 "volunteers": "Millions using drug",
                 "successRate": "Ongoing monitoring; rare effects detected"
               }
-            ]
+            ],
+            "content": "Overview: FDA Drug Approval Timeline"
           },
           {
             "blockId": "block1_12",
@@ -574,7 +584,8 @@
                 "authority": "Federal",
                 "nursingAction": "Follow infection control recommendations; use antibiotics judiciously"
               }
-            ]
+            ],
+            "content": "Overview: Key Regulatory Bodies"
           }
         ],
         "flashcardLinks": [
@@ -607,13 +618,15 @@
             "blockId": "block1_13",
             "type": "comparison_table",
             "title": "The Three Names Every Drug Has",
-            "htmlReady": "<table><thead><tr><th>Type</th><th>Definition</th><th>Example (Acetaminophen)</th><th>Capitalization</th></tr></thead><tbody><tr><td><strong>Generic</strong></td><td>Official chemical designation</td><td>Acetaminophen</td><td>Lowercase</td></tr><tr><td><strong>Brand</strong></td><td>Manufacturer's proprietary name</td><td>Tylenol, Excedrin, Actamin</td><td>Capitalized</td></tr><tr><td><strong>Chemical</strong></td><td>Complete chemical description</td><td>N-(4-Hydroxyphenyl)acetamide</td><td>Varies</td></tr></tbody></table>"
+            "htmlReady": "<table><thead><tr><th>Type</th><th>Definition</th><th>Example (Acetaminophen)</th><th>Capitalization</th></tr></thead><tbody><tr><td><strong>Generic</strong></td><td>Official chemical designation</td><td>Acetaminophen</td><td>Lowercase</td></tr><tr><td><strong>Brand</strong></td><td>Manufacturer's proprietary name</td><td>Tylenol, Excedrin, Actamin</td><td>Capitalized</td></tr><tr><td><strong>Chemical</strong></td><td>Complete chemical description</td><td>N-(4-Hydroxyphenyl)acetamide</td><td>Varies</td></tr></tbody></table>",
+            "content": "Type Definition Example (Acetaminophen) Capitalization Generic Official chemical designation Acetaminophen Lowercase Brand Manufacturer's proprietary name Tylenol, Excedrin, Actamin Capitalized Chemical Complete chemical description N-(4-Hydroxyphenyl)acetamide Varies"
           },
           {
             "blockId": "block1_14",
             "type": "clinical_scenario",
             "title": "Medication Error Risk: The Acetaminophen Overdose",
-            "htmlReady": "<div class='scenario'><p><strong>Real Scenario:</strong> Mrs. Singh takes Tylenol for fever, acetaminophen for pain, and Excedrin Tension for headache — not realizing all three contain acetaminophen. Total: 1,500 mg in one dose (safe) but if repeated 3x daily = 4,500 mg/day (TOXIC; exceeds 4,000 mg/day max).</p><p><strong>Result:</strong> Acetaminophen toxicity → liver damage → potential liver failure</p><p><strong>Prevention:</strong> Always check the GENERIC name, not just brand names</p></div>"
+            "htmlReady": "<div class='scenario'><p><strong>Real Scenario:</strong> Mrs. Singh takes Tylenol for fever, acetaminophen for pain, and Excedrin Tension for headache — not realizing all three contain acetaminophen. Total: 1,500 mg in one dose (safe) but if repeated 3x daily = 4,500 mg/day (TOXIC; exceeds 4,000 mg/day max).</p><p><strong>Result:</strong> Acetaminophen toxicity → liver damage → potential liver failure</p><p><strong>Prevention:</strong> Always check the GENERIC name, not just brand names</p></div>",
+            "content": "Real Scenario: Mrs. Singh takes Tylenol for fever, acetaminophen for pain, and Excedrin Tension for headache — not realizing all three contain acetaminophen. Total: 1,500 mg in one dose (safe) but if repeated 3x daily = 4,500 mg/day (TOXIC; exceeds 4,000 mg/day max). Result: Acetaminophen toxicity → liver damage → potential liver failure Prevention: Always check the GENERIC name, not just brand names"
           }
         ],
         "flashcardLinks": [
@@ -668,7 +681,8 @@
                 "title": "Elimination (E)",
                 "description": "Drug removal from body, mainly through kidneys; half-life guides dosing intervals."
               }
-            ]
+            ],
+            "content": "Step-by-step drug journey through the body"
           },
           {
             "blockId": "block1_16",
@@ -726,7 +740,8 @@
                 "name": "Bioavailability",
                 "definition": "Fraction of administered dose reaching systemic circulation"
               }
-            ]
+            ],
+            "content": "Overview: Absorption (A)"
           },
           {
             "blockId": "block1_17",
@@ -737,7 +752,8 @@
               "Drug lipophilicity (fat-soluble drugs cross BBB and placenta)",
               "Plasma protein binding (only free drug is active; high binding can cause interactions)",
               "Volume of distribution (Vd) — theoretical measure of drug spread"
-            ]
+            ],
+            "content": "Overview: Distribution (D)"
           },
           {
             "blockId": "block1_18",
@@ -774,7 +790,8 @@
                 "example": "Grapefruit juice + simvastatin → statin level increases 10x → toxicity risk",
                 "nursingAction": "Advise patients to avoid grapefruit juice"
               }
-            ]
+            ],
+            "content": "Drug transformation into metabolites, primarily in liver via cytochrome P450"
           },
           {
             "blockId": "block1_19",
@@ -804,7 +821,8 @@
               "shortHalfLife": "Clears quickly; needs frequent dosing; missing one dose usually OK",
               "longHalfLife": "Clears slowly; dosed once daily or weekly; missing dose matters more",
               "example": "Acetaminophen (t1/2 = 2-3 hours) vs. Warfarin (t1/2 = 40 hours)"
-            }
+            },
+            "content": "Removal of drug from body"
           },
           {
             "blockId": "block1_20",
@@ -838,7 +856,8 @@
               "ed50": "Effective dose producing 50% of max effect",
               "td50": "Toxic dose producing toxicity in 50% of people",
               "therapeuticIndex": "TD50/ED50 ratio; higher = safer, lower = more dangerous"
-            }
+            },
+            "content": "What the drug does to the body"
           }
         ],
         "flashcardLinks": [
@@ -929,7 +948,8 @@
                   }
                 ]
               }
-            ]
+            ],
+            "content": "Overview: Types of Drug Interactions"
           },
           {
             "blockId": "block1_22",
@@ -966,7 +986,8 @@
                 "risk": "Digoxin toxicity (arrhythmias)",
                 "nursingAction": "Monitor digoxin level; reduce dose if needed"
               }
-            ]
+            ],
+            "content": "Overview: Most Common Dangerous Combinations"
           },
           {
             "blockId": "block1_23",
@@ -1013,7 +1034,8 @@
                 "action": "Document",
                 "include": "What you found, who you contacted, what decision was made"
               }
-            ]
+            ],
+            "content": "Overview: How to Check for & Manage Interactions"
           },
           {
             "blockId": "block1_33",
@@ -1032,7 +1054,8 @@
               "Plan timing strategies if applicable (separate chelating agents, stagger sedatives, follow hold parameters).",
               "When unsure, consult pharmacy or an interaction checker BEFORE giving the dose.",
               "Communicate the plan (hold/change/monitor) to the team and document the interaction and response."
-            ]
+            ],
+            "content": "Overview: Interaction Risk Screen (Nursing Quick Check)"
           }
         ],
         "flashcardLinks": [
@@ -1093,7 +1116,8 @@
                 "calculation": "(10 mg / 5 mg) × 1 mL = 2 mL",
                 "answer": "Draw 2 mL into syringe"
               }
-            ]
+            ],
+            "content": "Overview: Method 1: Formula Method"
           },
           {
             "blockId": "block1_25",
@@ -1112,7 +1136,8 @@
                 "crossMultiply": "250X = 500 × 1",
                 "solve": "X = 500/250 = 2 tablets"
               }
-            ]
+            ],
+            "content": "Overview: Method 2: Ratio-Proportion Method"
           },
           {
             "blockId": "block1_26",
@@ -1131,7 +1156,8 @@
                 "calculation": "X mL/hr = 1,350 units/hr × (500 mL / 25,000 units) = 27 mL/hr",
                 "unitCancellation": "units cancels, leaves mL/hr ✓"
               }
-            ]
+            ],
+            "content": "Set up fractions so units cancel; if units don't cancel, you made an error"
           },
           {
             "blockId": "block1_27",
@@ -1154,7 +1180,8 @@
                 "calculation": "mL/hr = 250 mL / 1 hour = 250 mL/hr",
                 "answer": "Set pump to 250 mL/hr"
               }
-            ]
+            ],
+            "content": "Overview: Complex Calculation Examples"
           },
           {
             "blockId": "block1_28",
@@ -1167,7 +1194,8 @@
               "Dose doesn't match patient characteristics (high dose for elderly with renal failure)",
               "Inconsistent with clinical picture (potassium supplement for hyperkalemia patient)"
             ],
-            "action": "ALWAYS question these; double-check with another nurse; verify with prescriber if uncertain"
+            "action": "ALWAYS question these; double-check with another nurse; verify with prescriber if uncertain",
+            "content": "Overview: Red Flags for Dangerous Doses"
           },
           {
             "blockId": "block1_29",
@@ -1182,7 +1210,8 @@
               "Right Documentation: Signed chart/order",
               "Right Reason: Clinically appropriate for patient's diagnosis",
               "Right Response: Monitor for therapeutic/adverse effects"
-            ]
+            ],
+            "content": "Overview: Before Administering ANY Medication"
           }
         ],
         "flashcardLinks": [
@@ -1388,7 +1417,8 @@
                 "term": "Volume of Distribution (Vd)",
                 "definition": "Theoretical volume drug distributes into; affects dosing and overdose reversal"
               }
-            ]
+            ],
+            "content": "Overview: Pharmacology Terms A-Z"
           }
         ],
         "flashcardLinks": [
@@ -1516,7 +1546,8 @@
                 "Document: Drug given, observation completed, patient educated, no adverse reaction"
               ]
             },
-            "outcome": "Jacob tolerates levofloxacin well. Fever resolves by day 3; pneumonia resolved by discharge. Follow-up confirms full recovery."
+            "outcome": "Jacob tolerates levofloxacin well. Fever resolves by day 3; pneumonia resolved by discharge. Follow-up confirms full recovery.",
+            "content": "Overview: Case: Jacob Chen, Pneumonia with Penicillin Allergy"
           }
         ],
         "lessons": [
@@ -1657,7 +1688,8 @@
                   "Nursing response: DO NOT ADMINISTER; contact prescriber; propose acetaminophen or topical NSAID alternative; if prescriber insists, implement strict monitoring protocol with baseline labs, daily clinical checks, repeat labs at day 3-7"
                 ]
               }
-            ]
+            ],
+            "content": "Overview: Review Questions"
           }
         ],
         "content": "<h4>1.11 Review Questions & Assessment</h4>\n<p>Nursing students must master these foundational concepts to ensure safe and effective medication administration in all clinical settings. The material in this section represents essential knowledge for entry-level nursing practice and provides the foundation for understanding more complex drug interactions, adverse effects, and clinical decision-making in medication administration.</p>\n<p>Throughout clinical practice, nurses will encounter situations that require application of these fundamental principles. This comprehensive coverage ensures that nursing students have the depth of knowledge necessary to make sound clinical judgments about medication use.</p>\n<p>Review and Reflection: As you complete this section, take time to reflect on: 1. How these concepts relate to medications you have encountered in clinical practice 2. What questions you still have about these concepts 3. How you might apply this knowledge to improve medication safety 4. What additional resources you might consult to deepen your understanding 5. How these concepts connect to other aspects of pharmacology you are studying</p>\n<p>This comprehensive section provides the detailed knowledge necessary for competent nursing practice in medication administration and patient care involving medications. Mastering this material is foundational to your development as a professional nurse.</p>\n<h5>1.11.1 REVIEW QUESTIONS & ASSESSMENT</h5>\n<p>The following questions are designed to test your understanding of the foundational concepts presented in this chapter. These questions represent the types of clinical reasoning required for safe medication administration.</p>\n<p>For each question, select the best answer and consider why the other options are incorrect.</p>\n<ol>\n<li>1. A 72-year-old patient with a history of kidney disease is prescribed a medication that is primarily renally eliminated. Which of the following is the most important nursing action?</li>\n</ol>\n<p>A) Administer the standard dose as prescribed, as kidney disease doesn't affect drug elimination B) Ensure renal function is assessed and doses adjusted based on creatinine clearance C) Request that an oral medication be given instead of an intravenous route D) Double the dose to ensure therapeutic levels despite kidney disease</p>\n<p>Correct answer: B Explanation: Kidney disease significantly reduces renal drug elimination. Doses must be adjusted based on renal function (measured by creatinine clearance). Standard doses could result in dangerous drug accumulation. Option A ignores the pharmacokinetic impact of kidney disease. Option C addresses route but not the real issue. Option D would be dangerous.</p>\n<ol>\n<li>2. A patient taking warfarin (anticoagulant) begins taking a newly prescribed NSAID. Which pharmacological principle best explains why this combination is concerning?</li>\n</ol>\n<p>A) Synergistic interaction – both drugs increase bleeding risk through different mechanisms B) Antagonistic interaction – the NSAID reduces warfarin effectiveness C) Additive metabolism – both drugs compete for the same liver enzyme D) First-pass metabolism – the NSAID prevents warfarin from being absorbed</p>\n<p>Correct answer: A Explanation: Both warfarin (interferes with clotting factor synthesis) and NSAIDs (inhibit platelet function and can cause GI bleeding) increase bleeding risk. This is a synergistic interaction where the combined effect is greater than the sum of individual effects. This is a clinically significant interaction requiring monitoring.</p>\n<ol>\n<li>3. A patient receives a dose of intravenous medication at 0800. The drug has a half-life of 2 hours. Approximately how much drug will remain in the patient's system at 1400?</li>\n</ol>\n<p>A) 50% of original dose B) 25% of original dose C) 12.5% of original dose D) 6.25% of original dose</p>\n<p>Correct answer: D Explanation: With a 2-hour half-life: 0800: 100% remains 1000: 50% remains (1 half-life) 1200: 25% remains (2 half-lives) 1400: 12.5% remains (3 half-lives) Actually, let me recalculate: at 1400 it's 6 hours after administration (3 half-lives), so 6.25% remains.</p>\n<ol>\n<li>4. A 5-year-old child weighing 20 kg is prescribed amoxicillin 25 mg/kg. How many mg should the child receive?</li>\n</ol>\n<p>A) 100 mg B) 250 mg C) 500 mg D) 1000 mg</p>\n<p>Correct answer: C Explanation: Dose = 25 mg/kg × 20 kg = 500 mg. This demonstrates weight-based pediatric dosing.</p>\n<ol>\n<li>5. Which of the following statements best explains why a patient might develop tolerance to a benzodiazepine (anti-anxiety medication)?</li>\n</ol>\n<p><strong>A)</strong> The drug is being metabolized faster over time B) Receptors become less sensitive to the drug with chronic exposure C) The patient's liver is destroying the drug before it reaches receptors D) The drug causes permanent damage to the brain's anxiety centers</p>\n<p>Correct answer: B Explanation: Tolerance develops primarily through receptor desensitization – the receptor becomes less responsive to the drug. The other options don't explain tolerance. Option D is incorrect – tolerance is reversible, and receptors return to baseline sensitivity with drug discontinuation.</p>\n<ol>\n<li>6. A patient reports a rash that appeared 8 hours after taking amoxicillin. What type of hypersensitivity reaction is this most likely?</li>\n</ol>\n<p>A) Immediate (Type I) hypersensitivity B) Delayed (Type IV) hypersensitivity C) Cytotoxic (Type II) hypersensitivity D) Immune complex (Type III) hypersensitivity</p>\n<p>Correct answer: B Explanation: Immediate hypersensitivity reactions occur within minutes to hours and involve anaphylaxis, wheezing, or angioedema. A rash appearing 8 hours after the first dose is more consistent with delayed hypersensitivity. This distinction is clinically important because it may indicate whether the patient can safely receive other beta-lactam antibiotics.</p>\n<ol>\n<li>7. Which of the following best explains why a drug might have a high volume of distribution?</li>\n</ol>\n<p><strong>A)</strong> The drug is highly protein-bound in plasma B) The drug is lipid-soluble and distributes extensively into tissues C) The drug is eliminated rapidly by the kidneys D) The drug is metabolized extensively by the liver</p>\n<p>Correct answer: B Explanation: Volume of distribution (Vd) describes how extensively a drug distributes from plasma into tissues. Lipid-soluble drugs penetrate tissues well and have large Vd. Protein-bound drugs actually have small Vd because they remain in plasma. Options C and D describe elimination, not distribution.</p>\n<ol>\n<li>8. A 68-year-old patient with liver disease is prescribed a drug that undergoes extensive hepatic metabolism. What pharmacokinetic consequence is most likely?</li>\n</ol>\n<p>A) Faster metabolism and lower drug levels B) Slower metabolism and higher drug levels C) Unchanged metabolism despite liver disease D) Complete inability to metabolize the drug</p>\n<p>Correct answer: B Explanation: Liver disease reduces hepatic metabolism. Drugs that undergo extensive hepatic metabolism accumulate, resulting in higher-than-normal plasma levels and risk of toxicity. Doses typically need to be reduced.</p>\n<ol>\n<li>9. A patient takes a medication that undergoes significant first-pass metabolism. Which route of administration would result in the highest bioavailability?</li>\n</ol>\n<p>A) Oral (by mouth) B) Intravenous (directly into vein) C) Intramuscular (into muscle) D) Subcutaneous (under skin)</p>\n<p>Correct answer: B Explanation: Intravenous administration bypasses first-pass metabolism. Oral administration results in significant metabolism before the drug reaches systemic circulation. Intramuscular and subcutaneous are intermediate. Bioavailability is highest with IV (100%), lower with oral.</p>\n<ol>\n<li>10. Which of the following is an example of a pharmacodynamic drug interaction?</li>\n</ol>\n<p>A) One drug inhibits the metabolism of another, causing its levels to rise B) Two drugs that both affect blood pressure produce greater blood pressure lowering together C) One drug reduces the absorption of another in the gastrointestinal tract D) One drug induces metabolism of another, causing its levels to fall</p>\n<p>Correct answer: B Explanation: Pharmacodynamic interactions occur when drugs produce similar or opposing effects. Two antihypertensives together produce greater blood pressure lowering (additive/synergistic effect). Options A, C, and D describe pharmacokinetic interactions.</p>\n<p>These questions represent the foundation of clinical pharmacology reasoning that nurses must develop. As you progress in your studies, you will encounter more complex scenarios that require integration of pharmacological knowledge with patient assessment and clinical judgment.</p>\n<p>Reflection Questions for Further Learning: 1. How would your approach to medication administration change if you discovered a patient had liver disease or kidney disease? 2. What information would you want to gather before administering a medication to a patient reporting a drug allergy? 3. How would you educate a patient about why they need therapeutic drug level monitoring for a medication like digoxin? 4. What questions would you ask a patient to identify potential drug interactions? 5. How would you explain pharmacokinetics and pharmacodynamics to a patient in terms they could understand?</p>"
