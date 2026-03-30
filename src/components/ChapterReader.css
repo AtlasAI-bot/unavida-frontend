@@ -61,6 +61,14 @@
   font-weight: 800;
 }
 
+.reader-main-wrap h5 {
+  font-size: 1.04rem;
+  line-height: 1.35;
+  margin: 12px 0 8px;
+  color: #0b5cad;
+  font-weight: 800;
+}
+
 .reader-main-wrap p {
   font-size: var(--reader-size);
   line-height: var(--reader-line);
@@ -103,6 +111,13 @@
   font-size: 1.1rem;
 }
 
+.reader-html h5 {
+  margin: 10px 0 8px;
+  font-size: 1rem;
+  color: #0b5cad;
+  font-weight: 800;
+}
+
 .reader-html p {
   margin: 0 0 22px !important;
   line-height: 1.6;
@@ -136,6 +151,13 @@
 .reader-container.dark .reader-main-wrap h4,
 .reader-container.darkplus .reader-main-wrap h4 {
   color: #b9d8ff;
+}
+
+.reader-container.dark .reader-main-wrap h5,
+.reader-container.darkplus .reader-main-wrap h5,
+.reader-container.dark .reader-html h5,
+.reader-container.darkplus .reader-html h5 {
+  color: #8fd9ff;
 }
 
 .reader-container.dark .reader-subtle,
