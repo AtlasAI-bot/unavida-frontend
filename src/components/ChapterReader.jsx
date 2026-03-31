@@ -155,6 +155,19 @@ export const ChapterReader = () => {
     ch5_3_ratio_proportion: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch05_s02_v01_ratio-proportion-dimensional-analysis1.mp4',
     ch5_8_iv_flow_rates: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch05_s03_v01_iv-rate-drip-calculations%20.mp4',
     ch5_10_safety: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch05_s04_v01_Units%20Don%E2%80%99t%20Lie.mp4',
+
+    // Chapter 9
+    ch9_1_introduction: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch09_s01_v01_intro-antimicrobial-therapy.mp4',
+    ch9_2_diagnostics: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch09_s02_v01_microbiology-diagnostics.mp4',
+    ch9_3_principles: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch09_s03_v01_antibiotic-decisionmaking-p.mp4',
+    ch9_5_beta_lactams: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch09_s04_v01_beta-lactam-antibiotics.mp4',
+    ch9_6_protein_synthesis: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch09_s05_v01_protein-synthesis-inhibitor.mp4',
+    ch9_7_nucleic_acid: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch09_s06_v01_nucleicacid-folate-antagoni.mp4',
+    ch9_8_folate_antagonists: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch09_s06_v01_nucleicacid-folate-antagoni.mp4',
+    ch9_9_resistance: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch09_s07_v01_antibiotic-resistance-stewa.mp4',
+    ch9_10_adverse_effects_interactions: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch09_s08_v01_adverse-effects-interaction.mp4',
+    ch9_11_special_populations: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch09_s09_v01_special-populations-dose-ad.mp4',
+    ch9_12_nursing_considerations: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch09_s10_v01_nursing-considerations-pati.mp4',
   };
 
   const currentVideoUrl = selectedSection ? sectionVideoMap[selectedSection.id] : null;

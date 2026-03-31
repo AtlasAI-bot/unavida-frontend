@@ -234,13 +234,117 @@ const sectionVideos = {
       title: 'Units Don’t Lie',
       src: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch05_s04_v01_Units%20Don%E2%80%99t%20Lie.mp4',
     },
+
+    // Chapter 9 videos
+    {
+      id: 'ch9_1_introduction',
+      chapterNumber: 9,
+      chapter: 'Chapter 9: Antibacterial Antibiotics & Antimicrobial Therapy',
+      sectionNumber: '9.1',
+      section: 'Introduction to Antimicrobial Therapy',
+      title: 'Introduction to Antimicrobial Therapy',
+      src: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch09_s01_v01_intro-antimicrobial-therapy.mp4',
+    },
+    {
+      id: 'ch9_2_diagnostics',
+      chapterNumber: 9,
+      chapter: 'Chapter 9: Antibacterial Antibiotics & Antimicrobial Therapy',
+      sectionNumber: '9.2',
+      section: 'Microbiology & Diagnostics for Therapy Selection',
+      title: 'Microbiology & Diagnostics',
+      src: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch09_s02_v01_microbiology-diagnostics.mp4',
+    },
+    {
+      id: 'ch9_3_principles',
+      chapterNumber: 9,
+      chapter: 'Chapter 9: Antibacterial Antibiotics & Antimicrobial Therapy',
+      sectionNumber: '9.3',
+      section: 'Principles of Antibiotic Therapy',
+      title: 'Antibiotic Decision-Making Principles',
+      src: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch09_s03_v01_antibiotic-decisionmaking-p.mp4',
+    },
+    {
+      id: 'ch9_5_beta_lactams',
+      chapterNumber: 9,
+      chapter: 'Chapter 9: Antibacterial Antibiotics & Antimicrobial Therapy',
+      sectionNumber: '9.5',
+      section: 'Beta-Lactam Antibiotics',
+      title: 'Beta-Lactam Antibiotics',
+      src: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch09_s04_v01_beta-lactam-antibiotics.mp4',
+    },
+    {
+      id: 'ch9_6_protein_synthesis',
+      chapterNumber: 9,
+      chapter: 'Chapter 9: Antibacterial Antibiotics & Antimicrobial Therapy',
+      sectionNumber: '9.6',
+      section: 'Protein Synthesis Inhibitors',
+      title: 'Protein Synthesis Inhibitors',
+      src: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch09_s05_v01_protein-synthesis-inhibitor.mp4',
+    },
+    {
+      id: 'ch9_7_nucleic_acid',
+      chapterNumber: 9,
+      chapter: 'Chapter 9: Antibacterial Antibiotics & Antimicrobial Therapy',
+      sectionNumber: '9.7',
+      section: 'Nucleic Acid Synthesis/Function Inhibitors',
+      title: 'Nucleic Acid + Folate Antagonists',
+      src: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch09_s06_v01_nucleicacid-folate-antagoni.mp4',
+    },
+    {
+      id: 'ch9_9_resistance',
+      chapterNumber: 9,
+      chapter: 'Chapter 9: Antibacterial Antibiotics & Antimicrobial Therapy',
+      sectionNumber: '9.9',
+      section: 'Antibiotic Resistance (Deeper Dive)',
+      title: 'Antibiotic Resistance & Stewardship',
+      src: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch09_s07_v01_antibiotic-resistance-stewa.mp4',
+    },
+    {
+      id: 'ch9_10_adverse_effects_interactions',
+      chapterNumber: 9,
+      chapter: 'Chapter 9: Antibacterial Antibiotics & Antimicrobial Therapy',
+      sectionNumber: '9.10',
+      section: 'Adverse Effects, Interactions, and Safety Alerts',
+      title: 'Adverse Effects & Interactions',
+      src: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch09_s08_v01_adverse-effects-interaction.mp4',
+    },
+    {
+      id: 'ch9_11_special_populations',
+      chapterNumber: 9,
+      chapter: 'Chapter 9: Antibacterial Antibiotics & Antimicrobial Therapy',
+      sectionNumber: '9.11',
+      section: 'Special Populations & Dose Adjustments',
+      title: 'Special Populations & Dose Adjustments',
+      src: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch09_s09_v01_special-populations-dose-ad.mp4',
+    },
+    {
+      id: 'ch9_12_nursing_considerations',
+      chapterNumber: 9,
+      chapter: 'Chapter 9: Antibacterial Antibiotics & Antimicrobial Therapy',
+      sectionNumber: '9.12',
+      section: 'Nursing Considerations & Patient Education',
+      title: 'Nursing Considerations & Patient Education',
+      src: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch09_s10_v01_nursing-considerations-pati.mp4',
+    },
   ],
   NUR2110: [],
 };
 
+const parseSectionNumber = (section) => section.split('.').map((part) => Number(part));
+
 const sortBySection = (a, b) => {
   if (a.chapterNumber !== b.chapterNumber) return a.chapterNumber - b.chapterNumber;
-  return Number(a.sectionNumber) - Number(b.sectionNumber);
+
+  const aParts = parseSectionNumber(a.sectionNumber);
+  const bParts = parseSectionNumber(b.sectionNumber);
+  const len = Math.max(aParts.length, bParts.length);
+
+  for (let i = 0; i < len; i += 1) {
+    const diff = (aParts[i] || 0) - (bParts[i] || 0);
+    if (diff !== 0) return diff;
+  }
+
+  return 0;
 };
 
 export const VideoLibraryPage = () => {
