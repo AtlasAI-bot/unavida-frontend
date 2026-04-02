@@ -259,6 +259,20 @@ export const ChapterReader = () => {
     ch9_3_principles: [
       '/images/ch9/section-9-3/ch9_s9_3_empiric_targeted_prophylactic.jpg',
       '/images/ch9/section-9-3/ch9_s9_3_source_control_outcomes.jpg',
+      '/images/ch9/section-9-3/ch9_s9_3_timing_deescalation_duration.jpg',
+      '/images/ch9/section-9-3/ch9_s9_3_avoid_broad_spectrum_overuse.jpg',
+    ],
+    ch9_4_pkpd: [
+      '/images/ch9/section-9-4/ch9_s9_4_time_vs_concentration_dependent.jpg',
+      '/images/ch9/section-9-4/ch9_s9_4_post_antibiotic_effect.jpg',
+      '/images/ch9/section-9-4/ch9_s9_4_tissue_penetration.jpg',
+      '/images/ch9/section-9-4/ch9_s9_4_renal_vs_hepatic_clearance.jpg',
+      '/images/ch9/section-9-4/ch9_s9_4_therapeutic_drug_monitoring.jpg',
+    ],
+    ch9_5_beta_lactams: [
+      '/images/ch9/section-9-5/ch9_s9_5_pbp_cell_wall_lysis.jpg',
+      '/images/ch9/section-9-5/ch9_s9_5_natural_penicillins.jpg',
+      '/images/ch9/section-9-5/ch9_s9_5_anti_staph_penicillins.jpg',
     ],
   };
 
