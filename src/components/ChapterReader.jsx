@@ -2658,10 +2658,27 @@ export const ChapterReader = () => {
                         );
                       };
 
+                      const injectChapter9Images = (html) => {
+                        if (!html) return html;
+                        let out = String(html);
+                        const images = currentSectionImages || [];
+                        if (!images.length) return out;
+
+                        const figFor = (src, idx) => `\n<figure style="margin: 14px 0; padding: 10px; border: 1px solid var(--panel-border); border-radius: 12px; background: var(--panel);">\n  <img class="reader-zoomable" src="${src}" alt="Chapter 9 visual ${idx + 1}" style="width: 100%; max-height: 420px; object-fit: contain;" loading="lazy" />\n</figure>\n`;
+
+                        images.forEach((src, idx) => {
+                          if (!src || out.includes(src)) return;
+                          out += figFor(src, idx);
+                        });
+                        return out;
+                      };
+
                       if (looksLikeHtml(selectedSection.content)) {
                         const html = activeChapterId.startsWith('ch5')
                           ? injectChapter5Images(selectedSection.content)
-                          : injectChapter3Images(selectedSection.content);
+                          : activeChapterId.startsWith('ch9')
+                            ? injectChapter9Images(selectedSection.content)
+                            : injectChapter3Images(selectedSection.content);
 
                         return (
                           <div
