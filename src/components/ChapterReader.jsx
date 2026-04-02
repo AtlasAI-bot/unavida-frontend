@@ -5,6 +5,7 @@ import chapter2Data from '../data/CHAPTER_2_UNAVIDA_PRODUCTION.json';
 import chapter3Data from '../data/CHAPTER_3_UNAVIDA_PRODUCTION.json';
 import chapter5Data from '../data/CHAPTER_5_UNAVIDA_PRODUCTION.json';
 import chapter9Data from '../data/CHAPTER_9_UNAVIDA_PRODUCTION.json';
+import chapter10Data from '../data/CHAPTER_10_UNAVIDA_PRODUCTION.json';
 import chapter2SeedSections from '../content/reader/chapter2SeedSections';
 import './ChapterReader.css';
 
@@ -260,6 +261,7 @@ export const ChapterReader = () => {
   const chapter3Sections = [...(chapter3Data.chapter.sections || [])];
   const chapter5Sections = [...(chapter5Data.chapter.sections || [])];
   const chapter9Sections = [...(chapter9Data.chapter.sections || [])];
+  const chapter10Sections = [...(chapter10Data.chapter.sections || [])];
 
   const getSectionSortKey = (section) => {
     if (!section) return 999;
@@ -331,7 +333,7 @@ export const ChapterReader = () => {
     },
   ];
 
-  const allSections = [...chapter1Sections, ...chapter2Sections, ...chapter3Sections, ...chapter5Sections, ...chapter9Sections, ...referencesAllSections];
+  const allSections = [...chapter1Sections, ...chapter2Sections, ...chapter3Sections, ...chapter5Sections, ...chapter9Sections, ...chapter10Sections, ...referencesAllSections];
   const activeSections = activeChapterId === 'references_all'
     ? referencesAllSections
     : activeChapterId.startsWith('ch2')
@@ -342,7 +344,9 @@ export const ChapterReader = () => {
           ? chapter5Sections
           : activeChapterId.startsWith('ch9')
             ? chapter9Sections
-            : chapter1Sections;
+            : activeChapterId.startsWith('ch10')
+              ? chapter10Sections
+              : chapter1Sections;
 
   const currentSectionImages = selectedSection ? (sectionIllustrationMap[selectedSection.id] || []) : [];
 
@@ -486,9 +490,9 @@ export const ChapterReader = () => {
   const navChapter3Sections = chapter3Sections;
   const navChapter5Sections = chapter5Sections;
   const navChapter9Sections = chapter9Sections;
+  const navChapter10Sections = chapter10Sections;
 
   const chapterScaffoldTitles = [
-    'Chapter 10: Antivirals',
     'Chapter 11: Antifungals',
     'Chapter 14: Antineoplastics',
     'Chapter 42: Cardiovascular Introduction',
@@ -2218,6 +2222,25 @@ export const ChapterReader = () => {
             </button>
             <div className="reader-sec-wrap">
               {navChapter9Sections.map((section) => (
+                <a
+                  key={section.id}
+                  className={`reader-sec ${selectedSection?.id === section.id ? 'active' : ''}`}
+                  onClick={() => handleSectionClick(section)}
+                >
+                  {section.title}
+                  <span style={{ fontSize: '11px', color: 'var(--muted)' }}> ({getSectionWordCount(section)} words)</span>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className={`reader-chap ${activeChapterId.startsWith('ch10') ? 'open' : ''}`}>
+            <button className="reader-chap-btn" onClick={(e) => handleChapClick(e.currentTarget.closest('.reader-chap'))}>
+              Chapter 10: Antivirals
+              <small>▼</small>
+            </button>
+            <div className="reader-sec-wrap">
+              {navChapter10Sections.map((section) => (
                 <a
                   key={section.id}
                   className={`reader-sec ${selectedSection?.id === section.id ? 'active' : ''}`}
