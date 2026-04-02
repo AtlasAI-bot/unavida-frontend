@@ -2678,15 +2678,101 @@ export const ChapterReader = () => {
                       const injectChapter9Images = (html) => {
                         if (!html) return html;
                         let out = String(html);
-                        const images = currentSectionImages || [];
-                        if (!images.length) return out;
 
-                        const figFor = (src, idx) => `\n<figure style="margin: 14px 0; padding: 10px; border: 1px solid var(--panel-border); border-radius: 12px; background: var(--panel);">\n  <img class="reader-zoomable" src="${src}" alt="Chapter 9 visual ${idx + 1}" style="width: 100%; max-height: 420px; object-fit: contain;" loading="lazy" />\n</figure>\n`;
+                        const escapeRegExp = (s = '') => String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                        const injectAfterH4Token = (srcHtml, headingToken, imgSrc, alt) => {
+                          if (!srcHtml || !imgSrc || srcHtml.includes(imgSrc)) return srcHtml;
+                          const h4 = new RegExp(`<h4>[^<]*${escapeRegExp(headingToken)}[^<]*<\\/h4>`, 'i');
+                          const fig = `\n<figure class="reader-figure">\n  <img class="reader-zoomable" src="${imgSrc}" alt="${alt}" />\n</figure>\n`;
+                          if (h4.test(srcHtml)) return srcHtml.replace(h4, (m) => `${m}${fig}`);
+                          return srcHtml;
+                        };
 
-                        images.forEach((src, idx) => {
-                          if (!src || out.includes(src)) return;
-                          out += figFor(src, idx);
+                        const chapter9Anchors = {
+                          ch9_1_introduction: [
+                            ['9.1.1', '/images/ch9/section-9-1/ch9_s9_1_antimicrobial_vs_antibiotic.jpg', '9.1.1 visual'],
+                            ['9.1.2', '/images/ch9/section-9-1/ch9_s9_1_spectrum_and_gram.jpg', '9.1.2 visual'],
+                            ['9.1.3', '/images/ch9/section-9-1/ch9_s9_1_colonization_vs_infection.jpg', '9.1.3 visual'],
+                            ['9.1.4', '/images/ch9/section-9-1/ch9_s9_1_resistance_overview.jpg', '9.1.4 visual'],
+                          ],
+                          ch9_2_diagnostics: [
+                            ['9.2.1', '/images/ch9/section-9-2/ch9_s9_2_culture_collection_steps.jpg', '9.2.1 visual'],
+                            ['9.2.2', '/images/ch9/section-9-2/ch9_s9_2_gram_stain_basics.jpg', '9.2.2 visual'],
+                            ['9.2.3', '/images/ch9/section-9-2/ch9_s9_2_mic_interpretation.jpg', '9.2.3 visual'],
+                            ['9.2.4', '/images/ch9/section-9-2/ch9_s9_2_pcr_panels_limitations.jpg', '9.2.4 visual'],
+                          ],
+                          ch9_3_principles: [
+                            ['9.3.1', '/images/ch9/section-9-3/ch9_s9_3_empiric_targeted_prophylactic.jpg', '9.3.1 visual'],
+                            ['9.3.2', '/images/ch9/section-9-3/ch9_s9_3_source_control_outcomes.jpg', '9.3.2 visual'],
+                            ['9.3.3', '/images/ch9/section-9-3/ch9_s9_3_timing_deescalation_duration.jpg', '9.3.3 visual'],
+                            ['9.3.5', '/images/ch9/section-9-3/ch9_s9_3_avoid_broad_spectrum_overuse.jpg', '9.3.5 visual'],
+                          ],
+                          ch9_4_pkpd: [
+                            ['9.4.1', '/images/ch9/section-9-4/ch9_s9_4_time_vs_concentration_dependent.jpg', '9.4.1 visual'],
+                            ['9.4.2', '/images/ch9/section-9-4/ch9_s9_4_post_antibiotic_effect.jpg', '9.4.2 visual'],
+                            ['9.4.3', '/images/ch9/section-9-4/ch9_s9_4_tissue_penetration.jpg', '9.4.3 visual'],
+                            ['9.4.4', '/images/ch9/section-9-4/ch9_s9_4_renal_vs_hepatic_clearance.jpg', '9.4.4 visual'],
+                            ['9.4.5', '/images/ch9/section-9-4/ch9_s9_4_therapeutic_drug_monitoring.jpg', '9.4.5 visual'],
+                          ],
+                          ch9_5_beta_lactams: [
+                            ['9.5.1', '/images/ch9/section-9-5/ch9_s9_5_pbp_cell_wall_lysis.jpg', '9.5.1 visual'],
+                            ['9.5.2.1', '/images/ch9/section-9-5/ch9_s9_5_natural_penicillins.jpg', '9.5.2.1 visual'],
+                            ['9.5.2.2', '/images/ch9/section-9-5/ch9_s9_5_anti_staph_penicillins.jpg', '9.5.2.2 visual'],
+                            ['9.5.2.3', '/images/ch9/section-9-5/ch9_s9_5_aminopenicillins.jpg', '9.5.2.3 visual'],
+                            ['9.5.2.4', '/images/ch9/section-9-5/ch9_s9_5_antipseudomonal_penicillins.jpg', '9.5.2.4 visual'],
+                            ['9.5.3.1', '/images/ch9/section-9-5/ch9_s9_5_cephalosporin_first_gen.jpg', '9.5.3.1 visual'],
+                            ['9.5.3.2', '/images/ch9/section-9-5/ch9_s9_5_cephalosporin_second_gen.jpg', '9.5.3.2 visual'],
+                            ['9.5.3.3', '/images/ch9/section-9-5/ch9_s9_5_cephalosporin_third_gen.jpg', '9.5.3.3 visual'],
+                            ['9.5.3.4', '/images/ch9/section-9-5/ch9_s9_5_cephalosporin_fourth_gen.jpg', '9.5.3.4 visual'],
+                            ['9.5.3.5', '/images/ch9/section-9-5/ch9_s9_5_cephalosporin_fifth_gen.jpg', '9.5.3.5 visual'],
+                            ['9.5.4', '/images/ch9/section-9-5/ch9_s9_5_carbapenems.jpg', '9.5.4 visual'],
+                            ['9.5.5', '/images/ch9/section-9-5/ch9_s9_5_aztreonam.jpg', '9.5.5 visual'],
+                            ['9.5.6', '/images/ch9/section-9-5/ch9_s9_5_beta_lactamase_inhibitors.jpg', '9.5.6 visual'],
+                            ['9.5.7', '/images/ch9/section-9-10/ch9_s9_10_beta_lactam_safety.jpg', '9.5.7 visual'],
+                          ],
+                          ch9_6_protein_synthesis: [
+                            ['9.6.1', '/images/ch9/section-9-6/ch9_s9_6_macrolides.jpg', '9.6.1 visual'],
+                            ['9.6.3', '/images/ch9/section-9-6/ch9_s9_6_aminoglycosides.jpg', '9.6.3 visual'],
+                            ['9.6.4', '/images/ch9/section-9-6/ch9_s9_6_clindamycin.jpg', '9.6.4 visual'],
+                            ['9.6.5', '/images/ch9/section-9-6/ch9_s9_6_linezolid.jpg', '9.6.5 visual'],
+                          ],
+                          ch9_7_nucleic_acid: [
+                            ['9.7.1', '/images/ch9/section-9-7/ch9_s9_7_fluoroquinolones.jpg', '9.7.1 visual'],
+                            ['9.7.2', '/images/ch9/section-9-7/ch9_s9_7_rifampin.jpg', '9.7.2 visual'],
+                            ['9.7.3', '/images/ch9/section-9-7/ch9_s9_7_metronidazole.jpg', '9.7.3 visual'],
+                            ['9.7.4', '/images/ch9/section-9-7/ch9_s9_7_nitrofurantoin.jpg', '9.7.4 visual'],
+                          ],
+                          ch9_8_folate_antagonists: [
+                            ['9.8.1', '/images/ch9/section-9-8/ch9_s9_8_folate_pathway_inhibition.jpg', '9.8.1 visual'],
+                            ['9.8.2', '/images/ch9/section-9-8/ch9_s9_8_tmpsmx_key_indications.jpg', '9.8.2 visual'],
+                            ['9.8.3', '/images/ch9/section-9-8/ch9_s9_8_hypersensitivity_hematologic_risks.jpg', '9.8.3 visual'],
+                            ['9.8.4', '/images/ch9/section-9-8/ch9_s9_8_potassium_renal_interactions.jpg', '9.8.4 visual'],
+                          ],
+                          ch9_9_resistance: [
+                            ['9.9.1', '/images/ch9/section-9-9/ch9_s9_9_mechanisms_of_resistance.jpg', '9.9.1 visual'],
+                            ['9.9.2', '/images/ch9/section-9-9/ch9_s9_9_clinical_implications.jpg', '9.9.2 visual'],
+                            ['9.9.3', '/images/ch9/section-9-9/ch9_s9_9_stewardship_tools.jpg', '9.9.3 visual'],
+                          ],
+                          ch9_10_adverse_effects_interactions: [
+                            ['9.10.1', '/images/ch9/section-9-10/ch9_s9_10_allergy_vs_intolerance.jpg', '9.10.1 visual'],
+                            ['9.10.2', '/images/ch9/section-9-10/ch9_s9_10_organ_toxicities.jpg', '9.10.2 visual'],
+                            ['9.10.3', '/images/ch9/section-9-10/ch9_s9_10_qt_prolongation_risk.jpg', '9.10.3 visual'],
+                            ['9.10.4', '/images/ch9/section-9-10/ch9_s9_10_cdiff_superinfection.jpg', '9.10.4 visual'],
+                            ['9.10.5.1', '/images/ch9/section-9-10/ch9_s9_10_antibiotic_warfarin_inr.jpg', '9.10.5.1 visual'],
+                            ['9.10.5.2', '/images/ch9/section-9-10/ch9_s9_10_rifampin_enzyme_induction.jpg', '9.10.5.2 visual'],
+                            ['9.10.5.3', '/images/ch9/section-9-10/ch9_s9_10_chelation_and_alcohol_counseling.jpg', '9.10.5.3 visual'],
+                            ['9.10.5.4', '/images/ch9/section-9-10/ch9_s9_10_chelation_and_alcohol_counseling.jpg', '9.10.5.4 visual'],
+                          ],
+                          ch9_11_special_populations: [
+                            ['9.11.1', '/images/ch9/section-9-11/ch9_s9_11_special_populations_overview.jpg', '9.11 visual'],
+                          ],
+                        };
+
+                        const anchors = chapter9Anchors[selectedSection?.id] || [];
+                        anchors.forEach(([token, src, alt]) => {
+                          out = injectAfterH4Token(out, token, src, alt);
                         });
+
                         return out;
                       };
 
