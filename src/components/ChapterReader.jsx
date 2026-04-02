@@ -273,9 +273,35 @@ export const ChapterReader = () => {
       '/images/ch9/section-9-5/ch9_s9_5_pbp_cell_wall_lysis.jpg',
       '/images/ch9/section-9-5/ch9_s9_5_natural_penicillins.jpg',
       '/images/ch9/section-9-5/ch9_s9_5_anti_staph_penicillins.jpg',
+      '/images/ch9/section-9-5/ch9_s9_5_aminopenicillins.jpg',
+      '/images/ch9/section-9-5/ch9_s9_5_antipseudomonal_penicillins.jpg',
+      '/images/ch9/section-9-5/ch9_s9_5_cephalosporin_first_gen.jpg',
+      '/images/ch9/section-9-5/ch9_s9_5_cephalosporin_second_gen.jpg',
+      '/images/ch9/section-9-5/ch9_s9_5_cephalosporin_third_gen.jpg',
+      '/images/ch9/section-9-5/ch9_s9_5_cephalosporin_fourth_gen.jpg',
+      '/images/ch9/section-9-5/ch9_s9_5_cephalosporin_fifth_gen.jpg',
+      '/images/ch9/section-9-5/ch9_s9_5_carbapenems.jpg',
+      '/images/ch9/section-9-5/ch9_s9_5_aztreonam.jpg',
+      '/images/ch9/section-9-5/ch9_s9_5_beta_lactamase_inhibitors.jpg',
+    ],
+    ch9_6_protein_synthesis: [
+      '/images/ch9/section-9-6/ch9_s9_6_macrolides.jpg',
+      '/images/ch9/section-9-6/ch9_s9_6_aminoglycosides.jpg',
+      '/images/ch9/section-9-6/ch9_s9_6_clindamycin.jpg',
+      '/images/ch9/section-9-6/ch9_s9_6_linezolid.jpg',
+    ],
+    ch9_7_nucleic_acid: [
+      '/images/ch9/section-9-7/ch9_s9_7_fluoroquinolones.jpg',
+      '/images/ch9/section-9-7/ch9_s9_7_rifampin.jpg',
+      '/images/ch9/section-9-7/ch9_s9_7_metronidazole.jpg',
+      '/images/ch9/section-9-7/ch9_s9_7_nitrofurantoin.jpg',
+    ],
+    ch9_8_folate_antagonists: [
+      '/images/ch9/section-9-8/ch9_s9_8_folate_pathway_inhibition.jpg',
     ],
     ch9_10_adverse_effects_interactions: [
       '/images/ch9/section-9-10/ch9_s9_10_antibiotic_warfarin_inr.jpg',
+      '/images/ch9/section-9-10/ch9_s9_10_beta_lactam_safety.jpg',
     ],
   };
 
