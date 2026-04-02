@@ -242,6 +242,24 @@ export const ChapterReader = () => {
       '/images/ch1/section-1-10/ch1_s1_10_v02.png',
     ],
     sec1_11_review_questions: ['/images/ch1/section-1-11/ch1_s1_11_v01.png'],
+
+    // Chapter 9
+    ch9_1_introduction: [
+      '/images/ch9/section-9-1/ch9_s9_1_antimicrobial_vs_antibiotic.jpg',
+      '/images/ch9/section-9-1/ch9_s9_1_spectrum_and_gram.jpg',
+      '/images/ch9/section-9-1/ch9_s9_1_colonization_vs_infection.jpg',
+      '/images/ch9/section-9-1/ch9_s9_1_resistance_overview.jpg',
+    ],
+    ch9_2_diagnostics: [
+      '/images/ch9/section-9-2/ch9_s9_2_culture_collection_steps.jpg',
+      '/images/ch9/section-9-2/ch9_s9_2_gram_stain_basics.jpg',
+      '/images/ch9/section-9-2/ch9_s9_2_mic_interpretation.jpg',
+      '/images/ch9/section-9-2/ch9_s9_2_pcr_panels_limitations.jpg',
+    ],
+    ch9_3_principles: [
+      '/images/ch9/section-9-3/ch9_s9_3_empiric_targeted_prophylactic.jpg',
+      '/images/ch9/section-9-3/ch9_s9_3_source_control_outcomes.jpg',
+    ],
   };
 
 
