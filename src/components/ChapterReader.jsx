@@ -298,10 +298,27 @@ export const ChapterReader = () => {
     ],
     ch9_8_folate_antagonists: [
       '/images/ch9/section-9-8/ch9_s9_8_folate_pathway_inhibition.jpg',
+      '/images/ch9/section-9-8/ch9_s9_8_tmpsmx_key_indications.jpg',
+      '/images/ch9/section-9-8/ch9_s9_8_hypersensitivity_hematologic_risks.jpg',
+      '/images/ch9/section-9-8/ch9_s9_8_potassium_renal_interactions.jpg',
+    ],
+    ch9_9_resistance: [
+      '/images/ch9/section-9-9/ch9_s9_9_mechanisms_of_resistance.jpg',
+      '/images/ch9/section-9-9/ch9_s9_9_clinical_implications.jpg',
+      '/images/ch9/section-9-9/ch9_s9_9_stewardship_tools.jpg',
     ],
     ch9_10_adverse_effects_interactions: [
       '/images/ch9/section-9-10/ch9_s9_10_antibiotic_warfarin_inr.jpg',
       '/images/ch9/section-9-10/ch9_s9_10_beta_lactam_safety.jpg',
+      '/images/ch9/section-9-10/ch9_s9_10_allergy_vs_intolerance.jpg',
+      '/images/ch9/section-9-10/ch9_s9_10_organ_toxicities.jpg',
+      '/images/ch9/section-9-10/ch9_s9_10_qt_prolongation_risk.jpg',
+      '/images/ch9/section-9-10/ch9_s9_10_cdiff_superinfection.jpg',
+      '/images/ch9/section-9-10/ch9_s9_10_rifampin_enzyme_induction.jpg',
+      '/images/ch9/section-9-10/ch9_s9_10_chelation_and_alcohol_counseling.jpg',
+    ],
+    ch9_11_special_populations: [
+      '/images/ch9/section-9-11/ch9_s9_11_special_populations_overview.jpg',
     ],
   };
 
