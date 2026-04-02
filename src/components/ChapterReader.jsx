@@ -274,6 +274,9 @@ export const ChapterReader = () => {
       '/images/ch9/section-9-5/ch9_s9_5_natural_penicillins.jpg',
       '/images/ch9/section-9-5/ch9_s9_5_anti_staph_penicillins.jpg',
     ],
+    ch9_10_adverse_effects_interactions: [
+      '/images/ch9/section-9-10/ch9_s9_10_antibiotic_warfarin_inr.jpg',
+    ],
   };
 
 
