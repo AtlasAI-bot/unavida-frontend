@@ -402,8 +402,11 @@ export const ChapterReader = () => {
       if (!text) {
         return `\n<h3>${label}</h3>\n<div class="references-block"><p><em>References will be added here.</em></p></div>\n`;
       }
-      const isHtml = /<\s*\/?\s*(p|h\d|table|thead|tbody|tr|td|th|ul|ol|li)\b/i.test(text);
-      const body = isHtml ? text : `<pre>${text}</pre>`;
+      const cleaned = text
+        .replace(/<h\d>\s*None\s+References\s*<\/h\d>/gi, '')
+        .replace(/<h\d>\s*References\s*<\/h\d>/gi, '');
+      const isHtml = /<\s*\/?\s*(p|h\d|table|thead|tbody|tr|td|th|ul|ol|li)\b/i.test(cleaned);
+      const body = isHtml ? cleaned : `<pre>${cleaned}</pre>`;
       return `\n<h3>${label}</h3>\n<div class="references-block">${body}</div>\n`;
     };
 
@@ -423,7 +426,7 @@ export const ChapterReader = () => {
   const referencesAllSections = [
     {
       id: 'references_all',
-      title: 'References (All Chapters)',
+      title: 'References',
       sectionNumber: 'R',
       content: getAllReferencesHtml(),
       wordCount: 0,

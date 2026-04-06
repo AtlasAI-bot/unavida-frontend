@@ -102,6 +102,14 @@ const courseContent = {
           { id: 'nur1100_ch49_anemias', label: 'Chapter 49: Anemias', status: 'Not Started' },
         ],
       },
+      {
+        id: 'nur1100_references_unit',
+        title: 'Unit: Textbook References',
+        status: 'In Progress',
+        sections: [
+          { id: 'references_all', label: 'References', status: 'In Progress' },
+        ],
+      },
 
     ],
   },
@@ -168,6 +176,14 @@ const courseContent = {
         sections: [
           { id: 'nur2110_ch17_immune_modulators', label: 'Chapter 17: Immune Modulators', status: 'Not Started' },
           { id: 'nur2110_ch18_vaccines_sera', label: 'Chapter 18: Vaccines / Sera', status: 'Not Started' },
+        ],
+      },
+      {
+        id: 'nur2110_references_unit',
+        title: 'Unit: Textbook References',
+        status: 'In Progress',
+        sections: [
+          { id: 'references_all', label: 'References', status: 'In Progress' },
         ],
       },
 
@@ -338,6 +354,11 @@ export const TextbookDashboard = () => {
                         <button
                           key={section.id}
                           onClick={() => {
+                            if (section.id === 'references_all') {
+                              navigate('/reader/references_all?section=references_all');
+                              return;
+                            }
+
                             if ((activeCourse === 'NUR1100' || activeCourse === 'NUR2110') && (section.id.startsWith('sec1_') || section.id.startsWith('sec2_'))) {
                               const targetChapter = section.id.startsWith('sec2_') ? 'ch2_pharmacokinetics' : 'ch1_intro';
                               navigate(`/reader/${targetChapter}?section=${section.id}`);
@@ -401,7 +422,7 @@ export const TextbookDashboard = () => {
               <button onClick={() => navigate('/flashcards')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>🎴 Flashcards</button>
               <button onClick={() => navigate('/quizzes')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>❓ Quiz</button>
               <button onClick={() => navigate('/case-studies')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>🩺 Case Studies</button>
-              <button onClick={() => navigate('/reader/references_all')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>📚 References (All Chapters)</button>
+              <button onClick={() => navigate('/reader/references_all?section=references_all')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>📚 References</button>
             </div>
           </section>
 
