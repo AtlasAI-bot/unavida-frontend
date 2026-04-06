@@ -104,7 +104,7 @@ const courseContent = {
       },
       {
         id: 'nur1100_references_unit',
-        title: 'Unit: Textbook References',
+        title: 'Textbook References',
         status: 'In Progress',
         sections: [
           { id: 'references_all', label: 'References', status: 'In Progress' },
@@ -180,7 +180,7 @@ const courseContent = {
       },
       {
         id: 'nur2110_references_unit',
-        title: 'Unit: Textbook References',
+        title: 'Textbook References',
         status: 'In Progress',
         sections: [
           { id: 'references_all', label: 'References', status: 'In Progress' },
