@@ -586,7 +586,7 @@ export const ChapterReader = () => {
   const currentWordCount = getSectionWordCount(selectedSection);
 
   // Navigation groupings (chapter sections are sourced above)
-  const navChapter1Sections = chapter1Sections;
+  const navChapter1Sections = chapter1Sections.filter((section) => section.id !== 'references');
   const navChapter2Sections = chapter2Sections;
   const navChapter3Sections = chapter3Sections;
   const navChapter5Sections = chapter5Sections;
