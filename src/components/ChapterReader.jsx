@@ -339,7 +339,9 @@ export const ChapterReader = () => {
   const chapter3Sections = [...(chapter3Data.chapter.sections || [])];
   const chapter5Sections = [...(chapter5Data.chapter.sections || [])];
   const chapter9Sections = [...(chapter9Data.chapter.sections || [])];
-  const chapter10Sections = [...(chapter10Data.chapter.sections || [])];
+  const chapter10SectionsRaw = [...(chapter10Data.chapter.sections || [])];
+  const chapter10Ref = chapter10SectionsRaw.find((s) => s.id === 'ch10_15_references' || String(s.sectionNumber) === '10.15');
+  const chapter10Sections = chapter10SectionsRaw.filter((s) => !(s.id === 'ch10_15_references' || String(s.sectionNumber) === '10.15'));
 
   const getSectionSortKey = (section) => {
     if (!section) return 999;
@@ -396,6 +398,7 @@ export const ChapterReader = () => {
     const ch3Refs = getChapter3ReferencesHtml();
     const ch5Refs = extractReferencesBlockFromHtml(chapter5Sections[chapter5Sections.length - 1]?.content || '');
     const ch9Refs = extractReferencesBlockFromHtml(chapter9Sections[chapter9Sections.length - 1]?.content || '');
+    const ch10Refs = chapter10Ref?.content || '';
 
     const wrap = (label, content) => {
       const text = String(content || '').trim();
@@ -419,6 +422,7 @@ export const ChapterReader = () => {
         ${wrap('Chapter 3 References', ch3Refs)}
         ${wrap('Chapter 5 References', ch5Refs)}
         ${wrap('Chapter 9 References', ch9Refs)}
+        ${wrap('Chapter 10 References', ch10Refs)}
       </div>
     `;
   };
