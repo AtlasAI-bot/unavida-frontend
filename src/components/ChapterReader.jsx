@@ -361,17 +361,30 @@ export const ChapterReader = () => {
   // Ensure Chapter 2 navigation/content is ordered (2.1..2.10, then References at the bottom)
   const chapter2Sections = [...chapter2SectionsMerged].sort((a, b) => getSectionSortKey(a) - getSectionSortKey(b));
 
+  const extractReferencesBlockFromHtml = (html = '') => {
+    try {
+      const str = String(html || '');
+      if (!str) return '';
+      const start = str.search(/<h\d>\s*(chapter\s+)?references\s*<\/h\d>/i);
+      if (start === -1) return '';
+      const slice = str.slice(start);
+      // Prefer through the first list; fallback to first major divider.
+      const ulEnd = slice.search(/<\/ul>/i);
+      if (ulEnd !== -1) return slice.slice(0, ulEnd + 5);
+      const nextHeading = slice.search(/<h\d>/i);
+      if (nextHeading > 0) return slice.slice(0, nextHeading);
+      return slice;
+    } catch {
+      return '';
+    }
+  };
+
   const getChapter3ReferencesHtml = () => {
     try {
-      const sec37 = chapter3Sections.find((s) => String(s.sectionNumber) === '3.7') || chapter3Sections[chapter3Sections.length - 1];
-      const html = String(sec37?.content || '');
-      const start = html.search(/<h4>\s*Chapter References\s*<\/h4>/i);
-      if (start === -1) return '';
-      const slice = html.slice(start);
-      // Grab through the first </ul> after the heading.
-      const ulEnd = slice.search(/<\/ul>/i);
-      if (ulEnd === -1) return slice;
-      return slice.slice(0, ulEnd + 5);
+      const explicitRef = chapter3Sections.find((s) => s.id === 'ch3_10_chapter_references');
+      if (explicitRef?.content) return String(explicitRef.content);
+      const last = chapter3Sections[chapter3Sections.length - 1];
+      return extractReferencesBlockFromHtml(last?.content || '');
     } catch {
       return '';
     }
@@ -381,11 +394,16 @@ export const ChapterReader = () => {
     const ch1Ref = chapter1Sections.find((s) => s.id === 'references');
     const ch2Ref = chapter2Sections.find((s) => s.id === 'ch2_references');
     const ch3Refs = getChapter3ReferencesHtml();
+    const ch5Refs = extractReferencesBlockFromHtml(chapter5Sections[chapter5Sections.length - 1]?.content || '');
+    const ch9Refs = extractReferencesBlockFromHtml(chapter9Sections[chapter9Sections.length - 1]?.content || '');
 
     const wrap = (label, content) => {
-      if (!content) return '';
-      const isHtml = /<\s*\/?\s*(p|h\d|table|thead|tbody|tr|td|th|ul|ol|li)\b/i.test(String(content || ''));
-      const body = isHtml ? String(content) : `<pre>${String(content)}</pre>`;
+      const text = String(content || '').trim();
+      if (!text) {
+        return `\n<h3>${label}</h3>\n<div class="references-block"><p><em>References will be added here.</em></p></div>\n`;
+      }
+      const isHtml = /<\s*\/?\s*(p|h\d|table|thead|tbody|tr|td|th|ul|ol|li)\b/i.test(text);
+      const body = isHtml ? text : `<pre>${text}</pre>`;
       return `\n<h3>${label}</h3>\n<div class="references-block">${body}</div>\n`;
     };
 
@@ -396,6 +414,8 @@ export const ChapterReader = () => {
         ${wrap('Chapter 1 References', ch1Ref?.content)}
         ${wrap('Chapter 2 References', ch2Ref?.content)}
         ${wrap('Chapter 3 References', ch3Refs)}
+        ${wrap('Chapter 5 References', ch5Refs)}
+        ${wrap('Chapter 9 References', ch9Refs)}
       </div>
     `;
   };
@@ -1430,11 +1450,12 @@ export const ChapterReader = () => {
     if (sectionId) {
       const fromQuery = sections.find((s) => s.id === sectionId);
       if (fromQuery) {
+        const isRefsAll = fromQuery.id === 'references_all';
         const isCh2 = fromQuery.id.startsWith('sec2_') || fromQuery.id.startsWith('ch2_') || fromQuery.id === 'ch2_references';
         const isCh3 = fromQuery.id.startsWith('sec3_') || fromQuery.id.startsWith('ch3_') || fromQuery.id === 'ch3_references';
         const isCh5 = fromQuery.id.startsWith('ch5_');
         const isCh9 = fromQuery.id.startsWith('ch9_');
-        const targetChapter = isCh2 ? 'ch2_pharmacokinetics' : isCh3 ? 'ch3_toxicity' : isCh5 ? 'ch5_dosage_calculations' : isCh9 ? 'ch9_antibiotics' : 'ch1_intro';
+        const targetChapter = isRefsAll ? 'references_all' : isCh2 ? 'ch2_pharmacokinetics' : isCh3 ? 'ch3_toxicity' : isCh5 ? 'ch5_dosage_calculations' : isCh9 ? 'ch9_antibiotics' : 'ch1_intro';
         if (activeChapterId !== targetChapter) {
           navigate(`/reader/${targetChapter}?section=${fromQuery.id}`, { replace: true });
           return;
@@ -1471,11 +1492,12 @@ export const ChapterReader = () => {
 
   const handleSectionClick = (section) => {
     if (!section) return;
+    const isRefsAll = section.id === 'references_all';
     const isCh2 = section.id?.startsWith('sec2_') || section.id?.startsWith('ch2_') || section.id === 'ch2_references';
     const isCh3 = section.id?.startsWith('sec3_') || section.id?.startsWith('ch3_') || section.id === 'ch3_references';
     const isCh5 = section.id?.startsWith('ch5_');
     const isCh9 = section.id?.startsWith('ch9_');
-    const targetChapter = isCh2 ? 'ch2_pharmacokinetics' : isCh3 ? 'ch3_toxicity' : isCh5 ? 'ch5_dosage_calculations' : isCh9 ? 'ch9_antibiotics' : 'ch1_intro';
+    const targetChapter = isRefsAll ? 'references_all' : isCh2 ? 'ch2_pharmacokinetics' : isCh3 ? 'ch3_toxicity' : isCh5 ? 'ch5_dosage_calculations' : isCh9 ? 'ch9_antibiotics' : 'ch1_intro';
     const nextUrl = `/reader/${targetChapter}?section=${section.id}`;
 
     setSelectedSection(section);
@@ -2351,6 +2373,24 @@ export const ChapterReader = () => {
               </div>
             </div>
           ))}
+
+          <div className={`reader-chap ${activeChapterId === 'references_all' ? 'open' : ''}`}>
+            <button className="reader-chap-btn" onClick={(e) => handleChapClick(e.currentTarget.closest('.reader-chap'))}>
+              Textbook References
+              <small>▼</small>
+            </button>
+            <div className="reader-sec-wrap">
+              {referencesAllSections.map((section) => (
+                <a
+                  key={section.id}
+                  className={`reader-sec ${selectedSection?.id === section.id ? 'active' : ''}`}
+                  onClick={() => handleSectionClick(section)}
+                >
+                  {section.title}
+                </a>
+              ))}
+            </div>
+          </div>
         </aside>
 
         {/* Main Content Panel */}
