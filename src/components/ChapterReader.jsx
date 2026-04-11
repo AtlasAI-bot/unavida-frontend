@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import chapter1Data from '../data/CHAPTER_1_UNAVIDA_PRODUCTION.json';
 import chapter2Data from '../data/CHAPTER_2_UNAVIDA_PRODUCTION.json';
@@ -45,6 +45,8 @@ export const ChapterReader = () => {
   const [printAction, setPrintAction] = useState('print');
   const [newNote, setNewNote] = useState('');
   const [highlightColor, setHighlightColor] = useState('yellow');
+  const [globalSearchOpen, setGlobalSearchOpen] = useState(false);
+  const [globalSearchQuery, setGlobalSearchQuery] = useState('');
 
   // Image lightbox (click any diagram/image in the reader to expand)
   const [lightbox, setLightbox] = useState({ open: false, src: '', alt: '' });
@@ -454,6 +456,61 @@ export const ChapterReader = () => {
               : chapter1Sections;
 
   const currentSectionImages = selectedSection ? (sectionIllustrationMap[selectedSection.id] || []) : [];
+
+  const stripHtml = (value = '') => String(value || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+
+  const getSectionSearchText = (section) => {
+    if (!section) return '';
+    const blockText = (section.contentBlocks || []).map((b) => [b?.title, b?.content, b?.htmlReady].filter(Boolean).join(' ')).join(' ');
+    const objectives = (section.learningObjectives || []).join(' ');
+    const takeaways = (section.keyTakeaways || []).join(' ');
+    const questions = (section.contentBlocks || []).flatMap((b) => b.questions || []).map((q) => [q.question, q.rationale, ...(Object.values(q.options || {}))].filter(Boolean).join(' ')).join(' ');
+
+    return stripHtml([
+      section.title,
+      section.sectionNumber,
+      section.id,
+      section.content,
+      blockText,
+      objectives,
+      takeaways,
+      questions,
+    ].filter(Boolean).join(' ')).toLowerCase();
+  };
+
+  const getSectionChapterLabel = (section) => {
+    const id = String(section?.id || '');
+    if (id === 'references_all') return 'References';
+    if (id.startsWith('sec2_') || id.startsWith('ch2_')) return 'Chapter 2';
+    if (id.startsWith('sec3_') || id.startsWith('ch3_')) return 'Chapter 3';
+    if (id.startsWith('ch5_')) return 'Chapter 5';
+    if (id.startsWith('ch9_')) return 'Chapter 9';
+    if (id.startsWith('ch10_')) return 'Chapter 10';
+    return 'Chapter 1';
+  };
+
+  const globalSearchResults = useMemo(() => {
+    const q = String(globalSearchQuery || '').trim().toLowerCase();
+    if (q.length < 2) return [];
+
+    return allSections
+      .map((section) => {
+        const haystack = getSectionSearchText(section);
+        const index = haystack.indexOf(q);
+        if (index === -1) return null;
+
+        const start = Math.max(0, index - 80);
+        const end = Math.min(haystack.length, index + q.length + 120);
+        const excerpt = haystack.slice(start, end).trim();
+
+        return {
+          section,
+          excerpt: `${start > 0 ? '…' : ''}${excerpt}${end < haystack.length ? '…' : ''}`,
+        };
+      })
+      .filter(Boolean)
+      .slice(0, 60);
+  }, [allSections, globalSearchQuery]);
 
   const normalizePipeTableParagraphs = (paras = []) => {
     const out = [];
@@ -1806,6 +1863,7 @@ export const ChapterReader = () => {
           padding-left: 28px;
         }
 
+
         .reader-chap {
           margin-bottom: 8px;
           border: 1px solid var(--panel-border);
@@ -2221,6 +2279,7 @@ export const ChapterReader = () => {
             <div className="reader-menu">
               <button className="reader-btn" onClick={() => { toggleTheme(); setTopMenuOpen(false); }}>{theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}</button>
               <button className="reader-btn" onClick={() => { const next = !focusReader; setFocusReader(next); if (next) setHideToc(true); else setHideToc(false); setTopMenuOpen(false); }}>{focusReader ? '↔ Restore Layout' : '↔ Expand Reader'}</button>
+              <button className="reader-btn" onClick={() => { setGlobalSearchOpen(true); setTopMenuOpen(false); }}>🔎 Search Textbook</button>
               <button className="reader-btn" onClick={() => { setPrefsModalOpen(true); setTopMenuOpen(false); }}>⚙️ Reader Preferences</button>
               <button className="reader-btn" onClick={() => { toggleReadAloud(); setTopMenuOpen(false); }}>{readAloudOn ? '⏸ Stop Read Aloud' : '🔊 Read Aloud'}</button>
               <button className="reader-btn" onClick={() => { printReader(); setTopMenuOpen(false); }}>🖨 Print Section</button>
@@ -2244,7 +2303,6 @@ export const ChapterReader = () => {
           <div className="reader-toc-title">
             <h3 style={{ margin: 0 }}>Textbook Navigation</h3>
           </div>
-
           <div className={`reader-chap ${activeChapterId.startsWith('ch1') ? 'open' : ''}`}>
             <button className="reader-chap-btn" onClick={(e) => handleChapClick(e.currentTarget.closest('.reader-chap'))}>
               Chapter 1: Intro to Pharmacology
@@ -3085,6 +3143,53 @@ export const ChapterReader = () => {
             <strong>Atlas says:</strong> "{atlasLine}"
           </div>
         </aside>
+      </div>
+
+      {/* Global Search Modal */}
+      <div className={`reader-modal ${globalSearchOpen ? 'show' : ''}`} onClick={() => globalSearchOpen && setGlobalSearchOpen(false)}>
+        <div className="reader-modal-card" onClick={(e) => e.stopPropagation()}>
+          <div className="reader-modal-head">
+            Search Across All Chapters
+            <button className="reader-btn" onClick={() => setGlobalSearchOpen(false)}>✕</button>
+          </div>
+          <div className="reader-modal-body" style={{ display: 'grid', gap: '10px' }}>
+            <input
+              type="search"
+              value={globalSearchQuery}
+              onChange={(e) => setGlobalSearchQuery(e.target.value)}
+              placeholder="Search all reader text (e.g., warfarin, adverse effects, 9.10)"
+              aria-label="Search all chapter reader text"
+              style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1px solid var(--panel-border)', background: 'var(--panel)', color: 'var(--text)' }}
+            />
+
+            {globalSearchQuery.trim().length < 2 ? (
+              <p style={{ margin: 0, color: 'var(--muted)', fontSize: '13px' }}>Type at least 2 characters to search all chapter content.</p>
+            ) : globalSearchResults.length === 0 ? (
+              <p style={{ margin: 0, color: 'var(--muted)', fontSize: '13px' }}>No matches found.</p>
+            ) : (
+              <div style={{ display: 'grid', gap: '8px', maxHeight: '52vh', overflowY: 'auto' }}>
+                {globalSearchResults.map((result, idx) => {
+                  const section = result.section;
+                  return (
+                    <button
+                      key={`${section.id}-${idx}`}
+                      className="reader-btn"
+                      onClick={() => {
+                        handleSectionClick(section);
+                        setGlobalSearchOpen(false);
+                      }}
+                      style={{ textAlign: 'left', display: 'grid', gap: '4px' }}
+                    >
+                      <strong>{cleanHeading(section.title || section.id)}</strong>
+                      <span style={{ fontSize: '12px', color: 'var(--muted)' }}>{getSectionChapterLabel(section)} • {section.sectionNumber || section.id}</span>
+                      <span style={{ fontSize: '12px' }}>{result.excerpt}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        </div>
       </div>
 
       {/* Print/Study Section Picker Modal */}
