@@ -1926,6 +1926,17 @@ export const ChapterReader = () => {
           font-size: 24px;
         }
 
+        .reader-main-wrap p {
+          margin: 0 0 14px;
+          line-height: var(--reader-line);
+          font-size: var(--reader-size);
+        }
+
+        .reader-main-wrap li {
+          margin-bottom: 8px;
+          line-height: var(--reader-line);
+        }
+
         .reader-meta {
           color: var(--muted);
           font-size: 13px;
