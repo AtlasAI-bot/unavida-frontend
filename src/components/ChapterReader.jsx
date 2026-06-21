@@ -171,6 +171,19 @@ export const ChapterReader = () => {
     ch9_10_adverse_effects_interactions: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch09_s08_v01_adverse-effects-interaction.mp4',
     ch9_11_special_populations: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch09_s09_v01_special-populations-dose-ad.mp4',
     ch9_12_nursing_considerations: 'https://unavida-videos.s3.us-east-2.amazonaws.com/ch09_s10_v01_nursing-considerations-pati.mp4',
+
+    // Chapter 10
+    ch10_1_foundations_of_antiviral_pharmacology: 'https://unavida-videos.s3.us-east-2.amazonaws.com/10.1%20Introduction%20to%20Antiviral%20Therapy.mp4',
+    ch10_2_antivirals_for_herpesviruses_hsv_1_hsv_2_vzv_cmv: 'https://unavida-videos.s3.us-east-2.amazonaws.com/10.2%20Virology%20and%20Diagnostics%20for%20Antiviral%20Selection.mp4',
+    ch10_3_antivirals_for_influenza_and_other_common_respir: 'https://unavida-videos.s3.us-east-2.amazonaws.com/10.3%20Core%20Treatment%20Strategies%20in%20Antiviral%20Therapy.mp4',
+    ch10_4_antivirals_for_hepatitis_viruses_hbv_and_hcv: 'https://unavida-videos.s3.us-east-2.amazonaws.com/10.4%20Herpesvirus%20Antivirals%20%28HSV_VZV_CMV%29.mp4',
+    ch10_5_antiretroviral_therapy_art_for_hiv_treatment_pre: 'https://unavida-videos.s3.us-east-2.amazonaws.com/10.5%20Influenza%20and%20Other%20Acute%20Respiratory%20Viral%20Therapies.mp4',
+    ch10_6_antivirals_for_covid_19_and_selected_emerging_vi: 'https://unavida-videos.s3.us-east-2.amazonaws.com/10.6%20HIV%20Pharmacology%20I_%20ART%20Foundations.mp4',
+    ch10_7_antivirals_for_influenza: 'https://unavida-videos.s3.us-east-2.amazonaws.com/10.7%20HIV%20Pharmacology_%20ART%20Safety%2C%20Interactions%2C%20and%20Adherence.mp4',
+    ch10_8_antivirals_for_hepatitis_b_hbv: 'https://unavida-videos.s3.us-east-2.amazonaws.com/10.8%20Viral%20Hepatitis%20Pharmacology%20%28HBV_HCV%20Focus%29.mp4',
+    ch10_9_direct_acting_antivirals_for_hepatitis_c_hcv: 'https://unavida-videos.s3.us-east-2.amazonaws.com/10.9%20Antiviral%20Resistance%20and%20Stewardship.mp4',
+    ch10_10_antiretroviral_therapy_art_for_hiv: 'https://unavida-videos.s3.us-east-2.amazonaws.com/10.10%20Adverse%20Effects%2C%20Interactions%2C%20and%20Safety%20Alerts.mp4',
+    ch10_11_antivirals_for_covid_19_sars_cov_2: 'https://unavida-videos.s3.us-east-2.amazonaws.com/10.11%20Antiviral%20Pharmacology_%20Special%20Populations%20%26%20Dose%20Adjustments.mp4',
   };
 
   const currentVideoUrl = selectedSection ? sectionVideoMap[selectedSection.id] : null;
