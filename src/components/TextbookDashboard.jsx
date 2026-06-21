@@ -50,6 +50,7 @@ const courseContent = {
           { id: 'sec2_1_pk_overview', label: 'Chapter 2: Pharmacokinetics', status: 'In Progress' },
           { id: 'nur1100_ch3_toxicity', label: 'Chapter 3: Toxicity', status: 'Not Started' },
           { id: 'ch5_1_foundations', label: 'Chapter 5: Dosage Calculations', status: 'Not Started' },
+          { id: 'ch60_1_foundations', label: 'Chapter 60: Vitamins, Minerals, and Complementary/Alternative Medications', status: 'Not Started' },
         ],
       },
       {

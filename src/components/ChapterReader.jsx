@@ -358,6 +358,23 @@ export const ChapterReader = () => {
   const chapter10Ref = chapter10SectionsRaw.find((s) => s.id === 'ch10_15_references' || String(s.sectionNumber) === '10.15');
   const chapter10Sections = chapter10SectionsRaw.filter((s) => !(s.id === 'ch10_15_references' || String(s.sectionNumber) === '10.15'));
 
+  const chapter60Sections = [
+    {
+      id: 'ch60_1_foundations',
+      title: 'Chapter 60: Vitamins, Minerals, and Complementary/Alternative Medications',
+      sectionNumber: '60.0',
+      content: `
+        <h2>Chapter 60 Placeholder</h2>
+        <p>This chapter has been placed in the textbook navigation because it is needed during week one of the course.</p>
+        <p>The full Chapter 60 reader content has not been added to the site yet. Once the chapter source file is prepared, this placeholder will be replaced with the complete section-by-section content.</p>
+        <h3>What still needs to be done</h3>
+        <p>Add the production Chapter 60 content file, connect its sections to the reader, and update any related media, videos, or learning tools tied to this chapter.</p>
+      `,
+      wordCount: 85,
+      duration: 2,
+    },
+  ];
+
   const getSectionSortKey = (section) => {
     if (!section) return 999;
     if (section.id === 'references' || section.id === 'ch2_references') return 999;
@@ -453,7 +470,7 @@ export const ChapterReader = () => {
     },
   ];
 
-  const allSections = [...chapter1Sections, ...chapter2Sections, ...chapter3Sections, ...chapter5Sections, ...chapter9Sections, ...chapter10Sections, ...referencesAllSections];
+  const allSections = [...chapter1Sections, ...chapter2Sections, ...chapter3Sections, ...chapter5Sections, ...chapter9Sections, ...chapter10Sections, ...chapter60Sections, ...referencesAllSections];
   const activeSections = activeChapterId === 'references_all'
     ? referencesAllSections
     : activeChapterId.startsWith('ch2')
@@ -466,7 +483,9 @@ export const ChapterReader = () => {
             ? chapter9Sections
             : activeChapterId.startsWith('ch10')
               ? chapter10Sections
-              : chapter1Sections;
+              : activeChapterId.startsWith('ch60')
+                ? chapter60Sections
+                : chapter1Sections;
 
   const currentSectionImages = selectedSection ? (sectionIllustrationMap[selectedSection.id] || []) : [];
 
@@ -1532,7 +1551,9 @@ export const ChapterReader = () => {
         const isCh3 = fromQuery.id.startsWith('sec3_') || fromQuery.id.startsWith('ch3_') || fromQuery.id === 'ch3_references';
         const isCh5 = fromQuery.id.startsWith('ch5_');
         const isCh9 = fromQuery.id.startsWith('ch9_');
-        const targetChapter = isRefsAll ? 'references_all' : isCh2 ? 'ch2_pharmacokinetics' : isCh3 ? 'ch3_toxicity' : isCh5 ? 'ch5_dosage_calculations' : isCh9 ? 'ch9_antibiotics' : 'ch1_intro';
+        const isCh10 = fromQuery.id.startsWith('ch10_');
+        const isCh60 = fromQuery.id.startsWith('ch60_');
+        const targetChapter = isRefsAll ? 'references_all' : isCh2 ? 'ch2_pharmacokinetics' : isCh3 ? 'ch3_toxicity' : isCh5 ? 'ch5_dosage_calculations' : isCh9 ? 'ch9_antibiotics' : isCh10 ? 'ch10_antivirals' : isCh60 ? 'ch60_vitamins_minerals_cam' : 'ch1_intro';
         if (activeChapterId !== targetChapter) {
           navigate(`/reader/${targetChapter}?section=${fromQuery.id}`, { replace: true });
           return;
@@ -1574,7 +1595,9 @@ export const ChapterReader = () => {
     const isCh3 = section.id?.startsWith('sec3_') || section.id?.startsWith('ch3_') || section.id === 'ch3_references';
     const isCh5 = section.id?.startsWith('ch5_');
     const isCh9 = section.id?.startsWith('ch9_');
-    const targetChapter = isRefsAll ? 'references_all' : isCh2 ? 'ch2_pharmacokinetics' : isCh3 ? 'ch3_toxicity' : isCh5 ? 'ch5_dosage_calculations' : isCh9 ? 'ch9_antibiotics' : 'ch1_intro';
+    const isCh10 = section.id?.startsWith('ch10_');
+    const isCh60 = section.id?.startsWith('ch60_');
+    const targetChapter = isRefsAll ? 'references_all' : isCh2 ? 'ch2_pharmacokinetics' : isCh3 ? 'ch3_toxicity' : isCh5 ? 'ch5_dosage_calculations' : isCh9 ? 'ch9_antibiotics' : isCh10 ? 'ch10_antivirals' : isCh60 ? 'ch60_vitamins_minerals_cam' : 'ch1_intro';
     const nextUrl = `/reader/${targetChapter}?section=${section.id}`;
 
     setSelectedSection(section);
