@@ -685,6 +685,7 @@ export const ChapterReader = () => {
   const navChapter5Sections = chapter5Sections;
   const navChapter9Sections = chapter9Sections;
   const navChapter10Sections = chapter10Sections;
+  const navChapter60Sections = chapter60Sections;
 
   const chapterScaffoldTitles = [
     'Chapter 11: Antifungals',
@@ -2460,6 +2461,25 @@ export const ChapterReader = () => {
                 >
                   {section.title}
                   <span style={{ fontSize: '11px', color: 'var(--muted)' }}> ({getSectionWordCount(section)} words)</span>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className={`reader-chap ${activeChapterId.startsWith('ch60') ? 'open' : ''}`}>
+            <button className="reader-chap-btn" onClick={(e) => handleChapClick(e.currentTarget.closest('.reader-chap'))}>
+              Chapter 60: Vitamins, Minerals, and Complementary/Alternative Medications
+              <small>▼</small>
+            </button>
+            <div className="reader-sec-wrap">
+              {navChapter60Sections.map((section) => (
+                <a
+                  key={section.id}
+                  className={`reader-sec ${selectedSection?.id === section.id ? 'active' : ''}`}
+                  onClick={() => handleSectionClick(section)}
+                >
+                  {section.title}
+                  <span style={{ fontSize: '11px', color: 'var(--muted)' }}> (placeholder)</span>
                 </a>
               ))}
             </div>
