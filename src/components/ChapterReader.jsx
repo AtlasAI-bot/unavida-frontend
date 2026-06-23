@@ -2932,6 +2932,20 @@ export const ChapterReader = () => {
 </figure>
 `;
 
+                        const subheads = [...out.matchAll(/<h[3-4][^>]*>.*?<\/h[3-4]>/gis)];
+                        if (subheads.length > 0) {
+                          let offset = 0;
+                          currentSectionImages.forEach((src, i) => {
+                            const match = subheads[Math.min(i, subheads.length - 1)];
+                            if (!match) return;
+                            const pos = match.index + match[0].length + offset;
+                            const fig = figFor(src, i);
+                            out = out.slice(0, pos) + fig + out.slice(pos);
+                            offset += fig.length;
+                          });
+                          return out;
+                        }
+
                         const paragraphs = [...out.matchAll(/<\/p>/gi)];
                         if (paragraphs.length > 0) {
                           const slots = currentSectionImages.map((_, i) => Math.floor(((i + 1) * paragraphs.length) / (currentSectionImages.length + 1)));
@@ -2941,20 +2955,6 @@ export const ChapterReader = () => {
                             if (!match) return;
                             const pos = match.index + match[0].length + offset;
                             const fig = figFor(currentSectionImages[i], i);
-                            out = out.slice(0, pos) + fig + out.slice(pos);
-                            offset += fig.length;
-                          });
-                          return out;
-                        }
-
-                        const headingMatches = [...out.matchAll(/<h[2-4][^>]*>.*?<\/h[2-4]>/gis)];
-                        if (headingMatches.length > 0) {
-                          let offset = 0;
-                          currentSectionImages.forEach((src, i) => {
-                            const match = headingMatches[Math.min(i, headingMatches.length - 1)];
-                            if (!match) return;
-                            const pos = match.index + match[0].length + offset;
-                            const fig = figFor(src, i);
                             out = out.slice(0, pos) + fig + out.slice(pos);
                             offset += fig.length;
                           });
