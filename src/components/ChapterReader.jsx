@@ -3069,9 +3069,9 @@ export const ChapterReader = () => {
                           ? injectChapter5Images(selectedSection.content)
                           : activeChapterId.startsWith('ch9')
                             ? injectChapter9Images(selectedSection.content)
-                            : activeChapterId.startsWith('ch10')
-                              ? injectChapter10Images(selectedSection.content)
-                              : injectChapter3Images(selectedSection.content);
+                            : activeChapterId.startsWith('ch3')
+                              ? injectChapter3Images(selectedSection.content)
+                              : injectChapter10Images(selectedSection.content);
 
                         return (
                           <div
