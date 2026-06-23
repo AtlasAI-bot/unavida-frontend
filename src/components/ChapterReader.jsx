@@ -2930,6 +2930,9 @@ export const ChapterReader = () => {
                         );
                       };
 
+                      // Durable rule: generic chapter images should render within the relevant passage/subsection
+                      // (typically after the first or second paragraph), not float at the top of the section.
+                      // If a chapter uses contentBlocks or figure/table placeholders, keep those paths in sync too.
                       const injectSectionImagesWithinPassage = (html) => {
                         if (!html) return html;
                         let out = String(html);
