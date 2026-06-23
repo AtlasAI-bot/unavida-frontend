@@ -2883,13 +2883,22 @@ export const ChapterReader = () => {
                         if (!html) return html;
                         let out = String(html);
                         Object.entries(chapter5FigureMap).forEach(([key, src]) => {
-                          const re = new RegExp(`<<\\s*${key}\\s*>>`, 'g');
-                          out = out.replace(
-                            re,
-                            `<figure style="margin: 14px 0; padding: 10px; border: 1px solid var(--panel-border); border-radius: 12px; background: var(--panel);">
+                          const figureHtml = `<figure style="margin: 14px 0; padding: 10px; border: 1px solid var(--panel-border); border-radius: 12px; background: var(--panel);">
                                <img class="reader-zoomable" src="${src}" alt="${key}" style="width: 100%; max-height: 420px; object-fit: contain;" loading="lazy" />
-                             </figure>`
-                          );
+                             </figure>`;
+                          const re = new RegExp(`<<\\s*${key}\\s*>>`, 'g');
+                          out = out.replace(re, figureHtml);
+
+                          const humanName = key.replace(/^FIGURE_/, 'Figure ').replace(/_/g, ' ').trim();
+                          const escapedHuman = humanName.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&');
+                          const humanPatterns = [
+                            new RegExp(`<p><em>\\[Figure:\\s*${escapedHuman}\\]<\\/em><\\/p>`, 'gi'),
+                            new RegExp(`<p>\\s*<em>\\[Figure:\\s*${escapedHuman}\\]<\\/em>\\s*<\\/p>`, 'gi'),
+                            new RegExp(`\\[Figure:\\s*${escapedHuman}\\]`, 'gi'),
+                          ];
+                          humanPatterns.forEach((pattern) => {
+                            out = out.replace(pattern, figureHtml);
+                          });
                         });
                         return out;
                       };
