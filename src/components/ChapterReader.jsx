@@ -2921,6 +2921,48 @@ export const ChapterReader = () => {
                         );
                       };
 
+                      const injectChapter10Images = (html) => {
+                        if (!html) return html;
+                        let out = String(html);
+                        if (!currentSectionImages || currentSectionImages.length === 0) return out;
+
+                        const figFor = (src, idx) => `
+<figure class="reader-figure">
+  <img class="reader-zoomable" src="${src}" alt="Section visual ${idx + 1}" />
+</figure>
+`;
+
+                        const paragraphs = [...out.matchAll(/<\/p>/gi)];
+                        if (paragraphs.length > 0) {
+                          const slots = currentSectionImages.map((_, i) => Math.floor(((i + 1) * paragraphs.length) / (currentSectionImages.length + 1)));
+                          let offset = 0;
+                          slots.forEach((slot, i) => {
+                            const match = paragraphs[Math.max(0, Math.min(paragraphs.length - 1, slot))];
+                            if (!match) return;
+                            const pos = match.index + match[0].length + offset;
+                            const fig = figFor(currentSectionImages[i], i);
+                            out = out.slice(0, pos) + fig + out.slice(pos);
+                            offset += fig.length;
+                          });
+                          return out;
+                        }
+
+                        const headingMatches = [...out.matchAll(/<h[2-4][^>]*>.*?<\/h[2-4]>/gis)];
+                        if (headingMatches.length > 0) {
+                          let offset = 0;
+                          currentSectionImages.forEach((src, i) => {
+                            const match = headingMatches[Math.min(i, headingMatches.length - 1)];
+                            if (!match) return;
+                            const pos = match.index + match[0].length + offset;
+                            const fig = figFor(src, i);
+                            out = out.slice(0, pos) + fig + out.slice(pos);
+                            offset += fig.length;
+                          });
+                        }
+                        return out;
+                      };
+
+
                       const injectChapter9Images = (html) => {
                         if (!html) return html;
                         let out = String(html);
@@ -3027,7 +3069,9 @@ export const ChapterReader = () => {
                           ? injectChapter5Images(selectedSection.content)
                           : activeChapterId.startsWith('ch9')
                             ? injectChapter9Images(selectedSection.content)
-                            : injectChapter3Images(selectedSection.content);
+                            : activeChapterId.startsWith('ch10')
+                              ? injectChapter10Images(selectedSection.content)
+                              : injectChapter3Images(selectedSection.content);
 
                         return (
                           <div
