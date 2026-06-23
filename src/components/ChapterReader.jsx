@@ -3168,6 +3168,23 @@ export const ChapterReader = () => {
                     {selectedSection.contentBlocks.map((block, idx) => {
                       const blockSlotIdx = blockImageSlots.indexOf(idx);
                       const blockImgSrc = blockSlotIdx >= 0 ? currentSectionImages[blockSlotIdx] : null;
+                      const figFor = (src, slot) => `
+<figure class="reader-figure">
+  <img class="reader-zoomable" src="${src}" alt="Section visual ${slot + 1}" />
+</figure>
+`;
+                      const injectBlockImage = (html) => {
+                        if (!html || !blockImgSrc) return html;
+                        let out = String(html);
+                        const firstClose = out.search(/<\/p>/i);
+                        const secondClose = firstClose >= 0 ? out.slice(firstClose + 4).search(/<\/p>/i) : -1;
+                        let pos;
+                        if (firstClose >= 0 && secondClose >= 0) pos = firstClose + 4 + secondClose + 4;
+                        else if (firstClose >= 0) pos = firstClose + 4;
+                        else pos = out.length;
+                        const fig = figFor(blockImgSrc, blockSlotIdx);
+                        return out.slice(0, pos) + fig + out.slice(pos);
+                      };
                       return (
                       <div key={idx} style={{ marginBottom: '16px' }}>
                         {block.title && <h4 style={{ margin: '0 0 6px 0', fontSize: '1.06rem' }}>{cleanHeading(block.title)}</h4>}
@@ -3179,35 +3196,16 @@ export const ChapterReader = () => {
                               dangerouslySetInnerHTML={{
                                 __html:
                                   selectedSection.id === 'sec1_overview_introduction'
-                                    ? fixEightRightsHtml(block.htmlReady)
-                                    : block.htmlReady,
+                                    ? fixEightRightsHtml(injectBlockImage(block.htmlReady))
+                                    : injectBlockImage(block.htmlReady),
                               }}
                             />
                           )
                         ) : block.content ? (
                           selectedSection.id === 'sec1_overview_introduction'
                             ? renderParagraphWithNumberedList(block.content)
-                            : <p>{block.content}</p>
+                            : <div dangerouslySetInnerHTML={{ __html: injectBlockImage(`<p>${block.content}</p>`) }} />
                         ) : null}
-                        {blockImgSrc && (
-                          <img
-                            className="reader-zoomable"
-                            src={blockImgSrc}
-                            alt={`Section visual ${blockSlotIdx + 1}`}
-                            style={{ width: '100%', marginTop: '10px', maxHeight: '420px', objectFit: 'contain', background: 'var(--panel)', borderRadius: '10px' }}
-                            loading="lazy"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              e.stopPropagation();
-                              setTimeout(() => openLightbox(blockImgSrc, `Section visual ${blockSlotIdx + 1}`), 0);
-                            }}
-                            onPointerUp={(e) => {
-                              e.preventDefault();
-                              e.stopPropagation();
-                              setTimeout(() => openLightbox(blockImgSrc, `Section visual ${blockSlotIdx + 1}`), 0);
-                            }}
-                          />
-                        )}
                       </div>
                     )})}
                   </section>
