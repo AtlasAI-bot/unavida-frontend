@@ -904,6 +904,10 @@ export const ChapterReader = () => {
     ? currentSectionImages.map((_, i) => Math.floor(((i + 1) * sectionParagraphs.length) / (currentSectionImages.length + 1)))
     : [];
 
+  const blockImageSlots = selectedSection?.contentBlocks?.length > 0
+    ? currentSectionImages.map((_, i) => Math.floor(((i + 1) * selectedSection.contentBlocks.length) / (currentSectionImages.length + 1)))
+    : [];
+
   const forcedSubheads = [
     'Key Principles for Safe Medication Use',
     'Eight Rights to Medication Administration',
@@ -3104,7 +3108,10 @@ export const ChapterReader = () => {
                 ) : selectedSection.contentBlocks && selectedSection.contentBlocks.length > 0 && (
                   <section className="reader-card">
                     <h3>Detailed Reading</h3>
-                    {selectedSection.contentBlocks.map((block, idx) => (
+                    {selectedSection.contentBlocks.map((block, idx) => {
+                      const blockSlotIdx = blockImageSlots.indexOf(idx);
+                      const blockImgSrc = blockSlotIdx >= 0 ? currentSectionImages[blockSlotIdx] : null;
+                      return (
                       <div key={idx} style={{ marginBottom: '16px' }}>
                         {block.title && <h4 style={{ margin: '0 0 6px 0', fontSize: '1.06rem' }}>{cleanHeading(block.title)}</h4>}
                         {block.htmlReady ? (
@@ -3125,8 +3132,27 @@ export const ChapterReader = () => {
                             ? renderParagraphWithNumberedList(block.content)
                             : <p>{block.content}</p>
                         ) : null}
+                        {blockImgSrc && (
+                          <img
+                            className="reader-zoomable"
+                            src={blockImgSrc}
+                            alt={`Section visual ${blockSlotIdx + 1}`}
+                            style={{ width: '100%', marginTop: '10px', maxHeight: '420px', objectFit: 'contain', background: 'var(--panel)', borderRadius: '10px' }}
+                            loading="lazy"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              setTimeout(() => openLightbox(blockImgSrc, `Section visual ${blockSlotIdx + 1}`), 0);
+                            }}
+                            onPointerUp={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              setTimeout(() => openLightbox(blockImgSrc, `Section visual ${blockSlotIdx + 1}`), 0);
+                            }}
+                          />
+                        )}
                       </div>
-                    ))}
+                    )})}
                   </section>
                 )}
 
