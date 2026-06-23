@@ -2938,7 +2938,18 @@ export const ChapterReader = () => {
                           currentSectionImages.forEach((src, i) => {
                             const match = subheads[Math.min(i, subheads.length - 1)];
                             if (!match) return;
-                            const pos = match.index + match[0].length + offset;
+                            const start = match.index + match[0].length + offset;
+                            const after = out.slice(start);
+                            const firstParagraphClose = after.search(/<\/p>/i);
+                            const secondParagraphClose = firstParagraphClose >= 0 ? after.slice(firstParagraphClose + 4).search(/<\/p>/i) : -1;
+                            let pos;
+                            if (firstParagraphClose >= 0 && secondParagraphClose >= 0) {
+                              pos = start + firstParagraphClose + 4 + secondParagraphClose + 4;
+                            } else if (firstParagraphClose >= 0) {
+                              pos = start + firstParagraphClose + 4;
+                            } else {
+                              pos = start;
+                            }
                             const fig = figFor(src, i);
                             out = out.slice(0, pos) + fig + out.slice(pos);
                             offset += fig.length;
