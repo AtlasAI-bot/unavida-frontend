@@ -2921,7 +2921,7 @@ export const ChapterReader = () => {
                         );
                       };
 
-                      const injectChapter10Images = (html) => {
+                      const injectSectionImagesWithinPassage = (html) => {
                         if (!html) return html;
                         let out = String(html);
                         if (!currentSectionImages || currentSectionImages.length === 0) return out;
@@ -2972,6 +2972,8 @@ export const ChapterReader = () => {
                         }
                         return out;
                       };
+
+                      const injectChapter10Images = (html) => injectSectionImagesWithinPassage(html);
 
 
                       const injectChapter9Images = (html) => {
@@ -3082,7 +3084,7 @@ export const ChapterReader = () => {
                             ? injectChapter9Images(selectedSection.content)
                             : activeChapterId.startsWith('ch3')
                               ? injectChapter3Images(selectedSection.content)
-                              : injectChapter10Images(selectedSection.content);
+                              : injectSectionImagesWithinPassage(selectedSection.content);
 
                         return (
                           <div
