@@ -335,6 +335,76 @@ export const ChapterReader = () => {
     ch9_11_special_populations: [
       '/images/ch9/section-9-11/ch9_s9_11_special_populations_overview.jpg',
     ],
+
+    // Chapter 10
+    ch10_1_foundations_of_antiviral_pharmacology: [
+      '/images/ch10/section-10-1/ch10_s10_1_a_introduction_to_antiviral_therapy.png',
+      '/images/ch10/section-10-1/ch10_s10_1_b_viral_vs_bacterial_treatment_logic.png',
+      '/images/ch10/section-10-1/ch10_s10_1_c_suppression_vs_eradication.png',
+      '/images/ch10/section-10-1/ch10_s10_1_d_nursing_perspective.png',
+    ],
+    ch10_2_antivirals_for_herpesviruses_hsv_1_hsv_2_vzv_cmv: [
+      '/images/ch10/section-10-2/ch10_s10_2_a_virology_diagnostics_for_antiviral_selection.png',
+      '/images/ch10/section-10-2/ch10_s10_2_b_pcr_naat_testing.png',
+      '/images/ch10/section-10-2/ch10_s10_2_c_viral_load_and_resistance_testing.png',
+      '/images/ch10/section-10-2/ch10_s10_2_d_active_infection_vs_laten_cy_vs_reactivation.png',
+    ],
+    ch10_3_antivirals_for_influenza_and_other_common_respir: [
+      '/images/ch10/section-10-3/ch10_s10_3_a_core_principles_of_antiviral_use.png',
+      '/images/ch10/section-10-3/ch10_s10_3_b_early_treatment_window.png',
+      '/images/ch10/section-10-3/ch10_s10_3_c_adherence_and_resistance_prevention.png',
+      '/images/ch10/section-10-3/ch10_s10_3_d_when_to_treat_monitor_or_prevent.png',
+    ],
+    ch10_4_antivirals_for_hepatitis_viruses_hbv_and_hcv: [
+      '/images/ch10/section-10-4/ch10_s10_4_a_herpesvirus_antivirals_hsv_vzv_cmv.png',
+      '/images/ch10/section-10-4/ch10_s10_4_b_acyclovir_family.png',
+      '/images/ch10/section-10-4/ch10_s10_4_c_cmv_therapy.png',
+      '/images/ch10/section-10-4/ch10_s10_4_d_high_toxicity_alternatives.png',
+      '/images/ch10/section-10-4/ch10_s10_4_e_nursing_monitoring.png',
+    ],
+    ch10_5_antiretroviral_therapy_art_for_hiv_treatment_pre: [
+      '/images/ch10/section-10-5/ch10_s10_5_a_influenza_and_other_acute_respiratory_viral_therapies.png',
+      '/images/ch10/section-10-5/ch10_s10_5_b_oseltamivir.png',
+      '/images/ch10/section-10-5/ch10_s10_5_c_baloxavir_zanamivir_and_peramivir.png',
+      '/images/ch10/section-10-5/ch10_s10_5_d_high_risk_patients_and_prophylaxis.png',
+      '/images/ch10/section-10-5/ch10_s10_5_e_covid_19_and_rsv.png',
+    ],
+    ch10_6_antivirals_for_covid_19_and_selected_emerging_vi: [
+      '/images/ch10/section-10-6/ch10_s10_6_a_hiv_pharmacology_i_art_foundations.png',
+      '/images/ch10/section-10-6/ch10_s10_6_b_why_combination_art_is_required.png',
+      '/images/ch10/section-10-6/ch10_s10_6_c_art_drug_classes.png',
+      '/images/ch10/section-10-6/ch10_s10_6_d_baseline_evaluation_and_rapid_linkage.png',
+    ],
+    ch10_7_antivirals_for_influenza: [
+      '/images/ch10/section-10-7/ch10_s10_7_a_hiv_pharmacology_ii_art_safety_interactions_and_adherence.png',
+      '/images/ch10/section-10-7/ch10_s10_7_b_drug_interactions.png',
+      '/images/ch10/section-10-7/ch10_s10_7_c_adherence_as_safety.png',
+      '/images/ch10/section-10-7/ch10_s10_7_d_long_term_toxicity.png',
+    ],
+    ch10_8_antivirals_for_hepatitis_b_hbv: [
+      '/images/ch10/section-10-8/ch10_s10_8_a_viral_hepatitis_pharmacology_hbv_hcv_focus.png',
+      '/images/ch10/section-10-8/ch10_s10_8_b_hbv_suppression.png',
+      '/images/ch10/section-10-8/ch10_s10_8_c_hcv_direct_acting_antivirals.png',
+      '/images/ch10/section-10-8/ch10_s10_8_d_coinfection_and_follow_up.png',
+    ],
+    ch10_9_direct_acting_antivirals_for_hepatitis_c_hcv: [
+      '/images/ch10/section-10-9/ch10_s10_9_a_antiviral_resistance_and_stewardship.png',
+      '/images/ch10/section-10-9/ch10_s10_9_b_resistance_appearing_clinically.png',
+      '/images/ch10/section-10-9/ch10_s10_9_c_diagnostics_and_stewardship.png',
+      '/images/ch10/section-10-9/ch10_s10_9_d_adherence_prevents_resistance.png',
+    ],
+    ch10_10_antiretroviral_therapy_art_for_hiv: [
+      '/images/ch10/section-10-10/ch10_s10_10_a_adverse_effects_interactions_and_safety_alerts.png',
+      '/images/ch10/section-10-10/ch10_s10_10_b_renal_hepatic_and_hematologic_toxicity.png',
+      '/images/ch10/section-10-10/ch10_s10_10_c_neurotoxicity_and_cardiac_safety.png',
+      '/images/ch10/section-10-10/ch10_s10_10_d_red_flag_escalation.png',
+    ],
+    ch10_11_antivirals_for_covid_19_sars_cov_2: [
+      '/images/ch10/section-10-11/ch10_s10_11_a_special_populations_dose_adjustments.png',
+      '/images/ch10/section-10-11/ch10_s10_11_b_pregnancy_pediatrics_and_geriatrics.png',
+      '/images/ch10/section-10-11/ch10_s10_11_c_renal_and_hepatic_dose_adjustment.png',
+      '/images/ch10/section-10-11/ch10_s10_11_d_immunocompromised_hosts.png',
+    ],
   };
 
 
