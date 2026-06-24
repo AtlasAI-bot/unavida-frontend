@@ -6,6 +6,7 @@ import chapter3Data from '../data/CHAPTER_3_UNAVIDA_PRODUCTION.json';
 import chapter5Data from '../data/CHAPTER_5_UNAVIDA_PRODUCTION.json';
 import chapter9Data from '../data/CHAPTER_9_UNAVIDA_PRODUCTION.json';
 import chapter10Data from '../data/CHAPTER_10_UNAVIDA_PRODUCTION.json';
+import chapter11Data from '../data/CHAPTER_11_UNAVIDA_PRODUCTION.json';
 import chapter2SeedSections from '../content/reader/chapter2SeedSections';
 import './ChapterReader.css';
 
@@ -427,6 +428,7 @@ export const ChapterReader = () => {
   const chapter10SectionsRaw = [...(chapter10Data.chapter.sections || [])];
   const chapter10Ref = chapter10SectionsRaw.find((s) => s.id === 'ch10_15_references' || String(s.sectionNumber) === '10.15');
   const chapter10Sections = chapter10SectionsRaw.filter((s) => !(s.id === 'ch10_15_references' || String(s.sectionNumber) === '10.15'));
+  const chapter11Sections = [...(chapter11Data.chapter.sections || [])];
 
   const chapter60Sections = [
     {
@@ -501,6 +503,7 @@ export const ChapterReader = () => {
     const ch5Refs = extractReferencesBlockFromHtml(chapter5Sections[chapter5Sections.length - 1]?.content || '');
     const ch9Refs = extractReferencesBlockFromHtml(chapter9Sections[chapter9Sections.length - 1]?.content || '');
     const ch10Refs = chapter10Ref?.content || '';
+    const ch11Refs = extractReferencesBlockFromHtml(chapter11Sections[chapter11Sections.length - 1]?.content || '');
 
     const wrap = (label, content) => {
       const text = String(content || '').trim();
@@ -525,6 +528,7 @@ export const ChapterReader = () => {
         ${wrap('Chapter 5 References', ch5Refs)}
         ${wrap('Chapter 9 References', ch9Refs)}
         ${wrap('Chapter 10 References', ch10Refs)}
+        ${wrap('Chapter 11 References', ch11Refs)}
       </div>
     `;
   };
@@ -540,7 +544,7 @@ export const ChapterReader = () => {
     },
   ];
 
-  const allSections = [...chapter1Sections, ...chapter2Sections, ...chapter3Sections, ...chapter5Sections, ...chapter9Sections, ...chapter10Sections, ...chapter60Sections, ...referencesAllSections];
+  const allSections = [...chapter1Sections, ...chapter2Sections, ...chapter3Sections, ...chapter5Sections, ...chapter9Sections, ...chapter10Sections, ...chapter11Sections, ...chapter60Sections, ...referencesAllSections];
   const activeSections = activeChapterId === 'references_all'
     ? referencesAllSections
     : activeChapterId.startsWith('ch2')
@@ -553,9 +557,11 @@ export const ChapterReader = () => {
             ? chapter9Sections
             : activeChapterId.startsWith('ch10')
               ? chapter10Sections
-              : activeChapterId.startsWith('ch60')
-                ? chapter60Sections
-                : chapter1Sections;
+              : activeChapterId.startsWith('ch11')
+                ? chapter11Sections
+                : activeChapterId.startsWith('ch60')
+                  ? chapter60Sections
+                  : chapter1Sections;
 
   const currentSectionImages = selectedSection ? (sectionIllustrationMap[selectedSection.id] || []) : [];
 

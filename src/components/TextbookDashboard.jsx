@@ -60,7 +60,7 @@ const courseContent = {
         sections: [
           { id: 'ch9_1_introduction', label: 'Chapter 9: Antibiotics', status: 'Not Started' },
           { id: 'ch10_1_foundations_of_antiviral_pharmacology', label: 'Chapter 10: Antivirals', status: 'In Progress' },
-          { id: 'nur1100_ch11_antifungals', label: 'Chapter 11: Antifungals', status: 'Not Started' },
+          { id: 'ch11_1_foundations_of_antifungal_pharmacology', label: 'Chapter 11: Antifungals', status: 'In Progress' },
           { id: 'nur1100_ch14_antineoplastics', label: 'Chapter 14: Antineoplastics', status: 'Not Started' },
         ],
       },
@@ -387,6 +387,12 @@ export const TextbookDashboard = () => {
                             // Chapter 10 (Antivirals) mapping
                             if (activeCourse === 'NUR1100' && section.id.startsWith('ch10_')) {
                               navigate(`/reader/ch10_antivirals?section=${section.id}`);
+                              return;
+                            }
+
+                            // Chapter 11 (Antifungals) mapping
+                            if (activeCourse === 'NUR1100' && section.id.startsWith('ch11_')) {
+                              navigate(`/reader/ch11_antifungals?section=${section.id}`);
                               return;
                             }
 
