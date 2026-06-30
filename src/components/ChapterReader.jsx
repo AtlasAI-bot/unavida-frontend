@@ -756,8 +756,8 @@ export const ChapterReader = () => {
 
   // Navigation groupings (chapter sections are sourced above)
   const navChapter1Sections = chapter1Sections.filter((section) => section.id !== 'references');
-  const navChapter2Sections = chapter2Sections;
-  const navChapter3Sections = chapter3Sections;
+  const navChapter2Sections = chapter2Sections.filter((section) => section.id !== 'ch2_references');
+  const navChapter3Sections = chapter3Sections.filter((section) => section.id !== 'ch3_10_chapter_references');
   const navChapter5Sections = chapter5Sections;
   const navChapter9Sections = chapter9Sections;
   const navChapter10Sections = chapter10Sections;
