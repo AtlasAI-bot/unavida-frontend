@@ -761,7 +761,7 @@ export const ChapterReader = () => {
   const navChapter5Sections = chapter5Sections;
   const navChapter9Sections = chapter9Sections;
   const navChapter10Sections = chapter10Sections;
-  const navChapter11Sections = chapter11Sections;
+  const navChapter11Sections = chapter11Sections.filter((section) => section.id !== 'ch11_16_references');
   const navChapter60Sections = chapter60Sections;
 
   const chapterScaffoldTitles = [
