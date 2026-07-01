@@ -454,10 +454,19 @@ export const ChapterReader = () => {
     const raw = section.sectionNumber;
     if (raw === null || raw === undefined || raw === '') return 998;
 
-    const n = Number(raw);
+    const str = String(raw).trim();
+    if (!str) return 998;
+
+    if (/^\d+(?:\.\d+)+$/.test(str)) {
+      const parts = str.split('.').map((p) => Number.parseInt(p, 10));
+      if (parts.every((n) => !Number.isNaN(n))) {
+        return parts.reduce((acc, part, idx) => acc + (part / Math.pow(100, idx)), 0);
+      }
+    }
+
+    const n = Number(str);
     if (!Number.isNaN(n)) return n;
 
-    const str = String(raw);
     const parsed = Number.parseFloat(str);
     if (!Number.isNaN(parsed)) return parsed;
 
