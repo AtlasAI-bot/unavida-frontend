@@ -7,6 +7,7 @@ import chapter5Data from '../data/CHAPTER_5_UNAVIDA_PRODUCTION.json';
 import chapter9Data from '../data/CHAPTER_9_UNAVIDA_PRODUCTION.json';
 import chapter10Data from '../data/CHAPTER_10_UNAVIDA_PRODUCTION.json';
 import chapter11Data from '../data/CHAPTER_11_UNAVIDA_PRODUCTION.json';
+import chapter60Data from '../data/CHAPTER_60_UNAVIDA_PRODUCTION.json';
 import chapter2SeedSections from '../content/reader/chapter2SeedSections';
 import './ChapterReader.css';
 
@@ -429,23 +430,9 @@ export const ChapterReader = () => {
   const chapter10Ref = chapter10SectionsRaw.find((s) => s.id === 'ch10_15_references' || String(s.sectionNumber) === '10.15');
   const chapter10Sections = chapter10SectionsRaw.filter((s) => !(s.id === 'ch10_15_references' || String(s.sectionNumber) === '10.15'));
   const chapter11Sections = [...(chapter11Data.chapter.sections || [])];
-
-  const chapter60Sections = [
-    {
-      id: 'ch60_1_foundations',
-      title: 'Chapter 60: Vitamins, Minerals, and Complementary/Alternative Medications',
-      sectionNumber: '60.0',
-      content: `
-        <h2>Chapter 60 Placeholder</h2>
-        <p>This chapter has been placed in the textbook navigation because it is needed during week one of the course.</p>
-        <p>The full Chapter 60 reader content has not been added to the site yet. Once the chapter source file is prepared, this placeholder will be replaced with the complete section-by-section content.</p>
-        <h3>What still needs to be done</h3>
-        <p>Add the production Chapter 60 content file, connect its sections to the reader, and update any related media, videos, or learning tools tied to this chapter.</p>
-      `,
-      wordCount: 85,
-      duration: 2,
-    },
-  ];
+  const chapter60SectionsRaw = [...(chapter60Data.chapter.sections || [])];
+  const chapter60Ref = chapter60SectionsRaw.find((s) => s.id === 'ch60_15_references' || String(s.sectionNumber) === '60.15');
+  const chapter60Sections = chapter60SectionsRaw.filter((s) => !(s.id === 'ch60_15_references' || String(s.sectionNumber) === '60.15'));
 
   const getSectionSortKey = (section) => {
     if (!section) return 999;
@@ -513,6 +500,7 @@ export const ChapterReader = () => {
     const ch9Refs = extractReferencesBlockFromHtml(chapter9Sections[chapter9Sections.length - 1]?.content || '');
     const ch10Refs = chapter10Ref?.content || '';
     const ch11Refs = extractReferencesBlockFromHtml(chapter11Sections[chapter11Sections.length - 1]?.content || '');
+    const ch60Refs = chapter60Ref?.content || '';
 
     const wrap = (label, content) => {
       const text = String(content || '').trim();
@@ -538,6 +526,7 @@ export const ChapterReader = () => {
         ${wrap('Chapter 9 References', ch9Refs)}
         ${wrap('Chapter 10 References', ch10Refs)}
         ${wrap('Chapter 11 References', ch11Refs)}
+        ${wrap('Chapter 60 References', ch60Refs)}
       </div>
     `;
   };
@@ -771,7 +760,7 @@ export const ChapterReader = () => {
   const navChapter9Sections = chapter9Sections;
   const navChapter10Sections = chapter10Sections;
   const navChapter11Sections = chapter11Sections.filter((section) => section.id !== 'ch11_16_references');
-  const navChapter60Sections = chapter60Sections;
+  const navChapter60Sections = chapter60Sections.filter((section) => section.id !== 'ch60_15_references');
 
   const chapterScaffoldTitles = [
     'Chapter 14: Antineoplastics',
