@@ -50,7 +50,7 @@ const courseContent = {
           { id: 'sec2_1_pk_overview', label: 'Chapter 2: Pharmacokinetics', status: 'In Progress' },
           { id: 'nur1100_ch3_toxicity', label: 'Chapter 3: Toxicity', status: 'Not Started' },
           { id: 'ch5_1_foundations', label: 'Chapter 5: Dosage Calculations', status: 'Not Started' },
-          { id: 'ch60_1_foundations', label: 'Chapter 60: Vitamins, Minerals, and Complementary/Alternative Medications', status: 'Not Started' },
+          { id: 'ch60_1_foundations_of_vitamins_minerals_and_complementary_therapies', label: 'Chapter 60: Vitamins, Minerals, and Complementary/Alternative Medications', status: 'In Progress' },
         ],
       },
       {
@@ -393,6 +393,12 @@ export const TextbookDashboard = () => {
                             // Chapter 11 (Antifungals) mapping
                             if (activeCourse === 'NUR1100' && section.id.startsWith('ch11_')) {
                               navigate(`/reader/ch11_antifungals?section=${section.id}`);
+                              return;
+                            }
+
+                            // Chapter 60 (Vitamins, Minerals, and CAM) mapping
+                            if (activeCourse === 'NUR1100' && section.id.startsWith('ch60_')) {
+                              navigate(`/reader/ch60_vitamins_minerals_cam?section=${section.id}`);
                               return;
                             }
 

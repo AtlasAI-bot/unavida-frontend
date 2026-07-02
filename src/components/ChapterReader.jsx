@@ -2519,7 +2519,7 @@ export const ChapterReader = () => {
                   onClick={() => handleSectionClick(section)}
                 >
                   {section.title}
-                  <span style={{ fontSize: '11px', color: 'var(--muted)' }}> (placeholder)</span>
+                  <span style={{ fontSize: '11px', color: 'var(--muted)' }}> ({getSectionWordCount(section)} words)</span>
                 </a>
               ))}
             </div>
