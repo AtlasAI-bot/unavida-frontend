@@ -204,6 +204,52 @@ const statusColor = (status) => {
   return '#ef4444';
 };
 
+const getReaderRoute = (activeCourse, sectionId) => {
+  if (sectionId === 'references_all') {
+    return '/reader/references_all?section=references_all';
+  }
+
+  if ((activeCourse === 'NUR1100' || activeCourse === 'NUR2110') && (sectionId.startsWith('sec1_') || sectionId.startsWith('sec2_'))) {
+    const targetChapter = sectionId.startsWith('sec2_') ? 'ch2_pharmacokinetics' : 'ch1_intro';
+    return `/reader/${targetChapter}?section=${sectionId}`;
+  }
+
+  if (activeCourse === 'NUR1100' && sectionId === 'nur1100_ch3_toxicity') {
+    return '/reader/ch3_toxicity';
+  }
+
+  if (activeCourse === 'NUR1100' && sectionId.startsWith('ch5_')) {
+    return `/reader/ch5_dosage_calculations?section=${sectionId}`;
+  }
+
+  if (activeCourse === 'NUR1100' && sectionId.startsWith('ch9_')) {
+    return `/reader/ch9_antibiotics?section=${sectionId}`;
+  }
+
+  if (activeCourse === 'NUR1100' && sectionId.startsWith('ch10_')) {
+    return `/reader/ch10_antivirals?section=${sectionId}`;
+  }
+
+  if (activeCourse === 'NUR1100' && sectionId.startsWith('ch11_')) {
+    return `/reader/ch11_antifungals?section=${sectionId}`;
+  }
+
+  if (activeCourse === 'NUR1100' && sectionId.startsWith('ch60_')) {
+    return `/reader/ch60_vitamins_minerals_cam?section=${sectionId}`;
+  }
+
+  return null;
+};
+
+const getSectionAvailability = (activeCourse, sectionId) => {
+  const route = getReaderRoute(activeCourse, sectionId);
+  return {
+    route,
+    isAvailable: Boolean(route),
+    label: route ? 'Ready to read' : 'Planned content',
+  };
+};
+
 export const TextbookDashboard = () => {
   const navigate = useNavigate();
   const { textbookId } = useParams();
@@ -278,6 +324,22 @@ export const TextbookDashboard = () => {
   const course = courseContent[activeCourse];
   const isMasteringPharmacology = textbookId === 'NUR1100' || textbookId === 'NUR2110';
   const selectableCourses = isMasteringPharmacology ? ['NUR1100', 'NUR2110'] : [activeCourse];
+  const chapterSummary = useMemo(() => course.chapters.map((chapter) => {
+    const readyCount = chapter.sections.filter((section) => getSectionAvailability(activeCourse, section.id).isAvailable).length;
+    return {
+      ...chapter,
+      totalCount: chapter.sections.length,
+      readyCount,
+      plannedCount: chapter.sections.length - readyCount,
+    };
+  }), [activeCourse, course]);
+
+  useEffect(() => {
+    if (!course?.chapters?.length) return;
+    if (openChapterId && course.chapters.some((chapter) => chapter.id === openChapterId)) return;
+    const preferred = course.chapters.find((chapter) => chapter.status === 'In Progress') || course.chapters[0];
+    setOpenChapterId(preferred?.id || null);
+  }, [course, openChapterId]);
 
   return (
     <div style={{ minHeight: '100vh', background: palette.page, color: palette.text }}>
@@ -333,83 +395,65 @@ export const TextbookDashboard = () => {
             ))}
           </div>
 
-          <h2 style={{ margin: '0 0 10px', fontSize: 18 }}>{course.name} Chapters</h2>
+          <h2 style={{ margin: '0 0 6px', fontSize: 18 }}>{course.name} Chapters</h2>
+          <div style={{ marginBottom: 12, fontSize: 13, color: palette.muted }}>Published sections open directly in the reader. Planned sections stay visible so the course roadmap still makes sense.</div>
           <div style={{ display: 'grid', gap: 10 }}>
-            {course.chapters.map((chapter) => {
+            {chapterSummary.map((chapter) => {
               const isOpen = openChapterId === chapter.id;
               return (
                 <div key={chapter.id} style={{ border: `1px solid ${palette.border}`, borderRadius: 10, background: palette.panel2 }}>
                   <button
                     onClick={() => setOpenChapterId(isOpen ? null : chapter.id)}
-                    style={{ width: '100%', textAlign: 'left', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: 10, background: 'transparent', border: 0, color: palette.text, cursor: 'pointer' }}
+                    style={{ width: '100%', textAlign: 'left', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: 10, background: 'transparent', border: 0, color: palette.text, cursor: 'pointer', gap: 12 }}
                   >
-                    <span style={{ fontWeight: 700 }}>{chapter.title}</span>
-                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+                    <span>
+                      <div style={{ fontWeight: 700 }}>{chapter.title}</div>
+                      <div style={{ marginTop: 4, fontSize: 12, color: palette.muted }}>{chapter.readyCount} of {chapter.totalCount} sections ready • {chapter.plannedCount} planned</div>
+                    </span>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
                       <span style={{ fontSize: 12, padding: '2px 8px', borderRadius: 999, background: isDarkMode ? '#0f1113' : '#edf2ff', color: statusColor(chapter.status), fontWeight: 700 }}>{chapter.status}</span>
                       {isOpen ? '▲' : '▼'}
                     </span>
                   </button>
                   {isOpen && (
                     <div style={{ padding: '0 10px 10px', display: 'grid', gap: 8 }}>
-                      {chapter.sections.map((section) => (
-                        <button
-                          key={section.id}
-                          onClick={() => {
-                            if (section.id === 'references_all') {
-                              navigate('/reader/references_all?section=references_all');
-                              return;
-                            }
-
-                            if ((activeCourse === 'NUR1100' || activeCourse === 'NUR2110') && (section.id.startsWith('sec1_') || section.id.startsWith('sec2_'))) {
-                              const targetChapter = section.id.startsWith('sec2_') ? 'ch2_pharmacokinetics' : 'ch1_intro';
-                              navigate(`/reader/${targetChapter}?section=${section.id}`);
-                              return;
-                            }
-
-                            // Chapter 3 (Toxicity) mapping
-                            if (activeCourse === 'NUR1100' && section.id === 'nur1100_ch3_toxicity') {
-                              navigate('/reader/ch3_toxicity');
-                              return;
-                            }
-
-                            // Chapter 5 (Dosage Calculations) mapping
-                            if (activeCourse === 'NUR1100' && section.id.startsWith('ch5_')) {
-                              navigate(`/reader/ch5_dosage_calculations?section=${section.id}`);
-                              return;
-                            }
-
-                            // Chapter 9 (Antibiotics) mapping
-                            if (activeCourse === 'NUR1100' && section.id.startsWith('ch9_')) {
-                              navigate(`/reader/ch9_antibiotics?section=${section.id}`);
-                              return;
-                            }
-
-                            // Chapter 10 (Antivirals) mapping
-                            if (activeCourse === 'NUR1100' && section.id.startsWith('ch10_')) {
-                              navigate(`/reader/ch10_antivirals?section=${section.id}`);
-                              return;
-                            }
-
-                            // Chapter 11 (Antifungals) mapping
-                            if (activeCourse === 'NUR1100' && section.id.startsWith('ch11_')) {
-                              navigate(`/reader/ch11_antifungals?section=${section.id}`);
-                              return;
-                            }
-
-                            // Chapter 60 (Vitamins, Minerals, and CAM) mapping
-                            if (activeCourse === 'NUR1100' && section.id.startsWith('ch60_')) {
-                              navigate(`/reader/ch60_vitamins_minerals_cam?section=${section.id}`);
-                              return;
-                            }
-
-                            window.alert('This chapter is mapped in the course blueprint. Full reading content is coming soon.');
-                          }}
-                          style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel, color: palette.text, padding: 9, cursor: 'pointer' }}
-                        >
-                          <div style={{ fontWeight: 600 }}>{section.label}</div>
-                          <div style={{ fontSize: 12, color: statusColor(section.status) }}>{section.status}</div>
-                        </button>
-                      ))}
+                      {chapter.sections.map((section) => {
+                        const availability = getSectionAvailability(activeCourse, section.id);
+                        return (
+                          <button
+                            key={section.id}
+                            onClick={() => {
+                              if (!availability.route) return;
+                              navigate(availability.route);
+                            }}
+                            disabled={!availability.route}
+                            style={{
+                              textAlign: 'left',
+                              border: `1px solid ${palette.border}`,
+                              borderRadius: 8,
+                              background: availability.route ? palette.panel : (isDarkMode ? '#15181c' : '#eef3ff'),
+                              color: palette.text,
+                              padding: 10,
+                              cursor: availability.route ? 'pointer' : 'not-allowed',
+                              opacity: availability.route ? 1 : 0.74,
+                            }}
+                            aria-disabled={!availability.route}
+                            title={availability.route ? `Open ${section.label}` : `${section.label} is planned but not published yet`}
+                          >
+                            <div style={{ display: 'flex', justifyContent: 'space-between', gap: 10, alignItems: 'flex-start' }}>
+                              <div>
+                                <div style={{ fontWeight: 600 }}>{section.label}</div>
+                                <div style={{ fontSize: 12, color: statusColor(section.status), marginTop: 4 }}>{section.status}</div>
+                              </div>
+                              <div style={{ display: 'grid', gap: 6, justifyItems: 'end', flexShrink: 0 }}>
+                                <span style={{ fontSize: 11, padding: '3px 8px', borderRadius: 999, background: availability.route ? 'rgba(57,208,200,.14)' : (isDarkMode ? '#0f1113' : '#dbe7ff'), color: availability.route ? '#39d0c8' : palette.muted, fontWeight: 700 }}>
+                                  {availability.label}
+                                </span>
+                              </div>
+                            </div>
+                          </button>
+                        );
+                      })}
                     </div>
                   )}
                 </div>
@@ -443,8 +487,8 @@ export const TextbookDashboard = () => {
             <h3 style={{ margin: '0 0 10px' }}>Workbook + Video Library</h3>
             <div style={{ display: 'grid', gap: 8 }}>
               <button onClick={() => navigate('/workbook')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>📝 Notes</button>
-              <button onClick={() => navigate('/workbook')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>⚡ Quick Jump</button>
-              <button onClick={() => navigate('/workbook')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>🔖 Bookmarks</button>
+              <button onClick={() => navigate('/workbook')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>⚡ Quick Jump Workspace</button>
+              <button onClick={() => navigate('/workbook')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>🔖 Saved Bookmarks</button>
               <button onClick={() => navigate('/video-library')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>🎥 Video Library</button>
             </div>
           </section>

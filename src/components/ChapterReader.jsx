@@ -780,6 +780,20 @@ export const ChapterReader = () => {
     sections: ['1.0 Overview (Placeholder)', '1.1 Core Concepts (Placeholder)', '1.2 Clinical Focus (Placeholder)'],
   }));
 
+  const chapterNavGroups = [
+    { id: 'ch1', title: 'Chapter 1: Intro to Pharmacology', route: '/textbook/NUR1100', sections: navChapter1Sections, active: activeChapterId.startsWith('ch1') },
+    { id: 'ch2', title: 'Chapter 2: Pharmacokinetics', route: '/textbook/NUR1100', sections: navChapter2Sections, active: activeChapterId.startsWith('ch2') },
+    { id: 'ch3', title: 'Chapter 3: Toxicity', route: '/textbook/NUR1100', sections: navChapter3Sections, active: activeChapterId.startsWith('ch3') },
+    { id: 'ch5', title: 'Chapter 5: Dosage Calculations', route: '/textbook/NUR1100', sections: navChapter5Sections, active: activeChapterId.startsWith('ch5') },
+    { id: 'ch60', title: 'Chapter 60: Vitamins, Minerals, and Complementary/Alternative Medications', route: '/textbook/NUR1100', sections: navChapter60Sections, active: activeChapterId.startsWith('ch60') },
+    { id: 'ch9', title: 'Chapter 9: Antibiotics', route: '/textbook/NUR1100', sections: navChapter9Sections, active: activeChapterId.startsWith('ch9') },
+    { id: 'ch10', title: 'Chapter 10: Antivirals', route: '/textbook/NUR1100', sections: navChapter10Sections, active: activeChapterId.startsWith('ch10') },
+    { id: 'ch11', title: 'Chapter 11: Antifungals', route: '/textbook/NUR1100', sections: navChapter11Sections, active: activeChapterId.startsWith('ch11') },
+    { id: 'refs', title: 'Textbook References', route: '/textbook/NUR1100', sections: referencesAllSections, active: activeChapterId === 'references_all' },
+  ];
+
+  const activeNavGroup = chapterNavGroups.find((group) => group.active) || chapterNavGroups[0];
+  const activeCourseRoute = activeNavGroup?.route || '/textbook/NUR1100';
   const currentSectionIndex = allSections.findIndex((s) => s.id === selectedSection?.id);
   const prevSection = currentSectionIndex > 0 ? allSections[currentSectionIndex - 1] : null;
   const nextSection = currentSectionIndex >= 0 && currentSectionIndex < allSections.length - 1 ? allSections[currentSectionIndex + 1] : null;
@@ -1702,13 +1716,17 @@ export const ChapterReader = () => {
   };
 
   const handleChapClick = (chap) => {
-    const chapBtn = chap.querySelector('.chapBtn');
-    const isOpen = chap.classList.contains('open');
+    if (!chap) return;
     chap.classList.toggle('open');
-    const arrow = chapBtn?.querySelector('small');
-    if (arrow) {
-      arrow.textContent = isOpen ? '▶' : '▼';
-    }
+  };
+
+  const getSectionMetaLabel = (section) => {
+    const parts = [];
+    if (section?.sectionNumber) parts.push(`Section ${section.sectionNumber}`);
+    const words = getSectionWordCount(section);
+    if (words > 0) parts.push(`${words.toLocaleString()} words`);
+    if (section?.duration) parts.push(`${section.duration} min`);
+    return parts.join(' • ');
   };
 
   return (
@@ -2004,6 +2022,14 @@ export const ChapterReader = () => {
 
         .reader-chap-btn small { font-weight: 500; color: var(--muted); }
 
+        .reader-chap-summary {
+          display: block;
+          margin-top: 4px;
+          font-size: 11px;
+          color: var(--muted);
+          font-weight: 500;
+        }
+
         .reader-sec-wrap {
           display: none;
           background: var(--chapter-2);
@@ -2029,6 +2055,25 @@ export const ChapterReader = () => {
           background: var(--chapter-active);
           border-left: 3px solid #39d0c8;
           padding-left: 6px;
+          box-shadow: inset 0 0 0 1px rgba(57,208,200,0.22);
+        }
+
+        .reader-sec-meta {
+          display: block;
+          margin-top: 4px;
+          font-size: 11px;
+          color: var(--muted);
+        }
+
+        .reader-sec-state {
+          display: inline-flex;
+          margin-top: 6px;
+          padding: 2px 8px;
+          border-radius: 999px;
+          font-size: 10px;
+          font-weight: 700;
+          background: rgba(57,208,200,0.14);
+          color: #39d0c8;
         }
 
         .reader-main-wrap {
@@ -2391,15 +2436,15 @@ export const ChapterReader = () => {
           <div className="reader-crumb" style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
             <span style={{ cursor: 'pointer', textDecoration: 'underline' }} onClick={() => navigate('/bookshelf')}>Home</span>
             <span>/</span>
-            <span style={{ cursor: 'pointer', textDecoration: 'underline' }} onClick={() => navigate('/textbook/NUR1100')}>Pharmacology I</span>
+            <span style={{ cursor: 'pointer', textDecoration: 'underline' }} onClick={() => navigate(activeCourseRoute)}>Pharmacology I</span>
             <span>/</span>
-            <span style={{ cursor: 'pointer', textDecoration: 'underline' }} onClick={() => navigate('/reader/ch1_intro')}>Reader</span>
+            <span style={{ cursor: 'pointer', textDecoration: 'underline' }} onClick={() => navigate(`/reader/${activeChapterId}`)}>Reader</span>
           </div>
-          <div className="reader-header">Mastering Pharmacology</div>
+          <div className="reader-header">{activeNavGroup?.title || 'Mastering Pharmacology'}</div>
         </div>
         <div className="reader-tools">
           <button className="reader-btn" onClick={() => setTopMenuOpen((v) => !v)}>☰ Reader Menu</button>
-          <a href="/textbook/NUR1100" className="reader-btn">Back to Textbook</a>
+          <button className="reader-btn" onClick={() => navigate(activeCourseRoute)}>Back to Textbook</button>
 
           {topMenuOpen && (
             <div className="reader-menu">
@@ -2429,199 +2474,61 @@ export const ChapterReader = () => {
           <div className="reader-toc-title">
             <h3 style={{ margin: 0 }}>Textbook Navigation</h3>
           </div>
-          <div className={`reader-chap ${activeChapterId.startsWith('ch1') ? 'open' : ''}`}>
-            <button className="reader-chap-btn" onClick={(e) => handleChapClick(e.currentTarget.closest('.reader-chap'))}>
-              Chapter 1: Intro to Pharmacology
-              <small>▼</small>
-            </button>
-            <div className="reader-sec-wrap">
-              {navChapter1Sections.map((section) => (
-                <a
-                  key={section.id}
-                  className={`reader-sec ${selectedSection?.id === section.id ? 'active' : ''}`}
-                  onClick={() => handleSectionClick(section)}
-                >
-                  {section.title}
-                  <span style={{ fontSize: '11px', color: 'var(--muted)' }}> ({getSectionWordCount(section)} words)</span>
-                  {section.duration && <span style={{ fontSize: '11px', color: 'var(--muted)' }}> • {section.duration} min</span>}
-                </a>
-              ))}
-            </div>
+          <div style={{ margin: '0 0 10px', padding: '0 0 8px 28px', fontSize: '12px', color: 'var(--muted)' }}>
+            Current section stays highlighted. Planned chapters remain visible, but they no longer pretend to be ready.
           </div>
-
-          <div className={`reader-chap ${activeChapterId.startsWith('ch2') ? 'open' : ''}`}>
-            <button className="reader-chap-btn" onClick={(e) => handleChapClick(e.currentTarget.closest('.reader-chap'))}>
-              Chapter 2: Pharmacokinetics
-              <small>▼</small>
-            </button>
-            <div className="reader-sec-wrap">
-              {navChapter2Sections.map((section) => (
-                <a
-                  key={section.id}
-                  className={`reader-sec ${selectedSection?.id === section.id ? 'active' : ''}`}
-                  onClick={() => handleSectionClick(section)}
-                >
-                  {section.title}
-                  <span style={{ fontSize: '11px', color: 'var(--muted)' }}> ({getSectionWordCount(section)} words)</span>
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div className={`reader-chap ${activeChapterId.startsWith('ch3') ? 'open' : ''}`}>
-            <button className="reader-chap-btn" onClick={(e) => handleChapClick(e.currentTarget.closest('.reader-chap'))}>
-              Chapter 3: Toxicity
-              <small>▼</small>
-            </button>
-            <div className="reader-sec-wrap">
-              {navChapter3Sections.map((section) => (
-                <a
-                  key={section.id}
-                  className={`reader-sec ${selectedSection?.id === section.id ? 'active' : ''}`}
-                  onClick={() => handleSectionClick(section)}
-                >
-                  {section.title}
-                  <span style={{ fontSize: '11px', color: 'var(--muted)' }}> ({getSectionWordCount(section)} words)</span>
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div className={`reader-chap ${activeChapterId.startsWith('ch5') ? 'open' : ''}`}>
-            <button className="reader-chap-btn" onClick={(e) => handleChapClick(e.currentTarget.closest('.reader-chap'))}>
-              Chapter 5: Dosage Calculations
-              <small>▼</small>
-            </button>
-            <div className="reader-sec-wrap">
-              {navChapter5Sections.map((section) => (
-                <a
-                  key={section.id}
-                  className={`reader-sec ${selectedSection?.id === section.id ? 'active' : ''}`}
-                  onClick={() => handleSectionClick(section)}
-                >
-                  {section.title}
-                  <span style={{ fontSize: '11px', color: 'var(--muted)' }}> ({getSectionWordCount(section)} words)</span>
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div className={`reader-chap ${activeChapterId.startsWith('ch60') ? 'open' : ''}`}>
-            <button className="reader-chap-btn" onClick={(e) => handleChapClick(e.currentTarget.closest('.reader-chap'))}>
-              Chapter 60: Vitamins, Minerals, and Complementary/Alternative Medications
-              <small>▼</small>
-            </button>
-            <div className="reader-sec-wrap">
-              {navChapter60Sections.map((section) => (
-                <a
-                  key={section.id}
-                  className={`reader-sec ${selectedSection?.id === section.id ? 'active' : ''}`}
-                  onClick={() => handleSectionClick(section)}
-                >
-                  {section.title}
-                  <span style={{ fontSize: '11px', color: 'var(--muted)' }}> ({getSectionWordCount(section)} words)</span>
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div className={`reader-chap ${activeChapterId.startsWith('ch9') ? 'open' : ''}`}>
-            <button className="reader-chap-btn" onClick={(e) => handleChapClick(e.currentTarget.closest('.reader-chap'))}>
-              Chapter 9: Antibiotics
-              <small>▼</small>
-            </button>
-            <div className="reader-sec-wrap">
-              {navChapter9Sections.map((section) => (
-                <a
-                  key={section.id}
-                  className={`reader-sec ${selectedSection?.id === section.id ? 'active' : ''}`}
-                  onClick={() => handleSectionClick(section)}
-                >
-                  {section.title}
-                  <span style={{ fontSize: '11px', color: 'var(--muted)' }}> ({getSectionWordCount(section)} words)</span>
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div className={`reader-chap ${activeChapterId.startsWith('ch10') ? 'open' : ''}`}>
-            <button className="reader-chap-btn" onClick={(e) => handleChapClick(e.currentTarget.closest('.reader-chap'))}>
-              Chapter 10: Antivirals
-              <small>▼</small>
-            </button>
-            <div className="reader-sec-wrap">
-              {navChapter10Sections.map((section) => (
-                <a
-                  key={section.id}
-                  className={`reader-sec ${selectedSection?.id === section.id ? 'active' : ''}`}
-                  onClick={() => handleSectionClick(section)}
-                >
-                  {section.title}
-                  <span style={{ fontSize: '11px', color: 'var(--muted)' }}> ({getSectionWordCount(section)} words)</span>
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div className={`reader-chap ${activeChapterId.startsWith('ch11') ? 'open' : ''}`}>
-            <button className="reader-chap-btn" onClick={(e) => handleChapClick(e.currentTarget.closest('.reader-chap'))}>
-              Chapter 11: Antifungals
-              <small>▼</small>
-            </button>
-            <div className="reader-sec-wrap">
-              {navChapter11Sections.map((section) => (
-                <a
-                  key={section.id}
-                  className={`reader-sec ${selectedSection?.id === section.id ? 'active' : ''}`}
-                  onClick={() => handleSectionClick(section)}
-                >
-                  {section.title}
-                  <span style={{ fontSize: '11px', color: 'var(--muted)' }}> ({getSectionWordCount(section)} words)</span>
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {chapterScaffoldTitles.map((chapter) => (
-            <div className="reader-chap" key={chapter.title}>
+          {chapterNavGroups.map((chapter) => (
+            <div className={`reader-chap ${chapter.active ? 'open' : ''}`} key={chapter.id}>
               <button className="reader-chap-btn" onClick={(e) => handleChapClick(e.currentTarget.closest('.reader-chap'))}>
-                {chapter.title}
-                <small>▼</small>
+                <span>
+                  {chapter.title}
+                  <span className="reader-chap-summary">
+                    {chapter.id === 'refs' ? 'Compiled references' : `${chapter.sections.length} published sections`}
+                  </span>
+                </span>
+                <small>{chapter.active ? '▼' : '▶'}</small>
               </button>
               <div className="reader-sec-wrap">
-                {chapter.sections.map((label) => (
+                {chapter.sections.map((section) => (
                   <a
-                    key={`${chapter.title}-${label}`}
-                    className="reader-sec"
-                    onClick={() => window.alert('This chapter is mapped and queued for content build.')}
+                    key={section.id}
+                    className={`reader-sec ${selectedSection?.id === section.id ? 'active' : ''}`}
+                    onClick={() => handleSectionClick(section)}
                   >
-                    {label}
-                    <span style={{ fontSize: '11px', color: 'var(--muted)' }}> (placeholder)</span>
+                    <div>{cleanHeading(section.title) || section.title}</div>
+                    <span className="reader-sec-meta">{getSectionMetaLabel(section)}</span>
+                    {selectedSection?.id === section.id && <span className="reader-sec-state">Current section</span>}
                   </a>
                 ))}
               </div>
             </div>
           ))}
 
-          <div className={`reader-chap ${activeChapterId === 'references_all' ? 'open' : ''}`}>
-            <button className="reader-chap-btn" onClick={(e) => handleChapClick(e.currentTarget.closest('.reader-chap'))}>
-              Textbook References
-              <small>▼</small>
-            </button>
-            <div className="reader-sec-wrap">
-              {referencesAllSections.map((section) => (
-                <a
-                  key={section.id}
-                  className={`reader-sec ${selectedSection?.id === section.id ? 'active' : ''}`}
-                  onClick={() => handleSectionClick(section)}
-                >
-                  {section.title}
-                </a>
-              ))}
+          {chapterScaffoldTitles.map((chapter) => (
+            <div className="reader-chap" key={chapter.title}>
+              <button className="reader-chap-btn" onClick={(e) => handleChapClick(e.currentTarget.closest('.reader-chap'))}>
+                <span>
+                  {chapter.title}
+                  <span className="reader-chap-summary">Outline planned • reader content not published yet</span>
+                </span>
+                <small>▶</small>
+              </button>
+              <div className="reader-sec-wrap">
+                {chapter.sections.map((label) => (
+                  <a
+                    key={`${chapter.title}-${label}`}
+                    className="reader-sec"
+                    onClick={() => window.alert('This chapter is on the course roadmap, but reader content has not been published yet.')}
+                  >
+                    <div>{label.replace(' (Placeholder)', '')}</div>
+                    <span className="reader-sec-meta">Planned outline item</span>
+                    <span className="reader-sec-state" style={{ background: 'rgba(148,163,184,0.14)', color: 'var(--muted)' }}>Planned</span>
+                  </a>
+                ))}
+              </div>
             </div>
-          </div>
+          ))}
         </aside>
-
         {/* Main Content Panel */}
         <main className="reader-panel reader-main" ref={mainScrollRef}>
           <div className="reader-main-wrap" onClick={handleInlineImageClick} onPointerUp={handleInlineImagePointerUp}>
@@ -2705,10 +2612,10 @@ export const ChapterReader = () => {
 
                 {toolView !== 'flashcards' && (
                   <>
-                <div className="reader-section-label">Chapter Reader</div>
+                <div className="reader-section-label">{activeNavGroup?.title || 'Chapter Reader'}</div>
                 <h1>{sectionTitle || selectedSection.title}</h1>
                 <div className="reader-meta reader-subtle">
-                  {selectedSection.duration} min • {currentWordCount} words
+                  {getSectionMetaLabel(selectedSection)}
                 </div>
                 <div className="reader-pills">
                   {selectedSection.duration && <span className="reader-pill">⏱️ ~{selectedSection.duration} min reading</span>}
