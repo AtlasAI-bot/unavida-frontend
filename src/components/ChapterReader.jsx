@@ -49,6 +49,7 @@ export const ChapterReader = () => {
   const [highlightColor, setHighlightColor] = useState('yellow');
   const [globalSearchOpen, setGlobalSearchOpen] = useState(false);
   const [globalSearchQuery, setGlobalSearchQuery] = useState('');
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
 
   // Image lightbox (click any diagram/image in the reader to expand)
   const [lightbox, setLightbox] = useState({ open: false, src: '', alt: '' });
@@ -1620,12 +1621,23 @@ export const ChapterReader = () => {
     setTheme(savedTheme);
   }, []);
 
-  // Mobile default: keep TOC closed initially
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.innerWidth <= 1024) {
-      setHideToc(true);
-    }
-  }, []);
+    if (typeof window === 'undefined') return undefined;
+    const handleResize = () => {
+      const mobile = window.innerWidth <= 768;
+      const compact = window.innerWidth <= 1024;
+      setIsMobile(mobile);
+      if (compact) {
+        setHideToc(true);
+      }
+      if (!compact && focusReader === false) {
+        setHideToc(false);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [focusReader]);
 
   // Set section from URL query (?section=...), else restore last viewed section
   // Also ensures chapter routes are canonical (Chapter 2 sections live under /reader/ch2_pharmacokinetics).
@@ -1680,6 +1692,16 @@ export const ChapterReader = () => {
     setFlashIndex(0);
     setFlashShowBack(false);
   }, [flashFilter]);
+
+  useEffect(() => {
+    if (typeof document === 'undefined') return undefined;
+    const shouldLock = isMobile && !hideToc;
+    const previous = document.body.style.overflow;
+    if (shouldLock) document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [hideToc, isMobile]);
 
   const handleSectionClick = (section) => {
     if (!section) return;
@@ -1875,6 +1897,12 @@ export const ChapterReader = () => {
 
         .reader-crumb { font-size: 12px; color: var(--muted); }
         .reader-header { font-weight: 700; }
+        .reader-mobile-section-bar {
+          display: none;
+          gap: 8px;
+          align-items: center;
+          margin-top: 10px;
+        }
 
         .reader-tools {
           display: flex;
@@ -1885,7 +1913,7 @@ export const ChapterReader = () => {
         }
 
         .reader-btn {
-          padding: 8px 12px;
+          padding: 10px 12px;
           border-radius: 9px;
           border: 1px solid var(--panel-border);
           background: transparent;
@@ -2242,6 +2270,10 @@ export const ChapterReader = () => {
 
         .reader-modal.show { display: flex; }
 
+        .reader-toc-scrim {
+          display: none;
+        }
+
         .reader-modal-card {
           width: min(620px, 90vw);
           max-height: 88vh;
@@ -2348,8 +2380,13 @@ export const ChapterReader = () => {
         .reader-menu .reader-btn { width: 100%; text-align: left; }
 
         @media (max-width: 1024px) {
+          .reader-mobile-section-bar {
+            display: flex;
+            flex-wrap: wrap;
+          }
+
           .reader-top {
-            padding: 10px 12px;
+            padding: 10px 12px 12px;
             gap: 10px;
           }
 
@@ -2373,6 +2410,7 @@ export const ChapterReader = () => {
 
           .reader-main {
             min-height: calc(100vh - 150px);
+            padding: 12px;
           }
 
           .reader-right {
@@ -2382,11 +2420,19 @@ export const ChapterReader = () => {
           .reader-toc {
             position: fixed;
             left: 8px;
-            top: 142px;
+            top: 112px;
             bottom: 8px;
-            width: min(90vw, 360px);
+            width: min(92vw, 360px);
             z-index: 50;
             box-shadow: 0 12px 32px rgba(0,0,0,0.28);
+          }
+
+          .reader-toc-scrim {
+            display: block;
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.42);
+            z-index: 45;
           }
 
           .reader-main-wrap h1 {
@@ -2415,9 +2461,22 @@ export const ChapterReader = () => {
             max-width: 100%;
           }
 
+          .reader-main-wrap h1 {
+            font-size: 1.28rem;
+            line-height: 1.25;
+          }
+
           .reader-card {
             padding: 12px;
             border-radius: 10px;
+          }
+
+          .reader-main-wrap p,
+          .reader-main-wrap li,
+          .reader-html p,
+          .reader-html li {
+            font-size: 1rem;
+            line-height: 1.72;
           }
 
           .reader-pills {
@@ -2441,6 +2500,16 @@ export const ChapterReader = () => {
             <span style={{ cursor: 'pointer', textDecoration: 'underline' }} onClick={() => navigate(`/reader/${activeChapterId}`)}>Reader</span>
           </div>
           <div className="reader-header">{activeNavGroup?.title || 'Mastering Pharmacology'}</div>
+          <div className="reader-mobile-section-bar">
+            <button className="reader-btn" onClick={() => setHideToc((v) => !v)}>
+              {hideToc ? '☰ Chapters' : '✕ Close chapters'}
+            </button>
+            {selectedSection && (
+              <div style={{ minWidth: 0, flex: 1, fontSize: 12, color: 'var(--muted)' }}>
+                Now reading: {cleanHeading(selectedSection.title) || selectedSection.title}
+              </div>
+            )}
+          </div>
         </div>
         <div className="reader-tools">
           <button className="reader-btn" onClick={() => setTopMenuOpen((v) => !v)}>☰ Reader Menu</button>
@@ -2460,14 +2529,17 @@ export const ChapterReader = () => {
       </div>
 
       {/* TOC Float Button */}
-      <button
-        className="reader-float-btn"
-        onClick={() => setHideToc(!hideToc)}
-      >
-        {hideToc ? '▶' : '◀'}
-      </button>
+      {!isMobile && (
+        <button
+          className="reader-float-btn"
+          onClick={() => setHideToc(!hideToc)}
+        >
+          {hideToc ? '▶' : '◀'}
+        </button>
+      )}
 
       {/* Main Layout */}
+      {isMobile && !hideToc && <div className="reader-toc-scrim" onClick={() => setHideToc(true)} />}
       <div className={`reader-layout ${focusReader ? 'focus-reader' : ''} ${hideToc ? 'hide-toc' : ''}`}>
         {/* Left Panel - TOC */}
         <aside className={`reader-panel reader-toc ${hideToc ? 'reader-hidden' : ''}`}>

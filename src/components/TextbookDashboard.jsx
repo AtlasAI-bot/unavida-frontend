@@ -254,10 +254,19 @@ export const TextbookDashboard = () => {
   const navigate = useNavigate();
   const { textbookId } = useParams();
   const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isCompactLayout, setIsCompactLayout] = useState(() => typeof window !== 'undefined' ? window.innerWidth <= 900 : false);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('unavidaTheme') || 'darkplus';
     setIsDarkMode(savedTheme !== 'light');
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return undefined;
+    const handleResize = () => setIsCompactLayout(window.innerWidth <= 900);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
   const [activeCourse, setActiveCourse] = useState(courseContent[textbookId] ? textbookId : 'NUR1100');
   const [openChapterId, setOpenChapterId] = useState(null);
@@ -334,6 +343,9 @@ export const TextbookDashboard = () => {
     };
   }), [activeCourse, course]);
 
+  const cardPadding = isCompactLayout ? 12 : 14;
+  const sectionButtonPadding = isCompactLayout ? '12px 10px' : 10;
+
   useEffect(() => {
     if (!course?.chapters?.length) return;
     if (openChapterId && course.chapters.some((chapter) => chapter.id === openChapterId)) return;
@@ -343,14 +355,14 @@ export const TextbookDashboard = () => {
 
   return (
     <div style={{ minHeight: '100vh', background: palette.page, color: palette.text }}>
-      <div style={{ padding: '16px 22px', borderBottom: `1px solid ${palette.border}`, background: isDarkMode ? '#14171a' : '#dfe8ff' }}>
+      <div style={{ padding: isCompactLayout ? '14px 14px 16px' : '16px 22px', borderBottom: `1px solid ${palette.border}`, background: isDarkMode ? '#14171a' : '#dfe8ff' }}>
         <div style={{ fontSize: 13, color: palette.muted }}>{`Bookshelf / ${course.name}`}</div>
         <div style={{ marginTop: 4, fontWeight: 700, fontSize: 22 }}>{course.name}</div>
         <div style={{ marginTop: 6, fontSize: 13, color: palette.muted }}>
           {`${course.code} • Nursing Education Series`}
         </div>
 
-        <div style={{ marginTop: 12, display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+        <div style={{ marginTop: 12, display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: isCompactLayout ? 'stretch' : 'flex-end' }}>
           <button
             onClick={() => {
               const nextDark = !isDarkMode;
@@ -359,18 +371,18 @@ export const TextbookDashboard = () => {
               localStorage.setItem('unavidaTheme', nextTheme);
               if (nextDark) localStorage.setItem('unavidaThemeLastDark', nextTheme);
             }}
-            style={{ padding: '8px 12px', borderRadius: 8, border: `1px solid ${palette.border}`, background: palette.panel, color: palette.text, cursor: 'pointer' }}
+            style={{ padding: '10px 12px', borderRadius: 8, border: `1px solid ${palette.border}`, background: palette.panel, color: palette.text, cursor: 'pointer', flex: isCompactLayout ? '1 1 180px' : '0 0 auto', minHeight: 44 }}
           >
             {isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
           </button>
-          <button onClick={() => navigate('/bookshelf')} style={{ padding: '8px 12px', borderRadius: 8, border: `1px solid ${palette.border}`, background: palette.panel, color: palette.text, cursor: 'pointer' }}>
+          <button onClick={() => navigate('/bookshelf')} style={{ padding: '10px 12px', borderRadius: 8, border: `1px solid ${palette.border}`, background: palette.panel, color: palette.text, cursor: 'pointer', flex: isCompactLayout ? '1 1 180px' : '0 0 auto', minHeight: 44 }}>
             Back to Bookshelf
           </button>
         </div>
       </div>
 
-      <div style={{ padding: 20, display: 'grid', gridTemplateColumns: '1.25fr .75fr', gap: 16 }}>
-        <section style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: 14 }}>
+      <div style={{ padding: isCompactLayout ? 14 : 20, display: 'grid', gridTemplateColumns: isCompactLayout ? '1fr' : '1.25fr .75fr', gap: 16, alignItems: 'start' }}>
+        <section style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: cardPadding }}>
           <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
             {selectableCourses.map((code) => (
               <button
@@ -381,7 +393,7 @@ export const TextbookDashboard = () => {
                   setOpenChapterId(null);
                 }}
                 style={{
-                  padding: '7px 12px',
+                  padding: isCompactLayout ? '10px 12px' : '7px 12px',
                   borderRadius: 999,
                   border: `1px solid ${palette.border}`,
                   background: activeCourse === code ? '#39d0c8' : palette.panel2,
@@ -404,7 +416,7 @@ export const TextbookDashboard = () => {
                 <div key={chapter.id} style={{ border: `1px solid ${palette.border}`, borderRadius: 10, background: palette.panel2 }}>
                   <button
                     onClick={() => setOpenChapterId(isOpen ? null : chapter.id)}
-                    style={{ width: '100%', textAlign: 'left', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: 10, background: 'transparent', border: 0, color: palette.text, cursor: 'pointer', gap: 12 }}
+                    style={{ width: '100%', textAlign: 'left', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: isCompactLayout ? '12px 10px' : 10, background: 'transparent', border: 0, color: palette.text, cursor: 'pointer', gap: 12, minHeight: isCompactLayout ? 52 : undefined }}
                   >
                     <span>
                       <div style={{ fontWeight: 700 }}>{chapter.title}</div>
@@ -416,7 +428,7 @@ export const TextbookDashboard = () => {
                     </span>
                   </button>
                   {isOpen && (
-                    <div style={{ padding: '0 10px 10px', display: 'grid', gap: 8 }}>
+                    <div style={{ padding: isCompactLayout ? '0 8px 8px' : '0 10px 10px', display: 'grid', gap: 8 }}>
                       {chapter.sections.map((section) => {
                         const availability = getSectionAvailability(activeCourse, section.id);
                         return (
@@ -433,7 +445,7 @@ export const TextbookDashboard = () => {
                               borderRadius: 8,
                               background: availability.route ? palette.panel : (isDarkMode ? '#15181c' : '#eef3ff'),
                               color: palette.text,
-                              padding: 10,
+                              padding: sectionButtonPadding,
                               cursor: availability.route ? 'pointer' : 'not-allowed',
                               opacity: availability.route ? 1 : 0.74,
                             }}
@@ -462,10 +474,10 @@ export const TextbookDashboard = () => {
           </div>
         </section>
 
-        <aside style={{ display: 'grid', gap: 12 }}>
-          <section style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: 14 }}>
+        <aside style={{ display: 'grid', gap: 12, position: 'relative' }}>
+          <section style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: cardPadding }}>
             <h3 style={{ margin: '0 0 10px' }}>Quick Performance Snapshot</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,minmax(0,1fr))', gap: 8 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: isCompactLayout ? '1fr 1fr' : 'repeat(2,minmax(0,1fr))', gap: 8 }}>
               <div style={{ background: palette.panel2, borderRadius: 8, padding: 10 }}><strong>Quiz Avg</strong><div>{snapshot.quizAvg}%</div></div>
               <div style={{ background: palette.panel2, borderRadius: 8, padding: 10 }}><strong>Flashcard Mastery</strong><div>{snapshot.flashMastery}%</div></div>
               <div style={{ background: palette.panel2, borderRadius: 8, padding: 10 }}><strong>Chapters Completed</strong><div>{snapshot.chaptersCompleted} / {course.chapters.length}</div></div>
@@ -473,7 +485,7 @@ export const TextbookDashboard = () => {
             </div>
           </section>
 
-          <section style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: 14 }}>
+          <section style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: cardPadding }}>
             <h3 style={{ margin: '0 0 10px' }}>Study Tools</h3>
             <div style={{ display: 'grid', gap: 8 }}>
               <button onClick={() => navigate('/flashcards')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>🎴 Flashcards</button>
@@ -483,7 +495,7 @@ export const TextbookDashboard = () => {
             </div>
           </section>
 
-          <section style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: 14 }}>
+          <section style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: cardPadding }}>
             <h3 style={{ margin: '0 0 10px' }}>Workbook + Video Library</h3>
             <div style={{ display: 'grid', gap: 8 }}>
               <button onClick={() => navigate('/workbook')} style={{ textAlign: 'left', border: `1px solid ${palette.border}`, borderRadius: 8, background: palette.panel2, color: palette.text, padding: 9, cursor: 'pointer' }}>📝 Notes</button>
@@ -493,7 +505,7 @@ export const TextbookDashboard = () => {
             </div>
           </section>
 
-          <section style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: 12 }}>
+          <section style={{ background: palette.panel, border: `1px solid ${palette.border}`, borderRadius: 12, padding: cardPadding }}>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr minmax(120px,150px)', gap: 10, alignItems: 'end' }}>
               <div style={{ fontSize: 13, alignSelf: 'start' }}>
                 <div style={{
