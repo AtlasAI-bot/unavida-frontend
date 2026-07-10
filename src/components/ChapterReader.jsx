@@ -1881,7 +1881,9 @@ export const ChapterReader = () => {
         .reader-container {
           display: flex;
           flex-direction: column;
-          height: 100vh;
+          min-height: 100vh;
+          min-height: 100dvh;
+          height: auto;
           background: var(--bg);
           color: var(--text);
           font-family: var(--reader-font);
@@ -2416,8 +2418,9 @@ export const ChapterReader = () => {
           }
 
           .reader-main {
+            min-height: calc(100dvh - 150px);
             min-height: calc(100vh - 150px);
-            padding: 12px;
+            padding: 12px 12px calc(96px + env(safe-area-inset-bottom, 0px));
           }
 
           .reader-right {
