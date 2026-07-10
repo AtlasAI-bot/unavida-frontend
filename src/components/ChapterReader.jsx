@@ -2314,29 +2314,47 @@ export const ChapterReader = () => {
         .reader-search-result {
           width: 100%;
           text-align: left;
-          display: block;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 4px;
           white-space: normal;
           line-height: 1.45;
           padding: 12px;
+          min-height: fit-content;
+          word-break: break-word;
+          overflow-wrap: anywhere;
         }
 
         .reader-search-result-title {
           display: block;
+          width: 100%;
           font-weight: 800;
-          margin-bottom: 4px;
+          margin-bottom: 2px;
+          white-space: normal;
+          word-break: break-word;
+          overflow-wrap: anywhere;
         }
 
         .reader-search-result-meta {
           display: block;
+          width: 100%;
           font-size: 12px;
           color: var(--muted);
-          margin-bottom: 4px;
+          margin-bottom: 2px;
+          white-space: normal;
+          word-break: break-word;
+          overflow-wrap: anywhere;
         }
 
         .reader-search-result-excerpt {
           display: block;
+          width: 100%;
           font-size: 12px;
           line-height: 1.5;
+          white-space: normal;
+          word-break: break-word;
+          overflow-wrap: anywhere;
         }
 
         .reader-pref-row {
@@ -3448,18 +3466,28 @@ export const ChapterReader = () => {
                 {globalSearchResults.map((result, idx) => {
                   const section = result.section;
                   return (
-                    <button
+                    <div
                       key={`${section.id}-${idx}`}
-                      className="reader-btn reader-search-result"
+                      className="reader-search-result"
+                      role="button"
+                      tabIndex={0}
                       onClick={() => {
                         handleSectionClick(section);
                         setGlobalSearchOpen(false);
                       }}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          handleSectionClick(section);
+                          setGlobalSearchOpen(false);
+                        }
+                      }}
+                      style={{ border: '1px solid var(--panel-border)', borderRadius: '10px', background: 'var(--panel)', cursor: 'pointer' }}
                     >
                       <span className="reader-search-result-title">{cleanHeading(section.title || section.id)}</span>
                       <span className="reader-search-result-meta">{getSectionChapterLabel(section)} • {section.sectionNumber || section.id}</span>
                       <span className="reader-search-result-excerpt">{result.excerpt}</span>
-                    </button>
+                    </div>
                   );
                 })}
               </div>
