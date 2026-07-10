@@ -2304,6 +2304,41 @@ export const ChapterReader = () => {
 
         .reader-modal-body { padding: 14px; }
 
+        .reader-search-results {
+          display: grid;
+          gap: 8px;
+          max-height: 52vh;
+          overflow-y: auto;
+        }
+
+        .reader-search-result {
+          width: 100%;
+          text-align: left;
+          display: block;
+          white-space: normal;
+          line-height: 1.45;
+          padding: 12px;
+        }
+
+        .reader-search-result-title {
+          display: block;
+          font-weight: 800;
+          margin-bottom: 4px;
+        }
+
+        .reader-search-result-meta {
+          display: block;
+          font-size: 12px;
+          color: var(--muted);
+          margin-bottom: 4px;
+        }
+
+        .reader-search-result-excerpt {
+          display: block;
+          font-size: 12px;
+          line-height: 1.5;
+        }
+
         .reader-pref-row {
           margin-bottom: 12px;
         }
@@ -3409,22 +3444,21 @@ export const ChapterReader = () => {
             ) : globalSearchResults.length === 0 ? (
               <p style={{ margin: 0, color: 'var(--muted)', fontSize: '13px' }}>No matches found.</p>
             ) : (
-              <div style={{ display: 'grid', gap: '8px', maxHeight: '52vh', overflowY: 'auto' }}>
+              <div className="reader-search-results">
                 {globalSearchResults.map((result, idx) => {
                   const section = result.section;
                   return (
                     <button
                       key={`${section.id}-${idx}`}
-                      className="reader-btn"
+                      className="reader-btn reader-search-result"
                       onClick={() => {
                         handleSectionClick(section);
                         setGlobalSearchOpen(false);
                       }}
-                      style={{ textAlign: 'left', display: 'grid', gap: '4px' }}
                     >
-                      <strong>{cleanHeading(section.title || section.id)}</strong>
-                      <span style={{ fontSize: '12px', color: 'var(--muted)' }}>{getSectionChapterLabel(section)} • {section.sectionNumber || section.id}</span>
-                      <span style={{ fontSize: '12px' }}>{result.excerpt}</span>
+                      <span className="reader-search-result-title">{cleanHeading(section.title || section.id)}</span>
+                      <span className="reader-search-result-meta">{getSectionChapterLabel(section)} • {section.sectionNumber || section.id}</span>
+                      <span className="reader-search-result-excerpt">{result.excerpt}</span>
                     </button>
                   );
                 })}
