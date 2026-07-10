@@ -1627,6 +1627,13 @@ export const ChapterReader = () => {
       const mobile = window.innerWidth <= 768;
       const compact = window.innerWidth <= 1024;
       setIsMobile(mobile);
+
+      if (mobile) {
+        setFocusReader(true);
+        setHideToc(true);
+        return;
+      }
+
       if (compact) {
         setHideToc(true);
       }
