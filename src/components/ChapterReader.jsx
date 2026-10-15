@@ -794,6 +794,26 @@ export const ChapterReader = () => {
   ];
 
   const activeNavGroup = chapterNavGroups.find((group) => group.active) || chapterNavGroups[0];
+  // Resolve the reader label directly from the active route. This keeps the
+  // chapter chrome correct even if navigation-group state has not caught up
+  // during an initial deep-link load (for example, /reader/ch10_antivirals).
+  const activeChapterLabel = activeChapterId.startsWith('ch2')
+    ? 'Chapter 2: Pharmacokinetics'
+    : activeChapterId.startsWith('ch3')
+      ? 'Chapter 3: Toxicity'
+      : activeChapterId.startsWith('ch5')
+        ? 'Chapter 5: Dosage Calculations'
+        : activeChapterId.startsWith('ch9')
+          ? 'Chapter 9: Antibiotics'
+          : activeChapterId.startsWith('ch10')
+            ? 'Chapter 10: Antivirals'
+            : activeChapterId.startsWith('ch11')
+              ? 'Chapter 11: Antifungals'
+              : activeChapterId.startsWith('ch60')
+                ? 'Chapter 60: Vitamins, Minerals, and Complementary/Alternative Medications'
+                : activeChapterId === 'references_all'
+                  ? 'Textbook References'
+                  : 'Chapter 1: Intro to Pharmacology';
   const activeCourseRoute = activeNavGroup?.route || '/textbook/NUR1100';
   const currentSectionIndex = allSections.findIndex((s) => s.id === selectedSection?.id);
   const prevSection = currentSectionIndex > 0 ? allSections[currentSectionIndex - 1] : null;
@@ -2562,7 +2582,7 @@ export const ChapterReader = () => {
             <span>/</span>
             <span style={{ cursor: 'pointer', textDecoration: 'underline' }} onClick={() => navigate(`/reader/${activeChapterId}`)}>Reader</span>
           </div>
-          <div className="reader-header">{activeNavGroup?.title || 'Mastering Pharmacology'}</div>
+          <div className="reader-header">{activeChapterLabel}</div>
           <div className="reader-mobile-section-bar">
             <button className="reader-btn" onClick={() => setHideToc((v) => !v)}>
               {hideToc ? '☰ Chapters' : '✕ Close chapters'}
@@ -2747,7 +2767,7 @@ export const ChapterReader = () => {
 
                 {toolView !== 'flashcards' && (
                   <>
-                <div className="reader-section-label">{activeNavGroup?.title || 'Chapter Reader'}</div>
+                <div className="reader-section-label">{activeChapterLabel}</div>
                 <h1>{sectionTitle || selectedSection.title}</h1>
                 <div className="reader-meta reader-subtle">
                   {getSectionMetaLabel(selectedSection)}
